@@ -5,20 +5,18 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { themeEffect } from '@/components/theme-effect';
 import config from '@/app/config';
 import { doge } from './doge';
-import { Header } from './header';
-import Footer from './footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'], // Added weights including semibold (600)
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
-  weight: ['400', '600'], // Added regular and semibold weights
+  weight: ['400', '600'],
   display: 'swap',
 });
 
@@ -114,7 +112,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(config.url),
   verification: {
-    google: 'your-google-site-verification', // Add your Google verification code
+    google: 'your-google-site-verification',
   },
   robots: {
     index: true,
@@ -131,9 +129,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -145,15 +143,11 @@ export default function RootLayout({
         <link rel="icon" href="/icons/16x16.png" sizes="16x16" type="image/png" />
         <link rel="mask-icon" href="/icons/16x16.png" color="#4E90F9" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <main className="max-w-3xl mx-auto px-4 justify-center sm:px-12 mt-4 sm:mt-8 min-h-screen">
-          <Header />
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );
-}
+} 
