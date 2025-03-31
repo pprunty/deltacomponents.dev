@@ -40,7 +40,7 @@
       "title": "Admonition",
       "badge": "beta",
       "description": "A component for admonition",
-      "dependencies": [],
+      "dependencies": ["@phosphor-icons/react"],
       "registryDependencies": [],
       "files": [
         {
