@@ -9,7 +9,9 @@
       "title": "Complex Component",
       "badge": "beta",
       "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
+      "registryDependencies": [
+        "card"
+      ],
       "files": [
         {
           "path": "delta/new-york/complex-component/page.tsx",
@@ -61,8 +63,13 @@
       "title": "Modal",
       "badge": "beta",
       "description": "A customizable modal component with animations and various style options",
-      "dependencies": ["framer-motion", "@phosphor-icons/react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "framer-motion",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "delta/components/modal.tsx",
@@ -182,7 +189,9 @@
       "title": "Tweet",
       "badge": "beta",
       "description": "A component for embedding and displaying tweets with server-side rendering",
-      "dependencies": ["react-tweet"],
+      "dependencies": [
+        "react-tweet"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -271,8 +280,12 @@
       "title": "Text Input",
       "badge": "beta",
       "description": "A text input component with validation, error handling, and various styling options",
-      "dependencies": ["zod"],
-      "registryDependencies": ["input"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
       "files": [
         {
           "path": "delta/inputs/text-input.tsx",
@@ -292,8 +305,12 @@
       "title": "Checkbox Input",
       "badge": "beta",
       "description": "A checkbox input component with validation, error handling, and label support",
-      "dependencies": ["zod"],
-      "registryDependencies": ["checkbox"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "checkbox"
+      ],
       "files": [
         {
           "path": "delta/inputs/checkbox-input.tsx",
@@ -313,8 +330,13 @@
       "title": "Select Input",
       "badge": "beta",
       "description": "A select input component with both native and shadcn/ui select variants",
-      "dependencies": ["zod", "lucide-react"],
-      "registryDependencies": ["select"],
+      "dependencies": [
+        "zod",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
       "files": [
         {
           "path": "delta/inputs/select-input.tsx",
@@ -334,8 +356,12 @@
       "title": "Radio Input",
       "badge": "beta",
       "description": "A radio input group component with validation and description support",
-      "dependencies": ["zod"],
-      "registryDependencies": ["radio-group"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "radio-group"
+      ],
       "files": [
         {
           "path": "delta/inputs/radio-input.tsx",
@@ -355,7 +381,10 @@
       "title": "Switch Input",
       "badge": "beta",
       "description": "A switch toggle component with validation and label support",
-      "dependencies": ["zod", "framer-motion"],
+      "dependencies": [
+        "zod",
+        "framer-motion"
+      ],
       "files": [
         {
           "path": "delta/inputs/switch-input.tsx",
@@ -375,8 +404,12 @@
       "title": "Textarea Input",
       "badge": "beta",
       "description": "A textarea component with validation, error handling, and various styling options",
-      "dependencies": ["zod"],
-      "registryDependencies": ["textarea"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "textarea"
+      ],
       "files": [
         {
           "path": "delta/inputs/textarea-input.tsx",
@@ -396,8 +429,16 @@
       "title": "Date Input",
       "badge": "beta",
       "description": "A date picker component with validation, min/max date support, and formatting options",
-      "dependencies": ["zod", "date-fns", "lucide-react"],
-      "registryDependencies": ["button", "calendar", "popover"],
+      "dependencies": [
+        "zod",
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover"
+      ],
       "files": [
         {
           "path": "delta/inputs/date-input.tsx",
@@ -417,8 +458,13 @@
       "title": "File Input",
       "badge": "beta",
       "description": "A file input component with drag and drop support, file previews, and validation",
-      "dependencies": ["zod", "@phosphor-icons/react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "zod",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "delta/inputs/file-input.tsx",
@@ -518,7 +564,10 @@
       "name": "otp-input",
       "type": "registry:component",
       "title": "OTP Input",
-      "badge": ["beta", "new"],
+      "badge": [
+        "beta",
+        "new"
+      ],
       "description": "A component for otp-input",
       "dependencies": [],
       "registryDependencies": [],
@@ -540,8 +589,12 @@
       "type": "registry:component",
       "title": "Floating Button",
       "description": "A customizable floating button component with positioning, tooltip, and responsive behavior.",
-      "dependencies": ["@radix-ui/react-tooltip"],
-      "registryDependencies": ["tooltip"],
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "registryDependencies": [
+        "tooltip"
+      ],
       "files": [
         {
           "path": "delta/components/floating-button.tsx",

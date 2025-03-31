@@ -36,7 +36,7 @@ let category = 'components'; // Default
 if (componentFiles.length > 0) {
   const filePath = componentFiles[0].path;
   const pathParts = filePath.split(path.sep);
-  // New path pattern is typically: delta/{category}/{component-name}.tsx
+  // Path pattern is: delta/{category}/{component-name}.tsx
   if (pathParts.length >= 3 && pathParts[0] === 'delta') {
     category = pathParts[1];
   }
@@ -60,22 +60,25 @@ if (fs.existsSync(registryComponentsPath)) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
-  // Remove import statement based on component type and new path structure
+  // Remove import statement based on component type
   let importPattern;
   if (componentType === 'component') {
-    // Now imports demo component
-    importPattern = new RegExp(
-      `import\\s+\\{\\s*${pascalCaseName}Demo\\s*\\}\\s+from\\s+["']@/registry/${category}/${componentName}-demo["'].*?\n`,
+    // Remove both the component and demo imports
+    const componentImport = new RegExp(
+      `import\\s+${pascalCaseName}\\s+from\\s+["']@/delta/${category}/${componentName}["'].*?\n`,
       'g',
     );
+    const demoImport = new RegExp(
+      `import\\s+${pascalCaseName}Demo\\s+from\\s+["']@/delta/${category}/${componentName}-demo["'].*?\n`,
+      'g',
+    );
+    content = content.replace(componentImport, '');
+    content = content.replace(demoImport, '');
   } else if (componentType === 'page') {
     importPattern = new RegExp(
-      `import\\s+${pascalCaseName}Page\\s+from\\s+["']@/registry/${category}/${componentName}-page["'].*?\n`,
+      `import\\s+${pascalCaseName}Page\\s+from\\s+["']@/delta/${category}/${componentName}-page["'].*?\n`,
       'g',
     );
-  }
-
-  if (importPattern) {
     content = content.replace(importPattern, '');
   }
 
@@ -86,75 +89,25 @@ if (fs.existsSync(registryComponentsPath)) {
   );
   content = content.replace(componentEntryPattern, '');
 
-  // Fix trailing commas
-  content = content.replace(/,(\s*})/g, '$1');
+  // Fix trailing commas and empty lines
+  content = content
+    .replace(/,(\s*})/g, '$1')
+    .replace(/\n\s*\n\s*\n/g, '\n\n') // Remove multiple empty lines
+    .trim();
 
   fs.writeFileSync(registryComponentsPath, content);
   console.log(`Removed "${componentName}" from registry-components.tsx`);
 }
 
-// Remove component files based on the new file structure
+// Remove component files
 if (componentFiles.length > 0) {
-  // Delete each file in the component files array
   componentFiles.forEach((fileObj) => {
     const filePath = fileObj.path;
-
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
       console.log(`Deleted file: ${filePath}`);
-    } else {
-      console.warn(`File not found: ${filePath}`);
     }
   });
-
-  // Also try to remove potential demo file if not in the componentFiles list
-  if (componentType === 'component') {
-    const demoFilePath = path.join(
-      'delta',
-      category,
-      `${componentName}-demo.tsx`,
-    );
-    if (fs.existsSync(demoFilePath)) {
-      fs.unlinkSync(demoFilePath);
-      console.log(`Deleted file: ${demoFilePath}`);
-    }
-
-    const componentFilePath = path.join(
-      'delta',
-      category,
-      `${componentName}.tsx`,
-    );
-    if (fs.existsSync(componentFilePath)) {
-      fs.unlinkSync(componentFilePath);
-      console.log(`Deleted file: ${componentFilePath}`);
-    }
-  } else if (componentType === 'page') {
-    const pageFilePath = path.join(
-      'delta',
-      category,
-      `${componentName}-page.tsx`,
-    );
-    if (fs.existsSync(pageFilePath)) {
-      fs.unlinkSync(pageFilePath);
-      console.log(`Deleted file: ${pageFilePath}`);
-    }
-  } else if (componentType === 'lib') {
-    const libFilePath = path.join('delta', category, `${componentName}.ts`);
-    if (fs.existsSync(libFilePath)) {
-      fs.unlinkSync(libFilePath);
-      console.log(`Deleted file: ${libFilePath}`);
-    }
-  } else if (componentType === 'hook') {
-    const hookFilePath = path.join(
-      'delta',
-      category,
-      `use-${componentName}.ts`,
-    );
-    if (fs.existsSync(hookFilePath)) {
-      fs.unlinkSync(hookFilePath);
-      console.log(`Deleted file: ${hookFilePath}`);
-    }
-  }
 }
 
 console.log(`

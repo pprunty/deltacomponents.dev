@@ -1,22 +1,36 @@
-# registry-template
+# deltacomponents.dev
 
-You can use the `shadcn` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any React project.
-
-## Getting Started
-
-This is a template for creating a custom registry using Next.js.
-
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- The template also includes a route handler for serving registry items.
-- Every registry item are compatible with the `shadcn` CLI.
-- We have also added v0 integration using the `Open in v0` api.
+A collection of modern, accessible, and customizable React components built on top of shadcn/ui. Free & Open Source.
 
 ## Documentation
 
-Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
+Visit [deltacomponents.dev](https://deltacomponents.dev) to view the full documentation.
 
-- npx shadcn@latest add https://delta.dev/r/admonition.json
+## Getting Started
+
+You can add components to your project using the `shadcn` CLI:
+
+```bash
+npx shadcn@latest add "https://deltacomponents.dev/r/admonition.json"
+```
+
+## Customize with v0
+
+Every component in this library can be opened and customized using [v0](https://v0.dev/chat), an AI-powered design tool that helps you create beautiful UI components. Simply click the "Open in v0" button on any component to:
+
+- Modify the component's design and layout
+- Generate variations of the component
+- Export the customized code
+- Create new components inspired by existing ones
+
+## Contributing
+
+Please read the [contribution guidelines](./CONTRIBUTING.md).
+
+## Acknowledgments
+
+Huge thanks to [shadcn](https://github.com/shadcn-ui/ui), as many parts of this repository—documentation page, structure, registry system, guides, and many more—is built upon it.
+
+## License
+
+Licensed under the [MIT license](LICENSE).

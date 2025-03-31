@@ -4,14 +4,14 @@ const path = require('path');
 
 const componentType = process.argv[2]; // component, page, lib, hook
 const componentName = process.argv[3];
-const category = process.argv[4] || 'components'; // Default to "new-york" if no category provided
+const category = process.argv[4] || 'components'; // Default to "components" if no category provided
 
 if (!componentType || !componentName) {
   console.error(
     'Usage: node add-component.js [component|page|lib|hook] [name] [category]',
   );
   console.error('Example: node add-component.js component button custom-theme');
-  console.error('If category is omitted, "new-york" will be used as default');
+  console.error('If category is omitted, "components" will be used as default');
   process.exit(1);
 }
 
@@ -51,7 +51,7 @@ switch (componentType) {
     filePath = path.join(categoryPath, `${componentName}.tsx`);
     demoFilePath = path.join(categoryPath, `${componentName}-demo.tsx`);
     registryType = 'registry:component';
-    fileContent = `export function ${pascalCaseName}() {
+    fileContent = `export default function ${pascalCaseName}() {
   return (
     <div className="p-4 border rounded">
       <h2 className="text-lg font-medium">${componentName
@@ -63,9 +63,9 @@ switch (componentType) {
   );
 }
 `;
-    demoFileContent = `import { ${pascalCaseName} } from "./${componentName}";
+    demoFileContent = `import ${pascalCaseName} from "./${componentName}";
 
-export function ${pascalCaseName}Demo() {
+export default function ${pascalCaseName}Demo() {
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-medium">Demo: ${componentName
@@ -103,7 +103,7 @@ export function ${pascalCaseName}Demo() {
     registryType = 'registry:lib';
     fileContent = `// Utility functions for ${componentName}
 
-export function sampleFunction() {
+export default function sampleFunction() {
   return 'Sample return value';
 }
 
@@ -119,7 +119,7 @@ export function anotherFunction(param: string) {
 
 import { useState, useEffect } from 'react';
 
-export function use${pascalCaseName}() {
+export default function use${pascalCaseName}() {
   const [state, setState] = useState(null);
 
   useEffect(() => {
@@ -194,7 +194,7 @@ let componentEntry = '';
 
 // Different handling based on component type
 if (componentType === 'component') {
-  importStatement = `import { ${pascalCaseName}Demo } from "@/delta/${category}/${componentName}-demo"`;
+  importStatement = `import ${pascalCaseName}Demo from "@/delta/${category}/${componentName}-demo"`;
   componentEntry = `  "${componentName}": {\n    component: ${pascalCaseName}Demo,\n  },`;
 } else if (componentType === 'page') {
   importStatement = `import ${pascalCaseName}Page from "@/delta/${category}/${componentName}-page"`;
