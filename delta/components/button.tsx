@@ -100,8 +100,8 @@ export function Button({
         'focus:outline-none focus:ring-0 focus-visible:ring-0',
         'focus:shadow-none focus-visible:shadow-none',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
-        'active:scale-[0.99]',
-        'disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100',
+        'active:opacity-80',
+        'disabled:opacity-50 disabled:cursor-not-allowed disabled:active:opacity-50',
 
         // Add relative positioning when extended click area is enabled
         extendedClickArea && 'relative',

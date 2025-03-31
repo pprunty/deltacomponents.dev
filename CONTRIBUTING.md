@@ -37,6 +37,7 @@ Hi! Thanks for your interest in contributing to deltacomponents.dev! 🎉
 ## Adding a New Component
 
 ### 1. Component Source
+
 The easiest way to add a new component is using the registry commands:
 
 ```bash
@@ -57,6 +58,7 @@ npm run registry:remove <component_name>
 ```
 
 Available categories:
+
 - `components` - Base components
 - `forms` - Form components
 - `inputs` - Input components
@@ -65,22 +67,26 @@ Available categories:
 - `blocks` - Complex components
 
 These commands will:
+
 - Create the necessary files in the correct directory
 - Add the component to `registry.json`
 - Set up the basic component structure
 - Add the required imports and exports
 
 After running the command, you'll need to:
+
 - [ ] Implement your component logic
 - [ ] Add component demo file with `-demo` suffix
 - [ ] Add author comment in component file
 - [ ] Add any new dependencies to `package.json`
 
 ### 2. Registry
+
 - [ ] Run `npm run registry:build` to update registry
 - [ ] Test component installation: `npx shadcn@latest add "https://deltacomponents.dev/r/your-component.json"`
 
 ### 3. Documentation
+
 <!-- Documentation section will be added later -->
 
 ## Commit Convention
@@ -110,8 +116,9 @@ Example: `feat(button): add new variant`
 ## Need Help?
 
 Feel free to:
+
 - Open an issue for bugs or feature requests
 - Start a discussion for questions
 - Reach out to [Patrick](https://github.com/pprunty) directly
 
-Thanks for contributing! 🚀 
+Thanks for contributing! 🚀

@@ -131,9 +131,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -142,7 +142,12 @@ export default function RootLayout({
             __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
           }}
         />
-        <link rel="icon" href="/icons/16x16.png" sizes="16x16" type="image/png" />
+        <link
+          rel="icon"
+          href="/icons/16x16.png"
+          sizes="16x16"
+          type="image/png"
+        />
         <link rel="mask-icon" href="/icons/16x16.png" color="#4E90F9" />
       </head>
       <body

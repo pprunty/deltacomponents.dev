@@ -49,16 +49,19 @@ const Tabs = forwardRef<
         {React.Children.map(children, (child) => {
           if (!React.isValidElement(child)) return child;
 
-          return React.cloneElement(child as React.ReactElement<{
-            activeValue?: string;
-            onValueChange?: (value: string) => void;
-            className?: string;
-            children?: ReactNode;
-            [key: string]: any;
-          }>, {
-            activeValue,
-            onValueChange: handleValueChange,
-          });
+          return React.cloneElement(
+            child as React.ReactElement<{
+              activeValue?: string;
+              onValueChange?: (value: string) => void;
+              className?: string;
+              children?: ReactNode;
+              [key: string]: any;
+            }>,
+            {
+              activeValue,
+              onValueChange: handleValueChange,
+            },
+          );
         })}
       </div>
     );
@@ -121,7 +124,8 @@ const TabsList = forwardRef<
     const activeIndex = React.Children.toArray(children).findIndex(
       (child) =>
         React.isValidElement(child) &&
-        (child as React.ReactElement<{ value: string }>).props.value === activeValue,
+        (child as React.ReactElement<{ value: string }>).props.value ===
+          activeValue,
     );
 
     // Update hover indicator position
@@ -232,7 +236,7 @@ const TabsList = forwardRef<
       }
     }, []);
 
-    // Center the active tab on initial render
+    // Center the active tab on initial render only
     useEffect(() => {
       if (activeIndex >= 0) {
         // Use a small timeout to ensure the tabs are properly rendered
@@ -242,7 +246,7 @@ const TabsList = forwardRef<
 
         return () => clearTimeout(timer);
       }
-    }, [activeIndex]);
+    }, []); // Empty dependency array means this only runs once on mount
 
     return (
       <div
@@ -276,6 +280,7 @@ const TabsList = forwardRef<
                 style={{
                   ...hoverStyle,
                   opacity: hoveredIndex !== null ? 1 : 0,
+                  transition: 'all 300ms ease-out',
                 }}
                 aria-hidden="true"
               />
@@ -293,15 +298,17 @@ const TabsList = forwardRef<
               {React.Children.map(children, (child, index) => {
                 if (!React.isValidElement(child)) return child;
 
-                const props = (child as React.ReactElement<{
-                  value: string;
-                  disabled?: boolean;
-                  label?: string;
-                  className?: string;
-                  activeClassName?: string;
-                  inactiveClassName?: string;
-                  disabledClassName?: string;
-                }>).props;
+                const props = (
+                  child as React.ReactElement<{
+                    value: string;
+                    disabled?: boolean;
+                    label?: string;
+                    className?: string;
+                    activeClassName?: string;
+                    inactiveClassName?: string;
+                    disabledClassName?: string;
+                  }>
+                ).props;
 
                 const { value, disabled, label } = props;
                 const isActive = value === activeValue;
@@ -319,14 +326,10 @@ const TabsList = forwardRef<
                       disabled ? 'opacity-50 cursor-not-allowed' : '',
                       stretch ? 'flex-1 text-center' : '',
                       isActive
-                        ? cn(
-                            'text-foreground dark:text-white',
-                            props.activeClassName,
-                          )
-                        : cn(
+                        ? props.activeClassName ||
+                            'text-foreground dark:text-white'
+                        : props.inactiveClassName ||
                             'text-[#0e0f1199] dark:text-[#ffffff99]',
-                            props.inactiveClassName,
-                          ),
                       disabled && props.disabledClassName,
                       variantClasses[variant],
                       props.className,
@@ -365,7 +368,10 @@ const TabsList = forwardRef<
                     : 'bottom-[-1px]',
                   activeIndicatorClassName,
                 )}
-                style={activeStyle}
+                style={{
+                  ...activeStyle,
+                  transition: 'all 300ms ease-out',
+                }}
                 aria-hidden="true"
               />
             )}

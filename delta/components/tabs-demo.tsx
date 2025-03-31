@@ -233,8 +233,7 @@ export function CustomPillsTabsDemo() {
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="text-gray-700 dark:text-gray-300 font-medium"
-              activeClassName="bg-[#1cd760] dark:bg-[#1cd760] text-white dark:text-black font-medium"
+              activeClassName="bg-[#1cd760] dark:bg-[#1cd760] dark:text-black text-white font-medium"
             >
               {tab.label}
             </TabsTrigger>
