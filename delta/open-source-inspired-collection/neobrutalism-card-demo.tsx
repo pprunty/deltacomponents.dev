@@ -233,7 +233,7 @@ export function CompleteExampleDemo() {
   return (
     <div className="w-full flex justify-center p-6">
       <Card
-        color="blue"
+        color="cream"
         className="w-full max-w-sm"
         hover={false}
         borderWidth="medium"

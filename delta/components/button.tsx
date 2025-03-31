@@ -135,14 +135,17 @@ export function Button({
         // Action variant styling with customizable color
         variant === 'action' && getActionStyles(),
 
-        // Neobrutalism variant styling
+        // Neobrutalism variant styling - FIXED to maintain border visibility
         variant === 'neobrutalism' && [
           'rounded-lg border-2 border-black',
           neobrutalismColor,
           'text-black',
           'shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
-          'hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
-          'active:translate-y-1 active:translate-x-1 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:active:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
+          // Modified hover state to ensure border remains visible
+          'hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
+          // Modified active state to use a background change instead of translate to maintain border visibility
+          'active:bg-opacity-80 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] dark:active:shadow-[1px_1px_0px_0px_rgba(255,255,255,0.8)]',
+          // Keep disabled state the same
           'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
         ],
 
