@@ -14,6 +14,7 @@ export default function TextareaInputDemo() {
       <DisabledTextareaInputDemo />
       <HintTextareaInputDemo />
       <RowsTextareaInputDemo />
+      <SizeTextareaInputDemo />
     </div>
   );
 }
@@ -199,6 +200,37 @@ export function RowsTextareaInputDemo() {
           placeholder="Provide a detailed explanation"
           rows={8}
           variant="pill"
+        />
+      </div>
+    </div>
+  );
+}
+
+export function SizeTextareaInputDemo() {
+  return (
+    <div className="space-y-4">
+      <h2 className="text-lg font-semibold">Different Sizes</h2>
+      <div className="grid gap-4 md:grid-cols-3">
+        <TextareaInput
+          label="Small"
+          name="small-textarea"
+          placeholder="Small textarea..."
+          size="sm"
+          defaultValue="This is a small textarea that will grow up to 120px in height."
+        />
+        <TextareaInput
+          label="Medium"
+          name="medium-textarea"
+          placeholder="Medium textarea..."
+          size="md"
+          defaultValue="This is a medium textarea that will grow up to 200px in height."
+        />
+        <TextareaInput
+          label="Large"
+          name="large-textarea"
+          placeholder="Large textarea..."
+          size="lg"
+          defaultValue="This is a large textarea that will grow up to 300px in height."
         />
       </div>
     </div>

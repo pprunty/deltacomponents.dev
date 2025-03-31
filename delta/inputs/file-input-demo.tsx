@@ -30,7 +30,7 @@ const imageSchema = z.instanceof(File).superRefine((file, ctx) => {
 
 export default function FileInputDemo() {
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <div className="container mx-auto max-w-3xl px-4 py-8 space-y-8">
       <DefaultFileInputDemo />
       <PillFileInputDemo />
       <ValidationFileInputDemo />
@@ -47,7 +47,7 @@ export function DefaultFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Default File Input</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput label="Profile Picture" name="profile" accept="image/*" />
         <FileInput label="Resume" name="resume" accept=".pdf,.doc,.docx" />
       </div>
@@ -59,7 +59,7 @@ export function PillFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Pill Variant</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Avatar"
           name="avatar"
@@ -82,7 +82,7 @@ export function ValidationFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">With Validation</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Profile Image"
           name="profile-validation"
@@ -108,7 +108,7 @@ export function MutedLabelFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Muted Label Variant</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Upload Image"
           name="image-muted"
@@ -131,7 +131,7 @@ export function RequiredFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Required Fields</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="ID Document"
           name="id-document"
@@ -154,7 +154,7 @@ export function DisabledFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Disabled State</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Verification Document"
           name="verification"
@@ -177,7 +177,7 @@ export function HintFileInputDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">With Hint Text</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Profile Picture"
           name="profile-hint"
@@ -200,7 +200,7 @@ export function MultipleFilesDemo() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Multiple Files Upload</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="space-y-4">
         <FileInput
           label="Photo Gallery"
           name="gallery"

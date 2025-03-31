@@ -32,8 +32,8 @@ export function ExtendedClickAreaDemo() {
       <p className="text-muted-foreground mb-4">
         The extended click area creates an invisible touch target around the
         switch, making it easier to interact with, especially on mobile devices.
-        The dotted border below visualizes the extended area (not visible in
-        production).
+        Meaning, you can "miss" clicking the button but still trigger its click
+        handler.
       </p>
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative border border-dashed border-muted-foreground/30 rounded-lg p-12 flex justify-center">
@@ -41,7 +41,7 @@ export function ExtendedClickAreaDemo() {
             <div className="w-20 h-20 rounded-lg"></div>
           </div>
           <SwitchInput
-            label="With Extended Click Area (Default)"
+            label="With Extended Click Area"
             name="extended-click-area"
             extendedClickArea={true}
             containerClassName="w-full max-w-xs"
@@ -56,15 +56,6 @@ export function ExtendedClickAreaDemo() {
             containerClassName="w-full max-w-xs"
           />
         </div>
-      </div>
-      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-        <p className="text-sm text-muted-foreground">
-          <strong>Note:</strong> The extended click area is enabled by default
-          for better mobile usability. It creates a larger touch target
-          (approximately 40px in each direction) without changing the visual
-          appearance. Try tapping/clicking near the switch in the first example
-          - it will toggle even when clicking outside the visible switch.
-        </p>
       </div>
     </div>
   );

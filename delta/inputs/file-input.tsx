@@ -315,6 +315,33 @@ export function FileInput({
     );
   };
 
+  // Smart filename truncation
+  const truncateFilename = (filename: string, maxLength: number = 30) => {
+    if (filename.length <= maxLength) return filename;
+
+    // Split filename into name and extension
+    const lastDotIndex = filename.lastIndexOf('.');
+    const name = lastDotIndex > 0 ? filename.slice(0, lastDotIndex) : filename;
+    const extension = lastDotIndex > 0 ? filename.slice(lastDotIndex) : '';
+
+    // If the name part is too long, truncate it
+    if (name.length > maxLength) {
+      // For UUID-like strings (8-4-4-4-12 format), try to preserve meaningful parts
+      const uuidPattern =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (uuidPattern.test(name)) {
+        // For UUIDs, show first 8 chars, last 8 chars, and extension
+        return `${name.slice(0, 8)}...${name.slice(-8)}${extension}`;
+      }
+
+      // For regular filenames, show start and end
+      const charsToShow = Math.floor((maxLength - 3) / 2);
+      return `${name.slice(0, charsToShow)}...${name.slice(-charsToShow)}${extension}`;
+    }
+
+    return filename;
+  };
+
   // Generate image preview URL
   const getImagePreview = (file: File) => {
     if (file.type.startsWith('image/')) {
@@ -433,7 +460,7 @@ export function FileInput({
                     : 'bg-muted/50 border border-border rounded',
                 )}
               >
-                <div className="flex items-center gap-2 overflow-hidden">
+                <div className="flex items-center gap-2 overflow-hidden min-w-0">
                   {showIcons && (
                     <div className="flex-shrink-0 text-muted-foreground">
                       {getFileIcon(file)}
@@ -451,7 +478,12 @@ export function FileInput({
                   )}
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-md font-medium truncate">{file.name}</p>
+                    <p
+                      className="text-md font-medium truncate"
+                      title={file.name}
+                    >
+                      {truncateFilename(file.name)}
+                    </p>
                     <p className="text-xs text-muted-foreground">
                       {formatFileSize(file.size)}
                     </p>

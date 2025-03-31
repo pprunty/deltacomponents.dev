@@ -33,6 +33,8 @@ export interface TextareaInputProps
   variant?: 'default' | 'pill';
   /** Whether to show a colored border (only applies to pill variant) */
   coloredBorder?: boolean;
+  /** Size of the textarea - 'sm', 'md', or 'lg' */
+  size?: 'sm' | 'md' | 'lg';
   /** Zod schema for validation (optional - can be handled at the form level) */
   schema?: z.ZodType<string>;
   /** Callback when validation occurs */
@@ -56,6 +58,7 @@ export function TextareaInput({
   labelVariant = 'default',
   variant = 'default',
   coloredBorder = false,
+  size = 'md',
   schema,
   onValidate,
   className,
@@ -159,6 +162,7 @@ export function TextareaInput({
 
           // Error styling for both variants
           'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
+          'scrollbar-hide',
           className,
         )}
         onChange={handleChange}

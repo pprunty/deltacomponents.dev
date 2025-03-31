@@ -45,11 +45,13 @@ export function DefaultSelectInputDemo() {
           name="country"
           options={countryOptions}
           placeholder="Select your country"
+          defaultValue="us"
         />
         <SelectInput
           label="Role"
           name="role"
           options={roleOptions}
+          variant="pill"
           placeholder="Select your role"
           defaultValue="user"
         />

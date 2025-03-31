@@ -186,15 +186,17 @@ export function SelectInput({
               'bg-muted border-0 rounded-lg px-4 w-full pr-10',
               'text-foreground',
               'appearance-none',
+              'md:cursor-pointer',
               'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
               selectClassName,
             )}
-            // Only pass one of value or defaultValue, not both
-            {...(isControlled ? { value } : { defaultValue })}
+            {...(isControlled
+              ? { value }
+              : { defaultValue: defaultValue || '' })}
           >
-            {placeholder && (
+            {!defaultValue && !value && (
               <option value="" disabled>
-                {placeholder}
+                {placeholder || `Select your ${label.toLowerCase()}`}
               </option>
             )}
             {options.map((option) => (
@@ -250,7 +252,6 @@ export function SelectInput({
       <Select
         onValueChange={handleValueChange}
         disabled={pending || disabled}
-        // Only pass one of value or defaultValue, not both
         {...(isControlled ? { value } : { defaultValue })}
       >
         <SelectTrigger
