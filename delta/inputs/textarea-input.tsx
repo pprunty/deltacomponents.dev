@@ -149,8 +149,9 @@ export function TextareaInput({
         aria-errormessage={hasError ? errorId : undefined}
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
+        size={size}
         className={cn(
-          'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4E90F9] dark:ring-offset-black ring-offset-white',
+          'md:text-md text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4E90F9] dark:ring-offset-black ring-offset-white',
           // Default variant styling
           variant === 'default' &&
             'shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]',

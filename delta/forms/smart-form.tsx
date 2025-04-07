@@ -105,6 +105,7 @@ interface TextareaFieldDefinition extends BaseFieldDefinition {
   rows?: number;
   defaultValue?: string;
   variant?: DefaultVariant;
+  size?: 'sm' | 'md' | 'lg';
 }
 
 // Date field definition

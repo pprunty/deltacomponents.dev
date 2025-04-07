@@ -127,6 +127,21 @@ function ContactFormExample() {
       required: true,
       placeholder: 'Your message here...',
       rows: 4,
+      size: 'md' as const,
+    },
+    {
+      name: 'shortNote',
+      label: 'Short Note',
+      type: 'textarea' as const,
+      placeholder: 'A brief note...',
+      size: 'sm' as const,
+    },
+    {
+      name: 'detailedMessage',
+      label: 'Detailed Message',
+      type: 'textarea' as const,
+      placeholder: 'Provide more details...',
+      size: 'lg' as const,
     },
     {
       name: 'contactDate',
@@ -225,7 +240,6 @@ function RegistrationFormExample() {
       label: 'Password',
       type: 'password' as const,
       required: true,
-      placeholder: '••••••••',
       hint: 'Must be at least 8 characters',
     },
     {
@@ -233,7 +247,6 @@ function RegistrationFormExample() {
       label: 'Confirm Password',
       type: 'password' as const,
       required: true,
-      placeholder: '••••••••',
     },
     {
       name: 'role',

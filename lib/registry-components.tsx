@@ -26,79 +26,91 @@ import SmartFormDemo from '@/delta/forms/smart-form-demo';
 import OtpInputDemo from '@/delta/inputs/otp-input-demo';
 import FloatingButtonDemo from '@/delta/components/floating-button-demo';
 import CommentsDemo from '@/delta/blocks/comments-demo';
+import FooterDemo from "@/delta/layout/footer-demo"
+import HeaderDemo from "@/delta/layout/header-demo"
+import LogoDemo from "@/delta/layout/logo-demo"
 
 // Create a registry object that maps component names to their implementations
 export const registry: Record<string, { component: React.ComponentType }> = {
   'complex-component': {
-    component: PokemonPage,
+    component: PokemonPage
   },
   admonition: {
-    component: AdmonitionDemo,
+    component: AdmonitionDemo
   },
   modal: {
-    component: ModalDemo,
+    component: ModalDemo
   },
   'scramble-in': {
-    component: ScrambleInDemo,
+    component: ScrambleInDemo
   },
   'neobrutalism-card': {
-    component: NeobrutalismCardDemo,
+    component: NeobrutalismCardDemo
   },
   'use-hq-image': {
-    component: UseHQImageDemo,
+    component: UseHQImageDemo
   },
   'bottom-bar': {
-    component: BottomBarDemo,
+    component: BottomBarDemo
   },
   tweet: {
-    component: TweetDemo,
+    component: TweetDemo
   },
   'full-bleed-section': {
-    component: FullBleedSectionDemo,
+    component: FullBleedSectionDemo
   },
   'video-player': {
-    component: VideoPlayerDemo,
+    component: VideoPlayerDemo
   },
   tabs: {
-    component: TabsDemo,
+    component: TabsDemo
   },
   button: {
-    component: ButtonDemo,
+    component: ButtonDemo
   },
   'text-input': {
-    component: TextInputDemo,
+    component: TextInputDemo
   },
   'checkbox-input': {
-    component: CheckboxInputDemo,
+    component: CheckboxInputDemo
   },
   'select-input': {
-    component: SelectInputDemo,
+    component: SelectInputDemo
   },
   'radio-input': {
-    component: RadioInputDemo,
+    component: RadioInputDemo
   },
   'switch-input': {
-    component: SwitchInputDemo,
+    component: SwitchInputDemo
   },
   'textarea-input': {
-    component: TextareaInputDemo,
+    component: TextareaInputDemo
   },
   'file-input': {
-    component: FileInputDemo,
+    component: FileInputDemo
   },
   'date-input': {
-    component: DateInputDemo,
+    component: DateInputDemo
   },
   'smart-form': {
-    component: SmartFormDemo,
+    component: SmartFormDemo
   },
   'otp-input': {
-    component: OtpInputDemo,
+    component: OtpInputDemo
   },
   'floating-button': {
-    component: FloatingButtonDemo,
+    component: FloatingButtonDemo
   },
   comments: {
-    component: CommentsDemo,
+    component: CommentsDemo
   },
-};
+  footer: {
+    component: FooterDemo
+  },
+  header: {
+    component: HeaderDemo
+  }
+,
+  "logo": {
+    component: LogoDemo,
+  },};
