@@ -124,6 +124,16 @@
           "path": "delta/open-source-inspired-collection/neobrutalism-card-demo.tsx",
           "type": "registry:component",
           "target": "delta/components/neobrutalism-card-demo.tsx"
+        },
+        {
+          "path": "registry/examples/neobrutalism-card-color-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/neobrutalism-card-color-variants-demo.tsx"
+        },
+        {
+          "path": "registry/examples/neobrutalism-card-form-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/neobrutalism-card-form-demo.tsx"
         }
       ]
     },
@@ -252,6 +262,11 @@
           "path": "delta/components/tabs-demo.tsx",
           "type": "registry:component",
           "target": "delta/components/tabs-demo.tsx"
+        },
+        {
+          "path": "registry/examples/tabs-spotify-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/tabs-spotify-demo.tsx"
         }
       ]
     },
@@ -559,6 +574,11 @@
           "path": "delta/inputs/otp-input.tsx",
           "type": "registry:component",
           "target": "delta/inputs/otp-input.tsx"
+        },
+        {
+          "path": "delta/forms/smart-form-pills-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/forms/smart-form-pills-demo.tsx"
         }
       ]
     },
@@ -639,14 +659,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/--category/header.tsx",
+          "path": "delta/layout/header.tsx",
           "type": "registry:component",
           "target": "delta/--category/header.tsx"
         },
         {
-          "path": "delta/--category/header-demo.tsx",
+          "path": "delta/layout/header-demo.tsx",
           "type": "registry:component",
-          "target": "delta/--category/header-demo.tsx"
+          "target": "delta/layout/header-demo.tsx"
         }
       ]
     },
@@ -687,6 +707,36 @@
           "path": "delta/layout/logo-demo.tsx",
           "type": "registry:component",
           "target": "delta/layout/logo-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:component",
+      "title": "Code Block",
+      "description": "A component for code-block",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/code-block.tsx",
+          "type": "registry:component",
+          "target": "registry/ui/code-block.tsx"
+        },
+        {
+          "path": "registry/examples/code-block-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/code-block-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/code-block.mdx",
+          "type": "registry:component",
+          "target": "content/docs/code-block.mdx"
+        },
+        {
+          "path": "registry/examples/code-block-themes-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/code-block-themes-demo.tsx"
         }
       ]
     }

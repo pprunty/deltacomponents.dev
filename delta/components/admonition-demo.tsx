@@ -1,68 +1,50 @@
-import { Admonition } from './admonition';
+import { Admonition } from "@/delta/components/admonition"
+import { Info, LightbulbFilament, Warning, X } from '@phosphor-icons/react/dist/ssr'
 
 export default function AdmonitionDemo() {
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-8 space-y-8">
-      <WarningDemo />
-      <NoteDemo />
-      <TipDemo />
-      <InfoDemo />
-      <DangerDemo />
+    <div className="space-y-8">
+      {/* Basic Variants */}
+      <div className="space-y-4">
+        <Admonition type="info">
+          This is an informational message that provides additional context or details.
+        </Admonition>
+        <Admonition type="tip">
+          This is a tip message to help guide users with best practices and suggestions.
+        </Admonition>
+        <Admonition type="warning">
+          This is a warning message that alerts users to potential issues or important considerations.
+        </Admonition>
+        <Admonition type="danger">
+          This is a danger message indicating that something went wrong or needs immediate attention.
+        </Admonition>
+      </div>
+
+      {/* With Titles */}
+      <div className="space-y-4">
+        <Admonition type="info" title="Did you know?">
+          You can add titles to your admonitions to provide additional context and make them more informative.
+        </Admonition>
+        <Admonition type="tip" title="Pro Tip!">
+          Your changes have been saved successfully. The system is now up to date.
+        </Admonition>
+        <Admonition type="warning" title="Important Notice">
+          Please review these changes carefully before proceeding with the next steps.
+        </Admonition>
+        <Admonition type="danger" title="Action Required">
+          We encountered an issue processing your request. Please try again or contact support.
+        </Admonition>
+      </div>
+
+      {/* With Note Type */}
+      <div className="space-y-4">
+        <Admonition type="note" title="Documentation Note">
+          The note type is perfect for documentation and additional information that doesn't fit the other categories.
+        </Admonition>
+        <Admonition type="note">
+          Notes can also be used without titles for simpler messages and annotations.
+        </Admonition>
+      </div>
     </div>
-  );
-}
-
-export function WarningDemo() {
-  return (
-    <Admonition type="warning" title="Browser Compatibility">
-      <p>
-        This feature is not supported in Internet Explorer. Please use a modern
-        browser for the best experience.
-      </p>
-    </Admonition>
-  );
-}
-
-export function NoteDemo() {
-  return (
-    <Admonition type="note" title="Documentation Update">
-      <p>
-        This documentation was last updated on March 21, 2025. Some information
-        may have changed since then.
-      </p>
-    </Admonition>
-  );
-}
-
-export function TipDemo() {
-  return (
-    <Admonition type="tip" title="Performance Tip">
-      <p>
-        Use React.memo() to prevent unnecessary re-renders of expensive
-        components when their props haven't changed.
-      </p>
-    </Admonition>
-  );
-}
-
-export function InfoDemo() {
-  return (
-    <Admonition type="info" title="Server Components">
-      <p>
-        React Server Components allow you to render components on the server,
-        reducing the JavaScript sent to the client.
-      </p>
-    </Admonition>
-  );
-}
-
-export function DangerDemo() {
-  return (
-    <Admonition type="danger" title="Destructive Action">
-      <p>
-        This action will permanently delete all your data and cannot be undone.
-        Make sure you have a backup before proceeding.
-      </p>
-    </Admonition>
-  );
+  )
 }

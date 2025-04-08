@@ -696,15 +696,15 @@ export function SmartForm({
         {/* Render grouped fields */}
         {Object.entries(groupedFields.groups).map(([groupName, fields]) => (
           <div key={groupName} className="w-full mb-6">
-            <div className="grid grid-cols-12 gap-4">
+            <div className="flex flex-row gap-4">
               {fields.map((field) => (
                 <div
                   key={field.name}
                   className={cn(
-                    'col-span-12',
-                    field.width
-                      ? ''
-                      : `sm:col-span-${Math.floor(12 / fields.length)}`,
+                    'flex-1',
+                    layout === 'horizontal' && 'mr-4 mb-4',
+                    layout === 'vertical' && 'mb-0',
+                    layout === 'grid' && 'mb-0',
                   )}
                   style={
                     field.width

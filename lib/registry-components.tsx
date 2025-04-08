@@ -29,6 +29,13 @@ import CommentsDemo from '@/delta/blocks/comments-demo';
 import FooterDemo from "@/delta/layout/footer-demo"
 import HeaderDemo from "@/delta/layout/header-demo"
 import LogoDemo from "@/delta/layout/logo-demo"
+import CodeBlockDemo from "@/delta/components/code-block-demo"
+import CodeBlockDemo from "@/delta/components/code-block-demo"
+import NeobrutalismCardColorVariantsDemo from "@/registry/examples/neobrutalism-card-color-variants-demo"
+import TabsSpotifyDemo from "@/registry/examples/tabs-spotify-demo"
+import SmartFormPillsDemo from "@/delta/forms/smart-form-pills-demo"
+import CodeBlockThemesDemo from "@/registry/examples/code-block-themes-demo"
+import NeobrutalismCardFormDemo from "@/registry/examples/neobrutalism-card-form-demo"
 
 // Create a registry object that maps component names to their implementations
 export const registry: Record<string, { component: React.ComponentType }> = {
@@ -110,7 +117,29 @@ export const registry: Record<string, { component: React.ComponentType }> = {
   header: {
     component: HeaderDemo
   }
-,
+  ,
   "logo": {
     component: LogoDemo,
+  },
+  "code-block": {
+    component: CodeBlockDemo,
+  },
+,
+  "code-block": {
+    component: CodeBlockDemo,
+  },
+  "neobrutalism-card-color-variants": {
+    component: NeobrutalismCardColorVariantsDemo,
+  },
+  "tabs-spotify": {
+    component: TabsSpotifyDemo,
+  },
+  "smart-form-pills": {
+    component: SmartFormPillsDemo,
+  },
+  "code-block-themes": {
+    component: CodeBlockThemesDemo,
+  },
+  "neobrutalism-card-form": {
+    component: NeobrutalismCardFormDemo,
   },};

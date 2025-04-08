@@ -9,7 +9,8 @@ export type ButtonVariant =
   | 'secondary'
   | 'destructive'
   | 'action'
-  | 'neobrutalism';
+  | 'neobrutalism'
+  | 'ghost';
 
 export interface ButtonProps {
   onClick?: () => void;
@@ -147,6 +148,15 @@ export function Button({
           'active:bg-opacity-80 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] dark:active:shadow-[1px_1px_0px_0px_rgba(255,255,255,0.8)]',
           // Keep disabled state the same
           'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
+        ],
+
+        // Ghost variant styling
+        variant === 'ghost' && [
+          'bg-transparent hover:bg-muted/50',
+          'text-foreground',
+          'hover:text-foreground/80',
+          'focus-visible:outline-muted',
+          'disabled:hover:bg-transparent',
         ],
 
         // Add the extended click area pseudo-element styles

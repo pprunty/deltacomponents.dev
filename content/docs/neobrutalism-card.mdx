@@ -1,0 +1,125 @@
+# NeobrutalismCard
+
+A modern, playful card component inspired by the neobrutalism design trend. Features bold shadows, thick borders, and interactive animations.
+
+## Basic Usage
+
+<ComponentTabs name="neobrutalism-card-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "neobrutalism-card"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`color`</td>
+        <td className="border px-4 py-2 text-left">`'blue' | 'pink' | 'green' | 'yellow' | 'purple' | 'gray' | 'orange' | 'red' | 'mint' | 'cream'`</td>
+        <td className="border px-4 py-2 text-left">`'blue'`</td>
+        <td className="border px-4 py-2 text-left">The background color of the card</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hover`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to enable hover and active state animations</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`borderWidth`</td>
+        <td className="border px-4 py-2 text-left">`'thin' | 'medium' | 'thick'`</td>
+        <td className="border px-4 py-2 text-left">`'medium'`</td>
+        <td className="border px-4 py-2 text-left">The thickness of the card's border</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the card</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Subcomponents
+
+The NeobrutalismCard component includes several subcomponents for structured content:
+
+- `CardHeader`: Container for the card's header content
+- `CardTitle`: The main title of the card
+- `CardDescription`: A subtitle or description for the card
+- `CardContent`: The main content area of the card
+- `CardFooter`: Container for footer content
+
+## Examples
+
+### Color Variants
+
+<ComponentTabs name="neobrutalism-card-color-variants" />
+
+### Form Example
+
+A form layout using the NeobrutalismCard component with neobrutalism-styled form elements.
+
+<ComponentTabs name="neobrutalism-card-form" />
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/neobrutalism-card"
+
+export default function NeobrutalismCardDemo() {
+  return (
+    <Card color="blue" hover={true}>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Your card content goes here.</p>
+      </CardContent>
+      <CardFooter>
+        <p>Footer content</p>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+## Customization
+
+You can customize the card's appearance using the available props:
+
+```tsx
+<Card 
+  color="pink" 
+  hover={true} 
+  borderWidth="thick"
+  className="max-w-md"
+>
+  {/* Card content */}
+</Card>
+```
+
+## Accessibility
+
+The card component follows WAI-ARIA guidelines and includes proper semantic HTML structure for accessibility.

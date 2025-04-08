@@ -1,0 +1,156 @@
+# Button
+
+A versatile button component with multiple variants, states, and customization options.
+
+## Basic Usage
+
+Here's a simple example of a button:
+
+<ComponentTabs name="button-basic" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/tabs.json"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`title`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The text content of the button (can be empty for icon-only buttons)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'primary' \| 'secondary' \| 'destructive' \| 'action' \| 'neobrutalism' \| 'ghost'`</td>
+        <td className="border px-4 py-2 text-left">`'primary'`</td>
+        <td className="border px-4 py-2 text-left">The visual style variant of the button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the button is disabled</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`icon`</td>
+        <td className="border px-4 py-2 text-left">`ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">An icon element to display alongside or instead of text</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onClick`</td>
+        <td className="border px-4 py-2 text-left">`() => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Click event handler</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`type`</td>
+        <td className="border px-4 py-2 text-left">`'button' \| 'submit' \| 'reset'`</td>
+        <td className="border px-4 py-2 text-left">`'button'`</td>
+        <td className="border px-4 py-2 text-left">HTML button type</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`isLoading`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Shows a loading spinner instead of content</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`neobrutalismColor`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Custom background color for neobrutalism variant</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`actionColor`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Custom background color for action variant</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`extendedClickArea`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Extends the clickable area beyond visible bounds</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Standard Variants
+
+The Button component comes with several built-in variants to suit different use cases.
+
+<ComponentTabs name="button-variants" />
+
+## Neobrutalism Style
+
+A modern, playful variant inspired by the neobrutalism design trend. Features bold shadows, thick borders, and interactive animations.
+
+<ComponentTabs name="button-neobrutalism" />
+
+## Icons & Ghost Variant
+
+Buttons can include icons alongside text, be icon-only, or use the minimal ghost variant for subtle interactions.
+
+<ComponentTabs name="button-icon-only" />
+
+## Extended Click Area
+
+Buttons can have an extended click area that reaches beyond their visible boundaries, making them easier to click, especially on touch devices.
+
+<ComponentTabs name="button-extended-click" />
+
+## Icons with Text
+
+Examples of buttons that combine icons and text for better visual communication.
+
+<ComponentTabs name="button-icons" />
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+export default function ButtonDemo() {
+  return (
+    <Button variant="primary" title="Click me" />
+  )
+}
+```
+
+## Custom Styling
+
+You can customize the button styles using Tailwind CSS classes:
+
+```tsx
+<Button className="bg-custom hover:bg-custom-dark">
+  Custom Style
+</Button>
+```
+
+## Accessibility
+
+The button component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Icon-only buttons should include an aria-label for screen readers. 

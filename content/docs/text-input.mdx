@@ -1,0 +1,80 @@
+# Text Input
+
+A customizable text input component with validation support, error handling, and various styling options.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://deltacomponents.dev/r/text-input.json"
+```
+
+## Basic Usage
+
+The TextInput component provides a simple way to create form inputs with labels and validation.
+
+<ComponentTabs name="text-input-basic" />
+
+## Variants and Features
+
+The TextInput component comes with various styling options and features.
+
+<ComponentTabs name="text-input-variants" />
+
+## Validation
+
+The TextInput component supports validation using Zod schemas.
+
+<ComponentTabs name="text-input-validation" />
+
+## Usage
+
+```tsx
+import { TextInput } from "@/registry/ui/text-input"
+
+export default function Page() {
+  return (
+    <TextInput
+      label="Username"
+      name="username"
+      placeholder="Enter your username"
+      required
+    />
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | string | - | The label for the input field |
+| `name` | string | - | The name of the input field |
+| `description` | string | - | Optional description text |
+| `hint` | string | - | Optional hint text |
+| `error` | string | - | Error message to display |
+| `required` | boolean | false | Whether the field is required |
+| `pending` | boolean | false | Whether the field is in a loading state |
+| `variant` | "default" \| "pill" | "default" | The input variant |
+| `labelVariant` | "default" \| "muted" | "default" | The label variant |
+| `coloredBorder` | boolean | false | Whether to show a colored border (pill variant only) |
+| `schema` | ZodSchema | - | Zod schema for validation |
+| `onValidate` | function | - | Callback when validation occurs |
+
+## Features
+
+- Label variants (default and muted)
+- Description and hint text support
+- Error handling and validation
+- Required field indication
+- Disabled and pending states
+- Zod validation integration
+- Customizable styling
+- Accessible by default
+
+## Accessibility
+
+- Proper ARIA attributes for error states
+- Required field indication
+- Label association
+- Error message association
+- Keyboard navigation support 

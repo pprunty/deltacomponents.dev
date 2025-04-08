@@ -1,0 +1,195 @@
+# Select Input
+
+A customizable select input component that supports both controlled and uncontrolled states, with built-in validation support using Zod.
+
+## Installation
+
+```bash
+npx shadcn@latest add "https://deltacomponents.dev/r/select-input.json"
+```
+
+## Usage
+
+<ComponentTabs
+  tabs={[
+    {
+      title: "Basic",
+      description: "Basic usage of the select input component",
+      component: <SelectInputBasicDemo />,
+      code: `import { SelectInput } from "@/registry/ui/select-input"
+
+export default function MyForm() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" },
+  ]
+
+  return (
+    <SelectInput
+      label="Select an option"
+      name="my-select"
+      options={options}
+      placeholder="Choose an option"
+    />
+  )
+}`,
+    },
+    {
+      title: "Styles",
+      description: "Different styles and variants of the select input",
+      component: <SelectInputStylesDemo />,
+      code: `import { SelectInput } from "@/registry/ui/select-input"
+
+export default function MyForm() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" },
+  ]
+
+  return (
+    <div className="space-y-4">
+      <SelectInput
+        label="Default Variant"
+        name="default-select"
+        options={options}
+        placeholder="Select an option"
+      />
+      <SelectInput
+        label="Pill Variant"
+        name="pill-select"
+        options={options}
+        variant="pill"
+        placeholder="Select an option"
+      />
+      <SelectInput
+        label="Error State"
+        name="error-select"
+        options={options}
+        error="This field is required"
+        placeholder="Select an option"
+      />
+      <SelectInput
+        label="Disabled State"
+        name="disabled-select"
+        options={options}
+        disabled
+        placeholder="Select an option"
+      />
+      <SelectInput
+        label="Pending State"
+        name="pending-select"
+        options={options}
+        pending
+        placeholder="Select an option"
+      />
+    </div>
+  )
+}`,
+    },
+  ]}
+/>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | The label text for the select input |
+| `name` | `string` | - | The name attribute for the select input |
+| `options` | `Array<{ value: string, label: string, disabled?: boolean }>` | - | The options for the select dropdown |
+| `description` | `string` | - | Optional description text below the label |
+| `hint` | `string` | - | Optional hint text below the input |
+| `error` | `string` | - | Error message to display |
+| `required` | `boolean` | `false` | Whether the field is required |
+| `pending` | `boolean` | `false` | Whether the field is in a loading state |
+| `defaultValue` | `string` | - | Default selected value |
+| `value` | `string` | - | Controlled selected value |
+| `placeholder` | `string` | `"Select an option"` | Placeholder text when no option is selected |
+| `containerClassName` | `string` | - | Additional classes for the container |
+| `selectClassName` | `string` | - | Additional classes for the select element |
+| `labelClassName` | `string` | - | Additional classes for the label |
+| `labelVariant` | `"default" \| "muted"` | `"default"` | Label variant style |
+| `variant` | `"default" \| "pill"` | `"default"` | Select input variant style |
+| `coloredBorder` | `boolean` | `false` | Whether to show a colored border (only applies to pill variant) |
+| `schema` | `z.ZodType<string>` | - | Zod schema for validation |
+| `onValidate` | `(isValid: boolean, value: string, error?: string) => void` | - | Callback when validation occurs |
+| `onValueChange` | `(value: string) => void` | - | Callback when selection changes |
+| `id` | `string` | - | ID for the select element |
+| `disabled` | `boolean` | `false` | Whether the select is disabled |
+
+## Features
+
+- **Server-side rendering** - Works seamlessly with Next.js and other SSR frameworks
+- **Dark mode support** - Automatically adapts to your theme
+- **Accessibility** - Built with ARIA attributes and keyboard navigation
+- **Validation** - Built-in support for Zod validation
+- **Customization** - Multiple variants and styling options
+- **Responsive** - Works well on all screen sizes
+- **TypeScript** - Fully typed for better development experience
+
+## Accessibility
+
+The select input component is built with accessibility in mind:
+
+- Proper ARIA attributes for screen readers
+- Keyboard navigation support
+- Focus management
+- Error state announcements
+- Required field indicators
+- Clear labeling and descriptions
+
+## Examples
+
+### With Validation
+
+```tsx
+import { SelectInput } from "@/registry/ui/select-input"
+import { z } from "zod"
+
+const schema = z.string().min(1, "Please select an option")
+
+export default function MyForm() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" },
+  ]
+
+  return (
+    <SelectInput
+      label="Select an option"
+      name="my-select"
+      options={options}
+      schema={schema}
+      required
+    />
+  )
+}
+```
+
+### With Custom Styling
+
+```tsx
+import { SelectInput } from "@/registry/ui/select-input"
+
+export default function MyForm() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" },
+  ]
+
+  return (
+    <SelectInput
+      label="Custom Styled Select"
+      name="my-select"
+      options={options}
+      variant="pill"
+      coloredBorder
+      containerClassName="max-w-md"
+      selectClassName="bg-slate-50 dark:bg-slate-900"
+    />
+  )
+}
+``` 

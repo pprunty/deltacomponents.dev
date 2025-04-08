@@ -1,0 +1,249 @@
+# Tabs
+
+A flexible and accessible tabs component with multiple variants, animations, and customization options.
+
+## Basic Usage
+
+The Tabs component consists of three main parts: `Tabs`, `TabsList`, and `TabsContent`. Here's a basic example:
+
+<ComponentTabs name="tabs-basic" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/tabs.json"
+```
+
+## Props
+
+### Tabs
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`defaultValue`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The default value of the active tab</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`value`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The controlled value of the active tab</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onValueChange`</td>
+        <td className="border px-4 py-2 text-left">`(value: string) => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Callback when the active tab changes</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### TabsList
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showHoverEffect`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show hover effect</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showActiveIndicator`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show active indicator</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`activeIndicatorPosition`</td>
+        <td className="border px-4 py-2 text-left">`'top' \| 'bottom'`</td>
+        <td className="border px-4 py-2 text-left">`'bottom'`</td>
+        <td className="border px-4 py-2 text-left">Position of the active indicator</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`size`</td>
+        <td className="border px-4 py-2 text-left">`'sm' \| 'md' \| 'lg'`</td>
+        <td className="border px-4 py-2 text-left">`'sm'`</td>
+        <td className="border px-4 py-2 text-left">Size of the tabs</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' \| 'pills' \| 'underlined'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Visual style variant</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`stretch`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether tabs should stretch to fill width</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`ariaLabel`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'Tabs'`</td>
+        <td className="border px-4 py-2 text-left">ARIA label for accessibility</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showBottomBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show bottom border</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### TabsTrigger
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`value`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">Unique value for the tab</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the tab is disabled</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### TabsContent
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`value`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">Value of the tab this content belongs to</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Variants
+
+The Tabs component comes with three different visual styles, including default, pills, and underlined variants:
+
+<ComponentTabs name="tabs-variants" />
+
+## Sizes
+
+Tabs are available in three sizes: small, medium, and large:
+
+<ComponentTabs name="tabs-sizes" />
+
+## Features
+
+The Tabs component includes several advanced features:
+
+- Scrollable tabs that automatically handle overflow
+- Disabled states for individual tabs
+- Custom indicators with configurable positions and styles
+- Hover effects and animations
+
+<ComponentTabs name="tabs-features" />
+
+## Spotify Inspired
+
+<ComponentTabs name="tabs-spotify" />
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+
+export default function TabsDemo() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Account content
+      </TabsContent>
+      <TabsContent value="password">
+        Password content
+      </TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## Accessibility
+
+The Tabs component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Each tab has a proper role and aria-selected state, and the content panels are properly associated with their triggers. 

@@ -1,0 +1,213 @@
+# Smart Form
+
+A powerful, type-safe form component that handles validation, state management, and submission with minimal configuration.
+
+## Basic Usage
+
+A simple login form with username and password fields:
+
+<ComponentTabs name="smart-form-basic" />
+
+## Pill Input Variant
+
+<ComponentTabs name="smart-form-pills" />
+
+
+## Payment Form Example
+
+A comprehensive payment form showcasing various input types, grouped fields, and validation:
+
+<ComponentTabs name="smart-form-payment" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/smart-form.json"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`fields`</td>
+        <td className="border px-4 py-2 text-left">`FieldDefinition[]`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">Array of field definitions for the form</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`schema`</td>
+        <td className="border px-4 py-2 text-left">`z.ZodSchema`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">Zod schema for form validation</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onSubmit`</td>
+        <td className="border px-4 py-2 text-left">`(data: T) => Promise<void> \| void`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">Function to handle form submission</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`submitText`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'Submit'`</td>
+        <td className="border px-4 py-2 text-left">Text for the submit button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`cancelText`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'Cancel'`</td>
+        <td className="border px-4 py-2 text-left">Text for the cancel button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onCancel`</td>
+        <td className="border px-4 py-2 text-left">`() => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Function to handle cancel action</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for the form</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`fieldClassName`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for form fields</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`submitClassName`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for submit button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`cancelClassName`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for cancel button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`layout`</td>
+        <td className="border px-4 py-2 text-left">`'vertical' \| 'horizontal' \| 'grid'`</td>
+        <td className="border px-4 py-2 text-left">`'vertical'`</td>
+        <td className="border px-4 py-2 text-left">Layout style for form fields</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`columns`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`1`</td>
+        <td className="border px-4 py-2 text-left">Number of columns for grid layout</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`gap`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`6`</td>
+        <td className="border px-4 py-2 text-left">Gap between form fields</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`loading`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Loading state for the form</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`defaultValues`</td>
+        <td className="border px-4 py-2 text-left">`Record<string, any>`</td>
+        <td className="border px-4 py-2 text-left">`{}`</td>
+        <td className="border px-4 py-2 text-left">Default values for form fields</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`successMessage`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Message to show on successful submission</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`errorMessage`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Message to show on submission error</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`resetOnSuccess`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to reset form on successful submission</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`id`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Form ID</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hideSubmitButton`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to hide the submit button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`renderCustomField`</td>
+        <td className="border px-4 py-2 text-left">`(field: FieldDefinition, formState: any, handleChange: (name: string, value: any) => void) => React.ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Function to render custom field types</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Field Types
+
+The Smart Form component supports various field types:
+
+- Text fields (text, email, password, number, tel, url)
+- Checkbox
+- Select
+- Radio
+- Switch
+- Textarea
+- Date
+- File
+- OTP (One-Time Password)
+- Custom fields
+
+## Validation
+
+Form validation is handled using Zod schemas. The component automatically validates fields on change and submission.
+
+## Layout Options
+
+The form supports three layout options:
+- Vertical (default)
+- Horizontal
+- Grid
+
+## Custom Styling
+
+You can customize the form's appearance using Tailwind CSS classes:
+
+```tsx
+<SmartForm
+  className="max-w-md mx-auto"
+  fieldClassName="mb-4"
+  submitClassName="w-full"
+/>
+```
+
+## Accessibility
+
+The Smart Form component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. All form fields are properly labeled and error messages are associated with their respective fields. 

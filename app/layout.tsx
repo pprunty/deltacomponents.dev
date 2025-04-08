@@ -1,8 +1,7 @@
 import './globals.css';
-import type React from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { themeEffect } from '@/components/theme-effect';
+import { ThemeProvider } from '@/components/theme-provider';
 import config from '@/app/config';
 import { doge } from './doge';
 import { Header } from './header';
@@ -139,7 +138,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
+            __html: `(${doge.toString()})();`,
           }}
         />
         <link
@@ -153,11 +152,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="max-w-3xl mx-auto px-4 justify-center sm:px-12 mt-4 sm:mt-8 min-h-screen">
-          <Header />
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="max-w-3xl mx-auto px-4 justify-center sm:px-12 mt-4 sm:mt-8 min-h-screen">
+            <Header />
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

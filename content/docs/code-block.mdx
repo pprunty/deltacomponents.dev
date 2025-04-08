@@ -1,0 +1,189 @@
+# CodeBlock
+
+A versatile code block component with syntax highlighting, line numbers, copy functionality, and expandable content.
+
+## Basic Usage
+
+<ComponentTabs name="code-block-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "code-block"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`code`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The code content to display</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`language`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`"typescript"`</td>
+        <td className="border px-4 py-2 text-left">The programming language for syntax highlighting</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showLineNumbers`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to display line numbers</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showCopyButton`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show the copy button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showExpandButton`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show the expand/collapse button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`maxHeight`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`"300px"`</td>
+        <td className="border px-4 py-2 text-left">Maximum height before showing expand button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`highlightLines`</td>
+        <td className="border px-4 py-2 text-left">`number[]`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Array of line numbers to highlight</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`caption`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Caption text to display above the code block</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the code block</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Features
+
+### Syntax Highlighting
+
+The code block supports syntax highlighting for various programming languages using Shikiji.
+
+<ComponentTabs name="code-block-themes" />
+
+### Line Numbers
+
+Enable line numbers to make code references easier.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  showLineNumbers
+/>
+```
+
+### Copy Button
+
+A copy button is included by default to easily copy code to the clipboard.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  showCopyButton
+/>
+```
+
+### Expandable Content
+
+For long code snippets, the code block can be expanded to show the full content.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  maxHeight="200px"
+  showExpandButton
+/>
+```
+
+### Highlighted Lines
+
+Highlight specific lines to draw attention to important parts of the code.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  highlightLines={[1]}
+/>
+```
+
+### Captions
+
+Add a caption to provide context for the code block.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  caption="Example TypeScript code"
+/>
+```
+
+## Usage
+
+```tsx
+import CodeBlock from "@/registry/ui/code-block"
+
+export default function CodeBlockDemo() {
+  return (
+    <CodeBlock
+      code="const message = 'Hello, World!';"
+      language="typescript"
+      showLineNumbers
+      showCopyButton
+      showExpandButton
+      maxHeight="200px"
+      caption="Example TypeScript code"
+    />
+  )
+}
+```
+
+## Customization
+
+You can customize the code block's appearance using Tailwind CSS classes:
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  className="bg-gray-100 dark:bg-gray-800"
+/>
+```
+
+## Accessibility
+
+The code block component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. The copy button includes an aria-label for screen readers.
