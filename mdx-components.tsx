@@ -71,9 +71,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       ...props
     }: React.HTMLAttributes<HTMLTableElement>) => (
       <div className="my-6 w-full overflow-y-auto">
-        <Table {...props}>
+        <table className="w-full" {...props}>
           {children}
-        </Table>
+        </table>
       </div>
     ),
     thead: ({ children }) => (
@@ -90,19 +90,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       children,
       ...props
     }: React.HTMLAttributes<HTMLTableRowElement>) => (
-      <TableRow {...props}>
+      <tr className="m-0 border-t p-0 even:bg-muted" {...props}>
         {children}
-      </TableRow>
+      </tr>
     ),
     th: ({ children }) => (
-      <TableHeader>
+      <th className="border px-4 py-2 text-left font-bold">
         {children}
-      </TableHeader>
+      </th>
     ),
     td: ({ children }) => (
-      <TableCell>
+      <td className="border px-4 py-2 text-left">
         {children}
-      </TableCell>
+      </td>
     ),
     ComponentTabs,
     ...components,

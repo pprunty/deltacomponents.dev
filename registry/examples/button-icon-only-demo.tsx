@@ -41,16 +41,16 @@ export default function ButtonIconOnlyDemo() {
         <div className="flex flex-wrap gap-4">
           <Button
             title="Ghost Button"
-            variant="ghost"
+            variant="secondary"
           />
           <Button
             title="With Icon"
-            variant="ghost"
+            variant="secondary"
             icon={<Menu className="w-4 h-4" />}
           />
           <Button
             title=""
-            variant="ghost"
+            variant="secondary"
             icon={<Settings className="w-4 h-4" />}
             className="w-10"
           />

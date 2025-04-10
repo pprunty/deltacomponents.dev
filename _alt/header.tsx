@@ -5,7 +5,32 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { List, X } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
-import Logo from "./logo"
+
+// Placeholder Logo component
+function Logo({ 
+  onClick, 
+  showName = false, 
+  width = 32, 
+  height = 32 
+}: { 
+  onClick?: () => void; 
+  showName?: boolean; 
+  width?: number; 
+  height?: number 
+}) {
+  return (
+    <div 
+      onClick={onClick} 
+      className="flex items-center gap-2 cursor-pointer"
+    >
+      <div 
+        style={{ width, height }}
+        className="bg-primary rounded-sm"
+      />
+      {showName && <span className="font-bold">Logo</span>}
+    </div>
+  )
+}
 
 // Define routes as an object at the top of the file
 const routes = [

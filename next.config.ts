@@ -1,4 +1,14 @@
+import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 import type { NextConfig } from 'next';
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
+});
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -6,9 +16,9 @@ const nextConfig: NextConfig = {
     mdxRs: true,
   },
   outputFileTracingIncludes: {
-    registry: ['./delta/**/*'],
+    registry: ['./registry/**/*', './_alt/**/*'],
   },
   pageExtensions: ['ts', 'tsx', 'mdx'],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

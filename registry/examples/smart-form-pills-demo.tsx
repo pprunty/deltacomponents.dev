@@ -39,7 +39,6 @@ export default function SmartFormBasicDemo() {
       <SmartForm
         fields={fields}
         schema={schema}
-        variant={"pills"}
         onSubmit={handleSubmit}
         submitText="Sign In"
       />

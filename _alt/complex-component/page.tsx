@@ -1,6 +1,6 @@
 import { cache } from 'react';
-import { PokemonCard } from '@/delta/new-york/complex-component/components/pokemon-card';
-import { getPokemonList } from '@/delta/new-york/complex-component/lib/pokemon';
+import { PokemonCard } from '@/_alt/complex-component/components/pokemon-card';
+import { getPokemonList } from '@/_alt/complex-component/lib/pokemon';
 
 const getCachedPokemonList = cache(getPokemonList);
 

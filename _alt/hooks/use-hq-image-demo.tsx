@@ -1,6 +1,6 @@
 'use client';
 
-import { useHqImage } from '@/delta/hooks/use-hq-image';
+import { useHqImage } from '@/_alt/hooks/use-hq-image';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { RefreshCw, Grid, ImageIcon } from 'lucide-react';

@@ -15,24 +15,24 @@
       ],
       "files": [
         {
-          "path": "delta/new-york/complex-component/page.tsx",
+          "path": "_alt/complex-component/page.tsx",
           "type": "registry:page",
           "target": "app/pokemon/page.tsx"
         },
         {
-          "path": "delta/new-york/complex-component/components/pokemon-card.tsx",
+          "path": "_alt/complex-component/components/pokemon-card.tsx",
           "type": "registry:component"
         },
         {
-          "path": "delta/new-york/complex-component/components/pokemon-image.tsx",
+          "path": "_alt/complex-component/components/pokemon-image.tsx",
           "type": "registry:component"
         },
         {
-          "path": "delta/new-york/complex-component/lib/pokemon.ts",
+          "path": "_alt/complex-component/lib/pokemon.ts",
           "type": "registry:lib"
         },
         {
-          "path": "delta/new-york/complex-component/hooks/use-pokemon.ts",
+          "path": "_alt/complex-component/hooks/use-pokemon.ts",
           "type": "registry:hook"
         }
       ]
@@ -50,14 +50,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/admonition.tsx",
+          "path": "registry/ui/admonition.tsx",
           "type": "registry:component",
-          "target": "delta/components/admonition.tsx"
+          "target": "registry/ui/admonition.tsx"
         },
         {
-          "path": "delta/components/admonition-demo.tsx",
+          "path": "registry/examples/admonition-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/admonition-demo.tsx"
+          "target": "registry/ui/admonition-basic-demo.tsx"
         },
         {
           "path": "registry/examples/admonition-solid-demo.tsx",
@@ -136,12 +136,12 @@
         {
           "path": "delta/open-source-inspired-collection/neobrutalism-card.tsx",
           "type": "registry:component",
-          "target": "delta/components/neobrutalism-card.tsx"
+          "target": "registry/ui/neobrutalism-card.tsx"
         },
         {
           "path": "delta/open-source-inspired-collection/neobrutalism-card-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/neobrutalism-card-demo.tsx"
+          "target": "registry/ui/neobrutalism-card-demo.tsx"
         },
         {
           "path": "registry/examples/neobrutalism-card-color-variants-demo.tsx",
@@ -205,14 +205,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/full-bleed-section.tsx",
+          "path": "registry/ui/full-bleed-section.tsx",
           "type": "registry:component",
-          "target": "delta/components/full-bleed-section.tsx"
+          "target": "registry/ui/full-bleed-section.tsx"
         },
         {
-          "path": "delta/components/full-bleed-section-demo.tsx",
+          "path": "registry/ui/full-bleed-section-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/full-bleed-section-demo.tsx"
+          "target": "registry/ui/full-bleed-section-demo.tsx"
         }
       ]
     },
@@ -229,19 +229,19 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/tweet.tsx",
+          "path": "registry/ui/tweet.tsx",
           "type": "registry:component",
-          "target": "delta/components/tweet.tsx"
+          "target": "registry/ui/tweet.tsx"
         },
         {
-          "path": "delta/components/tweet-demo.tsx",
+          "path": "registry/ui/tweet-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/tweet-demo.tsx"
+          "target": "registry/ui/tweet-demo.tsx"
         },
         {
-          "path": "delta/components/tweet.css",
+          "path": "registry/ui/tweet.css",
           "type": "registry:file",
-          "target": "delta/components/tweet.css"
+          "target": "registry/ui/tweet.css"
         }
       ]
     },
@@ -256,14 +256,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/video-player.tsx",
+          "path": "registry/ui/video-player.tsx",
           "type": "registry:component",
-          "target": "delta/components/video-player.tsx"
+          "target": "registry/ui/video-player.tsx"
         },
         {
-          "path": "delta/components/video-player-demo.tsx",
+          "path": "registry/ui/video-player-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/video-player-demo.tsx"
+          "target": "registry/ui/video-player-demo.tsx"
         }
       ]
     },
@@ -278,14 +278,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/tabs.tsx",
+          "path": "registry/ui/tabs.tsx",
           "type": "registry:component",
-          "target": "delta/components/tabs.tsx"
+          "target": "registry/ui/tabs.tsx"
         },
         {
-          "path": "delta/components/tabs-demo.tsx",
+          "path": "registry/ui/tabs-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/tabs-demo.tsx"
+          "target": "registry/ui/tabs-demo.tsx"
         },
         {
           "path": "registry/examples/tabs-spotify-demo.tsx",
@@ -305,14 +305,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/button.tsx",
+          "path": "registry/ui/button.tsx",
           "type": "registry:component",
-          "target": "delta/components/button.tsx"
+          "target": "registry/ui/button.tsx"
         },
         {
-          "path": "delta/components/button-demo.tsx",
+          "path": "registry/ui/button-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/button-demo.tsx"
+          "target": "registry/ui/button-demo.tsx"
         }
       ]
     },

@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import config from '@/app/config';
 import { doge } from './doge';
 import { Header } from './header';
-import Footer from './footer';
 import Link from 'next/link';
 import { GitHubStars } from './github-stars';
 import ScrambleIn from "@/registry/ui/scramble-in";

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getCategories } from '@/lib/registry';
 import { ComponentShowcase } from './component-showcase';
 import { SearchComponent } from './search-component';
+import { Suspense } from 'react';
 
 export default async function Home() {
   const categories = await getCategories();
@@ -13,7 +14,7 @@ export default async function Home() {
           Delta Components
         </h1>
         <p className="hidden sm:block text-sm sm:text-md text-center text-muted-foreground max-w-xs sm:max-w-md">
-         If you don't know how the heck to use these component, follow the{' '}
+         If you don&apos;t know how the heck to use these component, follow the{' '}
          <Link
            href="/getting-started"
            className="text-muted-foreground underline underline-offset-4 decoration-1 decoration-muted-foreground/30 transition-all duration-300 ease-in-out hover:text-primary hover:decoration-primary"
@@ -22,10 +23,25 @@ export default async function Home() {
          </Link>
          {' '}guide.
         </p>
-        <SearchComponent className="mt-4" />
+        <Suspense fallback={<div className="mt-4 w-full max-w-3xl mx-auto h-[46px] bg-muted animate-pulse rounded-md"></div>}>
+          <SearchComponent className="mt-4" />
+        </Suspense>
       </div>
 
-      <ComponentShowcase categories={categories} />
+      <Suspense fallback={<div className="space-y-8">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="space-y-4">
+            <div className="h-8 w-48 bg-muted animate-pulse rounded-md"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((j) => (
+                <div key={j} className="h-64 bg-muted animate-pulse rounded-md"></div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>}>
+        <ComponentShowcase categories={categories} />
+      </Suspense>
     </div>
   );
 }

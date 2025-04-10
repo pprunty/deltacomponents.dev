@@ -1,5 +1,31 @@
 import Link from 'next/link';
-import { SocialIcons } from '@/components/social-icons';
+
+// Simple inline implementation of SocialIcons
+function SocialIcons({ 
+  platforms = [], 
+  containerClassName = '', 
+  linkClassName = '' 
+}: { 
+  platforms: string[]; 
+  containerClassName?: string; 
+  linkClassName?: string; 
+}) {
+  return (
+    <div className={containerClassName}>
+      {platforms.map(platform => (
+        <Link 
+          key={platform}
+          href={`https://${platform}.com`} 
+          className={linkClassName}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {platform.charAt(0).toUpperCase() + platform.slice(1)}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export default function Footer() {
   return (

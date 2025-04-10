@@ -13,12 +13,12 @@ interface SearchComponentProps {
 export function SearchComponent({ className }: SearchComponentProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [search, setSearch] = useState(searchParams.get("search") || "")
+  const [search, setSearch] = useState(() => searchParams?.get("search") || "")
 
   // Create query string
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString())
+      const params = new URLSearchParams(searchParams?.toString() || "")
       params.set(name, value)
       return params.toString()
     },

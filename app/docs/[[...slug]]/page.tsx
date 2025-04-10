@@ -4,28 +4,6 @@ import { getComponentByName } from "@/lib/registry"
 import { componentRegistry } from "@/registry/mapping"
 import { demoComponents } from "@/registry/demos"
 
-// Import your MDX content
-import * as ButtonDoc from "@/content/docs/button.mdx"
-import * as ModalDoc from "@/content/docs/modal.mdx"
-import * as CheckboxInputDoc from "@/content/docs/checkbox-input.mdx"
-import * as RadioInputDoc from "@/content/docs/radio-input.mdx"
-import * as DateInputDoc from "@/content/docs/date-input.mdx"
-import * as FileInputDoc from "@/content/docs/file-input.mdx"
-import * as TextareaInputDoc from "@/content/docs/textarea-input.mdx"
-import * as FloatingButtonDoc from "@/content/docs/floating-button.mdx"
-import * as OtpInputDoc from "@/content/docs/otp-input.mdx"
-import * as SwitchInputDoc from "@/content/docs/switch-input.mdx"
-import * as BackButtonDoc from "@/content/docs/back-button.mdx"
-import * as ScrambleInDoc from "@/content/docs/scramble-in.mdx"
-import * as CodeBlockDoc from "@/content/docs/code-block.mdx"
-import * as NeobrutalismCardDoc from "@/content/docs/neobrutalism-card.mdx"
-import * as TabsDoc from "@/content/docs/tabs.mdx"
-import * as AdmonitionDoc from "@/content/docs/admonition.mdx"
-import * as TweetDoc from "@/content/docs/tweet.mdx"
-import * as TextInputDoc from "@/content/docs/text-input.mdx"
-import * as SelectInputDoc from "@/content/docs/select-input.mdx"
-import * as SmartFormDoc from "@/content/docs/smart-form.mdx"
-
 interface DocPageProps {
   params: Promise<{
     slug: string[]
