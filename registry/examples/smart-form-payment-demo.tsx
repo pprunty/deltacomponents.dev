@@ -12,7 +12,7 @@ import {
 import {
   SmartForm,
   FieldDefinition,
-} from '@/delta/forms/smart-form';
+} from '@/registry/ui/smart-form';
 
 export default function SmartFormPaymentDemo() {
   // Define the form schema

@@ -1,16 +1,69 @@
-# Text Input
+export const metadata = {
+  title: 'TextInput | Delta Components',
+  description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'text input', 'form components', 'zod validation', 'react components', 'delta components', 'nextjs components', 'tailwind components', 'form validation'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/text-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'TextInput Component | Delta Components',
+    description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/text-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/text-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'Text Input Component Preview showing default and pill variants with validation states'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Form', 'Input', 'Validation', 'Zod'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TextInput Component | Delta Components',
+    description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/text-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# TextInput
 
 A customizable text input component with validation support, error handling, and various styling options.
 
-## Installation
-
-```bash
-npx shadcn@latest add "https://deltacomponents.dev/r/text-input.json"
-```
-
 ## Basic Usage
-
-The TextInput component provides a simple way to create form inputs with labels and validation.
 
 <ComponentTabs name="text-input-basic" />
 
@@ -26,55 +79,161 @@ The TextInput component supports validation using Zod schemas.
 
 <ComponentTabs name="text-input-validation" />
 
-## Usage
+## Installation
+
+```bash
+npx shadcn@latest add "text-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the input field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the input field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the input</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Input variant - 'default' or 'pill'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`schema`</td>
+        <td className="border px-4 py-2 text-left">`z.ZodType<string>`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Zod schema for validation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Default Variant
 
 ```tsx
-import { TextInput } from "@/registry/ui/text-input"
+import { TextInput } from "@/components/ui/text-input"
 
-export default function Page() {
+export default function Example() {
   return (
     <TextInput
       label="Username"
       name="username"
-      placeholder="Enter your username"
+      placeholder="johndoe"
       required
     />
   )
 }
 ```
 
-## Props
+### Pill Variant
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | string | - | The label for the input field |
-| `name` | string | - | The name of the input field |
-| `description` | string | - | Optional description text |
-| `hint` | string | - | Optional hint text |
-| `error` | string | - | Error message to display |
-| `required` | boolean | false | Whether the field is required |
-| `pending` | boolean | false | Whether the field is in a loading state |
-| `variant` | "default" \| "pill" | "default" | The input variant |
-| `labelVariant` | "default" \| "muted" | "default" | The label variant |
-| `coloredBorder` | boolean | false | Whether to show a colored border (pill variant only) |
-| `schema` | ZodSchema | - | Zod schema for validation |
-| `onValidate` | function | - | Callback when validation occurs |
+```tsx
+import { TextInput } from "@/components/ui/text-input"
 
-## Features
+export default function Example() {
+  return (
+    <TextInput
+      label="Email"
+      name="email"
+      type="email"
+      variant="pill"
+      coloredBorder={true}
+      placeholder="john@example.com"
+    />
+  )
+}
+```
 
-- Label variants (default and muted)
-- Description and hint text support
-- Error handling and validation
-- Required field indication
-- Disabled and pending states
-- Zod validation integration
-- Customizable styling
-- Accessible by default
+### With Validation
+
+```tsx
+import { z } from "zod"
+import { useState } from "react"
+import { TextInput } from "@/components/ui/text-input"
+
+export default function ValidationExample() {
+  const [error, setError] = useState<string | undefined>()
+  
+  // Schema to validate email format
+  const schema = z.string().email({
+    message: "Please enter a valid email address",
+  })
+  
+  const handleValidate = (isValid: boolean, value: string, error?: string) => {
+    setError(error)
+  }
+  
+  return (
+    <TextInput
+      label="Email"
+      name="email"
+      type="email"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="We'll never share your email with anyone else"
+      required
+    />
+  )
+}
+```
 
 ## Accessibility
 
-- Proper ARIA attributes for error states
-- Required field indication
-- Label association
-- Error message association
-- Keyboard navigation support 
+The TextInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the input
+- Keyboard navigation support
+- Clear focus states for keyboard users 

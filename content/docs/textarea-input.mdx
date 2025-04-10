@@ -1,0 +1,250 @@
+export const metadata = {
+  title: 'TextareaInput | Delta Components',
+  description: 'A customizable textarea input component with validation support, multiple style variants, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'textarea', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/textarea-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'TextareaInput Component | Delta Components',
+    description: 'A customizable textarea input component with validation support, multiple style variants, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/textarea-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/textarea-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'TextareaInput Component Preview showing various styling options and examples'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Textarea', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TextareaInput Component | Delta Components',
+    description: 'A customizable textarea input component with validation support, multiple style variants, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/textarea-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# TextareaInput
+
+A customizable textarea input component with validation support, multiple style variants, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="textarea-input-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "textarea-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the textarea field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the textarea field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the textarea</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Textarea variant - 'default' or 'pill'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`size`</td>
+        <td className="border px-4 py-2 text-left">`'sm' | 'md' | 'lg'`</td>
+        <td className="border px-4 py-2 text-left">`'md'`</td>
+        <td className="border px-4 py-2 text-left">Size of the textarea - 'sm', 'md', or 'lg'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the textarea is disabled</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`schema`</td>
+        <td className="border px-4 py-2 text-left">`z.ZodType<string>`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Zod schema for validation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Default Variant
+
+```tsx
+<TextareaInput
+  label="Feedback"
+  name="feedback"
+  description="Share your thoughts with us"
+  placeholder="Type your feedback here..."
+/>
+```
+
+### Pill Variant with Colored Border
+
+```tsx
+<TextareaInput
+  label="Feedback"
+  name="feedback"
+  variant="pill"
+  coloredBorder={true}
+  placeholder="Type your feedback here..."
+/>
+```
+
+### Different Sizes
+
+```tsx
+<TextareaInput
+  label="Small Textarea"
+  name="small-textarea"
+  size="sm"
+  placeholder="Small size textarea"
+/>
+
+<TextareaInput
+  label="Medium Textarea"
+  name="medium-textarea"
+  size="md"
+  placeholder="Medium size textarea"
+/>
+
+<TextareaInput
+  label="Large Textarea"
+  name="large-textarea"
+  size="lg"
+  placeholder="Large size textarea"
+/>
+```
+
+## Validation
+
+The TextareaInput component supports Zod validation:
+
+```tsx
+import { z } from "zod";
+import { useState } from "react";
+import { TextareaInput } from "@/components/ui/textarea-input";
+
+export default function TextareaValidationExample() {
+  const [error, setError] = useState<string | undefined>();
+  
+  // Schema to validate the text has a minimum length
+  const schema = z.string().min(10, {
+    message: "Feedback must be at least 10 characters",
+  });
+  
+  const handleValidate = (isValid: boolean, value: string, error?: string) => {
+    setError(error);
+  };
+  
+  return (
+    <TextareaInput
+      label="Feedback"
+      name="feedback"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="Please provide detailed feedback"
+    />
+  );
+}
+```
+
+## Accessibility
+
+The TextareaInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Clear focus states for keyboard users
+- Error messages are properly associated with the textarea
+- Properly handles disabled states

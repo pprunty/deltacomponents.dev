@@ -11,10 +11,10 @@ import {
 
 export default function NeobrutalismCardFormDemo() {
   return (
-    <div className="w-full flex justify-center p-6">
+    <div className="w-full flex justify-center ">
       <Card
-        color="cream"
-        className="w-full max-w-sm"
+        color="blue"
+        className="w-full max-w-md"
         hover={false}
         borderWidth="medium"
       >

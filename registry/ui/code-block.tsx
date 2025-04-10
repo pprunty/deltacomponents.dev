@@ -235,7 +235,7 @@ export default function CodeBlock({
             <button
               onClick={copyToClipboard}
               className={cn(
-                "p-2 rounded-lg",
+                "p-1.5 rounded-lg",
                 "bg-background/80 backdrop-blur-sm",
                 "text-muted-foreground hover:text-foreground hover:bg-background",
                 "transition-all duration-200",
@@ -252,7 +252,7 @@ export default function CodeBlock({
         <div
           ref={contentRef}
           className={cn(
-            "my-4 px-2 w-full code-content",
+            "py-4 my-2 px-3 w-full code-content",
             !expanded && "max-h-[var(--code-block-max-height)] overflow-y-auto",
             showLineNumbers && "relative",
           )}

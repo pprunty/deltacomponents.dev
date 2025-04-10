@@ -9,7 +9,7 @@ import React, {
   forwardRef,
 } from 'react';
 import { cn } from '@/lib/utils';
-import { XScrollable } from '@/delta/components/x-scrollable';
+import { XScrollable } from '@/registry/ui/x-scrollable';
 
 // Base Tabs component (Root)
 const Tabs = forwardRef<

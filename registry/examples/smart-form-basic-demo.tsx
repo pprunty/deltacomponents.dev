@@ -1,6 +1,6 @@
 "use client"
 
-import { SmartForm, FieldDefinition } from "@/delta/forms/smart-form"
+import { SmartForm, FieldDefinition } from "@/registry/ui/smart-form"
 import { z } from "zod"
 
 const schema = z.object({

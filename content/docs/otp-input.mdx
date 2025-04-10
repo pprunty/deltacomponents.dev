@@ -1,0 +1,230 @@
+export const metadata = {
+  title: 'OTP Input | Delta Components',
+  description: 'A secure and customizable OTP (One-Time Password) input component with validation, masking, and accessibility features. Built with shadcn/ui and featuring multiple variants and customization options.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'otp input', 'one-time password', 'verification code', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/otp-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'OTP Input Component | Delta Components',
+    description: 'A secure and customizable OTP (One-Time Password) input component with validation, masking, and accessibility features. Built with shadcn/ui and featuring multiple variants and customization options.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/otp-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/otp-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'OTP Input Component Preview showing default and pill variants with validation states'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'OTP', 'Verification'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'OTP Input Component | Delta Components',
+    description: 'A secure and customizable OTP (One-Time Password) input component with validation, masking, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/otp-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# OTP Input
+
+A secure and customizable OTP (One-Time Password) input component with validation, masking, and accessibility features.
+
+## Basic Usage
+
+Here's a simple example of an OTP input:
+
+<ComponentTabs name="otp-input-basic" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/otp-input.json"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The label for the OTP input field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The name of the OTP input field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the OTP input</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`pending`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is in a loading/pending state</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' \| 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Input variant</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`length`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`6`</td>
+        <td className="border px-4 py-2 text-left">Length of the OTP code</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`mask`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to mask the input (like a password)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`maskChar`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'•'`</td>
+        <td className="border px-4 py-2 text-left">Character to display when input is masked</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`separator`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to render with a separator between groups</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`groupSize`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`3`</td>
+        <td className="border px-4 py-2 text-left">Size of each group of digits</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`autoSubmit`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to automatically submit the form when OTP is completed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Usage
+
+```tsx
+import { OTPInput } from "@/components/ui/otp-input"
+
+export default function OTPInputDemo() {
+  return (
+    <OTPInput 
+      label="Verification Code"
+      name="otp"
+      length={6}
+      required
+    />
+  )
+}
+```
+
+## Validation
+
+The component integrates with Zod for validation:
+
+```tsx
+import { OTPInput } from "@/components/ui/otp-input"
+import { z } from "zod"
+
+const otpSchema = z.string().length(6).regex(/^\d+$/)
+
+export default function OTPInputDemo() {
+  return (
+    <OTPInput 
+      label="Verification Code"
+      name="otp"
+      schema={otpSchema}
+      onValidate={(isValid, value) => {
+        console.log('Validation result:', isValid, value)
+      }}
+    />
+  )
+}
+```
+
+## Accessibility
+
+The OTP Input component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. It supports keyboard navigation, screen readers, and provides clear error messaging.

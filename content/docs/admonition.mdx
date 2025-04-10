@@ -1,16 +1,81 @@
+export const metadata = {
+  title: 'Admonition | Delta Components',
+  description: 'A versatile admonition component for displaying important information, warnings, tips, and notes. Built with shadcn/ui and featuring multiple variants, icons, and solid backgrounds.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'admonition', 'alert', 'callout', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/admonition',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Admonition Component | Delta Components',
+    description: 'A versatile admonition component for displaying important information, warnings, tips, and notes. Built with shadcn/ui and featuring multiple variants, icons, and solid backgrounds.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/admonition',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/admonition.png',
+        width: 1200,
+        height: 630,
+        alt: 'Admonition Component Preview showing different types and variants'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Alert', 'Callout'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Admonition Component | Delta Components',
+    description: 'A versatile admonition component for displaying important information, warnings, tips, and notes. Built with shadcn/ui and featuring multiple variants, icons, and solid backgrounds.',
+    images: ['https://deltacomponents.dev/og/admonition.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
 # Admonition
 
-A flexible component for displaying notices, warnings, tips, and other important information with customizable styles and icons.
-
-## Installation
-
-```bash
-npx shadcn@latest add "admonition"
-```
+A versatile admonition component for displaying important information, warnings, tips, and notes.
 
 ## Basic Usage
 
+Here's a simple example of an admonition:
+
 <ComponentTabs name="admonition-basic" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/admonition.json"
+```
 
 ## Props
 
@@ -27,9 +92,9 @@ npx shadcn@latest add "admonition"
     <tbody>
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`type`</td>
-        <td className="border px-4 py-2 text-left">`'note' | 'tip' | 'info' | 'caution' | 'warning' | 'danger'`</td>
-        <td className="border px-4 py-2 text-left">`'note'`</td>
-        <td className="border px-4 py-2 text-left">The type of admonition, which determines its styling and icon</td>
+        <td className="border px-4 py-2 text-left">`'note' | 'tip' | 'info' | 'warning' | 'danger'`</td>
+        <td className="border px-4 py-2 text-left">`'info'`</td>
+        <td className="border px-4 py-2 text-left">The type of admonition to display</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`title`</td>
@@ -38,16 +103,28 @@ npx shadcn@latest add "admonition"
         <td className="border px-4 py-2 text-left">Optional title for the admonition</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`icon`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Custom icon to override the default variant icon</td>
+        <td className="border px-4 py-2 text-left">`children`</td>
+        <td className="border px-4 py-2 text-left">`React.ReactNode`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The content of the admonition</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`className`</td>
         <td className="border px-4 py-2 text-left">`string`</td>
         <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the admonition</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes to apply</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`icon`</td>
+        <td className="border px-4 py-2 text-left">`React.ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Custom icon to display</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`solid`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to use solid background variant</td>
       </tr>
     </tbody>
   </table>
@@ -55,56 +132,55 @@ npx shadcn@latest add "admonition"
 
 ## Types
 
-The Admonition component comes with several built-in types to suit different use cases. Each type has its own distinct styling and default icon.
+The Admonition component comes with several built-in types to suit different use cases.
 
 <ComponentTabs name="admonition-types" />
 
 ## With Titles
 
-Admonitions can include optional titles to provide additional context.
+You can add titles to your admonitions to provide additional context.
 
 <ComponentTabs name="admonition-titles" />
 
 ## Custom Icons
 
-You can override the default icons with your own custom icons.
+Admonitions can include custom icons alongside their content.
 
 <ComponentTabs name="admonition-custom-icons" />
+
+## Solid Variant
+
+The solid variant provides a more prominent appearance with filled backgrounds.
+
+<ComponentTabs name="admonition-solid" />
 
 ## Usage
 
 ```tsx
-import { Admonition } from "@/components/ui/admonition"
-import { AlertCircle, Info, Lightbulb, AlertTriangle } from "lucide-react"
+import { Admonition } from "@/registry/ui/admonition"
 
 export default function AdmonitionDemo() {
   return (
-    <div className="space-y-4">
-      <Admonition type="note" title="Important Note">
-        This is an important message that users should pay attention to.
-      </Admonition>
-
-      <Admonition type="warning" title="Custom Icon" icon={<AlertCircle className="h-5 w-5" />}>
-        This admonition uses a custom icon.
-      </Admonition>
-    </div>
+    <Admonition type="info" title="Did you know?">
+      This is an informational message.
+    </Admonition>
   )
 }
 ```
 
-## Customization
+## Custom Styling
 
-You can customize the admonition's appearance using Tailwind CSS classes:
+You can customize the admonition styles using Tailwind CSS classes:
 
 ```tsx
 <Admonition 
-  type="note" 
-  className="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/30"
+  type="info" 
+  className="my-8 rounded-lg"
 >
-  Custom styled note
+  Custom styled admonition
 </Admonition>
 ```
 
 ## Accessibility
 
-The admonition component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Each type has appropriate role and aria-label attributes to ensure screen readers can properly announce the content. 
+The admonition component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Each admonition type has a distinct visual style and semantic meaning to ensure clear communication of its purpose. 

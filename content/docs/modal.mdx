@@ -1,0 +1,269 @@
+export const metadata = {
+  title: 'Modal | Delta Components',
+  description: 'A versatile modal component with customizable overlay, animations, and multiple content layout options. Features configurable backdrop styles, title/subtitle support, and responsive design.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'modal', 'dialog', 'overlay', 'popup', 'ui components', 'framer motion', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/modal',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Modal Component | Delta Components',
+    description: 'A versatile modal component with customizable overlay, animations, and multiple content layout options. Features configurable backdrop styles, title/subtitle support, and responsive design.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/modal',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/modal.png',
+        width: 1200,
+        height: 630,
+        alt: 'Modal Component Preview showing different backdrop styles and content layouts'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Modal', 'Dialog', 'Overlay', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Modal Component | Delta Components',
+    description: 'A versatile modal component with customizable overlay, animations, and multiple content layout options. Features configurable backdrop styles, title/subtitle support, and responsive design.',
+    images: ['https://deltacomponents.dev/og/modal.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# Modal
+
+A versatile modal component with customizable overlay, animations, and multiple content layout options. Features smooth entrance/exit animations powered by Framer Motion, configurable backdrop styles, and responsive design.
+
+## Basic Usage
+
+<ComponentTabs name="modal-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "modal"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`isOpen`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Controls the visibility of the modal</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onClose`</td>
+        <td className="border px-4 py-2 text-left">`() => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Function called when the modal is closed</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`children`</td>
+        <td className="border px-4 py-2 text-left">`ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Content to display inside the modal</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`closeOnOverlayClick`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether clicking the overlay closes the modal</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`title`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional title to display in the modal header</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`subtitle`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional subtitle to display below the title</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`type`</td>
+        <td className="border px-4 py-2 text-left">`'blur' | 'overlay' | 'none'`</td>
+        <td className="border px-4 py-2 text-left">`'overlay'`</td>
+        <td className="border px-4 py-2 text-left">Type of backdrop effect</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showCloseButton`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show the close button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`borderBottom`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a border below the title area</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the modal</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Basic Modal
+
+```tsx
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import Modal from "@/components/ui/modal"
+
+export default function BasicExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Modal Title"
+        subtitle="This is a simple modal example"
+      >
+        <div className="space-y-4">
+          <p>This is the modal content. You can put any components or text here.</p>
+          
+          <div className="flex justify-end">
+            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+              Close
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    </>
+  )
+}
+```
+
+### With Blur Backdrop
+
+```tsx
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import Modal from "@/components/ui/modal"
+
+export default function BlurExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open Blur Modal
+      </Button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Blur Backdrop"
+        type="blur"
+      >
+        <p>This modal has a blurred backdrop effect.</p>
+      </Modal>
+    </>
+  )
+}
+```
+
+### Content-Only Modal
+
+```tsx
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import Modal from "@/components/ui/modal"
+
+export default function ContentOnlyExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Content Only
+      </Button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        showCloseButton={true}
+      >
+        <div className="text-center p-4">
+          <h2 className="text-2xl font-bold mb-4">Custom Content</h2>
+          <p>This modal has no title bar, just content with a close button.</p>
+          <Button 
+            className="mt-4" 
+            onClick={() => setIsOpen(false)}
+          >
+            Close
+          </Button>
+        </div>
+      </Modal>
+    </>
+  )
+}
+```
+
+## Accessibility
+
+The Modal component is built with accessibility in mind:
+
+- Proper focus management
+- ARIA attributes for screen readers
+- Keyboard navigation support (ESC to close)
+- Prevents background scrolling when open
+- Preserves scrollbar width to prevent layout shift
+- Maintains focus trap within the modal
+
+When using the Modal component, ensure that the close button or alternative close method is clearly visible and accessible. For content-only modals, always include a visible close mechanism.

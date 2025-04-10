@@ -1,16 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { MDXComponents } from 'mdx/types';
-import { CodeBlock } from '@/delta/components/code-block';
+import CodeBlock from '@/registry/ui/code-block';
 import { ComponentTabs } from '@/components/component-tabs';
 import { cn } from "@/lib/utils"
 import React from 'react';
-import {
-  Table,
-  TableHeader,
-  TableCell,
-  TableRow,
-} from '@/components/table';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

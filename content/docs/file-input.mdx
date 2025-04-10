@@ -1,0 +1,264 @@
+export const metadata = {
+  title: 'FileInput | Delta Components',
+  description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'file input', 'file upload', 'drag and drop', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/file-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'FileInput Component | Delta Components',
+    description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/file-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/file-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'FileInput Component Preview showing drag-and-drop file upload interface with file previews'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'File Input', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FileInput Component | Delta Components',
+    description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+    images: ['https://deltacomponents.dev/og/file-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# FileInput
+
+A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.
+
+## Basic Usage
+
+<ComponentTabs name="file-input-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "file-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the file input field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the file input field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the file input</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">File input variant - 'default' or 'pill'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`multiple`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to accept multiple files</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`accept`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Accepted file types (e.g., "image/*", ".pdf", etc.)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`maxSize`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Maximum file size in bytes</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`maxFiles`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`5`</td>
+        <td className="border px-4 py-2 text-left">Maximum number of files (only applies when multiple is true)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showPreviews`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show file previews</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`showIcons`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to show file type icons</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Default Variant
+
+```tsx
+<FileInput
+  label="Upload Document"
+  name="document"
+  description="Upload a file for your application"
+  accept=".pdf,.docx,.jpg,.png"
+  hint="Accepted formats: PDF, DOCX, JPG, PNG"
+/>
+```
+
+### Multiple Files Upload
+
+```tsx
+<FileInput
+  label="Upload Images"
+  name="images"
+  multiple={true}
+  maxFiles={3}
+  accept="image/*"
+  hint="Upload up to 3 images"
+/>
+```
+
+### Pill Variant with Colored Border
+
+```tsx
+<FileInput
+  label="Upload Document"
+  name="document"
+  variant="pill"
+  coloredBorder={true}
+  accept=".pdf,.docx"
+  hint="Upload your resume or cover letter"
+/>
+```
+
+## Validation
+
+The FileInput component supports Zod validation:
+
+```tsx
+import { z } from "zod";
+import { useState } from "react";
+import { FileInput } from "@/components/ui/file-input";
+
+export default function FileValidationExample() {
+  const [error, setError] = useState<string | undefined>();
+  
+  // Schema to validate file size
+  const maxSize = 5 * 1024 * 1024; // 5MB
+  const schema = z.instanceof(File).refine(
+    (file) => file.size <= maxSize,
+    {
+      message: "File must be less than 5MB",
+    }
+  );
+  
+  const handleValidate = (isValid: boolean, file: File, error?: string) => {
+    setError(error);
+  };
+  
+  return (
+    <FileInput
+      label="Upload Image"
+      name="image"
+      accept="image/*"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="Maximum file size: 5MB"
+    />
+  );
+}
+```
+
+## Accessibility
+
+The FileInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Keyboard navigable interface
+- Error messages are properly associated with the input
+- Support for screen readers with appropriate text descriptions
+- Visual indicators for drag-and-drop states

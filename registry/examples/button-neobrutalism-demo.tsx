@@ -4,7 +4,7 @@ import { Button } from "@/registry/ui/button"
 
 export default function ButtonNeobrutalismDemo() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
       <div className="flex flex-col gap-2">
         <h3 className="text-sm font-medium text-muted-foreground">
           Default Blue
@@ -27,6 +27,16 @@ export default function ButtonNeobrutalismDemo() {
           title="Green Style"
           variant="neobrutalism"
           neobrutalismColor="bg-green-300"
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium text-muted-foreground">Black</h3>
+        <Button
+          title="Black Style"
+          variant="neobrutalism"
+          neobrutalismColor="bg-black"
+          className="text-white"
         />
       </div>
 

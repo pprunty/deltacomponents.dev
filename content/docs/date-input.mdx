@@ -1,0 +1,243 @@
+export const metadata = {
+  title: 'DateInput | Delta Components',
+  description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'date input', 'calendar picker', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/date-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'DateInput Component | Delta Components',
+    description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/date-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/date-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'DateInput Component Preview showing calendar date picker with various styling options'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Date Input', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DateInput Component | Delta Components',
+    description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+    images: ['https://deltacomponents.dev/og/date-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# DateInput
+
+A flexible date input component with an integrated calendar picker, validation support, and customizable styling options.
+
+## Basic Usage
+
+<ComponentTabs name="date-input-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "date-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the date field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the date field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the date picker</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`placeholder`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'Select a date'`</td>
+        <td className="border px-4 py-2 text-left">Placeholder text when no date is selected</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Date picker variant - 'default' or 'pill'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the date picker is disabled</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`minDate`</td>
+        <td className="border px-4 py-2 text-left">`Date`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Min date that can be selected</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`maxDate`</td>
+        <td className="border px-4 py-2 text-left">`Date`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Max date that can be selected</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Default Variant
+
+```tsx
+<DateInput
+  label="Event Date"
+  name="event-date"
+  description="Select the date of your event"
+  placeholder="Select a date"
+/>
+```
+
+### Pill Variant with Colored Border
+
+```tsx
+<DateInput
+  label="Event Date"
+  name="event-date"
+  variant="pill"
+  coloredBorder={true}
+  placeholder="Select a date"
+/>
+```
+
+### With Min and Max Date Constraints
+
+```tsx
+<DateInput
+  label="Appointment Date"
+  name="appointment-date"
+  minDate={new Date()} // Today's date
+  maxDate={new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)} // 90 days from now
+  hint="Select a date within the next 90 days"
+/>
+```
+
+## Validation
+
+The DateInput component supports Zod validation:
+
+```tsx
+import { z } from "zod";
+import { useState } from "react";
+import { DateInput } from "@/components/ui/date-input";
+
+export default function DateValidationExample() {
+  const [error, setError] = useState<string | undefined>();
+  
+  // Schema to validate the date is in the future
+  const schema = z.date().min(new Date(), {
+    message: "Date must be in the future",
+  });
+  
+  const handleValidate = (isValid: boolean, value: Date, error?: string) => {
+    setError(error);
+  };
+  
+  return (
+    <DateInput
+      label="Event Date"
+      name="event-date"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="Date must be in the future"
+    />
+  );
+}
+```
+
+## Accessibility
+
+The DateInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Keyboard navigation support in the calendar
+- Error messages are properly associated with inputs
+- Clear focus states for keyboard users

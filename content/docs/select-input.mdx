@@ -1,24 +1,169 @@
-# Select Input
+export const metadata = {
+  title: 'SelectInput | Delta Components',
+  description: 'A customizable select input component that supports both controlled and uncontrolled states, with built-in validation support using Zod. Features multiple variants, accessibility support, and seamless integration with Next.js.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'select input', 'form components', 'zod validation', 'react components', 'delta components', 'nextjs components', 'tailwind components', 'form validation'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/select-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'SelectInput Component | Delta Components',
+    description: 'A customizable select input component that supports both controlled and uncontrolled states, with built-in validation support using Zod. Features multiple variants, accessibility support, and seamless integration with Next.js.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/select-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/select-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'Select Input Component Preview showing default and pill variants with validation states'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Form', 'Select', 'Zod', 'Validation'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SelectInput Component | Delta Components',
+    description: 'A customizable select input component that supports both controlled and uncontrolled states, with built-in validation support using Zod. Features multiple variants, accessibility support, and seamless integration with Next.js.',
+    images: ['https://deltacomponents.dev/og/select-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# SelectInput
 
 A customizable select input component that supports both controlled and uncontrolled states, with built-in validation support using Zod.
+
+## Basic Usage
+
+<ComponentTabs name="select-input-basic" />
 
 ## Installation
 
 ```bash
-npx shadcn@latest add "https://deltacomponents.dev/r/select-input.json"
+npx shadcn@latest add "select-input"
 ```
 
-## Usage
+## Props
 
-<ComponentTabs
-  tabs={[
-    {
-      title: "Basic",
-      description: "Basic usage of the select input component",
-      component: <SelectInputBasicDemo />,
-      code: `import { SelectInput } from "@/registry/ui/select-input"
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the select field</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the select field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`options`</td>
+        <td className="border px-4 py-2 text-left">`Array<{ value: string, label: string, disabled?: boolean }>`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Options for the select dropdown</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the select</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`placeholder`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'Select an option'`</td>
+        <td className="border px-4 py-2 text-left">Placeholder text when no option is selected</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
+        <td className="border px-4 py-2 text-left">`'default'`</td>
+        <td className="border px-4 py-2 text-left">Select variant - 'default' or 'pill'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`schema`</td>
+        <td className="border px-4 py-2 text-left">`z.ZodType<string>`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Zod schema for validation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-export default function MyForm() {
+## Examples
+
+### Default Variant
+
+```tsx
+import { SelectInput } from "@/components/ui/select-input"
+
+export default function Example() {
   const options = [
     { value: "option1", label: "Option 1" },
     { value: "option2", label: "Option 2" },
@@ -27,21 +172,21 @@ export default function MyForm() {
 
   return (
     <SelectInput
-      label="Select an option"
-      name="my-select"
+      label="Default Select"
+      name="default-select"
       options={options}
-      placeholder="Choose an option"
+      placeholder="Select an option"
     />
   )
-}`,
-    },
-    {
-      title: "Styles",
-      description: "Different styles and variants of the select input",
-      component: <SelectInputStylesDemo />,
-      code: `import { SelectInput } from "@/registry/ui/select-input"
+}
+```
 
-export default function MyForm() {
+### Pill Variant
+
+```tsx
+import { SelectInput } from "@/components/ui/select-input"
+
+export default function Example() {
   const options = [
     { value: "option1", label: "Option 1" },
     { value: "option2", label: "Option 2" },
@@ -49,147 +194,65 @@ export default function MyForm() {
   ]
 
   return (
-    <div className="space-y-4">
-      <SelectInput
-        label="Default Variant"
-        name="default-select"
-        options={options}
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Pill Variant"
-        name="pill-select"
-        options={options}
-        variant="pill"
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Error State"
-        name="error-select"
-        options={options}
-        error="This field is required"
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Disabled State"
-        name="disabled-select"
-        options={options}
-        disabled
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Pending State"
-        name="pending-select"
-        options={options}
-        pending
-        placeholder="Select an option"
-      />
-    </div>
+    <SelectInput
+      label="Pill Select"
+      name="pill-select"
+      options={options}
+      variant="pill"
+      coloredBorder={true}
+      placeholder="Select an option"
+    />
   )
-}`,
-    },
-  ]}
-/>
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | The label text for the select input |
-| `name` | `string` | - | The name attribute for the select input |
-| `options` | `Array<{ value: string, label: string, disabled?: boolean }>` | - | The options for the select dropdown |
-| `description` | `string` | - | Optional description text below the label |
-| `hint` | `string` | - | Optional hint text below the input |
-| `error` | `string` | - | Error message to display |
-| `required` | `boolean` | `false` | Whether the field is required |
-| `pending` | `boolean` | `false` | Whether the field is in a loading state |
-| `defaultValue` | `string` | - | Default selected value |
-| `value` | `string` | - | Controlled selected value |
-| `placeholder` | `string` | `"Select an option"` | Placeholder text when no option is selected |
-| `containerClassName` | `string` | - | Additional classes for the container |
-| `selectClassName` | `string` | - | Additional classes for the select element |
-| `labelClassName` | `string` | - | Additional classes for the label |
-| `labelVariant` | `"default" \| "muted"` | `"default"` | Label variant style |
-| `variant` | `"default" \| "pill"` | `"default"` | Select input variant style |
-| `coloredBorder` | `boolean` | `false` | Whether to show a colored border (only applies to pill variant) |
-| `schema` | `z.ZodType<string>` | - | Zod schema for validation |
-| `onValidate` | `(isValid: boolean, value: string, error?: string) => void` | - | Callback when validation occurs |
-| `onValueChange` | `(value: string) => void` | - | Callback when selection changes |
-| `id` | `string` | - | ID for the select element |
-| `disabled` | `boolean` | `false` | Whether the select is disabled |
-
-## Features
-
-- **Server-side rendering** - Works seamlessly with Next.js and other SSR frameworks
-- **Dark mode support** - Automatically adapts to your theme
-- **Accessibility** - Built with ARIA attributes and keyboard navigation
-- **Validation** - Built-in support for Zod validation
-- **Customization** - Multiple variants and styling options
-- **Responsive** - Works well on all screen sizes
-- **TypeScript** - Fully typed for better development experience
-
-## Accessibility
-
-The select input component is built with accessibility in mind:
-
-- Proper ARIA attributes for screen readers
-- Keyboard navigation support
-- Focus management
-- Error state announcements
-- Required field indicators
-- Clear labeling and descriptions
-
-## Examples
+}
+```
 
 ### With Validation
 
 ```tsx
-import { SelectInput } from "@/registry/ui/select-input"
 import { z } from "zod"
+import { useState } from "react"
+import { SelectInput } from "@/components/ui/select-input"
 
-const schema = z.string().min(1, "Please select an option")
-
-export default function MyForm() {
+export default function ValidationExample() {
+  const [error, setError] = useState<string | undefined>()
+  
   const options = [
     { value: "option1", label: "Option 1" },
     { value: "option2", label: "Option 2" },
     { value: "option3", label: "Option 3" },
   ]
-
+  
+  // Schema to validate required selection
+  const schema = z.string().min(1, {
+    message: "Please select an option",
+  })
+  
+  const handleValidate = (isValid: boolean, value: string, error?: string) => {
+    setError(error)
+  }
+  
   return (
     <SelectInput
-      label="Select an option"
-      name="my-select"
+      label="Validated Select"
+      name="validated-select"
       options={options}
       schema={schema}
+      onValidate={handleValidate}
+      error={error}
       required
+      hint="A selection is required"
     />
   )
 }
 ```
 
-### With Custom Styling
+## Accessibility
 
-```tsx
-import { SelectInput } from "@/registry/ui/select-input"
+The SelectInput component is built with accessibility in mind:
 
-export default function MyForm() {
-  const options = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
-  ]
-
-  return (
-    <SelectInput
-      label="Custom Styled Select"
-      name="my-select"
-      options={options}
-      variant="pill"
-      coloredBorder
-      containerClassName="max-w-md"
-      selectClassName="bg-slate-50 dark:bg-slate-900"
-    />
-  )
-}
-``` 
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the select
+- Keyboard navigation support
+- Clear focus states for keyboard users
+- Proper contrast ratios for all states 

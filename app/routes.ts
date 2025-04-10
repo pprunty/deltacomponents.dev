@@ -23,7 +23,7 @@ const baseMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'Delta Components',
     description: 'A modern component library and registry built with shadcn/ui',
-    creator: '@patrickprunty',
+    creator: '@pprunty_',
   },
 };
 

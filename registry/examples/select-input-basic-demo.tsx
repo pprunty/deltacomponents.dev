@@ -1,3 +1,5 @@
+"use client"
+
 import { SelectInput } from "@/registry/ui/select-input"
 
 export default function SelectInputBasicDemo() {
@@ -8,25 +10,12 @@ export default function SelectInputBasicDemo() {
   ]
 
   return (
-    <div className="space-y-4">
+    <div className="max-w-md mx-auto space-y-4">
       <SelectInput
-        label="Basic Select"
+        label="Select an option"
         name="basic-select"
         options={options}
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Required Select"
-        name="required-select"
-        options={options}
-        required
-        placeholder="Select an option"
-      />
-      <SelectInput
-        label="Select with Description"
-        name="description-select"
-        options={options}
-        description="This is a description of the select field"
+        description="Choose one of the available options"
         placeholder="Select an option"
       />
     </div>

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-input.tsx",
+  "type": "registry:component",
+  "title": "Date Input.tsx",
+  "description": "A component for date-input.tsx",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/ui/date-input.tsx.tsx",
+      "content": "\"use client\"\n\nexport default function DateInput.tsx() {\n  return (\n    <div>\n      <div>\n        DateInput.tsx Component\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "registry/ui/date-input.tsx.tsx"
+    },
+    {
+      "path": "registry/examples/date-input.tsx-basic-demo.tsx",
+      "content": "\"use client\"\n\nimport DateInput.tsx from \"@/registry/ui/date-input.tsx\"\n\nexport default function DateInput.tsxBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <DateInput.tsx />\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "registry/examples/date-input.tsx-basic-demo.tsx"
+    },
+    {
+      "path": "content/docs/date-input.tsx.mdx",
+      "content": "# DateInput.tsx\n\nA date-input.tsx component.\n\n## Basic Usage\n\n<ComponentTabs name=\"date-input.tsx-basic\" />\n\n## Installation\n\n```bash\nnpx shadcn@latest add \"date-input.tsx\"\n```\n\n## Props\n\n<div className=\"my-6 w-full overflow-y-auto\">\n  <table className=\"w-full\">\n    <thead>\n      <tr className=\"m-0 border-t p-0 even:bg-muted\">\n        <th className=\"border px-4 py-2 text-left font-bold\">Prop</th>\n        <th className=\"border px-4 py-2 text-left font-bold\">Type</th>\n        <th className=\"border px-4 py-2 text-left font-bold\">Default</th>\n        <th className=\"border px-4 py-2 text-left font-bold\">Description</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr className=\"m-0 border-t p-0 even:bg-muted\">\n        <td className=\"border px-4 py-2 text-left\">`children`</td>\n        <td className=\"border px-4 py-2 text-left\">`ReactNode`</td>\n        <td className=\"border px-4 py-2 text-left\">-</td>\n        <td className=\"border px-4 py-2 text-left\">The content to display</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n",
+      "type": "registry:component",
+      "target": "content/docs/date-input.tsx.mdx"
+    }
+  ]
+}

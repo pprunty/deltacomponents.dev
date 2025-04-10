@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "smart-form",
-  "type": "registry:component",
+  "type": "registry:block",
   "title": "Smart Form",
   "description": "A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.",
   "dependencies": [

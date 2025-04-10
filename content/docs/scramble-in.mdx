@@ -1,0 +1,224 @@
+export const metadata = {
+  title: 'ScrambleIn | Delta Components',
+  description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'text animation', 'scramble effect', 'animation component', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/scramble-in',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'ScrambleIn Component | Delta Components',
+    description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/scramble-in',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/scramble-in.png',
+        width: 1200,
+        height: 630,
+        alt: 'ScrambleIn Component Preview showing text animation with scramble effect'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Animation', 'Text', 'Effects'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ScrambleIn Component | Delta Components',
+    description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+    images: ['https://deltacomponents.dev/og/scramble-in.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# ScrambleIn
+
+A text animation component that reveals text with a scramble effect.
+
+## Basic Usage
+
+<ComponentTabs name="scramble-in-basic" />
+
+## Installation
+
+### CLI
+
+```shell
+npx shadcn@latest add "https://deltacomponents.dev/r/scramble-in.json"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`text`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">Required</td>
+        <td className="border px-4 py-2 text-left">The text to animate</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`scrambleSpeed`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`50`</td>
+        <td className="border px-4 py-2 text-left">Speed of the scramble animation in milliseconds</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`scrambledLetterCount`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`2`</td>
+        <td className="border px-4 py-2 text-left">Number of letters to scramble at a time</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`characters`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'`</td>
+        <td className="border px-4 py-2 text-left">Characters to use for scrambling</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for the revealed text</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`scrambledClassName`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes for the scrambled text</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`autoStart`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Whether to start the animation automatically</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`useIntersectionObserver`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to use Intersection Observer for animation trigger</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`retriggerOnIntersection`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to retrigger animation on subsequent intersections</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`intersectionThreshold`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`0.3`</td>
+        <td className="border px-4 py-2 text-left">Threshold for intersection observer</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`intersectionRootMargin`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`'0px'`</td>
+        <td className="border px-4 py-2 text-left">Root margin for intersection observer</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onStart`</td>
+        <td className="border px-4 py-2 text-left">`() => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Callback when animation starts</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onComplete`</td>
+        <td className="border px-4 py-2 text-left">`() => void`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Callback when animation completes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Intersection Observer Demo
+
+The ScrambleIn component can be configured to trigger the animation when the text comes into view using the Intersection Observer API. This is perfect for scroll-based animations and page transitions.
+
+<ComponentTabs name="scramble-in-observer" />
+
+## Features
+
+- Customizable animation speed
+- Configurable scramble effect
+- Intersection Observer support
+- Custom character sets
+- Callback support
+- Accessibility features
+
+## Usage
+
+```tsx
+import ScrambleIn from "@/registry/ui/scramble-in"
+
+export default function ScrambleInDemo() {
+  return (
+    <ScrambleIn 
+      text="Welcome to Delta Components"
+      className="text-3xl font-bold"
+      scrambledClassName="text-3xl font-bold"
+      scrambleSpeed={50}
+      scrambledLetterCount={3}
+    />
+  )
+}
+```
+
+## Custom Styling
+
+You can customize the text styles using Tailwind CSS classes:
+
+```tsx
+<ScrambleIn 
+  text="Custom Style"
+  className="text-4xl font-black text-blue-500"
+  scrambledClassName="text-4xl font-black text-blue-500"
+/>
+```
+
+## Accessibility
+
+The ScrambleIn component includes proper ARIA attributes and maintains accessibility by:
+- Providing screen reader text
+- Preserving semantic meaning
+- Supporting keyboard navigation
+- Maintaining proper contrast

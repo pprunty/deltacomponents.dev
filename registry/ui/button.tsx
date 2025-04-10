@@ -13,7 +13,8 @@ export type ButtonVariant =
 
 export interface ButtonProps {
   onClick?: () => void;
-  title: string;
+  title?: string;
+  children?: ReactNode;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   disabled?: boolean;
@@ -30,6 +31,7 @@ export interface ButtonProps {
 export function Button({
   onClick,
   title,
+  children,
   type = 'button',
   className,
   disabled = false,
@@ -90,6 +92,9 @@ export function Button({
     ];
   };
 
+  // Use title if provided, otherwise use children
+  const buttonContent = title || children;
+
   return (
     <button
       onClick={onClick}
@@ -135,18 +140,16 @@ export function Button({
         // Action variant styling with customizable color
         variant === 'action' && getActionStyles(),
 
-        // Neobrutalism variant styling - FIXED to maintain border visibility
+        // Neobrutalism variant styling
         variant === 'neobrutalism' && [
           'rounded-lg border-2 border-black',
           neobrutalismColor,
           'text-black',
-          'shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
-          // Modified hover state to ensure border remains visible
-          'hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
-          // Modified active state to use a background change instead of translate to maintain border visibility
-          'active:bg-opacity-80 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] dark:active:shadow-[1px_1px_0px_0px_rgba(255,255,255,0.8)]',
-          // Keep disabled state the same
-          'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
+          'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
+          'hover:translate-y-1 hover:translate-x-1 hover:shadow-none',
+          'active:translate-y-1 active:translate-x-1 active:shadow-none',
+          'transition-all',
+          'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
         ],
 
         // Add the extended click area pseudo-element styles
@@ -177,7 +180,7 @@ export function Button({
         ) : (
           <>
             {icon && <span className="flex items-center">{icon}</span>}
-            <span>{title}</span>
+            <span>{buttonContent}</span>
           </>
         )}
       </div>

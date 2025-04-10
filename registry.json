@@ -8,6 +8,7 @@
       "type": "registry:component",
       "title": "Complex Component",
       "badge": "beta",
+      "category": "components",
       "description": "A complex component showing hooks, libs and components.",
       "registryDependencies": [
         "card"
@@ -41,6 +42,7 @@
       "type": "registry:component",
       "title": "Admonition",
       "badge": "beta",
+      "category": "components",
       "description": "A component for admonition",
       "dependencies": [
         "@phosphor-icons/react"
@@ -56,6 +58,11 @@
           "path": "delta/components/admonition-demo.tsx",
           "type": "registry:component",
           "target": "delta/components/admonition-demo.tsx"
+        },
+        {
+          "path": "registry/examples/admonition-solid-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/admonition-solid-demo.tsx"
         }
       ]
     },
@@ -63,54 +70,65 @@
       "name": "modal",
       "type": "registry:component",
       "title": "Modal",
-      "badge": "beta",
-      "description": "A customizable modal component with animations and various style options",
-      "dependencies": [
-        "framer-motion",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "category": "components",
+      "description": "A component for modal",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/modal.tsx",
+          "path": "registry/ui/modal.tsx",
           "type": "registry:component",
-          "target": "delta/components/modal.tsx"
+          "target": "registry/ui/modal.tsx"
         },
         {
-          "path": "delta/components/modal-demo.tsx",
+          "path": "registry/examples/modal-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/modal-demo.tsx"
+          "target": "registry/examples/modal-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/modal.mdx",
+          "type": "registry:component",
+          "target": "content/docs/modal.mdx"
         }
       ]
     },
     {
       "name": "scramble-in",
       "type": "registry:component",
-      "title": "Scramble In (fancycomponents.dev)",
-      "badge": "beta",
+      "title": "Scramble In",
+      "category": "components",
       "description": "A component for scramble-in",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/open-source-inspired-collection/scramble-in.tsx",
+          "path": "registry/ui/scramble-in.tsx",
           "type": "registry:component",
-          "target": "delta/components/scramble-in.tsx"
+          "target": "registry/ui/scramble-in.tsx"
         },
         {
-          "path": "delta/open-source-inspired-collection/scramble-in-demo.tsx",
+          "path": "registry/examples/scramble-in-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/scramble-in-demo.tsx"
+          "target": "registry/examples/scramble-in-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/scramble-in.mdx",
+          "type": "registry:component",
+          "target": "content/docs/scramble-in.mdx"
+        },
+        {
+          "path": "registry/examples/scramble-in-observer-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/scramble-in-observer-demo.tsx"
         }
       ]
     },
     {
       "name": "neobrutalism-card",
       "type": "registry:component",
-      "title": "Neobrutalism Card (neobrutalism.dev)",
+      "title": "Neobrutalism Card",
       "badge": "beta",
+      "category": "components",
       "description": "A component for neobrutalism-card",
       "dependencies": [],
       "registryDependencies": [],
@@ -142,6 +160,7 @@
       "type": "registry:hook",
       "badge": "beta",
       "title": "useHqImage",
+      "category": "hook",
       "description": "A hook for use-hq-image",
       "dependencies": [],
       "registryDependencies": [],
@@ -158,6 +177,7 @@
       "type": "registry:component",
       "title": "Bottom Bar",
       "badge": "beta",
+      "category": "layout",
       "description": "A component for bottom-bar",
       "dependencies": [],
       "registryDependencies": [],
@@ -179,6 +199,7 @@
       "type": "registry:component",
       "title": "Full Bleed Section",
       "badge": "beta",
+      "category": "components",
       "description": "A component for full-bleed-section",
       "dependencies": [],
       "registryDependencies": [],
@@ -200,6 +221,7 @@
       "type": "registry:component",
       "title": "Tweet",
       "badge": "beta",
+      "category": "components",
       "description": "A component for embedding and displaying tweets with server-side rendering",
       "dependencies": [
         "react-tweet"
@@ -228,6 +250,7 @@
       "type": "registry:component",
       "title": "Video Player",
       "badge": "beta",
+      "category": "components",
       "description": "A component for video-player",
       "dependencies": [],
       "registryDependencies": [],
@@ -249,6 +272,7 @@
       "type": "registry:component",
       "title": "Tabs",
       "badge": "beta",
+      "category": "components",
       "description": "A component for tabs",
       "dependencies": [],
       "registryDependencies": [],
@@ -275,6 +299,7 @@
       "type": "registry:component",
       "title": "Button",
       "badge": "beta",
+      "category": "components",
       "description": "A component for button",
       "dependencies": [],
       "registryDependencies": [],
@@ -296,6 +321,7 @@
       "type": "registry:component",
       "title": "Text Input",
       "badge": "beta",
+      "category": "inputs",
       "description": "A text input component with validation, error handling, and various styling options",
       "dependencies": [
         "zod"
@@ -320,24 +346,25 @@
       "name": "checkbox-input",
       "type": "registry:component",
       "title": "Checkbox Input",
-      "badge": "beta",
-      "description": "A checkbox input component with validation, error handling, and label support",
-      "dependencies": [
-        "zod"
-      ],
-      "registryDependencies": [
-        "checkbox"
-      ],
+      "category": "inputs",
+      "description": "A component for checkbox-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/checkbox-input.tsx",
+          "path": "registry/ui/checkbox-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/checkbox-input.tsx"
+          "target": "registry/ui/checkbox-input.tsx"
         },
         {
-          "path": "delta/inputs/checkbox-input-demo.tsx",
+          "path": "registry/examples/checkbox-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/checkbox-input-demo.tsx"
+          "target": "registry/examples/checkbox-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/checkbox-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/checkbox-input.mdx"
         }
       ]
     },
@@ -346,6 +373,7 @@
       "type": "registry:component",
       "title": "Select Input",
       "badge": "beta",
+      "category": "inputs",
       "description": "A select input component with both native and shadcn/ui select variants",
       "dependencies": [
         "zod",
@@ -371,24 +399,25 @@
       "name": "radio-input",
       "type": "registry:component",
       "title": "Radio Input",
-      "badge": "beta",
-      "description": "A radio input group component with validation and description support",
-      "dependencies": [
-        "zod"
-      ],
-      "registryDependencies": [
-        "radio-group"
-      ],
+      "category": "inputs",
+      "description": "A component for radio-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/radio-input.tsx",
+          "path": "registry/ui/radio-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/radio-input.tsx"
+          "target": "registry/ui/radio-input.tsx"
         },
         {
-          "path": "delta/inputs/radio-input-demo.tsx",
+          "path": "registry/examples/radio-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/radio-input-demo.tsx"
+          "target": "registry/examples/radio-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/radio-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/radio-input.mdx"
         }
       ]
     },
@@ -396,22 +425,30 @@
       "name": "switch-input",
       "type": "registry:component",
       "title": "Switch Input",
-      "badge": "beta",
-      "description": "A switch toggle component with validation and label support",
-      "dependencies": [
-        "zod",
-        "framer-motion"
-      ],
+      "category": "inputs",
+      "description": "A component for switch-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/switch-input.tsx",
+          "path": "registry/ui/switch-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/switch-input.tsx"
+          "target": "registry/ui/switch-input.tsx"
         },
         {
-          "path": "delta/inputs/switch-input-demo.tsx",
+          "path": "registry/examples/switch-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/switch-input-demo.tsx"
+          "target": "registry/examples/switch-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/switch-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/switch-input.mdx"
+        },
+        {
+          "path": "registry/examples/switch-input-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/switch-input-variants-demo.tsx"
         }
       ]
     },
@@ -419,24 +456,25 @@
       "name": "textarea-input",
       "type": "registry:component",
       "title": "Textarea Input",
-      "badge": "beta",
-      "description": "A textarea component with validation, error handling, and various styling options",
-      "dependencies": [
-        "zod"
-      ],
-      "registryDependencies": [
-        "textarea"
-      ],
+      "category": "inputs",
+      "description": "A component for textarea-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/textarea-input.tsx",
+          "path": "registry/ui/textarea-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/textarea-input.tsx"
+          "target": "registry/ui/textarea-input.tsx"
         },
         {
-          "path": "delta/inputs/textarea-input-demo.tsx",
+          "path": "registry/examples/textarea-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/textarea-input-demo.tsx"
+          "target": "registry/examples/textarea-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/textarea-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/textarea-input.mdx"
         }
       ]
     },
@@ -444,28 +482,25 @@
       "name": "date-input",
       "type": "registry:component",
       "title": "Date Input",
-      "badge": "beta",
-      "description": "A date picker component with validation, min/max date support, and formatting options",
-      "dependencies": [
-        "zod",
-        "date-fns",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "popover"
-      ],
+      "category": "inputs",
+      "description": "A component for date-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/date-input.tsx",
+          "path": "registry/ui/date-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/date-input.tsx"
+          "target": "registry/ui/date-input.tsx"
         },
         {
-          "path": "delta/inputs/date-input-demo.tsx",
+          "path": "registry/examples/date-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/date-input-demo.tsx"
+          "target": "registry/examples/date-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/date-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/date-input.mdx"
         }
       ]
     },
@@ -473,33 +508,34 @@
       "name": "file-input",
       "type": "registry:component",
       "title": "File Input",
-      "badge": "beta",
-      "description": "A file input component with drag and drop support, file previews, and validation",
-      "dependencies": [
-        "zod",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "category": "inputs",
+      "description": "A component for file-input",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/file-input.tsx",
+          "path": "registry/ui/file-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/file-input.tsx"
+          "target": "registry/ui/file-input.tsx"
         },
         {
-          "path": "delta/inputs/file-input-demo.tsx",
+          "path": "registry/examples/file-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/file-input-demo.tsx"
+          "target": "registry/examples/file-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/file-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/file-input.mdx"
         }
       ]
     },
     {
       "name": "smart-form",
-      "type": "registry:component",
+      "type": "registry:block",
       "title": "Smart Form",
       "badge": "beta",
+      "category": "blocks",
       "description": "A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.",
       "dependencies": [
         "zod",
@@ -509,7 +545,7 @@
       ],
       "registryDependencies": [
         "button",
-        "input",
+        "inputs",
         "checkbox",
         "select",
         "radio-group",
@@ -574,35 +610,32 @@
           "path": "delta/inputs/otp-input.tsx",
           "type": "registry:component",
           "target": "delta/inputs/otp-input.tsx"
-        },
-        {
-          "path": "delta/forms/smart-form-pills-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/forms/smart-form-pills-demo.tsx"
         }
       ]
     },
     {
       "name": "otp-input",
       "type": "registry:component",
-      "title": "OTP Input",
-      "badge": [
-        "beta",
-        "new"
-      ],
+      "title": "Otp Input",
+      "category": "inputs",
       "description": "A component for otp-input",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/inputs/otp-input.tsx",
+          "path": "registry/ui/otp-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/otp-input.tsx"
+          "target": "registry/ui/otp-input.tsx"
         },
         {
-          "path": "delta/inputs/otp-input-demo.tsx",
+          "path": "registry/examples/otp-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/otp-input-demo.tsx"
+          "target": "registry/examples/otp-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/otp-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/otp-input.mdx"
         }
       ]
     },
@@ -610,23 +643,24 @@
       "name": "floating-button",
       "type": "registry:component",
       "title": "Floating Button",
-      "description": "A customizable floating button component with positioning, tooltip, and responsive behavior.",
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ],
-      "registryDependencies": [
-        "tooltip"
-      ],
+      "description": "A component for floating-button",
+      "dependencies": [],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "delta/components/floating-button.tsx",
+          "path": "registry/ui/floating-button.tsx",
           "type": "registry:component",
-          "target": "delta/components/floating-button.tsx"
+          "target": "registry/ui/floating-button.tsx"
         },
         {
-          "path": "delta/components/floating-button-demo.tsx",
+          "path": "registry/examples/floating-button-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/floating-button-demo.tsx"
+          "target": "registry/examples/floating-button-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/floating-button.mdx",
+          "type": "registry:component",
+          "target": "content/docs/floating-button.mdx"
         }
       ]
     },
@@ -634,6 +668,7 @@
       "name": "footer",
       "type": "registry:component",
       "title": "Footer",
+      "category": "layout",
       "description": "A component for footer",
       "dependencies": [],
       "registryDependencies": [],
@@ -654,6 +689,7 @@
       "name": "header",
       "type": "registry:component",
       "title": "Header",
+      "category": "layout",
       "description": "A component for header",
       "dependencies": [],
       "registryDependencies": [],
@@ -694,6 +730,7 @@
       "name": "logo",
       "type": "registry:component",
       "title": "Logo",
+      "category": "components",
       "description": "A component for logo",
       "dependencies": [],
       "registryDependencies": [],
@@ -714,6 +751,7 @@
       "name": "code-block",
       "type": "registry:component",
       "title": "Code Block",
+      "category": "components",
       "description": "A component for code-block",
       "dependencies": [],
       "registryDependencies": [],
@@ -737,6 +775,32 @@
           "path": "registry/examples/code-block-themes-demo.tsx",
           "type": "registry:component",
           "target": "registry/examples/code-block-themes-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "back-button",
+      "type": "registry:component",
+      "title": "Back Button",
+      "category": "components",
+      "description": "A component for back-button",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/back-button.tsx",
+          "type": "registry:component",
+          "target": "registry/ui/back-button.tsx"
+        },
+        {
+          "path": "registry/examples/back-button-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "registry/examples/back-button-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/back-button.mdx",
+          "type": "registry:component",
+          "target": "content/docs/back-button.mdx"
         }
       ]
     }

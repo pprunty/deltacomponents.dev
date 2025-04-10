@@ -1,32 +1,23 @@
-import './globals.css';
-import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
+import type React from "react"
+import type { Metadata } from "next"
+import "./globals.css"
+import { Hanken_Grotesk } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import config from '@/app/config';
 import { doge } from './doge';
 import { Header } from './header';
 import Footer from './footer';
+import Link from 'next/link';
+import { GitHubStars } from './github-stars';
+import ScrambleIn from "@/registry/ui/scramble-in";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'], // Added weights including semibold (600)
-  display: 'swap',
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  weight: ['400', '600'], // Added regular and semibold weights
-  display: 'swap',
-});
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  userScalable: true,
-  themeColor: 'transparent',
-};
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-hanken-grotesk",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: `${config.companyName}`,
@@ -149,22 +140,97 @@ export default function RootLayout({
         />
         <link rel="mask-icon" href="/icons/16x16.png" color="#4E90F9" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className="max-w-3xl mx-auto px-4 justify-center sm:px-12 mt-4 sm:mt-8 min-h-screen">
-            <Header />
-            {children}
-          </main>
-          <Footer />
+      <body className={`${hankenGrotesk.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="relative min-h-screen">
+            {/* Top left corner */}
+            <Link 
+              href="/getting-started" 
+              className="fixed top-6 left-6 hidden sm:block"
+            >
+              <ScrambleIn 
+                text="Getting Started"
+                className="text-2xl font-bold hover:underline hover:decoration-2"
+                scrambledClassName="text-2xl font-bold hover:underline hover:decoration-2"
+                scrambleSpeed={30}
+                scrambledLetterCount={2}
+                useIntersectionObserver={true}
+                retriggerOnIntersection={true}
+              />
+              {" "}🚀
+            </Link>
+
+            {/* Top right corner */}
+            <div className="fixed top-6 right-6 flex items-center gap-2 hidden sm:flex">
+              <GitHubStars 
+                repo="pprunty/deltacomponents.dev"
+                className="text-2xl font-bold"
+              />
+              <Link 
+                href="https://github.com/pprunty/deltacomponents.dev" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl font-bold hover:underline hover:decoration-2 flex items-center gap-1"
+              >
+                <ScrambleIn 
+                  text="GitHub"
+                  className="text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambledClassName="text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambleSpeed={30}
+                  scrambledLetterCount={2}
+                  useIntersectionObserver={true}
+                  retriggerOnIntersection={true}
+                />
+                <ArrowUpRight size={16} weight="bold" />
+              </Link>
+            </div>
+
+            {/* Main content */}
+            <main className="max-w-3xl md:mx-auto px-4 pt-20 pb-32 sm:pb-20 flex flex-col items-center justify-center min-h-screen">
+              <Header />
+              {children}
+            </main>
+
+            {/* Bottom links - footer style on mobile, fixed on desktop */}
+            <div className="w-full flex justify-between my-8 px-4 sm:px-0">
+              <Link 
+                href="https://patrickprunty.com" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sm:fixed relative sm:bottom-6 sm:left-6 flex items-center gap-1"
+              >
+                <ScrambleIn 
+                  text="Patrick Prunty"
+                  className="text-lg sm:text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambledClassName="text-lg sm:text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambleSpeed={30}
+                  scrambledLetterCount={2}
+                  useIntersectionObserver={true}
+                  retriggerOnIntersection={true}
+                />
+                <ArrowUpRight size={16} weight="bold" />
+              </Link>
+              <Link 
+                href="https://www.buymeacoffee.com/patrickprunty" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sm:fixed relative sm:bottom-6 sm:right-6 flex items-center gap-1"
+              >
+                <ScrambleIn 
+                  text="Buy Me A Coffee"
+                  className="text-lg sm:text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambledClassName="text-lg sm:text-2xl font-bold hover:underline hover:decoration-2"
+                  scrambleSpeed={30}
+                  scrambledLetterCount={2}
+                  useIntersectionObserver={true}
+                  retriggerOnIntersection={true}
+                />
+                <ArrowUpRight size={16} weight="bold" />
+              </Link>
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

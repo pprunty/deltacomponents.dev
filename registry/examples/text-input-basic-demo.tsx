@@ -1,26 +1,15 @@
+"use client"
+
 import { TextInput } from "@/registry/ui/text-input"
 
 export default function TextInputBasicDemo() {
   return (
-    <div className="w-full max-w-sm mx-auto space-y-4">
+    <div className="max-w-md mx-auto">
       <TextInput
         label="Username"
         name="username"
-        placeholder="Enter your username"
-        required
-      />
-      <TextInput
-        label="Email"
-        name="email"
-        type="email"
-        placeholder="Enter your email"
-        required
-      />
-      <TextInput
-        label="Password"
-        name="password"
-        type="password"
-        placeholder="Enter your password"
+        description="Enter a unique username for your account"
+        placeholder="johndoe"
         required
       />
     </div>

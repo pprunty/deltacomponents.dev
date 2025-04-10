@@ -1,0 +1,211 @@
+export const metadata = {
+  title: 'CheckboxInput | Delta Components',
+  description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'checkbox', 'checkbox input', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/checkbox-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'CheckboxInput Component | Delta Components',
+    description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/checkbox-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/checkbox-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'CheckboxInput Component Preview showing various states and features'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Checkbox', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CheckboxInput Component | Delta Components',
+    description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/checkbox-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# CheckboxInput
+
+A customizable checkbox input component with validation support, error handling, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="checkbox-input-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "checkbox-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the checkbox</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the checkbox field (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the checkbox</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`hint`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional hint text to display below the checkbox</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the checkbox is disabled</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`checked`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Controlled checked state</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`defaultChecked`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Default checked state</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Basic Example
+
+```tsx
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function Example() {
+  return (
+    <CheckboxInput
+      label="Accept terms and conditions"
+      name="terms"
+      description="By accepting, you agree to our Terms of Service and Privacy Policy"
+      required
+    />
+  )
+}
+```
+
+### With Hint and Error
+
+```tsx
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function Example() {
+  return (
+    <CheckboxInput
+      label="Subscribe to newsletter"
+      name="newsletter"
+      hint="We'll send you weekly updates and offers"
+      error="You must accept to continue"
+    />
+  )
+}
+```
+
+### Controlled Component
+
+```tsx
+import { useState } from "react"
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function ControlledExample() {
+  const [isChecked, setIsChecked] = useState(false)
+  
+  return (
+    <CheckboxInput
+      label="I agree to receive marketing emails"
+      name="marketing"
+      checked={isChecked}
+      onCheckedChange={setIsChecked}
+    />
+  )
+}
+```
+
+## Accessibility
+
+The CheckboxInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the checkbox
+- Keyboard navigation support
+- Clear focus states for keyboard users

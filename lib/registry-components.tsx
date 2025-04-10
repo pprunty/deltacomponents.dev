@@ -30,12 +30,22 @@ import FooterDemo from "@/delta/layout/footer-demo"
 import HeaderDemo from "@/delta/layout/header-demo"
 import LogoDemo from "@/delta/layout/logo-demo"
 import CodeBlockDemo from "@/delta/components/code-block-demo"
-import CodeBlockDemo from "@/delta/components/code-block-demo"
 import NeobrutalismCardColorVariantsDemo from "@/registry/examples/neobrutalism-card-color-variants-demo"
 import TabsSpotifyDemo from "@/registry/examples/tabs-spotify-demo"
-import SmartFormPillsDemo from "@/delta/forms/smart-form-pills-demo"
 import CodeBlockThemesDemo from "@/registry/examples/code-block-themes-demo"
 import NeobrutalismCardFormDemo from "@/registry/examples/neobrutalism-card-form-demo"
+import ScrambleInObserverDemo from "@/registry/examples/scramble-in-observer-demo"
+import AdmonitionSolidDemo from "@/registry/examples/admonition-solid-demo"
+import BackButtonDemo from "@/delta/components/back-button-demo"
+import SwitchInputVariantsDemo from "@/registry/examples/switch-input-variants-demo"
+import FloatingButtonDemo from "@/delta/components/floating-button-demo"
+import TextareaInputDemo from "@/delta/components/textarea-input-demo"
+import FileInputDemo from "@/delta/components/file-input-demo"
+import DateInput.tsxDemo from "@/delta/components/date-input.tsx-demo"
+import DateInputDemo from "@/delta/components/date-input-demo"
+import RadioInputDemo from "@/delta/components/radio-input-demo"
+import CheckboxInputDemo from "@/delta/components/checkbox-input-demo"
+import ModalDemo from "@/delta/components/modal-demo"
 
 // Create a registry object that maps component names to their implementations
 export const registry: Record<string, { component: React.ComponentType }> = {
@@ -116,30 +126,59 @@ export const registry: Record<string, { component: React.ComponentType }> = {
   },
   header: {
     component: HeaderDemo
-  }
-  ,
+  },
   "logo": {
-    component: LogoDemo,
+    component: LogoDemo
   },
   "code-block": {
-    component: CodeBlockDemo,
-  },
-,
-  "code-block": {
-    component: CodeBlockDemo,
+    component: CodeBlockDemo
   },
   "neobrutalism-card-color-variants": {
-    component: NeobrutalismCardColorVariantsDemo,
+    component: NeobrutalismCardColorVariantsDemo
   },
   "tabs-spotify": {
-    component: TabsSpotifyDemo,
-  },
-  "smart-form-pills": {
-    component: SmartFormPillsDemo,
+    component: TabsSpotifyDemo
   },
   "code-block-themes": {
-    component: CodeBlockThemesDemo,
+    component: CodeBlockThemesDemo
   },
   "neobrutalism-card-form": {
-    component: NeobrutalismCardFormDemo,
+    component: NeobrutalismCardFormDemo
+  },
+  "scramble-in-observer": {
+    component: ScrambleInObserverDemo
+  },
+  "admonition-solid": {
+    component: AdmonitionSolidDemo
+  },
+  "back-button": {
+    component: BackButtonDemo
+  },
+  "switch-input-variants": {
+    component: SwitchInputVariantsDemo
+  }
+,
+  "floating-button": {
+    component: FloatingButtonDemo,
+  },
+  "textarea-input": {
+    component: TextareaInputDemo,
+  },
+  "file-input": {
+    component: FileInputDemo,
+  },
+  "date-input.tsx": {
+    component: DateInput.tsxDemo,
+  },
+  "date-input": {
+    component: DateInputDemo,
+  },
+  "radio-input": {
+    component: RadioInputDemo,
+  },
+  "checkbox-input": {
+    component: CheckboxInputDemo,
+  },
+  "modal": {
+    component: ModalDemo,
   },};

@@ -1,0 +1,247 @@
+export const metadata = {
+  title: 'RadioInput | Delta Components',
+  description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'radio', 'radio input', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/radio-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'RadioInput Component | Delta Components',
+    description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/radio-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/radio-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'RadioInput Component Preview showing various states and features'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Radio', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RadioInput Component | Delta Components',
+    description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/radio-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# RadioInput
+
+A customizable radio input component with validation support, orientation options, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="radio-input-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "radio-input"
+```
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`label`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The label for the radio group</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`name`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">The name of the radio group (used for form submission)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`options`</td>
+        <td className="border px-4 py-2 text-left">`Array<{ value: string, label: string, description?: string, disabled?: boolean }>`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Options for the radio group</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`description`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`error`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`required`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the field is required</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`orientation`</td>
+        <td className="border px-4 py-2 text-left">`'vertical' | 'horizontal'`</td>
+        <td className="border px-4 py-2 text-left">`'vertical'`</td>
+        <td className="border px-4 py-2 text-left">Layout orientation - 'vertical' or 'horizontal'</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`value`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Controlled selected value</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`defaultValue`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Default selected value</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`disabled`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether the radio group is disabled</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+### Basic Example
+
+```tsx
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function Example() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]
+
+  return (
+    <RadioInput
+      label="Select an option"
+      name="options"
+      options={options}
+      defaultValue="option1"
+    />
+  )
+}
+```
+
+### Horizontal Layout
+
+```tsx
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function HorizontalExample() {
+  const options = [
+    { value: "yes", label: "Yes" },
+    { value: "no", label: "No" }
+  ]
+
+  return (
+    <RadioInput
+      label="Proceed with action?"
+      name="confirm"
+      options={options}
+      orientation="horizontal"
+    />
+  )
+}
+```
+
+### With Descriptions and Controlled State
+
+```tsx
+import { useState } from "react"
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function ControlledExample() {
+  const [selectedOption, setSelectedOption] = useState("basic")
+  
+  const options = [
+    { 
+      value: "basic", 
+      label: "Basic Plan", 
+      description: "$10/month - Access to basic features" 
+    },
+    { 
+      value: "pro", 
+      label: "Pro Plan", 
+      description: "$25/month - Access to all features" 
+    },
+    { 
+      value: "enterprise", 
+      label: "Enterprise Plan", 
+      description: "$100/month - Priority support and custom features" 
+    }
+  ]
+  
+  return (
+    <RadioInput
+      label="Select Subscription Plan"
+      name="plan"
+      options={options}
+      value={selectedOption}
+      onValueChange={setSelectedOption}
+    />
+  )
+}
+```
+
+## Accessibility
+
+The RadioInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the radio group
+- Keyboard navigation support
+- Clear focus states for keyboard users

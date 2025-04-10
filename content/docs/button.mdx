@@ -1,3 +1,64 @@
+export const metadata = {
+  title: 'Button | Delta Components',
+  description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'button component', 'ui components', 'neobrutalism', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/button',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Button Component | Delta Components',
+    description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/button',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/button.png',
+        width: 1200,
+        height: 630,
+        alt: 'Button Component Preview showing primary, secondary, destructive, action, neobrutalism and ghost variants'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Button', 'Neobrutalism'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Button Component | Delta Components',
+    description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+    images: ['https://deltacomponents.dev/og/button.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
 # Button
 
 A versatile button component with multiple variants, states, and customization options.
@@ -32,8 +93,14 @@ npx shadcn@latest add "https://deltacomponents.dev/r/tabs.json"
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`title`</td>
         <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">Required</td>
-        <td className="border px-4 py-2 text-left">The text content of the button (can be empty for icon-only buttons)</td>
+        <td className="border px-4 py-2 text-left">Optional</td>
+        <td className="border px-4 py-2 text-left">The text content of the button. Takes precedence over `children` if both are provided</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`children`</td>
+        <td className="border px-4 py-2 text-left">`ReactNode`</td>
+        <td className="border px-4 py-2 text-left">Optional</td>
+        <td className="border px-4 py-2 text-left">Alternative way to provide button content. Used when `title` is not provided</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`variant`</td>
@@ -136,7 +203,13 @@ import { Button } from "@/components/ui/button"
 
 export default function ButtonDemo() {
   return (
-    <Button variant="primary" title="Click me" />
+    <div className="space-y-4">
+      {/* Using the title prop (preferred) */}
+      <Button variant="primary" title="Click me" />
+      
+      {/* Using children */}
+      <Button variant="secondary">Click me too</Button>
+    </div>
   )
 }
 ```

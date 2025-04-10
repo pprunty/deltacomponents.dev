@@ -7,8 +7,8 @@ export function Header() {
       <Link href="/">
         <svg
           className="fill-foreground dark:fill-foreground transition-colors"
-          width="28"
-          height="28"
+          width="36"
+          height="36"
           viewBox="0 0 282 308"
           xmlns="http://www.w3.org/2000/svg"
         >
