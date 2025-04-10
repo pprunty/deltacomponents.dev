@@ -38,7 +38,7 @@
     "registry:add:demo": "node scripts/add.js demo",
     "registry:remove": "node scripts/rm.js",
     "pwa": "node scripts/pwa.js",
-    "postbuild": "npm run pwa && npm run registry:build",
+    "postbuild": "npm run pwa",
     "add": "node scripts/add.js",
     "delete-component": "ts-node scripts/delete-component.ts"
   },
