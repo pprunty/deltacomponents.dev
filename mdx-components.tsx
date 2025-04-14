@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { MDXComponents } from 'mdx/types';
-import CodeBlock from '@/registry/ui/code-block';
+import CodeBlock from '@/delta/components/code-block';
 import { ComponentTabs } from '@/components/component-tabs';
 import { cn } from "@/lib/utils"
 import React from 'react';

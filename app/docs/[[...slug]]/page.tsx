@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import { getComponentByName } from "@/lib/registry"
-import { componentRegistry } from "@/registry/mapping"
-import { demoComponents } from "@/registry/demos"
+import { componentRegistry } from "@/delta/mapping"
+import { demoComponents } from "@/delta/demos"
 
 interface DocPageProps {
   params: Promise<{

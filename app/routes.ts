@@ -465,6 +465,25 @@ export const componentMetadata: Record<string, Metadata> = {
       ],
     },
   },
+  'share-button': {
+    title: 'Share Button | Delta Components',
+    description:
+      'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback for desktop browsers.',
+    openGraph: {
+      title: 'Share Button | Delta Components',
+      description:
+        'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback for desktop browsers.',
+      url: `${BASE_URL}/docs/share-button`,
+      images: [
+        {
+          url: `${BASE_URL}/og/share-button.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Share Button Component Preview',
+        },
+      ],
+    },
+  },
 };
 
 // Helper function to get metadata for a component

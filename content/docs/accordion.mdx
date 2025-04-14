@@ -1,0 +1,211 @@
+export const metadata = {
+  title: 'Accordion | Delta Components',
+  description: 'A versatile accordion component that extends shadcn/ui with additional features like chevron positioning, variants, and sizes. Perfect for organizing and displaying collapsible content sections.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'accordion', 'collapsible', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/accordion',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Accordion Component | Delta Components',
+    description: 'A versatile accordion component that extends shadcn/ui with additional features like chevron positioning, variants, and sizes.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/accordion',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/accordion.png',
+        width: 1200,
+        height: 630,
+        alt: 'Accordion Component Preview showing different variants and features'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Accordion', 'Collapsible'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accordion Component | Delta Components',
+    description: 'A versatile accordion component that extends shadcn/ui with additional features like chevron positioning, variants, and sizes.',
+    images: ['https://deltacomponents.dev/og/accordion.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  }
+}
+
+# Accordion
+
+A versatile accordion component that extends shadcn/ui with additional features like chevron positioning, variants, and sizes. Perfect for organizing and displaying collapsible content sections.
+
+## Basic Usage
+
+<ComponentTabs name="accordion-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "accordion"
+```
+
+## Features
+
+- **Multiple Variants**: Choose from default, bordered, and ghost styles
+- **Customizable Sizes**: Small, medium, and large text sizes
+- **Flexible Chevron**: Position chevrons on the left or right
+- **Chevron Variants**: Choose between down and right chevron styles
+- **Accessibility**: Fully accessible with proper ARIA attributes
+- **Animations**: Smooth open/close animations
+- **Type Support**: Single or multiple item expansion
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`"default" | "bordered" | "ghost"`</td>
+        <td className="border px-4 py-2 text-left">`"default"`</td>
+        <td className="border px-4 py-2 text-left">Visual style of the accordion</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`size`</td>
+        <td className="border px-4 py-2 text-left">`"sm" | "md" | "lg"`</td>
+        <td className="border px-4 py-2 text-left">`"md"`</td>
+        <td className="border px-4 py-2 text-left">Text size of the accordion</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`type`</td>
+        <td className="border px-4 py-2 text-left">`"single" | "multiple"`</td>
+        <td className="border px-4 py-2 text-left">`"single"`</td>
+        <td className="border px-4 py-2 text-left">Whether to allow single or multiple items to be expanded</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`chevronPosition`</td>
+        <td className="border px-4 py-2 text-left">`"left" | "right"`</td>
+        <td className="border px-4 py-2 text-left">`"right"`</td>
+        <td className="border px-4 py-2 text-left">Position of the chevron icon</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`chevronVariant`</td>
+        <td className="border px-4 py-2 text-left">`"down" | "right"`</td>
+        <td className="border px-4 py-2 text-left">`"down"`</td>
+        <td className="border px-4 py-2 text-left">Style of the chevron icon</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Usage Examples
+
+### Basic Accordion
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/delta/components/accordion"
+
+export default function AccordionDemo() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that match the other components.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+```
+
+### Bordered Variant with Left Chevron
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/delta/components/accordion"
+
+export default function AccordionDemo() {
+  return (
+    <Accordion variant="bordered" size="lg">
+      <AccordionItem value="item-1">
+        <AccordionTrigger chevronPosition="left">
+          What is Delta Components?
+        </AccordionTrigger>
+        <AccordionContent>
+          Delta Components is a collection of reusable React components built on top of shadcn/ui.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+```
+
+### Multiple Items with Right Chevron
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/delta/components/accordion"
+
+export default function AccordionDemo() {
+  return (
+    <Accordion type="multiple">
+      <AccordionItem value="item-1">
+        <AccordionTrigger chevronVariant="right">
+          How do I install?
+        </AccordionTrigger>
+        <AccordionContent>
+          You can install using the CLI command: npx shadcn@latest add "accordion"
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger chevronVariant="right">
+          Can I customize it?
+        </AccordionTrigger>
+        <AccordionContent>
+          Yes, you can customize the component using the provided props and Tailwind CSS.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+```
+
+<ComponentTabs name="accordion-neobrutalism" />
+
+
+## Accessibility
+
+The Accordion component follows WAI-ARIA guidelines and includes:
+
+- Proper ARIA attributes for expanded/collapsed states
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- Semantic HTML structure
+
+## Animations
+
+The component includes smooth animations for opening and closing accordion items. These animations are implemented using CSS transitions and can be customized using Tailwind CSS classes. 

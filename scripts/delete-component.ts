@@ -18,10 +18,10 @@ const componentNamePascal = componentName
 
 // Define paths
 const paths = {
-  ui: path.join(process.cwd(), 'registry/ui'),
-  examples: path.join(process.cwd(), 'registry/examples'),
-  demos: path.join(process.cwd(), 'registry/demos.ts'),
-  mapping: path.join(process.cwd(), 'registry/mapping.ts'),
+  ui: path.join(process.cwd(), 'delta/components'),
+  examples: path.join(process.cwd(), 'delta/examples'),
+  demos: path.join(process.cwd(), 'delta/demos.ts'),
+  mapping: path.join(process.cwd(), 'delta/mapping.ts'),
   page: path.join(process.cwd(), 'app/docs/[[...slug]]/page.tsx'),
   docs: path.join(process.cwd(), 'content/docs'),
 };
@@ -47,7 +47,7 @@ filesToDelete.forEach(file => {
 let demosContent = fs.readFileSync(paths.demos, 'utf8');
 
 // Remove import statement
-const importPattern = new RegExp(`import\\s*{\\s*${componentNamePascal}BasicDemo\\s*}\\s*from\\s*"@/registry/examples/${componentName}-basic-demo".*\n`, 'g');
+const importPattern = new RegExp(`import\\s*{\\s*${componentNamePascal}BasicDemo\\s*}\\s*from\\s*"@/delta/examples/${componentName}-basic-demo".*\n`, 'g');
 demosContent = demosContent.replace(importPattern, '');
 
 // Remove component from demoComponents object

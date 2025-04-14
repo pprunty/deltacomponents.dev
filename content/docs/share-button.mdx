@@ -1,0 +1,261 @@
+export const metadata = {
+  title: 'ShareButton | Delta Components',
+  description: 'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback. Integrates seamlessly with modern web applications and supports customization for various use cases.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'share button', 'web share api', 'delta components', 'ui components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/share-button',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'ShareButton Component | Delta Components',
+    description: 'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback. Perfect for enhancing user engagement and social sharing.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/share-button',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/share-button.png',
+        width: 1200,
+        height: 630,
+        alt: 'ShareButton Component Preview showing different variants and sizes'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Sharing', 'Web Share API'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+}
+
+# ShareButton
+
+A versatile share button component that leverages the Web Share API for mobile devices and falls back to clipboard copy functionality for desktop browsers.
+
+## Basic Usage
+
+<ComponentTabs name="share-button-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "share-button"
+```
+
+## Features
+
+- **Native Share API Support**: Uses the Web Share API on compatible devices for a native sharing experience
+- **Copy to Clipboard Fallback**: Falls back to copying the URL to clipboard on desktop or unsupported browsers
+- **Visual Feedback**: Shows a confirmation message after successful copy operations
+- **Customizable**: Supports custom messages, URLs, styles, and icons
+- **Accessibility**: Fully accessible with proper ARIA attributes
+- **Flexible Desktop Behavior**: Option to use native share API on desktop or default clipboard copy
+
+## Props
+
+<div className="my-6 w-full overflow-y-auto">
+  <table className="w-full">
+    <thead>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <th className="border px-4 py-2 text-left font-bold">Prop</th>
+        <th className="border px-4 py-2 text-left font-bold">Type</th>
+        <th className="border px-4 py-2 text-left font-bold">Default</th>
+        <th className="border px-4 py-2 text-left font-bold">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`message`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`"Check out this page: "`</td>
+        <td className="border px-4 py-2 text-left">Custom message to include when sharing</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`title`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">document.title</td>
+        <td className="border px-4 py-2 text-left">Title to use in the share dialog</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`url`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">current URL</td>
+        <td className="border px-4 py-2 text-left">URL to share (defaults to current page URL)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`tooltip`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">`"Share this page"`</td>
+        <td className="border px-4 py-2 text-left">Tooltip text for the button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`className`</td>
+        <td className="border px-4 py-2 text-left">`string`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`icon`</td>
+        <td className="border px-4 py-2 text-left">`ReactNode`</td>
+        <td className="border px-4 py-2 text-left">Export icon</td>
+        <td className="border px-4 py-2 text-left">Custom icon element (deprecated, use children instead)</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`children`</td>
+        <td className="border px-4 py-2 text-left">`ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Custom content to render inside the button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`variant`</td>
+        <td className="border px-4 py-2 text-left">`"default" | "outline" | "ghost"`</td>
+        <td className="border px-4 py-2 text-left">`"default"`</td>
+        <td className="border px-4 py-2 text-left">Button style variant</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`size`</td>
+        <td className="border px-4 py-2 text-left">`"sm" | "md" | "lg"`</td>
+        <td className="border px-4 py-2 text-left">`"md"`</td>
+        <td className="border px-4 py-2 text-left">Button size</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`notificationPosition`</td>
+        <td className="border px-4 py-2 text-left">`"top" | "bottom"`</td>
+        <td className="border px-4 py-2 text-left">`"top"`</td>
+        <td className="border px-4 py-2 text-left">Position of the notification</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`notificationDuration`</td>
+        <td className="border px-4 py-2 text-left">`number`</td>
+        <td className="border px-4 py-2 text-left">`2000`</td>
+        <td className="border px-4 py-2 text-left">Duration of notification in milliseconds</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`nativeShareOnDesktop`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`true`</td>
+        <td className="border px-4 py-2 text-left">Force using native share API on desktop instead of clipboard copy</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Usage Examples
+
+### Basic Share Button
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return <ShareButton />;
+}
+```
+
+### Custom Content and Styling
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+import { Share } from "@phosphor-icons/react";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      tooltip="Share this content"
+      className="hover:bg-blue-100 dark:hover:bg-blue-900/30"
+    >
+      <div className="flex items-center gap-2">
+        <Share weight="bold" size={24} />
+        <span>Share</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+### Custom Icon and Styling (Legacy)
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+import { Share } from "@phosphor-icons/react";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      icon={<Share weight="bold" size={24} />}
+      variant="outline"
+      size="lg"
+      className="hover:bg-blue-100 dark:hover:bg-blue-900/30"
+    />
+  );
+}
+```
+
+### Custom URL and Message
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      url="https://deltacomponents.dev"
+      message="Check out Delta Components, a modern UI component library: "
+      title="Delta Components"
+    >
+      <div className="flex items-center gap-2">
+        <span>Share Delta Components</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+### Native Share API on Desktop
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      nativeShareOnDesktop={true}
+      tooltip="Share using native dialog"
+    >
+      <div className="flex items-center gap-2">
+        <span>Share with Native Dialog</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+## Browser Compatibility
+
+The Web Share API is supported in:
+- Chrome for Android (61+)
+- Safari for iOS (12.2+)
+- Safari on macOS (Monterey+)
+- Chrome on desktop (89+)
+- Edge (79+)
+- Opera (76+)
+
+On unsupported browsers or when `nativeShareOnDesktop` is `false` on desktop, the component falls back to copying the URL to clipboard and displaying a notification.
+
+## Accessibility
+
+The ShareButton component follows accessibility best practices:
+
+- Includes proper `aria-label` attributes
+- Uses semantic HTML for the button element
+- Provides visual feedback on successful actions
+- Maintains focus management best practices
+- Uses appropriate color contrast ratios

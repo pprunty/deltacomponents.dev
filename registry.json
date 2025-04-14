@@ -50,19 +50,19 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/admonition.tsx",
+          "path": "delta/components/admonition.tsx",
           "type": "registry:component",
-          "target": "registry/ui/admonition.tsx"
+          "target": "delta/components/admonition.tsx"
         },
         {
-          "path": "registry/examples/admonition-basic-demo.tsx",
+          "path": "delta/examples/admonition-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/admonition-basic-demo.tsx"
+          "target": "delta/components/admonition-basic-demo.tsx"
         },
         {
-          "path": "registry/examples/admonition-solid-demo.tsx",
+          "path": "delta/examples/admonition-solid-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/admonition-solid-demo.tsx"
+          "target": "delta/examples/admonition-solid-demo.tsx"
         }
       ]
     },
@@ -76,14 +76,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/modal.tsx",
+          "path": "delta/components/modal.tsx",
           "type": "registry:component",
-          "target": "registry/ui/modal.tsx"
+          "target": "delta/components/modal.tsx"
         },
         {
-          "path": "registry/examples/modal-basic-demo.tsx",
+          "path": "delta/examples/modal-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/modal-basic-demo.tsx"
+          "target": "delta/examples/modal-basic-demo.tsx"
         },
         {
           "path": "content/docs/modal.mdx",
@@ -102,14 +102,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/scramble-in.tsx",
+          "path": "delta/components/scramble-in.tsx",
           "type": "registry:component",
-          "target": "registry/ui/scramble-in.tsx"
+          "target": "delta/components/scramble-in.tsx"
         },
         {
-          "path": "registry/examples/scramble-in-basic-demo.tsx",
+          "path": "delta/examples/scramble-in-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/scramble-in-basic-demo.tsx"
+          "target": "delta/examples/scramble-in-basic-demo.tsx"
         },
         {
           "path": "content/docs/scramble-in.mdx",
@@ -117,9 +117,9 @@
           "target": "content/docs/scramble-in.mdx"
         },
         {
-          "path": "registry/examples/scramble-in-observer-demo.tsx",
+          "path": "delta/examples/scramble-in-observer-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/scramble-in-observer-demo.tsx"
+          "target": "delta/examples/scramble-in-observer-demo.tsx"
         }
       ]
     },
@@ -136,22 +136,22 @@
         {
           "path": "delta/open-source-inspired-collection/neobrutalism-card.tsx",
           "type": "registry:component",
-          "target": "registry/ui/neobrutalism-card.tsx"
+          "target": "delta/components/neobrutalism-card.tsx"
         },
         {
           "path": "delta/open-source-inspired-collection/neobrutalism-card-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/neobrutalism-card-demo.tsx"
+          "target": "delta/components/neobrutalism-card-demo.tsx"
         },
         {
-          "path": "registry/examples/neobrutalism-card-color-variants-demo.tsx",
+          "path": "delta/examples/neobrutalism-card-color-variants-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/neobrutalism-card-color-variants-demo.tsx"
+          "target": "delta/examples/neobrutalism-card-color-variants-demo.tsx"
         },
         {
-          "path": "registry/examples/neobrutalism-card-form-demo.tsx",
+          "path": "delta/examples/neobrutalism-card-form-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/neobrutalism-card-form-demo.tsx"
+          "target": "delta/examples/neobrutalism-card-form-demo.tsx"
         }
       ]
     },
@@ -205,14 +205,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/full-bleed-section.tsx",
+          "path": "delta/components/full-bleed-section.tsx",
           "type": "registry:component",
-          "target": "registry/ui/full-bleed-section.tsx"
+          "target": "delta/components/full-bleed-section.tsx"
         },
         {
-          "path": "registry/ui/full-bleed-section-demo.tsx",
+          "path": "delta/components/full-bleed-section-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/full-bleed-section-demo.tsx"
+          "target": "delta/components/full-bleed-section-demo.tsx"
         }
       ]
     },
@@ -229,19 +229,19 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/tweet.tsx",
+          "path": "delta/components/tweet.tsx",
           "type": "registry:component",
-          "target": "registry/ui/tweet.tsx"
+          "target": "delta/components/tweet.tsx"
         },
         {
-          "path": "registry/ui/tweet-demo.tsx",
+          "path": "delta/components/tweet-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/tweet-demo.tsx"
+          "target": "delta/components/tweet-demo.tsx"
         },
         {
-          "path": "registry/ui/tweet.css",
+          "path": "delta/components/tweet.css",
           "type": "registry:file",
-          "target": "registry/ui/tweet.css"
+          "target": "delta/components/tweet.css"
         }
       ]
     },
@@ -256,14 +256,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/video-player.tsx",
+          "path": "delta/components/video-player.tsx",
           "type": "registry:component",
-          "target": "registry/ui/video-player.tsx"
+          "target": "delta/components/video-player.tsx"
         },
         {
-          "path": "registry/ui/video-player-demo.tsx",
+          "path": "delta/components/video-player-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/video-player-demo.tsx"
+          "target": "delta/components/video-player-demo.tsx"
         }
       ]
     },
@@ -278,19 +278,19 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/tabs.tsx",
+          "path": "delta/components/tabs.tsx",
           "type": "registry:component",
-          "target": "registry/ui/tabs.tsx"
+          "target": "delta/components/tabs.tsx"
         },
         {
-          "path": "registry/ui/tabs-demo.tsx",
+          "path": "delta/components/tabs-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/tabs-demo.tsx"
+          "target": "delta/components/tabs-demo.tsx"
         },
         {
-          "path": "registry/examples/tabs-spotify-demo.tsx",
+          "path": "delta/examples/tabs-spotify-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/tabs-spotify-demo.tsx"
+          "target": "delta/examples/tabs-spotify-demo.tsx"
         }
       ]
     },
@@ -305,14 +305,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/button.tsx",
+          "path": "delta/components/button.tsx",
           "type": "registry:component",
-          "target": "registry/ui/button.tsx"
+          "target": "delta/components/button.tsx"
         },
         {
-          "path": "registry/ui/button-demo.tsx",
+          "path": "delta/components/button-demo.tsx",
           "type": "registry:component",
-          "target": "registry/ui/button-demo.tsx"
+          "target": "delta/components/button-demo.tsx"
         }
       ]
     },
@@ -352,14 +352,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/checkbox-input.tsx",
+          "path": "delta/components/checkbox-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/checkbox-input.tsx"
+          "target": "delta/components/checkbox-input.tsx"
         },
         {
-          "path": "registry/examples/checkbox-input-basic-demo.tsx",
+          "path": "delta/examples/checkbox-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/checkbox-input-basic-demo.tsx"
+          "target": "delta/examples/checkbox-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/checkbox-input.mdx",
@@ -405,14 +405,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/radio-input.tsx",
+          "path": "delta/components/radio-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/radio-input.tsx"
+          "target": "delta/components/radio-input.tsx"
         },
         {
-          "path": "registry/examples/radio-input-basic-demo.tsx",
+          "path": "delta/examples/radio-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/radio-input-basic-demo.tsx"
+          "target": "delta/examples/radio-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/radio-input.mdx",
@@ -431,14 +431,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/switch-input.tsx",
+          "path": "delta/components/switch-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/switch-input.tsx"
+          "target": "delta/components/switch-input.tsx"
         },
         {
-          "path": "registry/examples/switch-input-basic-demo.tsx",
+          "path": "delta/examples/switch-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/switch-input-basic-demo.tsx"
+          "target": "delta/examples/switch-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/switch-input.mdx",
@@ -446,9 +446,9 @@
           "target": "content/docs/switch-input.mdx"
         },
         {
-          "path": "registry/examples/switch-input-variants-demo.tsx",
+          "path": "delta/examples/switch-input-variants-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/switch-input-variants-demo.tsx"
+          "target": "delta/examples/switch-input-variants-demo.tsx"
         }
       ]
     },
@@ -462,14 +462,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/textarea-input.tsx",
+          "path": "delta/components/textarea-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/textarea-input.tsx"
+          "target": "delta/components/textarea-input.tsx"
         },
         {
-          "path": "registry/examples/textarea-input-basic-demo.tsx",
+          "path": "delta/examples/textarea-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/textarea-input-basic-demo.tsx"
+          "target": "delta/examples/textarea-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/textarea-input.mdx",
@@ -488,14 +488,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/date-input.tsx",
+          "path": "delta/components/date-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/date-input.tsx"
+          "target": "delta/components/date-input.tsx"
         },
         {
-          "path": "registry/examples/date-input-basic-demo.tsx",
+          "path": "delta/examples/date-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/date-input-basic-demo.tsx"
+          "target": "delta/examples/date-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/date-input.mdx",
@@ -514,14 +514,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/file-input.tsx",
+          "path": "delta/components/file-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/file-input.tsx"
+          "target": "delta/components/file-input.tsx"
         },
         {
-          "path": "registry/examples/file-input-basic-demo.tsx",
+          "path": "delta/examples/file-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/file-input-basic-demo.tsx"
+          "target": "delta/examples/file-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/file-input.mdx",
@@ -623,14 +623,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/otp-input.tsx",
+          "path": "delta/components/otp-input.tsx",
           "type": "registry:component",
-          "target": "registry/ui/otp-input.tsx"
+          "target": "delta/components/otp-input.tsx"
         },
         {
-          "path": "registry/examples/otp-input-basic-demo.tsx",
+          "path": "delta/examples/otp-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/otp-input-basic-demo.tsx"
+          "target": "delta/examples/otp-input-basic-demo.tsx"
         },
         {
           "path": "content/docs/otp-input.mdx",
@@ -648,14 +648,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/floating-button.tsx",
+          "path": "delta/components/floating-button.tsx",
           "type": "registry:component",
-          "target": "registry/ui/floating-button.tsx"
+          "target": "delta/components/floating-button.tsx"
         },
         {
-          "path": "registry/examples/floating-button-basic-demo.tsx",
+          "path": "delta/examples/floating-button-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/floating-button-basic-demo.tsx"
+          "target": "delta/examples/floating-button-basic-demo.tsx"
         },
         {
           "path": "content/docs/floating-button.mdx",
@@ -757,14 +757,14 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/code-block.tsx",
+          "path": "delta/components/code-block.tsx",
           "type": "registry:component",
-          "target": "registry/ui/code-block.tsx"
+          "target": "delta/components/code-block.tsx"
         },
         {
-          "path": "registry/examples/code-block-basic-demo.tsx",
+          "path": "delta/examples/code-block-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/code-block-basic-demo.tsx"
+          "target": "delta/examples/code-block-basic-demo.tsx"
         },
         {
           "path": "content/docs/code-block.mdx",
@@ -772,9 +772,9 @@
           "target": "content/docs/code-block.mdx"
         },
         {
-          "path": "registry/examples/code-block-themes-demo.tsx",
+          "path": "delta/examples/code-block-themes-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/code-block-themes-demo.tsx"
+          "target": "delta/examples/code-block-themes-demo.tsx"
         }
       ]
     },
@@ -788,19 +788,76 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/ui/back-button.tsx",
+          "path": "delta/components/back-button.tsx",
           "type": "registry:component",
-          "target": "registry/ui/back-button.tsx"
+          "target": "delta/components/back-button.tsx"
         },
         {
-          "path": "registry/examples/back-button-basic-demo.tsx",
+          "path": "delta/examples/back-button-basic-demo.tsx",
           "type": "registry:component",
-          "target": "registry/examples/back-button-basic-demo.tsx"
+          "target": "delta/examples/back-button-basic-demo.tsx"
         },
         {
           "path": "content/docs/back-button.mdx",
           "type": "registry:component",
           "target": "content/docs/back-button.mdx"
+        }
+      ]
+    },
+    {
+      "name": "share-button",
+      "type": "registry:component",
+      "title": "Native Share Button",
+      "description": "A component for share-button",
+      "category": "components",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/share-button.tsx",
+          "type": "registry:component",
+          "target": "delta/components/share-button.tsx"
+        },
+        {
+          "path": "delta/examples/share-button-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/share-button-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/share-button.mdx",
+          "type": "registry:component",
+          "target": "content/docs/share-button.mdx"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:component",
+      "title": "Accordion",
+      "category": "components",
+      "description": "A component for accordion",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/accordion.tsx",
+          "type": "registry:component",
+          "target": "delta/components/accordion.tsx"
+        },
+        {
+          "path": "delta/examples/accordion-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/accordion-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/accordion.mdx",
+          "type": "registry:component",
+          "target": "content/docs/accordion.mdx"
+        },
+        {
+          "path": "delta/examples/accordion-neobrutalism-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/accordion-neobrutalism-demo.tsx"
         }
       ]
     }

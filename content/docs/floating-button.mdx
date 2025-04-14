@@ -61,7 +61,7 @@ export const metadata = {
 
 # FloatingButton
 
-A versatile floating button component with customizable position, tooltip support, and responsive behavior. Perfect for primary actions like creating new items or navigating back to top.
+A versatile floating button component with customizable position, tooltip support, and responsive behavior. Perfect for primary actions like creating new items or navigating back to top. Can also be used as a container to position any element in fixed or absolute positions.
 
 ## Basic Usage
 
@@ -90,7 +90,13 @@ npx shadcn@latest add "floating-button"
         <td className="border px-4 py-2 text-left">`icon`</td>
         <td className="border px-4 py-2 text-left">`React.ElementType`</td>
         <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">The icon component to render inside the button</td>
+        <td className="border px-4 py-2 text-left">Optional icon component to render inside the button</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`children`</td>
+        <td className="border px-4 py-2 text-left">`React.ReactNode`</td>
+        <td className="border px-4 py-2 text-left">-</td>
+        <td className="border px-4 py-2 text-left">Optional children elements to render inside the button</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
         <td className="border px-4 py-2 text-left">`text`</td>
@@ -147,10 +153,22 @@ npx shadcn@latest add "floating-button"
         <td className="border px-4 py-2 text-left">Distance from the edge of the container</td>
       </tr>
       <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`hideOnMobile`</td>
+        <td className="border px-4 py-2 text-left">`onlyDesktop`</td>
         <td className="border px-4 py-2 text-left">`boolean`</td>
         <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to hide the button on mobile screens</td>
+        <td className="border px-4 py-2 text-left">Whether to show the button only on desktop screens</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`onlyMobile`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to show the button only on mobile screens</td>
+      </tr>
+      <tr className="m-0 border-t p-0 even:bg-muted">
+        <td className="border px-4 py-2 text-left">`opaqueOnScroll`</td>
+        <td className="border px-4 py-2 text-left">`boolean`</td>
+        <td className="border px-4 py-2 text-left">`false`</td>
+        <td className="border px-4 py-2 text-left">Whether to reduce opacity when scrolling down the page</td>
       </tr>
     </tbody>
   </table>
@@ -171,6 +189,26 @@ export default function BasicExample() {
       shape="circle"
       tooltip="Add New Item"
     />
+  )
+}
+```
+
+### Floating Button with Custom Children
+
+```tsx
+import { FloatingButton } from "@/components/ui/floating-button"
+
+export default function ChildrenExample() {
+  return (
+    <FloatingButton.FloatingButton
+      variant="secondary"
+      placement="bottom-right"
+    >
+      <div className="flex items-center gap-2">
+        <span>👋</span>
+        <span>Hello World!</span>
+      </div>
+    </FloatingButton.FloatingButton>
   )
 }
 ```
@@ -225,13 +263,40 @@ export default function VariantsExample() {
 }
 ```
 
+### Responsive Visibility
+
+```tsx
+import { Plus } from "lucide-react"
+import { FloatingButton } from "@/components/ui/floating-button"
+
+export default function ResponsiveVisibilityExample() {
+  return (
+    <>
+      <FloatingButton.FloatingButton
+        icon={Plus}
+        text="Desktop Only"
+        placement="bottom-right"
+        onlyDesktop={true}
+      />
+      
+      <FloatingButton.FloatingButton
+        icon={Plus}
+        text="Mobile Only"
+        placement="bottom-center"
+        onlyMobile={true}
+      />
+    </>
+  )
+}
+```
+
 ### Responsive Positioning
 
 ```tsx
 import { Plus } from "lucide-react"
 import { FloatingButton } from "@/components/ui/floating-button"
 
-export default function ResponsiveExample() {
+export default function ResponsivePositionExample() {
   return (
     <FloatingButton.FloatingButton
       icon={Plus}
@@ -240,6 +305,25 @@ export default function ResponsiveExample() {
       desktopPosition="bottom-right"
       mobileOffset={8}
       desktopOffset={16}
+    />
+  )
+}
+```
+
+### Opacity Changes on Scroll
+
+```tsx
+import { ArrowUp } from "lucide-react"
+import { FloatingButton } from "@/components/ui/floating-button"
+
+export default function OpaqueOnScrollExample() {
+  return (
+    <FloatingButton.FloatingButton
+      icon={ArrowUp}
+      text="Back to Top"
+      placement="bottom-right"
+      opaqueOnScroll={true}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     />
   )
 }

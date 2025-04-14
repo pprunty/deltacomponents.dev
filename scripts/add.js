@@ -52,11 +52,11 @@ const registryType = getRegistryType(componentType);
 
 // Define paths
 const paths = {
-  ui: path.join(process.cwd(), 'registry/ui'),
+  ui: path.join(process.cwd(), 'delta/components'),
   delta: path.join(process.cwd(), 'delta'),
-  examples: path.join(process.cwd(), 'registry/examples'),
-  demos: path.join(process.cwd(), 'registry/demos.ts'),
-  mapping: path.join(process.cwd(), 'registry/mapping.ts'),
+  examples: path.join(process.cwd(), 'delta/examples'),
+  demos: path.join(process.cwd(), 'delta/demos.ts'),
+  mapping: path.join(process.cwd(), 'delta/mapping.ts'),
   page: path.join(process.cwd(), 'app/docs/[[...slug]]/page.tsx'),
   docs: path.join(process.cwd(), 'content/docs'),
   registryJson: path.join(process.cwd(), 'registry.json'),
@@ -107,7 +107,7 @@ if (componentType === 'demo') {
     demoFilePath = path.join(paths.examples, `${componentName}-${demoName}-demo.tsx`);
     demoFileContent = `"use client"
 
-import ${componentNamePascal} from "@/registry/ui/${componentName}"
+import ${componentNamePascal} from "@/delta/components/${componentName}"
 
 export default function ${componentNamePascal}${demoNamePascal}Demo() {
   return (
@@ -163,7 +163,7 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
 
       // Clean up any extra newlines in the import section
       const cleanImportSection = importSection.trim() + '\n';
-      const newImportSection = `${cleanImportSection}import ${componentNamePascal}${demoNamePascal}Demo from "@/registry/examples/${componentName}-${demoName}-demo"\n`;
+      const newImportSection = `${cleanImportSection}import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/examples/${componentName}-${demoName}-demo"\n`;
 
       const exportLines = exportSection.split('\n');
       const lastExportLine = exportLines.findIndex(line => line.includes('} as const'));
@@ -200,7 +200,7 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
       if (existingItemIndex >= 0) {
         // Add the demo file to the component's files array if it doesn't already exist
         const demoFilePath = category === 'components'
-          ? `registry/examples/${componentName}-${demoName}-demo.tsx`
+          ? `delta/examples/${componentName}-${demoName}-demo.tsx`
           : `delta/${category}/${componentName}-${demoName}-demo.tsx`;
 
         const demoFileExists = registry.items[existingItemIndex].files.some(
@@ -228,7 +228,7 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
   // Update registry-components.tsx to include the demo
   if (fs.existsSync(paths.registryComponents)) {
     const importStatement = category === 'components'
-      ? `import ${componentNamePascal}${demoNamePascal}Demo from "@/registry/examples/${componentName}-${demoName}-demo"`
+      ? `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/examples/${componentName}-${demoName}-demo"`
       : `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/${category}/${componentName}-${demoName}-demo"`;
 
     const componentEntry = `  "${componentName}-${demoName}": {\n    component: ${componentNamePascal}${demoNamePascal}Demo,\n  },`;
@@ -298,7 +298,7 @@ Demo "${demoName}" has been added for component "${componentName}" in category "
 
 Next steps:
 1. Edit the demo file: ${category === 'components'
-  ? `registry/examples/${componentName}-${demoName}-demo.tsx`
+  ? `delta/examples/${componentName}-${demoName}-demo.tsx`
   : `delta/${category}/${componentName}-${demoName}-demo.tsx`}
 2. Make sure your component supports the "${demoName}" variant or props
 `);
@@ -501,7 +501,7 @@ export default function ${componentNamePascal}() {
 
   const exampleComponentContent = `"use client"
 
-import ${componentNamePascal} from "@/registry/ui/${componentName}"
+import ${componentNamePascal} from "@/delta/components/${componentName}"
 
 export default function ${componentNamePascal}BasicDemo() {
   return (
@@ -534,7 +534,7 @@ export default function ${componentNamePascal}BasicDemo() {
 
       // Clean up any extra newlines in the import section
       const cleanImportSection = importSection.trim() + '\n';
-      const newImportSection = `${cleanImportSection}import ${componentNamePascal}BasicDemo from "@/registry/examples/${componentName}-basic-demo"\n`;
+      const newImportSection = `${cleanImportSection}import ${componentNamePascal}BasicDemo from "@/delta/examples/${componentName}-basic-demo"\n`;
 
       const exportLines = exportSection.split('\n');
       const lastExportLine = exportLines.findIndex(line => line.includes('} as const'));
@@ -632,14 +632,14 @@ if (fs.existsSync(paths.registryJson)) {
         // For standard components in the components category
         files = [
           {
-            path: `registry/ui/${componentName}.tsx`,
+            path: `delta/components/${componentName}.tsx`,
             type: registryType,
-            target: `registry/ui/${componentName}.tsx`
+            target: `delta/components/${componentName}.tsx`
           },
           {
-            path: `registry/examples/${componentName}-basic-demo.tsx`,
+            path: `delta/examples/${componentName}-basic-demo.tsx`,
             type: registryType,
-            target: `registry/examples/${componentName}-basic-demo.tsx`
+            target: `delta/examples/${componentName}-basic-demo.tsx`
           },
           {
             path: `content/docs/${componentName}.mdx`,
@@ -741,14 +741,14 @@ if (fs.existsSync(paths.registryJson)) {
        // For standard components in the components category
        files = [
          {
-           path: `registry/ui/${componentName}.tsx`,
+           path: `delta/components/${componentName}.tsx`,
            type: registryType,
-           target: `registry/ui/${componentName}.tsx`
+           target: `delta/components/${componentName}.tsx`
          },
          {
-           path: `registry/examples/${componentName}-basic-demo.tsx`,
+           path: `delta/examples/${componentName}-basic-demo.tsx`,
            type: registryType,
-           target: `registry/examples/${componentName}-basic-demo.tsx`
+           target: `delta/examples/${componentName}-basic-demo.tsx`
          },
          {
            path: `content/docs/${componentName}.mdx`,
@@ -998,8 +998,8 @@ if (fs.existsSync(paths.registryJson)) {
 
  if (componentType === 'component') {
    if (category === 'components') {
-     console.log(`1. Edit the component file: registry/ui/${componentName}.tsx`);
-     console.log(`2. Edit the demo file: registry/examples/${componentName}-basic-demo.tsx`);
+     console.log(`1. Edit the component file: delta/components/${componentName}.tsx`);
+     console.log(`2. Edit the demo file: delta/examples/${componentName}-basic-demo.tsx`);
      console.log(`3. Edit the docs file: content/docs/${componentName}.mdx`);
    } else {
      console.log(`1. Edit the component file: delta/${category}/${componentName}.tsx`);

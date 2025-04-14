@@ -8,16 +8,16 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/ui/radio-input.tsx",
+      "path": "delta/components/radio-input.tsx",
       "content": "\"use client\"\n\nexport default function RadioInput() {\n  return (\n    <div>\n      <div>\n        RadioInput Component\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/ui/radio-input.tsx"
+      "target": "delta/components/radio-input.tsx"
     },
     {
-      "path": "registry/examples/radio-input-basic-demo.tsx",
-      "content": "\"use client\"\n\nimport RadioInput from \"@/registry/ui/radio-input\"\n\nexport default function RadioInputBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <RadioInput />\n    </div>\n  )\n}\n",
+      "path": "delta/examples/radio-input-basic-demo.tsx",
+      "content": "\"use client\"\n\nimport RadioInput from \"@/delta/components/radio-input\"\n\nexport default function RadioInputBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <RadioInput />\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/examples/radio-input-basic-demo.tsx"
+      "target": "delta/examples/radio-input-basic-demo.tsx"
     },
     {
       "path": "content/docs/radio-input.mdx",

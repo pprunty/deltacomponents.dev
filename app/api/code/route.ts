@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const filePath = path.join(process.cwd(), 'registry', 'examples', `${name}-demo.tsx`)
+    const filePath = path.join(process.cwd(), 'delta', 'examples', `${name}-demo.tsx`)
     const code = await fs.readFile(filePath, 'utf-8')
     return NextResponse.json({ code })
   } catch (error) {

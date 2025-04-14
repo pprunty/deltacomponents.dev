@@ -2,14 +2,15 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { Hanken_Grotesk } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { themeEffect } from '@/components/theme-effect';
 import config from '@/app/config';
 import { doge } from './doge';
 import { Header } from './header';
 import Link from 'next/link';
 import { GitHubStars } from './github-stars';
-import ScrambleIn from "@/registry/ui/scramble-in";
+import ScrambleIn from "@/delta/components/scramble-in";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import ClientComponents from './client';
 
 const hankenGrotesk = Hanken_Grotesk({
   variable: "--font-hanken-grotesk",
@@ -92,14 +93,7 @@ export const metadata: Metadata = {
       { url: '/icons/120x120.png', sizes: '120x120', type: 'image/png' },
       { url: '/icons/152x152.png', sizes: '152x152', type: 'image/png' },
       { url: '/icons/180x180.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/icons/512x512.png',
-        color: '#4E90F9',
-      },
-    ],
+    ]
   },
   metadataBase: new URL(config.url),
   verification: {
@@ -127,20 +121,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `(${doge.toString()})();`,
-          }}
-        />
+                  dangerouslySetInnerHTML={{
+                    __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
+                  }}
+                />
+        <meta name="theme-color" content="#FFFEFC" />
         <link
           rel="icon"
           href="/icons/16x16.png"
           sizes="16x16"
           type="image/png"
         />
-        <link rel="mask-icon" href="/icons/16x16.png" color="#4E90F9" />
+        <link rel="mask-icon" href="/icons/16x16.png" />
       </head>
       <body className={`${hankenGrotesk.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="relative min-h-screen">
             {/* Top left corner */}
             <Link 
@@ -189,6 +183,7 @@ export default function RootLayout({
               <Header />
               {children}
             </main>
+            <ClientComponents />
 
             {/* Bottom links - footer style on mobile, fixed on desktop */}
             <div className="w-full flex justify-between my-8 px-4 sm:px-0">
@@ -228,7 +223,6 @@ export default function RootLayout({
               </Link>
             </div>
           </div>
-        </ThemeProvider>
       </body>
     </html>
   )

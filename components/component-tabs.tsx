@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs"
-import CodeBlock from "@/registry/ui/code-block"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/delta/components/tabs"
+import CodeBlock from "@/delta/components/code-block"
 import { cn } from "@/lib/utils"
 import { ClipLoader } from "react-spinners"
 import { OpenInV0Button } from "./open-in-v0-button"
@@ -37,7 +37,7 @@ export function ComponentTabs({ name, className }: ComponentTabsProps) {
 
   React.useEffect(() => {
     // Dynamically import the demo component
-    import(`@/registry/examples/${name}-demo`)
+    import(`@/delta/examples/${name}-demo`)
       .then((module) => {
         setDemo(() => module.default)
       })
@@ -86,7 +86,7 @@ export function ComponentTabs({ name, className }: ComponentTabsProps) {
         {/* Preview Tab Content */}
         <TabsContent value="preview" className={tabContentClasses}>
           <div className="absolute top-2 right-2 z-10">
-            <OpenInV0Button url={`/components/${name}`} />
+            <OpenInV0Button url={`/docs/${name}`} />
           </div>
           <div className="p-6 flex items-center justify-center w-full" style={{ minHeight: contentHeight }}>
             <div className="w-full max-w-4xl mx-auto">

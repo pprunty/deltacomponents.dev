@@ -8,16 +8,16 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/ui/date-input.tsx.tsx",
+      "path": "delta/components/date-input.tsx.tsx",
       "content": "\"use client\"\n\nexport default function DateInput.tsx() {\n  return (\n    <div>\n      <div>\n        DateInput.tsx Component\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/ui/date-input.tsx.tsx"
+      "target": "delta/components/date-input.tsx.tsx"
     },
     {
-      "path": "registry/examples/date-input.tsx-basic-demo.tsx",
-      "content": "\"use client\"\n\nimport DateInput.tsx from \"@/registry/ui/date-input.tsx\"\n\nexport default function DateInput.tsxBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <DateInput.tsx />\n    </div>\n  )\n}\n",
+      "path": "delta/examples/date-input.tsx-basic-demo.tsx",
+      "content": "\"use client\"\n\nimport DateInput.tsx from \"@/delta/components/date-input.tsx\"\n\nexport default function DateInput.tsxBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <DateInput.tsx />\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/examples/date-input.tsx-basic-demo.tsx"
+      "target": "delta/examples/date-input.tsx-basic-demo.tsx"
     },
     {
       "path": "content/docs/date-input.tsx.mdx",

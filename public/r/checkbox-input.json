@@ -8,16 +8,16 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "registry/ui/checkbox-input.tsx",
+      "path": "delta/components/checkbox-input.tsx",
       "content": "\"use client\"\n\nexport default function CheckboxInput() {\n  return (\n    <div>\n      <div>\n        CheckboxInput Component\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/ui/checkbox-input.tsx"
+      "target": "delta/components/checkbox-input.tsx"
     },
     {
-      "path": "registry/examples/checkbox-input-basic-demo.tsx",
-      "content": "\"use client\"\n\nimport CheckboxInput from \"@/registry/ui/checkbox-input\"\n\nexport default function CheckboxInputBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <CheckboxInput />\n    </div>\n  )\n}\n",
+      "path": "delta/examples/checkbox-input-basic-demo.tsx",
+      "content": "\"use client\"\n\nimport CheckboxInput from \"@/delta/components/checkbox-input\"\n\nexport default function CheckboxInputBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <CheckboxInput />\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "registry/examples/checkbox-input-basic-demo.tsx"
+      "target": "delta/examples/checkbox-input-basic-demo.tsx"
     },
     {
       "path": "content/docs/checkbox-input.mdx",

@@ -5,27 +5,29 @@ import Link from "next/link"
 import { Card } from "@/components/ui/card"
 import { useEffect, useState, useRef } from "react"
 import { createPortal } from "react-dom"
-import { Admonition } from "@/registry/ui/admonition"
+import { Admonition } from "@/delta/components/admonition"
 import type { ComponentPreview } from "@/lib/registry/schema"
 import { ClipLoader } from "react-spinners"
-import NeobrutalismCardBasicDemo from "@/registry/examples/neobrutalism-card-basic-demo"
-import SmartFormPaymentDemo from "@/registry/examples/smart-form-payment-demo"
-import CodeBlockBasicDemo from "@/registry/examples/code-block-basic-demo"
-import ButtonBasicDemo from "@/registry/examples/button-basic-demo"
-import TabsBasicDemo from "@/registry/examples/tabs-basic-demo"
-import TextInputBasicDemo from "@/registry/examples/text-input-basic-demo"
-import SelectInputBasicDemo from "@/registry/examples/select-input-basic-demo"
-import BackButtonBasicDemo from "@/registry/examples/back-button-basic-demo"
-import SwitchInputBasicDemo from "@/registry/examples/switch-input-basic-demo"
-import OtpInputBasicDemo from "@/registry/examples/otp-input-basic-demo"
-import ScrambleInObserverDemo from "@/registry/examples/scramble-in-observer-demo"
-import TextareaInputBasicDemo from "@/registry/examples/textarea-input-basic-demo"
-import DateInputBasicDemo from "@/registry/examples/date-input-basic-demo"
-import FileInputBasicDemo from "@/registry/examples/file-input-basic-demo"
-import FloatingButtonBasicDemo from "@/registry/examples/floating-button-basic-demo"
-import CheckboxInputBasicDemo from "@/registry/examples/checkbox-input-basic-demo"
-import RadioInputBasicDemo from "@/registry/examples/radio-input-basic-demo"
-import ModalBasicDemo from "@/registry/examples/modal-basic-demo"
+import NeobrutalismCardBasicDemo from "@/delta/examples/neobrutalism-card-basic-demo"
+import SmartFormPaymentDemo from "@/delta/examples/smart-form-payment-demo"
+import CodeBlockBasicDemo from "@/delta/examples/code-block-basic-demo"
+import ButtonBasicDemo from "@/delta/examples/button-basic-demo"
+import TabsBasicDemo from "@/delta/examples/tabs-basic-demo"
+import TextInputBasicDemo from "@/delta/examples/text-input-basic-demo"
+import SelectInputBasicDemo from "@/delta/examples/select-input-basic-demo"
+import BackButtonBasicDemo from "@/delta/examples/back-button-basic-demo"
+import SwitchInputBasicDemo from "@/delta/examples/switch-input-basic-demo"
+import OtpInputBasicDemo from "@/delta/examples/otp-input-basic-demo"
+import ScrambleInObserverDemo from "@/delta/examples/scramble-in-observer-demo"
+import TextareaInputBasicDemo from "@/delta/examples/textarea-input-basic-demo"
+import DateInputBasicDemo from "@/delta/examples/date-input-basic-demo"
+import FileInputBasicDemo from "@/delta/examples/file-input-basic-demo"
+import FloatingButtonBasicDemo from "@/delta/examples/floating-button-basic-demo"
+import CheckboxInputBasicDemo from "@/delta/examples/checkbox-input-basic-demo"
+import RadioInputBasicDemo from "@/delta/examples/radio-input-basic-demo"
+import ModalBasicDemo from "@/delta/examples/modal-basic-demo"
+import ShareButtonBasicDemo from "@/delta/examples/share-button-basic-demo"
+import AccordionBasicDemo from "@/delta/examples/accordion-basic-demo"
 
 // Component mapping - maps component names to their implementations
 const componentMap: Record<string, React.ReactNode> = {
@@ -66,6 +68,8 @@ const componentMap: Record<string, React.ReactNode> = {
   "checkbox-input": <CheckboxInputBasicDemo />,
   "radio-input": <RadioInputBasicDemo />,
   "modal": <ModalBasicDemo />,
+  "share-button": <ShareButtonBasicDemo />,
+  "accordion": <AccordionBasicDemo />,
 }
 
 interface ComponentPreviewProps {
@@ -75,9 +79,9 @@ interface ComponentPreviewProps {
 }
 
 export function ComponentPreview({ title, name, badge }: ComponentPreviewProps) {
-  const [mounted, setMounted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [portalContainer, setPortalContainer] = useState<HTMLDivElement | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   // Set up the portal container
   useEffect(() => {
@@ -106,49 +110,31 @@ export function ComponentPreview({ title, name, badge }: ComponentPreviewProps) 
   return (
     <div className="group flex flex-col">
       <div className="flex items-center gap-2 mb-2">
-        <h2 className="text-base font-medium text-primary group-hover:underline group-active:underline cursor-pointer">
+        <h2 className="text-base font-medium text-primary sm:group-hover:underline sm:group-active:underline cursor-pointer">
           {title}
         </h2>
         {badge}
       </div>
 
       <Link href={`/docs/${name}`} className="block">
-        {/* Fixed Card with consistent border and transform-gpu for hardware acceleration */}
         <Card className="p-4 rounded-xl border border-border shadow-none overflow-hidden relative will-change-transform">
-          {/* Solid background - replacing gradient */}
-          <div className="absolute inset-0 bg-accent/30" />
+          <div className="absolute inset-0 bg-accent/60" />
 
-          {/* Commented out gradient background - keep for later if needed
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(circle, transparent 0%, hsl(var(--accent)/0.8) 50%, hsl(var(--accent)) 100%)",
-            }}
-          />
-          */}
-
-          {/* Container for the component or image - fixed transform with translate3d for better performance */}
           <div
             ref={containerRef}
-            className="relative z-10 w-full h-[200px] sm:h-[120px] transform-gpu transition-transform duration-300 group-hover:translate-y-[-4px] group-active:translate-y-[-4px]"
+            className="relative z-10 w-full h-[200px] sm:h-[120px] transform-gpu transition-transform duration-300 sm:group-hover:translate-y-[-4px] sm:group-active:translate-y-[-4px]"
           >
             {mounted && hasComponent && portalContainer ? (
-              // Render the component using a portal if we have a mapping for it
               createPortal(
                 <div className="w-full h-full flex items-center justify-center">
-                  {/* Balanced width and height */}
                   <div className="w-full h-full flex items-center justify-center relative">
                     <FitContainer>{componentMap[name]}</FitContainer>
-
-                    {/* Transparent overlay to prevent interaction with the component */}
                     <div className="absolute inset-0 z-10 cursor-pointer" />
                   </div>
                 </div>,
                 portalContainer,
               )
             ) : (
-              // Loading spinner when component is loading
               <div className="w-full h-full flex flex-col items-center justify-center gap-2">
                 <ClipLoader size={20} color="var(--foreground)" />
                 <div className="text-muted-foreground text-center text-xs">Loading component...</div>
@@ -210,11 +196,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A versatile admonition component for displaying important information, warnings, tips, and notes.",
     dependencies: ["@phosphor-icons/react"],
     registryDependencies: [],
-    files: ["registry/ui/admonition.tsx"],
+    files: ["delta/components/admonition.tsx"],
     type: "components",
     category: "Feedback",
     subcategory: "Alert",
-    example: "registry/examples/admonition-basic-demo.tsx",
+    example: "delta/examples/admonition-basic-demo.tsx",
     style: "default",
   },
   "neobrutalism-card": {
@@ -222,11 +208,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A card component with a neobrutalism design style, featuring bold borders and shadows.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/neobrutalism-card.tsx"],
+    files: ["delta/components/neobrutalism-card.tsx"],
     type: "components",
     category: "Layout",
     subcategory: "Card",
-    example: "registry/examples/neobrutalism-card-basic-demo.tsx",
+    example: "delta/examples/neobrutalism-card-basic-demo.tsx",
     style: "neobrutalism",
   },
   "smart-form": {
@@ -234,11 +220,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "An intelligent form component with built-in validation and error handling.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/smart-form.tsx"],
+    files: ["delta/components/smart-form.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/smart-form-payment-demo.tsx",
+    example: "delta/examples/smart-form-payment-demo.tsx",
     style: "default",
   },
   "code-block": {
@@ -246,11 +232,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A syntax-highlighted code block component for displaying code snippets.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/code-block.tsx"],
+    files: ["delta/components/code-block.tsx"],
     type: "components",
     category: "Display",
     subcategory: "Code",
-    example: "registry/examples/code-block-basic-demo.tsx",
+    example: "delta/examples/code-block-basic-demo.tsx",
     style: "default",
   },
   button: {
@@ -258,11 +244,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A versatile button component with multiple variants and styles.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/button.tsx"],
+    files: ["delta/components/button.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Button",
-    example: "registry/examples/button-basic-demo.tsx",
+    example: "delta/examples/button-basic-demo.tsx",
     style: "default",
   },
   tabs: {
@@ -270,11 +256,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A tabbed interface component for organizing content into sections.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/tabs.tsx"],
+    files: ["delta/components/tabs.tsx"],
     type: "components",
     category: "Navigation",
     subcategory: "Tabs",
-    example: "registry/examples/tabs-basic-demo.tsx",
+    example: "delta/examples/tabs-basic-demo.tsx",
     style: "default",
   },
   "text-input": {
@@ -282,11 +268,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A customizable text input component with various states and styles.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/text-input.tsx"],
+    files: ["delta/components/text-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/text-input-basic-demo.tsx",
+    example: "delta/examples/text-input-basic-demo.tsx",
     style: "default",
   },
   "select-input": {
@@ -294,11 +280,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A dropdown select component with customizable options and styling.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/select-input.tsx"],
+    files: ["delta/components/select-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/select-input-basic-demo.tsx",
+    example: "delta/examples/select-input-basic-demo.tsx",
     style: "default",
   },
   "back-button": {
@@ -306,11 +292,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A smart back button component that intelligently handles navigation history with a fallback to root.",
     dependencies: ["@phosphor-icons/react"],
     registryDependencies: [],
-    files: ["registry/ui/back-button.tsx"],
+    files: ["delta/components/back-button.tsx"],
     type: "components",
     category: "Navigation",
     subcategory: "Button",
-    example: "registry/examples/back-button-basic-demo.tsx",
+    example: "delta/examples/back-button-basic-demo.tsx",
     style: "default",
   },
   "switch-input": {
@@ -318,11 +304,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A customizable switch input component with validation, variants, and accessibility features.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/switch-input.tsx"],
+    files: ["delta/components/switch-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/switch-input-basic-demo.tsx",
+    example: "delta/examples/switch-input-basic-demo.tsx",
     style: "default",
   },
   "textarea-input": {
@@ -330,11 +316,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A customizable textarea input component with validation support, multiple style variants, and accessibility features.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/textarea-input.tsx"],
+    files: ["delta/components/textarea-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/textarea-input-basic-demo.tsx",
+    example: "delta/examples/textarea-input-basic-demo.tsx",
     style: "default",
   },
   "date-input": {
@@ -342,11 +328,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A flexible date input component with an integrated calendar picker, validation support, and customizable styling options.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/date-input.tsx"],
+    files: ["delta/components/date-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/date-input-basic-demo.tsx",
+    example: "delta/examples/date-input-basic-demo.tsx",
     style: "default",
   },
   "file-input": {
@@ -354,23 +340,23 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.",
     dependencies: ["@phosphor-icons/react"],
     registryDependencies: [],
-    files: ["registry/ui/file-input.tsx"],
+    files: ["delta/components/file-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/file-input-basic-demo.tsx",
+    example: "delta/examples/file-input-basic-demo.tsx",
     style: "default",
   },
   "floating-button": {
     name: "Floating Button",
     description: "A versatile floating button component with customizable position, tooltip support, and responsive behavior.",
-    dependencies: ["lucide-react"],
+    dependencies: ["@phosphor-icons/react"],
     registryDependencies: [],
-    files: ["registry/ui/floating-button.tsx"],
+    files: ["delta/components/floating-button.tsx"],
     type: "components",
     category: "Navigation",
     subcategory: "Button",
-    example: "registry/examples/floating-button-basic-demo.tsx",
+    example: "delta/examples/floating-button-basic-demo.tsx",
     style: "default",
   },
   "checkbox-input": {
@@ -378,11 +364,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A customizable checkbox input component with validation support, error handling, and accessibility features.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/checkbox-input.tsx"],
+    files: ["delta/components/checkbox-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/checkbox-input-basic-demo.tsx",
+    example: "delta/examples/checkbox-input-basic-demo.tsx",
     style: "default",
   },
   "radio-input": {
@@ -390,11 +376,11 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A customizable radio input component with validation support, orientation options, and accessibility features.",
     dependencies: [],
     registryDependencies: [],
-    files: ["registry/ui/radio-input.tsx"],
+    files: ["delta/components/radio-input.tsx"],
     type: "components",
     category: "Form",
     subcategory: "Input",
-    example: "registry/examples/radio-input-basic-demo.tsx",
+    example: "delta/examples/radio-input-basic-demo.tsx",
     style: "default",
   },
   "modal": {
@@ -402,11 +388,23 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     description: "A versatile modal component with customizable overlay, animations, and multiple content layout options.",
     dependencies: ["framer-motion", "lucide-react"],
     registryDependencies: [],
-    files: ["registry/ui/modal.tsx"],
+    files: ["delta/components/modal.tsx"],
     type: "components",
     category: "Overlay",
     subcategory: "Dialog",
-    example: "registry/examples/modal-basic-demo.tsx",
+    example: "delta/examples/modal-basic-demo.tsx",
+    style: "default",
+  },
+  "share-button": {
+    name: "Share Button",
+    description: "A versatile share button component with customizable position, tooltip support, and responsive behavior.",
+    dependencies: ["@phosphor-icons/react"],
+    registryDependencies: [],
+    files: ["delta/components/share-button.tsx"],
+    type: "components",
+    category: "Navigation",
+    subcategory: "Button",
+    example: "delta/examples/share-button-basic-demo.tsx",
     style: "default",
   },
 }

@@ -29,9 +29,9 @@ export function SearchComponent({ className }: SearchComponentProps) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (search) {
-        router.push(`/?${createQueryString("search", search)}`)
+        router.push(`/?${createQueryString("search", search)}`, { scroll: false })
       } else {
-        router.push("/")
+        router.push("/", { scroll: false })
       }
     }, 300)
 
@@ -39,14 +39,14 @@ export function SearchComponent({ className }: SearchComponentProps) {
   }, [search, createQueryString, router])
 
   return (
-    <div className={cn("w-full max-w-3xl mx-auto", className)}>
-      <div className="relative">
+    <div className={cn("w-full max-w-3xl mx-auto h-[42px]", className)}>
+      <div className="relative h-full">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           placeholder="Search components..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-9 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          className="w-full h-full pl-9 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         />
       </div>
     </div>

@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { TextareaInput } from '@/registry/ui/textarea-input';
-import { TextInput } from '@/registry/ui/text-input';
+import { TextareaInput } from '@/delta/components/textarea-input';
+import { TextInput } from '@/delta/components/text-input';
 import { z } from 'zod';
 
 export interface Comment {
