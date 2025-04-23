@@ -80,6 +80,7 @@ const TabsList = forwardRef<
     showHoverEffect?: boolean;
     showActiveIndicator?: boolean;
     activeIndicatorPosition?: 'top' | 'bottom';
+    activeIndicatorOffset?: number;
     size?: 'sm' | 'md' | 'lg';
     variant?: 'default' | 'pills' | 'underlined';
     stretch?: boolean;
@@ -99,6 +100,7 @@ const TabsList = forwardRef<
       showHoverEffect = true,
       showActiveIndicator = true,
       activeIndicatorPosition = 'bottom',
+      activeIndicatorOffset = 0,
       size = 'sm',
       variant = 'default',
       stretch = false,
@@ -370,7 +372,8 @@ const TabsList = forwardRef<
                 )}
                 style={{
                   ...activeStyle,
-                  transition: 'all 300ms ease-out',
+                  transition: 'all 300ms ease-out z-50',
+                  [activeIndicatorPosition]: `${activeIndicatorOffset}px`,
                 }}
                 aria-hidden="true"
               />

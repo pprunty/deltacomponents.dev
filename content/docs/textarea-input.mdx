@@ -75,86 +75,78 @@ npx shadcn@latest add "textarea-input"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`label`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">The label for the textarea field</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`name`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">The name of the textarea field (used for form submission)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`description`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`hint`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional hint text to display below the textarea</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`error`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`required`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether the field is required</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`variant`</td>
-        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
-        <td className="border px-4 py-2 text-left">`'default'`</td>
-        <td className="border px-4 py-2 text-left">Textarea variant - 'default' or 'pill'</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`size`</td>
-        <td className="border px-4 py-2 text-left">`'sm' | 'md' | 'lg'`</td>
-        <td className="border px-4 py-2 text-left">`'md'`</td>
-        <td className="border px-4 py-2 text-left">Size of the textarea - 'sm', 'md', or 'lg'</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`disabled`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether the textarea is disabled</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`schema`</td>
-        <td className="border px-4 py-2 text-left">`z.ZodType<string>`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Zod schema for validation</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the textarea field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the textarea</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' | 'pill'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Textarea variant - 'default' or 'pill'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`coloredBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show a colored border (only applies to pill variant)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'sm' | 'md' | 'lg'`</TableCell>
+      <TableCell>`'md'`</TableCell>
+      <TableCell>Size of the textarea - 'sm', 'md', or 'lg'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the textarea is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`schema`</TableCell>
+      <TableCell>`z.ZodType<string>`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Zod schema for validation</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Examples
 

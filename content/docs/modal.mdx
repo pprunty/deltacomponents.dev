@@ -75,80 +75,72 @@ npx shadcn@latest add "modal"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`isOpen`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Controls the visibility of the modal</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onClose`</td>
-        <td className="border px-4 py-2 text-left">`() => void`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Function called when the modal is closed</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`children`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Content to display inside the modal</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`closeOnOverlayClick`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`true`</td>
-        <td className="border px-4 py-2 text-left">Whether clicking the overlay closes the modal</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`title`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional title to display in the modal header</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`subtitle`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional subtitle to display below the title</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`type`</td>
-        <td className="border px-4 py-2 text-left">`'blur' | 'overlay' | 'none'`</td>
-        <td className="border px-4 py-2 text-left">`'overlay'`</td>
-        <td className="border px-4 py-2 text-left">Type of backdrop effect</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`showCloseButton`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`true`</td>
-        <td className="border px-4 py-2 text-left">Whether to show the close button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`borderBottom`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`true`</td>
-        <td className="border px-4 py-2 text-left">Whether to show a border below the title area</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`className`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the modal</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`onClose`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Function called when the modal is closed</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`children`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Content to display inside the modal</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`closeOnOverlayClick`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether clicking the overlay closes the modal</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`title`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional title to display in the modal header</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`subtitle`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional subtitle to display below the title</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`type`</TableCell>
+      <TableCell>`'blur' | 'overlay' | 'none'`</TableCell>
+      <TableCell>`'overlay'`</TableCell>
+      <TableCell>Type of backdrop effect</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showCloseButton`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show the close button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`borderBottom`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show a border below the title area</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes to apply to the modal</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Examples
 

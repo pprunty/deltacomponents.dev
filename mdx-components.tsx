@@ -3,8 +3,17 @@ import Link from 'next/link';
 import type { MDXComponents } from 'mdx/types';
 import CodeBlock from '@/delta/components/code-block';
 import { ComponentTabs } from '@/components/component-tabs';
+import { InstallationInstructions } from '@/components/installation-instructions';
 import { cn } from "@/lib/utils"
 import React from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -66,45 +75,58 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className="rounded-lg my-4" 
       />
     ),
+    // Pass through the shadcn/ui table components
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableHead,
+    TableCell,
+    // Legacy table components for compatibility
     table: ({
-      children,
+      className,
       ...props
     }: React.HTMLAttributes<HTMLTableElement>) => (
       <div className="my-6 w-full overflow-y-auto">
-        <table className="w-full" {...props}>
-          {children}
-        </table>
+        <Table {...props} className={cn(className)} />
       </div>
     ),
-    thead: ({ children }) => (
-      <thead>
-        {children}
-      </thead>
-    ),
-    tbody: ({ children }) => (
-      <tbody>
-        {children}
-      </tbody>
-    ),
     tr: ({
-      children,
+      className,
       ...props
     }: React.HTMLAttributes<HTMLTableRowElement>) => (
-      <tr className="m-0 border-t p-0 even:bg-muted" {...props}>
-        {children}
-      </tr>
+      <TableRow
+        className={cn(className)}
+        {...props}
+      />
     ),
-    th: ({ children }) => (
-      <th className="border px-4 py-2 text-left font-bold">
-        {children}
-      </th>
+    th: ({
+      className,
+      ...props
+    }: React.HTMLAttributes<HTMLTableCellElement>) => (
+      <TableHead
+        className={cn(className)}
+        {...props}
+      />
     ),
-    td: ({ children }) => (
-      <td className="border px-4 py-2 text-left">
-        {children}
-      </td>
+    td: ({
+      className,
+      ...props
+    }: React.HTMLAttributes<HTMLTableCellElement>) => (
+      <TableCell
+        className={cn(className)}
+        {...props}
+      />
     ),
+    thead: ({ className, ...props }) => (
+      <TableHeader {...props} className={cn(className)} />
+    ),
+    tbody: ({ className, ...props }) => (
+      <TableBody {...props} className={cn(className)} />
+    ),
+    // Additional components
     ComponentTabs,
+    InstallationInstructions,
     ...components,
   };
 } 

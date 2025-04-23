@@ -75,92 +75,84 @@ npx shadcn@latest add "date-input"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`label`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">The label for the date field</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`name`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">The name of the date field (used for form submission)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`description`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional description text to display below the label</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`hint`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional hint text to display below the date picker</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`error`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Error message to display (typically from Zod validation)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`required`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether the field is required</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`placeholder`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">`'Select a date'`</td>
-        <td className="border px-4 py-2 text-left">Placeholder text when no date is selected</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`variant`</td>
-        <td className="border px-4 py-2 text-left">`'default' | 'pill'`</td>
-        <td className="border px-4 py-2 text-left">`'default'`</td>
-        <td className="border px-4 py-2 text-left">Date picker variant - 'default' or 'pill'</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`coloredBorder`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to show a colored border (only applies to pill variant)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`disabled`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether the date picker is disabled</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`minDate`</td>
-        <td className="border px-4 py-2 text-left">`Date`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Min date that can be selected</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`maxDate`</td>
-        <td className="border px-4 py-2 text-left">`Date`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Max date that can be selected</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the date field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the date picker</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`placeholder`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'Select a date'`</TableCell>
+      <TableCell>Placeholder text when no date is selected</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' | 'pill'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Date picker variant - 'default' or 'pill'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`coloredBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show a colored border (only applies to pill variant)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the date picker is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`minDate`</TableCell>
+      <TableCell>`Date`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Min date that can be selected</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxDate`</TableCell>
+      <TableCell>`Date`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Max date that can be selected</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Examples
 

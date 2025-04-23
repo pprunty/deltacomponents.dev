@@ -484,6 +484,159 @@ export const componentMetadata: Record<string, Metadata> = {
       ],
     },
   },
+  'text-editor': {
+    title: 'Text Editor | Delta Components',
+    description: 'A rich text editor component with formatting options, toolbar, and customizable styling.',
+    openGraph: {
+      title: 'Text Editor | Delta Components',
+      description: 'A rich text editor component with formatting options, toolbar, and customizable styling.',
+      url: `${BASE_URL}/docs/text-editor`,
+      images: [
+        {
+          url: `${BASE_URL}/og/text-editor.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Text Editor Component Preview',
+        },
+      ],
+    },
+  },
+  'product-spotlight-card': {
+    title: 'Product Spotlight Card | Delta Components',
+    description: 'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
+    openGraph: {
+      title: 'Product Spotlight Card | Delta Components',
+      description: 'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
+      url: `${BASE_URL}/docs/product-spotlight-card`,
+      images: [
+        {
+          url: `${BASE_URL}/og/product-spotlight-card.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Product Spotlight Card Component Preview',
+        },
+      ],
+    },
+  },
+  'back-button': {
+    title: 'Back Button | Delta Components',
+    description: 'A navigation button component that provides a consistent way to return to previous pages.',
+    openGraph: {
+      title: 'Back Button | Delta Components',
+      description: 'A navigation button component that provides a consistent way to return to previous pages.',
+      url: `${BASE_URL}/docs/back-button`,
+      images: [
+        {
+          url: `${BASE_URL}/og/back-button.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Back Button Component Preview',
+        },
+      ],
+    },
+  },
+  'tags-input': {
+    title: 'Tags Input | Delta Components',
+    description: 'An input component for managing tags with support for adding, removing, and validating tags.',
+    openGraph: {
+      title: 'Tags Input | Delta Components',
+      description: 'An input component for managing tags with support for adding, removing, and validating tags.',
+      url: `${BASE_URL}/docs/tags-input`,
+      images: [
+        {
+          url: `${BASE_URL}/og/tags-input.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Tags Input Component Preview',
+        },
+      ],
+    },
+  },
+  'snap-scroll': {
+    title: 'Snap Scroll | Delta Components',
+    description: 'A scrollable container component with snap points for smooth scrolling between sections.',
+    openGraph: {
+      title: 'Snap Scroll | Delta Components',
+      description: 'A scrollable container component with snap points for smooth scrolling between sections.',
+      url: `${BASE_URL}/docs/snap-scroll`,
+      images: [
+        {
+          url: `${BASE_URL}/og/snap-scroll.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Snap Scroll Component Preview',
+        },
+      ],
+    },
+  },
+  'code-block': {
+    title: 'Code Block | Delta Components',
+    description: 'A syntax-highlighted code block component with copy functionality and customizable themes.',
+    openGraph: {
+      title: 'Code Block | Delta Components',
+      description: 'A syntax-highlighted code block component with copy functionality and customizable themes.',
+      url: `${BASE_URL}/docs/code-block`,
+      images: [
+        {
+          url: `${BASE_URL}/og/code-block.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Code Block Component Preview',
+        },
+      ],
+    },
+  },
+  'accordion': {
+    title: 'Accordion | Delta Components',
+    description: 'A collapsible content component with smooth animations and customizable styling.',
+    openGraph: {
+      title: 'Accordion | Delta Components',
+      description: 'A collapsible content component with smooth animations and customizable styling.',
+      url: `${BASE_URL}/docs/accordion`,
+      images: [
+        {
+          url: `${BASE_URL}/og/accordion.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Accordion Component Preview',
+        },
+      ],
+    },
+  },
+  'avatar': {
+    title: 'Avatar | Delta Components',
+    description: 'A circular avatar component that displays user images with fallback support and customizable sizes.',
+    openGraph: {
+      title: 'Avatar | Delta Components',
+      description: 'A circular avatar component that displays user images with fallback support and customizable sizes.',
+      url: `${BASE_URL}/docs/avatar`,
+      images: [
+        {
+          url: `${BASE_URL}/og/avatar.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Avatar Component Preview',
+        },
+      ],
+    },
+  },
+  'x-scrollable': {
+    title: 'X Scrollable | Delta Components',
+    description: 'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
+    openGraph: {
+      title: 'X Scrollable | Delta Components',
+      description: 'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
+      url: `${BASE_URL}/docs/x-scrollable`,
+      images: [
+        {
+          url: `${BASE_URL}/og/x-scrollable.png`,
+          width: 1200,
+          height: 630,
+          alt: 'X Scrollable Component Preview',
+        },
+      ],
+    },
+  },
 };
 
 // Helper function to get metadata for a component

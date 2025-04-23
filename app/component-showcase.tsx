@@ -4,12 +4,14 @@ import { ComponentPreview } from "./component-preview"
 import { useSearchParams } from "next/navigation"
 import { CategoryType } from "@/lib/registry"
 import { Badge } from "@/components/badge"
+import { Suspense } from "react"
 
 interface ComponentShowcaseProps {
   categories: CategoryType[]
 }
 
-export function ComponentShowcase({ categories }: ComponentShowcaseProps) {
+// Inner component using useSearchParams
+function ComponentShowcaseInner({ categories }: ComponentShowcaseProps) {
   const searchParams = useSearchParams()
   const search = searchParams.get("search")?.toLowerCase() || ""
 
@@ -58,5 +60,14 @@ export function ComponentShowcase({ categories }: ComponentShowcaseProps) {
         </div>
       ))}
     </div>
+  )
+}
+
+// Wrapper component with Suspense
+export function ComponentShowcase(props: ComponentShowcaseProps) {
+  return (
+    <Suspense fallback={<div className="space-y-8">Loading components...</div>}>
+      <ComponentShowcaseInner {...props} />
+    </Suspense>
   )
 } 

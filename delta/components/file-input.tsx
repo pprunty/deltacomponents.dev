@@ -10,6 +10,7 @@ import {
   FileText,
   FileVideo,
   FileAudio,
+  Export,
 } from '@phosphor-icons/react';
 import type { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -293,14 +294,8 @@ export function FileInput({
   const getFileIcon = (file: File) => {
     if (file.type.startsWith('image/')) {
       return <Image weight="regular" className="h-5 w-5" />;
-    } else if (file.type.startsWith('video/')) {
-      return <FileVideo weight="regular" className="h-5 w-5" />;
-    } else if (file.type.startsWith('audio/')) {
-      return <FileAudio weight="regular" className="h-5 w-5" />;
-    } else if (file.type.startsWith('text/') || file.type.includes('pdf')) {
-      return <FileText weight="regular" className="h-5 w-5" />;
     } else {
-      return <File weight="regular" className="h-5 w-5" />;
+      return <Export weight="regular" className="h-5 w-5" />;
     }
   };
 

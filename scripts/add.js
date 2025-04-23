@@ -320,7 +320,6 @@ let demoFileContent = '';
 switch (componentType) {
   case 'component':
     filePath = path.join(categoryPath, `${componentName}.tsx`);
-    demoFilePath = path.join(categoryPath, `${componentName}-demo.tsx`);
     fileContent = `export default function ${componentNamePascal}() {
   return (
     <div className="p-4 border rounded">
@@ -329,22 +328,6 @@ switch (componentType) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ')}</h2>
       <p>Your component content here</p>
-    </div>
-  );
-}
-`;
-    demoFileContent = `import ${componentNamePascal} from "./${componentName}";
-
-export default function ${componentNamePascal}Demo() {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-medium">Demo: ${componentName
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ')}</h3>
-      <div className="p-6 border rounded-lg bg-slate-50 dark:bg-slate-900">
-        <${componentNamePascal} />
-      </div>
     </div>
   );
 }
@@ -439,7 +422,7 @@ fs.writeFileSync(filePath, fileContent);
 console.log(`Created: ${filePath}`);
 
 // Create demo file for components and blocks
-if (componentType === 'component' || componentType === 'block') {
+if (componentType === 'block') {
   fs.writeFileSync(demoFilePath, demoFileContent);
   console.log(`Created: ${demoFilePath}`);
 }

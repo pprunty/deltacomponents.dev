@@ -28,6 +28,12 @@ import RadioInputBasicDemo from "@/delta/examples/radio-input-basic-demo"
 import ModalBasicDemo from "@/delta/examples/modal-basic-demo"
 import ShareButtonBasicDemo from "@/delta/examples/share-button-basic-demo"
 import AccordionBasicDemo from "@/delta/examples/accordion-basic-demo"
+import AvatarBasicDemo from "@/delta/examples/avatar-basic-demo"
+import TextEditorBasicDemo from "@/delta/examples/text-editor-basic-demo"
+import TagsInputBasicDemo from "@/delta/examples/tags-input-basic-demo"
+import ProductSpotlightCardBasicDemo from "@/delta/examples/product-spotlight-card-basic-demo"
+import FooterBasicDemo from "@/delta/examples/footer-basic-demo"
+import SocialIconsBasicDemo from "@/delta/examples/social-icons-basic-demo"
 
 // Component mapping - maps component names to their implementations
 const componentMap: Record<string, React.ReactNode> = {
@@ -70,6 +76,12 @@ const componentMap: Record<string, React.ReactNode> = {
   "modal": <ModalBasicDemo />,
   "share-button": <ShareButtonBasicDemo />,
   "accordion": <AccordionBasicDemo />,
+  "avatar": <AvatarBasicDemo />,
+  "text-editor": <TextEditorBasicDemo />,
+  "tags-input": <TagsInputBasicDemo />,
+  "product-spotlight-card": <ProductSpotlightCardBasicDemo />,
+  footer: <FooterBasicDemo />,
+  "social-icons": <SocialIconsBasicDemo />,
 }
 
 interface ComponentPreviewProps {
@@ -122,7 +134,7 @@ export function ComponentPreview({ title, name, badge }: ComponentPreviewProps) 
 
           <div
             ref={containerRef}
-            className="relative z-10 w-full h-[200px] sm:h-[120px] transform-gpu transition-transform duration-300 sm:group-hover:translate-y-[-4px] sm:group-active:translate-y-[-4px]"
+            className="relative z-10 w-full h-[170px] sm:h-[120px] transform-gpu transition-transform duration-300 sm:group-hover:translate-y-[-4px] sm:group-active:translate-y-[-4px]"
           >
             {mounted && hasComponent && portalContainer ? (
               createPortal(
@@ -405,6 +417,66 @@ export const componentPreviewData: Record<string, ComponentPreview> = {
     category: "Navigation",
     subcategory: "Button",
     example: "delta/examples/share-button-basic-demo.tsx",
+    style: "default",
+  },
+  "avatar": {
+    name: "Avatar",
+    description: "A versatile avatar component that supports images, initials, and fallback content with automatic gradient generation.",
+    dependencies: [],
+    registryDependencies: [],
+    files: ["delta/components/avatar.tsx"],
+    type: "components",
+    category: "Display",
+    subcategory: "Avatar",
+    example: "delta/examples/avatar-basic-demo.tsx",
+    style: "default",
+  },
+  "tags-input": {
+    name: "Tags Input",
+    description: "A versatile tags input component that allows users to add and remove tags with keyboard support. Features include validation, error handling, and various styling options.",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: ["delta/components/tags-input.tsx"],
+    type: "components",
+    category: "Form",
+    subcategory: "Input",
+    example: "delta/examples/tags-input-basic-demo.tsx",
+    style: "default",
+  },
+  "product-spotlight-card": {
+    name: "Product Spotlight Card",
+    description: "A card component for displaying a product spotlight with a product image, title, and description.",
+    dependencies: [],
+    registryDependencies: [],
+    files: ["delta/components/product-spotlight-card.tsx"],
+    type: "components",
+    category: "Layout",
+    subcategory: "Card",
+    example: "delta/examples/product-spotlight-card-basic-demo.tsx",
+    style: "default",
+  },
+  footer: {
+    name: "Footer",
+    description: "A modern, responsive footer component with built-in sections for company information, navigation links, and social media integration.",
+    dependencies: [],
+    registryDependencies: [],
+    files: ["delta/components/footer.tsx"],
+    type: "components",
+    category: "Layout",
+    subcategory: "Footer",
+    example: "delta/examples/footer-basic-demo.tsx",
+    style: "default",
+  },
+  "social-icons": {
+    name: "Social Icons",
+    description: "A component for displaying social icons with customizable styles.",
+    dependencies: [],
+    registryDependencies: [],
+    files: ["delta/components/social-icons.tsx"],
+    type: "components",
+    category: "Display",
+    subcategory: "Icons",
+    example: "delta/examples/social-icons-basic-demo.tsx",
     style: "default",
   },
 }

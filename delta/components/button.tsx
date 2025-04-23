@@ -9,7 +9,11 @@ export type ButtonVariant =
   | 'secondary'
   | 'destructive'
   | 'action'
-  | 'neobrutalism';
+  | 'neobrutalism'
+  | 'ghost'
+  | 'outline';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps {
   onClick?: () => void;
@@ -20,6 +24,7 @@ export interface ButtonProps {
   disabled?: boolean;
   icon?: ReactNode;
   variant?: ButtonVariant;
+  size?: ButtonSize;
   extendedClickArea?: boolean;
   isLoading?: boolean; // New prop for loading state
   spinnerSize?: number; // Optional prop for spinner size
@@ -37,6 +42,7 @@ export function Button({
   disabled = false,
   icon,
   variant = 'primary',
+  size = 'md',
   extendedClickArea = false,
   isLoading = false, // Default to not loading
   spinnerSize = 20, // Default size
@@ -92,6 +98,13 @@ export function Button({
     ];
   };
 
+  // Size-based styles
+  const sizeStyles = {
+    sm: 'text-xs px-3 py-1.5 rounded-md',
+    md: 'text-sm px-4 py-2 rounded-md',
+    lg: 'text-base px-6 py-3 rounded-lg',
+  };
+
   // Use title if provided, otherwise use children
   const buttonContent = title || children;
 
@@ -99,9 +112,10 @@ export function Button({
     <button
       onClick={onClick}
       type={type}
-      disabled={disabled || isLoading} // Disable when loading
+      disabled={disabled || isLoading}
       className={clsx(
-        'w-full text-center rounded-md px-4 py-2 font-medium text-sm transition-all duration-200',
+        'w-full text-center rounded-md font-semibold transition-all duration-200',
+        sizeStyles[size],
         'focus:outline-none focus:ring-0 focus-visible:ring-0',
         'focus:shadow-none focus-visible:shadow-none',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
@@ -152,13 +166,27 @@ export function Button({
           'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
         ],
 
+        // Ghost variant styling
+        variant === 'ghost' && [
+          'bg-transparent hover:bg-accent hover:text-accent-foreground',
+          'active:bg-accent/80',
+          'focus-visible:outline-accent/50',
+        ],
+
+        // Outline variant styling
+        variant === 'outline' && [
+          'border border-input bg-background',
+          'hover:bg-accent hover:text-accent-foreground',
+          'active:bg-accent/80',
+          'focus-visible:outline-accent/50',
+        ],
+
         // Add the extended click area pseudo-element styles
         extendedClickArea &&
           'before:absolute before:-inset-10 before:block before:content-[""]',
 
         className,
       )}
-      // Add these critical styles inline to ensure they override browser defaults
       style={{
         WebkitTapHighlightColor: 'transparent',
         outline: 'none',
@@ -170,19 +198,16 @@ export function Button({
           }),
       }}
     >
-      <div className="flex items-center justify-center gap-2">
-        {isLoading ? (
+      <div className={clsx("flex items-center justify-center", isLoading && "gap-2")}>
+        {isLoading && (
           <ClipLoader
             size={spinnerSize}
             color={getSpinnerColor()}
             cssOverride={{ display: 'block' }}
           />
-        ) : (
-          <>
-            {icon && <span className="flex items-center">{icon}</span>}
-            <span>{buttonContent}</span>
-          </>
         )}
+        {icon && !isLoading && <span className="flex items-center">{icon}</span>}
+        <span>{title || children}</span>
       </div>
     </button>
   );

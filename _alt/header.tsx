@@ -121,7 +121,7 @@ export default function Header() {
                       href={route.path}
                       className={cn(
                         "text-sm font-semibold tracking-wide transition-colors hover:text-foreground hover:underline",
-                        isActive(route.path) ? "text-foreground underline" : "text-muted-foreground",
+                        isActive(route.path) ? "text-foreground relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-4px] after:h-[2px] after:bg-foreground" : "text-muted-foreground",
                       )}
                     >
                       {route.name}
@@ -167,7 +167,7 @@ export default function Header() {
                   className={cn(
                     "text-sm font-semibold uppercase tracking-wide transition-all duration-200 ease-in-out",
                     "hover:text-foreground hover:underline",
-                    isActive(route.path) ? "text-foreground underline" : "text-muted-foreground",
+                    isActive(route.path) ? "text-foreground relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-4px] after:h-[2px] after:bg-foreground" : "text-muted-foreground",
                   )}
                   onClick={closeMenu}
                 >

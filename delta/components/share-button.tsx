@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Export, Check } from "@phosphor-icons/react"
+import { Button, type ButtonProps, type ButtonVariant } from "./button"
 
-export interface ShareButtonProps {
+export interface ShareButtonProps extends Omit<ButtonProps, "onClick"> {
   /**
    * Optional custom message for sharing
    */
@@ -22,23 +23,6 @@ export interface ShareButtonProps {
    */
   tooltip?: string
   /**
-   * Optional additional CSS classes
-   */
-  className?: string
-  /**
-   * Optional icon to use instead of default
-   * @deprecated Use children instead for custom icons and styling
-   */
-  icon?: React.ReactNode
-  /**
-   * Optional variant style
-   */
-  variant?: "default" | "outline" | "ghost"
-  /**
-   * Optional size
-   */
-  size?: "sm" | "md" | "lg"
-  /**
    * Optional notification position
    */
   notificationPosition?: "top" | "bottom"
@@ -52,9 +36,15 @@ export interface ShareButtonProps {
    */
   nativeShareOnDesktop?: boolean
   /**
-   * Optional children to render inside the button
+   * Whether to show the title text beside the icon
+   * @default false
    */
-  children?: React.ReactNode
+  showTitle?: boolean
+  /**
+   * Button variant
+   * @default "default"
+   */
+  variant?: ButtonVariant
 }
 
 export default function ShareButton({
@@ -63,13 +53,13 @@ export default function ShareButton({
   url,
   tooltip = "Share this page",
   className,
-  icon,
-  variant = "default",
-  size = "md",
   notificationPosition = "top",
   notificationDuration = 2000,
   nativeShareOnDesktop = true,
   children,
+  showTitle = false,
+  variant = "secondary",
+  ...props
 }: ShareButtonProps) {
   const [isNotificationVisible, setIsNotificationVisible] = useState(false)
   const [pageUrl, setPageUrl] = useState("")
@@ -121,52 +111,33 @@ export default function ShareButton({
     }
   }
 
-  // Styles based on size
-  const sizeStyles = {
-    sm: "p-1.5 text-sm",
-    md: "p-2 text-base",
-    lg: "p-2.5 text-lg",
-  }
-
-  // Styles based on variant
-  const variantStyles = {
-    default: "bg-primary text-primary-foreground hover:bg-primary/90",
-    outline: "border border-border hover:bg-accent hover:text-accent-foreground",
-    ghost: "hover:bg-accent hover:text-accent-foreground",
-  }
-
-  // Icon size based on button size
-  const iconSize = {
-    sm: 16,
-    md: 20,
-    lg: 24,
-  }
-
   if (!isMounted) {
     return null // Prevent SSR issues
   }
 
   return (
     <>
-      <button
+      <Button
         onClick={handleShare}
-        className={cn(
-          "inline-flex items-center justify-center rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-          sizeStyles[size],
-          variantStyles[variant],
-          className
-        )}
-        aria-label={tooltip}
-        title={tooltip}
+        className={className}
+        title={title || undefined}
+        variant={variant}
+        {...props}
       >
         {isNotificationVisible ? (
-          <Check weight="bold" size={iconSize[size]} />
+          <div className="flex items-center gap-2">
+            <Check weight="bold" size={20} />
+            {showTitle && title && <span className="text-sm">{title}</span>}
+          </div>
         ) : children ? (
           children
         ) : (
-          icon || <Export weight="bold" size={iconSize[size]} />
+          <div className="flex items-center gap-2">
+            <Export weight="bold" size={20} />
+            {showTitle && title && <span className="text-sm">{title}</span>}
+          </div>
         )}
-      </button>
+      </Button>
 
       {/* Toast notification with improved animations and contrasting colors */}
       <div

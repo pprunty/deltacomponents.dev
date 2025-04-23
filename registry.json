@@ -668,20 +668,24 @@
       "name": "footer",
       "type": "registry:component",
       "title": "Footer",
-      "category": "layout",
       "description": "A component for footer",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
-          "path": "delta/layout/footer.tsx",
+          "path": "delta/components/footer.tsx",
           "type": "registry:component",
-          "target": "delta/layout/footer.tsx"
+          "target": "delta/components/footer.tsx"
         },
         {
-          "path": "delta/layout/footer-demo.tsx",
+          "path": "delta/examples/footer-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/layout/footer-demo.tsx"
+          "target": "delta/examples/footer-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/footer.mdx",
+          "type": "registry:component",
+          "target": "content/docs/footer.mdx"
         }
       ]
     },
@@ -827,6 +831,11 @@
           "path": "content/docs/share-button.mdx",
           "type": "registry:component",
           "target": "content/docs/share-button.mdx"
+        },
+        {
+          "path": "delta/examples/share-button-popover-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/share-button-popover-demo.tsx"
         }
       ]
     },
@@ -858,6 +867,203 @@
           "path": "delta/examples/accordion-neobrutalism-demo.tsx",
           "type": "registry:component",
           "target": "delta/examples/accordion-neobrutalism-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:component",
+      "title": "Avatar",
+      "category": "components",
+      "description": "A component for avatar",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/avatar.tsx",
+          "type": "registry:component",
+          "target": "delta/components/avatar.tsx"
+        },
+        {
+          "path": "delta/examples/avatar-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/avatar-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/avatar.mdx",
+          "type": "registry:component",
+          "target": "content/docs/avatar.mdx"
+        },
+        {
+          "path": "delta/examples/avatar-fallback-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/avatar-fallback-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comments-section",
+      "type": "registry:component",
+      "category": "blocks",
+      "title": "Comments Section",
+      "description": "A component for comments-section",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/comments-section.tsx",
+          "type": "registry:component",
+          "target": "delta/components/comments-section.tsx"
+        },
+        {
+          "path": "delta/examples/comments-section-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/comments-section-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/comments-section.mdx",
+          "type": "registry:component",
+          "target": "content/docs/comments-section.mdx"
+        }
+      ]
+    },
+    {
+      "name": "text-editor",
+      "type": "registry:component",
+      "title": "Text Editor",
+      "category": "blocks",
+      "description": "A minimal text editor component with formatting options",
+      "dependencies": [
+        "@tiptap/react",
+        "@tiptap/starter-kit",
+        "@tiptap/extension-link",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "delta/components/text-editor.tsx",
+          "type": "registry:component",
+          "target": "delta/components/text-editor.tsx"
+        },
+        {
+          "path": "delta/examples/text-editor-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/text-editor-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/text-editor.mdx",
+          "type": "registry:component",
+          "target": "content/docs/text-editor.mdx"
+        }
+      ]
+    },
+    {
+      "name": "snap-scroll",
+      "type": "registry:component",
+      "title": "Snap Scroll",
+      "description": "A component for snap-scroll",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/snap-scroll.tsx",
+          "type": "registry:component",
+          "target": "delta/components/snap-scroll.tsx"
+        },
+        {
+          "path": "delta/examples/snap-scroll-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/snap-scroll-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/snap-scroll.mdx",
+          "type": "registry:component",
+          "target": "content/docs/snap-scroll.mdx"
+        }
+      ]
+    },
+    {
+      "name": "tags-input",
+      "type": "registry:component",
+      "title": "Tags Input",
+      "description": "A component for tags-input",
+      "dependencies": [],
+      "category": "inputs",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/tags-input.tsx",
+          "type": "registry:component",
+          "target": "delta/components/tags-input.tsx"
+        },
+        {
+          "path": "delta/examples/tags-input-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tags-input-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/tags-input.mdx",
+          "type": "registry:component",
+          "target": "content/docs/tags-input.mdx"
+        }
+      ]
+    },
+    {
+      "name": "product-spotlight-card",
+      "type": "registry:component",
+      "title": "Product Spotlight Card",
+      "category": "components",
+      "description": "A component for product-spotlight-card",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/product-spotlight-card.tsx",
+          "type": "registry:component",
+          "target": "delta/components/product-spotlight-card.tsx"
+        },
+        {
+          "path": "delta/examples/product-spotlight-card-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/product-spotlight-card-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/product-spotlight-card.mdx",
+          "type": "registry:component",
+          "target": "content/docs/product-spotlight-card.mdx"
+        }
+      ]
+    },
+    {
+      "name": "social-icons",
+      "type": "registry:component",
+      "title": "Social Icons",
+      "description": "A component for social-icons",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/social-icons.tsx",
+          "type": "registry:component",
+          "target": "delta/components/social-icons.tsx"
+        },
+        {
+          "path": "delta/examples/social-icons-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/social-icons-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/social-icons.mdx",
+          "type": "registry:component",
+          "target": "content/docs/social-icons.mdx"
+        },
+        {
+          "path": "delta/examples/social-icons-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/social-icons-variants-demo.tsx"
         }
       ]
     }

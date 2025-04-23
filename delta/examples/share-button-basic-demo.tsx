@@ -8,8 +8,7 @@ export default function ShareButtonBasicDemo() {
       <ShareButton 
         tooltip="Share this content"
         size="md"
-        variant="ghost"
-        nativeShareOnDesktop={true}
+        nativeShareOnDesktop={false}
         url="https://deltacomponents.dev"
         message="Check out Delta Components, a modern React UI library: "
       />

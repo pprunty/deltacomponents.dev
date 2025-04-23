@@ -4,11 +4,13 @@ import { Button } from "@/delta/components/button"
 import { useState } from "react"
 
 export default function ButtonVariantsDemo() {
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = () => {
-    setLoading(true)
-    setTimeout(() => setLoading(false), 2000)
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
   }
 
   return (
@@ -20,20 +22,36 @@ export default function ButtonVariantsDemo() {
           <Button 
             title="Primary Button" 
             variant="primary"
-            onClick={handleClick}
-            isLoading={loading}
           />
           <Button 
             title="Secondary Button" 
-            variant="secondary" 
+            variant="secondary"
           />
           <Button 
             title="Destructive Button" 
-            variant="destructive" 
+            variant="destructive"
           />
           <Button 
             title="Action Button" 
-            variant="action" 
+            variant="action"
+          />
+        </div>
+      </div>
+
+      {/* Loading States */}
+      <div className="space-y-4">
+        <h3 className="text-sm font-medium text-muted-foreground">Loading States</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Button 
+            title="Always Loading" 
+            variant="primary"
+            isLoading={true}
+          />
+          <Button 
+            title="Click to Load" 
+            variant="primary"
+            isLoading={isLoading}
+            onClick={handleClick}
           />
         </div>
       </div>
@@ -45,16 +63,17 @@ export default function ButtonVariantsDemo() {
           <Button
             title="Small Button"
             variant="primary"
-            className="py-1 text-xs"
+            size="sm"
           />
           <Button
             title="Default Size"
             variant="primary"
+            size="md"
           />
           <Button
             title="Large Button"
             variant="primary"
-            className="py-3 text-base"
+            size="lg"
           />
         </div>
       </div>

@@ -61,92 +61,90 @@ npx shadcn@latest add "share-button"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`message`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">`"Check out this page: "`</td>
-        <td className="border px-4 py-2 text-left">Custom message to include when sharing</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`title`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">document.title</td>
-        <td className="border px-4 py-2 text-left">Title to use in the share dialog</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`url`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">current URL</td>
-        <td className="border px-4 py-2 text-left">URL to share (defaults to current page URL)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`tooltip`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">`"Share this page"`</td>
-        <td className="border px-4 py-2 text-left">Tooltip text for the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`className`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`icon`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">Export icon</td>
-        <td className="border px-4 py-2 text-left">Custom icon element (deprecated, use children instead)</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`children`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Custom content to render inside the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`variant`</td>
-        <td className="border px-4 py-2 text-left">`"default" | "outline" | "ghost"`</td>
-        <td className="border px-4 py-2 text-left">`"default"`</td>
-        <td className="border px-4 py-2 text-left">Button style variant</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`size`</td>
-        <td className="border px-4 py-2 text-left">`"sm" | "md" | "lg"`</td>
-        <td className="border px-4 py-2 text-left">`"md"`</td>
-        <td className="border px-4 py-2 text-left">Button size</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`notificationPosition`</td>
-        <td className="border px-4 py-2 text-left">`"top" | "bottom"`</td>
-        <td className="border px-4 py-2 text-left">`"top"`</td>
-        <td className="border px-4 py-2 text-left">Position of the notification</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`notificationDuration`</td>
-        <td className="border px-4 py-2 text-left">`number`</td>
-        <td className="border px-4 py-2 text-left">`2000`</td>
-        <td className="border px-4 py-2 text-left">Duration of notification in milliseconds</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`nativeShareOnDesktop`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`true`</td>
-        <td className="border px-4 py-2 text-left">Force using native share API on desktop instead of clipboard copy</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`title`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>document.title</TableCell>
+      <TableCell>Title to use in the share dialog</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`url`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>current URL</TableCell>
+      <TableCell>URL to share (defaults to current page URL)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`tooltip`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"Share this page"`</TableCell>
+      <TableCell>Tooltip text for the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`icon`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>Export icon</TableCell>
+      <TableCell>Custom icon element (deprecated, use children instead)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`children`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom content to render inside the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`"default" | "outline" | "ghost"`</TableCell>
+      <TableCell>`"default"`</TableCell>
+      <TableCell>Button style variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`"sm" | "md" | "lg"`</TableCell>
+      <TableCell>`"md"`</TableCell>
+      <TableCell>Button size</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`notificationPosition`</TableCell>
+      <TableCell>`"top" | "bottom"`</TableCell>
+      <TableCell>`"top"`</TableCell>
+      <TableCell>Position of the notification</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`notificationDuration`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`2000`</TableCell>
+      <TableCell>Duration of notification in milliseconds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`nativeShareOnDesktop`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Force using native share API on desktop instead of clipboard copy</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showTitle`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the title text beside the icon</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Usage Examples
 
@@ -234,6 +232,26 @@ export default function ShareExample() {
         <span>Share with Native Dialog</span>
       </div>
     </ShareButton>
+  );
+}
+```
+
+### Non-Native Share on Desktop
+
+<ComponentTabs name="share-button-popover" />
+
+### Share Button with Title
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      title="Share this page"
+      showTitle={true}
+      tooltip="Share this content"
+    />
   );
 }
 ```

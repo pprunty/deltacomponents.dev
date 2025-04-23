@@ -77,98 +77,90 @@ npx shadcn@latest add "https://deltacomponents.dev/r/scramble-in.json"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`text`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">Required</td>
-        <td className="border px-4 py-2 text-left">The text to animate</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`scrambleSpeed`</td>
-        <td className="border px-4 py-2 text-left">`number`</td>
-        <td className="border px-4 py-2 text-left">`50`</td>
-        <td className="border px-4 py-2 text-left">Speed of the scramble animation in milliseconds</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`scrambledLetterCount`</td>
-        <td className="border px-4 py-2 text-left">`number`</td>
-        <td className="border px-4 py-2 text-left">`2`</td>
-        <td className="border px-4 py-2 text-left">Number of letters to scramble at a time</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`characters`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">`'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'`</td>
-        <td className="border px-4 py-2 text-left">Characters to use for scrambling</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`className`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes for the revealed text</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`scrambledClassName`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes for the scrambled text</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`autoStart`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`true`</td>
-        <td className="border px-4 py-2 text-left">Whether to start the animation automatically</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`useIntersectionObserver`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to use Intersection Observer for animation trigger</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`retriggerOnIntersection`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to retrigger animation on subsequent intersections</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`intersectionThreshold`</td>
-        <td className="border px-4 py-2 text-left">`number`</td>
-        <td className="border px-4 py-2 text-left">`0.3`</td>
-        <td className="border px-4 py-2 text-left">Threshold for intersection observer</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`intersectionRootMargin`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">`'0px'`</td>
-        <td className="border px-4 py-2 text-left">Root margin for intersection observer</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onStart`</td>
-        <td className="border px-4 py-2 text-left">`() => void`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Callback when animation starts</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onComplete`</td>
-        <td className="border px-4 py-2 text-left">`() => void`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Callback when animation completes</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`scrambleSpeed`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`50`</TableCell>
+      <TableCell>Speed of the scramble animation in milliseconds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`scrambledLetterCount`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`2`</TableCell>
+      <TableCell>Number of letters to scramble at a time</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`characters`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'`</TableCell>
+      <TableCell>Characters to use for scrambling</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the revealed text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`scrambledClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the scrambled text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`autoStart`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to start the animation automatically</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`useIntersectionObserver`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to use Intersection Observer for animation trigger</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`retriggerOnIntersection`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to retrigger animation on subsequent intersections</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`intersectionThreshold`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`0.3`</TableCell>
+      <TableCell>Threshold for intersection observer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`intersectionRootMargin`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'0px'`</TableCell>
+      <TableCell>Root margin for intersection observer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onStart`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when animation starts</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onComplete`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when animation completes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Intersection Observer Demo
 

@@ -43,6 +43,17 @@ import ModalBasicDemo from "@/delta/examples/modal-basic-demo"
 import ShareButtonBasicDemo from "@/delta/examples/share-button-basic-demo"
 import AccordionBasicDemo from "@/delta/examples/accordion-basic-demo"
 import AccordionNeobrutalismDemo from "@/delta/examples/accordion-neobrutalism-demo"
+import AvatarBasicDemo from "@/delta/examples/avatar-basic-demo"
+import AvatarFallbackDemo from "@/delta/examples/avatar-fallback-demo"
+import CommentsSectionBasicDemo from "@/delta/examples/comments-section-basic-demo"
+import TextEditorBasicDemo from "@/delta/examples/text-editor-basic-demo"
+import SnapScrollBasicDemo from "@/delta/examples/snap-scroll-basic-demo"
+import TagsInputBasicDemo from "@/delta/examples/tags-input-basic-demo"
+import ShareButtonPopoverDemo from "@/delta/examples/share-button-popover-demo"
+import ProductSpotlightCardBasicDemo from "@/delta/examples/product-spotlight-card-basic-demo"
+import FooterBasicDemo from "@/delta/examples/footer-basic-demo"
+import SocialIconsBasicDemo from "@/delta/examples/social-icons-basic-demo"
+import SocialIconsVariantsDemo from "@/delta/examples/social-icons-variants-demo"
 
 export const demoComponents = {
   ButtonVariantsDemo,
@@ -88,4 +99,15 @@ export const demoComponents = {
   ShareButtonBasicDemo,
   AccordionBasicDemo,
   AccordionNeobrutalismDemo,
+  AvatarBasicDemo,
+  AvatarFallbackDemo,
+  CommentsSectionBasicDemo,
+  TextEditorBasicDemo,
+  SnapScrollBasicDemo,
+  TagsInputBasicDemo,
+  ShareButtonPopoverDemo,
+  ProductSpotlightCardBasicDemo,
+  FooterBasicDemo,
+  SocialIconsBasicDemo,
+  SocialIconsVariantsDemo,
 SmartFormPaymentDemo,} as const

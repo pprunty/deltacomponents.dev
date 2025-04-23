@@ -1,35 +1,35 @@
 export const metadata = {
-  title: 'FloatingButton | Delta Components',
-  description: 'A versatile floating button component with customizable position, tooltip support, and responsive behavior.',
+  title: 'Float | Delta Components',
+  description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
 
   // Keywords help with SEO
-  keywords: ['shadcn/ui', 'react', 'floating button', 'action button', 'fab', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+  keywords: ['shadcn/ui', 'react', 'float', 'positioning', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
 
   // Canonical URL to prevent duplicate content issues
   alternates: {
-    canonical: 'https://deltacomponents.dev/docs/floating-button',
+    canonical: 'https://deltacomponents.dev/docs/float',
   },
 
   // Category helps with structured data
   category: 'component',
 
   openGraph: {
-    title: 'FloatingButton Component | Delta Components',
-    description: 'A versatile floating button component with customizable position, tooltip support, and responsive behavior.',
+    title: 'Float Component | Delta Components',
+    description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
     type: 'article',
-    url: 'https://deltacomponents.dev/docs/floating-button',
+    url: 'https://deltacomponents.dev/docs/float',
     images: [
       {
-        url: 'https://deltacomponents.dev/og/floating-button.png',
+        url: 'https://deltacomponents.dev/og/float.png',
         width: 1200,
         height: 630,
-        alt: 'FloatingButton Component Preview showing a floating action button with various positioning options'
+        alt: 'Float Component Preview showing various positioning options'
       }
     ],
     // Article specific OpenGraph metadata
     article: {
       authors: ['Patrick Prunty'],
-      tags: ['UI Components', 'React', 'Shadcn', 'Floating Button', 'FAB', 'Design'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Positioning', 'Design'],
       section: 'Components'
     },
     siteName: 'Delta Components'
@@ -37,9 +37,9 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'FloatingButton Component | Delta Components',
-    description: 'A versatile floating button component with customizable position, tooltip support, and responsive behavior.',
-    images: ['https://deltacomponents.dev/og/floating-button.png'],
+    title: 'Float Component | Delta Components',
+    description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
+    images: ['https://deltacomponents.dev/og/float.png'],
     creator: '@pprunty_',
     site: '@deltacomponents'
   },
@@ -59,233 +59,114 @@ export const metadata = {
   }
 }
 
-# FloatingButton
+# Float
 
-A versatile floating button component with customizable position, tooltip support, and responsive behavior. Perfect for primary actions like creating new items or navigating back to top. Can also be used as a container to position any element in fixed or absolute positions.
+A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior. Perfect for floating action buttons, notifications, or any other content that needs to be positioned relative to the viewport or a container.
 
 ## Basic Usage
 
-<ComponentTabs name="floating-button-basic" />
+<ComponentTabs name="float-basic" />
 
 ## Installation
 
 ```bash
-npx shadcn@latest add "floating-button"
+npx shadcn@latest add "float"
 ```
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`icon`</td>
-        <td className="border px-4 py-2 text-left">`React.ElementType`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional icon component to render inside the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`children`</td>
-        <td className="border px-4 py-2 text-left">`React.ReactNode`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional children elements to render inside the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`text`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional text to display next to the icon</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`variant`</td>
-        <td className="border px-4 py-2 text-left">`'default' | 'secondary' | 'outline' | 'ghost' | 'destructive'`</td>
-        <td className="border px-4 py-2 text-left">`'default'`</td>
-        <td className="border px-4 py-2 text-left">The visual style variant of the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`size`</td>
-        <td className="border px-4 py-2 text-left">`'sm' | 'default' | 'lg'`</td>
-        <td className="border px-4 py-2 text-left">`'default'`</td>
-        <td className="border px-4 py-2 text-left">The size of the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`shape`</td>
-        <td className="border px-4 py-2 text-left">`'default' | 'circle'`</td>
-        <td className="border px-4 py-2 text-left">`'default'`</td>
-        <td className="border px-4 py-2 text-left">The shape of the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`tooltip`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Optional tooltip text to display on hover</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`tooltipSide`</td>
-        <td className="border px-4 py-2 text-left">`'top' | 'right' | 'bottom' | 'left'`</td>
-        <td className="border px-4 py-2 text-left">`'top'`</td>
-        <td className="border px-4 py-2 text-left">The side of the button where the tooltip appears</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`position`</td>
-        <td className="border px-4 py-2 text-left">`'fixed' | 'absolute' | 'static'`</td>
-        <td className="border px-4 py-2 text-left">`'fixed'`</td>
-        <td className="border px-4 py-2 text-left">CSS position property</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`placement`</td>
-        <td className="border px-4 py-2 text-left">`'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'bottom-center'`</td>
-        <td className="border px-4 py-2 text-left">`'bottom-right'`</td>
-        <td className="border px-4 py-2 text-left">The placement of the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`offset`</td>
-        <td className="border px-4 py-2 text-left">`number | { x?: number; y?: number }`</td>
-        <td className="border px-4 py-2 text-left">`16`</td>
-        <td className="border px-4 py-2 text-left">Distance from the edge of the container</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onlyDesktop`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to show the button only on desktop screens</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onlyMobile`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to show the button only on mobile screens</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`opaqueOnScroll`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether to reduce opacity when scrolling down the page</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`position`</TableCell>
+      <TableCell>`'fixed' | 'absolute' | 'static'`</TableCell>
+      <TableCell>`'fixed'`</TableCell>
+      <TableCell>CSS position property</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`placement`</TableCell>
+      <TableCell>`'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'bottom-center'`</TableCell>
+      <TableCell>`'bottom-right'`</TableCell>
+      <TableCell>The placement of the content</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`offset`</TableCell>
+      <TableCell>`number | { x?: number; y?: number }`</TableCell>
+      <TableCell>`16`</TableCell>
+      <TableCell>Distance from the edge of the container</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onlyDesktop`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the content only on desktop screens</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onlyMobile`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the content only on mobile screens</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`opaqueOnScroll`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to reduce opacity when scrolling down the page</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## Examples
 
-### Basic Floating Button with Icon Only
+### Basic Floating Button
 
 ```tsx
 import { Plus } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
 
 export default function BasicExample() {
   return (
-    <FloatingButton.FloatingButton
-      icon={Plus}
-      shape="circle"
-      tooltip="Add New Item"
-    />
-  )
-}
-```
-
-### Floating Button with Custom Children
-
-```tsx
-import { FloatingButton } from "@/components/ui/floating-button"
-
-export default function ChildrenExample() {
-  return (
-    <FloatingButton.FloatingButton
-      variant="secondary"
+    <Float
+      position="absolute"
       placement="bottom-right"
+      offset={16}
     >
-      <div className="flex items-center gap-2">
-        <span>👋</span>
-        <span>Hello World!</span>
-      </div>
-    </FloatingButton.FloatingButton>
-  )
-}
-```
-
-### Floating Button with Text and Icon
-
-```tsx
-import { ArrowUp } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
-
-export default function TextExample() {
-  return (
-    <FloatingButton.FloatingButton
-      icon={ArrowUp}
-      text="Back to Top"
-      placement="bottom-center"
-    />
-  )
-}
-```
-
-### Different Variants and Sizes
-
-```tsx
-import { Heart, Send, Trash } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
-
-export default function VariantsExample() {
-  return (
-    <div className="space-y-4">
-      <FloatingButton.FloatingButton
-        icon={Heart}
-        variant="secondary"
+      <Button
+        variant="primary"
         size="sm"
-        position="static"
-      />
-      
-      <FloatingButton.FloatingButton
-        icon={Send}
-        variant="outline"
-        position="static"
-      />
-      
-      <FloatingButton.FloatingButton
-        icon={Trash}
-        variant="destructive"
-        size="lg"
-        position="static"
-      />
-    </div>
+        onClick={() => alert("Button clicked!")}
+      >
+        <Plus size={20} />
+      </Button>
+    </Float>
   )
 }
 ```
 
-### Responsive Visibility
+### Floating Notification
 
 ```tsx
-import { Plus } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
+import Float from "@/components/ui/float"
 
-export default function ResponsiveVisibilityExample() {
+export default function NotificationExample() {
   return (
-    <>
-      <FloatingButton.FloatingButton
-        icon={Plus}
-        text="Desktop Only"
-        placement="bottom-right"
-        onlyDesktop={true}
-      />
-      
-      <FloatingButton.FloatingButton
-        icon={Plus}
-        text="Mobile Only"
-        placement="bottom-center"
-        onlyMobile={true}
-      />
-    </>
+    <Float
+      placement="top-right"
+      offset={16}
+    >
+      <div className="bg-primary text-primary-foreground px-4 py-2 rounded-md shadow-lg">
+        New message received!
+      </div>
+    </Float>
   )
 }
 ```
@@ -293,19 +174,21 @@ export default function ResponsiveVisibilityExample() {
 ### Responsive Positioning
 
 ```tsx
-import { Plus } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
 
-export default function ResponsivePositionExample() {
+export default function ResponsiveExample() {
   return (
-    <FloatingButton.FloatingButton
-      icon={Plus}
-      text="Add Item"
+    <Float
       mobilePosition="bottom-center"
       desktopPosition="bottom-right"
       mobileOffset={8}
       desktopOffset={16}
-    />
+    >
+      <Button variant="primary">
+        Contact Us
+      </Button>
+    </Float>
   )
 }
 ```
@@ -313,29 +196,30 @@ export default function ResponsivePositionExample() {
 ### Opacity Changes on Scroll
 
 ```tsx
-import { ArrowUp } from "lucide-react"
-import { FloatingButton } from "@/components/ui/floating-button"
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
 
 export default function OpaqueOnScrollExample() {
   return (
-    <FloatingButton.FloatingButton
-      icon={ArrowUp}
-      text="Back to Top"
+    <Float
       placement="bottom-right"
       opaqueOnScroll={true}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    />
+    >
+      <Button variant="primary">
+        Back to Top
+      </Button>
+    </Float>
   )
 }
 ```
 
 ## Accessibility
 
-The FloatingButton component is designed with accessibility in mind:
+The Float component is designed with accessibility in mind:
 
-- Includes proper ARIA attributes
+- Maintains proper focus management
 - Supports keyboard navigation
-- Tooltips improve discoverability for icon-only buttons
-- Text alternatives can be provided for screen readers
+- Preserves semantic structure of its children
+- Works with screen readers
 
-When using icon-only FloatingButtons, it's recommended to include a tooltip or aria-label to describe the action for assistive technology users.
+When using the Float component, ensure that the content you're floating is itself accessible. For example, when floating buttons, make sure they have proper ARIA labels and keyboard support.

@@ -293,7 +293,7 @@ export default function CodeBlock({
         <div
           ref={contentRef}
           className={cn(
-            "pt-4 pb-5 mt-2 px-4 w-full code-content",
+            "pt-4 pb-5 my-2 px-4 w-full code-content",
             !expanded && "max-h-[var(--code-block-max-height)] overflow-y-auto",
             showLineNumbers && "relative",
           )}

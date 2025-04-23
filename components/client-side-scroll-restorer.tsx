@@ -1,10 +1,10 @@
 // src/ClientSideScrollRestorer.tsx
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-const ClientSideScrollRestorer = () => {
+const ScrollRestorerInner = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -34,6 +34,14 @@ const ClientSideScrollRestorer = () => {
   }, [pathname, searchParams]);
 
   return null;
+};
+
+const ClientSideScrollRestorer = () => {
+  return (
+    <Suspense fallback={null}>
+      <ScrollRestorerInner />
+    </Suspense>
+  );
 };
 
 export default ClientSideScrollRestorer;

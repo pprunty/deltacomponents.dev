@@ -1,78 +1,7 @@
-'use client';
+"use client";
 
 import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-
-const floatingButtonVariants = cva(
-  'inline-flex items-center justify-center gap-2 transition-all duration-200 rounded-full shadow-sm hover:shadow-md active:opacity-95 active:scale-95',
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/90',
-        outline:
-          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-      },
-      size: {
-        sm: 'text-xs',
-        default: 'text-sm',
-        lg: 'text-base',
-      },
-      shape: {
-        default: '',
-        circle: 'aspect-square',
-      },
-    },
-    compoundVariants: [
-      {
-        shape: 'default',
-        size: 'sm',
-        class: 'h-10 px-3 py-1.5',
-      },
-      {
-        shape: 'default',
-        size: 'default',
-        class: 'h-12 px-4 py-2',
-      },
-      {
-        shape: 'default',
-        size: 'lg',
-        class: 'h-16 px-5 py-2.5',
-      },
-      {
-        shape: 'circle',
-        size: 'sm',
-        class: 'h-8 w-8 p-0',
-      },
-      {
-        shape: 'circle',
-        size: 'default',
-        class: 'h-10 w-10 p-0',
-      },
-      {
-        shape: 'circle',
-        size: 'lg',
-        class: 'h-12 w-12 p-0',
-      },
-    ],
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-      shape: 'default',
-    },
-  },
-);
 
 export type Position =
   | 'top-left'
@@ -84,13 +13,8 @@ export type Position =
 // Define the offset type for reuse
 export type OffsetValue = number | { x?: number; y?: number };
 
-export interface FloatingButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof floatingButtonVariants> {
-  icon?: React.ElementType;
-  text?: string;
-  children?: React.ReactNode;
-  iconProps?: React.ComponentPropsWithoutRef<'svg'>;
+export interface FloatProps {
+  children: React.ReactNode;
   tooltip?: string;
   tooltipSide?: 'top' | 'right' | 'bottom' | 'left';
   tooltipAlign?: 'start' | 'center' | 'end';
@@ -105,19 +29,13 @@ export interface FloatingButtonProps
   desktopOffset?: OffsetValue;
   zIndex?: number;
   opaqueOnScroll?: boolean;
+  className?: string;
 }
 
-const FloatingButton = React.forwardRef<HTMLButtonElement, FloatingButtonProps>(
+const Float = React.forwardRef<HTMLDivElement, FloatProps>(
   (
     {
-      className,
-      icon: Icon,
-      text,
       children,
-      variant = 'default',
-      size = 'default',
-      shape = 'default',
-      iconProps,
       tooltip,
       tooltipSide = 'top',
       tooltipAlign = 'center',
@@ -132,6 +50,7 @@ const FloatingButton = React.forwardRef<HTMLButtonElement, FloatingButtonProps>(
       mobilePosition,
       desktopPosition,
       opaqueOnScroll = false,
+      className,
       ...props
     },
     ref,
@@ -155,9 +74,20 @@ const FloatingButton = React.forwardRef<HTMLButtonElement, FloatingButtonProps>(
     React.useEffect(() => {
       if (!opaqueOnScroll) return;
 
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
       const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        setIsOpaque(scrollPosition > 100);
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            const scrollDirection = currentScrollY < lastScrollY ? 'up' : 'down';
+            setIsOpaque(scrollDirection === 'down' && currentScrollY > 100);
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
       };
 
       window.addEventListener('scroll', handleScroll);
@@ -205,7 +135,8 @@ const FloatingButton = React.forwardRef<HTMLButtonElement, FloatingButtonProps>(
       const styles: React.CSSProperties = {
         position,
         zIndex,
-        ...(opaqueOnScroll && isOpaque ? { opacity: 0.7 } : {}),
+        transition: 'opacity 0.3s ease-in-out',
+        ...(opaqueOnScroll && isOpaque ? { opacity: 0.9 } : {}),
       };
 
       switch (effectivePlacement) {
@@ -243,52 +174,22 @@ const FloatingButton = React.forwardRef<HTMLButtonElement, FloatingButtonProps>(
       return null;
     }
 
-    // Default icon size based on button size
-    const iconSize = size === 'sm' ? 16 : size === 'default' ? 20 : 24;
-
-    // Default icon props
-    const defaultIconProps = {
-      size: iconSize,
-      'aria-hidden': true,
-      ...iconProps,
-    };
-
-    const button = (
-      <button
+    return (
+      <div
         ref={ref}
         className={cn(
-          floatingButtonVariants({ variant, size, shape, className }),
-          opaqueOnScroll && 'transition-opacity duration-300',
+          'transition-opacity duration-300',
+          className
         )}
         style={positionStyles}
         {...props}
       >
-        {Icon && <Icon {...defaultIconProps} />}
-        {text && shape !== 'circle' && (
-          <span className="font-medium">{text}</span>
-        )}
         {children}
-      </button>
+      </div>
     );
-
-    // Apply tooltip if needed
-    if (tooltip) {
-      return (
-        <TooltipProvider>
-          <Tooltip delayDuration={300}>
-            <TooltipTrigger asChild>{button}</TooltipTrigger>
-            <TooltipContent side={tooltipSide} align={tooltipAlign}>
-              {tooltip}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      );
-    }
-
-    return button;
   },
 );
 
-FloatingButton.displayName = 'FloatingButton';
+Float.displayName = 'Float';
 
-export default { FloatingButton, floatingButtonVariants };
+export default Float;

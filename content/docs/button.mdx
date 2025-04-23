@@ -79,92 +79,96 @@ npx shadcn@latest add "https://deltacomponents.dev/r/tabs.json"
 
 ## Props
 
-<div className="my-6 w-full overflow-y-auto">
-  <table className="w-full">
-    <thead>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <th className="border px-4 py-2 text-left font-bold">Prop</th>
-        <th className="border px-4 py-2 text-left font-bold">Type</th>
-        <th className="border px-4 py-2 text-left font-bold">Default</th>
-        <th className="border px-4 py-2 text-left font-bold">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`title`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">Optional</td>
-        <td className="border px-4 py-2 text-left">The text content of the button. Takes precedence over `children` if both are provided</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`children`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">Optional</td>
-        <td className="border px-4 py-2 text-left">Alternative way to provide button content. Used when `title` is not provided</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`variant`</td>
-        <td className="border px-4 py-2 text-left">`'primary' \| 'secondary' \| 'destructive' \| 'action' \| 'neobrutalism' \| 'ghost'`</td>
-        <td className="border px-4 py-2 text-left">`'primary'`</td>
-        <td className="border px-4 py-2 text-left">The visual style variant of the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`disabled`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Whether the button is disabled</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`icon`</td>
-        <td className="border px-4 py-2 text-left">`ReactNode`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">An icon element to display alongside or instead of text</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`className`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Additional CSS classes to apply to the button</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`onClick`</td>
-        <td className="border px-4 py-2 text-left">`() => void`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Click event handler</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`type`</td>
-        <td className="border px-4 py-2 text-left">`'button' \| 'submit' \| 'reset'`</td>
-        <td className="border px-4 py-2 text-left">`'button'`</td>
-        <td className="border px-4 py-2 text-left">HTML button type</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`isLoading`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Shows a loading spinner instead of content</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`neobrutalismColor`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Custom background color for neobrutalism variant</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`actionColor`</td>
-        <td className="border px-4 py-2 text-left">`string`</td>
-        <td className="border px-4 py-2 text-left">-</td>
-        <td className="border px-4 py-2 text-left">Custom background color for action variant</td>
-      </tr>
-      <tr className="m-0 border-t p-0 even:bg-muted">
-        <td className="border px-4 py-2 text-left">`extendedClickArea`</td>
-        <td className="border px-4 py-2 text-left">`boolean`</td>
-        <td className="border px-4 py-2 text-left">`false`</td>
-        <td className="border px-4 py-2 text-left">Extends the clickable area beyond visible bounds</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`children`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>Optional</TableCell>
+      <TableCell>Alternative way to provide button content. Used when `title` is not provided</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'primary' \| 'secondary' \| 'destructive' \| 'action' \| 'neobrutalism' \| 'ghost'`</TableCell>
+      <TableCell>`'primary'`</TableCell>
+      <TableCell>The visual style variant of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'sm' \| 'md' \| 'lg'`</TableCell>
+      <TableCell>`'md'`</TableCell>
+      <TableCell>The size of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the button is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`icon`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>An icon element to display alongside or instead of text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes to apply to the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onClick`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Click event handler</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`type`</TableCell>
+      <TableCell>`'button' \| 'submit' \| 'reset'`</TableCell>
+      <TableCell>`'button'`</TableCell>
+      <TableCell>HTML button type</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`isLoading`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Shows a loading spinner instead of content</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`neobrutalismColor`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom background color for neobrutalism variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`actionColor`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom background color for action variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`extendedClickArea`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Extends the clickable area beyond visible bounds</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Button Sizes
+
+The Button component comes with three size variants to suit different contexts:
+
+<ComponentTabs name="button-sizes" />
 
 ## Standard Variants
 

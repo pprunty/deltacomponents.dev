@@ -15,7 +15,7 @@
     },
     {
       "path": "delta/examples/scramble-in-basic-demo.tsx",
-      "content": "\"use client\"\n\nimport ScrambleIn from \"@/delta/components/scramble-in\"\n\nexport default function ScrambleInBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4\">\n      <ScrambleIn \n        text=\"Welcome to Delta Components\"\n        className=\"text-3xl font-bold\"\n        scrambledClassName=\"text-3xl font-bold\"\n        scrambleSpeed={50}\n        scrambledLetterCount={3}\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport ScrambleIn from \"@/delta/components/scramble-in\"\n\nexport default function ScrambleInBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4\">\n      <ScrambleIn \n        text=\"Welcome to Delta Components\"\n        className=\"text-3xl font-bold\"\n        scrambledClassName=\"text-3xl font-bold\"\n        scrambleSpeed={300}\n        scrambledLetterCount={3}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:component",
       "target": "delta/examples/scramble-in-basic-demo.tsx"
     },

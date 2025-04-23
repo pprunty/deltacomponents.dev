@@ -12,6 +12,7 @@ import { TextareaInput } from '@/delta/components/textarea-input';
 import { DateInput } from '@/delta/components/date-input';
 import { FileInput } from '@/delta/components/file-input';
 import { OTPInput } from '@/delta/components/otp-input';
+import { TagsInput } from '@/delta/components/tags-input';
 import { cn } from '@/lib/utils';
 
 // Field types
@@ -30,6 +31,7 @@ export type FieldType =
   | 'date'
   | 'file'
   | 'otp'
+  | 'tags'
   | 'custom';
 
 // Variant types for different inputs
@@ -146,6 +148,14 @@ export interface OTPFieldDefinition extends BaseFieldDefinition {
   variant?: DefaultVariant;
 }
 
+// Tags field definition
+interface TagsFieldDefinition extends BaseFieldDefinition {
+  type: 'tags';
+  defaultValue?: string[];
+  variant?: DefaultVariant;
+  triggerKey?: 'Enter' | 'Space' | 'Comma';
+}
+
 // Custom field definition
 interface CustomFieldDefinition extends BaseFieldDefinition {
   type: 'custom';
@@ -163,6 +173,7 @@ export type FieldDefinition =
   | DateFieldDefinition
   | FileFieldDefinition
   | OTPFieldDefinition
+  | TagsFieldDefinition
   | CustomFieldDefinition;
 
 // Form props
@@ -629,6 +640,16 @@ export function SmartForm({
                 }
               }}
               variant={field.variant as 'default' | 'pill'}
+            />
+          );
+        case 'tags':
+          return (
+            <TagsInput
+              {...commonProps}
+              value={formState.values[field.name] || []}
+              onChange={(tags) => handleChange(field.name, tags)}
+              variant={field.variant as 'default' | 'pill'}
+              triggerKey={field.triggerKey}
             />
           );
         default:

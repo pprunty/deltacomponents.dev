@@ -12,11 +12,11 @@
     --webkit-overflow-scrolling: touch;
 
     /* Light mode color variables */
-    --background: 0 0% 97%;
+    --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 97%;
+    --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 97%;
+    --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
@@ -47,12 +47,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
     --scrollbar: rgba(0, 0, 0, 0.2);
     --scrollbar-hover: rgba(0, 0, 0, 0.3);
-    --scrollbar-track: rgba(
-      0,
-      0,
-      0,
-      0.1
-    ); /* New variable for scrollbar track */
+    --scrollbar-track: rgba(0, 0, 0, 0.1);
 
     /* Apply background and text colors from variables */
     background-color: hsl(var(--background));
@@ -63,42 +58,42 @@
   :root.dark {
     color-scheme: dark;
 
-    /* Dark mode color variables */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Dark mode color variables - adjusted for #131313 background */
+    --background: 0 0% 7.5%; /* #131313 */
+    --foreground: 0 0% 95%; /* Brighter text for better contrast */
+    --card: 0 0% 10%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 7.5%;
+    --secondary: 0 0% 15%; /* Subtle elevation */
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%; /* Softer text for muted content */
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 15%; /* Subtle borders */
+    --input: 0 0% 15%;
+    --ring: 0 0% 20%; /* Slightly brighter for focus states */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 97%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-primary-foreground: 0 0% 95%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --scrollbar: rgba(255, 255, 255, 0.5);
-    --scrollbar-hover: rgba(255, 255, 255, 0.4); /* Lighter hover color */
-    --scrollbar-track: rgba(255, 255, 255, 0.3); /* Subtle track color */
+    --scrollbar: rgba(255, 255, 255, 0.2);
+    --scrollbar-hover: rgba(255, 255, 255, 0.3);
+    --scrollbar-track: rgba(255, 255, 255, 0.1);
 
     /* Background and text colors from variables */
     background-color: hsl(var(--background));
@@ -119,7 +114,7 @@
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: var(--scrollbar-width);
-    height: var(--scrollbar-width); /* For horizontal scrollbars */
+    height: var(--scrollbar-width);
   }
 
   *::-webkit-scrollbar-track {

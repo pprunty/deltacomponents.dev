@@ -20,6 +20,14 @@ import * as CheckboxInputDoc from "@/content/docs/checkbox-input.mdx"
 import * as ModalDoc from "@/content/docs/modal.mdx"
 import * as ShareButtonDoc from "@/content/docs/share-button.mdx"
 import * as AccordionDoc from "@/content/docs/accordion.mdx"
+import * as AvatarDoc from "@/content/docs/avatar.mdx"
+import * as CommentsSectionDoc from "@/content/docs/comments-section.mdx"
+import * as TextEditorDoc from "@/content/docs/text-editor.mdx"
+import * as SnapScrollDoc from "@/content/docs/snap-scroll.mdx"
+import * as TagsInputDoc from "@/content/docs/tags-input.mdx"
+import * as ProductSpotlightCardDoc from "@/content/docs/product-spotlight-card.mdx"
+import * as FooterDoc from "@/content/docs/footer.mdx"
+import * as SocialIconsDoc from "@/content/docs/social-icons.mdx"
 
 export const componentRegistry = {
   button: ButtonDoc,
@@ -43,5 +51,13 @@ export const componentRegistry = {
   "checkbox-input": CheckboxInputDoc,
   "modal": ModalDoc,
   "share-button": ShareButtonDoc,
-  "accordion": AccordionDoc,}
+  "accordion": AccordionDoc,
+  "avatar": AvatarDoc,
+  "comments-section": CommentsSectionDoc,
+  "text-editor": TextEditorDoc,
+  "snap-scroll": SnapScrollDoc,
+  "tags-input": TagsInputDoc,
+  "product-spotlight-card": ProductSpotlightCardDoc,
+  "footer": FooterDoc,
+  "social-icons": SocialIconsDoc,}
 export type ComponentName = keyof typeof componentRegistry

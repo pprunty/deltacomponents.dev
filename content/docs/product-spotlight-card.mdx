@@ -1,0 +1,161 @@
+export const metadata = {
+  title: 'ProductSpotlightCard | Delta Components',
+  description: 'A versatile product spotlight card component that showcases products with images, titles, and descriptions. Features hover effects, accessibility, and responsive design.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'product card', 'ui components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/product-spotlight-card',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'ProductSpotlightCard Component | Delta Components',
+    description: 'A versatile product spotlight card component that showcases products with images, titles, and descriptions. Features hover effects, accessibility, and responsive design.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/product-spotlight-card',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/product-spotlight-card.png',
+        width: 1200,
+        height: 630,
+        alt: 'ProductSpotlightCard Component Preview showing different variants and layouts'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Product Card', 'Display'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  }
+}
+
+# ProductSpotlightCard
+
+A versatile product spotlight card component that showcases products with images, titles, and descriptions.
+
+## Basic Usage
+
+<ComponentTabs name="product-spotlight-card-basic" />
+
+## Installation
+
+```bash
+npx shadcn@latest add "product-spotlight-card"
+```
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Prop</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`imageAlt`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Alt text for the product image</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`title`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Product title</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Product description</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`href`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional link URL for the product. When not provided, the card will be non-interactive without cursor pointer.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`sizes`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 192px"`</TableCell>
+      <TableCell>Image sizes attribute for responsive loading</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Usage
+
+```tsx
+import ProductSpotlightCard from "@/components/ui/product-spotlight-card"
+
+export default function ProductSpotlightCardDemo() {
+  return (
+    <div className="space-y-8">
+      {/* Interactive card with href */}
+      <ProductSpotlightCard
+        imageSrc="/stock/switch.png"
+        imageAlt="Nintendo Switch"
+        title="Nintendo Switch"
+        description="The Nintendo Switch is a hybrid video game console developed by Nintendo."
+        href="/products/switch"
+      />
+
+      {/* Static card without href */}
+      <ProductSpotlightCard
+        imageSrc="/stock/switch.png"
+        imageAlt="Nintendo Switch"
+        title="Nintendo Switch"
+        description="The Nintendo Switch is a hybrid video game console developed by Nintendo."
+      />
+    </div>
+  )
+}
+```
+
+## Features
+
+- **Responsive Design**: Automatically adjusts to different screen sizes
+- **Hover Effects**: Smooth transitions and visual feedback on hover (only when href is provided)
+- **Accessibility**: Proper ARIA attributes and keyboard navigation
+- **Image Optimization**: Built-in Next.js Image component for optimal loading
+- **Customizable**: Supports custom styling through className prop
+- **Flexible Layout**: Works with or without title and description
+- **Interactive States**: Automatically adapts to be interactive or static based on href prop
+
+## Image Preparation
+
+For best results, use product images with transparent backgrounds. On macOS, you can quickly remove backgrounds from images:
+
+1. Right-click on the image file
+2. Select "Quick Actions" > "Remove Background"
+3. The system will automatically process the image and create a new version with a transparent background
+4. Save the processed image and use it in your ProductSpotlightCard
+
+This works best with high-contrast product images and will help the card's gradient background show through more effectively.
+
+## Accessibility
+
+The ProductSpotlightCard component follows accessibility best practices:
+- Proper ARIA attributes for screen readers
+- Keyboard navigation support
+- Semantic HTML structure
+- Focus management
+- High contrast ratios for text

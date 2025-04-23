@@ -12,7 +12,7 @@ const accordionVariants = cva("w-full", {
       default: "space-y-2",
       bordered: "space-y-2 border border-border rounded-lg p-2",
       ghost: "space-y-2",
-      neobrutalist: "border-4 border-black",
+      neobrutalist: "border-4 border-black dark:border-white",
     },
     size: {
       sm: "text-sm",
@@ -29,32 +29,66 @@ const accordionVariants = cva("w-full", {
 type AccordionVariant = "default" | "bordered" | "ghost" | "neobrutalist"
 type AccordionSize = "sm" | "md" | "lg"
 
-type AccordionProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+// Define the common properties
+interface AccordionBaseProps {
   variant?: AccordionVariant
   size?: AccordionSize
   defaultOpen?: boolean
+  className?: string
 }
+
+// Specific props for single type
+interface AccordionSingleProps extends AccordionBaseProps, Omit<AccordionPrimitive.AccordionSingleProps, "type"> {
+  type?: "single"
+}
+
+// Specific props for multiple type
+interface AccordionMultipleProps extends AccordionBaseProps, Omit<AccordionPrimitive.AccordionMultipleProps, "type"> {
+  type: "multiple"
+}
+
+// Union type
+type AccordionProps = AccordionSingleProps | AccordionMultipleProps
 
 const AccordionContext = React.createContext<{ variant?: AccordionVariant }>({})
 
-const Accordion = React.forwardRef<React.ElementRef<typeof AccordionPrimitive.Root>, AccordionProps>((props, ref) => {
-  const { className, variant, size, type = "single", defaultOpen, defaultValue, ...rest } = props
+const Accordion = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Root>,
+  AccordionProps
+>((props, ref) => {
+  const { className, variant, size, defaultOpen, type, ...rest } = props
+  
+  if (type === "multiple") {
+    const { defaultValue, ...otherProps } = rest as Omit<AccordionMultipleProps, "type">
+    return (
+      <AccordionContext.Provider value={{ variant }}>
+        <AccordionPrimitive.Root
+          ref={ref}
+          type="multiple"
+          className={cn(accordionVariants({ variant, size }), className)}
+          defaultValue={defaultValue}
+          {...otherProps}
+        />
+      </AccordionContext.Provider>
+    )
+  } else {
+    const { defaultValue, ...otherProps } = rest as Omit<AccordionSingleProps, "type">
+    // If defaultOpen is true and no defaultValue is provided, use "item-1" as default
+    const computedDefaultValue = defaultOpen && !defaultValue ? "item-1" : defaultValue
 
-  // If defaultOpen is true and no defaultValue is provided, use "item-1" as default
-  const computedDefaultValue = defaultOpen && !defaultValue ? "item-1" : defaultValue
-
-  return (
-    <AccordionContext.Provider value={{ variant }}>
-      <AccordionPrimitive.Root
-        ref={ref}
-        type={type}
-        defaultValue={computedDefaultValue}
-        className={cn(accordionVariants({ variant, size }), className)}
-        {...(type === "single" ? { collapsible: true } : {})}
-        {...rest}
-      />
-    </AccordionContext.Provider>
-  )
+    return (
+      <AccordionContext.Provider value={{ variant }}>
+        <AccordionPrimitive.Root
+          ref={ref}
+          type="single"
+          className={cn(accordionVariants({ variant, size }), className)}
+          defaultValue={computedDefaultValue}
+          collapsible={true}
+          {...otherProps}
+        />
+      </AccordionContext.Provider>
+    )
+  }
 })
 Accordion.displayName = "Accordion"
 
@@ -68,7 +102,7 @@ const AccordionItem = React.forwardRef<
       ref={ref}
       className={cn(
         "last:border-0",
-        variant === "neobrutalist" ? "border-b-4 border-black" : "border-b border-border",
+        variant === "neobrutalist" ? "border-b-4 border-black dark:border-white" : "border-b border-border",
         className,
       )}
       {...props}

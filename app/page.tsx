@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { getCategories } from '@/lib/registry';
 import { ComponentShowcase } from './component-showcase';
-import { SearchComponent } from './search-component';
 import { Suspense } from 'react';
 
 export default async function Home() {
@@ -23,9 +22,6 @@ export default async function Home() {
          </Link>
          {' '}guide.
         </p>
-        <Suspense fallback={<div className="mt-4 w-full max-w-3xl mx-auto h-[46px] bg-muted animate-pulse rounded-md"></div>}>
-          <SearchComponent className="mt-4" />
-        </Suspense>
       </div>
 
       <Suspense fallback={<div className="space-y-8">
