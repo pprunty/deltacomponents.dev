@@ -10,9 +10,9 @@ const customUrlMapping = {
   reddit: "https://reddit.com/user/pprunty",
   strava: "https://www.strava.com/athletes/72636452",
   tiktok: "https://tiktok.com/@pprunty",
-  email: "mailto:hello@deltacomponents.dev",
+  email: "mailto:patrickprunty.business@gmail.com",
   instagram: "https://www.instagram.com/pprunty97/",
-  youtube: "https://youtube.com/@deltacomponents"
+  youtube: "https://youtube.com/@pprunty"
 }
 
 export default function SocialIconsVariantsDemo() {

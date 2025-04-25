@@ -14,13 +14,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Heading } from './app/docs/[[...slug]]/heading';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Use the default components with a few customizations
-    h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-2xl font-bold mt-6 mb-3">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-xl font-bold mt-4 mb-2">{children}</h3>,
+    // Use the custom heading components with anchor links
+    h1: ({ children }) => <Heading level={1}>{children}</Heading>,
+    h2: ({ children }) => <Heading level={2}>{children}</Heading>,
+    h3: ({ children }) => <Heading level={3}>{children}</Heading>,
     p: ({ children }) => <p className="my-4 text-muted-foreground">{children}</p>,
     ul: ({ children }) => <ul className="list-disc pl-6 my-4">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal pl-6 my-4">{children}</ol>,

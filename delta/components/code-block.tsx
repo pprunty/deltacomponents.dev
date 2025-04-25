@@ -25,9 +25,7 @@ const themeMapping: Record<ThemeOption, { light: BundledTheme; dark: BundledThem
 
 // Get all unique theme names for loading
 const allThemes = Array.from(
-  new Set(
-    Object.values(themeMapping).flatMap(({ light, dark }) => [light, dark])
-  )
+  new Set(Object.values(themeMapping).flatMap(({ light, dark }) => [light, dark])),
 ) as BundledTheme[]
 
 // Cache key generator
@@ -46,6 +44,7 @@ export interface CodeBlockProps {
   showExpandButton?: boolean
   theme?: ThemeOption
   border?: boolean
+  gradientOverlay?: boolean
 }
 
 export default function CodeBlock({
@@ -60,6 +59,7 @@ export default function CodeBlock({
   showExpandButton = true,
   theme = "default",
   border = true,
+  gradientOverlay = false,
 }: CodeBlockProps) {
   const [highlighter, setHighlighter] = useState<Highlighter | null>(null)
   const [highlightedCode, setHighlightedCode] = useState<string>("")
@@ -82,12 +82,10 @@ export default function CodeBlock({
           themes: allThemes,
           langs: [language as string],
         })
-        
+
         // Load all themes explicitly
-        await Promise.all(
-          allThemes.map(theme => hl.loadTheme(theme))
-        )
-        
+        await Promise.all(allThemes.map((theme) => hl.loadTheme(theme)))
+
         setHighlighter(hl)
       } catch (error) {
         console.error("Failed to initialize highlighter:", error)
@@ -104,18 +102,15 @@ export default function CodeBlock({
     // Function to determine current theme
     const detectTheme = () => {
       // 1. Check for data-theme attribute on document element (most direct)
-      const dataTheme = document.documentElement.getAttribute('data-theme')
+      const dataTheme = document.documentElement.getAttribute("data-theme")
       // 2. Check for .dark class on document element (common approach)
-      const hasDarkClass = document.documentElement.classList.contains('dark')
+      const hasDarkClass = document.documentElement.classList.contains("dark")
       // 3. Use resolvedTheme as fallback
       const nextThemesValue = resolvedTheme
-      
+
       // Determine if dark mode from all potential sources
-      const isDark = 
-        dataTheme === 'dark' || 
-        hasDarkClass || 
-        nextThemesValue === 'dark'
-      
+      const isDark = dataTheme === "dark" || hasDarkClass || nextThemesValue === "dark"
+
       const selectedTheme = themeMapping[theme] || themeMapping.default
       setCurrentTheme(isDark ? selectedTheme.dark : selectedTheme.light)
     }
@@ -125,10 +120,10 @@ export default function CodeBlock({
 
     // Set up mutation observer to watch for data-theme attribute changes
     const observer = new MutationObserver((mutations) => {
-      mutations.forEach(mutation => {
+      mutations.forEach((mutation) => {
         if (
-          mutation.type === 'attributes' && 
-          (mutation.attributeName === 'data-theme' || mutation.attributeName === 'class')
+          mutation.type === "attributes" &&
+          (mutation.attributeName === "data-theme" || mutation.attributeName === "class")
         ) {
           detectTheme()
         }
@@ -136,9 +131,9 @@ export default function CodeBlock({
     })
 
     // Start observing the document element for attribute changes
-    observer.observe(document.documentElement, { 
+    observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme', 'class']
+      attributeFilter: ["data-theme", "class"],
     })
 
     return () => {
@@ -263,11 +258,13 @@ export default function CodeBlock({
   }
 
   return (
-    <div className={cn(
-      "relative w-full bg-card text-card-foreground shadow-sm",
-      border && "border border-border rounded-lg",
-      className
-    )}>
+    <div
+      className={cn(
+        "relative w-full bg-card text-card-foreground shadow-sm",
+        border && "border border-border rounded-lg",
+        className,
+      )}
+    >
       {caption && <div className="text-sm text-muted-foreground mb-2">{caption}</div>}
       <div className="relative w-full code-block-container">
         {/* Only show copy button when mounted and not loading */}
@@ -294,29 +291,35 @@ export default function CodeBlock({
           ref={contentRef}
           className={cn(
             "pt-4 pb-5 my-2 px-4 w-full code-content",
-            !expanded && "max-h-[var(--code-block-max-height)] overflow-y-auto",
+            !expanded ? "max-h-[var(--code-block-max-height)] overflow-y-auto" : "max-h-[600px] overflow-y-auto",
             showLineNumbers && "relative",
           )}
-          style={{ "--code-block-max-height": maxHeight } as React.CSSProperties}
+          style={{ "--code-block-max-height": gradientOverlay ? "150px" : maxHeight } as React.CSSProperties}
         >
           {renderContent()}
         </div>
         {showExpandButton && contentOverflows && mounted && (
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className={cn(
-              "absolute right-4 p-2 rounded-lg",
-              "bg-background/80 backdrop-blur-sm",
-              "text-muted-foreground hover:text-foreground hover:bg-background",
-              "transition-all duration-200",
-              "shadow-sm hover:shadow-md",
-              "border border-border/50",
-              expanded ? "bottom-5" : "bottom-2",
+          <>
+            {!expanded && gradientOverlay && (
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card from-10% to-transparent pointer-events-none" />
             )}
-            aria-label={expanded ? "Collapse code" : "Expand code"}
-          >
-            {expanded ? <CaretUp size={18} weight="bold" /> : <CaretDown size={18} weight="bold" />}
-          </button>
+            <div className={cn("absolute right-4", expanded ? "bottom-2" : "bottom-0")}>
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className={cn(
+                  "p-2 rounded-lg z-10",
+                  "bg-background/80 backdrop-blur-sm",
+                  "text-muted-foreground hover:text-foreground hover:bg-background",
+                  "transition-all duration-200",
+                  "shadow-sm hover:shadow-md",
+                  "border border-border/50",
+                )}
+                aria-label={expanded ? "Collapse code" : "Expand code"}
+              >
+                {expanded ? <CaretUp size={18} weight="bold" /> : <CaretDown size={18} weight="bold" />}
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>

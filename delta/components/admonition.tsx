@@ -17,6 +17,7 @@ interface AdmonitionProps {
   className?: string;
   icon?: React.ReactNode;
   solid?: boolean;
+  variant?: 'default' | 'outline';
 }
 
 const icons: Record<AdmonitionType, React.ComponentType<{ className?: string }>> = {
@@ -35,6 +36,7 @@ const styles = {
     icon: 'text-slate-500 dark:text-slate-400',
     title: 'text-slate-700 dark:text-slate-300',
     defaultIcon: <Note className="h-5 w-5" />,
+    outline: 'border border-slate-400 dark:border-slate-300',
   },
   tip: {
     container: 'border-l-4 border-green-500 dark:border-green-400',
@@ -43,6 +45,7 @@ const styles = {
     icon: 'text-green-500 dark:text-green-400',
     title: 'text-green-700 dark:text-green-300',
     defaultIcon: <LightbulbFilament className="h-5 w-5" />,
+    outline: 'border border-green-400 dark:border-green-300',
   },
   info: {
     container: 'border-l-4 border-blue-500 dark:border-blue-400',
@@ -51,6 +54,7 @@ const styles = {
     icon: 'text-blue-500 dark:text-blue-400',
     title: 'text-blue-700 dark:text-blue-300',
     defaultIcon: <Info className="h-5 w-5" />,
+    outline: 'border border-blue-400 dark:border-blue-300',
   },
   warning: {
     container: 'border-l-4 border-amber-500 dark:border-amber-400',
@@ -59,6 +63,7 @@ const styles = {
     icon: 'text-amber-500 dark:text-amber-400',
     title: 'text-amber-700 dark:text-amber-300',
     defaultIcon: <Warning className="h-5 w-5" />,
+    outline: 'border border-amber-400 dark:border-amber-300',
   },
   danger: {
     container: 'border-l-4 border-red-500 dark:border-red-400',
@@ -67,6 +72,7 @@ const styles = {
     icon: 'text-red-500 dark:text-red-400',
     title: 'text-red-700 dark:text-red-300',
     defaultIcon: <X className="h-5 w-5" />,
+    outline: 'border border-red-400 dark:border-red-300',
   },
 };
 
@@ -85,6 +91,7 @@ export function Admonition({
   className,
   icon,
   solid = false,
+  variant = 'default',
 }: AdmonitionProps) {
   const Icon = icons[type] || icons.info;
   const style = styles[type] || styles.info;
@@ -95,8 +102,9 @@ export function Admonition({
   return (
     <div
       className={cn(
-        'p-4 my-6 rounded-r-md shadow-sm',
-        style.container,
+        'p-4 my-6 shadow-sm',
+        variant === 'outline' ? 'rounded-md border' : 'rounded-r-md',
+        variant === 'outline' ? style.outline : style.container,
         solid ? style.solid : style.bg,
         className,
       )}

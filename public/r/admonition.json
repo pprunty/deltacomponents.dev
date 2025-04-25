@@ -7,7 +7,9 @@
   "dependencies": [
     "@phosphor-icons/react"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "delta/components/admonition.tsx",
@@ -19,13 +21,31 @@
       "path": "delta/examples/admonition-basic-demo.tsx",
       "content": "import { Admonition } from \"@/delta/components/admonition\"\n\nexport default function AdmonitionBasicDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Admonition type=\"info\">\n        This is an informational message that provides additional context or details.\n      </Admonition>\n      <Admonition type=\"note\">\n        Here's an important note about this feature.\n      </Admonition>\n    </div>\n  )\n}",
       "type": "registry:component",
-      "target": "delta/components/admonition-basic-demo.tsx"
+      "target": "delta/examples/admonition-basic-demo.tsx"
     },
     {
       "path": "delta/examples/admonition-solid-demo.tsx",
       "content": "\"use client\"\n\nimport { Admonition } from \"@/delta/components/admonition\"\n\nexport default function AdmonitionSolidDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Admonition type=\"note\" solid>\n        This is a note with a solid background. Use it for general information that doesn't fit other categories.\n      </Admonition>\n\n      <Admonition type=\"tip\" solid>\n        This is a tip with a solid background. Great for sharing helpful suggestions and best practices.\n      </Admonition>\n\n      <Admonition type=\"info\" solid>\n        This is an info message with a solid background. Perfect for providing additional context or details.\n      </Admonition>\n\n      <Admonition type=\"warning\" solid>\n        This is a warning with a solid background. Use it to alert users about potential issues or important considerations.\n      </Admonition>\n\n      <Admonition type=\"danger\" solid>\n        This is a danger message with a solid background. Ideal for critical issues that require immediate attention.\n      </Admonition>\n    </div>\n  )\n}\n",
       "type": "registry:component",
       "target": "delta/examples/admonition-solid-demo.tsx"
+    },
+    {
+      "path": "delta/examples/admonition-types-demo.tsx",
+      "content": "import { Admonition } from \"@/delta/components/admonition\"\n\nexport default function AdmonitionTypesDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Admonition type=\"note\">\n        This is a note that helps explain important concepts or provides additional context.\n      </Admonition>\n\n      <Admonition type=\"tip\">\n        Here's a helpful tip that can improve your workflow or understanding.\n      </Admonition>\n\n      <Admonition type=\"info\">\n        This is an informational message providing useful details about the topic.\n      </Admonition>\n\n      <Admonition type=\"warning\">\n        Be careful! This warning highlights potential issues you should be aware of.\n      </Admonition>\n\n      <Admonition type=\"danger\">\n        Attention required! This indicates a dangerous or breaking change that needs immediate attention.\n      </Admonition>\n    </div>\n  )\n} ",
+      "type": "registry:component",
+      "target": "delta/examples/admonition-types-demo.tsx"
+    },
+    {
+      "path": "delta/examples/admonition-titles-demo.tsx",
+      "content": "import { Admonition } from \"@/delta/components/admonition\"\n\nexport default function AdmonitionTitlesDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Admonition type=\"info\" title=\"Did you know?\">\n        You can add titles to your admonitions to provide additional context and make them more informative.\n      </Admonition>\n      <Admonition type=\"tip\" title=\"Great job!\">\n        Your changes have been saved successfully. The system is now up to date.\n      </Admonition>\n      <Admonition type=\"warning\" title=\"Important Notice\">\n        Please review these changes carefully before proceeding with the next steps.\n      </Admonition>\n      <Admonition type=\"danger\" title=\"Action Required\">\n        We encountered an issue processing your request. Please try again or contact support.\n      </Admonition>\n    </div>\n  )\n} ",
+      "type": "registry:component",
+      "target": "delta/examples/admonition-titles-demo.tsx"
+    },
+    {
+      "path": "delta/examples/admonition-custom-icons-demo.tsx",
+      "content": "import { Admonition } from \"@/delta/components/admonition\"\nimport { Lightbulb, Rocket, Shield, Zap } from \"lucide-react\"\n\nexport default function AdmonitionCustomIconsDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Admonition type=\"info\" icon={<Lightbulb className=\"h-5 w-5\" />}>\n        Custom icons can help make your admonitions more visually distinctive and memorable.\n      </Admonition>\n      <Admonition type=\"tip\" icon={<Rocket className=\"h-5 w-5\" />}>\n        Using custom icons is a great way to add personality to your application's notifications.\n      </Admonition>\n      <Admonition type=\"warning\" icon={<Shield className=\"h-5 w-5\" />}>\n        Remember to choose icons that are clear and easily recognizable for your users.\n      </Admonition>\n      <Admonition type=\"danger\" icon={<Zap className=\"h-5 w-5\" />}>\n        Custom icons should maintain good contrast and be visible against the admonition background.\n      </Admonition>\n    </div>\n  )\n} ",
+      "type": "registry:component",
+      "target": "delta/examples/admonition-custom-icons-demo.tsx"
     }
   ]
 }

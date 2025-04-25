@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import CodeBlock from "@/delta/components/code-block"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/delta/components/tabs"
+import { Admonition } from "@/delta/components/admonition"
 
 interface InstallationInstructionsProps {
   componentName: string
@@ -77,10 +78,15 @@ export function InstallationInstructions({ componentName, className }: Installat
     <div className={cn("space-y-4", className)}>
       <h2 className="text-2xl font-bold mt-6 mb-3">Installation</h2>
 
-      <Tabs defaultValue="cli" className="w-full">
-        <TabsList className="mb-4">
-          <TabsTrigger value="cli">CLI</TabsTrigger>
-          <TabsTrigger value="manual">Manual</TabsTrigger>
+      <Tabs defaultValue="cli" className="w-full ">
+                <TabsList
+                  variant="underlined"
+                  showBottomBorder
+                  className="w-full py-6"
+                  size="md"
+                  >
+          <TabsTrigger value="cli" className="font-semibold">CLI</TabsTrigger>
+          <TabsTrigger value="manual" className="font-semibold">Manual</TabsTrigger>
         </TabsList>
 
         <TabsContent value="cli" className="space-y-4">
@@ -131,6 +137,7 @@ export function InstallationInstructions({ componentName, className }: Installat
                 showLineNumbers={true}
                 maxHeight="400px"
                 border={true}
+                gradientOverlay
               />
             </div>
           )}
@@ -145,7 +152,7 @@ export function InstallationInstructions({ componentName, className }: Installat
         {dependencies.length > 0 && (
           <div className="space-y-2">
             <h3 className="text-xl font-bold mt-4 mb-2">Dependencies</h3>
-            <ul className="list-disc pl-6 text-base text-muted-foreground">
+            <ul className="list-disc font-mono pl-6 text-sm text-muted-foreground">
               {dependencies.map((dep: string) => (
                 <li key={dep}>{dep}</li>
               ))}
@@ -156,13 +163,34 @@ export function InstallationInstructions({ componentName, className }: Installat
         {filePaths.length > 0 && (
           <div className="space-y-2">
             <h3 className="text-xl font-bold mt-4 mb-2">Files</h3>
-            <ul className="list-disc pl-6 text-base text-muted-foreground">
+
+        <Admonition type="info" title="File Mapping" variant="outline">
+          The file paths below show where components will be installed in your project. For example:
+          <br />
+          <code className="text-sm">delta/components/button.tsx → delta/components/button.tsx</code>
+          {' '} in your project structure.
+        </Admonition>
+            <ul className="list-disc pl-6 font-mono text-sm text-muted-foreground">
               {filePaths.map((path: string) => (
-                <li key={path}>{path}</li>
+                <li key={path} className="break-all whitespace-normal">
+                  {path}
+                </li>
               ))}
             </ul>
           </div>
         )}
+
+        <Admonition type="warning" title="Tailwind Configuration" variant="outline">
+          Include the <code>delta/</code> directory in your <code>tailwind.config.ts</code>:
+          <br />
+          <code className="text-sm">
+            {`content: [
+  "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  "./delta/**/*.{js,ts,jsx,tsx,mdx}",
+]`}
+          </code>
+        </Admonition>
       </div>
     </div>
   )

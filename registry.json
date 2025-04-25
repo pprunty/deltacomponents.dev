@@ -4,40 +4,6 @@
   "homepage": "https://deltacomponents.dev",
   "items": [
     {
-      "name": "complex-component",
-      "type": "registry:component",
-      "title": "Complex Component",
-      "badge": "beta",
-      "category": "components",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": [
-        "card"
-      ],
-      "files": [
-        {
-          "path": "_alt/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
-        {
-          "path": "_alt/complex-component/components/pokemon-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "_alt/complex-component/components/pokemon-image.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "_alt/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "_alt/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
       "name": "admonition",
       "type": "registry:component",
       "title": "Admonition",
@@ -47,7 +13,9 @@
       "dependencies": [
         "@phosphor-icons/react"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/admonition.tsx",
@@ -57,12 +25,27 @@
         {
           "path": "delta/examples/admonition-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/admonition-basic-demo.tsx"
+          "target": "delta/examples/admonition-basic-demo.tsx"
         },
         {
           "path": "delta/examples/admonition-solid-demo.tsx",
           "type": "registry:component",
           "target": "delta/examples/admonition-solid-demo.tsx"
+        },
+        {
+          "path": "delta/examples/admonition-types-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/admonition-types-demo.tsx"
+        },
+        {
+          "path": "delta/examples/admonition-titles-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/admonition-titles-demo.tsx"
+        },
+        {
+          "path": "delta/examples/admonition-custom-icons-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/admonition-custom-icons-demo.tsx"
         }
       ]
     },
@@ -72,8 +55,14 @@
       "title": "Modal",
       "category": "components",
       "description": "A component for modal",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "react-dom",
+        "framer-motion",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/modal.tsx",
@@ -96,10 +85,13 @@
       "name": "scramble-in",
       "type": "registry:component",
       "title": "Scramble In",
+      "badge": "beta",
       "category": "components",
       "description": "A component for scramble-in",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/scramble-in.tsx",
@@ -124,150 +116,6 @@
       ]
     },
     {
-      "name": "neobrutalism-card",
-      "type": "registry:component",
-      "title": "Neobrutalism Card",
-      "badge": "beta",
-      "category": "components",
-      "description": "A component for neobrutalism-card",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/open-source-inspired-collection/neobrutalism-card.tsx",
-          "type": "registry:component",
-          "target": "delta/components/neobrutalism-card.tsx"
-        },
-        {
-          "path": "delta/open-source-inspired-collection/neobrutalism-card-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/components/neobrutalism-card-demo.tsx"
-        },
-        {
-          "path": "delta/examples/neobrutalism-card-color-variants-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/examples/neobrutalism-card-color-variants-demo.tsx"
-        },
-        {
-          "path": "delta/examples/neobrutalism-card-form-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/examples/neobrutalism-card-form-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "use-hq-image",
-      "type": "registry:hook",
-      "badge": "beta",
-      "title": "useHqImage",
-      "category": "hook",
-      "description": "A hook for use-hq-image",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/hooks/use-hq-image.ts",
-          "type": "registry:hook",
-          "target": "delta/hooks/use-hq-image.ts"
-        }
-      ]
-    },
-    {
-      "name": "bottom-bar",
-      "type": "registry:component",
-      "title": "Bottom Bar",
-      "badge": "beta",
-      "category": "layout",
-      "description": "A component for bottom-bar",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/layout/bottom-bar.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/bottom-bar.tsx"
-        },
-        {
-          "path": "delta/layout/bottom-bar-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/bottom-bar-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "full-bleed-section",
-      "type": "registry:component",
-      "title": "Full Bleed Section",
-      "badge": "beta",
-      "category": "components",
-      "description": "A component for full-bleed-section",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/components/full-bleed-section.tsx",
-          "type": "registry:component",
-          "target": "delta/components/full-bleed-section.tsx"
-        },
-        {
-          "path": "delta/components/full-bleed-section-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/components/full-bleed-section-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "tweet",
-      "type": "registry:component",
-      "title": "Tweet",
-      "badge": "beta",
-      "category": "components",
-      "description": "A component for embedding and displaying tweets with server-side rendering",
-      "dependencies": [
-        "react-tweet"
-      ],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/components/tweet.tsx",
-          "type": "registry:component",
-          "target": "delta/components/tweet.tsx"
-        },
-        {
-          "path": "delta/components/tweet-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/components/tweet-demo.tsx"
-        },
-        {
-          "path": "delta/components/tweet.css",
-          "type": "registry:file",
-          "target": "delta/components/tweet.css"
-        }
-      ]
-    },
-    {
-      "name": "video-player",
-      "type": "registry:component",
-      "title": "Video Player",
-      "badge": "beta",
-      "category": "components",
-      "description": "A component for video-player",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/components/video-player.tsx",
-          "type": "registry:component",
-          "target": "delta/components/video-player.tsx"
-        },
-        {
-          "path": "delta/components/video-player-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/components/video-player-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "tabs",
       "type": "registry:component",
       "title": "Tabs",
@@ -283,14 +131,29 @@
           "target": "delta/components/tabs.tsx"
         },
         {
-          "path": "delta/components/tabs-demo.tsx",
+          "path": "delta/examples/tabs-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/tabs-demo.tsx"
+          "target": "delta/examples/tabs-basic-demo.tsx"
         },
         {
           "path": "delta/examples/tabs-spotify-demo.tsx",
           "type": "registry:component",
           "target": "delta/examples/tabs-spotify-demo.tsx"
+        },
+        {
+          "path": "delta/examples/tabs-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tabs-variants-demo.tsx"
+        },
+        {
+          "path": "delta/examples/tabs-sizes-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tabs-sizes-demo.tsx"
+        },
+        {
+          "path": "delta/examples/tabs-features-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tabs-features-demo.tsx"
         }
       ]
     },
@@ -301,7 +164,10 @@
       "badge": "beta",
       "category": "components",
       "description": "A component for button",
-      "dependencies": [],
+      "dependencies": [
+        "clsx",
+        "react-spinners"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -310,9 +176,39 @@
           "target": "delta/components/button.tsx"
         },
         {
-          "path": "delta/components/button-demo.tsx",
+          "path": "delta/examples/button-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/components/button-demo.tsx"
+          "target": "delta/examples/button-basic-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-sizes-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-sizes-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-variants-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-neobrutalism-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-neobrutalism-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-icon-only-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-icon-only-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-extended-click-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-extended-click-demo.tsx"
+        },
+        {
+          "path": "delta/examples/button-icons-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/button-icons-demo.tsx"
         }
       ]
     },
@@ -331,14 +227,24 @@
       ],
       "files": [
         {
-          "path": "delta/inputs/text-input.tsx",
+          "path": "delta/components/text-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/text-input.tsx"
+          "target": "delta/components/text-input.tsx"
         },
         {
-          "path": "delta/inputs/text-input-demo.tsx",
+          "path": "delta/examples/text-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/text-input-demo.tsx"
+          "target": "delta/examples/text-input-basic-demo.tsx"
+        },
+        {
+          "path": "delta/examples/text-input-validation-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/text-input-validation-demo.tsx"
+        },
+        {
+          "path": "delta/examples/text-input-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/text-input-variants-demo.tsx"
         }
       ]
     },
@@ -348,8 +254,13 @@
       "title": "Checkbox Input",
       "category": "inputs",
       "description": "A component for checkbox-input",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/checkbox-input.tsx",
@@ -384,14 +295,19 @@
       ],
       "files": [
         {
-          "path": "delta/inputs/select-input.tsx",
+          "path": "delta/components/select-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/select-input.tsx"
+          "target": "delta/components/select-input.tsx"
         },
         {
-          "path": "delta/inputs/select-input-demo.tsx",
+          "path": "delta/examples/select-input-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/select-input-demo.tsx"
+          "target": "delta/examples/select-input-basic-demo.tsx"
+        },
+        {
+          "path": "delta/examples/select-input-styles-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/select-input-styles-demo.tsx"
         }
       ]
     },
@@ -401,8 +317,13 @@
       "title": "Radio Input",
       "category": "inputs",
       "description": "A component for radio-input",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "radio-group"
+      ],
       "files": [
         {
           "path": "delta/components/radio-input.tsx",
@@ -484,8 +405,17 @@
       "title": "Date Input",
       "category": "inputs",
       "description": "A component for date-input",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "calendar",
+        "popover"
+      ],
       "files": [
         {
           "path": "delta/components/date-input.tsx",
@@ -510,8 +440,14 @@
       "title": "File Input",
       "category": "inputs",
       "description": "A component for file-input",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@phosphor-icons/react",
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
       "files": [
         {
           "path": "delta/components/file-input.tsx",
@@ -557,59 +493,69 @@
       ],
       "files": [
         {
-          "path": "delta/forms/smart-form.tsx",
+          "path": "delta/components/smart-form.tsx",
           "type": "registry:component",
-          "target": "delta/forms/smart-form.tsx"
+          "target": "delta/components/smart-form.tsx"
         },
         {
-          "path": "delta/forms/smart-form-demo.tsx",
+          "path": "delta/examples/smart-form-basic-demo.tsx",
           "type": "registry:component",
-          "target": "delta/forms/smart-form-demo.tsx"
+          "target": "delta/examples/smart-form-basic-demo.tsx"
         },
         {
-          "path": "delta/inputs/text-input.tsx",
+          "path": "delta/examples/smart-form-payment-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/text-input.tsx"
+          "target": "delta/examples/smart-form-payment-demo.tsx"
         },
         {
-          "path": "delta/inputs/checkbox-input.tsx",
+          "path": "delta/examples/smart-form-pills-demo.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/checkbox-input.tsx"
+          "target": "delta/examples/smart-form-pills-demo.tsx"
         },
         {
-          "path": "delta/inputs/select-input.tsx",
+          "path": "delta/components/text-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/select-input.tsx"
+          "target": "delta/components/text-input.tsx"
         },
         {
-          "path": "delta/inputs/radio-input.tsx",
+          "path": "delta/components/checkbox-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/radio-input.tsx"
+          "target": "delta/components/checkbox-input.tsx"
         },
         {
-          "path": "delta/inputs/switch-input.tsx",
+          "path": "delta/components/select-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/switch-input.tsx"
+          "target": "delta/components/select-input.tsx"
         },
         {
-          "path": "delta/inputs/textarea-input.tsx",
+          "path": "delta/components/radio-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/textarea-input.tsx"
+          "target": "delta/components/radio-input.tsx"
         },
         {
-          "path": "delta/inputs/date-input.tsx",
+          "path": "delta/components/switch-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/date-input.tsx"
+          "target": "delta/components/switch-input.tsx"
         },
         {
-          "path": "delta/inputs/file-input.tsx",
+          "path": "delta/components/textarea-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/file-input.tsx"
+          "target": "delta/components/textarea-input.tsx"
         },
         {
-          "path": "delta/inputs/otp-input.tsx",
+          "path": "delta/components/date-input.tsx",
           "type": "registry:component",
-          "target": "delta/inputs/otp-input.tsx"
+          "target": "delta/components/date-input.tsx"
+        },
+        {
+          "path": "delta/components/file-input.tsx",
+          "type": "registry:component",
+          "target": "delta/components/file-input.tsx"
+        },
+        {
+          "path": "delta/components/otp-input.tsx",
+          "type": "registry:component",
+          "target": "delta/components/otp-input.tsx"
         }
       ]
     },
@@ -619,8 +565,12 @@
       "title": "Otp Input",
       "category": "inputs",
       "description": "A component for otp-input",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/otp-input.tsx",
@@ -636,6 +586,11 @@
           "path": "content/docs/otp-input.mdx",
           "type": "registry:component",
           "target": "content/docs/otp-input.mdx"
+        },
+        {
+          "path": "delta/examples/otp-input-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/otp-input-variants-demo.tsx"
         }
       ]
     },
@@ -645,7 +600,9 @@
       "title": "Floating Button",
       "description": "A component for floating-button",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/floating-button.tsx",
@@ -669,8 +626,12 @@
       "type": "registry:component",
       "title": "Footer",
       "description": "A component for footer",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "social-icons"
+      ],
       "files": [
         {
           "path": "delta/components/footer.tsx",
@@ -690,75 +651,19 @@
       ]
     },
     {
-      "name": "header",
-      "type": "registry:component",
-      "title": "Header",
-      "category": "layout",
-      "description": "A component for header",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/layout/header.tsx",
-          "type": "registry:component",
-          "target": "delta/--category/header.tsx"
-        },
-        {
-          "path": "delta/layout/header-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/header-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "header",
-      "type": "registry:component",
-      "title": "Header",
-      "description": "A component for header",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/layout/header.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/header.tsx"
-        },
-        {
-          "path": "delta/layout/header-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/header-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "logo",
-      "type": "registry:component",
-      "title": "Logo",
-      "category": "components",
-      "description": "A component for logo",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/layout/logo.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/logo.tsx"
-        },
-        {
-          "path": "delta/layout/logo-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/layout/logo-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "code-block",
       "type": "registry:component",
       "title": "Code Block",
       "category": "components",
       "description": "A component for code-block",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "shikiji",
+        "next-themes",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/code-block.tsx",
@@ -776,6 +681,11 @@
           "target": "content/docs/code-block.mdx"
         },
         {
+          "path": "delta/components/code-block.css",
+          "type": "registry:file",
+          "target": "delta/components/code-block.css"
+        },
+        {
           "path": "delta/examples/code-block-themes-demo.tsx",
           "type": "registry:component",
           "target": "delta/examples/code-block-themes-demo.tsx"
@@ -788,8 +698,14 @@
       "title": "Back Button",
       "category": "components",
       "description": "A component for back-button",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "next",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/back-button.tsx",
@@ -845,8 +761,14 @@
       "title": "Accordion",
       "category": "components",
       "description": "A component for accordion",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "@radix-ui/react-accordion", 
+        "@phosphor-icons/react", 
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/accordion.tsx",
@@ -876,8 +798,12 @@
       "title": "Avatar",
       "category": "components",
       "description": "A component for avatar",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/avatar.tsx",
@@ -902,32 +828,6 @@
       ]
     },
     {
-      "name": "comments-section",
-      "type": "registry:component",
-      "category": "blocks",
-      "title": "Comments Section",
-      "description": "A component for comments-section",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/components/comments-section.tsx",
-          "type": "registry:component",
-          "target": "delta/components/comments-section.tsx"
-        },
-        {
-          "path": "delta/examples/comments-section-basic-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/examples/comments-section-basic-demo.tsx"
-        },
-        {
-          "path": "content/docs/comments-section.mdx",
-          "type": "registry:component",
-          "target": "content/docs/comments-section.mdx"
-        }
-      ]
-    },
-    {
       "name": "text-editor",
       "type": "registry:component",
       "title": "Text Editor",
@@ -937,10 +837,14 @@
         "@tiptap/react",
         "@tiptap/starter-kit",
         "@tiptap/extension-link",
+        "@tiptap/extension-bullet-list",
+        "@tiptap/extension-ordered-list",
+        "@tiptap/extension-list-item",
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -957,31 +861,6 @@
           "path": "content/docs/text-editor.mdx",
           "type": "registry:component",
           "target": "content/docs/text-editor.mdx"
-        }
-      ]
-    },
-    {
-      "name": "snap-scroll",
-      "type": "registry:component",
-      "title": "Snap Scroll",
-      "description": "A component for snap-scroll",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "delta/components/snap-scroll.tsx",
-          "type": "registry:component",
-          "target": "delta/components/snap-scroll.tsx"
-        },
-        {
-          "path": "delta/examples/snap-scroll-basic-demo.tsx",
-          "type": "registry:component",
-          "target": "delta/examples/snap-scroll-basic-demo.tsx"
-        },
-        {
-          "path": "content/docs/snap-scroll.mdx",
-          "type": "registry:component",
-          "target": "content/docs/snap-scroll.mdx"
         }
       ]
     },
@@ -1017,8 +896,13 @@
       "title": "Product Spotlight Card",
       "category": "components",
       "description": "A component for product-spotlight-card",
-      "dependencies": [],
-      "registryDependencies": [],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "utils",
+        "card"
+      ],
       "files": [
         {
           "path": "delta/components/product-spotlight-card.tsx",
@@ -1064,6 +948,133 @@
           "path": "delta/examples/social-icons-variants-demo.tsx",
           "type": "registry:component",
           "target": "delta/examples/social-icons-variants-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neobrutalism-card",
+      "type": "registry:component",
+      "title": "Neobrutalism Card",
+      "category": "components",
+      "description": "A card component with a neobrutalism design style",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "delta/components/neobrutalism-card.tsx",
+          "type": "registry:component",
+          "target": "delta/components/neobrutalism-card.tsx"
+        },
+        {
+          "path": "delta/examples/neobrutalism-card-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/neobrutalism-card-basic-demo.tsx"
+        },
+        {
+          "path": "delta/examples/neobrutalism-card-color-variants-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/neobrutalism-card-color-variants-demo.tsx"
+        },
+        {
+          "path": "delta/examples/neobrutalism-card-form-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/neobrutalism-card-form-demo.tsx"
+        },
+        {
+          "path": "content/docs/neobrutalism-card.mdx",
+          "type": "registry:component",
+          "target": "content/docs/neobrutalism-card.mdx"
+        }
+      ]
+    },
+    {
+      "name": "comments-section",
+      "type": "registry:component",
+      "title": "Comments Section",
+      "category": "components",
+      "description": "A component for displaying and managing comments",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "delta/components/comments-section.tsx",
+          "type": "registry:component",
+          "target": "delta/components/comments-section.tsx"
+        },
+        {
+          "path": "delta/examples/comments-section-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/comments-section-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/comments-section.mdx",
+          "type": "registry:component",
+          "target": "content/docs/comments-section.mdx"
+        }
+      ]
+    },
+    {
+      "name": "snap-scroll",
+      "type": "registry:component",
+      "title": "Snap Scroll",
+      "category": "components",
+      "description": "A component for snap scrolling content",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "delta/components/snap-scroll.tsx",
+          "type": "registry:component",
+          "target": "delta/components/snap-scroll.tsx"
+        },
+        {
+          "path": "delta/examples/snap-scroll-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/snap-scroll-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/snap-scroll.mdx",
+          "type": "registry:component",
+          "target": "content/docs/snap-scroll.mdx"
+        }
+      ]
+    },
+    {
+      "name": "tweet",
+      "type": "registry:component",
+      "title": "Tweet",
+      "category": "components",
+      "description": "A component for displaying tweet-like content",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "delta/components/tweet.tsx",
+          "type": "registry:component",
+          "target": "delta/components/tweet.tsx"
+        },
+        {
+          "path": "delta/examples/tweet-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tweet-basic-demo.tsx"
+        },
+        {
+          "path": "delta/examples/tweet-styles-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/tweet-styles-demo.tsx"
+        },
+        {
+          "path": "content/docs/tweet.mdx",
+          "type": "registry:component",
+          "target": "content/docs/tweet.mdx"
         }
       ]
     }

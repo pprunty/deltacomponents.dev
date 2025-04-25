@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/delta/components/tabs';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Cross as Hamburger } from 'hamburger-react';
+import Search from './search';
 
 interface HeaderProps {
   className?: string;
@@ -19,8 +20,8 @@ export function Header({ className }: HeaderProps) {
 
   // Determine the active tab based on the current path
   const getActiveTab = () => {
-    if (pathname.startsWith('/docs')) return 'components';
-    if (pathname.startsWith('/getting-started')) return 'guide';
+    if (pathname === '/') return 'components';
+    if (pathname === '/getting-started') return 'guide';
     return 'home';
   };
 
@@ -28,15 +29,15 @@ export function Header({ className }: HeaderProps) {
     if (value === 'guide') {
       router.push('/getting-started');
     } else if (value === 'components') {
-      router.push('/docs');
+      router.push('/');
     }
   };
 
   return (
-    <header className={cn("flex items-center justify-between gap-6 px-4 py-2 border-b relative", className)}>
-      <div className="flex items-center gap-2 sm:gap-6">
-        <div className="md:hidden">
-          <Hamburger toggled={isOpen} toggle={setOpen} size={18} />
+    <header className={cn("flex items-center justify-between gap-6 px-4 h-12 border-b relative z-50", className)}>
+      <div className="flex items-center gap-1 sm:gap-6">
+        <div className="md:hidden ml-[-10px]">
+          <Hamburger toggled={isOpen} toggle={setOpen} size={16} />
         </div>
         <Link href="/" className="flex items-center">
           <svg
@@ -51,7 +52,7 @@ export function Header({ className }: HeaderProps) {
         </Link>
 
         <div className="hidden md:block">
-          <Tabs defaultValue={getActiveTab()} onValueChange={handleTabChange} className="w-[400px] mb-[-10px]">
+          <Tabs defaultValue={getActiveTab()} onValueChange={handleTabChange} className="w-[400px] mb-[-12px]">
             <TabsList className="grid w-full grid-cols-2 relative" activeIndicatorOffset={0}>
               <TabsTrigger value="guide">Guide</TabsTrigger>
               <TabsTrigger value="components">Components</TabsTrigger>
@@ -59,7 +60,14 @@ export function Header({ className }: HeaderProps) {
           </Tabs>
         </div>
       </div>
-      <ThemeSwitcher />
+      
+      <div className="flex items-center gap-2">
+        {/* Mobile search icon */}
+        <div className="md:hidden">
+          <Search mobileOnly={true} />
+        </div>
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 }
