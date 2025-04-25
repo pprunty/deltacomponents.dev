@@ -41,7 +41,7 @@ export function Header({ className }: HeaderProps) {
         </div>
         <Link href="/" className="flex items-center">
           <svg
-            className="fill-foreground dark:fill-foreground transition-colors"
+            className="fill-foreground dark:fill-foreground transition-colors hidden sm:block"
             width="24"
             height="24"
             viewBox="0 0 282 308"
