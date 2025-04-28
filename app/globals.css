@@ -5,7 +5,9 @@
 @layer base {
   :root {
     /* Font setup */
-    font-family: 'Inter', sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+      sans-serif;
     -webkit-tap-highlight-color: transparent;
     color-scheme: light;
     --scrollbar-width: 12px;
@@ -47,12 +49,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
     --scrollbar: rgba(0, 0, 0, 0.2);
     --scrollbar-hover: rgba(0, 0, 0, 0.3);
-    --scrollbar-track: rgba(
-      0,
-      0,
-      0,
-      0.1
-    ); /* New variable for scrollbar track */
+    --scrollbar-track: rgba(0, 0, 0, 0.1);
 
     /* Apply background and text colors from variables */
     background-color: hsl(var(--background));
@@ -63,42 +60,42 @@
   :root.dark {
     color-scheme: dark;
 
-    /* Dark mode color variables */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Dark mode color variables - adjusted for #131313 background */
+    --background: 0 0% 7.5%; /* #131313 */
+    --foreground: 0 0% 95%; /* Brighter text for better contrast */
+    --card: 0 0% 10%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 7.5%;
+    --secondary: 0 0% 15%; /* Subtle elevation */
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%; /* Softer text for muted content */
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 15%; /* Subtle borders */
+    --input: 0 0% 15%;
+    --ring: 0 0% 20%; /* Slightly brighter for focus states */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-primary-foreground: 0 0% 95%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --scrollbar: rgba(255, 255, 255, 0.5);
-    --scrollbar-hover: rgba(255, 255, 255, 0.4); /* Lighter hover color */
-    --scrollbar-track: rgba(255, 255, 255, 0.3); /* Subtle track color */
+    --scrollbar: rgba(255, 255, 255, 0.2);
+    --scrollbar-hover: rgba(255, 255, 255, 0.3);
+    --scrollbar-track: rgba(255, 255, 255, 0.1);
 
     /* Background and text colors from variables */
     background-color: hsl(var(--background));
@@ -119,7 +116,7 @@
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: var(--scrollbar-width);
-    height: var(--scrollbar-width); /* For horizontal scrollbars */
+    height: var(--scrollbar-width);
   }
 
   *::-webkit-scrollbar-track {
@@ -135,69 +132,10 @@
   *::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-hover);
   }
-
-  /* Adjust padding for elements with overflow when scrollbar is visible */
-  .overflow-auto,
-  .overflow-y-auto,
-  .overflow-x-auto {
-    padding-right: var(--scrollbar-width);
-  }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-}
-
-[data-rehype-pretty-code-fragment] {
-  @apply relative text-white;
-}
-
-[data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
-  counter-reset: line;
-  box-decoration-break: clone;
-}
-
-[data-rehype-pretty-code-fragment] .line {
-  @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
-}
-
-[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
-  @apply px-2;
-}
-
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  @apply text-zinc-50/40 text-xs;
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 1.8rem;
-  margin-right: 1.4rem;
-  text-align: right;
-}
-
-[data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-zinc-700/50;
-}
-
-[data-rehype-pretty-code-fragment] .line-highlighted span {
-  @apply relative;
-}
-
-[data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
-}
-
-.dark [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply bg-zinc-900;
-}
-
-[data-rehype-pretty-code-title] {
-  @apply mt-2 pt-6 px-4 text-sm font-medium text-foreground;
-}
-
-[data-rehype-pretty-code-title] + pre {
-  @apply mt-2;
 }

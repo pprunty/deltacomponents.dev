@@ -6,7 +6,7 @@ import {
   TweetSkeleton,
   type TweetProps,
 } from 'react-tweet';
-import '@/delta/components/tweet.css';
+import './tweet.css';
 
 interface TweetArgs {
   id: string;

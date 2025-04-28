@@ -1,0 +1,252 @@
+export const metadata = {
+  title: 'FileInput | Delta Components',
+  description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'file input', 'file upload', 'drag and drop', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/file-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'FileInput Component | Delta Components',
+    description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/file-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/file-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'FileInput Component Preview showing drag-and-drop file upload interface with file previews'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'File Input', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FileInput Component | Delta Components',
+    description: 'A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.',
+    images: ['https://deltacomponents.dev/og/file-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# FileInput
+
+A versatile file input component with drag-and-drop support, file previews, validation, and multiple style variants.
+
+## Basic Usage
+
+<ComponentTabs name="file-input-basic" />
+
+<InstallationInstructions componentName="file-input" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the file input field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the file input</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' | 'pill'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>File input variant - 'default' or 'pill'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`coloredBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show a colored border (only applies to pill variant)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`multiple`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to accept multiple files</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`accept`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Accepted file types (e.g., "image/*", ".pdf", etc.)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxSize`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Maximum file size in bytes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxFiles`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`5`</TableCell>
+      <TableCell>Maximum number of files (only applies when multiple is true)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showPreviews`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show file previews</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showIcons`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show file type icons</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Default Variant
+
+```tsx
+<FileInput
+  label="Upload Document"
+  name="document"
+  description="Upload a file for your application"
+  accept=".pdf,.docx,.jpg,.png"
+  hint="Accepted formats: PDF, DOCX, JPG, PNG"
+/>
+```
+
+### Multiple Files Upload
+
+```tsx
+<FileInput
+  label="Upload Images"
+  name="images"
+  multiple={true}
+  maxFiles={3}
+  accept="image/*"
+  hint="Upload up to 3 images"
+/>
+```
+
+### Pill Variant with Colored Border
+
+```tsx
+<FileInput
+  label="Upload Document"
+  name="document"
+  variant="pill"
+  coloredBorder={true}
+  accept=".pdf,.docx"
+  hint="Upload your resume or cover letter"
+/>
+```
+
+## Validation
+
+The FileInput component supports Zod validation:
+
+```tsx
+import { z } from "zod";
+import { useState } from "react";
+import { FileInput } from "@/components/ui/file-input";
+
+export default function FileValidationExample() {
+  const [error, setError] = useState<string | undefined>();
+  
+  // Schema to validate file size
+  const maxSize = 5 * 1024 * 1024; // 5MB
+  const schema = z.instanceof(File).refine(
+    (file) => file.size <= maxSize,
+    {
+      message: "File must be less than 5MB",
+    }
+  );
+  
+  const handleValidate = (isValid: boolean, file: File, error?: string) => {
+    setError(error);
+  };
+  
+  return (
+    <FileInput
+      label="Upload Image"
+      name="image"
+      accept="image/*"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="Maximum file size: 5MB"
+    />
+  );
+}
+```
+
+## Accessibility
+
+The FileInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Keyboard navigable interface
+- Error messages are properly associated with the input
+- Support for screen readers with appropriate text descriptions
+- Visual indicators for drag-and-drop states

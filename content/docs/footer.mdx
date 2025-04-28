@@ -1,0 +1,242 @@
+export const metadata = {
+  title: 'Footer | Delta Components',
+  description: 'A modern, responsive footer component with built-in sections for company information, navigation links, and social media integration. Fully customizable and accessible.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'footer component', 'ui components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/footer',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Footer Component | Delta Components',
+    description: 'A modern, responsive footer component with built-in sections for company information, navigation links, and social media integration.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/footer',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/footer.png',
+        width: 1200,
+        height: 630,
+        alt: 'Footer Component Preview showing different sections and responsive layouts'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Footer', 'Navigation'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  }
+}
+
+# Footer
+
+A modern, responsive footer component with built-in sections for company information, navigation links, and social media integration.
+
+## Basic Usage
+
+<ComponentTabs name="footer-basic" />
+
+<InstallationInstructions componentName="footer" />
+
+## Features
+
+- **Responsive Design**: Adapts to different screen sizes with optimized layouts
+- **Built-in Sections**: Pre-configured sections for company info, navigation, and social links
+- **Customizable**: Fully customizable content and styling
+- **Accessibility**: Built with accessibility best practices
+- **Social Integration**: Built-in support for social media icons
+- **SEO Friendly**: Proper semantic HTML structure
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`links`</TableCell>
+      <TableCell>`FooterSections`</TableCell>
+      <TableCell>Predefined sections</TableCell>
+      <TableCell>Custom navigation links organized by sections</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hideOnMobile`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to hide the footer on mobile devices</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`border`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show the top border of the footer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`""`</TableCell>
+      <TableCell>Additional CSS classes to apply to the footer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Customization
+
+The Footer component can be customized in three ways:
+
+1. **Through Props**: Pass custom props to override the default behavior
+2. **Direct Modification**: Edit the component's source code to change default values
+3. **Custom Styling**: Use the `className` prop to apply custom styles
+
+### Customizing Through Props
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  const customLinks = {
+    Products: [
+      { href: "/components", label: "Components" },
+      { href: "/templates", label: "Templates" },
+    ],
+    Resources: [
+      { href: "/docs", label: "Documentation" },
+      { href: "/blog", label: "Blog" },
+    ],
+  };
+
+  return <Footer links={customLinks} border={false} />;
+}
+```
+
+### Custom Styling
+
+You can customize the footer's appearance using Tailwind CSS classes:
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  return (
+    <Footer 
+      className="bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+    />
+  );
+}
+```
+
+More styling examples:
+
+```tsx
+// Dark theme footer
+<Footer className="bg-gray-900 text-gray-100" />
+
+// Transparent footer with shadow
+<Footer className="bg-transparent shadow-lg" />
+
+// Custom padding and margin
+<Footer className="py-8 px-4 my-8" />
+
+// Custom border color
+<Footer className="border-t-2 border-blue-500" />
+```
+
+### Customizing Default Values
+
+You can modify the default values directly in the component's source code:
+
+```tsx
+// In delta/components/footer.tsx
+
+// Modify the default routes
+const footerRoutes: FooterSections = {
+  Products: [
+    { href: "/your-custom-path", label: "Your Custom Label" },
+    // ... other custom routes
+  ],
+  // ... other sections
+};
+
+// Modify the default config
+const config = {
+  companyName: "Your Company Name",
+  companyDescription: "Your custom description",
+};
+```
+
+## Usage Examples
+
+### Basic Footer
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  return <Footer />;
+}
+```
+
+### Footer Without Border
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  return <Footer border={false} />;
+}
+```
+
+### Custom Links
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  const customLinks = {
+    Products: [
+      { href: "/components", label: "Components" },
+      { href: "/templates", label: "Templates" },
+    ],
+    Resources: [
+      { href: "/docs", label: "Documentation" },
+      { href: "/blog", label: "Blog" },
+    ],
+  };
+
+  return <Footer links={customLinks} />;
+}
+```
+
+### Hide on Mobile
+
+```tsx
+import Footer from "@/components/ui/footer"
+
+export default function FooterDemo() {
+  return <Footer hideOnMobile={true} />;
+}
+```
+
+## Accessibility
+
+The Footer component follows accessibility best practices:
+
+- Uses semantic HTML elements (`<footer>`, `<nav>`, etc.)
+- Includes proper ARIA attributes
+- Maintains proper heading hierarchy
+- Ensures sufficient color contrast
+- Provides clear navigation structure

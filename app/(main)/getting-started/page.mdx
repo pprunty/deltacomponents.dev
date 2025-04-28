@@ -1,0 +1,118 @@
+# Getting Started with Delta Components
+
+Delta Components is a collection of high-quality React components built on top of [shadcn/ui](https://ui.shadcn.com) with extended functionality, additional variants, and enhanced features.
+
+## What is shadcn/ui?
+
+[shadcn/ui](https://ui.shadcn.com) is a collection of re-usable components built using Radix UI and Tailwind CSS. It's not a component library, but rather a collection of components that you can copy and paste into your projects.
+
+Key features of shadcn/ui:
+
+- **Not a dependency**: Components are copied directly into your project
+- **Tailwind CSS**: Styled using Tailwind CSS
+- **Customizable**: Edit the components to match your needs
+- **Accessible**: Built on top of Radix UI primitives
+- **TypeScript**: Written in TypeScript for type safety
+
+## What is v0?
+
+v0 refers to shadcn's CLI tool that allows you to add components to your project. The "v0" prefix in commands indicates you're using this tool.
+
+## Using Delta Components
+
+Delta Components extends shadcn/ui with more complex, production-ready components built on the same principles. Here's how to use them:
+
+### Installation
+
+First, make sure you have shadcn/ui set up in your project. If not, follow the [shadcn/ui installation guide](https://ui.shadcn.com/docs/installation).
+
+Then, you can install any Delta component using the shadcn CLI with our registry URL:
+
+```bash
+npx shadcn@latest add "https://deltacomponents.dev/r/component-name.json"
+```
+
+For example, to add the TextInput component:
+
+```bash
+npx shadcn@latest add "https://deltacomponents.dev/r/text-input.json"
+```
+
+Alternatively, you can use the shorthand format if you've configured the Delta registry:
+
+```bash
+npx shadcn@latest add "text-input"
+```
+
+### Using Components
+
+After installation, you can import and use the components in your React components:
+
+```tsx
+import { TextInput } from "@/components/ui/text-input"
+
+export default function MyForm() {
+  return (
+    <form>
+      <TextInput
+        label="Username"
+        name="username"
+        description="Enter your username"
+        placeholder="johndoe"
+        required
+      />
+      {/* Other form elements */}
+    </form>
+  )
+}
+```
+
+### Component Features
+
+Delta components extend shadcn with additional features:
+
+- **Form validation**: Many components support Zod validation out of the box
+- **Multiple variants**: Components often have additional style variants
+- **Accessibility**: All components are designed with accessibility in mind
+- **TypeScript**: Full type support for component props
+
+## Example: Adding a Component
+
+Here's a step-by-step example of adding and using the DateInput component:
+
+1. Install the component:
+
+```bash
+npx shadcn@latest add "date-input"
+```
+
+2. Use it in your application:
+
+```tsx
+import { DateInput } from "@/components/ui/date-input"
+
+export default function MyForm() {
+  return (
+    <DateInput
+      label="Start Date"
+      name="start-date"
+      description="Select when to start"
+      minDate={new Date()}
+    />
+  )
+}
+```
+
+## Customizing Components
+
+Since Delta components follow the same philosophy as shadcn/ui, you can customize them by directly editing the files in your project. They're not a dependency, but rather code that lives in your project.
+
+## Troubleshooting
+
+If you encounter issues installing components:
+
+1. Make sure you have shadcn/ui properly configured
+2. Check that you have all the required dependencies
+3. Verify that your project structure matches the expected structure
+
+For more detailed documentation on each component, refer to the individual component pages in our documentation. 

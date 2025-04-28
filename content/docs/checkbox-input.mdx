@@ -1,0 +1,199 @@
+export const metadata = {
+  title: 'CheckboxInput | Delta Components',
+  description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'checkbox', 'checkbox input', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/checkbox-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'CheckboxInput Component | Delta Components',
+    description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/checkbox-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/checkbox-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'CheckboxInput Component Preview showing various states and features'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Checkbox', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CheckboxInput Component | Delta Components',
+    description: 'A customizable checkbox input component with validation support, error handling, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/checkbox-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# CheckboxInput
+
+A customizable checkbox input component with validation support, error handling, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="checkbox-input-basic" />
+
+<InstallationInstructions componentName="checkbox-input" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the checkbox field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the checkbox</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the checkbox</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the checkbox is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`checked`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Controlled checked state</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`defaultChecked`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Default checked state</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Basic Example
+
+```tsx
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function Example() {
+  return (
+    <CheckboxInput
+      label="Accept terms and conditions"
+      name="terms"
+      description="By accepting, you agree to our Terms of Service and Privacy Policy"
+      required
+    />
+  )
+}
+```
+
+### With Hint and Error
+
+```tsx
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function Example() {
+  return (
+    <CheckboxInput
+      label="Subscribe to newsletter"
+      name="newsletter"
+      hint="We'll send you weekly updates and offers"
+      error="You must accept to continue"
+    />
+  )
+}
+```
+
+### Controlled Component
+
+```tsx
+import { useState } from "react"
+import { CheckboxInput } from "@/components/ui/checkbox-input"
+
+export default function ControlledExample() {
+  const [isChecked, setIsChecked] = useState(false)
+  
+  return (
+    <CheckboxInput
+      label="I agree to receive marketing emails"
+      name="marketing"
+      checked={isChecked}
+      onCheckedChange={setIsChecked}
+    />
+  )
+}
+```
+
+## Accessibility
+
+The CheckboxInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the checkbox
+- Keyboard navigation support
+- Clear focus states for keyboard users

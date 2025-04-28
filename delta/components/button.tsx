@@ -9,16 +9,22 @@ export type ButtonVariant =
   | 'secondary'
   | 'destructive'
   | 'action'
-  | 'neobrutalism';
+  | 'neobrutalism'
+  | 'ghost'
+  | 'outline';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps {
   onClick?: () => void;
-  title: string;
+  title?: string;
+  children?: ReactNode;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   disabled?: boolean;
   icon?: ReactNode;
   variant?: ButtonVariant;
+  size?: ButtonSize;
   extendedClickArea?: boolean;
   isLoading?: boolean; // New prop for loading state
   spinnerSize?: number; // Optional prop for spinner size
@@ -30,11 +36,13 @@ export interface ButtonProps {
 export function Button({
   onClick,
   title,
+  children,
   type = 'button',
   className,
   disabled = false,
   icon,
   variant = 'primary',
+  size = 'md',
   extendedClickArea = false,
   isLoading = false, // Default to not loading
   spinnerSize = 20, // Default size
@@ -90,13 +98,24 @@ export function Button({
     ];
   };
 
+  // Size-based styles
+  const sizeStyles = {
+    sm: 'text-xs px-3 py-1.5 rounded-md',
+    md: 'text-sm py-2 rounded-md',
+    lg: 'text-base px-6 py-3 rounded-lg',
+  };
+
+  // Use title if provided, otherwise use children
+  const buttonContent = title || children;
+
   return (
     <button
       onClick={onClick}
       type={type}
-      disabled={disabled || isLoading} // Disable when loading
+      disabled={disabled || isLoading}
       className={clsx(
-        'w-full text-center rounded-md px-4 py-2 font-medium text-sm transition-all duration-200',
+        'w-full text-center rounded-md font-semibold transition-all duration-200',
+        sizeStyles[size],
         'focus:outline-none focus:ring-0 focus-visible:ring-0',
         'focus:shadow-none focus-visible:shadow-none',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
@@ -135,18 +154,31 @@ export function Button({
         // Action variant styling with customizable color
         variant === 'action' && getActionStyles(),
 
-        // Neobrutalism variant styling - FIXED to maintain border visibility
+        // Neobrutalism variant styling
         variant === 'neobrutalism' && [
           'rounded-lg border-2 border-black',
           neobrutalismColor,
           'text-black',
-          'shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
-          // Modified hover state to ensure border remains visible
-          'hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
-          // Modified active state to use a background change instead of translate to maintain border visibility
-          'active:bg-opacity-80 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.8)] dark:active:shadow-[1px_1px_0px_0px_rgba(255,255,255,0.8)]',
-          // Keep disabled state the same
-          'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]',
+          'shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
+          'hover:translate-y-1 hover:translate-x-1 hover:shadow-none',
+          'active:translate-y-1 active:translate-x-1 active:shadow-none',
+          'transition-all',
+          'disabled:hover:translate-y-0 disabled:hover:translate-x-0 disabled:hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:disabled:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)]',
+        ],
+
+        // Ghost variant styling
+        variant === 'ghost' && [
+          'bg-transparent hover:bg-accent hover:text-accent-foreground',
+          'active:bg-accent/80',
+          'focus-visible:outline-accent/50',
+        ],
+
+        // Outline variant styling
+        variant === 'outline' && [
+          'border border-input bg-background',
+          'hover:bg-accent hover:text-accent-foreground',
+          'active:bg-accent/80',
+          'focus-visible:outline-accent/50',
         ],
 
         // Add the extended click area pseudo-element styles
@@ -155,7 +187,6 @@ export function Button({
 
         className,
       )}
-      // Add these critical styles inline to ensure they override browser defaults
       style={{
         WebkitTapHighlightColor: 'transparent',
         outline: 'none',
@@ -167,19 +198,23 @@ export function Button({
           }),
       }}
     >
-      <div className="flex items-center justify-center gap-2">
-        {isLoading ? (
+      <div
+        className={clsx(
+          'flex items-center justify-center',
+          isLoading && 'gap-2',
+        )}
+      >
+        {isLoading && (
           <ClipLoader
             size={spinnerSize}
             color={getSpinnerColor()}
             cssOverride={{ display: 'block' }}
           />
-        ) : (
-          <>
-            {icon && <span className="flex items-center">{icon}</span>}
-            <span>{title}</span>
-          </>
         )}
+        {icon && !isLoading && (
+          <span className="flex items-center">{icon}</span>
+        )}
+        <span>{title || children}</span>
       </div>
     </button>
   );

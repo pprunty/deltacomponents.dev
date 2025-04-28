@@ -1,0 +1,237 @@
+export const metadata = {
+  title: 'SwitchInput | Delta Components',
+  description: 'A customizable switch input component with validation, variants, and accessibility features. Built with shadcn/ui and featuring Zod validation integration.',
+  keywords: ['shadcn/ui', 'react', 'switch', 'toggle', 'form input', 'validation', 'zod', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/switch-input',
+  },
+  category: 'component',
+  openGraph: {
+    title: 'SwitchInput Component | Delta Components',
+    description: 'A customizable switch input component with validation, variants, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/switch-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/switch-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'SwitchInput Component Preview'
+      }
+    ],
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Form', 'Input', 'Validation'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SwitchInput Component | Delta Components',
+    description: 'A customizable switch input component with validation, variants, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/switch-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# SwitchInput
+
+A customizable switch input component with validation, variants, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="switch-input-basic" />
+
+<InstallationInstructions componentName="switch-input" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>Required</TableCell>
+      <TableCell>The name of the switch field</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text below the switch</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`pending`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is in a loading state</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`defaultChecked`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Default checked state</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`checked`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Controlled checked state</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'default' | 'large'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Size of the switch</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'pill' | 'rectangular'`</TableCell>
+      <TableCell>`'rectangular'`</TableCell>
+      <TableCell>Switch shape variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`activeColor`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom color for the active state</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`extendedClickArea`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Extends the clickable area beyond visible bounds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`schema`</TableCell>
+      <TableCell>`z.ZodType<boolean>`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Zod schema for validation</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onValidate`</TableCell>
+      <TableCell>`(isValid: boolean, value: boolean, error?: string) => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when validation occurs</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onCheckedChange`</TableCell>
+      <TableCell>`(checked: boolean) => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when switch state changes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Features
+
+- Customizable size and shape variants
+- Built-in validation with Zod integration
+- Accessible with proper ARIA attributes
+- Extended click area for better mobile usability
+- Custom colors for active state
+- Support for descriptions and hints
+- Error handling and display
+- Loading state support
+- Required field validation
+
+
+<ComponentTabs name="switch-input-variants" />
+
+
+## Usage
+
+```tsx
+import { SwitchInput } from "@/delta/components/switch-input"
+import { z } from "zod"
+
+export default function SwitchInputDemo() {
+  return (
+    <div className="space-y-4">
+      <SwitchInput 
+        label="Enable Notifications"
+        name="notifications"
+        description="Receive updates about your account"
+        defaultChecked
+      />
+      <SwitchInput 
+        label="Dark Mode"
+        name="dark-mode"
+        variant="pill"
+        hint="Toggle between light and dark theme"
+      />
+      <SwitchInput 
+        label="Accept Terms"
+        name="terms"
+        required
+        schema={z.literal(true, {
+          errorMap: () => ({ message: 'You must accept the terms' }),
+        })}
+      />
+    </div>
+  )
+}
+```
+
+## Custom Styling
+
+You can customize the switch appearance using Tailwind CSS classes:
+
+```tsx
+<SwitchInput 
+  label="Custom Style"
+  name="custom"
+  className="bg-blue-500"
+  activeColor="bg-purple-500"
+/>
+```
+
+## Accessibility
+
+The SwitchInput component follows WAI-ARIA guidelines and includes:
+- Proper ARIA attributes for switch role
+- Keyboard navigation support
+- Screen reader compatibility
+- Error message association
+- Required field indication
+- Loading state indication

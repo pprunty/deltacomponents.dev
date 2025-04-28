@@ -1,0 +1,227 @@
+export const metadata = {
+  title: 'Button | Delta Components',
+  description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'button component', 'ui components', 'neobrutalism', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/button',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Button Component | Delta Components',
+    description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/button',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/button.png',
+        width: 1200,
+        height: 630,
+        alt: 'Button Component Preview showing primary, secondary, destructive, action, neobrutalism and ghost variants'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Button', 'Neobrutalism'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Button Component | Delta Components',
+    description: 'A versatile button component with multiple variants, states, and customization options. Built with shadcn/ui and featuring neobrutalism, ghost variants, and extended functionality.',
+    images: ['https://deltacomponents.dev/og/button.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# Button
+
+A versatile button component with multiple variants, states, and customization options.
+
+## Basic Usage
+
+Here's a simple example of a button:
+
+<ComponentTabs name="button-basic" />
+
+<InstallationInstructions componentName="button" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`children`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>Optional</TableCell>
+      <TableCell>Alternative way to provide button content. Used when `title` is not provided</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'primary' \| 'secondary' \| 'destructive' \| 'action' \| 'neobrutalism' \| 'ghost'`</TableCell>
+      <TableCell>`'primary'`</TableCell>
+      <TableCell>The visual style variant of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'sm' \| 'md' \| 'lg'`</TableCell>
+      <TableCell>`'md'`</TableCell>
+      <TableCell>The size of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the button is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`icon`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>An icon element to display alongside or instead of text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes to apply to the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onClick`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Click event handler</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`type`</TableCell>
+      <TableCell>`'button' \| 'submit' \| 'reset'`</TableCell>
+      <TableCell>`'button'`</TableCell>
+      <TableCell>HTML button type</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`isLoading`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Shows a loading spinner instead of content</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`neobrutalismColor`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom background color for neobrutalism variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`actionColor`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom background color for action variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`extendedClickArea`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Extends the clickable area beyond visible bounds</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Button Sizes
+
+The Button component comes with three size variants to suit different contexts:
+
+<ComponentTabs name="button-sizes" />
+
+## Standard Variants
+
+The Button component comes with several built-in variants to suit different use cases.
+
+<ComponentTabs name="button-variants" />
+
+## Neobrutalism Style
+
+A modern, playful variant inspired by the neobrutalism design trend. Features bold shadows, thick borders, and interactive animations.
+
+<ComponentTabs name="button-neobrutalism" />
+
+## Icons & Ghost Variant
+
+Buttons can include icons alongside text, be icon-only, or use the minimal ghost variant for subtle interactions.
+
+<ComponentTabs name="button-icon-only" />
+
+## Extended Click Area
+
+Buttons can have an extended click area that reaches beyond their visible boundaries, making them easier to click, especially on touch devices.
+
+<ComponentTabs name="button-extended-click" />
+
+## Icons with Text
+
+Examples of buttons that combine icons and text for better visual communication.
+
+<ComponentTabs name="button-icons" />
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+export default function ButtonDemo() {
+  return (
+    <div className="space-y-4">
+      {/* Using the title prop (preferred) */}
+      <Button variant="primary" title="Click me" />
+      
+      {/* Using children */}
+      <Button variant="secondary">Click me too</Button>
+    </div>
+  )
+}
+```
+
+## Custom Styling
+
+You can customize the button styles using Tailwind CSS classes:
+
+```tsx
+<Button className="bg-custom hover:bg-custom-dark">
+  Custom Style
+</Button>
+```
+
+## Accessibility
+
+The button component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Icon-only buttons should include an aria-label for screen readers. 

@@ -1,0 +1,244 @@
+export const metadata = {
+  title: 'TextEditor | Delta Components',
+  description: 'A rich text editor component built with TipTap, featuring list support, links, and customizable styling. Perfect for content creation and editing in modern web applications.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'text editor', 'tiptap', 'rich text editor', 'delta components', 'ui components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/text-editor',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'TextEditor Component | Delta Components',
+    description: 'A rich text editor component built with TipTap, featuring list support, links, and customizable styling. Perfect for content creation and editing in modern web applications.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/text-editor',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/text-editor.png',
+        width: 1200,
+        height: 630,
+        alt: 'TextEditor Component Preview showing rich text editing capabilities'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'TipTap', 'Rich Text Editor'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+}
+
+# TextEditor
+
+A rich text editor component built with TipTap, featuring text formatting, lists, links, and customizable styling.
+
+## Basic Usage
+
+<ComponentTabs name="text-editor-basic" />
+
+<InstallationInstructions componentName="text-editor" />
+
+## Features
+
+- **Rich Text Editing**: Full support for rich text formatting including:
+  - **Bold** text (Ctrl/Cmd + B)
+  - **Italic** text (Ctrl/Cmd + I)
+  - **Lists** (bullet and ordered)
+  - **Links** with custom styling
+- **Customizable**: Adjust styling, placeholder text, and toolbar visibility
+- **Accessibility**: Built with accessibility in mind
+- **Responsive**: Works well on all screen sizes
+- **Dark Mode Support**: Automatically adapts to your theme
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`onChange`</TableCell>
+      <TableCell>`(html: string) => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when content changes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the editor is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`placeholder`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"Start typing..."`</TableCell>
+      <TableCell>Placeholder text when empty</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxHeight`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"none"`</TableCell>
+      <TableCell>Maximum height of the editor</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showToolbar`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show the toolbar</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the editor container</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`toolbarClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the toolbar</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`contentClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the editor content</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`controls`</TableCell>
+      <TableCell>`{ bold?: boolean, italic?: boolean, bulletList?: boolean, orderedList?: boolean, link?: boolean }`</TableCell>
+      <TableCell>`{ bold: true, italic: true, bulletList: true, orderedList: true, link: true }`</TableCell>
+      <TableCell>Controls which formatting options are available in the toolbar</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Usage Examples
+
+### Basic Text Editor
+
+```tsx
+import { TextEditor } from "@/components/ui/text-editor"
+
+export default function TextEditorDemo() {
+  return <TextEditor />
+}
+```
+
+### With Initial Content
+
+```tsx
+import { TextEditor } from "@/components/ui/text-editor"
+
+export default function TextEditorDemo() {
+  return (
+    <TextEditor 
+      initialContent={`
+        <h2>Welcome to Delta Components</h2>
+        <p>A collection of modern, accessible, and customizable React components built on top of shadcn/ui.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+          <li><strong>Modern Design</strong>: Clean and contemporary UI components</li>
+          <li><em>Accessibility First</em>: Built with WCAG guidelines in mind</li>
+          <li><strong><em>Customizable</em></strong>: Easy to style and extend</li>
+        </ul>
+        
+        <p>Learn more at <a href="https://deltacomponents.dev">deltacomponents.dev</a></p>
+      `}
+      onChange={(html) => console.log(html)}
+    />
+  )
+}
+```
+
+### Custom Controls
+
+```tsx
+import { TextEditor } from "@/components/ui/text-editor"
+
+export default function TextEditorDemo() {
+  return (
+    <TextEditor 
+      controls={{
+        bold: true,
+        italic: true,
+        bulletList: false,
+        orderedList: false,
+        link: true
+      }}
+    />
+  )
+}
+```
+
+### Minimal Controls
+
+```tsx
+import { TextEditor } from "@/components/ui/text-editor"
+
+export default function TextEditorDemo() {
+  return (
+    <TextEditor 
+      controls={{
+        bold: true,
+        italic: true,
+        bulletList: false,
+        orderedList: false,
+        link: false
+      }}
+    />
+  )
+}
+```
+
+### Custom Styling
+
+```tsx
+import { TextEditor } from "@/components/ui/text-editor"
+
+export default function TextEditorDemo() {
+  return (
+    <TextEditor 
+      className="border-2 border-primary"
+      toolbarClassName="bg-primary/10"
+      contentClassName="prose-lg"
+      maxHeight="400px"
+    />
+  )
+}
+```
+
+## Keyboard Shortcuts
+
+The text editor supports the following keyboard shortcuts:
+
+- **Bold**: `Ctrl/Cmd + B`
+- **Italic**: `Ctrl/Cmd + I`
+- **Bullet List**: `Ctrl/Cmd + Shift + 8`
+- **Ordered List**: `Ctrl/Cmd + Shift + 7`
+- **Link**: `Ctrl/Cmd + K`
+
+## Accessibility
+
+The TextEditor component follows accessibility best practices:
+
+- Proper ARIA attributes for the editor and toolbar
+- Keyboard navigation support
+- Focus management
+- Screen reader compatibility
+- High contrast support

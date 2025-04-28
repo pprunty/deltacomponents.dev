@@ -1,14 +1,22 @@
-import type { NextConfig } from 'next';
+import remarkGfm from 'remark-gfm';
 
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    mdxRs: true,
+// next.config.js
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/, // Process .mdx files
+  options: {
+    remarkPlugins: [remarkGfm],
   },
+  // providerImportSource: 'mdx-components', // only if overriding default provider
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  experimental: { mdxRs: true }, // optional: Rust-based compiler
   outputFileTracingIncludes: {
-    registry: ['./delta/**/*'],
+    registry: ['./delta/**/*', './_alt/**/*'],
   },
   pageExtensions: ['ts', 'tsx', 'mdx'],
 };
 
-export default nextConfig;
+module.exports = withMDX(nextConfig);

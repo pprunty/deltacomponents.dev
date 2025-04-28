@@ -1,0 +1,237 @@
+export const metadata = {
+  title: 'SocialIcons | Delta Components',
+  description: 'A collection of social media icons with built-in links and hover effects. Supports both single icon and multiple icon usage.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'social icons', 'social media', 'delta components', 'ui components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/social-icons',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'SocialIcons Component | Delta Components',
+    description: 'A collection of social media icons with built-in links and hover effects. Supports both single icon and multiple icon usage.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/social-icons',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/social-icons.png',
+        width: 1200,
+        height: 630,
+        alt: 'SocialIcons Component Preview showing different social media icons'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Social Media', 'Icons'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  }
+}
+
+# SocialIcons
+
+A collection of social media icons with built-in links and hover effects. Supports both single icon and multiple icon usage.
+
+## Basic Usage
+
+<ComponentTabs name="social-icons-basic" />
+
+<InstallationInstructions componentName="social-icons" />
+
+## Variants
+
+The SocialIcons component can be styled in different ways using the `linkClassName` prop. Here are some examples:
+
+<ComponentTabs name="social-icons-variants" />
+
+### Default Style
+The default style uses muted colors with a hover effect that transitions to the foreground color:
+
+```tsx
+<SocialIcons
+  platforms={["github", "twitter", "linkedin"]}
+  containerClassName="flex items-center gap-4"
+  linkClassName="text-muted-foreground hover:text-foreground transition-colors"
+/>
+```
+
+### Colorful Style
+This style uses brand colors for each social platform:
+
+```tsx
+<SocialIcons
+  platforms={["github", "twitter", "linkedin"]}
+  containerClassName="flex items-center gap-4"
+  linkClassName="[&>svg]:w-6 [&>svg]:h-6 [&:nth-child(1)]:text-[#333] [&:nth-child(1)]:hover:text-black [&:nth-child(2)]:text-[#1DA1F2] [&:nth-child(2)]:hover:text-[#0d95e8] [&:nth-child(3)]:text-[#0A66C2] [&:nth-child(3)]:hover:text-[#004182] transition-colors"
+/>
+```
+
+### Neobrutalism Style
+A trendy design with thick borders, shadows, and interactive press animation:
+
+```tsx
+<SocialIcons
+  platforms={["github", "twitter", "linkedin"]}
+  containerClassName="flex items-center gap-4"
+  linkClassName="[&>svg]:w-6 [&>svg]:h-6 [&>svg]:p-1.5 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all"
+/>
+```
+
+## Features
+
+- **Multiple Platforms**: Supports various social media platforms
+- **Single or Multiple Icons**: Use individual icons or a group of icons
+- **Customizable Styling**: Control size, colors, and hover effects
+- **Built-in Links**: Icons are automatically linked to their respective platforms
+- **Accessibility**: Includes proper ARIA attributes and screen reader support
+
+## Customization
+
+You can customize the SocialIcons component in several ways:
+
+1. **Custom URLs**: Pass your own `urlMapping` to override the default URLs
+2. **Custom Styling**: Use `containerClassName` and `linkClassName` for custom styles
+3. **Icon Selection**: Choose which platforms to display using the `platforms` prop
+4. **Icon Sizing**: Control icon size through className modifiers
+
+### Custom URL Mapping
+
+```tsx
+const customUrlMapping = {
+  github: "https://github.com/yourusername",
+  twitter: "https://twitter.com/yourusername",
+  // ... other platforms
+}
+
+<SocialIcons
+  platforms={["github", "twitter"]}
+  urlMapping={customUrlMapping}
+  containerClassName="flex gap-4"
+  linkClassName="text-muted-foreground hover:text-foreground"
+/>
+```
+
+### Custom Icon Sizing
+
+```tsx
+<SocialIcons
+  platforms={["github", "twitter"]}
+  containerClassName="flex gap-4"
+  linkClassName="[&>svg]:w-8 [&>svg]:h-8" // Makes icons larger
+/>
+```
+
+### Custom Colors
+
+```tsx
+<SocialIcons
+  platforms={["github", "twitter"]}
+  containerClassName="flex gap-4"
+  linkClassName="text-blue-500 hover:text-blue-700" // Custom color scheme
+/>
+```
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`platforms`</TableCell>
+      <TableCell>`SocialPlatform[]`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Array of platforms for multiple icons (required for SocialIcons)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the icon</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`containerClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>CSS classes for the container (SocialIcons only)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`linkClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>CSS classes for the link (SocialIcons only)</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Usage Examples
+
+### Single Icon
+
+```tsx
+import { SocialIcon } from "@/components/ui/social-icons"
+
+export default function SocialIconDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <SocialIcon platform="github" className="w-6 h-6" />
+      <SocialIcon platform="twitter" className="w-6 h-6" />
+      <SocialIcon platform="linkedin" className="w-6 h-6" />
+    </div>
+  )
+}
+```
+
+### Multiple Icons
+
+```tsx
+import { SocialIcons } from "@/components/ui/social-icons"
+
+export default function SocialIconsDemo() {
+  return (
+    <SocialIcons
+      platforms={["github", "twitter", "linkedin", "strava", "instagram"]}
+      containerClassName="flex items-center gap-4"
+      linkClassName="text-muted-foreground hover:text-foreground transition-colors"
+    />
+  )
+}
+```
+
+## Supported Platforms
+
+The component supports the following social media platforms:
+
+- GitHub
+- Twitter/X
+- LinkedIn
+- Strava
+- Instagram
+- Reddit
+- TikTok
+- YouTube
+- Email
+
+## Accessibility
+
+The SocialIcons component follows accessibility best practices:
+
+- Includes proper `aria-label` attributes
+- Uses semantic HTML for links
+- Provides visual feedback on hover
+- Maintains focus management best practices
+- Uses appropriate color contrast ratios

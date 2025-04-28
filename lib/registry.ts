@@ -94,21 +94,12 @@ function validateBadge(badge: unknown): string | string[] | undefined {
 
 // Helper function to categorize components
 function categorizeComponents(items: ComponentType[]): CategoryType[] {
-  // Group components by their type or first directory in path
+  // Group components by their category
   const categories: Record<string, ComponentType[]> = {};
 
   for (const item of items) {
-    // Try to determine category from the first file path
-    let category = 'Components';
-    if (item.files && item.files.length > 0) {
-      const path = item.files[0].path;
-      const parts = path.split('/');
-      // Use the directory after "registry" as the category
-      if (parts.length >= 3 && parts[0] === 'delta') {
-        // Apply formatting to the category name
-        category = formatCategoryName(parts[1]);
-      }
-    }
+    // Use the category from the JSON, default to "other" if not specified
+    const category = item.category || 'other';
 
     if (!categories[category]) {
       categories[category] = [];
@@ -123,10 +114,10 @@ function categorizeComponents(items: ComponentType[]): CategoryType[] {
     categories[category].push(typedItem);
   }
 
-  // Convert to array format
+  // Convert to array format and sort
   return Object.entries(categories)
     .map(([title, items]) => ({
-      title,
+      title: formatCategoryName(title),
       items: items.sort((a, b) => a.title.localeCompare(b.title)),
     }))
     .sort((a, b) => a.title.localeCompare(b.title));

@@ -1,0 +1,227 @@
+export const metadata = {
+  title: 'TextInput | Delta Components',
+  description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'text input', 'form components', 'zod validation', 'react components', 'delta components', 'nextjs components', 'tailwind components', 'form validation'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/text-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'TextInput Component | Delta Components',
+    description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/text-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/text-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'Text Input Component Preview showing default and pill variants with validation states'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Form', 'Input', 'Validation', 'Zod'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TextInput Component | Delta Components',
+    description: 'A customizable text input component with validation support, error handling, and various styling options. Built with shadcn/ui and featuring Zod validation, multiple variants, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/text-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# TextInput
+
+A customizable text input component with validation support, error handling, and various styling options.
+
+## Basic Usage
+
+<ComponentTabs name="text-input-basic" />
+
+<InstallationInstructions componentName="text-input" />
+
+## Variants and Features
+
+The TextInput component comes with various styling options and features.
+
+<ComponentTabs name="text-input-variants" />
+
+## Validation
+
+The TextInput component supports validation using Zod schemas.
+
+<ComponentTabs name="text-input-validation" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the input field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the input</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' | 'pill'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Input variant - 'default' or 'pill'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`coloredBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show a colored border (only applies to pill variant)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`schema`</TableCell>
+      <TableCell>`z.ZodType<string>`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Zod schema for validation</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Default Variant
+
+```tsx
+import { TextInput } from "@/components/ui/text-input"
+
+export default function Example() {
+  return (
+    <TextInput
+      label="Username"
+      name="username"
+      placeholder="johndoe"
+      required
+    />
+  )
+}
+```
+
+### Pill Variant
+
+```tsx
+import { TextInput } from "@/components/ui/text-input"
+
+export default function Example() {
+  return (
+    <TextInput
+      label="Email"
+      name="email"
+      type="email"
+      variant="pill"
+      coloredBorder={true}
+      placeholder="john@example.com"
+    />
+  )
+}
+```
+
+### With Validation
+
+```tsx
+import { z } from "zod"
+import { useState } from "react"
+import { TextInput } from "@/components/ui/text-input"
+
+export default function ValidationExample() {
+  const [error, setError] = useState<string | undefined>()
+  
+  // Schema to validate email format
+  const schema = z.string().email({
+    message: "Please enter a valid email address",
+  })
+  
+  const handleValidate = (isValid: boolean, value: string, error?: string) => {
+    setError(error)
+  }
+  
+  return (
+    <TextInput
+      label="Email"
+      name="email"
+      type="email"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="We'll never share your email with anyone else"
+      required
+    />
+  )
+}
+```
+
+## Accessibility
+
+The TextInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the input
+- Keyboard navigation support
+- Clear focus states for keyboard users 

@@ -1,0 +1,270 @@
+export const metadata = {
+  title: 'Tabs | Delta Components',
+  description: 'A flexible and accessible tabs component with multiple variants, animations, and customization options. Built with shadcn/ui and featuring Spotify-inspired designs, pills, and underlined variants.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'tabs component', 'ui components', 'spotify tabs', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/tabs',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Tabs Component | Delta Components',
+    description: 'A flexible and accessible tabs component with multiple variants, animations, and customization options. Built with shadcn/ui and featuring Spotify-inspired designs, pills, and underlined variants.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/tabs',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/tabs.png',
+        width: 1200,
+        height: 630,
+        alt: 'Tabs Component Preview showing default, pills, and underlined variants with Spotify-inspired design'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Tabs', 'Spotify'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tabs Component | Delta Components',
+    description: 'A flexible and accessible tabs component with multiple variants, animations, and customization options. Built with shadcn/ui and featuring Spotify-inspired designs, pills, and underlined variants.',
+    images: ['https://deltacomponents.dev/og/tabs.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# Tabs
+
+A flexible and accessible tabs component with multiple variants, animations, and customization options.
+
+## Basic Usage
+
+<ComponentTabs name="tabs-basic" />
+
+<InstallationInstructions componentName="tabs" />
+
+## Props
+
+### Tabs
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`value`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The controlled value of the active tab</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onValueChange`</TableCell>
+      <TableCell>`(value: string) => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when the active tab changes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### TabsList
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`showActiveIndicator`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show active indicator</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`activeIndicatorPosition`</TableCell>
+      <TableCell>`'top' \| 'bottom'`</TableCell>
+      <TableCell>`'bottom'`</TableCell>
+      <TableCell>Position of the active indicator</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'sm' \| 'md' \| 'lg'`</TableCell>
+      <TableCell>`'sm'`</TableCell>
+      <TableCell>Size of the tabs</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' \| 'pills' \| 'underlined'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Visual style variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`stretch`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether tabs should stretch to fill width</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`ariaLabel`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'Tabs'`</TableCell>
+      <TableCell>ARIA label for accessibility</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showBottomBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show bottom border</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### TabsTrigger
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the tab is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### TabsContent
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Variants
+
+The Tabs component comes with three different visual styles, including default, pills, and underlined variants:
+
+<ComponentTabs name="tabs-variants" />
+
+## Sizes
+
+Tabs are available in three sizes: small, medium, and large:
+
+<ComponentTabs name="tabs-sizes" />
+
+## Features
+
+The Tabs component includes several advanced features:
+
+- Scrollable tabs that automatically handle overflow
+- Disabled states for individual tabs
+- Custom indicators with configurable positions and styles
+- Hover effects and animations
+
+<ComponentTabs name="tabs-features" />
+
+## Spotify Inspired
+
+<ComponentTabs name="tabs-spotify" />
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+
+export default function TabsDemo() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Account content
+      </TabsContent>
+      <TabsContent value="password">
+        Password content
+      </TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## Accessibility
+
+The Tabs component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. Each tab has a proper role and aria-selected state, and the content panels are properly associated with their triggers. 

@@ -80,6 +80,7 @@ const TabsList = forwardRef<
     showHoverEffect?: boolean;
     showActiveIndicator?: boolean;
     activeIndicatorPosition?: 'top' | 'bottom';
+    activeIndicatorOffset?: number;
     size?: 'sm' | 'md' | 'lg';
     variant?: 'default' | 'pills' | 'underlined';
     stretch?: boolean;
@@ -99,7 +100,8 @@ const TabsList = forwardRef<
       showHoverEffect = true,
       showActiveIndicator = true,
       activeIndicatorPosition = 'bottom',
-      size = 'md',
+      activeIndicatorOffset = 0,
+      size = 'sm',
       variant = 'default',
       stretch = false,
       ariaLabel = 'Tabs',
@@ -189,9 +191,9 @@ const TabsList = forwardRef<
 
     // Size classes
     const sizeClasses = {
-      sm: 'h-[24px] text-xs',
-      md: 'h-[30px] text-sm',
-      lg: 'h-[36px] text-base',
+      sm: 'h-[28px] text-sm',
+      md: 'h-[34px] text-base',
+      lg: 'h-[40px] text-lg',
     };
 
     // Variant classes
@@ -370,7 +372,8 @@ const TabsList = forwardRef<
                 )}
                 style={{
                   ...activeStyle,
-                  transition: 'all 300ms ease-out',
+                  transition: 'all 300ms ease-out z-50',
+                  [activeIndicatorPosition]: `${activeIndicatorOffset}px`,
                 }}
                 aria-hidden="true"
               />

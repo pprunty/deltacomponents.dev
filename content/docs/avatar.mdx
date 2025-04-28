@@ -1,0 +1,231 @@
+export const metadata = {
+  title: 'Avatar | Delta Components',
+  description: 'A versatile avatar component that supports images and initials fallback. Features automatic gradient generation based on names and image caching for better performance.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'avatar component', 'ui components', 'profile picture', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/avatar',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Avatar Component | Delta Components',
+    description: 'A versatile avatar component that supports images and initials fallback. Features automatic gradient generation based on names and image caching for better performance.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/avatar',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/avatar.png',
+        width: 1200,
+        height: 630,
+        alt: 'Avatar Component Preview showing different variants and sizes'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Avatar', 'Profile Picture'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Avatar Component | Delta Components',
+    description: 'A versatile avatar component that supports images and initials fallback. Features automatic gradient generation based on names and image caching for better performance.',
+    images: ['https://deltacomponents.dev/og/avatar.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# Avatar
+
+A versatile avatar component that supports images and initials fallback. Features automatic gradient generation based on names and image caching for better performance.
+
+## Basic Usage
+
+<ComponentTabs name="avatar-basic" />
+
+## Variants
+
+<ComponentTabs name="avatar-fallback" />
+
+<InstallationInstructions componentName="avatar" />
+
+## Features
+
+- **Image Support**: Display profile pictures with automatic fallback
+- **Initials Display**: Show user initials when no image is available
+- **Gradient Generation**: Automatic gradient generation based on user names
+- **Image Caching**: Built-in image caching for better performance
+- **Size Customization**: Flexible sizing options
+- **Interactive**: Optional click handler with hover effects
+- **Accessibility**: Proper ARIA attributes and keyboard navigation
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Name used for generating initials and gradient</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`34`</TableCell>
+      <TableCell>Size of the avatar in pixels</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`alt`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"Avatar"`</TableCell>
+      <TableCell>Alt text for the avatar image</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onError`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when image fails to load</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`cacheKey`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Key for caching the image</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`priority`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to preload the image</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onClick`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Click handler for the avatar. When provided, adds hover effects and cursor pointer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Usage Examples
+
+### Basic Avatar
+
+```tsx
+import { Avatar } from "@/components/ui/avatar"
+
+export default function AvatarDemo() {
+  return (
+    <Avatar 
+      src="https://github.com/username.png"
+      name="John Doe"
+      size={40}
+    />
+  )
+}
+```
+
+### Size Variants
+
+```tsx
+import { Avatar } from "@/components/ui/avatar"
+
+export default function AvatarDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar name="Small" size={24} />
+      <Avatar name="Medium" size={40} />
+      <Avatar name="Large" size={64} />
+    </div>
+  )
+}
+```
+
+### Fallback Variants
+
+```tsx
+import { Avatar } from "@/components/ui/avatar"
+
+export default function AvatarDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar name="John Doe" size={40} />
+      <Avatar name="Jane" size={40} />
+      <Avatar size={40} />
+    </div>
+  )
+}
+```
+
+### Interactive Variants
+
+```tsx
+import { Avatar } from "@/components/ui/avatar"
+
+export default function AvatarDemo() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar 
+        name="Click Me"
+        size={40}
+        onClick={() => console.log('Avatar clicked!')}
+      />
+      <Avatar 
+        name="No Image"
+        size={40}
+        onClick={() => console.log('Fallback avatar clicked!')}
+      />
+    </div>
+  )
+}
+```
+
+## Accessibility
+
+The Avatar component follows accessibility best practices:
+
+- Includes proper `alt` text for images
+- Uses semantic HTML elements
+- Provides fallback content for screen readers
+- Maintains proper contrast ratios
+- Supports keyboard navigation
+- Adds proper ARIA roles and keyboard support when interactive

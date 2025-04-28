@@ -1,0 +1,231 @@
+export const metadata = {
+  title: 'DateInput | Delta Components',
+  description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'date input', 'calendar picker', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/date-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'DateInput Component | Delta Components',
+    description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/date-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/date-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'DateInput Component Preview showing calendar date picker with various styling options'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Date Input', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DateInput Component | Delta Components',
+    description: 'A flexible and customizable date input component with calendar picker, validation support, and multiple style variants.',
+    images: ['https://deltacomponents.dev/og/date-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# DateInput
+
+A flexible date input component with an integrated calendar picker, validation support, and customizable styling options.
+
+## Basic Usage
+
+<ComponentTabs name="date-input-basic" />
+
+<InstallationInstructions componentName="date-input" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the date field (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`hint`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional hint text to display below the date picker</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`placeholder`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'Select a date'`</TableCell>
+      <TableCell>Placeholder text when no date is selected</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' | 'pill'`</TableCell>
+      <TableCell>`'default'`</TableCell>
+      <TableCell>Date picker variant - 'default' or 'pill'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`coloredBorder`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show a colored border (only applies to pill variant)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the date picker is disabled</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`minDate`</TableCell>
+      <TableCell>`Date`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Min date that can be selected</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxDate`</TableCell>
+      <TableCell>`Date`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Max date that can be selected</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Default Variant
+
+```tsx
+<DateInput
+  label="Event Date"
+  name="event-date"
+  description="Select the date of your event"
+  placeholder="Select a date"
+/>
+```
+
+### Pill Variant with Colored Border
+
+```tsx
+<DateInput
+  label="Event Date"
+  name="event-date"
+  variant="pill"
+  coloredBorder={true}
+  placeholder="Select a date"
+/>
+```
+
+### With Min and Max Date Constraints
+
+```tsx
+<DateInput
+  label="Appointment Date"
+  name="appointment-date"
+  minDate={new Date()} // Today's date
+  maxDate={new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)} // 90 days from now
+  hint="Select a date within the next 90 days"
+/>
+```
+
+## Validation
+
+The DateInput component supports Zod validation:
+
+```tsx
+import { z } from "zod";
+import { useState } from "react";
+import { DateInput } from "@/components/ui/date-input";
+
+export default function DateValidationExample() {
+  const [error, setError] = useState<string | undefined>();
+  
+  // Schema to validate the date is in the future
+  const schema = z.date().min(new Date(), {
+    message: "Date must be in the future",
+  });
+  
+  const handleValidate = (isValid: boolean, value: Date, error?: string) => {
+    setError(error);
+  };
+  
+  return (
+    <DateInput
+      label="Event Date"
+      name="event-date"
+      schema={schema}
+      onValidate={handleValidate}
+      error={error}
+      hint="Date must be in the future"
+    />
+  );
+}
+```
+
+## Accessibility
+
+The DateInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Keyboard navigation support in the calendar
+- Error messages are properly associated with inputs
+- Clear focus states for keyboard users

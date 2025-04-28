@@ -1,0 +1,144 @@
+export const metadata = {
+  title: 'BackButton | Delta Components',
+  description: 'A smart back button component that handles navigation history with a fallback to root. Built with shadcn/ui and featuring intelligent routing.',
+
+  keywords: ['shadcn/ui', 'react', 'back button', 'navigation', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/back-button',
+  },
+
+  category: 'component',
+
+  openGraph: {
+    title: 'BackButton Component | Delta Components',
+    description: 'A smart back button component that handles navigation history with a fallback to root. Built with shadcn/ui and featuring intelligent routing.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/back-button',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/back-button.png',
+        width: 1200,
+        height: 630,
+        alt: 'BackButton Component Preview showing smart navigation handling'
+      }
+    ],
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Navigation', 'Back Button'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BackButton Component | Delta Components',
+    description: 'A smart back button component that handles navigation history with a fallback to root. Built with shadcn/ui and featuring intelligent routing.',
+    images: ['https://deltacomponents.dev/og/back-button.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# BackButton
+
+A smart back button component that intelligently handles navigation history with a fallback to root.
+
+## Features
+
+- **Smart Navigation**: Automatically detects browser history and navigates back when possible
+- **Fallback Handling**: Falls back to a specified route (defaults to '/') when no history is available
+- **Customizable**: Supports text, variants, and icon customization
+- **Accessible**: Built with proper ARIA attributes and keyboard navigation
+
+## Basic Usage
+
+<ComponentTabs name="back-button-basic" />
+
+<InstallationInstructions componentName="back-button" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`fallbackRoute`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'/'`</TableCell>
+      <TableCell>Route to navigate to when history is empty</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`'default' \| 'secondary' \| 'outline' \| 'ghost' \| 'destructive'`</TableCell>
+      <TableCell>`'outline'`</TableCell>
+      <TableCell>The visual style variant of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`'sm' \| 'md' \| 'lg' \| 'icon'`</TableCell>
+      <TableCell>`'icon'`</TableCell>
+      <TableCell>The size of the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Smart Navigation Handling
+
+The BackButton component intelligently handles navigation:
+
+1. When clicked, it first checks if there's browser history available (`window.history.length > 2`).
+2. If history exists, it uses `router.back()` to navigate to the previous page.
+3. If no history is available (e.g., user landed directly on the page), it navigates to the `fallbackRoute`.
+4. The default fallback route is the root path (`'/'`), but this can be customized via the `fallbackRoute` prop.
+
+```tsx
+import { BackButton } from "@/delta/components/back-button"
+
+export default function BackButtonExample() {
+  return (
+    // Will go back in history if available, otherwise to /dashboard
+    <BackButton 
+      text="Back to Dashboard"
+      fallbackRoute="/dashboard"
+      variant="ghost"
+      size="md"
+    />
+  )
+}
+```
+
+## Accessibility
+
+The BackButton component follows WAI-ARIA guidelines:
+- Includes appropriate aria-label (uses text prop if provided)
+- Maintains keyboard focus management
+- Provides visual feedback for all interactive states
+- Uses semantic HTML elements for better screen reader support

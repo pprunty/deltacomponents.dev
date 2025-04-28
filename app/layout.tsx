@@ -1,33 +1,18 @@
-import './globals.css';
 import type React from 'react';
-import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import type { Metadata } from 'next';
+import './globals.css';
+import { Hanken_Grotesk } from 'next/font/google';
 import { themeEffect } from '@/components/theme-effect';
 import config from '@/app/config';
 import { doge } from './doge';
-import { Header } from './header';
-import Footer from './footer';
+import ClientComponents from './client';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const hankenGrotesk = Hanken_Grotesk({
+  variable: '--font-hanken-grotesk',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'], // Added weights including semibold (600)
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  weight: ['400', '600'], // Added regular and semibold weights
-  display: 'swap',
-});
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  userScalable: true,
-  themeColor: 'transparent',
-};
 
 export const metadata: Metadata = {
   title: `${config.companyName}`,
@@ -62,7 +47,7 @@ export const metadata: Metadata = {
     siteName: config.companyName,
     images: [
       {
-        url: `${config.url}/icon.webp`,
+        url: `${config.url}/icon.svg`,
         width: 512,
         height: 512,
         alt: `${config.companyName} - Modern Component Library`,
@@ -77,7 +62,7 @@ export const metadata: Metadata = {
     creator: config.socials.twitter,
     images: [
       {
-        url: `${config.url}/icon.webp`,
+        url: `${config.url}/icon.svg`,
         width: 512,
         height: 512,
         alt: `${config.companyName} - Modern Component Library`,
@@ -88,34 +73,24 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icons/16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/icons/32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icons/72x72.png', sizes: '72x72', type: 'image/png' },
-      { url: '/icons/96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/icons/128x128.png', sizes: '128x128', type: 'image/png' },
-      { url: '/icons/144x144.png', sizes: '144x144', type: 'image/png' },
-      { url: '/icons/152x152.png', sizes: '152x152', type: 'image/png' },
-      { url: '/icons/192x192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icons/384x384.png', sizes: '384x384', type: 'image/png' },
-      { url: '/icons/512x512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/icons/16x16.svg', sizes: '16x16', type: 'image/png' },
+      { url: '/icons/32x32.svg', sizes: '32x32', type: 'image/png' },
+      { url: '/icons/72x72.svg', sizes: '72x72', type: 'image/png' },
+      { url: '/icons/96x96.svg', sizes: '96x96', type: 'image/png' },
+      { url: '/icons/128x128.svg', sizes: '128x128', type: 'image/png' },
+      { url: '/icons/144x144.svg', sizes: '144x144', type: 'image/png' },
+      { url: '/icons/152x152.svg', sizes: '152x152', type: 'image/png' },
+      { url: '/icons/192x192.svg', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/384x384.svg', sizes: '384x384', type: 'image/png' },
+      { url: '/icons/512x512.svg', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
-      { url: '/icons/120x120.png', sizes: '120x120', type: 'image/png' },
-      { url: '/icons/152x152.png', sizes: '152x152', type: 'image/png' },
-      { url: '/icons/180x180.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/icons/512x512.png',
-        color: '#4E90F9',
-      },
+      { url: '/icons/120x120.svg', sizes: '120x120', type: 'image/png' },
+      { url: '/icons/152x152.svg', sizes: '152x152', type: 'image/png' },
+      { url: '/icons/180x180.svg', sizes: '180x180', type: 'image/png' },
     ],
   },
   metadataBase: new URL(config.url),
-  verification: {
-    google: 'your-google-site-verification', // Add your Google verification code
-  },
   robots: {
     index: true,
     follow: true,
@@ -135,29 +110,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${hankenGrotesk.variable} font-sans antialiased`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
           }}
         />
-        <link
-          rel="icon"
-          href="/icons/16x16.png"
-          sizes="16x16"
-          type="image/png"
+        <link rel="icon" href="/icons/32x32.svg" sizes="any" />
+        <link rel="apple-touch-icon" href="/icons/180x180.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Default Title | My Website"
         />
-        <link rel="mask-icon" href="/icons/16x16.png" color="#4E90F9" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <main className="max-w-3xl mx-auto px-4 justify-center sm:px-12 mt-4 sm:mt-8 min-h-screen">
-          <Header />
-          {children}
-        </main>
-        <Footer />
+      <body>
+        {children}
+        <ClientComponents />
       </body>
     </html>
   );

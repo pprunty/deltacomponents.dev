@@ -1,0 +1,235 @@
+export const metadata = {
+  title: 'RadioInput | Delta Components',
+  description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'radio', 'radio input', 'form components', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/radio-input',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'RadioInput Component | Delta Components',
+    description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/radio-input',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/radio-input.png',
+        width: 1200,
+        height: 630,
+        alt: 'RadioInput Component Preview showing various states and features'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Radio', 'Form', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RadioInput Component | Delta Components',
+    description: 'A customizable radio input component with validation support, orientation options, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/radio-input.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# RadioInput
+
+A customizable radio input component with validation support, orientation options, and accessibility features.
+
+## Basic Usage
+
+<ComponentTabs name="radio-input-basic" />
+
+<InstallationInstructions componentName="radio-input" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`name`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>The name of the radio group (used for form submission)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`options`</TableCell>
+      <TableCell>`Array<{ value: string, label: string, description?: string, disabled?: boolean }>`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Options for the radio group</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`description`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Optional description text to display below the label</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`error`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Error message to display (typically from Zod validation)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`required`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the field is required</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`orientation`</TableCell>
+      <TableCell>`'vertical' | 'horizontal'`</TableCell>
+      <TableCell>`'vertical'`</TableCell>
+      <TableCell>Layout orientation - 'vertical' or 'horizontal'</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`value`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Controlled selected value</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`defaultValue`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Default selected value</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`disabled`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether the radio group is disabled</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Basic Example
+
+```tsx
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function Example() {
+  const options = [
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]
+
+  return (
+    <RadioInput
+      label="Select an option"
+      name="options"
+      options={options}
+      defaultValue="option1"
+    />
+  )
+}
+```
+
+### Horizontal Layout
+
+```tsx
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function HorizontalExample() {
+  const options = [
+    { value: "yes", label: "Yes" },
+    { value: "no", label: "No" }
+  ]
+
+  return (
+    <RadioInput
+      label="Proceed with action?"
+      name="confirm"
+      options={options}
+      orientation="horizontal"
+    />
+  )
+}
+```
+
+### With Descriptions and Controlled State
+
+```tsx
+import { useState } from "react"
+import { RadioInput } from "@/components/ui/radio-input"
+
+export default function ControlledExample() {
+  const [selectedOption, setSelectedOption] = useState("basic")
+  
+  const options = [
+    { 
+      value: "basic", 
+      label: "Basic Plan", 
+      description: "$10/month - Access to basic features" 
+    },
+    { 
+      value: "pro", 
+      label: "Pro Plan", 
+      description: "$25/month - Access to all features" 
+    },
+    { 
+      value: "enterprise", 
+      label: "Enterprise Plan", 
+      description: "$100/month - Priority support and custom features" 
+    }
+  ]
+  
+  return (
+    <RadioInput
+      label="Select Subscription Plan"
+      name="plan"
+      options={options}
+      value={selectedOption}
+      onValueChange={setSelectedOption}
+    />
+  )
+}
+```
+
+## Accessibility
+
+The RadioInput component is built with accessibility in mind:
+
+- Proper labeling and ARIA attributes
+- Support for required field indicators
+- Error messages are properly associated with the radio group
+- Keyboard navigation support
+- Clear focus states for keyboard users

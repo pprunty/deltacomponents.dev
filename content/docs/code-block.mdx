@@ -1,0 +1,238 @@
+export const metadata = {
+  title: 'CodeBlock | Delta Components',
+  description: 'A versatile code block component with syntax highlighting, line numbers, copy functionality, and expandable content. Built with shadcn/ui and featuring Shikiji for syntax highlighting, multiple themes, and accessibility features.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'code block component', 'syntax highlighting', 'shikiji', 'code editor', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/code-block',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'CodeBlock Component | Delta Components',
+    description: 'A versatile code block component with syntax highlighting, line numbers, copy functionality, and expandable content. Built with shadcn/ui and featuring Shikiji for syntax highlighting, multiple themes, and accessibility features.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/code-block',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/code-block.png',
+        width: 1200,
+        height: 630,
+        alt: 'CodeBlock Component Preview showing syntax highlighting, line numbers, and copy functionality with multiple themes'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Code Block', 'Syntax Highlighting', 'Shikiji'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CodeBlock Component | Delta Components',
+    description: 'A versatile code block component with syntax highlighting, line numbers, copy functionality, and expandable content. Built with shadcn/ui and featuring Shikiji for syntax highlighting, multiple themes, and accessibility features.',
+    images: ['https://deltacomponents.dev/og/code-block.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# CodeBlock
+
+A versatile code block component with syntax highlighting, line numbers, copy functionality, and expandable content.
+
+## Basic Usage
+
+<ComponentTabs name="code-block-basic" />
+
+<InstallationInstructions componentName="code-block" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`language`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"typescript"`</TableCell>
+      <TableCell>The programming language for syntax highlighting</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showLineNumbers`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to display line numbers</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showCopyButton`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show the copy button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showExpandButton`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to show the expand/collapse button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`maxHeight`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"300px"`</TableCell>
+      <TableCell>Maximum height before showing expand button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`highlightLines`</TableCell>
+      <TableCell>`number[]`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Array of line numbers to highlight</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`caption`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Caption text to display above the code block</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes to apply to the code block</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Features
+
+### Syntax Highlighting
+
+The code block supports syntax highlighting for various programming languages using Shikiji.
+
+<ComponentTabs name="code-block-themes" />
+
+### Line Numbers
+
+Enable line numbers to make code references easier.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  showLineNumbers
+/>
+```
+
+### Copy Button
+
+A copy button is included by default to easily copy code to the clipboard.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  showCopyButton
+/>
+```
+
+### Expandable Content
+
+For long code snippets, the code block can be expanded to show the full content.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  maxHeight="200px"
+  showExpandButton
+/>
+```
+
+### Highlighted Lines
+
+Highlight specific lines to draw attention to important parts of the code.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  highlightLines={[1]}
+/>
+```
+
+### Captions
+
+Add a caption to provide context for the code block.
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  caption="Example TypeScript code"
+/>
+```
+
+## Usage
+
+```tsx
+import CodeBlock from "@/delta/components/code-block"
+
+export default function CodeBlockDemo() {
+  return (
+    <CodeBlock
+      code="const message = 'Hello, World!';"
+      language="typescript"
+      showLineNumbers
+      showCopyButton
+      showExpandButton
+      maxHeight="200px"
+      caption="Example TypeScript code"
+    />
+  )
+}
+```
+
+## Customization
+
+You can customize the code block's appearance using Tailwind CSS classes:
+
+```tsx
+<CodeBlock
+  code="const message = 'Hello, World!';"
+  language="typescript"
+  className="bg-gray-100 dark:bg-gray-800"
+/>
+```
+
+## Accessibility
+
+The code block component follows WAI-ARIA guidelines and includes proper ARIA attributes for accessibility. The copy button includes an aria-label for screen readers.

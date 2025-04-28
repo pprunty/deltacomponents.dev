@@ -1,0 +1,221 @@
+export const metadata = {
+  title: 'Float | Delta Components',
+  description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'float', 'positioning', 'ui components', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/float',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'Float Component | Delta Components',
+    description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/float',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/float.png',
+        width: 1200,
+        height: 630,
+        alt: 'Float Component Preview showing various positioning options'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Positioning', 'Design'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Float Component | Delta Components',
+    description: 'A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior.',
+    images: ['https://deltacomponents.dev/og/float.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# Float
+
+A versatile positioning component that can float any content in fixed or absolute positions with responsive behavior. Perfect for floating action buttons, notifications, or any other content that needs to be positioned relative to the viewport or a container.
+
+## Basic Usage
+
+<ComponentTabs name="floating-button-basic" />
+
+<InstallationInstructions componentName="floating-button" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`position`</TableCell>
+      <TableCell>`'fixed' | 'absolute' | 'static'`</TableCell>
+      <TableCell>`'fixed'`</TableCell>
+      <TableCell>CSS position property</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`placement`</TableCell>
+      <TableCell>`'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'bottom-center'`</TableCell>
+      <TableCell>`'bottom-right'`</TableCell>
+      <TableCell>The placement of the content</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`offset`</TableCell>
+      <TableCell>`number | { x?: number; y?: number }`</TableCell>
+      <TableCell>`16`</TableCell>
+      <TableCell>Distance from the edge of the container</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onlyDesktop`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the content only on desktop screens</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onlyMobile`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the content only on mobile screens</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`opaqueOnScroll`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to reduce opacity when scrolling down the page</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Examples
+
+### Basic Floating Button
+
+```tsx
+import { Plus } from "lucide-react"
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
+
+export default function BasicExample() {
+  return (
+    <Float
+      position="absolute"
+      placement="bottom-right"
+      offset={16}
+    >
+      <Button
+        variant="primary"
+        size="sm"
+        onClick={() => alert("Button clicked!")}
+      >
+        <Plus size={20} />
+      </Button>
+    </Float>
+  )
+}
+```
+
+### Floating Notification
+
+```tsx
+import Float from "@/components/ui/float"
+
+export default function NotificationExample() {
+  return (
+    <Float
+      placement="top-right"
+      offset={16}
+    >
+      <div className="bg-primary text-primary-foreground px-4 py-2 rounded-md shadow-lg">
+        New message received!
+      </div>
+    </Float>
+  )
+}
+```
+
+### Responsive Positioning
+
+```tsx
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
+
+export default function ResponsiveExample() {
+  return (
+    <Float
+      mobilePosition="bottom-center"
+      desktopPosition="bottom-right"
+      mobileOffset={8}
+      desktopOffset={16}
+    >
+      <Button variant="primary">
+        Contact Us
+      </Button>
+    </Float>
+  )
+}
+```
+
+### Opacity Changes on Scroll
+
+```tsx
+import Float from "@/components/ui/float"
+import { Button } from "@/components/ui/button"
+
+export default function OpaqueOnScrollExample() {
+  return (
+    <Float
+      placement="bottom-right"
+      opaqueOnScroll={true}
+    >
+      <Button variant="primary">
+        Back to Top
+      </Button>
+    </Float>
+  )
+}
+```
+
+## Accessibility
+
+The Float component is designed with accessibility in mind:
+
+- Maintains proper focus management
+- Supports keyboard navigation
+- Preserves semantic structure of its children
+- Works with screen readers
+
+When using the Float component, ensure that the content you're floating is itself accessible. For example, when floating buttons, make sure they have proper ARIA labels and keyboard support.

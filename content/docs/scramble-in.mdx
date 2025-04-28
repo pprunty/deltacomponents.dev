@@ -1,0 +1,210 @@
+export const metadata = {
+  title: 'ScrambleIn | Delta Components',
+  description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'text animation', 'scramble effect', 'animation component', 'react components', 'delta components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/scramble-in',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'ScrambleIn Component | Delta Components',
+    description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/scramble-in',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/scramble-in.png',
+        width: 1200,
+        height: 630,
+        alt: 'ScrambleIn Component Preview showing text animation with scramble effect'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Shadcn', 'Animation', 'Text', 'Effects'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ScrambleIn Component | Delta Components',
+    description: 'A text animation component that reveals text with a scramble effect. Built with shadcn/ui and featuring customizable animation speed, character sets, and intersection observer support.',
+    images: ['https://deltacomponents.dev/og/scramble-in.png'],
+    creator: '@pprunty_',
+    site: '@deltacomponents'
+  },
+
+  // Additional metadata for better SEO
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
+}
+
+# ScrambleIn
+
+A text animation component that reveals text with a scramble effect.
+
+## Basic Usage
+
+<ComponentTabs name="scramble-in-basic" />
+
+<InstallationInstructions componentName="scramble-in" />
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`scrambleSpeed`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`50`</TableCell>
+      <TableCell>Speed of the scramble animation in milliseconds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`scrambledLetterCount`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`2`</TableCell>
+      <TableCell>Number of letters to scramble at a time</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`characters`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'`</TableCell>
+      <TableCell>Characters to use for scrambling</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the revealed text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`scrambledClassName`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes for the scrambled text</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`autoStart`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Whether to start the animation automatically</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`useIntersectionObserver`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to use Intersection Observer for animation trigger</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`retriggerOnIntersection`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to retrigger animation on subsequent intersections</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`intersectionThreshold`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`0.3`</TableCell>
+      <TableCell>Threshold for intersection observer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`intersectionRootMargin`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`'0px'`</TableCell>
+      <TableCell>Root margin for intersection observer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onStart`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when animation starts</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`onComplete`</TableCell>
+      <TableCell>`() => void`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Callback when animation completes</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Intersection Observer Demo
+
+The ScrambleIn component can be configured to trigger the animation when the text comes into view using the Intersection Observer API. This is perfect for scroll-based animations and page transitions.
+
+<ComponentTabs name="scramble-in-observer" />
+
+## Features
+
+- Customizable animation speed
+- Configurable scramble effect
+- Intersection Observer support
+- Custom character sets
+- Callback support
+- Accessibility features
+
+## Usage
+
+```tsx
+import ScrambleIn from "@/delta/components/scramble-in"
+
+export default function ScrambleInDemo() {
+  return (
+    <ScrambleIn 
+      text="Welcome to Delta Components"
+      className="text-3xl font-bold"
+      scrambledClassName="text-3xl font-bold"
+      scrambleSpeed={50}
+      scrambledLetterCount={3}
+    />
+  )
+}
+```
+
+## Custom Styling
+
+You can customize the text styles using Tailwind CSS classes:
+
+```tsx
+<ScrambleIn 
+  text="Custom Style"
+  className="text-4xl font-black text-blue-500"
+  scrambledClassName="text-4xl font-black text-blue-500"
+/>
+```
+
+## Accessibility
+
+The ScrambleIn component includes proper ARIA attributes and maintains accessibility by:
+- Providing screen reader text
+- Preserving semantic meaning
+- Supporting keyboard navigation
+- Maintaining proper contrast

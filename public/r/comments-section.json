@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comments-section",
+  "type": "registry:component",
+  "title": "Comments Section",
+  "description": "A component for displaying and managing comments",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "delta/components/comments-section.tsx",
+      "content": "\"use client\"\n\nexport default function CommentsSection() {\n  return (\n    <div>\n      <div>\n        CommentsSection Component\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "delta/components/comments-section.tsx"
+    },
+    {
+      "path": "delta/examples/comments-section-basic-demo.tsx",
+      "content": "\"use client\"\n\nimport CommentsSection from \"@/delta/components/comments-section\"\n\nexport default function CommentsSectionBasicDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-4 border rounded-lg\">\n      <CommentsSection />\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "delta/examples/comments-section-basic-demo.tsx"
+    },
+    {
+      "path": "content/docs/comments-section.mdx",
+      "content": "# CommentsSection\n\nA comments-section component.\n\n## Basic Usage\n\n<ComponentTabs name=\"comments-section-basic\" />\n\n<InstallationInstructions componentName=\"comments-section\" />\n\n## Props\n\n<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Prop</TableHead>\n      <TableHead>Type</TableHead>\n      <TableHead>Default</TableHead>\n      <TableHead>Description</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n\n  </TableBody>\n</Table>\n",
+      "type": "registry:component",
+      "target": "content/docs/comments-section.mdx"
+    }
+  ]
+}

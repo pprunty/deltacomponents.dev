@@ -1,0 +1,275 @@
+export const metadata = {
+  title: 'ShareButton | Delta Components',
+  description: 'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback. Integrates seamlessly with modern web applications and supports customization for various use cases.',
+
+  // Keywords help with SEO
+  keywords: ['shadcn/ui', 'react', 'share button', 'web share api', 'delta components', 'ui components', 'nextjs components', 'tailwind components'],
+
+  // Canonical URL to prevent duplicate content issues
+  alternates: {
+    canonical: 'https://deltacomponents.dev/docs/share-button',
+  },
+
+  // Category helps with structured data
+  category: 'component',
+
+  openGraph: {
+    title: 'ShareButton Component | Delta Components',
+    description: 'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback. Perfect for enhancing user engagement and social sharing.',
+    type: 'article',
+    url: 'https://deltacomponents.dev/docs/share-button',
+    images: [
+      {
+        url: 'https://deltacomponents.dev/og/share-button.png',
+        width: 1200,
+        height: 630,
+        alt: 'ShareButton Component Preview showing different variants and sizes'
+      }
+    ],
+    // Article specific OpenGraph metadata
+    article: {
+      authors: ['Patrick Prunty'],
+      tags: ['UI Components', 'React', 'Sharing', 'Web Share API'],
+      section: 'Components'
+    },
+    siteName: 'Delta Components'
+  },
+}
+
+# ShareButton
+
+A versatile share button component that leverages the Web Share API for mobile devices and falls back to clipboard copy functionality for desktop browsers.
+
+## Basic Usage
+
+<ComponentTabs name="share-button-basic" />
+
+<InstallationInstructions componentName="share-button" />
+
+## Features
+
+- **Native Share API Support**: Uses the Web Share API on compatible devices for a native sharing experience
+- **Copy to Clipboard Fallback**: Falls back to copying the URL to clipboard on desktop or unsupported browsers
+- **Visual Feedback**: Shows a confirmation message after successful copy operations
+- **Customizable**: Supports custom messages, URLs, styles, and icons
+- **Accessibility**: Fully accessible with proper ARIA attributes
+- **Flexible Desktop Behavior**: Option to use native share API on desktop or default clipboard copy
+
+## Props
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+      <TableHead>Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>`title`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>document.title</TableCell>
+      <TableCell>Title to use in the share dialog</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`url`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>current URL</TableCell>
+      <TableCell>URL to share (defaults to current page URL)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`tooltip`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>`"Share this page"`</TableCell>
+      <TableCell>Tooltip text for the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`className`</TableCell>
+      <TableCell>`string`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Additional CSS classes</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`icon`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>Export icon</TableCell>
+      <TableCell>Custom icon element (deprecated, use children instead)</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`children`</TableCell>
+      <TableCell>`ReactNode`</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>Custom content to render inside the button</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`variant`</TableCell>
+      <TableCell>`"default" | "outline" | "ghost"`</TableCell>
+      <TableCell>`"default"`</TableCell>
+      <TableCell>Button style variant</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`size`</TableCell>
+      <TableCell>`"sm" | "md" | "lg"`</TableCell>
+      <TableCell>`"md"`</TableCell>
+      <TableCell>Button size</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`notificationPosition`</TableCell>
+      <TableCell>`"top" | "bottom"`</TableCell>
+      <TableCell>`"top"`</TableCell>
+      <TableCell>Position of the notification</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`notificationDuration`</TableCell>
+      <TableCell>`number`</TableCell>
+      <TableCell>`2000`</TableCell>
+      <TableCell>Duration of notification in milliseconds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`nativeShareOnDesktop`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`true`</TableCell>
+      <TableCell>Force using native share API on desktop instead of clipboard copy</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>`showTitle`</TableCell>
+      <TableCell>`boolean`</TableCell>
+      <TableCell>`false`</TableCell>
+      <TableCell>Whether to show the title text beside the icon</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Usage Examples
+
+### Basic Share Button
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return <ShareButton />;
+}
+```
+
+### Custom Content and Styling
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+import { Share } from "@phosphor-icons/react";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      tooltip="Share this content"
+      className="hover:bg-blue-100 dark:hover:bg-blue-900/30"
+    >
+      <div className="flex items-center gap-2">
+        <Share weight="bold" size={24} />
+        <span>Share</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+### Custom Icon and Styling (Legacy)
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+import { Share } from "@phosphor-icons/react";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      icon={<Share weight="bold" size={24} />}
+      variant="outline"
+      size="lg"
+      className="hover:bg-blue-100 dark:hover:bg-blue-900/30"
+    />
+  );
+}
+```
+
+### Custom URL and Message
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      url="https://deltacomponents.dev"
+      message="Check out Delta Components, a modern UI component library: "
+      title="Delta Components"
+    >
+      <div className="flex items-center gap-2">
+        <span>Share Delta Components</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+### Native Share API on Desktop
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      nativeShareOnDesktop={true}
+      tooltip="Share using native dialog"
+    >
+      <div className="flex items-center gap-2">
+        <span>Share with Native Dialog</span>
+      </div>
+    </ShareButton>
+  );
+}
+```
+
+### Non-Native Share on Desktop
+
+<ComponentTabs name="share-button-popover" />
+
+### Share Button with Title
+
+```tsx
+import { ShareButton } from "@/components/ui/share-button";
+
+export default function ShareExample() {
+  return (
+    <ShareButton 
+      title="Share this page"
+      showTitle={true}
+      tooltip="Share this content"
+    />
+  );
+}
+```
+
+## Browser Compatibility
+
+The Web Share API is supported in:
+- Chrome for Android (61+)
+- Safari for iOS (12.2+)
+- Safari on macOS (Monterey+)
+- Chrome on desktop (89+)
+- Edge (79+)
+- Opera (76+)
+
+On unsupported browsers or when `nativeShareOnDesktop` is `false` on desktop, the component falls back to copying the URL to clipboard and displaying a notification.
+
+## Accessibility
+
+The ShareButton component follows accessibility best practices:
+
+- Includes proper `aria-label` attributes
+- Uses semantic HTML for the button element
+- Provides visual feedback on successful actions
+- Maintains focus management best practices
+- Uses appropriate color contrast ratios

@@ -18,6 +18,17 @@ interface ModalProps {
   showCloseButton?: boolean;
   borderBottom?: boolean;
   className?: string;
+  /**
+   * Choose between the default drop-in animation or a scale-from-center animation.
+   * @default 'drop'
+   */
+  animationType?: 'drop' | 'scale';
+  /**
+   * Adjust the vertical position of the modal.
+   * Positive values move it up, negative values move it down.
+   * @default 0
+   */
+  position?: number;
 }
 
 const backdropVariants: Variants = {
@@ -26,7 +37,8 @@ const backdropVariants: Variants = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-const modalVariants: Variants = {
+// Default drop-in from bottom
+const dropVariants: Variants = {
   hidden: {
     opacity: 0,
     y: '50%',
@@ -38,7 +50,6 @@ const modalVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    x: 0,
     transition: {
       y: { type: 'spring', stiffness: 500, damping: 50 },
       opacity: { duration: 0.4, ease: 'easeInOut' },
@@ -49,8 +60,37 @@ const modalVariants: Variants = {
     y: '50%',
     transition: {
       y: { type: 'spring', stiffness: 300, damping: 30 },
-      x: { duration: 0.2, ease: 'easeInOut' },
       opacity: { duration: 0.2, ease: 'easeInOut' },
+    },
+  },
+};
+
+// Scale from center animation
+const scaleVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+    transition: {
+      duration: 0.15,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 500,
+      damping: 30,
+      mass: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.8,
+    transition: {
+      duration: 0.15,
+      ease: [0.4, 0, 0.2, 1],
     },
   },
 };
@@ -66,6 +106,8 @@ const Modal: React.FC<ModalProps> = ({
   showCloseButton = true,
   borderBottom = true,
   className,
+  animationType = 'drop',
+  position = 0,
 }) => {
   const [mounted, setMounted] = useState(false);
 
@@ -74,25 +116,17 @@ const Modal: React.FC<ModalProps> = ({
   }, []);
 
   useEffect(() => {
-    // Get the current scrollbar width
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
-
     if (isOpen) {
-      // Save the current padding
       const currentPaddingRight =
-        parseInt(getComputedStyle(document.body).paddingRight) || 0;
-
-      // Apply overflow hidden and compensate for scrollbar
+        Number.parseInt(getComputedStyle(document.body).paddingRight) || 0;
       document.body.style.paddingRight = `${currentPaddingRight + scrollbarWidth}px`;
       document.body.classList.add('overflow-hidden');
     } else {
-      // Remove the style and class
       document.body.style.paddingRight = '';
       document.body.classList.remove('overflow-hidden');
     }
-
-    // Cleanup function to remove the class when the component unmounts
     return () => {
       document.body.style.paddingRight = '';
       document.body.classList.remove('overflow-hidden');
@@ -100,9 +134,7 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   const handleOverlayClick = () => {
-    if (closeOnOverlayClick) {
-      onClose();
-    }
+    if (closeOnOverlayClick) onClose();
   };
 
   const getOverlayClasses = () => {
@@ -119,19 +151,16 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   const getModalClasses = () => {
-    const baseClasses =
+    const base =
       'w-auto bg-background border border-border text-card-foreground max-w-[90%] sm:max-w-xl rounded-2xl shadow-lg m-4 relative';
-    return type === 'overlay'
-      ? baseClasses
-      : `${baseClasses} border border-border`;
+    return type === 'overlay' ? base : `${base} border border-border`;
   };
 
-  // Only render the modal content if we're in the browser
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
-  // Create the modal content
+  // Choose the appropriate animation variants
+  const variants = animationType === 'scale' ? scaleVariants : dropVariants;
+
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
@@ -142,9 +171,13 @@ const Modal: React.FC<ModalProps> = ({
           exit="exit"
           className={`fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto ${getOverlayClasses()}`}
           onClick={handleOverlayClick}
+          style={{
+            alignItems: position === 0 ? 'center' : 'flex-start',
+            paddingTop: position === 0 ? 0 : `calc(50vh - ${position}px)`,
+          }}
         >
           <motion.div
-            variants={modalVariants}
+            variants={variants}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -152,7 +185,6 @@ const Modal: React.FC<ModalProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             {title ? (
-              // When there is a title, show the title bar with optional close button
               <div
                 className={cn(
                   'flex justify-between p-6',
@@ -182,7 +214,6 @@ const Modal: React.FC<ModalProps> = ({
                 )}
               </div>
             ) : (
-              // If no title but we want a close button, add it in the top right
               showCloseButton && (
                 <div className="absolute top-4 right-4">
                   <button
@@ -196,7 +227,6 @@ const Modal: React.FC<ModalProps> = ({
               )
             )}
 
-            {/* Modal content */}
             <div className={`p-6 ${!title && showCloseButton ? 'pt-12' : ''}`}>
               {children}
             </div>
@@ -206,7 +236,6 @@ const Modal: React.FC<ModalProps> = ({
     </AnimatePresence>
   );
 
-  // Use createPortal to render the modal at the document body level
   return createPortal(modalContent, document.body);
 };
 

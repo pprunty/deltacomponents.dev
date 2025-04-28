@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
 
 export function OpenInV0Button({ url }: { url: string }) {
+  // Extract component name from URL (format: "/docs/component-name")
+  const componentName = url.split('/').pop() || '';
+
   return (
     <Button
       aria-label="Open in v0"
@@ -9,7 +12,7 @@ export function OpenInV0Button({ url }: { url: string }) {
       asChild
     >
       <a
-        href={`https://v0.dev/chat/api/open?url=${url}`}
+        href={`https://v0.dev/chat/api/open?url=https://deltacomponents.dev/r/${componentName}.json`}
         target="_blank"
         rel="noreferrer"
         className="no-after"
