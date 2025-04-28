@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { TextInput } from "@/delta/components/text-input"
+import { TextInput } from '@/delta/components/text-input';
 
 export default function TextInputBasicDemo() {
   return (
@@ -13,5 +13,5 @@ export default function TextInputBasicDemo() {
         required
       />
     </div>
-  )
-} 
+  );
+}

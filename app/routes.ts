@@ -486,10 +486,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'text-editor': {
     title: 'Text Editor | Delta Components',
-    description: 'A rich text editor component with formatting options, toolbar, and customizable styling.',
+    description:
+      'A rich text editor component with formatting options, toolbar, and customizable styling.',
     openGraph: {
       title: 'Text Editor | Delta Components',
-      description: 'A rich text editor component with formatting options, toolbar, and customizable styling.',
+      description:
+        'A rich text editor component with formatting options, toolbar, and customizable styling.',
       url: `${BASE_URL}/docs/text-editor`,
       images: [
         {
@@ -503,10 +505,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'product-spotlight-card': {
     title: 'Product Spotlight Card | Delta Components',
-    description: 'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
+    description:
+      'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
     openGraph: {
       title: 'Product Spotlight Card | Delta Components',
-      description: 'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
+      description:
+        'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
       url: `${BASE_URL}/docs/product-spotlight-card`,
       images: [
         {
@@ -520,10 +524,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'back-button': {
     title: 'Back Button | Delta Components',
-    description: 'A navigation button component that provides a consistent way to return to previous pages.',
+    description:
+      'A navigation button component that provides a consistent way to return to previous pages.',
     openGraph: {
       title: 'Back Button | Delta Components',
-      description: 'A navigation button component that provides a consistent way to return to previous pages.',
+      description:
+        'A navigation button component that provides a consistent way to return to previous pages.',
       url: `${BASE_URL}/docs/back-button`,
       images: [
         {
@@ -537,10 +543,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'tags-input': {
     title: 'Tags Input | Delta Components',
-    description: 'An input component for managing tags with support for adding, removing, and validating tags.',
+    description:
+      'An input component for managing tags with support for adding, removing, and validating tags.',
     openGraph: {
       title: 'Tags Input | Delta Components',
-      description: 'An input component for managing tags with support for adding, removing, and validating tags.',
+      description:
+        'An input component for managing tags with support for adding, removing, and validating tags.',
       url: `${BASE_URL}/docs/tags-input`,
       images: [
         {
@@ -554,10 +562,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'snap-scroll': {
     title: 'Snap Scroll | Delta Components',
-    description: 'A scrollable container component with snap points for smooth scrolling between sections.',
+    description:
+      'A scrollable container component with snap points for smooth scrolling between sections.',
     openGraph: {
       title: 'Snap Scroll | Delta Components',
-      description: 'A scrollable container component with snap points for smooth scrolling between sections.',
+      description:
+        'A scrollable container component with snap points for smooth scrolling between sections.',
       url: `${BASE_URL}/docs/snap-scroll`,
       images: [
         {
@@ -571,10 +581,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'code-block': {
     title: 'Code Block | Delta Components',
-    description: 'A syntax-highlighted code block component with copy functionality and customizable themes.',
+    description:
+      'A syntax-highlighted code block component with copy functionality and customizable themes.',
     openGraph: {
       title: 'Code Block | Delta Components',
-      description: 'A syntax-highlighted code block component with copy functionality and customizable themes.',
+      description:
+        'A syntax-highlighted code block component with copy functionality and customizable themes.',
       url: `${BASE_URL}/docs/code-block`,
       images: [
         {
@@ -586,12 +598,14 @@ export const componentMetadata: Record<string, Metadata> = {
       ],
     },
   },
-  'accordion': {
+  accordion: {
     title: 'Accordion | Delta Components',
-    description: 'A collapsible content component with smooth animations and customizable styling.',
+    description:
+      'A collapsible content component with smooth animations and customizable styling.',
     openGraph: {
       title: 'Accordion | Delta Components',
-      description: 'A collapsible content component with smooth animations and customizable styling.',
+      description:
+        'A collapsible content component with smooth animations and customizable styling.',
       url: `${BASE_URL}/docs/accordion`,
       images: [
         {
@@ -603,12 +617,14 @@ export const componentMetadata: Record<string, Metadata> = {
       ],
     },
   },
-  'avatar': {
+  avatar: {
     title: 'Avatar | Delta Components',
-    description: 'A circular avatar component that displays user images with fallback support and customizable sizes.',
+    description:
+      'A circular avatar component that displays user images with fallback support and customizable sizes.',
     openGraph: {
       title: 'Avatar | Delta Components',
-      description: 'A circular avatar component that displays user images with fallback support and customizable sizes.',
+      description:
+        'A circular avatar component that displays user images with fallback support and customizable sizes.',
       url: `${BASE_URL}/docs/avatar`,
       images: [
         {
@@ -622,10 +638,12 @@ export const componentMetadata: Record<string, Metadata> = {
   },
   'x-scrollable': {
     title: 'X Scrollable | Delta Components',
-    description: 'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
+    description:
+      'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
     openGraph: {
       title: 'X Scrollable | Delta Components',
-      description: 'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
+      description:
+        'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
       url: `${BASE_URL}/docs/x-scrollable`,
       images: [
         {

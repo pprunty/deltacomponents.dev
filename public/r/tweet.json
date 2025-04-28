@@ -5,9 +5,7 @@
   "title": "Tweet",
   "description": "A component for displaying tweet-like content",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/tweet.tsx",

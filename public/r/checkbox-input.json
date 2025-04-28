@@ -4,13 +4,8 @@
   "type": "registry:component",
   "title": "Checkbox Input",
   "description": "A component for checkbox-input",
-  "dependencies": [
-    "zod"
-  ],
-  "registryDependencies": [
-    "checkbox",
-    "utils"
-  ],
+  "dependencies": ["zod"],
+  "registryDependencies": ["checkbox", "utils"],
   "files": [
     {
       "path": "delta/components/checkbox-input.tsx",

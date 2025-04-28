@@ -5,9 +5,7 @@
   "title": "Neobrutalism Card",
   "description": "A card component with a neobrutalism design style",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/neobrutalism-card.tsx",

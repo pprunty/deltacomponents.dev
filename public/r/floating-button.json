@@ -5,9 +5,7 @@
   "title": "Floating Button",
   "description": "A component for floating-button",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/floating-button.tsx",

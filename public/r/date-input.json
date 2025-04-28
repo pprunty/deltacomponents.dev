@@ -4,17 +4,8 @@
   "type": "registry:component",
   "title": "Date Input",
   "description": "A component for date-input",
-  "dependencies": [
-    "date-fns",
-    "lucide-react",
-    "zod"
-  ],
-  "registryDependencies": [
-    "utils",
-    "button",
-    "calendar",
-    "popover"
-  ],
+  "dependencies": ["date-fns", "lucide-react", "zod"],
+  "registryDependencies": ["utils", "button", "calendar", "popover"],
   "files": [
     {
       "path": "delta/components/date-input.tsx",

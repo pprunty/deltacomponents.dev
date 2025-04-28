@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "Back Button",
   "description": "A component for back-button",
-  "dependencies": [
-    "next",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "button",
-    "utils"
-  ],
+  "dependencies": ["next", "@phosphor-icons/react"],
+  "registryDependencies": ["button", "utils"],
   "files": [
     {
       "path": "delta/components/back-button.tsx",

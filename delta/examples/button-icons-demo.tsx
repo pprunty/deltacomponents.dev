@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import { Button } from "@/delta/components/button"
-import { ArrowRight, Save, Trash, Download } from "lucide-react"
+import { Button } from '@/delta/components/button';
+import { ArrowRight, Save, Trash, Download } from 'lucide-react';
 
 export default function ButtonIconsDemo() {
   return (
@@ -30,5 +30,5 @@ export default function ButtonIconsDemo() {
         icon={<Download className="w-4 h-4" />}
       />
     </div>
-  )
-} 
+  );
+}

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   Card,
@@ -25,14 +25,22 @@ export default function NeobrutalismCardColorVariantsDemo() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full justify-items-center">
       {colors.map((color) => (
-        <Card key={color} color={color} hover={true} className="max-w-64 mx-auto">
+        <Card
+          key={color}
+          color={color}
+          hover={true}
+          className="max-w-64 mx-auto"
+        >
           <CardHeader>
             <CardTitle className="capitalize">{color} Card</CardTitle>
-            <CardDescription>Neobrutalism style with {color} background</CardDescription>
+            <CardDescription>
+              Neobrutalism style with {color} background
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm">
-              This card demonstrates the {color} color variant with hover effects.
+              This card demonstrates the {color} color variant with hover
+              effects.
             </p>
           </CardContent>
         </Card>

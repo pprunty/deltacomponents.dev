@@ -9,10 +9,7 @@ import {
   CardDescription,
   CardContent,
 } from '@/components/ui/card';
-import {
-  SmartForm,
-  FieldDefinition,
-} from '@/delta/components/smart-form';
+import { SmartForm, FieldDefinition } from '@/delta/components/smart-form';
 
 export default function SmartFormPaymentDemo() {
   // Define the form schema
@@ -124,4 +121,4 @@ export default function SmartFormPaymentDemo() {
       </CardContent>
     </Card>
   );
-} 
+}

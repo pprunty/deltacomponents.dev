@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
-import ScrambleIn from "@/delta/components/scramble-in"
+import ScrambleIn from '@/delta/components/scramble-in';
 
 export default function ScrambleInBasicDemo() {
   return (
     <div className="flex items-center justify-center p-4">
-      <ScrambleIn 
+      <ScrambleIn
         text="Welcome to Delta Components"
         className="text-3xl font-bold"
         scrambledClassName="text-3xl font-bold"
@@ -13,5 +13,5 @@ export default function ScrambleInBasicDemo() {
         scrambledLetterCount={3}
       />
     </div>
-  )
+  );
 }

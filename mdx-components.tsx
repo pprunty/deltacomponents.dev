@@ -4,7 +4,7 @@ import type { MDXComponents } from 'mdx/types';
 import CodeBlock from '@/delta/components/code-block';
 import { ComponentTabs } from '@/components/component-tabs';
 import { InstallationInstructions } from '@/components/installation-instructions';
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils';
 import React from 'react';
 import {
   Table,
@@ -13,8 +13,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Heading } from './app/docs/[[...slug]]/heading';
+} from '@/components/ui/table';
+import { Heading } from './app/(main)/docs/[[...slug]]/heading';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -22,9 +22,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => <Heading level={1}>{children}</Heading>,
     h2: ({ children }) => <Heading level={2}>{children}</Heading>,
     h3: ({ children }) => <Heading level={3}>{children}</Heading>,
-    p: ({ children }) => <p className="my-4 text-muted-foreground">{children}</p>,
+    p: ({ children }) => (
+      <p className="my-4 text-muted-foreground">{children}</p>
+    ),
     ul: ({ children }) => <ul className="list-disc pl-6 my-4">{children}</ul>,
-    ol: ({ children }) => <ol className="list-decimal pl-6 my-4">{children}</ol>,
+    ol: ({ children }) => (
+      <ol className="list-decimal pl-6 my-4">{children}</ol>
+    ),
     li: ({ children }) => <li className="mt-1">{children}</li>,
     a: ({ href, children }) => (
       <Link href={href || '#'} className="text-primary hover:underline">
@@ -38,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     code: ({ children, className }) => {
       const language = className?.replace(/language-/, '');
-      
+
       if (language) {
         return (
           <CodeBlock
@@ -53,12 +57,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           />
         );
       }
-      
-      return <code className="px-1 py-0.5 bg-muted rounded text-sm font-mono">{children}</code>;
+
+      return (
+        <code className="px-1 py-0.5 bg-muted rounded text-sm font-mono">
+          {children}
+        </code>
+      );
     },
     pre: ({ children }) => {
       const codeElement = React.Children.toArray(children).find(
-        (child) => React.isValidElement(child) && child.type === 'code'
+        (child) => React.isValidElement(child) && child.type === 'code',
       );
 
       if (!React.isValidElement(codeElement)) {
@@ -68,12 +76,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return codeElement;
     },
     img: ({ src, alt }) => (
-      <Image 
-        src={src || ''} 
-        alt={alt || ''} 
-        width={800} 
-        height={400} 
-        className="rounded-lg my-4" 
+      <Image
+        src={src || ''}
+        alt={alt || ''}
+        width={800}
+        height={400}
+        className="rounded-lg my-4"
       />
     ),
     // Pass through the shadcn/ui table components
@@ -96,28 +104,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       className,
       ...props
     }: React.HTMLAttributes<HTMLTableRowElement>) => (
-      <TableRow
-        className={cn(className)}
-        {...props}
-      />
+      <TableRow className={cn(className)} {...props} />
     ),
     th: ({
       className,
       ...props
     }: React.HTMLAttributes<HTMLTableCellElement>) => (
-      <TableHead
-        className={cn(className)}
-        {...props}
-      />
+      <TableHead className={cn(className)} {...props} />
     ),
     td: ({
       className,
       ...props
     }: React.HTMLAttributes<HTMLTableCellElement>) => (
-      <TableCell
-        className={cn(className)}
-        {...props}
-      />
+      <TableCell className={cn(className)} {...props} />
     ),
     thead: ({ className, ...props }) => (
       <TableHeader {...props} className={cn(className)} />
@@ -130,4 +129,4 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     InstallationInstructions,
     ...components,
   };
-} 
+}

@@ -4,13 +4,8 @@
   "type": "registry:component",
   "title": "Product Spotlight Card",
   "description": "A component for product-spotlight-card",
-  "dependencies": [
-    "next"
-  ],
-  "registryDependencies": [
-    "utils",
-    "card"
-  ],
+  "dependencies": ["next"],
+  "registryDependencies": ["utils", "card"],
   "files": [
     {
       "path": "delta/components/product-spotlight-card.tsx",

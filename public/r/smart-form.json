@@ -4,12 +4,7 @@
   "type": "registry:block",
   "title": "Smart Form",
   "description": "A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.",
-  "dependencies": [
-    "zod",
-    "date-fns",
-    "lucide-react",
-    "@phosphor-icons/react"
-  ],
+  "dependencies": ["zod", "date-fns", "lucide-react", "@phosphor-icons/react"],
   "registryDependencies": [
     "button",
     "inputs",

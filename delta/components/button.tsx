@@ -101,7 +101,7 @@ export function Button({
   // Size-based styles
   const sizeStyles = {
     sm: 'text-xs px-3 py-1.5 rounded-md',
-    md: 'text-sm px-4 py-2 rounded-md',
+    md: 'text-sm py-2 rounded-md',
     lg: 'text-base px-6 py-3 rounded-lg',
   };
 
@@ -198,7 +198,12 @@ export function Button({
           }),
       }}
     >
-      <div className={clsx("flex items-center justify-center", isLoading && "gap-2")}>
+      <div
+        className={clsx(
+          'flex items-center justify-center',
+          isLoading && 'gap-2',
+        )}
+      >
         {isLoading && (
           <ClipLoader
             size={spinnerSize}
@@ -206,7 +211,9 @@ export function Button({
             cssOverride={{ display: 'block' }}
           />
         )}
-        {icon && !isLoading && <span className="flex items-center">{icon}</span>}
+        {icon && !isLoading && (
+          <span className="flex items-center">{icon}</span>
+        )}
         <span>{title || children}</span>
       </div>
     </button>

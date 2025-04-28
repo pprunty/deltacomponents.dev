@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { Button } from "@/delta/components/button"
+import { Button } from '@/delta/components/button';
 
 export default function ButtonNeobrutalismDemo() {
   return (
@@ -41,11 +41,9 @@ export default function ButtonNeobrutalismDemo() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
-          Disabled
-        </h3>
+        <h3 className="text-sm font-medium text-muted-foreground">Disabled</h3>
         <Button title="Disabled" variant="neobrutalism" disabled />
       </div>
     </div>
-  )
-} 
+  );
+}

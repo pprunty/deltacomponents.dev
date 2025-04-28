@@ -1,13 +1,15 @@
-"use client"
+'use client';
 
-import { Button } from "@/delta/components/button"
+import { Button } from '@/delta/components/button';
 
 export default function ButtonSizesDemo() {
   return (
     <div className="space-y-8">
       {/* Primary Variant Sizes */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-muted-foreground">Primary Variant</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">
+          Primary Variant
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Button title="Small" variant="primary" size="sm" />
           <Button title="Medium" variant="primary" size="md" />
@@ -17,7 +19,9 @@ export default function ButtonSizesDemo() {
 
       {/* Secondary Variant Sizes */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-muted-foreground">Secondary Variant</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">
+          Secondary Variant
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Button title="Small" variant="secondary" size="sm" />
           <Button title="Medium" variant="secondary" size="md" />
@@ -27,7 +31,9 @@ export default function ButtonSizesDemo() {
 
       {/* Destructive Variant Sizes */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-muted-foreground">Destructive Variant</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">
+          Destructive Variant
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Button title="Small" variant="destructive" size="sm" />
           <Button title="Medium" variant="destructive" size="md" />
@@ -37,7 +43,9 @@ export default function ButtonSizesDemo() {
 
       {/* Action Variant Sizes */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-muted-foreground">Action Variant</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">
+          Action Variant
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Button title="Small" variant="action" size="sm" />
           <Button title="Medium" variant="action" size="md" />
@@ -47,7 +55,9 @@ export default function ButtonSizesDemo() {
 
       {/* Neobrutalism Variant Sizes */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-muted-foreground">Neobrutalism Variant</h3>
+        <h3 className="text-sm font-medium text-muted-foreground">
+          Neobrutalism Variant
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Button title="Small" variant="neobrutalism" size="sm" />
           <Button title="Medium" variant="neobrutalism" size="md" />
@@ -55,5 +65,5 @@ export default function ButtonSizesDemo() {
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}

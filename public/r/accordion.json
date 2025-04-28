@@ -9,9 +9,7 @@
     "@phosphor-icons/react",
     "class-variance-authority"
   ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/accordion.tsx",

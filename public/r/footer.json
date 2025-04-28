@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Footer",
   "description": "A component for footer",
-  "dependencies": [
-    "next"
-  ],
-  "registryDependencies": [
-    "social-icons"
-  ],
+  "dependencies": ["next"],
+  "registryDependencies": ["social-icons"],
   "files": [
     {
       "path": "delta/components/footer.tsx",

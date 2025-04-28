@@ -1,22 +1,18 @@
-import type React from "react"
-import type { Metadata } from "next"
-import "./globals.css"
-import { Hanken_Grotesk } from "next/font/google"
+import type React from 'react';
+import type { Metadata } from 'next';
+import './globals.css';
+import { Hanken_Grotesk } from 'next/font/google';
 import { themeEffect } from '@/components/theme-effect';
 import config from '@/app/config';
 import { doge } from './doge';
-import { Header } from './header';
-import { Sidebar } from './sidebar';
-import Footer from '@/delta/components/footer';
-// import { GitHubStars } from './github-stars';
 import ClientComponents from './client';
 
 const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-})
+  variable: '--font-hanken-grotesk',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: `${config.companyName}`,
@@ -92,7 +88,7 @@ export const metadata: Metadata = {
       { url: '/icons/120x120.svg', sizes: '120x120', type: 'image/png' },
       { url: '/icons/152x152.svg', sizes: '152x152', type: 'image/png' },
       { url: '/icons/180x180.svg', sizes: '180x180', type: 'image/png' },
-    ]
+    ],
   },
   metadataBase: new URL(config.url),
   robots: {
@@ -114,36 +110,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${hankenGrotesk.variable} font-sans antialiased`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
           }}
         />
-        <meta name="theme-color" content="#FFFEFC" />
-        <link
-          rel="icon"
-          href="/icons/16x16.svg"
-          sizes="16x16"
-          type="image/png"
+        <link rel="icon" href="/icons/32x32.svg" sizes="any" />
+        <link rel="apple-touch-icon" href="/icons/180x180.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Default Title | My Website"
         />
-        <link rel="mask-icon" href="/icons/16x16.svg" />
       </head>
-      <body className={`${hankenGrotesk.variable} antialiased`}>
-        <div className="relative min-h-screen">
-          <Header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" />
-          {/* Main content */}
-          <Sidebar className="z-40" />
-          <div className="md:pl-72">
-            <main className="max-w-3xl mx-auto px-4 pt-20 pb-32 sm:pb-20">
-              {children}
-            </main>
-            <Footer border={true} />
-          </div>
-          <ClientComponents />
-        </div>
+      <body>
+        {children}
+        <ClientComponents />
       </body>
     </html>
-  )
+  );
 }

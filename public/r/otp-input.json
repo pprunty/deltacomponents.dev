@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Otp Input",
   "description": "A component for otp-input",
-  "dependencies": [
-    "zod"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["zod"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/otp-input.tsx",

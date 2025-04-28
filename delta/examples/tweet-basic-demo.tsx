@@ -1,4 +1,4 @@
-import { Tweet } from "@/delta/components/tweet"
+import { Tweet } from '@/delta/components/tweet';
 
 export default function TweetBasicDemo() {
   return (
@@ -6,5 +6,5 @@ export default function TweetBasicDemo() {
       <Tweet id="896523232098078720" />
       <Tweet id="896523232098078720" small />
     </div>
-  )
-} 
+  );
+}

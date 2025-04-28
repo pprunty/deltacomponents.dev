@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "Code Block",
   "description": "A component for code-block",
-  "dependencies": [
-    "shikiji",
-    "next-themes",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["shikiji", "next-themes", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/code-block.tsx",

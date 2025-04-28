@@ -41,19 +41,25 @@ async function optimizeSvg(sourceSvg, size) {
 
     // Extract viewBox if present
     const viewBoxMatch = svgContent.match(/viewBox=["']([^"']+)["']/);
-    const viewBox = viewBoxMatch ? viewBoxMatch[1] : "0 0 24 24"; // Default viewBox
+    const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24'; // Default viewBox
 
     // Modify SVG to ensure it has width, height and viewBox
     if (!modifiedSvg.includes('width=')) {
       modifiedSvg = modifiedSvg.replace('<svg', `<svg width="${size}"`);
     } else {
-      modifiedSvg = modifiedSvg.replace(/width=["']([^"']+)["']/, `width="${size}"`);
+      modifiedSvg = modifiedSvg.replace(
+        /width=["']([^"']+)["']/,
+        `width="${size}"`,
+      );
     }
 
     if (!modifiedSvg.includes('height=')) {
       modifiedSvg = modifiedSvg.replace('<svg', `<svg height="${size}"`);
     } else {
-      modifiedSvg = modifiedSvg.replace(/height=["']([^"']+)["']/, `height="${size}"`);
+      modifiedSvg = modifiedSvg.replace(
+        /height=["']([^"']+)["']/,
+        `height="${size}"`,
+      );
     }
 
     if (!modifiedSvg.includes('viewBox=')) {
@@ -70,7 +76,10 @@ async function optimizeSvg(sourceSvg, size) {
 
     return outputFile;
   } catch (error) {
-    console.error(`❌ Error optimizing SVG for ${size}x${size}:`, error.message);
+    console.error(
+      `❌ Error optimizing SVG for ${size}x${size}:`,
+      error.message,
+    );
     throw error;
   }
 }
@@ -103,14 +112,10 @@ async function createFaviconIco(svgPath) {
 
     // Convert to PNG first at 32x32
     const tempPng = path.join(iconsDir, 'temp-favicon.png');
-    await sharp(svgPath)
-      .resize(32, 32)
-      .png()
-      .toFile(tempPng);
+    await sharp(svgPath).resize(32, 32).png().toFile(tempPng);
 
     // Convert PNG to ICO using sharp (basic support)
-    await sharp(tempPng)
-      .toFile(outputIco);
+    await sharp(tempPng).toFile(outputIco);
 
     // Clean up temp file
     if (fs.existsSync(tempPng)) {
@@ -155,7 +160,6 @@ async function generatePwaIcons() {
 
       // Also create a favicon.ico for compatibility
       await createFaviconIco(svgIconPath);
-
     } else {
       // Fallback to original behavior for raster images
       console.log('No SVG found, using raster image source...');
@@ -222,10 +226,10 @@ function updateManifestWithSvg() {
       const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 
       // Add SVG icon entries
-      const svgIcons = sizes.map(size => ({
+      const svgIcons = sizes.map((size) => ({
         src: `icons/${size}x${size}.svg`,
         sizes: `${size}x${size}`,
-        type: "image/svg+xml"
+        type: 'image/svg+xml',
       }));
 
       // Keep original PNG entries for compatibility

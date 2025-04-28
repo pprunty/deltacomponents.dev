@@ -4,13 +4,8 @@
   "type": "registry:component",
   "title": "Radio Input",
   "description": "A component for radio-input",
-  "dependencies": [
-    "zod"
-  ],
-  "registryDependencies": [
-    "utils",
-    "radio-group"
-  ],
+  "dependencies": ["zod"],
+  "registryDependencies": ["utils", "radio-group"],
   "files": [
     {
       "path": "delta/components/radio-input.tsx",

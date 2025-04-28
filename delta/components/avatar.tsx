@@ -148,12 +148,16 @@ export function Avatar({
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={onClick ? (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      } : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
       {...props}
     >
       {/* Fallback layer (gradient with initials) - only shown when image is not available */}

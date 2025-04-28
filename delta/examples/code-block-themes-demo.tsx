@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import CodeBlock from "@/delta/components/code-block"
+import CodeBlock from '@/delta/components/code-block';
 
 export default function CodeBlockThemesDemo() {
   const pythonCode = `def hello_world():
@@ -50,7 +50,9 @@ func main() {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">JavaScript - Vitesse Theme</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          JavaScript - Vitesse Theme
+        </h3>
         <CodeBlock
           code={javascriptCode}
           language="javascript"
@@ -63,7 +65,9 @@ func main() {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">TypeScript - Gruvbox Theme</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          TypeScript - Gruvbox Theme
+        </h3>
         <CodeBlock
           code={typescriptCode}
           language="typescript"
@@ -101,5 +105,5 @@ func main() {
         />
       </div>
     </div>
-  )
+  );
 }

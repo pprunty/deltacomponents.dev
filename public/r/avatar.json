@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Avatar",
   "description": "A component for avatar",
-  "dependencies": [
-    "next"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["next"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/avatar.tsx",

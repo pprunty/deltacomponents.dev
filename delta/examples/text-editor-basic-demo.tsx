@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { TextEditor } from "@/delta/components/text-editor"
+import { useState } from 'react';
+import { TextEditor } from '@/delta/components/text-editor';
 
 export default function TextEditorBasicDemo() {
   const [content, setContent] = useState<string>(`
@@ -14,14 +14,11 @@ export default function TextEditorBasicDemo() {
       <li>This text is in <strong>bold</strong></li>
       <li>This text is <strong><em>bold and italic</em></strong></li>
     </ul>
-  `)
+  `);
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <TextEditor
-        initialContent={content}
-        onChange={setContent}
-      />
+      <TextEditor initialContent={content} onChange={setContent} />
     </div>
-  )
+  );
 }

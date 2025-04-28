@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 export function OpenInV0Button({ url }: { url: string }) {
   // Extract component name from URL (format: "/docs/component-name")
   const componentName = url.split('/').pop() || '';
-  
+
   return (
     <Button
       aria-label="Open in v0"

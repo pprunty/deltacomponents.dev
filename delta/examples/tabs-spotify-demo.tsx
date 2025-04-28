@@ -1,6 +1,11 @@
-"use client"
+'use client';
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/delta/components/tabs"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from '@/delta/components/tabs';
 
 export default function TabsSpotifyDemo() {
   const tabs = [

@@ -5,9 +5,7 @@
   "title": "Comments Section",
   "description": "A component for displaying and managing comments",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/comments-section.tsx",

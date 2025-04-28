@@ -11,7 +11,9 @@ const ScrollRestorerInner = () => {
   useEffect(() => {
     // Only restore scroll position if we're navigating to a new page
     if (typeof window !== 'undefined') {
-      const savedPosition = sessionStorage.getItem(`scrollPosition-${pathname}${searchParams}`);
+      const savedPosition = sessionStorage.getItem(
+        `scrollPosition-${pathname}${searchParams}`,
+      );
       if (savedPosition) {
         const { x, y } = JSON.parse(savedPosition);
         window.scrollTo(x, y);
@@ -24,7 +26,7 @@ const ScrollRestorerInner = () => {
       if (typeof window !== 'undefined') {
         sessionStorage.setItem(
           `scrollPosition-${pathname}${searchParams}`,
-          JSON.stringify({ x: window.scrollX, y: window.scrollY })
+          JSON.stringify({ x: window.scrollX, y: window.scrollY }),
         );
       }
     };

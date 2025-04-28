@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "Modal",
   "description": "A component for modal",
-  "dependencies": [
-    "react-dom",
-    "framer-motion",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["react-dom", "framer-motion", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/modal.tsx",

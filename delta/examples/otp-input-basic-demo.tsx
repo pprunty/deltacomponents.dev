@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { OTPInput } from "@/delta/components/otp-input"
+import { OTPInput } from '@/delta/components/otp-input';
 
 export default function OtpInputBasicDemo() {
   return (
@@ -15,5 +15,5 @@ export default function OtpInputBasicDemo() {
         hint="Enter the 6-digit verification code"
       />
     </div>
-  )
+  );
 }

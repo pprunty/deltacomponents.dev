@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "File Input",
   "description": "A component for file-input",
-  "dependencies": [
-    "@phosphor-icons/react",
-    "zod"
-  ],
-  "registryDependencies": [
-    "utils",
-    "button"
-  ],
+  "dependencies": ["@phosphor-icons/react", "zod"],
+  "registryDependencies": ["utils", "button"],
   "files": [
     {
       "path": "delta/components/file-input.tsx",

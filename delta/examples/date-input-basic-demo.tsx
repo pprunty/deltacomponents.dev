@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { DateInput } from "@/delta/components/date-input"
+import { DateInput } from '@/delta/components/date-input';
 
 export default function DateInputBasicDemo() {
   return (
@@ -13,5 +13,5 @@ export default function DateInputBasicDemo() {
         minDate={new Date()}
       />
     </div>
-  )
+  );
 }

@@ -229,7 +229,7 @@ export function DateInput({
             disabled={
               disabled ||
               pending ||
-              ((minDate || maxDate) ? getDateConstraints : undefined)
+              (minDate || maxDate ? getDateConstraints : undefined)
             }
             initialFocus
           />

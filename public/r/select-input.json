@@ -4,13 +4,8 @@
   "type": "registry:component",
   "title": "Select Input",
   "description": "A select input component with both native and shadcn/ui select variants",
-  "dependencies": [
-    "zod",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "select"
-  ],
+  "dependencies": ["zod", "lucide-react"],
+  "registryDependencies": ["select"],
   "files": [
     {
       "path": "delta/components/select-input.tsx",

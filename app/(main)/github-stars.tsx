@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Star } from "@phosphor-icons/react/dist/ssr";
+import { Star } from '@phosphor-icons/react/dist/ssr';
 
 interface GitHubStarsProps {
   repo: string;
@@ -19,7 +19,7 @@ const CACHE_DURATION = 1000 * 60 * 60; // 1 hour in milliseconds
 
 function formatStarCount(count: number): string {
   if (count < 1000) return count.toString();
-  
+
   const thousands = count / 1000;
   // If the decimal part is 0, show just the whole number
   if (thousands === Math.floor(thousands)) {
@@ -31,18 +31,18 @@ function formatStarCount(count: number): string {
 
 function getCachedData(repo: string): CachedData | null {
   if (typeof window === 'undefined') return null;
-  
+
   try {
     const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
     const data = cache[repo] as CachedData | undefined;
-    
+
     if (!data) return null;
-    
+
     // Check if cache is expired
     if (Date.now() - data.timestamp > CACHE_DURATION) {
       return null;
     }
-    
+
     return data;
   } catch (error) {
     console.error('Error reading cache:', error);
@@ -52,7 +52,7 @@ function getCachedData(repo: string): CachedData | null {
 
 function setCachedData(repo: string, stars: number): void {
   if (typeof window === 'undefined') return;
-  
+
   try {
     const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
     cache[repo] = {
@@ -90,17 +90,25 @@ export function GitHubStars({ repo, className }: GitHubStarsProps) {
   }, [repo]);
 
   return (
-    <Link 
-      href={`https://github.com/${repo}`} 
+    <Link
+      href={`https://github.com/${repo}`}
       className={className}
       target="_blank"
       rel="noopener noreferrer"
     >
       {stars !== null ? (
         <span className="inline-flex items-center">
-          ({formatStarCount(stars)} <Star size={16} weight="fill" className="text-amber-500 inline-block mx-0.5" />)
+          ({formatStarCount(stars)}{' '}
+          <Star
+            size={16}
+            weight="fill"
+            className="text-amber-500 inline-block mx-0.5"
+          />
+          )
         </span>
-      ) : ''}
+      ) : (
+        ''
+      )}
     </Link>
   );
-} 
+}

@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import CodeBlock from "@/delta/components/code-block"
+import CodeBlock from '@/delta/components/code-block';
 
 export default function CodeBlockBasicDemo() {
   const code = `def calculate_factorial(n):
@@ -31,5 +31,5 @@ if __name__ == "__main__":
         showExpandButton
       />
     </div>
-  )
+  );
 }

@@ -1,13 +1,17 @@
-"use client"
+'use client';
 
-import { RadioInput } from "@/delta/components/radio-input"
+import { RadioInput } from '@/delta/components/radio-input';
 
 export default function RadioInputBasicDemo() {
   const options = [
-    { value: "email", label: "Email", description: "Get updates via email" },
-    { value: "sms", label: "SMS", description: "Get updates via text message" },
-    { value: "push", label: "Push Notifications", description: "Get updates via push notifications" }
-  ]
+    { value: 'email', label: 'Email', description: 'Get updates via email' },
+    { value: 'sms', label: 'SMS', description: 'Get updates via text message' },
+    {
+      value: 'push',
+      label: 'Push Notifications',
+      description: 'Get updates via push notifications',
+    },
+  ];
 
   return (
     <div className="max-w-md mx-auto">
@@ -19,5 +23,5 @@ export default function RadioInputBasicDemo() {
         defaultValue="email"
       />
     </div>
-  )
+  );
 }

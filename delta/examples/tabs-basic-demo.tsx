@@ -1,4 +1,9 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/delta/components/tabs"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from '@/delta/components/tabs';
 
 export default function TabsBasicDemo() {
   return (
@@ -33,5 +38,5 @@ export default function TabsBasicDemo() {
         </div>
       </TabsContent>
     </Tabs>
-  )
-} 
+  );
+}

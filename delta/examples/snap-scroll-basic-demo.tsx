@@ -1,11 +1,22 @@
-"use client"
+'use client';
 
-import { useState, useCallback } from "react"
-import { SnapScroll, SnapScrollItem, type SnapScrollItem as Item } from "@/delta/components/snap-scroll"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import { ClipLoader } from "react-spinners"
+import { useState, useCallback } from 'react';
+import {
+  SnapScroll,
+  SnapScrollItem,
+  type SnapScrollItem as Item,
+} from '@/delta/components/snap-scroll';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ClipLoader } from 'react-spinners';
 
 /**
  * A basic demo of the SnapScroll component
@@ -19,38 +30,38 @@ export default function SnapScrollDemo() {
       description: `This is the description for item ${i + 1}`,
       color: getRandomColor(),
     })),
-  )
+  );
 
   // Options state
-  const [enableRouting, setEnableRouting] = useState(false)
-  const [showProgress, setShowProgress] = useState(false)
-  const [isFetching, setIsFetching] = useState(false)
+  const [enableRouting, setEnableRouting] = useState(false);
+  const [showProgress, setShowProgress] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
   // Function to fetch more items
   const fetchMoreItems = useCallback(async () => {
     // Set loading state
-    setIsFetching(true)
+    setIsFetching(true);
 
     // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // Add 3 more items
-    const currentLength = items.length
+    const currentLength = items.length;
     const newItems = Array.from({ length: 3 }, (_, i) => ({
       id: `item-${currentLength + i + 1}`,
       title: `Item ${currentLength + i + 1}`,
       description: `This is the description for item ${currentLength + i + 1}`,
       color: getRandomColor(),
-    }))
+    }));
 
-    setItems((prev) => [...prev, ...newItems])
-    setIsFetching(false)
-  }, [items])
+    setItems((prev) => [...prev, ...newItems]);
+    setIsFetching(false);
+  }, [items]);
 
   // Handle item change
   const handleItemChange = useCallback((index: number, item: Item) => {
-    console.log(`Active item changed to: ${item.title} (index: ${index})`)
-  }, [])
+    console.log(`Active item changed to: ${item.title} (index: ${index})`);
+  }, []);
 
   return (
     <div className="relative">
@@ -59,12 +70,18 @@ export default function SnapScrollDemo() {
         <h3 className="font-medium mb-2">Options</h3>
         <div className="space-y-2">
           <label className="flex items-center gap-2">
-            <input type="checkbox" checked={enableRouting} onChange={() => setEnableRouting(!enableRouting)} />
+            <input
+              type="checkbox"
+              checked={enableRouting}
+              onChange={() => setEnableRouting(!enableRouting)}
+            />
             Enable URL Routing
           </label>
         </div>
         <div className="mt-4">
-          <p className="text-xs text-muted-foreground">Items: {items.length} | Use keyboard ↑/↓ to navigate</p>
+          <p className="text-xs text-muted-foreground">
+            Items: {items.length} | Use keyboard ↑/↓ to navigate
+          </p>
         </div>
       </div>
 
@@ -87,7 +104,9 @@ export default function SnapScrollDemo() {
             >
               <CardHeader>
                 <CardTitle>{item.title}</CardTitle>
-                <CardDescription className="text-black/70">Scroll to navigate between items</CardDescription>
+                <CardDescription className="text-black/70">
+                  Scroll to navigate between items
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-black/80">{item.description}</p>
@@ -100,12 +119,12 @@ export default function SnapScrollDemo() {
                   variant="outline"
                   size="icon"
                   onClick={() => {
-                    const container = document.querySelector(".snap-y")
+                    const container = document.querySelector('.snap-y');
                     if (container) {
                       container.scrollBy({
                         top: -window.innerHeight,
-                        behavior: "smooth",
-                      })
+                        behavior: 'smooth',
+                      });
                     }
                   }}
                 >
@@ -115,12 +134,12 @@ export default function SnapScrollDemo() {
                   variant="outline"
                   size="icon"
                   onClick={() => {
-                    const container = document.querySelector(".snap-y")
+                    const container = document.querySelector('.snap-y');
                     if (container) {
                       container.scrollBy({
                         top: window.innerHeight,
-                        behavior: "smooth",
-                      })
+                        behavior: 'smooth',
+                      });
                     }
                   }}
                 >
@@ -141,11 +160,11 @@ export default function SnapScrollDemo() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 // Helper function to generate random pastel colors
 function getRandomColor() {
-  const hue = Math.floor(Math.random() * 360)
-  return `hsl(${hue}, 70%, 85%)`
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 70%, 85%)`;
 }

@@ -1,6 +1,11 @@
-"use client"
+'use client';
 
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/delta/components/accordion"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/delta/components/accordion';
 
 export default function AccordionBasicDemo() {
   return (
@@ -9,9 +14,10 @@ export default function AccordionBasicDemo() {
         <AccordionItem value="item-1">
           <AccordionTrigger>What is Delta Components?</AccordionTrigger>
           <AccordionContent>
-            Delta Components is a collection of reusable React components built on top of shadcn/ui.
-            It provides additional features and customization options while maintaining the same
-            design system and developer experience.
+            Delta Components is a collection of reusable React components built
+            on top of shadcn/ui. It provides additional features and
+            customization options while maintaining the same design system and
+            developer experience.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
@@ -26,12 +32,12 @@ export default function AccordionBasicDemo() {
         <AccordionItem value="item-3">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>
-            Yes! All Delta Components are built with accessibility in mind, following WAI-ARIA
-            guidelines and best practices. They support keyboard navigation, screen readers,
-            and proper ARIA attributes.
+            Yes! All Delta Components are built with accessibility in mind,
+            following WAI-ARIA guidelines and best practices. They support
+            keyboard navigation, screen readers, and proper ARIA attributes.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
-  )
-} 
+  );
+}

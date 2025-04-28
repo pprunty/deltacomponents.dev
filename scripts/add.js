@@ -8,17 +8,24 @@ import { execSync } from 'child_process';
 const componentType = process.argv[2]; // component, block, page, lib, hook, demo
 const componentName = process.argv[3];
 const demoName = componentType === 'demo' ? process.argv[4] : null; // Only used for demo type
-const category = componentType === 'demo'
-  ? (process.argv[5] || 'components')
-  : (process.argv[4] || 'components'); // Default to "components" if no category provided
+const category =
+  componentType === 'demo'
+    ? process.argv[5] || 'components'
+    : process.argv[4] || 'components'; // Default to "components" if no category provided
 
 // Validate arguments
-if (!componentType || !componentName || (componentType === 'demo' && !demoName)) {
+if (
+  !componentType ||
+  !componentName ||
+  (componentType === 'demo' && !demoName)
+) {
   console.error(
     'Usage: node add.js [component|block|page|lib|hook|demo] [name] [demo-name (if type is demo)] [category]',
   );
   console.error('Example: node add.js component button custom-theme');
-  console.error('Example: node add.js demo button variant-primary custom-theme');
+  console.error(
+    'Example: node add.js demo button variant-primary custom-theme',
+  );
   console.error('If category is omitted, "components" will be used as default');
   process.exit(1);
 }
@@ -33,17 +40,17 @@ if (!validTypes.includes(componentType)) {
 // Convert component name to proper case
 const componentNamePascal = componentName
   .split('-')
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
   .join('');
 
 // Define registry type based on component type
 const getRegistryType = (type) => {
   const typeMappings = {
-    'component': 'registry:component',
-    'block': 'registry:block',
-    'page': 'registry:page',
-    'lib': 'registry:lib',
-    'hook': 'registry:hook'
+    component: 'registry:component',
+    block: 'registry:block',
+    page: 'registry:page',
+    lib: 'registry:lib',
+    hook: 'registry:hook',
   };
   return typeMappings[type] || `registry:${type}`;
 };
@@ -57,7 +64,7 @@ const paths = {
   examples: path.join(process.cwd(), 'delta/examples'),
   demos: path.join(process.cwd(), 'delta/demos.ts'),
   mapping: path.join(process.cwd(), 'delta/mapping.ts'),
-  page: path.join(process.cwd(), 'app/docs/[[...slug]]/page.tsx'),
+  page: path.join(process.cwd(), 'app/(main)/docs/[[...slug]]/page.tsx'),
   docs: path.join(process.cwd(), 'content/docs'),
   registryJson: path.join(process.cwd(), 'registry.json'),
   components: path.join(process.cwd(), 'components.json'),
@@ -69,13 +76,13 @@ if (componentType === 'demo') {
   // Convert component name to proper case
   const componentNamePascal = componentName
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
   // Convert demo name to proper case
   const demoNamePascal = demoName
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
   // Check if component exists in the specified category
@@ -88,12 +95,16 @@ if (componentType === 'demo') {
   }
 
   if (!fs.existsSync(componentPath)) {
-    console.error(`Component ${componentName} does not exist in category ${category}`);
+    console.error(
+      `Component ${componentName} does not exist in category ${category}`,
+    );
     console.error(`Looking for component at: ${componentPath}`);
     process.exit(1);
   }
 
-  console.log(`Creating demo "${demoName}" for existing component "${componentName}" in category "${category}"`);
+  console.log(
+    `Creating demo "${demoName}" for existing component "${componentName}" in category "${category}"`,
+  );
 
   // Create demo file path and content
   let demoFilePath = '';
@@ -104,7 +115,10 @@ if (componentType === 'demo') {
     fs.mkdirSync(paths.examples, { recursive: true });
 
     // For standard components
-    demoFilePath = path.join(paths.examples, `${componentName}-${demoName}-demo.tsx`);
+    demoFilePath = path.join(
+      paths.examples,
+      `${componentName}-${demoName}-demo.tsx`,
+    );
     demoFileContent = `"use client"
 
 import ${componentNamePascal} from "@/delta/components/${componentName}"
@@ -124,7 +138,11 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
     fs.mkdirSync(path.join(paths.delta, category), { recursive: true });
 
     // For custom category components
-    demoFilePath = path.join(paths.delta, category, `${componentName}-${demoName}-demo.tsx`);
+    demoFilePath = path.join(
+      paths.delta,
+      category,
+      `${componentName}-${demoName}-demo.tsx`,
+    );
     demoFileContent = `import ${componentNamePascal} from "./${componentName}";
 
 export default function ${componentNamePascal}${demoNamePascal}Demo() {
@@ -157,35 +175,57 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
 
     // Check if the demo already exists in demos.ts
     if (demosContent.includes(`${componentNamePascal}${demoNamePascal}Demo`)) {
-      console.log(`Demo ${demoName} for component ${componentName} already exists in demos.ts`);
+      console.log(
+        `Demo ${demoName} for component ${componentName} already exists in demos.ts`,
+      );
     } else {
-      const [importSection, exportSection] = demosContent.split('export const demoComponents = {');
+      const [importSection, exportSection] = demosContent.split(
+        'export const demoComponents = {',
+      );
 
       // Clean up any extra newlines in the import section
       const cleanImportSection = importSection.trim() + '\n';
       const newImportSection = `${cleanImportSection}import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/examples/${componentName}-${demoName}-demo"\n`;
 
       const exportLines = exportSection.split('\n');
-      const lastExportLine = exportLines.findIndex(line => line.includes('} as const'));
+      const lastExportLine = exportLines.findIndex((line) =>
+        line.includes('} as const'),
+      );
       // Add a comma to the previous line if it doesn't have one
       if (!exportLines[lastExportLine - 1].trim().endsWith(',')) {
-        exportLines[lastExportLine - 1] = exportLines[lastExportLine - 1].trim() + ',';
+        exportLines[lastExportLine - 1] =
+          exportLines[lastExportLine - 1].trim() + ',';
       }
       // Add the new component with a comma
-      exportLines.splice(lastExportLine, 0, `  ${componentNamePascal}${demoNamePascal}Demo,`);
+      exportLines.splice(
+        lastExportLine,
+        0,
+        `  ${componentNamePascal}${demoNamePascal}Demo,`,
+      );
       const newExportSection = exportLines.join('\n');
 
       // Ensure the last line before "} as const" has a comma
       const finalExportLines = newExportSection.split('\n');
-      const lastLineIndex = finalExportLines.findIndex(line => line.includes('} as const'));
-      if (lastLineIndex > 0 && !finalExportLines[lastLineIndex - 1].trim().endsWith(',')) {
-        finalExportLines[lastLineIndex - 1] = finalExportLines[lastLineIndex - 1].trim() + ',';
+      const lastLineIndex = finalExportLines.findIndex((line) =>
+        line.includes('} as const'),
+      );
+      if (
+        lastLineIndex > 0 &&
+        !finalExportLines[lastLineIndex - 1].trim().endsWith(',')
+      ) {
+        finalExportLines[lastLineIndex - 1] =
+          finalExportLines[lastLineIndex - 1].trim() + ',';
       }
       const finalExportSection = finalExportLines.join('\n');
 
-      const newDemosContent = newImportSection + '\nexport const demoComponents = {' + finalExportSection;
+      const newDemosContent =
+        newImportSection +
+        '\nexport const demoComponents = {' +
+        finalExportSection;
       fs.writeFileSync(paths.demos, newDemosContent);
-      console.log(`Updated demos.ts with new demo: ${componentName}-${demoName}-demo`);
+      console.log(
+        `Updated demos.ts with new demo: ${componentName}-${demoName}-demo`,
+      );
     }
   }
 
@@ -195,27 +235,35 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
       const registry = JSON.parse(fs.readFileSync(paths.registryJson, 'utf8'));
 
       // Find the component in the registry
-      const existingItemIndex = registry.items.findIndex(item => item.name === componentName);
+      const existingItemIndex = registry.items.findIndex(
+        (item) => item.name === componentName,
+      );
 
       if (existingItemIndex >= 0) {
         // Add the demo file to the component's files array if it doesn't already exist
-        const demoFilePath = category === 'components'
-          ? `delta/examples/${componentName}-${demoName}-demo.tsx`
-          : `delta/${category}/${componentName}-${demoName}-demo.tsx`;
+        const demoFilePath =
+          category === 'components'
+            ? `delta/examples/${componentName}-${demoName}-demo.tsx`
+            : `delta/${category}/${componentName}-${demoName}-demo.tsx`;
 
         const demoFileExists = registry.items[existingItemIndex].files.some(
-          file => file.path === demoFilePath
+          (file) => file.path === demoFilePath,
         );
 
         if (!demoFileExists) {
           registry.items[existingItemIndex].files.push({
             path: demoFilePath,
             type: registry.items[existingItemIndex].type,
-            target: demoFilePath
+            target: demoFilePath,
           });
 
-          fs.writeFileSync(paths.registryJson, JSON.stringify(registry, null, 2));
-          console.log(`Updated registry.json with new demo file: ${demoFilePath}`);
+          fs.writeFileSync(
+            paths.registryJson,
+            JSON.stringify(registry, null, 2),
+          );
+          console.log(
+            `Updated registry.json with new demo file: ${demoFilePath}`,
+          );
         }
       } else {
         console.warn(`Component ${componentName} not found in registry.json`);
@@ -227,9 +275,10 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
 
   // Update registry-components.tsx to include the demo
   if (fs.existsSync(paths.registryComponents)) {
-    const importStatement = category === 'components'
-      ? `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/examples/${componentName}-${demoName}-demo"`
-      : `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/${category}/${componentName}-${demoName}-demo"`;
+    const importStatement =
+      category === 'components'
+        ? `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/examples/${componentName}-${demoName}-demo"`
+        : `import ${componentNamePascal}${demoNamePascal}Demo from "@/delta/${category}/${componentName}-${demoName}-demo"`;
 
     const componentEntry = `  "${componentName}-${demoName}": {\n    component: ${componentNamePascal}${demoNamePascal}Demo,\n  },`;
 
@@ -237,7 +286,9 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
 
     // Check if the demo already exists
     if (content.includes(`"${componentName}-${demoName}"`)) {
-      console.log(`Demo ${demoName} for component ${componentName} already exists in registry-components.tsx`);
+      console.log(
+        `Demo ${demoName} for component ${componentName} already exists in registry-components.tsx`,
+      );
     } else {
       // Add import at the appropriate location (after the last import)
       let updatedContent = content;
@@ -253,7 +304,9 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
       }
 
       // Add component to registry object
-      const registryStartIndex = updatedContent.indexOf('export const registry');
+      const registryStartIndex = updatedContent.indexOf(
+        'export const registry',
+      );
       const registryOpenBraceIndex = updatedContent.indexOf(
         '{',
         registryStartIndex,
@@ -289,7 +342,9 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
       }
 
       fs.writeFileSync(paths.registryComponents, updatedContent);
-      console.log(`Updated: ${paths.registryComponents} with demo: ${componentName}-${demoName}`);
+      console.log(
+        `Updated: ${paths.registryComponents} with demo: ${componentName}-${demoName}`,
+      );
     }
   }
 
@@ -297,9 +352,11 @@ export default function ${componentNamePascal}${demoNamePascal}Demo() {
 Demo "${demoName}" has been added for component "${componentName}" in category "${category}"!
 
 Next steps:
-1. Edit the demo file: ${category === 'components'
-  ? `delta/examples/${componentName}-${demoName}-demo.tsx`
-  : `delta/${category}/${componentName}-${demoName}-demo.tsx`}
+1. Edit the demo file: ${
+    category === 'components'
+      ? `delta/examples/${componentName}-${demoName}-demo.tsx`
+      : `delta/${category}/${componentName}-${demoName}-demo.tsx`
+  }
 2. Make sure your component supports the "${demoName}" variant or props
 `);
   process.exit(0);
@@ -501,8 +558,14 @@ export default function ${componentNamePascal}BasicDemo() {
   fs.mkdirSync(paths.docs, { recursive: true });
 
   // Write shadcn structure files
-  fs.writeFileSync(path.join(paths.ui, `${componentName}.tsx`), uiComponentContent);
-  fs.writeFileSync(path.join(paths.examples, `${componentName}-basic-demo.tsx`), exampleComponentContent);
+  fs.writeFileSync(
+    path.join(paths.ui, `${componentName}.tsx`),
+    uiComponentContent,
+  );
+  fs.writeFileSync(
+    path.join(paths.examples, `${componentName}-basic-demo.tsx`),
+    exampleComponentContent,
+  );
   fs.writeFileSync(path.join(paths.docs, `${componentName}.mdx`), mdxContent);
 
   // Update demos.ts if it exists
@@ -513,31 +576,49 @@ export default function ${componentNamePascal}BasicDemo() {
     if (demosContent.includes(`${componentNamePascal}BasicDemo`)) {
       console.log(`Component ${componentName} demo already exists in demos.ts`);
     } else {
-      const [importSection, exportSection] = demosContent.split('export const demoComponents = {');
+      const [importSection, exportSection] = demosContent.split(
+        'export const demoComponents = {',
+      );
 
       // Clean up any extra newlines in the import section
       const cleanImportSection = importSection.trim() + '\n';
       const newImportSection = `${cleanImportSection}import ${componentNamePascal}BasicDemo from "@/delta/examples/${componentName}-basic-demo"\n`;
 
       const exportLines = exportSection.split('\n');
-      const lastExportLine = exportLines.findIndex(line => line.includes('} as const'));
+      const lastExportLine = exportLines.findIndex((line) =>
+        line.includes('} as const'),
+      );
       // Add a comma to the previous line if it doesn't have one
       if (!exportLines[lastExportLine - 1].trim().endsWith(',')) {
-        exportLines[lastExportLine - 1] = exportLines[lastExportLine - 1].trim() + ',';
+        exportLines[lastExportLine - 1] =
+          exportLines[lastExportLine - 1].trim() + ',';
       }
       // Add the new component with a comma
-      exportLines.splice(lastExportLine, 0, `  ${componentNamePascal}BasicDemo,`);
+      exportLines.splice(
+        lastExportLine,
+        0,
+        `  ${componentNamePascal}BasicDemo,`,
+      );
       const newExportSection = exportLines.join('\n');
 
       // Ensure the last line before "} as const" has a comma
       const finalExportLines = newExportSection.split('\n');
-      const lastLineIndex = finalExportLines.findIndex(line => line.includes('} as const'));
-      if (lastLineIndex > 0 && !finalExportLines[lastLineIndex - 1].trim().endsWith(',')) {
-        finalExportLines[lastLineIndex - 1] = finalExportLines[lastLineIndex - 1].trim() + ',';
+      const lastLineIndex = finalExportLines.findIndex((line) =>
+        line.includes('} as const'),
+      );
+      if (
+        lastLineIndex > 0 &&
+        !finalExportLines[lastLineIndex - 1].trim().endsWith(',')
+      ) {
+        finalExportLines[lastLineIndex - 1] =
+          finalExportLines[lastLineIndex - 1].trim() + ',';
       }
       const finalExportSection = finalExportLines.join('\n');
 
-      const newDemosContent = newImportSection + '\nexport const demoComponents = {' + finalExportSection;
+      const newDemosContent =
+        newImportSection +
+        '\nexport const demoComponents = {' +
+        finalExportSection;
       fs.writeFileSync(paths.demos, newDemosContent);
     }
 
@@ -546,16 +627,22 @@ export default function ${componentNamePascal}BasicDemo() {
       const mappingContent = fs.readFileSync(paths.mapping, 'utf8');
 
       // First, check if the file already has the component
-      if (mappingContent.includes(`"${componentName}": ${componentNamePascal}Doc`)) {
+      if (
+        mappingContent.includes(`"${componentName}": ${componentNamePascal}Doc`)
+      ) {
         console.log(`Component ${componentName} already exists in mapping.ts`);
       } else {
         // Add the import
         let updatedContent = mappingContent;
 
         // Add the import at the end of imports section
-        const importEndIndex = mappingContent.indexOf('export const componentRegistry');
+        const importEndIndex = mappingContent.indexOf(
+          'export const componentRegistry',
+        );
         if (importEndIndex !== -1) {
-          const beforeImports = mappingContent.substring(0, importEndIndex).trim();
+          const beforeImports = mappingContent
+            .substring(0, importEndIndex)
+            .trim();
           const afterImports = mappingContent.substring(importEndIndex);
 
           updatedContent = `${beforeImports}\nimport * as ${componentNamePascal}Doc from "@/content/docs/${componentName}.mdx"\n\n${afterImports}`;
@@ -565,7 +652,9 @@ export default function ${componentNamePascal}BasicDemo() {
         const registryEndIndex = updatedContent.lastIndexOf('}');
         if (registryEndIndex !== -1) {
           // Check if the last entry in the registry has a comma
-          const beforeRegistryEnd = updatedContent.substring(0, registryEndIndex).trim();
+          const beforeRegistryEnd = updatedContent
+            .substring(0, registryEndIndex)
+            .trim();
           const afterRegistryEnd = updatedContent.substring(registryEndIndex);
 
           // If the last line doesn't end with a comma, add one
@@ -588,10 +677,14 @@ export default function ${componentNamePascal}BasicDemo() {
     // Update page.tsx if it exists
     if (fs.existsSync(paths.page)) {
       const pageContent = fs.readFileSync(paths.page, 'utf8');
-      if (!pageContent.includes(`import * as ${componentNamePascal}Doc from "@/content/docs/${componentName}.mdx"`)) {
+      if (
+        !pageContent.includes(
+          `import * as ${componentNamePascal}Doc from "@/content/docs/${componentName}.mdx"`,
+        )
+      ) {
         const newPageContent = pageContent.replace(
           'import * as ButtonDoc from "@/content/docs/button.mdx"',
-          `import * as ButtonDoc from "@/content/docs/button.mdx"\nimport * as ${componentNamePascal}Doc from "@/content/docs/${componentName}.mdx"`
+          `import * as ButtonDoc from "@/content/docs/button.mdx"\nimport * as ${componentNamePascal}Doc from "@/content/docs/${componentName}.mdx"`,
         );
         fs.writeFileSync(paths.page, newPageContent);
       }
@@ -605,7 +698,9 @@ if (fs.existsSync(paths.registryJson)) {
     const registry = JSON.parse(fs.readFileSync(paths.registryJson, 'utf8'));
 
     // Check if component already exists in registry
-    const existingItemIndex = registry.items.findIndex(item => item.name === componentName);
+    const existingItemIndex = registry.items.findIndex(
+      (item) => item.name === componentName,
+    );
 
     // Create files array for registry based on component type
     let files = [];
@@ -617,18 +712,18 @@ if (fs.existsSync(paths.registryJson)) {
           {
             path: `delta/components/${componentName}.tsx`,
             type: registryType,
-            target: `delta/components/${componentName}.tsx`
+            target: `delta/components/${componentName}.tsx`,
           },
           {
             path: `delta/examples/${componentName}-basic-demo.tsx`,
             type: registryType,
-            target: `delta/examples/${componentName}-basic-demo.tsx`
+            target: `delta/examples/${componentName}-basic-demo.tsx`,
           },
           {
             path: `content/docs/${componentName}.mdx`,
             type: registryType,
-            target: `content/docs/${componentName}.mdx`
-          }
+            target: `content/docs/${componentName}.mdx`,
+          },
         ];
       } else {
         // For custom category components
@@ -636,13 +731,13 @@ if (fs.existsSync(paths.registryJson)) {
           {
             path: `delta/${category}/${componentName}.tsx`,
             type: registryType,
-            target: `delta/${category}/${componentName}.tsx`
+            target: `delta/${category}/${componentName}.tsx`,
           },
           {
             path: `delta/${category}/${componentName}-demo.tsx`,
             type: registryType,
-            target: `delta/${category}/${componentName}-demo.tsx`
-          }
+            target: `delta/${category}/${componentName}-demo.tsx`,
+          },
         ];
       }
     } else if (componentType === 'block') {
@@ -650,37 +745,37 @@ if (fs.existsSync(paths.registryJson)) {
         {
           path: `delta/${category}/${componentName}-block.tsx`,
           type: registryType,
-          target: `delta/${category}/${componentName}-block.tsx`
+          target: `delta/${category}/${componentName}-block.tsx`,
         },
         {
           path: `delta/${category}/${componentName}-block-demo.tsx`,
           type: registryType,
-          target: `delta/${category}/${componentName}-block-demo.tsx`
-        }
+          target: `delta/${category}/${componentName}-block-demo.tsx`,
+        },
       ];
     } else if (componentType === 'page') {
       files = [
         {
           path: `delta/${category}/${componentName}-page.tsx`,
           type: registryType,
-          target: `delta/${category}/${componentName}-page.tsx`
-        }
+          target: `delta/${category}/${componentName}-page.tsx`,
+        },
       ];
     } else if (componentType === 'lib') {
       files = [
         {
           path: `delta/${category}/${componentName}.ts`,
           type: registryType,
-          target: `delta/${category}/${componentName}.ts`
-        }
+          target: `delta/${category}/${componentName}.ts`,
+        },
       ];
     } else if (componentType === 'hook') {
       files = [
         {
           path: `delta/${category}/use-${componentName}.ts`,
           type: registryType,
-          target: `delta/${category}/use-${componentName}.ts`
-        }
+          target: `delta/${category}/use-${componentName}.ts`,
+        },
       ];
     }
 
@@ -690,18 +785,20 @@ if (fs.existsSync(paths.registryJson)) {
       type: registryType,
       title: componentName
         .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
       description: `A ${componentType} for ${componentName}`,
       dependencies: [],
       registryDependencies: [],
-      files: files
+      files: files,
     };
 
     if (existingItemIndex >= 0) {
       // Update existing item
       registry.items[existingItemIndex] = newItem;
-      console.log(`Updated existing ${componentType} in registry.json: ${componentName}`);
+      console.log(
+        `Updated existing ${componentType} in registry.json: ${componentName}`,
+      );
     } else {
       // Add new item
       registry.items.push(newItem);
@@ -719,235 +816,249 @@ if (fs.existsSync(paths.registryJson)) {
   // Create a new registry.json with this component
   let files = [];
 
- if (componentType === 'component') {
-     if (category === 'components') {
-       // For standard components in the components category
-       files = [
-         {
-           path: `delta/components/${componentName}.tsx`,
-           type: registryType,
-           target: `delta/components/${componentName}.tsx`
-         },
-         {
-           path: `delta/examples/${componentName}-basic-demo.tsx`,
-           type: registryType,
-           target: `delta/examples/${componentName}-basic-demo.tsx`
-         },
-         {
-           path: `content/docs/${componentName}.mdx`,
-           type: registryType,
-           target: `content/docs/${componentName}.mdx`
-         }
-       ];
-     } else {
-       // For custom category components
-       files = [
-         {
-           path: `delta/${category}/${componentName}.tsx`,
-           type: registryType,
-           target: `delta/${category}/${componentName}.tsx`
-         },
-         {
-           path: `delta/${category}/${componentName}-demo.tsx`,
-           type: registryType,
-           target: `delta/${category}/${componentName}-demo.tsx`
-         }
-       ];
-     }
-   } else if (componentType === 'block') {
-     files = [
-       {
-         path: `delta/${category}/${componentName}-block.tsx`,
-         type: registryType,
-         target: `delta/${category}/${componentName}-block.tsx`
-       },
-       {
-         path: `delta/${category}/${componentName}-block-demo.tsx`,
-         type: registryType,
-         target: `delta/${category}/${componentName}-block-demo.tsx`
-       }
-     ];
-   } else if (componentType === 'page') {
-     files = [
-       {
-         path: `delta/${category}/${componentName}-page.tsx`,
-         type: registryType,
-         target: `delta/${category}/${componentName}-page.tsx`
-       }
-     ];
-   } else if (componentType === 'lib') {
-     files = [
-       {
-         path: `delta/${category}/${componentName}.ts`,
-         type: registryType,
-         target: `delta/${category}/${componentName}.ts`
-       }
-     ];
-   } else if (componentType === 'hook') {
-     files = [
-       {
-         path: `delta/${category}/use-${componentName}.ts`,
-         type: registryType,
-         target: `delta/${category}/use-${componentName}.ts`
-       }
-     ];
-   }
+  if (componentType === 'component') {
+    if (category === 'components') {
+      // For standard components in the components category
+      files = [
+        {
+          path: `delta/components/${componentName}.tsx`,
+          type: registryType,
+          target: `delta/components/${componentName}.tsx`,
+        },
+        {
+          path: `delta/examples/${componentName}-basic-demo.tsx`,
+          type: registryType,
+          target: `delta/examples/${componentName}-basic-demo.tsx`,
+        },
+        {
+          path: `content/docs/${componentName}.mdx`,
+          type: registryType,
+          target: `content/docs/${componentName}.mdx`,
+        },
+      ];
+    } else {
+      // For custom category components
+      files = [
+        {
+          path: `delta/${category}/${componentName}.tsx`,
+          type: registryType,
+          target: `delta/${category}/${componentName}.tsx`,
+        },
+        {
+          path: `delta/${category}/${componentName}-demo.tsx`,
+          type: registryType,
+          target: `delta/${category}/${componentName}-demo.tsx`,
+        },
+      ];
+    }
+  } else if (componentType === 'block') {
+    files = [
+      {
+        path: `delta/${category}/${componentName}-block.tsx`,
+        type: registryType,
+        target: `delta/${category}/${componentName}-block.tsx`,
+      },
+      {
+        path: `delta/${category}/${componentName}-block-demo.tsx`,
+        type: registryType,
+        target: `delta/${category}/${componentName}-block-demo.tsx`,
+      },
+    ];
+  } else if (componentType === 'page') {
+    files = [
+      {
+        path: `delta/${category}/${componentName}-page.tsx`,
+        type: registryType,
+        target: `delta/${category}/${componentName}-page.tsx`,
+      },
+    ];
+  } else if (componentType === 'lib') {
+    files = [
+      {
+        path: `delta/${category}/${componentName}.ts`,
+        type: registryType,
+        target: `delta/${category}/${componentName}.ts`,
+      },
+    ];
+  } else if (componentType === 'hook') {
+    files = [
+      {
+        path: `delta/${category}/use-${componentName}.ts`,
+        type: registryType,
+        target: `delta/${category}/use-${componentName}.ts`,
+      },
+    ];
+  }
 
-   const registry = {
-     items: [
-       {
-         name: componentName,
-         type: registryType,
-         title: componentName
-           .split('-')
-           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-           .join(' '),
-         description: `A ${componentType} for ${componentName}`,
-         dependencies: [],
-         registryDependencies: [],
-         files: files
-       }
-     ]
-   };
+  const registry = {
+    items: [
+      {
+        name: componentName,
+        type: registryType,
+        title: componentName
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' '),
+        description: `A ${componentType} for ${componentName}`,
+        dependencies: [],
+        registryDependencies: [],
+        files: files,
+      },
+    ],
+  };
 
-   fs.writeFileSync(paths.registryJson, JSON.stringify(registry, null, 2));
-   console.log(`Created new registry.json with ${componentType}: ${componentName}`);
- }
+  fs.writeFileSync(paths.registryJson, JSON.stringify(registry, null, 2));
+  console.log(
+    `Created new registry.json with ${componentType}: ${componentName}`,
+  );
+}
 
- // Update components.json for shadcn (only for regular components in components category)
- if (componentType === 'component' && category === 'components') {
-   if (fs.existsSync(paths.components)) {
-     try {
-       const components = JSON.parse(fs.readFileSync(paths.components, 'utf8'));
+// Update components.json for shadcn (only for regular components in components category)
+if (componentType === 'component' && category === 'components') {
+  if (fs.existsSync(paths.components)) {
+    try {
+      const components = JSON.parse(fs.readFileSync(paths.components, 'utf8'));
 
-       // Add the component to components.json if it doesn't exist
-       if (!components.components.includes(componentName)) {
-         components.components.push(componentName);
-         fs.writeFileSync(paths.components, JSON.stringify(components, null, 2));
-         console.log(`Added ${componentName} to components.json`);
-       }
-     } catch (error) {
-       console.error('Error updating components.json:', error);
-     }
-   } else {
-     // Create a basic components.json if it doesn't exist
-     const components = {
-       "$schema": "https://ui.shadcn.com/schema.json",
-       "style": "default",
-       "rsc": true,
-       "tsx": true,
-       "tailwind": {
-         "config": "tailwind.config.js",
-         "css": "app/globals.css",
-         "baseColor": "slate",
-         "cssVariables": true
-       },
-       "aliases": {
-         "components": "@/components",
-         "utils": "@/lib/utils"
-       },
-       "components": [componentName]
-     };
+      // Add the component to components.json if it doesn't exist
+      if (!components.components.includes(componentName)) {
+        components.components.push(componentName);
+        fs.writeFileSync(paths.components, JSON.stringify(components, null, 2));
+        console.log(`Added ${componentName} to components.json`);
+      }
+    } catch (error) {
+      console.error('Error updating components.json:', error);
+    }
+  } else {
+    // Create a basic components.json if it doesn't exist
+    const components = {
+      $schema: 'https://ui.shadcn.com/schema.json',
+      style: 'default',
+      rsc: true,
+      tsx: true,
+      tailwind: {
+        config: 'tailwind.config.js',
+        css: 'app/globals.css',
+        baseColor: 'slate',
+        cssVariables: true,
+      },
+      aliases: {
+        components: '@/components',
+        utils: '@/lib/utils',
+      },
+      components: [componentName],
+    };
 
-     fs.writeFileSync(paths.components, JSON.stringify(components, null, 2));
-     console.log(`Created components.json with component: ${componentName}`);
-   }
- }
+    fs.writeFileSync(paths.components, JSON.stringify(components, null, 2));
+    console.log(`Created components.json with component: ${componentName}`);
+  }
+}
 
- // Update registry-components.tsx
- if (fs.existsSync(paths.registryComponents)) {
-   let importStatement = '';
-   let componentEntry = '';
+// Update registry-components.tsx
+if (fs.existsSync(paths.registryComponents)) {
+  let importStatement = '';
+  let componentEntry = '';
 
-   // Different handling based on component type
-   if (componentType === 'component') {
-     importStatement = `import ${componentNamePascal}Demo from "@/delta/${category}/${componentName}-demo"`;
-     componentEntry = `  "${componentName}": {\n    component: ${componentNamePascal}Demo,\n  },`;
-   } else if (componentType === 'block') {
-     importStatement = `import ${componentNamePascal}BlockDemo from "@/delta/${category}/${componentName}-block-demo"`;
-     componentEntry = `  "${componentName}-block": {\n    component: ${componentNamePascal}BlockDemo,\n  },`;
-   } else if (componentType === 'page') {
-     importStatement = `import ${componentNamePascal}Page from "@/delta/${category}/${componentName}-page"`;
-     componentEntry = `  "${componentName}-page": {\n    component: ${componentNamePascal}Page,\n  },`;
-   } else if (componentType === 'lib' || componentType === 'hook') {
-     // For libs and hooks, we don't add to registry components
-     console.log(`Note: ${componentType}s are not added to registry-components.tsx`);
-   }
+  // Different handling based on component type
+  if (componentType === 'component') {
+    importStatement = `import ${componentNamePascal}Demo from "@/delta/${category}/${componentName}-demo"`;
+    componentEntry = `  "${componentName}": {\n    component: ${componentNamePascal}Demo,\n  },`;
+  } else if (componentType === 'block') {
+    importStatement = `import ${componentNamePascal}BlockDemo from "@/delta/${category}/${componentName}-block-demo"`;
+    componentEntry = `  "${componentName}-block": {\n    component: ${componentNamePascal}BlockDemo,\n  },`;
+  } else if (componentType === 'page') {
+    importStatement = `import ${componentNamePascal}Page from "@/delta/${category}/${componentName}-page"`;
+    componentEntry = `  "${componentName}-page": {\n    component: ${componentNamePascal}Page,\n  },`;
+  } else if (componentType === 'lib' || componentType === 'hook') {
+    // For libs and hooks, we don't add to registry components
+    console.log(
+      `Note: ${componentType}s are not added to registry-components.tsx`,
+    );
+  }
 
-   if ((componentType === 'component' || componentType === 'block' || componentType === 'page') &&
-       importStatement && componentEntry) {
-     const content = fs.readFileSync(paths.registryComponents, 'utf8');
+  if (
+    (componentType === 'component' ||
+      componentType === 'block' ||
+      componentType === 'page') &&
+    importStatement &&
+    componentEntry
+  ) {
+    const content = fs.readFileSync(paths.registryComponents, 'utf8');
 
-     // Add import at the appropriate location (after the last import)
-     let updatedContent = content;
-     const lastImportIndex = content.lastIndexOf('import');
-     const lastImportEndIndex = content.indexOf('\n', lastImportIndex);
+    // Add import at the appropriate location (after the last import)
+    let updatedContent = content;
+    const lastImportIndex = content.lastIndexOf('import');
+    const lastImportEndIndex = content.indexOf('\n', lastImportIndex);
 
-     if (lastImportIndex !== -1) {
-       updatedContent =
-         content.slice(0, lastImportEndIndex + 1) +
-         importStatement +
-         '\n' +
-         content.slice(lastImportEndIndex + 1);
-     }
+    if (lastImportIndex !== -1) {
+      updatedContent =
+        content.slice(0, lastImportEndIndex + 1) +
+        importStatement +
+        '\n' +
+        content.slice(lastImportEndIndex + 1);
+    }
 
-     // Add component to registry object
-     const registryStartIndex = updatedContent.indexOf('export const registry');
-     const registryOpenBraceIndex = updatedContent.indexOf(
-       '{',
-       registryStartIndex,
-     );
-     const registryCloseBraceIndex = updatedContent.lastIndexOf('}');
+    // Add component to registry object
+    const registryStartIndex = updatedContent.indexOf('export const registry');
+    const registryOpenBraceIndex = updatedContent.indexOf(
+      '{',
+      registryStartIndex,
+    );
+    const registryCloseBraceIndex = updatedContent.lastIndexOf('}');
 
-     if (
-       registryStartIndex !== -1 &&
-       registryOpenBraceIndex !== -1 &&
-       registryCloseBraceIndex !== -1
-     ) {
-       // Check if registry is empty
-       const isEmptyRegistry =
-         updatedContent
-           .substring(registryOpenBraceIndex + 1, registryCloseBraceIndex)
-           .trim() === '';
+    if (
+      registryStartIndex !== -1 &&
+      registryOpenBraceIndex !== -1 &&
+      registryCloseBraceIndex !== -1
+    ) {
+      // Check if registry is empty
+      const isEmptyRegistry =
+        updatedContent
+          .substring(registryOpenBraceIndex + 1, registryCloseBraceIndex)
+          .trim() === '';
 
-       if (isEmptyRegistry) {
-         updatedContent =
-           updatedContent.slice(0, registryOpenBraceIndex + 1) +
-           '\n' +
-           componentEntry +
-           '\n' +
-           updatedContent.slice(registryCloseBraceIndex);
-       } else {
-         updatedContent =
-           updatedContent.slice(0, registryCloseBraceIndex) +
-           (updatedContent[registryCloseBraceIndex - 1] === ',' ? '' : ',') +
-           '\n' +
-           componentEntry +
-           updatedContent.slice(registryCloseBraceIndex);
-       }
-     }
+      if (isEmptyRegistry) {
+        updatedContent =
+          updatedContent.slice(0, registryOpenBraceIndex + 1) +
+          '\n' +
+          componentEntry +
+          '\n' +
+          updatedContent.slice(registryCloseBraceIndex);
+      } else {
+        updatedContent =
+          updatedContent.slice(0, registryCloseBraceIndex) +
+          (updatedContent[registryCloseBraceIndex - 1] === ',' ? '' : ',') +
+          '\n' +
+          componentEntry +
+          updatedContent.slice(registryCloseBraceIndex);
+      }
+    }
 
-     fs.writeFileSync(paths.registryComponents, updatedContent);
-     console.log(`Updated: ${paths.registryComponents}`);
-   }
- } else if ((componentType === 'component' || componentType === 'block' || componentType === 'page') &&
-            (componentType !== 'lib' && componentType !== 'hook')) {
-   // If registry-components.tsx doesn't exist, create it
-   let importStatement = '';
-   let componentEntry = '';
+    fs.writeFileSync(paths.registryComponents, updatedContent);
+    console.log(`Updated: ${paths.registryComponents}`);
+  }
+} else if (
+  (componentType === 'component' ||
+    componentType === 'block' ||
+    componentType === 'page') &&
+  componentType !== 'lib' &&
+  componentType !== 'hook'
+) {
+  // If registry-components.tsx doesn't exist, create it
+  let importStatement = '';
+  let componentEntry = '';
 
-   if (componentType === 'component') {
-     importStatement = `import ${componentNamePascal}Demo from "@/delta/${category}/${componentName}-demo"`;
-     componentEntry = `  "${componentName}": {\n    component: ${componentNamePascal}Demo,\n  },`;
-   } else if (componentType === 'block') {
-     importStatement = `import ${componentNamePascal}BlockDemo from "@/delta/${category}/${componentName}-block-demo"`;
-     componentEntry = `  "${componentName}-block": {\n    component: ${componentNamePascal}BlockDemo,\n  },`;
-   } else if (componentType === 'page') {
-     importStatement = `import ${componentNamePascal}Page from "@/delta/${category}/${componentName}-page"`;
-     componentEntry = `  "${componentName}-page": {\n    component: ${componentNamePascal}Page,\n  },`;
-   }
+  if (componentType === 'component') {
+    importStatement = `import ${componentNamePascal}Demo from "@/delta/${category}/${componentName}-demo"`;
+    componentEntry = `  "${componentName}": {\n    component: ${componentNamePascal}Demo,\n  },`;
+  } else if (componentType === 'block') {
+    importStatement = `import ${componentNamePascal}BlockDemo from "@/delta/${category}/${componentName}-block-demo"`;
+    componentEntry = `  "${componentName}-block": {\n    component: ${componentNamePascal}BlockDemo,\n  },`;
+  } else if (componentType === 'page') {
+    importStatement = `import ${componentNamePascal}Page from "@/delta/${category}/${componentName}-page"`;
+    componentEntry = `  "${componentName}-page": {\n    component: ${componentNamePascal}Page,\n  },`;
+  }
 
-   const registryComponentsContent = `import type React from "react"
+  const registryComponentsContent = `import type React from "react"
  // This file will serve as our component registry
 
  // Import components directly
@@ -959,42 +1070,60 @@ if (fs.existsSync(paths.registryJson)) {
  }
  `;
 
-   // Create lib directory if it doesn't exist
-   fs.mkdirSync(path.dirname(paths.registryComponents), { recursive: true });
+  // Create lib directory if it doesn't exist
+  fs.mkdirSync(path.dirname(paths.registryComponents), { recursive: true });
 
-   fs.writeFileSync(paths.registryComponents, registryComponentsContent);
-   console.log(`Created: ${paths.registryComponents}`);
- }
+  fs.writeFileSync(paths.registryComponents, registryComponentsContent);
+  console.log(`Created: ${paths.registryComponents}`);
+}
 
- // Run shadcn build command if available
- try {
-   console.log('Building registry with shadcn...');
-   execSync('npx shadcn build', { stdio: 'inherit' });
- } catch (error) {
-   console.warn('Warning: Could not run shadcn build. You may need to run it manually.');
- }
+// Run shadcn build command if available
+try {
+  console.log('Building registry with shadcn...');
+  execSync('npx shadcn build', { stdio: 'inherit' });
+} catch (error) {
+  console.warn(
+    'Warning: Could not run shadcn build. You may need to run it manually.',
+  );
+}
 
- console.log(`
+console.log(`
  ${componentType} "${componentName}" has been added to the registry in category "${category}"!
 
  Next steps:`);
 
- if (componentType === 'component') {
-   if (category === 'components') {
-     console.log(`1. Edit the component file: delta/components/${componentName}.tsx`);
-     console.log(`2. Edit the demo file: delta/examples/${componentName}-basic-demo.tsx`);
-     console.log(`3. Edit the docs file: content/docs/${componentName}.mdx`);
-   } else {
-     console.log(`1. Edit the component file: delta/${category}/${componentName}.tsx`);
-     console.log(`2. Edit the demo file: delta/${category}/${componentName}-demo.tsx`);
-   }
- } else if (componentType === 'block') {
-   console.log(`1. Edit the block file: delta/${category}/${componentName}-block.tsx`);
-   console.log(`2. Edit the demo file: delta/${category}/${componentName}-block-demo.tsx`);
- } else if (componentType === 'page') {
-   console.log(`1. Edit the page file: delta/${category}/${componentName}-page.tsx`);
- } else if (componentType === 'lib') {
-   console.log(`1. Edit the lib file: delta/${category}/${componentName}.ts`);
- } else if (componentType === 'hook') {
-   console.log(`1. Edit the hook file: delta/${category}/use-${componentName}.ts`);
- }
+if (componentType === 'component') {
+  if (category === 'components') {
+    console.log(
+      `1. Edit the component file: delta/components/${componentName}.tsx`,
+    );
+    console.log(
+      `2. Edit the demo file: delta/examples/${componentName}-basic-demo.tsx`,
+    );
+    console.log(`3. Edit the docs file: content/docs/${componentName}.mdx`);
+  } else {
+    console.log(
+      `1. Edit the component file: delta/${category}/${componentName}.tsx`,
+    );
+    console.log(
+      `2. Edit the demo file: delta/${category}/${componentName}-demo.tsx`,
+    );
+  }
+} else if (componentType === 'block') {
+  console.log(
+    `1. Edit the block file: delta/${category}/${componentName}-block.tsx`,
+  );
+  console.log(
+    `2. Edit the demo file: delta/${category}/${componentName}-block-demo.tsx`,
+  );
+} else if (componentType === 'page') {
+  console.log(
+    `1. Edit the page file: delta/${category}/${componentName}-page.tsx`,
+  );
+} else if (componentType === 'lib') {
+  console.log(`1. Edit the lib file: delta/${category}/${componentName}.ts`);
+} else if (componentType === 'hook') {
+  console.log(
+    `1. Edit the hook file: delta/${category}/use-${componentName}.ts`,
+  );
+}

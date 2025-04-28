@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Text Input",
   "description": "A text input component with validation, error handling, and various styling options",
-  "dependencies": [
-    "zod"
-  ],
-  "registryDependencies": [
-    "input"
-  ],
+  "dependencies": ["zod"],
+  "registryDependencies": ["input"],
   "files": [
     {
       "path": "delta/components/text-input.tsx",

@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "Button",
   "description": "A component for button",
-  "dependencies": [
-    "clsx",
-    "react-spinners"
-  ],
+  "dependencies": ["clsx", "react-spinners"],
   "registryDependencies": [],
   "files": [
     {

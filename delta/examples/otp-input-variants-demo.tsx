@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { OTPInput } from "@/delta/components/otp-input"
+import { OTPInput } from '@/delta/components/otp-input';
 
 export default function OtpInputVariantsDemo() {
   return (
@@ -36,7 +36,7 @@ export default function OtpInputVariantsDemo() {
         length={6}
         autoSubmit
         onComplete={(value) => {
-          console.log("OTP completed:", value)
+          console.log('OTP completed:', value);
         }}
         hint="6-digit code that auto-submits on completion"
       />
@@ -57,5 +57,5 @@ export default function OtpInputVariantsDemo() {
         hint="6-digit code with error state"
       />
     </div>
-  )
-} 
+  );
+}

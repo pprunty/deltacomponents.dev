@@ -13,10 +13,7 @@
     "@tiptap/extension-list-item",
     "@phosphor-icons/react"
   ],
-  "registryDependencies": [
-    "button",
-    "utils"
-  ],
+  "registryDependencies": ["button", "utils"],
   "files": [
     {
       "path": "delta/components/text-editor.tsx",

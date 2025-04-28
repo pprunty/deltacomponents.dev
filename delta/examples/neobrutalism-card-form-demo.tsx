@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   Card,
@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/delta/components/neobrutalism-card"
+} from '@/delta/components/neobrutalism-card';
 
 export default function NeobrutalismCardFormDemo() {
   return (
@@ -80,5 +80,5 @@ export default function NeobrutalismCardFormDemo() {
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { TextInput } from "@/delta/components/text-input"
+import { TextInput } from '@/delta/components/text-input';
 
 export default function TextInputVariantsDemo() {
   return (
@@ -68,5 +68,5 @@ export default function TextInputVariantsDemo() {
         />
       </div>
     </div>
-  )
-} 
+  );
+}

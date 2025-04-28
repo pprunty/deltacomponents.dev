@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
-import ScrambleIn from "@/delta/components/scramble-in"
+import ScrambleIn from '@/delta/components/scramble-in';
 
 export default function ScrambleInObserverDemo() {
   return (
     <div className="flex items-center justify-center p-4">
-      <ScrambleIn 
+      <ScrambleIn
         text="Scramble on Scroll"
         className="text-2xl font-bold"
         scrambledClassName="text-2xl font-bold"
@@ -16,5 +16,5 @@ export default function ScrambleInObserverDemo() {
         intersectionThreshold={0.5}
       />
     </div>
-  )
+  );
 }

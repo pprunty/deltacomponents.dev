@@ -1,9 +1,7 @@
-"use client"
+'use client';
 
-import Footer from "@/delta/components/footer"
+import Footer from '@/delta/components/footer';
 
 export default function FooterBasicDemo() {
-  return (
-      <Footer border={false}/>
-  )
+  return <Footer border={false} />;
 }

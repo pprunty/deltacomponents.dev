@@ -377,7 +377,7 @@ export function FileInput({
             'shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]',
           // Mobile-specific border dash pattern
           variant === 'default' &&
-            'sm:border-dashed md:border-dashed lg:border-dashed [border-image:url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg%27%3E%3Cpath d=\'M0 10H20\' stroke=\'%23666\' stroke-width=\'2\' stroke-dasharray=\'8 8\'/%3E%3C/svg%3E")_1]',
+            "sm:border-dashed md:border-dashed lg:border-dashed [border-image:url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg%27%3E%3Cpath d='M0 10H20' stroke='%23666' stroke-width='2' stroke-dasharray='8 8'/%3E%3C/svg%3E\")_1]",
 
           // Pill variant with solid border (not dashed)
           variant === 'pill' &&

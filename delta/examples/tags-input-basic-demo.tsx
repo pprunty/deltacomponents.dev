@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import {TagsInput} from "@/delta/components/tags-input"
+import { TagsInput } from '@/delta/components/tags-input';
 
 export default function TagsInputBasicDemo() {
   return (
@@ -13,5 +13,5 @@ export default function TagsInputBasicDemo() {
         hint="Press backspace to remove the last tag"
       />
     </div>
-  )
+  );
 }

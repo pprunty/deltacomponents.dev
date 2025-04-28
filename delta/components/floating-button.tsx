@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -81,7 +81,8 @@ const Float = React.forwardRef<HTMLDivElement, FloatProps>(
         if (!ticking) {
           window.requestAnimationFrame(() => {
             const currentScrollY = window.scrollY;
-            const scrollDirection = currentScrollY < lastScrollY ? 'up' : 'down';
+            const scrollDirection =
+              currentScrollY < lastScrollY ? 'up' : 'down';
             setIsOpaque(scrollDirection === 'down' && currentScrollY > 100);
             lastScrollY = currentScrollY;
             ticking = false;
@@ -167,7 +168,15 @@ const Float = React.forwardRef<HTMLDivElement, FloatProps>(
       }
 
       return styles;
-    }, [position, effectivePlacement, offsetX, offsetY, zIndex, opaqueOnScroll, isOpaque]);
+    }, [
+      position,
+      effectivePlacement,
+      offsetX,
+      offsetY,
+      zIndex,
+      opaqueOnScroll,
+      isOpaque,
+    ]);
 
     // Handle visibility based on device type
     if ((onlyDesktop && isMobile) || (onlyMobile && !isMobile)) {
@@ -177,10 +186,7 @@ const Float = React.forwardRef<HTMLDivElement, FloatProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          'transition-opacity duration-300',
-          className
-        )}
+        className={cn('transition-opacity duration-300', className)}
         style={positionStyles}
         {...props}
       >

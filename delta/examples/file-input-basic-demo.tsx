@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { FileInput } from "@/delta/components/file-input"
+import { FileInput } from '@/delta/components/file-input';
 
 export default function FileInputBasicDemo() {
   return (
@@ -14,5 +14,5 @@ export default function FileInputBasicDemo() {
         showIcons={true}
       />
     </div>
-  )
+  );
 }

@@ -5,9 +5,7 @@
   "title": "Scramble In",
   "description": "A component for scramble-in",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/scramble-in.tsx",

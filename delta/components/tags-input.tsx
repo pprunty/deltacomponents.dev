@@ -1,49 +1,50 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { X as PhosphorX } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
-import type { z } from "zod"
+import * as React from 'react';
+import { X as PhosphorX } from '@phosphor-icons/react';
+import { cn } from '@/lib/utils';
+import type { z } from 'zod';
 
-export type TagTriggerKey = "Enter" | "Space" | "Comma"
+export type TagTriggerKey = 'Enter' | 'Space' | 'Comma';
 
-export interface TagsInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+export interface TagsInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   /** The label for the input field */
-  label: string
+  label: string;
   /** The name of the input field (used for form submission) */
-  name: string
+  name: string;
   /** Optional description text to display below the label */
-  description?: string
+  description?: string;
   /** Optional hint text to display below the input */
-  hint?: string
+  hint?: string;
   /** Error message to display (typically from Zod validation) */
-  error?: string
+  error?: string;
   /** Whether the field is required */
-  required?: boolean
+  required?: boolean;
   /** Whether the field is in a loading/pending state */
-  pending?: boolean
+  pending?: boolean;
   /** Container className for the entire component */
-  containerClassName?: string
+  containerClassName?: string;
   /** Label className for customizing the label */
-  labelClassName?: string
+  labelClassName?: string;
   /** Label variant - 'default' or 'muted' */
-  labelVariant?: "default" | "muted"
+  labelVariant?: 'default' | 'muted';
   /** Input variant - 'default' or 'pill' */
-  variant?: "default" | "pill"
+  variant?: 'default' | 'pill';
   /** Whether to show a colored border (only applies to pill variant) */
-  coloredBorder?: boolean
+  coloredBorder?: boolean;
   /** Default value for the tags */
-  defaultValue?: string[]
+  defaultValue?: string[];
   /** Current value for the tags (controlled component) */
-  value?: string[]
+  value?: string[];
   /** Callback when tags change */
-  onChange?: (tags: string[]) => void
+  onChange?: (tags: string[]) => void;
   /** Key that triggers tag addition - defaults to Enter */
-  triggerKey?: TagTriggerKey
+  triggerKey?: TagTriggerKey;
   /** Zod schema for validation (optional - can be handled at the form level) */
-  schema?: z.ZodType<string[]>
+  schema?: z.ZodType<string[]>;
   /** Callback when validation occurs */
-  onValidate?: (isValid: boolean, value: string[], error?: string) => void
+  onValidate?: (isValid: boolean, value: string[], error?: string) => void;
 }
 
 export function TagsInput({
@@ -57,10 +58,10 @@ export function TagsInput({
   defaultValue,
   containerClassName,
   labelClassName,
-  labelVariant = "default",
-  variant = "default",
+  labelVariant = 'default',
+  variant = 'default',
   coloredBorder = false,
-  triggerKey = "Enter",
+  triggerKey = 'Enter',
   schema,
   onValidate,
   className,
@@ -69,143 +70,148 @@ export function TagsInput({
   onChange,
   ...props
 }: TagsInputProps) {
-  const [inputValue, setInputValue] = React.useState("")
-  const [localTags, setLocalTags] = React.useState<string[]>(value || defaultValue || [])
-  const [localError, setLocalError] = React.useState<string | undefined>(error)
-  const inputRef = React.useRef<HTMLInputElement>(null)
+  const [inputValue, setInputValue] = React.useState('');
+  const [localTags, setLocalTags] = React.useState<string[]>(
+    value || defaultValue || [],
+  );
+  const [localError, setLocalError] = React.useState<string | undefined>(error);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const hasError = !!localError || !!error
-  const errorId = `error-${id}`
-  const hintId = `hint-${id}`
+  const hasError = !!localError || !!error;
+  const errorId = `error-${id}`;
+  const hintId = `hint-${id}`;
 
   // Determine if component is controlled or uncontrolled
-  const isControlled = value !== undefined
+  const isControlled = value !== undefined;
 
   // Update local tags when value prop changes (for controlled component)
   React.useEffect(() => {
     if (isControlled && JSON.stringify(value) !== JSON.stringify(localTags)) {
-      setLocalTags(value || [])
+      setLocalTags(value || []);
     }
-  }, [value, isControlled, localTags])
+  }, [value, isControlled, localTags]);
 
   // Update local error when prop changes
   React.useEffect(() => {
-    setLocalError(error)
-  }, [error])
+    setLocalError(error);
+  }, [error]);
 
   // Handle validation with the provided schema
   const validateTags = React.useCallback(
     (tags: string[]) => {
-      if (!schema) return
+      if (!schema) return;
 
-      const result = schema.safeParse(tags)
+      const result = schema.safeParse(tags);
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || "Invalid input"
-        setLocalError(errorMessage)
-        onValidate?.(false, tags, errorMessage)
+        const errorMessage = result.error.errors[0]?.message || 'Invalid input';
+        setLocalError(errorMessage);
+        onValidate?.(false, tags, errorMessage);
       } else {
-        setLocalError(undefined)
-        onValidate?.(true, tags)
+        setLocalError(undefined);
+        onValidate?.(true, tags);
       }
     },
     [schema, onValidate],
-  )
+  );
 
   const updateTags = (newTags: string[]) => {
     if (isControlled) {
       // For controlled component, just call onChange
-      onChange?.(newTags)
+      onChange?.(newTags);
     } else {
       // For uncontrolled, update internal state
-      setLocalTags(newTags)
-      onChange?.(newTags)
+      setLocalTags(newTags);
+      onChange?.(newTags);
     }
 
     // Validate if schema is provided
     if (schema) {
-      validateTags(newTags)
+      validateTags(newTags);
     }
-  }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+    const value = e.target.value;
     // Only handle comma as a special case in the onChange handler
-    if (triggerKey === "Comma" && value.endsWith(",")) {
-      const newTag = value.slice(0, -1).trim()
+    if (triggerKey === 'Comma' && value.endsWith(',')) {
+      const newTag = value.slice(0, -1).trim();
       if (newTag && !localTags.includes(newTag)) {
-        const newTags = [...localTags, newTag]
-        updateTags(newTags)
-        setInputValue("")
+        const newTags = [...localTags, newTag];
+        updateTags(newTags);
+        setInputValue('');
       } else {
-        setInputValue("")
+        setInputValue('');
       }
     } else {
-      setInputValue(value)
+      setInputValue(value);
     }
-  }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Handle the selected trigger key
     if (
-      (triggerKey === "Enter" && e.key === "Enter") ||
-      (triggerKey === "Space" && e.key === " ") ||
-      (triggerKey === "Comma" && e.key === ",")
+      (triggerKey === 'Enter' && e.key === 'Enter') ||
+      (triggerKey === 'Space' && e.key === ' ') ||
+      (triggerKey === 'Comma' && e.key === ',')
     ) {
-      e.preventDefault()
-      const newTag = inputValue.trim()
+      e.preventDefault();
+      const newTag = inputValue.trim();
       if (newTag && !localTags.includes(newTag)) {
-        const newTags = [...localTags, newTag]
-        updateTags(newTags)
+        const newTags = [...localTags, newTag];
+        updateTags(newTags);
       }
-      setInputValue("")
-    } else if (e.key === "Backspace" && !inputValue && localTags.length > 0) {
+      setInputValue('');
+    } else if (e.key === 'Backspace' && !inputValue && localTags.length > 0) {
       // Always allow backspace to remove the last tag when input is empty
-      const newTags = localTags.slice(0, -1)
-      updateTags(newTags)
+      const newTags = localTags.slice(0, -1);
+      updateTags(newTags);
     }
-  }
+  };
 
   const removeTag = (tagToRemove: string) => {
-    const newTags = localTags.filter((tag) => tag !== tagToRemove)
-    updateTags(newTags)
-  }
+    const newTags = localTags.filter((tag) => tag !== tagToRemove);
+    updateTags(newTags);
+  };
 
   const handleBlur = () => {
     // Add tag on blur if there's input
-    const newTag = inputValue.trim()
+    const newTag = inputValue.trim();
     if (newTag && !localTags.includes(newTag)) {
-      const newTags = [...localTags, newTag]
-      updateTags(newTags)
-      setInputValue("")
+      const newTags = [...localTags, newTag];
+      updateTags(newTags);
+      setInputValue('');
     }
 
     // Validate on blur
     if (schema) {
-      validateTags(localTags)
+      validateTags(localTags);
     }
-  }
+  };
 
   // Get the trigger key display text for the placeholder
   const getTriggerKeyText = () => {
     switch (triggerKey) {
-      case "Enter":
-        return "Enter"
-      case "Space":
-        return "Space"
-      case "Comma":
-        return "comma"
+      case 'Enter':
+        return 'Enter';
+      case 'Space':
+        return 'Space';
+      case 'Comma':
+        return 'comma';
       default:
-        return "Enter"
+        return 'Enter';
     }
-  }
+  };
 
   return (
-    <div className={cn("group/field grid gap-2", containerClassName)} data-invalid={hasError}>
+    <div
+      className={cn('group/field grid gap-2', containerClassName)}
+      data-invalid={hasError}
+    >
       <label
         htmlFor={id}
         className={cn(
-          "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
-          labelVariant === "muted" && "text-muted-foreground",
+          'text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
+          labelVariant === 'muted' && 'text-muted-foreground',
           labelClassName,
         )}
       >
@@ -213,7 +219,9 @@ export function TagsInput({
         {required && <span aria-hidden="true"> *</span>}
       </label>
 
-      {description && <p className="text-xs text-muted-foreground">{description}</p>}
+      {description && (
+        <p className="text-xs text-muted-foreground">{description}</p>
+      )}
 
       {/* Input container - styled like TextInput */}
       <input
@@ -233,19 +241,23 @@ export function TagsInput({
         className={cn(
           // Default variant styling
           'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-[#4E90F9] dark:ring-offset-black ring-offset-white',
-          variant === "default" &&
-            "shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] border border-input rounded-md px-3",
+          variant === 'default' &&
+            'shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] border border-input rounded-md px-3',
 
           // Pill variant styling
-          variant === "pill" && "bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2",
-          variant === "pill" && coloredBorder && "border-2 border-primary",
-          variant === "pill" && "placeholder:text-muted-foreground",
+          variant === 'pill' &&
+            'bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2',
+          variant === 'pill' && coloredBorder && 'border-2 border-primary',
+          variant === 'pill' && 'placeholder:text-muted-foreground',
 
           // Error styling for both variants
-          "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+          'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
           className,
         )}
-        placeholder={props.placeholder || `Type and press ${getTriggerKeyText()} to add tags`}
+        placeholder={
+          props.placeholder ||
+          `Type and press ${getTriggerKeyText()} to add tags`
+        }
         {...props}
       />
 
@@ -256,8 +268,8 @@ export function TagsInput({
             <div
               key={tag}
               className={cn(
-                "flex items-center gap-1 px-2 py-1 text-sm bg-secondary",
-                variant === "pill" ? "rounded-lg" : "rounded-md",
+                'flex items-center gap-1 px-2 py-1 text-sm bg-secondary',
+                variant === 'pill' ? 'rounded-lg' : 'rounded-md',
               )}
             >
               <span>{tag}</span>
@@ -287,5 +299,5 @@ export function TagsInput({
         </p>
       )}
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import ShareButton from "@/delta/components/share-button"
-import { Share } from "@phosphor-icons/react"
+import ShareButton from '@/delta/components/share-button';
+import { Share } from '@phosphor-icons/react';
 
 export default function ShareButtonPopoverDemo() {
   return (
@@ -18,5 +18,5 @@ export default function ShareButtonPopoverDemo() {
         message="Check out Delta Components, a modern React UI library: "
       />
     </div>
-  )
+  );
 }

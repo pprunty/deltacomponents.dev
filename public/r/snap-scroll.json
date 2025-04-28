@@ -5,9 +5,7 @@
   "title": "Snap Scroll",
   "description": "A component for snap scrolling content",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "delta/components/snap-scroll.tsx",

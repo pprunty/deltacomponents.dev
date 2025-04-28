@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { TextareaInput } from "@/delta/components/textarea-input"
+import { TextareaInput } from '@/delta/components/textarea-input';
 
 export default function TextareaInputBasicDemo() {
   return (
@@ -12,5 +12,5 @@ export default function TextareaInputBasicDemo() {
         placeholder="Type your feedback here..."
       />
     </div>
-  )
+  );
 }
