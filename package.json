@@ -85,7 +85,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "react-tweet": "^3.2.2",
     "remark-gfm": "^4.0.1",
-    "shadcn": "2.4.0-canary.17",
+    "shadcn": "2.5.0",
     "shiki": "^3.2.1",
     "shikiji": "^0.10.2",
     "tailwind-merge": "^3.0.2",
