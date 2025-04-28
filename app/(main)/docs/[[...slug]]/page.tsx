@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getComponentByName } from '@/lib/registry';
 import { componentRegistry } from '@/delta/mapping';
 import { demoComponents } from '@/delta/demos';
+import { componentMetadata } from '@/app/routes';
 
 interface DocPageProps {
   params: Promise<{
@@ -46,10 +47,13 @@ export async function generateMetadata({
     return {};
   }
 
-  return {
-    title: doc.component.title,
-    description: doc.component.description,
-  };
+  const componentName = doc.component.name;
+  return (
+    componentMetadata[componentName] || {
+      title: doc.component.title,
+      description: doc.component.description,
+    }
+  );
 }
 
 export default async function DocPage({ params }: DocPageProps) {

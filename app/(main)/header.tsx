@@ -1,24 +1,24 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { ThemeSwitcher } from "@/components/theme-switcher"
-import { cn } from "@/lib/utils"
-import { Tabs, TabsList, TabsTrigger } from "@/delta/components/tabs"
-import { usePathname, useRouter } from "next/navigation"
-import { useState } from "react"
-import { Cross as Hamburger } from "hamburger-react"
-import Search from "./search"
+import Link from 'next/link';
+import { ThemeSwitcher } from '@/components/theme-switcher';
+import { cn } from '@/lib/utils';
+import { Tabs, TabsList, TabsTrigger } from '@/delta/components/tabs';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Cross as Hamburger } from 'hamburger-react';
+import Search from './search';
 
 interface HeaderProps {
-  className?: string
+  className?: string;
 }
 
 export function Header({ className }: HeaderProps) {
-  const [isOpen, setOpen] = useState(false)
-  const router = useRouter()
-  const pathname = usePathname()
+  const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
-const getActiveTab = () => {
+  const getActiveTab = () => {
     if (pathname === '/') return 'components';
     if (pathname === '/getting-started') return 'guide';
     return 'home';
@@ -33,7 +33,12 @@ const getActiveTab = () => {
   };
 
   return (
-    <header className={cn("flex items-center h-12 border-b relative z-50 px-4", className)}>
+    <header
+      className={cn(
+        'flex items-center h-12 border-b relative z-50 px-4',
+        className,
+      )}
+    >
       <div className="flex items-center gap-1 sm:gap-6 shrink-0">
         <div className="md:hidden mx-[-10px]">
           <Hamburger toggled={isOpen} toggle={setOpen} size={16} />
@@ -51,8 +56,15 @@ const getActiveTab = () => {
         </Link>
 
         <div className="hidden md:block">
-          <Tabs defaultValue={getActiveTab()} onValueChange={handleTabChange} className="w-[400px] mb-[-12px]">
-            <TabsList className="grid w-full grid-cols-2 relative" activeIndicatorOffset={0}>
+          <Tabs
+            defaultValue={getActiveTab()}
+            onValueChange={handleTabChange}
+            className="w-[400px] mb-[-12px]"
+          >
+            <TabsList
+              className="grid w-full grid-cols-2 relative"
+              activeIndicatorOffset={0}
+            >
               <TabsTrigger value="guide">Guide</TabsTrigger>
               <TabsTrigger value="components">Components</TabsTrigger>
             </TabsList>
@@ -91,5 +103,5 @@ const getActiveTab = () => {
         <ThemeSwitcher />
       </div>
     </header>
-  )
+  );
 }

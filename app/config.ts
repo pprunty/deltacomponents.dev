@@ -4,7 +4,7 @@ const config = {
       ? 'http://localhost:3000'
       : 'https://deltacomponents.dev',
   companyName: 'Delta Components',
-  companyDescription: 'Components that make the difference.',
+  companyDescription: 'Components that make the difference',
   author: {
     name: 'Patrick Prunty',
     url: 'https://patrickprunty.com',

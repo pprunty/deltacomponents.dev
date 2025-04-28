@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: config.companyName,
     images: [
       {
-        url: `${config.url}/icon.svg`,
+        url: `${config.url}/icon.png`,
         width: 512,
         height: 512,
         alt: `${config.companyName} - Modern Component Library`,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     creator: config.socials.twitter,
     images: [
       {
-        url: `${config.url}/icon.svg`,
+        url: `${config.url}/icon.png`,
         width: 512,
         height: 512,
         alt: `${config.companyName} - Modern Component Library`,
@@ -125,12 +125,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/180x180.svg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta
-          name="apple-mobile-web-app-title"
-          content="Default Title | My Website"
-        />
       </head>
       <body>
         {children}
