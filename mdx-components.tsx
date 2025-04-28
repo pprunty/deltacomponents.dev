@@ -5,7 +5,7 @@ import CodeBlock from '@/delta/components/code-block';
 import { ComponentTabs } from '@/components/component-tabs';
 import { InstallationInstructions } from '@/components/installation-instructions';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import React, { ReactNode, Children } from 'react';
 import {
   Table,
   TableBody,
@@ -16,12 +16,70 @@ import {
 } from '@/components/ui/table';
 import { Heading } from './app/(main)/docs/[[...slug]]/heading';
 
+export function withHeadingId(children: ReactNode): ReactNode {
+  return Children.map(children, (el) => {
+    // Check if `el` is a string
+    if (typeof el === 'string') {
+      const re = /\[#([^\]]+)\]\s*$/m;
+      const match = el.match(re);
+
+      if (match && match[1]?.length) {
+        return (
+          <span className="relative">
+            <a
+              className={`
+                absolute
+                px-3
+                -left-[2rem]
+                invisible
+                [span:hover_&]:visible
+                font-mono
+                font-normal
+                text-gray-400
+                hover:text-gray-600
+                dark:text-gray-500
+                dark:hover:text-gray-400
+              `}
+              href={`#${match[1]}`}
+            >
+              #
+            </a>
+            <a
+              id={match[1]}
+              className={`
+              absolute
+              -top-[20px]
+            `}
+            />
+            {el.substring(0, match.index)} {/* Remove matched part */}
+          </span>
+        );
+      }
+    }
+
+    // Return the element as-is if it's not a string or doesn't match the pattern
+    return el;
+  });
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Use the custom heading components with anchor links
-    h1: ({ children }) => <Heading level={1}>{children}</Heading>,
-    h2: ({ children }) => <Heading level={2}>{children}</Heading>,
-    h3: ({ children }) => <Heading level={3}>{children}</Heading>,
+    // Use the withHeadingId utility for headings
+    h1: ({ children }) => (
+      <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+        {withHeadingId(children)}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
+        {withHeadingId(children)}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+        {withHeadingId(children)}
+      </h3>
+    ),
     p: ({ children }) => (
       <p className="my-4 text-muted-foreground">{children}</p>
     ),

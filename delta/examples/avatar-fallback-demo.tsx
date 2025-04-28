@@ -34,7 +34,7 @@ export default function AvatarFallbackDemo() {
           <Avatar
             name="Click Me"
             size={40}
-            src="/icon.webp"
+            src="/icon.png"
             onClick={() => alert('Avatar clicked!')}
           />
           <Avatar

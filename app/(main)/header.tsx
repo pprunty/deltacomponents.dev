@@ -1,25 +1,24 @@
-'use client';
+"use client"
 
-import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
-import { cn } from '@/lib/utils';
-import { Tabs, TabsList, TabsTrigger } from '@/delta/components/tabs';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { Cross as Hamburger } from 'hamburger-react';
-import Search from './search';
+import Link from "next/link"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+import { cn } from "@/lib/utils"
+import { Tabs, TabsList, TabsTrigger } from "@/delta/components/tabs"
+import { usePathname, useRouter } from "next/navigation"
+import { useState } from "react"
+import { Cross as Hamburger } from "hamburger-react"
+import Search from "./search"
 
 interface HeaderProps {
-  className?: string;
+  className?: string
 }
 
 export function Header({ className }: HeaderProps) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
-  // Determine the active tab based on the current path
-  const getActiveTab = () => {
+const getActiveTab = () => {
     if (pathname === '/') return 'components';
     if (pathname === '/getting-started') return 'guide';
     return 'home';
@@ -34,14 +33,9 @@ export function Header({ className }: HeaderProps) {
   };
 
   return (
-    <header
-      className={cn(
-        'flex items-center justify-between gap-6 px-4 h-12 border-b relative z-50',
-        className,
-      )}
-    >
-      <div className="flex items-center gap-1 sm:gap-6">
-        <div className="md:hidden ml-[-10px]">
+    <header className={cn("flex items-center h-12 border-b relative z-50 px-4", className)}>
+      <div className="flex items-center gap-1 sm:gap-6 shrink-0">
+        <div className="md:hidden mx-[-10px]">
           <Hamburger toggled={isOpen} toggle={setOpen} size={16} />
         </div>
         <Link href="/" className="flex items-center">
@@ -57,15 +51,8 @@ export function Header({ className }: HeaderProps) {
         </Link>
 
         <div className="hidden md:block">
-          <Tabs
-            defaultValue={getActiveTab()}
-            onValueChange={handleTabChange}
-            className="w-[400px] mb-[-12px]"
-          >
-            <TabsList
-              className="grid w-full grid-cols-2 relative"
-              activeIndicatorOffset={0}
-            >
+          <Tabs defaultValue={getActiveTab()} onValueChange={handleTabChange} className="w-[400px] mb-[-12px]">
+            <TabsList className="grid w-full grid-cols-2 relative" activeIndicatorOffset={0}>
               <TabsTrigger value="guide">Guide</TabsTrigger>
               <TabsTrigger value="components">Components</TabsTrigger>
             </TabsList>
@@ -73,11 +60,15 @@ export function Header({ className }: HeaderProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-1">
-        {/* Mobile search icon */}
-        <div className="md:hidden">
-          <Search mobileOnly={true} />
-        </div>
+      {/* Mobile search only - takes up available space on mobile */}
+      <div className="flex-grow md:hidden mx-2">
+        <Search showFullInputOnMobile />
+      </div>
+
+      {/* Empty spacer div for desktop to push icons to the right */}
+      <div className="hidden md:block flex-grow"></div>
+
+      <div className="flex items-center gap-1 shrink-0">
         <a
           href="https://github.com/pprunty/deltacomponents.dev"
           target="_blank"
@@ -100,5 +91,5 @@ export function Header({ className }: HeaderProps) {
         <ThemeSwitcher />
       </div>
     </header>
-  );
+  )
 }
