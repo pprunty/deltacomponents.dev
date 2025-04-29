@@ -54,6 +54,7 @@ import ProductSpotlightCardBasicDemo from '@/delta/examples/product-spotlight-ca
 import FooterBasicDemo from '@/delta/examples/footer-basic-demo';
 import SocialIconsBasicDemo from '@/delta/examples/social-icons-basic-demo';
 import SocialIconsVariantsDemo from '@/delta/examples/social-icons-variants-demo';
+import DrawerBasicDemo from "@/delta/examples/drawer-basic-demo"
 
 export const demoComponents = {
   ButtonVariantsDemo,
@@ -111,4 +112,5 @@ export const demoComponents = {
   SocialIconsBasicDemo,
   SocialIconsVariantsDemo,
   SmartFormPaymentDemo,
+  DrawerBasicDemo,
 } as const;

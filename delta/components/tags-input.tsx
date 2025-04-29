@@ -240,7 +240,7 @@ export function TagsInput({
         aria-required={required}
         className={cn(
           // Default variant styling
-          'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-[#4E90F9] dark:ring-offset-black ring-offset-white',
+          'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-[#4E90F9] dark:ring-offset-black ring-offset-white placeholder:text-muted-foreground',
           variant === 'default' &&
             'shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] border border-input rounded-md px-3',
 

@@ -10,8 +10,12 @@
       "badge": "beta",
       "category": "components",
       "description": "A component for admonition",
-      "dependencies": ["@phosphor-icons/react"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/admonition.tsx",
@@ -51,8 +55,14 @@
       "title": "Modal",
       "category": "components",
       "description": "A component for modal",
-      "dependencies": ["react-dom", "framer-motion", "@phosphor-icons/react"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "react-dom",
+        "framer-motion",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/modal.tsx",
@@ -79,7 +89,9 @@
       "category": "components",
       "description": "A component for scramble-in",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/scramble-in.tsx",
@@ -152,7 +164,10 @@
       "badge": "beta",
       "category": "components",
       "description": "A component for button",
-      "dependencies": ["clsx", "react-spinners"],
+      "dependencies": [
+        "clsx",
+        "react-spinners"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -204,8 +219,12 @@
       "badge": "beta",
       "category": "inputs",
       "description": "A text input component with validation, error handling, and various styling options",
-      "dependencies": ["zod"],
-      "registryDependencies": ["input"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
       "files": [
         {
           "path": "delta/components/text-input.tsx",
@@ -235,8 +254,13 @@
       "title": "Checkbox Input",
       "category": "inputs",
       "description": "A component for checkbox-input",
-      "dependencies": ["zod"],
-      "registryDependencies": ["checkbox", "utils"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/checkbox-input.tsx",
@@ -262,8 +286,13 @@
       "badge": "beta",
       "category": "inputs",
       "description": "A select input component with both native and shadcn/ui select variants",
-      "dependencies": ["zod", "lucide-react"],
-      "registryDependencies": ["select"],
+      "dependencies": [
+        "zod",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
       "files": [
         {
           "path": "delta/components/select-input.tsx",
@@ -288,8 +317,13 @@
       "title": "Radio Input",
       "category": "inputs",
       "description": "A component for radio-input",
-      "dependencies": ["zod"],
-      "registryDependencies": ["utils", "radio-group"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "radio-group"
+      ],
       "files": [
         {
           "path": "delta/components/radio-input.tsx",
@@ -371,8 +405,17 @@
       "title": "Date Input",
       "category": "inputs",
       "description": "A component for date-input",
-      "dependencies": ["date-fns", "lucide-react", "zod"],
-      "registryDependencies": ["utils", "button", "calendar", "popover"],
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "calendar",
+        "popover"
+      ],
       "files": [
         {
           "path": "delta/components/date-input.tsx",
@@ -397,8 +440,14 @@
       "title": "File Input",
       "category": "inputs",
       "description": "A component for file-input",
-      "dependencies": ["@phosphor-icons/react", "zod"],
-      "registryDependencies": ["utils", "button"],
+      "dependencies": [
+        "@phosphor-icons/react",
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
       "files": [
         {
           "path": "delta/components/file-input.tsx",
@@ -516,8 +565,12 @@
       "title": "Otp Input",
       "category": "inputs",
       "description": "A component for otp-input",
-      "dependencies": ["zod"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/otp-input.tsx",
@@ -547,7 +600,9 @@
       "title": "Floating Button",
       "description": "A component for floating-button",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/floating-button.tsx",
@@ -571,8 +626,12 @@
       "type": "registry:component",
       "title": "Footer",
       "description": "A component for footer",
-      "dependencies": ["next"],
-      "registryDependencies": ["social-icons"],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "social-icons"
+      ],
       "files": [
         {
           "path": "delta/components/footer.tsx",
@@ -597,8 +656,14 @@
       "title": "Code Block",
       "category": "components",
       "description": "A component for code-block",
-      "dependencies": ["shikiji", "next-themes", "@phosphor-icons/react"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "shikiji",
+        "next-themes",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/code-block.tsx",
@@ -633,8 +698,14 @@
       "title": "Back Button",
       "category": "components",
       "description": "A component for back-button",
-      "dependencies": ["next", "@phosphor-icons/react"],
-      "registryDependencies": ["button", "utils"],
+      "dependencies": [
+        "next",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/back-button.tsx",
@@ -695,7 +766,9 @@
         "@phosphor-icons/react",
         "class-variance-authority"
       ],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/accordion.tsx",
@@ -725,8 +798,12 @@
       "title": "Avatar",
       "category": "components",
       "description": "A component for avatar",
-      "dependencies": ["next"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/avatar.tsx",
@@ -765,7 +842,10 @@
         "@tiptap/extension-list-item",
         "@phosphor-icons/react"
       ],
-      "registryDependencies": ["button", "utils"],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/text-editor.tsx",
@@ -816,8 +896,13 @@
       "title": "Product Spotlight Card",
       "category": "components",
       "description": "A component for product-spotlight-card",
-      "dependencies": ["next"],
-      "registryDependencies": ["utils", "card"],
+      "dependencies": [
+        "next"
+      ],
+      "registryDependencies": [
+        "utils",
+        "card"
+      ],
       "files": [
         {
           "path": "delta/components/product-spotlight-card.tsx",
@@ -873,7 +958,9 @@
       "category": "components",
       "description": "A card component with a neobrutalism design style",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/neobrutalism-card.tsx",
@@ -909,7 +996,9 @@
       "category": "components",
       "description": "A component for displaying and managing comments",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/comments-section.tsx",
@@ -935,7 +1024,9 @@
       "category": "components",
       "description": "A component for snap scrolling content",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/snap-scroll.tsx",
@@ -961,7 +1052,9 @@
       "category": "components",
       "description": "A component for displaying tweet-like content",
       "dependencies": [],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "delta/components/tweet.tsx",
@@ -982,6 +1075,31 @@
           "path": "content/docs/tweet.mdx",
           "type": "registry:component",
           "target": "content/docs/tweet.mdx"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:component",
+      "title": "Drawer",
+      "description": "A component for drawer",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "delta/components/drawer.tsx",
+          "type": "registry:component",
+          "target": "delta/components/drawer.tsx"
+        },
+        {
+          "path": "delta/examples/drawer-basic-demo.tsx",
+          "type": "registry:component",
+          "target": "delta/examples/drawer-basic-demo.tsx"
+        },
+        {
+          "path": "content/docs/drawer.mdx",
+          "type": "registry:component",
+          "target": "content/docs/drawer.mdx"
         }
       ]
     }

@@ -1,7 +1,7 @@
 import type React from 'react';
 import { Header } from './header';
 import { Sidebar } from './sidebar';
-import Footer from '@/delta/components/footer';
+import { TableOfContents } from './toc';
 
 export default function RootLayout({
   children,
@@ -10,17 +10,30 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <main className="relative min-h-screen">
-        <Header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" />
-        {/* Main content */}
-        <Sidebar className="z-40" />
-        <div className="md:pl-72">
-          <div className="max-w-3xl mx-auto px-4 pt-20 pb-32 sm:pb-20">
-            {children}
+      {/* Header - only visible on mobile */}
+      <div className="fixed top-0 left-0 right-0 z-50 lg:hidden">
+        <Header />
+      </div>
+
+      {/* Main layout with grid system for desktop */}
+      <div className="relative min-h-screen pt-12 lg:pt-6 lg:grid lg:grid-cols-[220px,minmax(0,1fr),240px] gap-0">
+        {/* Sidebar - fixed on the left */}
+        <Sidebar />
+
+        {/* Main content area */}
+        <main className="lg:col-start-2">
+          <div className="pb-16">
+            {/* Content container */}
+            <div className="max-w-3xl mx-auto px-4 lg:px-8">
+              {children}
+            </div>
           </div>
-          <Footer border={true} />
-        </div>
-      </main>
+          {/*<Footer border={true} /> */}
+        </main>
+        {/* Table of contents column - only visible on xl screens */}
+        <TableOfContents className="hidden xl:block mt-2" />
+
+      </div>
     </>
   );
 }

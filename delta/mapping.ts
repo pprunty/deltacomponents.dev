@@ -28,6 +28,7 @@ import * as TagsInputDoc from '@/content/docs/tags-input.mdx';
 import * as ProductSpotlightCardDoc from '@/content/docs/product-spotlight-card.mdx';
 import * as FooterDoc from '@/content/docs/footer.mdx';
 import * as SocialIconsDoc from '@/content/docs/social-icons.mdx';
+import * as DrawerDoc from "@/content/docs/drawer.mdx"
 
 export const componentRegistry = {
   button: ButtonDoc,
@@ -60,5 +61,5 @@ export const componentRegistry = {
   'product-spotlight-card': ProductSpotlightCardDoc,
   footer: FooterDoc,
   'social-icons': SocialIconsDoc,
-};
+  "drawer": DrawerDoc,};
 export type ComponentName = keyof typeof componentRegistry;

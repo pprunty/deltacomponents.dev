@@ -21,6 +21,7 @@ const PlaceholderComponent: React.FC = () => (
 // import FooterDemo from "@/delta/components/footer-demo"
 // import SocialIconsDemo from "@/delta/components/social-icons-demo"
 // import SocialIconsVariantsDemo from "@/delta/examples/social-icons-variants-demo"
+// import DrawerDemo from "@/delta/components/drawer-demo"
 
 // Use placeholder components
 const ShareButtonDemo = PlaceholderComponent;
@@ -37,6 +38,7 @@ const ProductSpotlightCardDemo = PlaceholderComponent;
 const FooterDemo = PlaceholderComponent;
 const SocialIconsDemo = PlaceholderComponent;
 const SocialIconsVariantsDemo = PlaceholderComponent;
+const DrawerDemo = PlaceholderComponent;
 
 // Create a registry object that maps component names to their implementations
 export const registry: Record<string, { component: React.ComponentType }> = {
@@ -82,4 +84,7 @@ export const registry: Record<string, { component: React.ComponentType }> = {
   'social-icons-variants': {
     component: SocialIconsVariantsDemo,
   },
+  "drawer": {
+    component: DrawerDemo,
+  }
 };
