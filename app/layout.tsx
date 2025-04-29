@@ -128,7 +128,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body>
+        <main>
         {children}
+        </main>
         <ClientComponents />
       </body>
     </html>

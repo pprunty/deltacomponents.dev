@@ -37,7 +37,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Complex Component deltacomponents.dev',
       description:
         'A complex component showing hooks, libs and components. Demonstrates how to build a Pokemon card component with data fetching and state management.',
-      url: `${BASE_URL}/docs/complex-component`,
+      url: `${BASE_URL}/docs/ui/complex-component`,
       images: [
         {
           url: `${BASE_URL}/og/complex-component.png`,
@@ -56,7 +56,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Admonition deltacomponents.dev',
       description:
         'A versatile component for displaying important information, warnings, or tips in a visually distinct way.',
-      url: `${BASE_URL}/docs/admonition`,
+      url: `${BASE_URL}/docs/ui/admonition`,
       images: [
         {
           url: `${BASE_URL}/og/admonition.png`,
@@ -75,7 +75,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Modal deltacomponents.dev',
       description:
         'A customizable modal component with animations and various style options. Built with Framer Motion for smooth transitions.',
-      url: `${BASE_URL}/docs/modal`,
+      url: `${BASE_URL}/docs/ui/modal`,
       images: [
         {
           url: `${BASE_URL}/og/modal.png`,
@@ -94,7 +94,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Scramble In deltacomponents.dev',
       description:
         'A text animation component that scrambles and reveals text with a modern, engaging effect.',
-      url: `${BASE_URL}/docs/scramble-in`,
+      url: `${BASE_URL}/docs/ui/scramble-in`,
       images: [
         {
           url: `${BASE_URL}/og/scramble-in.png`,
@@ -113,7 +113,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Neobrutalism Card deltacomponents.dev',
       description:
         'A bold, modern card component inspired by the neobrutalism design movement.',
-      url: `${BASE_URL}/docs/neobrutalism-card`,
+      url: `${BASE_URL}/docs/ui/neobrutalism-card`,
       images: [
         {
           url: `${BASE_URL}/og/neobrutalism-card.png`,
@@ -132,7 +132,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'useHqImage Hook deltacomponents.dev',
       description:
         'A React hook for loading high-quality images with automatic fallback and loading states.',
-      url: `${BASE_URL}/docs/use-hq-image`,
+      url: `${BASE_URL}/docs/ui/use-hq-image`,
       images: [
         {
           url: `${BASE_URL}/og/use-hq-image.png`,
@@ -151,7 +151,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Bottom Bar deltacomponents.dev',
       description:
         'A mobile-friendly bottom navigation bar component with customizable icons and labels.',
-      url: `${BASE_URL}/docs/bottom-bar`,
+      url: `${BASE_URL}/docs/ui/bottom-bar`,
       images: [
         {
           url: `${BASE_URL}/og/bottom-bar.png`,
@@ -170,7 +170,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Full Bleed Section deltacomponents.dev',
       description:
         'A section component that extends to the full width of the viewport with customizable content alignment.',
-      url: `${BASE_URL}/docs/full-bleed-section`,
+      url: `${BASE_URL}/docs/ui/full-bleed-section`,
       images: [
         {
           url: `${BASE_URL}/og/full-bleed-section.png`,
@@ -189,7 +189,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Tweet deltacomponents.dev',
       description:
         'A component for embedding and displaying tweets with server-side rendering and custom styling.',
-      url: `${BASE_URL}/docs/tweet`,
+      url: `${BASE_URL}/docs/ui/tweet`,
       images: [
         {
           url: `${BASE_URL}/og/tweet.png`,
@@ -208,7 +208,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Video Player deltacomponents.dev',
       description:
         'A customizable video player component with controls, thumbnail support, and responsive design.',
-      url: `${BASE_URL}/docs/video-player`,
+      url: `${BASE_URL}/docs/ui/video-player`,
       images: [
         {
           url: `${BASE_URL}/og/video-player.png`,
@@ -227,7 +227,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Tabs deltacomponents.dev',
       description:
         'A flexible tabs component with support for different styles, animations, and content organization.',
-      url: `${BASE_URL}/docs/tabs`,
+      url: `${BASE_URL}/docs/ui/tabs`,
       images: [
         {
           url: `${BASE_URL}/og/tabs.gif`,
@@ -246,7 +246,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Button deltacomponents.dev',
       description:
         'A versatile button component with multiple variants, sizes, and states.',
-      url: `${BASE_URL}/docs/button`,
+      url: `${BASE_URL}/docs/ui/button`,
       images: [
         {
           url: `${BASE_URL}/og/button.png`,
@@ -265,7 +265,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Text Input deltacomponents.dev',
       description:
         'A text input component with validation, error handling, and various styling options.',
-      url: `${BASE_URL}/docs/text-input`,
+      url: `${BASE_URL}/docs/ui/text-input`,
       images: [
         {
           url: `${BASE_URL}/og/text-input.png`,
@@ -284,7 +284,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Checkbox Input deltacomponents.dev',
       description:
         'A checkbox input component with validation, error handling, and label support.',
-      url: `${BASE_URL}/docs/checkbox-input`,
+      url: `${BASE_URL}/docs/ui/checkbox-input`,
       images: [
         {
           url: `${BASE_URL}/og/checkbox-input.png`,
@@ -303,7 +303,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Select Input deltacomponents.dev',
       description:
         'A select input component with both native and shadcn/ui select variants.',
-      url: `${BASE_URL}/docs/select-input`,
+      url: `${BASE_URL}/docs/ui/select-input`,
       images: [
         {
           url: `${BASE_URL}/og/select-input.png`,
@@ -322,7 +322,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Radio Input deltacomponents.dev',
       description:
         'A radio input group component with validation and description support.',
-      url: `${BASE_URL}/docs/radio-input`,
+      url: `${BASE_URL}/docs/ui/radio-input`,
       images: [
         {
           url: `${BASE_URL}/og/radio-input.png`,
@@ -340,7 +340,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Switch Input deltacomponents.dev',
       description:
         'A switch toggle component with validation and label support.',
-      url: `${BASE_URL}/docs/switch-input`,
+      url: `${BASE_URL}/docs/ui/switch-input`,
       images: [
         {
           url: `${BASE_URL}/og/switch-input.png`,
@@ -359,7 +359,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Textarea Input deltacomponents.dev',
       description:
         'A textarea component with validation, error handling, and various styling options.',
-      url: `${BASE_URL}/docs/textarea-input`,
+      url: `${BASE_URL}/docs/ui/textarea-input`,
       images: [
         {
           url: `${BASE_URL}/og/textarea-input.png`,
@@ -378,7 +378,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Date Input deltacomponents.dev',
       description:
         'A date picker component with validation, min/max date support, and formatting options.',
-      url: `${BASE_URL}/docs/date-input`,
+      url: `${BASE_URL}/docs/ui/date-input`,
       images: [
         {
           url: `${BASE_URL}/og/date-input.png`,
@@ -397,7 +397,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'File Input deltacomponents.dev',
       description:
         'A file input component with drag and drop support, file previews, and validation.',
-      url: `${BASE_URL}/docs/file-input`,
+      url: `${BASE_URL}/docs/ui/file-input`,
       images: [
         {
           url: `${BASE_URL}/og/file-input.png`,
@@ -416,7 +416,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Smart Form deltacomponents.dev',
       description:
         'A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.',
-      url: `${BASE_URL}/docs/smart-form`,
+      url: `${BASE_URL}/docs/ui/smart-form`,
       images: [
         {
           url: `${BASE_URL}/og/smart-form.png`,
@@ -435,7 +435,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'OTP Input deltacomponents.dev',
       description:
         'A one-time password input component with automatic focus management and validation.',
-      url: `${BASE_URL}/docs/otp-input`,
+      url: `${BASE_URL}/docs/ui/otp-input`,
       images: [
         {
           url: `${BASE_URL}/og/otp-input.png`,
@@ -454,7 +454,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Floating Button deltacomponents.dev',
       description:
         'A customizable floating button component with positioning, tooltip, and responsive behavior.',
-      url: `${BASE_URL}/docs/floating-button`,
+      url: `${BASE_URL}/docs/ui/floating-button`,
       images: [
         {
           url: `${BASE_URL}/og/floating-button.png`,
@@ -473,7 +473,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Share Button deltacomponents.dev',
       description:
         'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback for desktop browsers.',
-      url: `${BASE_URL}/docs/share-button`,
+      url: `${BASE_URL}/docs/ui/share-button`,
       images: [
         {
           url: `${BASE_URL}/og/share-button.png`,
@@ -492,7 +492,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Text Editor deltacomponents.dev',
       description:
         'A rich text editor component with formatting options, toolbar, and customizable styling.',
-      url: `${BASE_URL}/docs/text-editor`,
+      url: `${BASE_URL}/docs/ui/text-editor`,
       images: [
         {
           url: `${BASE_URL}/og/text-editor.png`,
@@ -511,7 +511,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Product Spotlight Card deltacomponents.dev',
       description:
         'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
-      url: `${BASE_URL}/docs/product-spotlight-card`,
+      url: `${BASE_URL}/docs/ui/product-spotlight-card`,
       images: [
         {
           url: `${BASE_URL}/og/product-spotlight-card.png`,
@@ -530,7 +530,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Back Button deltacomponents.dev',
       description:
         'A navigation button component that provides a consistent way to return to previous pages.',
-      url: `${BASE_URL}/docs/back-button`,
+      url: `${BASE_URL}/docs/ui/back-button`,
       images: [
         {
           url: `${BASE_URL}/og/back-button.png`,
@@ -549,7 +549,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Tags Input deltacomponents.dev',
       description:
         'An input component for managing tags with support for adding, removing, and validating tags.',
-      url: `${BASE_URL}/docs/tags-input`,
+      url: `${BASE_URL}/docs/ui/tags-input`,
       images: [
         {
           url: `${BASE_URL}/og/tags-input.png`,
@@ -568,7 +568,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Snap Scroll deltacomponents.dev',
       description:
         'A scrollable container component with snap points for smooth scrolling between sections.',
-      url: `${BASE_URL}/docs/snap-scroll`,
+      url: `${BASE_URL}/docs/ui/snap-scroll`,
       images: [
         {
           url: `${BASE_URL}/og/snap-scroll.png`,
@@ -587,7 +587,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Code Block deltacomponents.dev',
       description:
         'A syntax-highlighted code block component with copy functionality and customizable themes.',
-      url: `${BASE_URL}/docs/code-block`,
+      url: `${BASE_URL}/docs/ui/code-block`,
       images: [
         {
           url: `${BASE_URL}/og/code-block.png`,
@@ -606,7 +606,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Accordion deltacomponents.dev',
       description:
         'A collapsible content component with smooth animations and customizable styling.',
-      url: `${BASE_URL}/docs/accordion`,
+      url: `${BASE_URL}/docs/ui/accordion`,
       images: [
         {
           url: `${BASE_URL}/og/accordion.png`,
@@ -625,7 +625,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'Avatar deltacomponents.dev',
       description:
         'A circular avatar component that displays user images with fallback support and customizable sizes.',
-      url: `${BASE_URL}/docs/avatar`,
+      url: `${BASE_URL}/docs/ui/avatar`,
       images: [
         {
           url: `${BASE_URL}/og/avatar.png`,
@@ -644,7 +644,7 @@ export const componentMetadata: Record<string, Metadata> = {
       title: 'X Scrollable deltacomponents.dev',
       description:
         'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
-      url: `${BASE_URL}/docs/x-scrollable`,
+      url: `${BASE_URL}/docs/ui/x-scrollable`,
       images: [
         {
           url: `${BASE_URL}/og/x-scrollable.png`,

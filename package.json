@@ -27,6 +27,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
+    "generate-mapping": "node scripts/generate-mapping.js",
+    "prebuild": "npm run generate-mapping",
     "build": "next build",
     "start": "next start",
     "lint:fix": "next lint --fix",

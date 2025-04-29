@@ -1,22 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import Search from './search';
 import { useEffect, useState } from 'react';
 import { ThemeSwitcher } from '@/components/theme-switcher';
 import { getCategories, type CategoryType } from '@/lib/registry';
-import { XLogo } from '@phosphor-icons/react';
 
 // Navigation items configuration
 const navigationItems = {
   basics: {
     title: 'Basics',
     items: [
-      { href: '/', label: 'Introduction' },
-      { href: '/getting-started', label: 'Getting Started' }
+      { href: '/docs/introduction', label: 'Introduction' },
+      { href: '/docs/getting-started', label: 'Getting Started' }
     ]
   }
 };
@@ -132,11 +130,11 @@ export function Sidebar({ className }: SidebarProps) {
               {category.items.map((item) => (
                 <li key={item.name}>
                   <Link
-                    href={`/docs/${item.name}`}
+                    href={`/docs/ui/${item.name}`}
                     className={cn(
                       'h-7 flex items-center font-medium text-[13px] px-2 -ml-2 rounded-md w-[calc(100%+8px)]',
                       'hover:bg-accent/50 transition-colors',
-                      isActive(`/docs/${item.name}`)
+                      isActive(`/docs/ui/${item.name}`)
                         ? 'bg-accent text-primary'
                         : 'text-muted-foreground',
                     )}
@@ -153,35 +151,6 @@ export function Sidebar({ className }: SidebarProps) {
             )}
           </div>
         ))}
-      </div>
-
-      {/* Follow me on X Card - added above footer */}
-      <div className="mt-auto px-4 pt-4 border-t border-dotted border-border">
-        <Link 
-          href="https://x.com/pprunty_" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="block border border-border rounded-lg p-3 mb-4 bg-background hover:bg-accent/10 transition-colors"
-        >
-          <h3 className="text-sm font-semibold mb-2 flex items-center">
-            Follow me on <XLogo size={14} weight="fill" className="ml-1 inline-block" />
-          </h3>
-          <div className="relative w-full h-24 rounded-lg overflow-hidden">
-            <Image 
-              src="/images/patrickprunty.png" 
-              alt="Patrick Prunty profile" 
-              fill 
-              quality={100}
-              className="object-cover rounded-lg"
-              onError={(e) => {
-                // Fallback if image fails to load
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23cccccc'/%3E%3C/svg%3E";
-              }}
-            />
-          </div>
-        </Link>
       </div>
 
       {/* Footer section with border */}

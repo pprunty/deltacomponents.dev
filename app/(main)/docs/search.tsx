@@ -28,13 +28,33 @@ interface SearchResult {
   description?: string
 }
 
-const getSearchResults = (): SearchResult[] =>
-  registryData.items.map((item) => ({
+const getSearchResults = (): SearchResult[] => {
+  // Get UI component results
+  const uiComponentResults = registryData.items.map((item) => ({
     title: item.title,
-    path: `/docs/${item.name}`,
+    path: `/docs/ui/${item.name}`,
     category: item.category || "component",
     description: item.description,
-  }))
+  }));
+  
+  // Add documentation pages
+  const docResults: SearchResult[] = [
+    {
+      title: "Introduction",
+      path: "/docs/introduction",
+      category: "documentation",
+      description: "Introduction to Delta Components"
+    },
+    {
+      title: "Getting Started",
+      path: "/docs/getting-started",
+      category: "documentation",
+      description: "How to get started with Delta Components"
+    }
+  ];
+  
+  return [...uiComponentResults, ...docResults];
+}
 
 // Create a global hotkey manager to prevent multiple instances from responding to the same shortcut
 const hotkeyManager = {
@@ -98,9 +118,10 @@ export default function Search({
     return () => {
       if (hotkeyRegistered) {
         hotkeyManager.unregister()
+        setHotkeyRegistered(false)
       }
     }
-  }, [enableHotkey, isMobile, mobileOnly, hotkeyRegistered])
+  }, [enableHotkey, isMobile, mobileOnly]);
 
   // wire ⌘K / Ctrl+K only if asked and registered
   useEffect(() => {
@@ -167,6 +188,7 @@ export default function Search({
             className="flex h-10 w-full rounded-md border border-input bg-background/50 pl-10 pr-3 py-2 text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             placeholder={placeholder}
             value={query}
+            autoFocus
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
@@ -223,7 +245,7 @@ export default function Search({
             <input
               ref={inputRef}
               type="search"
-              className="flex h-8 w-full rounded-md border border-input bg-background pl-7 pr-16 py-1 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="flex h-8 w-full rounded-md border border-input bg-background pl-7 pr-16 py-1 text-[13px] placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               placeholder={placeholder}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -270,7 +292,7 @@ export default function Search({
           <input
             ref={desktopInputRef}
             type="search"
-            className="flex h-8 w-full rounded-md border border-input bg-background pl-7 pr-16 py-1 text-[13px] placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            className="flex h-8 w-full rounded-md border border-input bg-background pl-7 pr-16 py-1 text-base sm:text-[13px] placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             placeholder={placeholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
