@@ -10,13 +10,13 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {/* Header - only visible on mobile */}
-      <div className="fixed top-0 left-0 right-0 z-50 lg:hidden">
+      {/* Header - visible on all screen sizes */}
+      <div className="fixed top-0 left-0 right-0 z-50">
         <Header />
       </div>
 
       {/* Main layout with grid system for desktop */}
-      <div className="relative min-h-screen pt-12 lg:pt-6 lg:grid lg:grid-cols-[220px,minmax(0,1fr),240px] gap-0">
+      <div className="relative min-h-screen pt-16 lg:grid lg:grid-cols-[250px,minmax(0,1fr),240px] gap-0">
         {/* Sidebar - fixed on the left */}
         <Sidebar />
 

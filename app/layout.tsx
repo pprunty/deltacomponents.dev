@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Hanken_Grotesk } from 'next/font/google';
 import { themeEffect } from '@/components/theme-effect';
@@ -13,6 +13,13 @@ const hankenGrotesk = Hanken_Grotesk({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: true,
+  themeColor: "transparent",
+}
 
 export const metadata: Metadata = {
   title: `${config.companyName}`,
@@ -102,6 +109,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1c1c1b' }
+  ]
 };
 
 export default function RootLayout({
@@ -127,7 +138,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body>
+      <body className="bg-background">
         <main>
         {children}
         </main>

@@ -15,6 +15,23 @@ export function ThemeSwitcher() {
     setCurrentTheme(current);
   }, []);
 
+  // Update meta theme color based on current theme
+  const updateMetaThemeColor = useCallback((theme: string) => {
+    const color = theme === 'dark' ? '#1c1c1b' : '#ffffff';
+    // Find existing meta tag
+    const metaThemeColor = document.head.querySelector('meta[name=theme-color]');
+    
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', color);
+    } else {
+      // Create meta tag if it doesn't exist
+      const meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = color;
+      document.head.appendChild(meta);
+    }
+  }, []);
+
   useLayoutEffect(() => {
     // Default to system theme on initial load (if no value is stored)
     setPreference(localStorage.getItem('theme'));
@@ -31,8 +48,14 @@ export function ThemeSwitcher() {
   }, []);
 
   useEffect(() => {
-    setCurrentTheme(themeEffect());
-  }, [preference]);
+    const newTheme = themeEffect();
+    setCurrentTheme(newTheme);
+    
+    // Update meta theme color whenever theme changes
+    if (newTheme) {
+      updateMetaThemeColor(newTheme);
+    }
+  }, [preference, updateMetaThemeColor]);
 
   useEffect(() => {
     window.addEventListener('storage', onStorageChange);

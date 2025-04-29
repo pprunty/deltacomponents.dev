@@ -121,7 +121,7 @@ export default function Search({
         setHotkeyRegistered(false)
       }
     }
-  }, [enableHotkey, isMobile, mobileOnly]);
+  }, [enableHotkey, isMobile, mobileOnly, hotkeyRegistered]);
 
   // wire ⌘K / Ctrl+K only if asked and registered
   useEffect(() => {
@@ -240,7 +240,7 @@ export default function Search({
         <form onSubmit={handleSearchSubmit} className={cn("w-full", className)}>
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-2 flex items-center pointer-events-none">
-              <MagnifyingGlass size={13} weight="bold" className="text-muted-foreground" />
+              <MagnifyingGlass size={16} weight="bold" className="text-muted-foreground" />
             </div>
             <input
               ref={inputRef}
@@ -249,35 +249,42 @@ export default function Search({
               placeholder={placeholder}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onFocus={() => setSearchOpen(true)}
             />
+            {hotkeyRegistered && (
+              <div className="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+                <kbd className="px-1.5 py-0.5 text-[10px] font-sans font-medium text-muted-foreground bg-muted border border-border rounded">
+                  ⌘K
+                </kbd>
+              </div>
+            )}
           </div>
         </form>
       )
     }
 
     return (
-      <>
+      <div className={className}>
         <button
           type="button"
-          onClick={() => setSearchOpen(!isSearchOpen)}
-          className={cn("p-2", className)}
-          aria-label="Search"
+          onClick={() => setSearchOpen(true)}
+          className="flex h-8 items-center gap-2 rounded-md border border-input px-2 text-[13px] text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
         >
-          <MagnifyingGlass size={16} weight="bold" className="text-foreground" />
+          <MagnifyingGlass size={16} weight="bold" />
+          <span className="flex-1">{placeholder}</span>
+          {hotkeyRegistered && (
+            <kbd className="ml-auto px-1.5 py-0.5 text-[10px] font-sans font-medium text-muted-foreground bg-muted border border-border rounded">
+              ⌘K
+            </kbd>
+          )}
         </button>
         <Modal
           isOpen={isSearchOpen}
           onClose={() => setSearchOpen(false)}
-          type="blur"
-          showCloseButton={false}
-          animationType="scale"
-          className="max-w-md w-full rounded-md"
-          position={350}
+          className="w-full max-w-lg p-4 max-h-[85vh]"
         >
           {searchModalContent}
         </Modal>
-      </>
+      </div>
     )
   }
 
@@ -287,7 +294,7 @@ export default function Search({
       <form onSubmit={handleSearchSubmit} className={cn("w-full", className)}>
         <div className="relative w-full">
           <div className="absolute inset-y-0 left-2 flex items-center pointer-events-none">
-            <MagnifyingGlass size={13} weight="bold" className="text-muted-foreground" />
+            <MagnifyingGlass size={16} weight="bold" className="text-muted-foreground" />
           </div>
           <input
             ref={desktopInputRef}

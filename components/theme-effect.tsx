@@ -8,15 +8,28 @@ export const themeEffect = function () {
     document.documentElement.classList.remove('theme-system');
   }
 
+  const updateMetaThemeColor = (color: string) => {
+    // Find all theme-color meta tags and update them
+    const metaTags = document.head.querySelectorAll('meta[name=theme-color]');
+    
+    if (metaTags.length > 0) {
+      metaTags.forEach(tag => tag.setAttribute('content', color));
+    } else {
+      // Create meta tag if it doesn't exist
+      const meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = color;
+      document.head.appendChild(meta);
+    }
+  };
+
   if (
     pref === 'dark' ||
     (!pref && window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
     document.documentElement.classList.add('pause-transitions');
     document.documentElement.classList.add('dark');
-    document.head
-      .querySelector('meta[name=theme-color]')
-      ?.setAttribute('content', '#1c1c1b');
+    updateMetaThemeColor('#1d1d1b');
 
     requestAnimationFrame(() => {
       document.documentElement.classList.remove('pause-transitions');
@@ -25,9 +38,7 @@ export const themeEffect = function () {
   } else {
     document.documentElement.classList.add('pause-transitions');
     document.documentElement.classList.remove('dark');
-    document.head
-      .querySelector('meta[name=theme-color]')
-      ?.setAttribute('content', '#ffffff');
+    updateMetaThemeColor('#ffffff');
     requestAnimationFrame(() => {
       document.documentElement.classList.remove('pause-transitions');
     });
