@@ -43,7 +43,7 @@ export function Header({ className }: HeaderProps) {
         <div className="md:hidden mx-[-10px]">
           <Hamburger toggled={isOpen} toggle={setOpen} size={16} />
         </div>
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center sm:block hidden">
           <svg
             className="fill-foreground dark:fill-foreground transition-colors hidden sm:block"
             width="20"

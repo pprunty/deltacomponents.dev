@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+// import { Metadata } from 'next';
 import { getComponentByName } from '@/lib/registry';
 import { componentRegistry } from '@/delta/mapping';
 import { demoComponents } from '@/delta/demos';
-import { componentMetadata } from '@/app/routes';
+// import { componentMetadata } from '@/app/routes';
 
 interface DocPageProps {
   params: Promise<{
@@ -38,23 +38,23 @@ async function getDocFromParams(params: DocPageProps['params']) {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams(params);
-
-  if (!doc) {
-    return {};
-  }
-
-  const componentName = doc.component.name;
-  return (
-    componentMetadata[componentName] || {
-      title: doc.component.title,
-      description: doc.component.description,
-    }
-  );
-}
+// export async function generateMetadata({
+//   params,
+// }: DocPageProps): Promise<Metadata> {
+//   const doc = await getDocFromParams(params);
+//
+//   if (!doc) {
+//     return {};
+//   }
+//
+//   const componentName = doc.component.name;
+//   return (
+//     componentMetadata[componentName] || {
+//       title: doc.component.title,
+//       description: doc.component.description,
+//     }
+//   );
+// }
 
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams(params);
