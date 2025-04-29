@@ -24,7 +24,7 @@ export default function RootLayout({
         <main className="lg:col-start-2">
           <div className="pb-16">
             {/* Content container */}
-            <div className="max-w-3xl mx-auto px-4 lg:px-8">
+            <div className="max-w-3xl mx-auto px-6 lg:px-8">
               {children}
             </div>
           </div>

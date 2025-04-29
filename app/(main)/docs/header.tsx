@@ -28,6 +28,7 @@ export function Header({ className }: HeaderProps) {
       className={cn(
         'flex items-center h-12 border-b relative z-[48] px-4',
         'bg-background border-dotted border-border',
+        'backdrop-blur backdrop-blur-lg supports-[backdrop-filter]:bg-background/85',
         'lg:hidden', // Hide the entire header on large screens
         className,
       )}
