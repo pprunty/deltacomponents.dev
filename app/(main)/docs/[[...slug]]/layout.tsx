@@ -2,6 +2,7 @@ import { BackButton } from '@/delta/components/back-button';
 import ShareButton from '@/delta/components/share-button';
 import { ScrollToTopButton } from './scroll-to-top-button';
 import Float from '@/delta/components/floating-button';
+import { DocsPagination } from './pagination';
 // TOC is now handled by the main layout
 
 interface DocsLayoutProps {
@@ -13,6 +14,9 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
     <div className="container relative">
       <div className="prose prose-slate dark:prose-invert max-w-none">
         {children}
+        
+        {/* Pagination Navigation */}
+        <DocsPagination />
       </div>
 
       {/* Back Button (still server-side) */}

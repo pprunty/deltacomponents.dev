@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { cn } from '@/lib/utils';
 import CodeBlock from '@/delta/components/code-block';
 import {
@@ -29,7 +29,7 @@ interface RegistryData {
   files: RegistryFile[];
 }
 
-export function InstallationInstructions({
+function InstallationContent({
   componentName,
   className,
 }: InstallationInstructionsProps) {
@@ -61,11 +61,7 @@ export function InstallationInstructions({
   }, [componentName]);
 
   if (isLoading) {
-    return (
-      <div className={cn('animate-pulse', className)}>
-        Loading installation instructions...
-      </div>
-    );
+    return null;
   }
 
   if (error) {
@@ -179,57 +175,43 @@ export function InstallationInstructions({
       </Tabs>
 
       <div className="space-y-4 mt-6">
+        {(dependencies.length > 0 || filePaths.length > 0) && (
+          <Admonition type="info" title="Installation Details" variant="outline">
         {dependencies.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold mt-4 mb-2">Dependencies</h3>
-            <ul className="list-disc font-mono pl-6 text-sm text-muted-foreground">
+              <div className="mb-2">
+                <strong>Dependencies:</strong>
+                <ul className="list-disc pl-6 text-sm mt-1">
               {dependencies.map((dep: string) => (
-                <li key={dep}>{dep}</li>
+                    <li key={dep} className="font-mono">{dep}</li>
               ))}
             </ul>
           </div>
         )}
 
         {filePaths.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold mt-4 mb-2">Files</h3>
-
-            <Admonition type="info" title="File Mapping" variant="outline">
-              The file paths below show where components will be installed in
-              your project. For example:
-              <br />
-              <code className="text-sm">
-                delta/components/button.tsx → delta/components/button.tsx
-              </code>{' '}
-              in your project structure.
-            </Admonition>
-            <ul className="list-disc pl-6 font-mono text-sm text-muted-foreground">
+              <div>
+                <strong>Files:</strong> Components will be installed at these paths in your project.
+                <ul className="list-disc pl-6 text-sm mt-1">
               {filePaths.map((path: string) => (
-                <li key={path} className="break-all whitespace-normal">
-                  {path}
-                </li>
+                    <li key={path} className="font-mono break-all whitespace-normal">{path}</li>
               ))}
             </ul>
+                <p className="mt-2">
+                  Make sure to include the <code className="text-sm">delta/</code> directory in your <code className="text-sm">tailwind.config.ts</code> content array.
+                </p>
           </div>
         )}
-
-        <Admonition
-          type="warning"
-          title="Tailwind Configuration"
-          variant="outline"
-        >
-          Include the <code>delta/</code> directory in your{' '}
-          <code>tailwind.config.ts</code>:
-          <br />
-          <code className="text-sm">
-            {`content: [
-  "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  "./delta/**/*.{js,ts,jsx,tsx,mdx}",
-]`}
-          </code>
         </Admonition>
+        )}
       </div>
     </div>
+  );
+}
+
+export function InstallationInstructions(props: InstallationInstructionsProps) {
+  return (
+    <Suspense fallback={null}>
+      <InstallationContent {...props} />
+    </Suspense>
   );
 }

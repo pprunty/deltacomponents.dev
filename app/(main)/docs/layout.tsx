@@ -9,19 +9,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <main>
       {/* Header - visible on all screen sizes */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Header />
       </div>
 
       {/* Main layout with grid system for desktop */}
-      <div className="relative min-h-screen pt-16 lg:grid lg:grid-cols-[250px,minmax(0,1fr),240px] gap-0">
+      <div className="relative min-h-screen pt-16 lg:grid lg:grid-cols-[280px,minmax(0,1fr),240px] gap-0">
         {/* Sidebar - fixed on the left */}
         <Sidebar />
 
         {/* Main content area */}
-        <main className="lg:col-start-2">
+        <div className="lg:col-start-2">
           <div className="pb-16">
             {/* Content container */}
             <div className="max-w-3xl mx-auto px-6 lg:px-8">
@@ -29,11 +29,11 @@ export default function RootLayout({
             </div>
           </div>
           {/*<Footer border={true} /> */}
-        </main>
+        </div>
         {/* Table of contents column - only visible on xl screens */}
         <TableOfContents className="hidden xl:block mt-2" />
 
       </div>
-    </>
+    </main>
   );
 }

@@ -187,7 +187,7 @@ const Modal: React.FC<ModalProps> = ({
             {title ? (
               <div
                 className={cn(
-                  'flex justify-between p-6',
+                  'flex justify-between',
                   borderBottom && 'border-b border-border',
                   subtitle ? 'flex-col items-start gap-1' : 'items-center',
                 )}
@@ -227,7 +227,7 @@ const Modal: React.FC<ModalProps> = ({
               )
             )}
 
-            <div className={`p-6 ${!title && showCloseButton ? 'pt-12' : ''}`}>
+            <div className={`${!title && showCloseButton ? 'pt-12' : ''}`}>
               {children}
             </div>
           </motion.div>

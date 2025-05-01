@@ -17,10 +17,10 @@ export function ThemeSwitcher() {
 
   // Update meta theme color based on current theme
   const updateMetaThemeColor = useCallback((theme: string) => {
-    const color = theme === 'dark' ? '#1c1c1b' : '#ffffff';
+    const color = theme === 'dark' ? '#111111' : '#ffffff';
     // Find existing meta tag
     const metaThemeColor = document.head.querySelector('meta[name=theme-color]');
-    
+
     if (metaThemeColor) {
       metaThemeColor.setAttribute('content', color);
     } else {
@@ -50,7 +50,7 @@ export function ThemeSwitcher() {
   useEffect(() => {
     const newTheme = themeEffect();
     setCurrentTheme(newTheme);
-    
+
     // Update meta theme color whenever theme changes
     if (newTheme) {
       updateMetaThemeColor(newTheme);

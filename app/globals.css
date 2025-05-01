@@ -59,38 +59,38 @@
     :root.dark {
       color-scheme: dark;
 
-      /* Dark mode color variables - adjusted for hsl(60, 2%, 11%) background */
-      --background: 60 2% 11%; /* #1d1d1b - warm dark gray */
-      --foreground: 60 2% 95%; /* Kept bright text with slight warmth for good contrast */
-      --card: 60 2% 14%; /* Slightly lighter than background */
-      --card-foreground: 60 2% 95%;
-      --popover: 60 2% 14%;
-      --popover-foreground: 60 2% 95%;
-      --primary: 60 2% 95%;
-      --primary-foreground: 60 2% 11%;
-      --secondary: 60 2% 19%; /* Subtle elevation */
-      --secondary-foreground: 60 2% 95%;
-      --muted: 60 2% 19%;
-      --muted-foreground: 60 2% 70%; /* Maintained for muted content */
-      --accent: 60 2% 19%;
-      --accent-foreground: 60 2% 95%;
+      /* Dark mode color variables - adjusted for #111111 background */
+      --background: 0 0% 6.7%; /* #111111 - very dark gray */
+      --foreground: 0 0% 95%; /* Bright text for good contrast */
+      --card: 0 0% 9%; /* Slightly lighter than background */
+      --card-foreground: 0 0% 95%;
+      --popover: 0 0% 9%;
+      --popover-foreground: 0 0% 95%;
+      --primary: 0 0% 95%;
+      --primary-foreground: 0 0% 6.7%;
+      --secondary: 0 0% 18%; /* Subtle elevation */
+      --secondary-foreground: 0 0% 95%;
+      --muted: 0 0% 18%;
+      --muted-foreground: 0 0% 65%; /* Maintained for muted content */
+      --accent: 0 0% 18%;
+      --accent-foreground: 0 0% 95%;
       --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 60 2% 95%;
-      --border: 60 2% 19%; /* Subtle borders with increased contrast */
-      --input: 60 2% 19%;
-      --ring: 60 2% 24%; /* Slightly brighter for focus states */
+      --destructive-foreground: 0 0% 95%;
+      --border: 0 0% 18%; /* Subtle borders with increased contrast */
+      --input: 0 0% 18%;
+      --ring: 0 0% 20%; /* Slightly brighter for focus states */
       --chart-1: 220 70% 50%;
       --chart-2: 160 60% 45%;
       --chart-3: 30 80% 55%;
       --chart-4: 280 65% 60%;
       --chart-5: 340 75% 55%;
-      --sidebar-background: 60 2% 14%; /* Slightly darker than main background */
-      --sidebar-foreground: 60 2% 95%;
+      --sidebar-background: 0 0% 8%; /* Slightly darker than main background */
+      --sidebar-foreground: 0 0% 95%;
       --sidebar-primary: 224.3 76.3% 48%;
-      --sidebar-primary-foreground: 60 2% 95%;
-      --sidebar-accent: 60 2% 19%;
-      --sidebar-accent-foreground: 60 2% 95%;
-      --sidebar-border: 60 2% 19%;
+      --sidebar-primary-foreground: 0 0% 95%;
+      --sidebar-accent: 0 0% 18%;
+      --sidebar-accent-foreground: 0 0% 95%;
+      --sidebar-border: 0 0% 18%;
       --sidebar-ring: 217.2 91.2% 59.8%;
       --scrollbar: rgba(255, 255, 255, 0.2);
       --scrollbar-hover: rgba(255, 255, 255, 0.3);

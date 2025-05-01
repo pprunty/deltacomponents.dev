@@ -55,7 +55,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
   const getLinkClassName = (isActiveLink: boolean) => {
     if (variant === 'sidebar') {
       return cn(
-        'h-7 flex items-center font-medium text-[13px] px-2 -ml-2 rounded-md w-[calc(100%+8px)]',
+        'h-8 flex items-center font-medium text-md sm:text-sm px-2 rounded-sm w-[calc(100%+8px)]',
         'hover:bg-accent/50 transition-colors',
         isActiveLink
           ? 'bg-accent text-primary'
@@ -63,9 +63,18 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
       );
     } else {
       return cn(
-        'px-3 py-2 rounded-md hover:bg-accent transition-colors',
-        isActiveLink && 'bg-accent text-accent-foreground font-medium'
+        'text-md transition-colors lg:px-3 lg:py-2 lg:rounded-md lg:hover:bg-accent',
+        isActiveLink && 'text-primary lg:bg-accent lg:text-accent-foreground font-medium'
       );
+    }
+  };
+
+  // Get category title class based on variant
+  const getCategoryTitleClass = () => {
+    if (variant === 'sidebar') {
+      return "text-sm text-muted-foreground/60 font-medium ml-2 inline-block mb-2";
+    } else {
+      return "text-sm text-muted-foreground font-semibold inline-block mb-2";
     }
   };
 
@@ -74,7 +83,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
       {/* Basics Section */}
       {Object.entries(navigationItems).map(([key, section]) => (
         <div key={key} className={variant === 'sidebar' ? 'mb-5' : 'space-y-3'}>
-          <span className="text-xs text-muted-foreground/60 font-medium inline-block mb-2">
+          <span className={getCategoryTitleClass()}>
             {section.title}
           </span>
           <ul className={variant === 'sidebar' ? 'space-y-1' : 'flex flex-col space-y-2'}>
@@ -93,7 +102,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
           
           {/* Divider between sections - only for sidebar */}
           {variant === 'sidebar' && (
-            <div aria-hidden="true" className="h-px w-full border-t border-dotted border-border my-5"></div>
+            <div aria-hidden="true" className="h-px w-full border-t border border-border my-5"></div>
           )}
         </div>
       ))}
@@ -101,7 +110,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
       {/* Components Sections */}
       {categories.map((category, index) => (
         <div key={category.title} className={variant === 'sidebar' ? 'mb-5' : 'space-y-3'}>
-          <span className="text-[13px] text-muted-foreground/60 font-medium inline-block mb-2">
+          <span className={getCategoryTitleClass()}>
             {category.title}
           </span>
           <ul className={variant === 'sidebar' ? 'space-y-1' : 'flex flex-col space-y-2'}>
@@ -120,7 +129,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
           
           {/* Divider between sections - for sidebar only */}
           {variant === 'sidebar' && index < categories.length - 1 && (
-            <div aria-hidden="true" className="h-px w-full border-t border-dotted border-border my-5"></div>
+            <div aria-hidden="true" className="h-px w-full border-t border border-border my-5"></div>
           )}
         </div>
       ))}

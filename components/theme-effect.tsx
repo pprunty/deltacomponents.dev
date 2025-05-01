@@ -29,7 +29,7 @@ export const themeEffect = function () {
   ) {
     document.documentElement.classList.add('pause-transitions');
     document.documentElement.classList.add('dark');
-    updateMetaThemeColor('#1d1d1b');
+    updateMetaThemeColor('#111111');
 
     requestAnimationFrame(() => {
       document.documentElement.classList.remove('pause-transitions');

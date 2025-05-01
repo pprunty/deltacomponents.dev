@@ -202,7 +202,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-muted-foreground">
             <path d="M2.75 12H21.25M2.75 5.75H21.25M2.75 18.25H11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
           </svg>
-          <span className="text-[13px] font-medium text-muted-foreground">On this page</span>
+          <span className="text-sm font-medium text-muted-foreground">On this page</span>
         </div>
 
         <div className="relative">
@@ -228,7 +228,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
                   />
                 )}
 
-                <ul className="space-y-2 text-[13px]">
+                <ul className="space-y-2 text-sm">
                   {headings.map((heading) => (
                     <li
                       key={heading.id}
