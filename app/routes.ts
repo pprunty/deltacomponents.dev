@@ -30,11 +30,11 @@ const baseMetadata: Metadata = {
 // Create metadata map for each component
 export const componentMetadata: Record<string, Metadata> = {
   'complex-component': {
-    title: 'Complex Component deltacomponents.dev',
+    title: 'Complex Component | deltacomponents.dev',
     description:
       'A complex component showing hooks, libs and components. Demonstrates how to build a Pokemon card component with data fetching and state management.',
     openGraph: {
-      title: 'Complex Component deltacomponents.dev',
+      title: 'Complex Component | deltacomponents.dev',
       description:
         'A complex component showing hooks, libs and components. Demonstrates how to build a Pokemon card component with data fetching and state management.',
       url: `${BASE_URL}/docs/ui/complex-component`,
@@ -49,11 +49,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   admonition: {
-    title: 'Admonition deltacomponents.dev',
+    title: 'Admonition | deltacomponents.dev',
     description:
       'A versatile component for displaying important information, warnings, or tips in a visually distinct way.',
     openGraph: {
-      title: 'Admonition deltacomponents.dev',
+      title: 'Admonition | deltacomponents.dev',
       description:
         'A versatile component for displaying important information, warnings, or tips in a visually distinct way.',
       url: `${BASE_URL}/docs/ui/admonition`,
@@ -68,11 +68,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   modal: {
-    title: 'Modal deltacomponents.dev',
+    title: 'Modal | deltacomponents.dev',
     description:
       'A customizable modal component with animations and various style options. Built with Framer Motion for smooth transitions.',
     openGraph: {
-      title: 'Modal deltacomponents.dev',
+      title: 'Modal | deltacomponents.dev',
       description:
         'A customizable modal component with animations and various style options. Built with Framer Motion for smooth transitions.',
       url: `${BASE_URL}/docs/ui/modal`,
@@ -87,11 +87,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'scramble-in': {
-    title: 'Scramble In deltacomponents.dev',
+    title: 'Scramble In | deltacomponents.dev',
     description:
       'A text animation component that scrambles and reveals text with a modern, engaging effect.',
     openGraph: {
-      title: 'Scramble In deltacomponents.dev',
+      title: 'Scramble In | deltacomponents.dev',
       description:
         'A text animation component that scrambles and reveals text with a modern, engaging effect.',
       url: `${BASE_URL}/docs/ui/scramble-in`,
@@ -106,11 +106,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'neobrutalism-card': {
-    title: 'Neobrutalism Card deltacomponents.dev',
+    title: 'Neobrutalism Card | deltacomponents.dev',
     description:
       'A bold, modern card component inspired by the neobrutalism design movement.',
     openGraph: {
-      title: 'Neobrutalism Card deltacomponents.dev',
+      title: 'Neobrutalism Card | deltacomponents.dev',
       description:
         'A bold, modern card component inspired by the neobrutalism design movement.',
       url: `${BASE_URL}/docs/ui/neobrutalism-card`,
@@ -125,11 +125,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'use-hq-image': {
-    title: 'useHqImage Hook deltacomponents.dev',
+    title: 'useHqImage Hook | deltacomponents.dev',
     description:
       'A React hook for loading high-quality images with automatic fallback and loading states.',
     openGraph: {
-      title: 'useHqImage Hook deltacomponents.dev',
+      title: 'useHqImage Hook | deltacomponents.dev',
       description:
         'A React hook for loading high-quality images with automatic fallback and loading states.',
       url: `${BASE_URL}/docs/ui/use-hq-image`,
@@ -144,11 +144,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'bottom-bar': {
-    title: 'Bottom Bar deltacomponents.dev',
+    title: 'Bottom Bar | deltacomponents.dev',
     description:
       'A mobile-friendly bottom navigation bar component with customizable icons and labels.',
     openGraph: {
-      title: 'Bottom Bar deltacomponents.dev',
+      title: 'Bottom Bar | deltacomponents.dev',
       description:
         'A mobile-friendly bottom navigation bar component with customizable icons and labels.',
       url: `${BASE_URL}/docs/ui/bottom-bar`,
@@ -163,11 +163,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'full-bleed-section': {
-    title: 'Full Bleed Section deltacomponents.dev',
+    title: 'Full Bleed Section | deltacomponents.dev',
     description:
       'A section component that extends to the full width of the viewport with customizable content alignment.',
     openGraph: {
-      title: 'Full Bleed Section deltacomponents.dev',
+      title: 'Full Bleed Section | deltacomponents.dev',
       description:
         'A section component that extends to the full width of the viewport with customizable content alignment.',
       url: `${BASE_URL}/docs/ui/full-bleed-section`,
@@ -182,11 +182,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   tweet: {
-    title: 'Tweet deltacomponents.dev',
+    title: 'Tweet | deltacomponents.dev',
     description:
       'A component for embedding and displaying tweets with server-side rendering and custom styling.',
     openGraph: {
-      title: 'Tweet deltacomponents.dev',
+      title: 'Tweet | deltacomponents.dev',
       description:
         'A component for embedding and displaying tweets with server-side rendering and custom styling.',
       url: `${BASE_URL}/docs/ui/tweet`,
@@ -201,11 +201,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'video-player': {
-    title: 'Video Player deltacomponents.dev',
+    title: 'Video Player | deltacomponents.dev',
     description:
       'A customizable video player component with controls, thumbnail support, and responsive design.',
     openGraph: {
-      title: 'Video Player deltacomponents.dev',
+      title: 'Video Player | deltacomponents.dev',
       description:
         'A customizable video player component with controls, thumbnail support, and responsive design.',
       url: `${BASE_URL}/docs/ui/video-player`,
@@ -220,11 +220,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   tabs: {
-    title: 'Tabs deltacomponents.dev',
+    title: 'Tabs | deltacomponents.dev',
     description:
       'A flexible tabs component with support for different styles, animations, and content organization.',
     openGraph: {
-      title: 'Tabs deltacomponents.dev',
+      title: 'Tabs | deltacomponents.dev',
       description:
         'A flexible tabs component with support for different styles, animations, and content organization.',
       url: `${BASE_URL}/docs/ui/tabs`,
@@ -239,11 +239,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   button: {
-    title: 'Button deltacomponents.dev',
+    title: 'Button | deltacomponents.dev',
     description:
       'A versatile button component with multiple variants, sizes, and states.',
     openGraph: {
-      title: 'Button deltacomponents.dev',
+      title: 'Button | deltacomponents.dev',
       description:
         'A versatile button component with multiple variants, sizes, and states.',
       url: `${BASE_URL}/docs/ui/button`,
@@ -258,11 +258,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'text-input': {
-    title: 'Text Input deltacomponents.dev',
+    title: 'Text Input | deltacomponents.dev',
     description:
       'A text input component with validation, error handling, and various styling options.',
     openGraph: {
-      title: 'Text Input deltacomponents.dev',
+      title: 'Text Input | deltacomponents.dev',
       description:
         'A text input component with validation, error handling, and various styling options.',
       url: `${BASE_URL}/docs/ui/text-input`,
@@ -277,11 +277,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'checkbox-input': {
-    title: 'Checkbox Input deltacomponents.dev',
+    title: 'Checkbox Input | deltacomponents.dev',
     description:
       'A checkbox input component with validation, error handling, and label support.',
     openGraph: {
-      title: 'Checkbox Input deltacomponents.dev',
+      title: 'Checkbox Input | deltacomponents.dev',
       description:
         'A checkbox input component with validation, error handling, and label support.',
       url: `${BASE_URL}/docs/ui/checkbox-input`,
@@ -296,11 +296,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'select-input': {
-    title: 'Select Input deltacomponents.dev',
+    title: 'Select Input | deltacomponents.dev',
     description:
       'A select input component with both native and shadcn/ui select variants.',
     openGraph: {
-      title: 'Select Input deltacomponents.dev',
+      title: 'Select Input | deltacomponents.dev',
       description:
         'A select input component with both native and shadcn/ui select variants.',
       url: `${BASE_URL}/docs/ui/select-input`,
@@ -315,11 +315,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'radio-input': {
-    title: 'Radio Input deltacomponents.dev',
+    title: 'Radio Input | deltacomponents.dev',
     description:
       'A radio input group component with validation and description support.',
     openGraph: {
-      title: 'Radio Input deltacomponents.dev',
+      title: 'Radio Input | deltacomponents.dev',
       description:
         'A radio input group component with validation and description support.',
       url: `${BASE_URL}/docs/ui/radio-input`,
@@ -334,10 +334,10 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'switch-input': {
-    title: 'Switch Input deltacomponents.dev',
+    title: 'Switch Input | deltacomponents.dev',
     description: 'A switch toggle component with validation and label support.',
     openGraph: {
-      title: 'Switch Input deltacomponents.dev',
+      title: 'Switch Input | deltacomponents.dev',
       description:
         'A switch toggle component with validation and label support.',
       url: `${BASE_URL}/docs/ui/switch-input`,
@@ -352,11 +352,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'textarea-input': {
-    title: 'Textarea Input deltacomponents.dev',
+    title: 'Textarea Input | deltacomponents.dev',
     description:
       'A textarea component with validation, error handling, and various styling options.',
     openGraph: {
-      title: 'Textarea Input deltacomponents.dev',
+      title: 'Textarea Input | deltacomponents.dev',
       description:
         'A textarea component with validation, error handling, and various styling options.',
       url: `${BASE_URL}/docs/ui/textarea-input`,
@@ -371,11 +371,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'date-input': {
-    title: 'Date Input deltacomponents.dev',
+    title: 'Date Input | deltacomponents.dev',
     description:
       'A date picker component with validation, min/max date support, and formatting options.',
     openGraph: {
-      title: 'Date Input deltacomponents.dev',
+      title: 'Date Input | deltacomponents.dev',
       description:
         'A date picker component with validation, min/max date support, and formatting options.',
       url: `${BASE_URL}/docs/ui/date-input`,
@@ -390,11 +390,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'file-input': {
-    title: 'File Input deltacomponents.dev',
+    title: 'File Input | deltacomponents.dev',
     description:
       'A file input component with drag and drop support, file previews, and validation.',
     openGraph: {
-      title: 'File Input deltacomponents.dev',
+      title: 'File Input | deltacomponents.dev',
       description:
         'A file input component with drag and drop support, file previews, and validation.',
       url: `${BASE_URL}/docs/ui/file-input`,
@@ -409,11 +409,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'smart-form': {
-    title: 'Smart Form deltacomponents.dev',
+    title: 'Smart Form | deltacomponents.dev',
     description:
       'A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.',
     openGraph: {
-      title: 'Smart Form deltacomponents.dev',
+      title: 'Smart Form | deltacomponents.dev',
       description:
         'A powerful abstraction for creating forms with minimal code. Supports various input types, layouts, validation, and conditional fields.',
       url: `${BASE_URL}/docs/ui/smart-form`,
@@ -428,11 +428,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'otp-input': {
-    title: 'OTP Input deltacomponents.dev',
+    title: 'OTP Input | deltacomponents.dev',
     description:
       'A one-time password input component with automatic focus management and validation.',
     openGraph: {
-      title: 'OTP Input deltacomponents.dev',
+      title: 'OTP Input | deltacomponents.dev',
       description:
         'A one-time password input component with automatic focus management and validation.',
       url: `${BASE_URL}/docs/ui/otp-input`,
@@ -447,11 +447,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'floating-button': {
-    title: 'Floating Button deltacomponents.dev',
+    title: 'Floating Button | deltacomponents.dev',
     description:
       'A customizable floating button component with positioning, tooltip, and responsive behavior.',
     openGraph: {
-      title: 'Floating Button deltacomponents.dev',
+      title: 'Floating Button | deltacomponents.dev',
       description:
         'A customizable floating button component with positioning, tooltip, and responsive behavior.',
       url: `${BASE_URL}/docs/ui/floating-button`,
@@ -466,11 +466,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'share-button': {
-    title: 'Share Button deltacomponents.dev',
+    title: 'Share Button | deltacomponents.dev',
     description:
       'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback for desktop browsers.',
     openGraph: {
-      title: 'Share Button deltacomponents.dev',
+      title: 'Share Button | deltacomponents.dev',
       description:
         'A versatile share button component that uses the Web Share API with a copy-to-clipboard fallback for desktop browsers.',
       url: `${BASE_URL}/docs/ui/share-button`,
@@ -485,11 +485,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'text-editor': {
-    title: 'Text Editor deltacomponents.dev',
+    title: 'Text Editor | deltacomponents.dev',
     description:
       'A rich text editor component with formatting options, toolbar, and customizable styling.',
     openGraph: {
-      title: 'Text Editor deltacomponents.dev',
+      title: 'Text Editor | deltacomponents.dev',
       description:
         'A rich text editor component with formatting options, toolbar, and customizable styling.',
       url: `${BASE_URL}/docs/ui/text-editor`,
@@ -504,11 +504,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'product-spotlight-card': {
-    title: 'Product Spotlight Card deltacomponents.dev',
+    title: 'Product Spotlight Card | deltacomponents.dev',
     description:
       'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
     openGraph: {
-      title: 'Product Spotlight Card deltacomponents.dev',
+      title: 'Product Spotlight Card | deltacomponents.dev',
       description:
         'A visually appealing card component designed to showcase products with image, title, description, and call-to-action.',
       url: `${BASE_URL}/docs/ui/product-spotlight-card`,
@@ -523,11 +523,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'back-button': {
-    title: 'Back Button deltacomponents.dev',
+    title: 'Back Button | deltacomponents.dev',
     description:
       'A navigation button component that provides a consistent way to return to previous pages.',
     openGraph: {
-      title: 'Back Button deltacomponents.dev',
+      title: 'Back Button | deltacomponents.dev',
       description:
         'A navigation button component that provides a consistent way to return to previous pages.',
       url: `${BASE_URL}/docs/ui/back-button`,
@@ -542,11 +542,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'tags-input': {
-    title: 'Tags Input deltacomponents.dev',
+    title: 'Tags Input | deltacomponents.dev',
     description:
       'An input component for managing tags with support for adding, removing, and validating tags.',
     openGraph: {
-      title: 'Tags Input deltacomponents.dev',
+      title: 'Tags Input | deltacomponents.dev',
       description:
         'An input component for managing tags with support for adding, removing, and validating tags.',
       url: `${BASE_URL}/docs/ui/tags-input`,
@@ -561,11 +561,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'snap-scroll': {
-    title: 'Snap Scroll deltacomponents.dev',
+    title: 'Snap Scroll | deltacomponents.dev',
     description:
       'A scrollable container component with snap points for smooth scrolling between sections.',
     openGraph: {
-      title: 'Snap Scroll deltacomponents.dev',
+      title: 'Snap Scroll | deltacomponents.dev',
       description:
         'A scrollable container component with snap points for smooth scrolling between sections.',
       url: `${BASE_URL}/docs/ui/snap-scroll`,
@@ -580,11 +580,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'code-block': {
-    title: 'Code Block deltacomponents.dev',
+    title: 'Code Block | deltacomponents.dev',
     description:
       'A syntax-highlighted code block component with copy functionality and customizable themes.',
     openGraph: {
-      title: 'Code Block deltacomponents.dev',
+      title: 'Code Block | deltacomponents.dev',
       description:
         'A syntax-highlighted code block component with copy functionality and customizable themes.',
       url: `${BASE_URL}/docs/ui/code-block`,
@@ -599,11 +599,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   accordion: {
-    title: 'Accordion deltacomponents.dev',
+    title: 'Accordion | deltacomponents.dev',
     description:
       'A collapsible content component with smooth animations and customizable styling.',
     openGraph: {
-      title: 'Accordion deltacomponents.dev',
+      title: 'Accordion | deltacomponents.dev',
       description:
         'A collapsible content component with smooth animations and customizable styling.',
       url: `${BASE_URL}/docs/ui/accordion`,
@@ -618,11 +618,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   avatar: {
-    title: 'Avatar deltacomponents.dev',
+    title: 'Avatar | deltacomponents.dev',
     description:
       'A circular avatar component that displays user images with fallback support and customizable sizes.',
     openGraph: {
-      title: 'Avatar deltacomponents.dev',
+      title: 'Avatar | deltacomponents.dev',
       description:
         'A circular avatar component that displays user images with fallback support and customizable sizes.',
       url: `${BASE_URL}/docs/ui/avatar`,
@@ -637,11 +637,11 @@ export const componentMetadata: Record<string, Metadata> = {
     },
   },
   'x-scrollable': {
-    title: 'X Scrollable deltacomponents.dev',
+    title: 'X Scrollable | deltacomponents.dev',
     description:
       'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
     openGraph: {
-      title: 'X Scrollable deltacomponents.dev',
+      title: 'X Scrollable | deltacomponents.dev',
       description:
         'A horizontally scrollable container component with smooth scrolling and customizable behavior.',
       url: `${BASE_URL}/docs/ui/x-scrollable`,

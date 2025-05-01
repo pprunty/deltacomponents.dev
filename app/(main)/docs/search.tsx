@@ -216,7 +216,7 @@ export default function Search({
         setHotkeyRegistered(false)
       }
     }
-  }, [enableHotkey, isMobile, mobileOnly]);
+  }, [enableHotkey, isMobile, mobileOnly, hotkeyRegistered]);
 
   // Scroll selected item into view
   useEffect(() => {
@@ -382,7 +382,7 @@ export default function Search({
       <form onSubmit={handleSearchSubmit} className={cn("w-full", className)}>
         <div className="relative w-full">
           <div className="absolute inset-y-0 left-2 flex items-center pointer-events-none">
-            <MagnifyingGlass size={16} weight="bold" className="text-muted-foreground" />
+            <MagnifyingGlass size={14} weight="bold" className="text-muted-foreground" />
           </div>
           <input
             ref={desktopInputRef}
