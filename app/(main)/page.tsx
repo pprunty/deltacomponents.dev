@@ -4,20 +4,25 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { ArrowUpRight } from '@phosphor-icons/react';
+import { DotPattern } from '@/components/dot-pattern';
+import { cn } from "@/lib/utils"
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
-      {/* Centered container with max-width extra small */}
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
+      {/* Background Dot Pattern */}
+      <DotPattern className={cn("[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]")} />
+      
+      {/* Content remains unchanged but with z-10 to sit above the background */}
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="max-w-xs w-full flex flex-col items-center"
+        className="max-w-xs w-full flex flex-col items-center relative z-10"
       >
-        {/* Centered logo */}
+        {/* Centered logo - increased size */}
         <svg
-          className="w-9 h-9 fill-foreground dark:fill-foreground transition-colors mb-6"
+          className="w-14 h-14 fill-foreground dark:fill-foreground transition-colors mb-8"
           viewBox="0 0 282 308"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -29,51 +34,29 @@ export default function LandingPage() {
           Welcome to Delta Components
         </h1>
       
-        {/* Vertically stacked buttons */}
-        <div className="flex flex-col w-full gap-3 mb-6">
-          {/* Documentation button */}
+        {/* Side-by-side uppercase text links instead of buttons */}
+        <div className="flex justify-center gap-10 mb-6 font-medium text-xs tracking-wider">
           <Link 
             href="/docs/introduction"
             prefetch
-            className="inline-flex h-10 font-medium items-center justify-center rounded-sm bg-primary text-primary-foreground px-4 text-[13px] font-medium transition-all duration-100 shadow-[0_2px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.2)] dark:shadow-[0_2px_4px_rgba(255,255,255,0.1)] dark:hover:shadow-[0_4px_8px_rgba(255,255,255,0.15)] hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="uppercase hover:text-primary transition-colors"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 50 50" 
-              width="18" 
-              height="18" 
-              className="mr-2 fill-current"
-            >
-              <path d="M 28.90625 1.96875 C 28.863281 1.976563 28.820313 1.988281 28.78125 2 L 11.5 2 C 9.585938 2 8 3.558594 8 5.46875 L 8 43.90625 C 8 46.160156 9.867188 48 12.125 48 L 37.875 48 C 40.132813 48 42 46.160156 42 43.90625 L 42 15.1875 C 42.027344 15.054688 42.027344 14.914063 42 14.78125 L 42 14.5 C 42.007813 14.234375 41.90625 13.972656 41.71875 13.78125 L 30.21875 2.28125 C 30.027344 2.09375 29.765625 1.992188 29.5 2 L 29.1875 2 C 29.097656 1.976563 29 1.964844 28.90625 1.96875 Z M 11.5 4 L 28 4 L 28 12.34375 C 28 14.355469 29.644531 16 31.65625 16 L 40 16 L 40 43.90625 C 40 45.074219 39.054688 46 37.875 46 L 12.125 46 C 10.945313 46 10 45.074219 10 43.90625 L 10 5.46875 C 10 4.644531 10.660156 4 11.5 4 Z M 30 4.9375 L 39.0625 14 L 31.65625 14 C 30.722656 14 30 13.277344 30 12.34375 Z M 17 24 L 17 26 L 33 26 L 33 24 Z M 17 28 L 17 30 L 33 30 L 33 28 Z M 17 32 L 17 34 L 33 34 L 33 32 Z M 17 36 L 17 38 L 26 38 L 26 36 Z"/>
-            </svg>
-            View Documentation
+            Documentation
           </Link>
           
-          {/* GitHub button */}
           <Link 
             href="https://github.com/pprunty/deltacomponents.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 font-medium items-center justify-center rounded-sm border border-border bg-transparent px-4 text-[13px] font-medium transition-all duration-100 shadow-sm hover:shadow-md hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="uppercase hover:text-primary transition-colors flex items-center"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              className="text-foreground mr-2"
-            >
-              <path
-                fill="currentColor"
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              />
-            </svg>
-            View on GitHub
+            GitHub
+            <ArrowUpRight size={12} className="ml-1" />
           </Link>
-      </div>
+        </div>
       
         {/* Description text */}
-        <div className="w-full space-y-3 font-mono uppercase tracking-wide text-muted-foreground/70 text-left mb-8">
+        <div className="w-full space-y-3 font-mono uppercase tracking-wide text-muted-foreground/70 text-left mb-8 backdrop-blur-sm bg-background/30 p-3 rounded-sm">
             <p className="text-xs">
             Delta Components is a collection of opinionated, high-performance and aesthetically refined UI elements designed to make the difference in your user interface.
             </p>
