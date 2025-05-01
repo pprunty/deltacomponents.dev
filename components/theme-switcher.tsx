@@ -17,7 +17,7 @@ export function ThemeSwitcher() {
 
   // Update meta theme color based on current theme
   const updateMetaThemeColor = useCallback((theme: string) => {
-    const color = theme === 'dark' ? '#111111' : '#ffffff';
+    const color = theme === 'dark' ? '#1B1C1B' : '#ffffff';
     // Find existing meta tag
     const metaThemeColor = document.head.querySelector('meta[name=theme-color]');
 

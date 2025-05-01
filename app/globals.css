@@ -60,7 +60,7 @@
       color-scheme: dark;
 
       /* Dark mode color variables - adjusted for #111111 background */
-      --background: 0 0% 6.7%; /* #111111 - very dark gray */
+      --background: 120 2% 11%; /* #111111 - very dark gray */
       --foreground: 0 0% 95%; /* Bright text for good contrast */
       --card: 0 0% 9%; /* Slightly lighter than background */
       --card-foreground: 0 0% 95%;

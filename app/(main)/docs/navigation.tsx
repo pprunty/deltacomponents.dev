@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getCategories, type CategoryType } from '@/lib/registry';
 
@@ -25,6 +25,7 @@ interface NavigationProps {
 
 export function Navigation({ className, onLinkClick, variant = 'sidebar' }: NavigationProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   // Fetch categories on component mount
@@ -45,7 +46,9 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
     return pathname.startsWith(path);
   };
   
-  const handleClick = (path: string) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    router.push(path);
     if (onLinkClick) {
       onLinkClick(path);
     }
@@ -92,7 +95,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
                 <Link
                   href={item.href}
                   className={getLinkClassName(isActive(item.href))}
-                  onClick={() => handleClick(item.href)}
+                  onClick={(e) => handleClick(e, item.href)}
                 >
                   {item.label}
                 </Link>
@@ -119,7 +122,7 @@ export function Navigation({ className, onLinkClick, variant = 'sidebar' }: Navi
                 <Link
                   href={`/docs/ui/${item.name}`}
                   className={getLinkClassName(isActive(`/docs/ui/${item.name}`))}
-                  onClick={() => handleClick(`/docs/ui/${item.name}`)}
+                  onClick={(e) => handleClick(e, `/docs/ui/${item.name}`)}
                 >
                   {item.title}
                 </Link>
