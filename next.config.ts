@@ -2,12 +2,11 @@ import type { NextConfig } from "next"
 import { createContentlayerPlugin } from "next-contentlayer2"
 
 const nextConfig: NextConfig = {
-  /* config options here */
   async redirects() {
     return [
       {
-        source: "/r/:name((?!index\\.json|hooks/).*)",
-        destination: "/r/hooks/:name.json",
+        source: "/r/:name((?!index\\.json).*)", // still exclude /r/index.json
+        destination: "/r/:name.json", // removed 'hooks' from path
         permanent: true,
         missing: [
           {

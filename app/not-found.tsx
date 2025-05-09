@@ -1,12 +1,13 @@
 "use client"
 
+import { Suspense } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { AlertTriangleIcon, ChevronLeftIcon, HouseIcon } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 
-export default function NotFound() {
+function NotFoundInner() {
   const router = useRouter()
   return (
     <div className="container mx-auto flex h-screen items-center px-6 py-12">
@@ -32,5 +33,23 @@ export default function NotFound() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function NotFound() {
+  return (
+    <Suspense
+      fallback={
+        <div className="container mx-auto flex h-screen items-center px-6 py-12">
+          <div className="mx-auto flex max-w-sm flex-col items-center text-center">
+            <h1 className="mt-3 text-2xl font-semibold md:text-3xl">
+              Page not found
+            </h1>
+          </div>
+        </div>
+      }
+    >
+      <NotFoundInner />
+    </Suspense>
   )
 }
