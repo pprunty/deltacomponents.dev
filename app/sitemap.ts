@@ -1,26 +1,45 @@
-import { componentMetadata } from './routes';
+import { MetadataRoute } from "next"
+import { docsConfig } from "@/config/docs"
 
-const BASE_URL = 'https://deltacomponents.dev';
+function getUrlsFromNav(items: typeof docsConfig.sidebarNav): string[] {
+  const urls: string[] = []
 
-export default async function sitemap() {
-  // Get all component routes
-  const componentRoutes = Object.keys(componentMetadata).map((component) => ({
-    url: `${BASE_URL}/docs/${component}`,
+  // Add main navigation items
+  docsConfig.mainNav.forEach((item) => {
+    if (item.href) {
+      urls.push(item.href)
+    }
+  })
+
+  // Add sidebar navigation items
+  items.forEach((section) => {
+    section.items?.forEach((item) => {
+      if (item.href) {
+        urls.push(item.href)
+      }
+      // Recursively add nested items
+      if (item.items) {
+        item.items.forEach((nestedItem) => {
+          if (nestedItem.href) {
+            urls.push(nestedItem.href)
+          }
+        })
+      }
+    })
+  })
+
+  return urls
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev.com"
+
+  const urls = getUrlsFromNav(docsConfig.sidebarNav)
+
+  return urls.map((url) => ({
+    url: `${baseUrl}${url}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
-
-  // Add main routes
-  const routes = [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    ...componentRoutes,
-  ];
-
-  return routes;
+    changeFrequency: "daily" as const,
+    priority: url === "/" ? 1 : 0.8,
+  }))
 }

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-input-demo",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/examples/switch-input-demo.tsx",
+      "content": "'use client';\n\nimport { useState } from 'react';\nimport { SwitchInput } from '@/registry/inputs/switch-input';\n\nexport default function SwitchInputDemo() {\n  const [notifications, setNotifications] = useState(true);\n\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <SwitchInput\n        label=\"Enable notifications\"\n        name=\"notifications\"\n        checked={notifications}\n        onCheckedChange={setNotifications}\n        description=\"Receive notifications about account activity and updates\"\n        containerClassName=\"space-y-4\"\n      />\n      \n      <div className=\"text-sm text-muted-foreground mt-6\">\n        Notifications are currently: <span className=\"font-medium\">{notifications ? 'Enabled' : 'Disabled'}</span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
