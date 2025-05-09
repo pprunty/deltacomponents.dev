@@ -73,11 +73,18 @@ export function Header({ className }: HeaderProps) {
 
       {/* Mobile search - only visible on mobile */}
       <div className="flex-grow mx-2 lg:hidden">
-        <Search mobileOnly={false} />
+        <Search mobileOnly={true} />
+      </div>
+
+      {/* Desktop search - only visible on desktop, positioned before icons */}
+      <div className="hidden lg:block lg:flex-grow lg:mx-4">
+        <div className="max-w-sm ml-auto">
+          <Search />
+        </div>
       </div>
 
       {/* Icons section - pushed to the right - visible on all screens */}
-      <div className="flex items-center gap-2 shrink-0 ml-auto">
+      <div className="flex items-center gap-2 shrink-0 ml-auto lg:ml-0">
         <a
           href="https://github.com/pprunty/deltacomponents.dev"
           target="_blank"

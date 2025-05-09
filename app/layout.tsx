@@ -1,18 +1,13 @@
 import type React from 'react';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import { Hanken_Grotesk } from 'next/font/google';
+import { fontMono, fontSans } from "@/lib/fonts"
 import { themeEffect } from '@/components/theme-effect';
 import config from '@/app/config';
 import { doge } from './doge';
 import ClientComponents from './client';
+import { cn } from "@/lib/utils"
 
-const hankenGrotesk = Hanken_Grotesk({
-  variable: '--font-hanken-grotesk',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -108,11 +103,7 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1c1c1b' }
-  ]
+  }
 };
 
 export default function RootLayout({
@@ -124,7 +115,6 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${hankenGrotesk.variable} font-sans antialiased`}
     >
       <head>
         <script
@@ -138,10 +128,17 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body className="bg-background">
-        <main>
-        {children}
-        </main>
+      <body
+        className={cn(
+          "min-h-svh overflow-x-hidden bg-background font-sans antialiased",
+          fontSans.variable,
+          fontMono.variable
+        )}
+        suppressHydrationWarning
+      >
+                    <div className="relative flex min-h-svh flex-col bg-background">
+                {children}
+              </div>
         <ClientComponents />
       </body>
     </html>

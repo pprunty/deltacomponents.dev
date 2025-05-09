@@ -115,6 +115,33 @@ export default function Search({
     }
   }, [isControlled, onOpenChange]);
 
+  // Memoize the filtered results to prevent unnecessary recalculations
+  const filteredResults = useMemo(() => {
+    if (!query.trim()) {
+      return [];
+    }
+
+    const q = query.toLowerCase();
+    return searchData
+      .filter(
+        (it) =>
+          it.title.toLowerCase().includes(q) ||
+          (it.description?.toLowerCase().includes(q) ?? false)
+      )
+      .slice(0, 8);
+  }, [query, searchData]);
+
+  // Update results when filtered results change
+  useEffect(() => {
+    setResults(filteredResults);
+    setSelectedIndex(-1);
+    
+    // Only reset the refs array if the length doesn't match
+    if (resultItemsRef.current.length !== filteredResults.length) {
+      resultItemsRef.current = filteredResults.map(() => null);
+    }
+  }, [filteredResults]);
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     onSearch?.(query)
@@ -216,7 +243,7 @@ export default function Search({
         setHotkeyRegistered(false)
       }
     }
-  }, [enableHotkey, isMobile, mobileOnly, hotkeyRegistered]);
+  }, [enableHotkey, isMobile, mobileOnly]);
 
   // Scroll selected item into view
   useEffect(() => {
@@ -289,37 +316,6 @@ export default function Search({
     window.addEventListener("keydown", handleKeydown)
     return () => window.removeEventListener("keydown", handleKeydown)
   }, [isSearchOpen, results, selectedIndex, isMobile, setSearchOpen, router])
-
-  // update results
-  useEffect(() => {
-    if (!query.trim()) {
-      setResults([])
-      setSelectedIndex(-1)
-      // Only reset refs array if it had contents before
-      if (resultItemsRef.current.length > 0) {
-        resultItemsRef.current = []
-      }
-      return
-    }
-
-    const q = query.toLowerCase()
-    const filteredResults = searchData
-      .filter(
-        (it) =>
-          it.title.toLowerCase().includes(q) ||
-          (it.description?.toLowerCase().includes(q) ?? false)
-      )
-      .slice(0, 8)
-
-    setResults(filteredResults)
-    setSelectedIndex(-1)
-
-    // Only reset the refs array if the length doesn't match
-    // This prevents unnecessary updates that can cause infinite loops
-    if (resultItemsRef.current.length !== filteredResults.length) {
-      resultItemsRef.current = filteredResults.map(() => null)
-    }
-  }, [query, searchData])
 
   // --- render variants ---
   if (mobileOnly) {

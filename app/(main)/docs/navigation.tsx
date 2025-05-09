@@ -29,7 +29,7 @@ export async function Navigation({ className, variant = 'sidebar', currentPath }
       return currentPath === '/';
     }
     // For other paths, check if pathname starts with the path
-    return currentPath.startsWith(path);
+    return currentPath === path;
   };
 
   // Different styles based on variant
