@@ -27,35 +27,43 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ActiveThemeProvider({ children }: { children: ReactNode }) {
-  const [activeTheme, setActiveTheme] = useState<string>(DEFAULT_THEME)
+  const [activeTheme, setActiveThemeState] = useState<string>(DEFAULT_THEME)
 
+  // Initialize theme on mount
   useEffect(() => {
     const cookie = document.cookie
       .split("; ")
       .find((row) => row.startsWith(`${COOKIE_NAME}=`))
+
     if (cookie) {
       const cookieTheme = cookie.split("=")[1]
-      if (cookieTheme && cookieTheme !== activeTheme) {
-        setActiveTheme(cookieTheme)
+      if (cookieTheme) {
+        setActiveThemeState(cookieTheme)
       }
     }
-    // eslint-disable-next-line
   }, [])
 
+  // Update body class when theme changes
   useEffect(() => {
     setThemeCookie(activeTheme)
 
+    // Remove all theme classes
     Array.from(document.body.classList)
       .filter((className) => className.startsWith("theme-"))
       .forEach((className) => {
         document.body.classList.remove(className)
       })
 
+    // Add the current theme class
     document.body.classList.add(`theme-${activeTheme}`)
     if (activeTheme.endsWith("-scaled")) {
       document.body.classList.add("theme-scaled")
     }
   }, [activeTheme])
+
+  const setActiveTheme = (theme: string) => {
+    setActiveThemeState(theme)
+  }
 
   return (
     <ThemeContext.Provider value={{ activeTheme, setActiveTheme }}>

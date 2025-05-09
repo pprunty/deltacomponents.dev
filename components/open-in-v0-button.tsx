@@ -1,8 +1,17 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button"
 
 export function OpenInV0Button({ url }: { url: string }) {
-  // Extract component name from URL (format: "/docs/component-name")
-  const componentName = url.split('/').pop() || '';
+  // Extract component name from URL (e.g., "/docs/button-demo" → "button-demo")
+  let componentName = url.split("/").pop() || ""
+
+  // Remove .json if it's already there
+  componentName = componentName.replace(/\.json$/, "")
+
+  // Construct the full JSON URL for delta components
+  const deltaUrl = `https://deltacomponents.dev/r/${componentName}.json`
+
+  // Encode it for v0.dev
+  const v0Url = `https://v0.dev/chat/api/open?url=${encodeURIComponent(deltaUrl)}`
 
   return (
     <Button
@@ -11,13 +20,8 @@ export function OpenInV0Button({ url }: { url: string }) {
       className="h-8 gap-1 rounded-[6px] border px-3 text-xs"
       asChild
     >
-      <a
-        href={`https://v0.dev/chat/api/open?url=https://deltacomponents.dev/r/${componentName}.json`}
-        target="_blank"
-        rel="noreferrer"
-        className="no-after"
-      >
-        Open in{' '}
+      <a href={v0Url} target="_blank" rel="noreferrer" className="no-after">
+        Open in{" "}
         <svg
           viewBox="0 0 40 20"
           fill="none"
@@ -35,5 +39,5 @@ export function OpenInV0Button({ url }: { url: string }) {
         </svg>
       </a>
     </Button>
-  );
+  )
 }

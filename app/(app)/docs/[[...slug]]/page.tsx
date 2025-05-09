@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
@@ -17,8 +18,8 @@ import Link from "next/link"
 import { badgeVariants } from "@/components/ui/badge"
 import { Contribute } from "@/components/contribute"
 import { DocGridPattern } from "@/components/doc-grid-pattern"
-import ScrambleText from "@/registry/animations/scramble-text"
 import { DocsPagination } from "@/components/pagination"
+import ScrambleText from "@/registry/animations/scramble-text"
 
 interface DocPageProps {
   params: {
@@ -112,8 +113,8 @@ export default async function DocPage(props: {
                 "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
               )}
               scrambleSpeed={80}
-//               useIntersectionObserver
-//               retriggerOnIntersection
+              //               useIntersectionObserver
+              //               retriggerOnIntersection
             />
             {doc.description && (
               <p className="text-base text-muted-foreground">
@@ -143,13 +144,27 @@ export default async function DocPage(props: {
           <div className="pt-8">
             <Mdx code={doc.body.code} />
           </div>
-          <DocsPagination />
+          <Suspense
+            fallback={
+              <div className="mt-16 py-12 border-t border-border">
+                Loading navigation...
+              </div>
+            }
+          >
+            <DocsPagination />
+          </Suspense>
         </div>
         <div className="hidden text-sm xl:block">
           <div className="sticky top-20 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
             <div className="no-scrollbar h-full space-y-4 overflow-auto pb-10">
-              {doc.toc && <DashboardTableOfContents toc={toc} />}
-              <Contribute slug={doc.slug} />
+              {doc.toc && (
+                <Suspense fallback={<div>Loading table of contents...</div>}>
+                  <DashboardTableOfContents toc={toc} />
+                </Suspense>
+              )}
+              <Suspense fallback={<div>Loading contribute links...</div>}>
+                <Contribute slug={doc.slug} />
+              </Suspense>
             </div>
           </div>
         </div>

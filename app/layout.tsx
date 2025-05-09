@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { ThemeProvider } from "next-themes"
 
-import { META_THEME_COLORS, siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -10,6 +10,7 @@ import "@/styles/globals.css"
 
 import { Toaster } from "@/components/ui/sonner"
 import { ActiveThemeProvider } from "@/components/active-theme"
+import { ThemeMetaUpdater } from "@/components/theme-meta-updater"
 
 export const metadata: Metadata = {
   title: {
@@ -97,7 +98,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: META_THEME_COLORS.light,
+  themeColor: "#fcfcfc",
 }
 
 interface RootLayoutProps {
@@ -131,6 +132,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ActiveThemeProvider>
             <TooltipProvider>
+              <ThemeMetaUpdater />
               <div className="relative flex min-h-svh flex-col bg-background">
                 {children}
               </div>

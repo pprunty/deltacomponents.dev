@@ -55,4 +55,12 @@ export const baseColors = [
       dark: "oklch(0.67 0.16 144.21)",
     },
   },
+  {
+    name: "dublin",
+    label: "Dublin",
+    activeColor: {
+      light: "oklch(0.55 0.15 142.0)",
+      dark: "oklch(0.6 0.15 142.0)",
+    },
+  },
 ] as const
