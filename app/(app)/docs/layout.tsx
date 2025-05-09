@@ -3,6 +3,7 @@ import * as React from "react"
 import { docsConfig } from "@/config/docs"
 import { DocsNav } from "@/components/docs-nav"
 import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
 interface DocsLayoutProps {
   children: React.ReactNode
@@ -20,6 +21,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
         </aside>
         {children}
       </div>
+      <SiteFooter />
     </>
   )
 }
