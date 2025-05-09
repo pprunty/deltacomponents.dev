@@ -6,6 +6,7 @@ import { Index } from "@/__registry__"
 // Set runtime and caching options for Vercel
 export const runtime = "nodejs"
 export const revalidate = 3600 // Revalidate cache every hour
+export const dynamic = "force-dynamic" // Mark route as dynamic
 
 /**
  * GET handler for the source code API
