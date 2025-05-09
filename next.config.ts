@@ -1,22 +1,28 @@
-import remarkGfm from 'remark-gfm';
+import type { NextConfig } from "next"
+import { createContentlayerPlugin } from "next-contentlayer2"
 
-// next.config.js
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/, // Process .mdx files
-  options: {
-    remarkPlugins: [remarkGfm],
+const nextConfig: NextConfig = {
+  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/r/:name((?!index\\.json|hooks/).*)",
+        destination: "/r/hooks/:name.json",
+        permanent: true,
+        missing: [
+          {
+            type: "query",
+            key: "_redirected",
+            value: undefined,
+          },
+        ],
+      },
+    ]
   },
-  // providerImportSource: 'mdx-components', // only if overriding default provider
-});
+}
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  experimental: { mdxRs: true }, // optional: Rust-based compiler
-  outputFileTracingIncludes: {
-    registry: ['./delta/**/*', './_alt/**/*'],
-  },
-  pageExtensions: ['ts', 'tsx', 'mdx'],
-};
+const withContentlayer = createContentlayerPlugin({
+  // Additional Contentlayer config options
+})
 
-module.exports = withMDX(nextConfig);
+export default withContentlayer(nextConfig)

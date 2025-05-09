@@ -1,0 +1,64 @@
+---
+title: Checkbox Input
+description: Description goes here
+---
+
+<ComponentPreview name="checkbox-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/checkbox-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install [dependencies]
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-input" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { CheckboxInput } from "@/registry/inputs/checkbox-input"
+
+export function Component() {
+  return <CheckboxInput />
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |

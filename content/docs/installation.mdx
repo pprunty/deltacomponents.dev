@@ -1,0 +1,80 @@
+---
+title: Installation
+description: How to install and use Delta Components in your project.
+---
+
+# Installation
+
+Delta Components is a library of hooks and components that you can copy and paste into your projects or install via the shadcn CLI.
+
+## CLI Installation
+
+The recommended way to install Delta Components is via the shadcn CLI:
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/use-boolean
+```
+
+You can install multiple hooks at once:
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/use-boolean https://deltacomponents.dev/r/use-toggle
+```
+
+## Manual Installation
+
+If you prefer to install components manually, follow these steps:
+
+### 1. Add dependencies
+
+Ensure you have the required dependencies installed:
+
+```bash
+npm install clsx tailwind-merge
+# or
+yarn add clsx tailwind-merge
+# or
+pnpm add clsx tailwind-merge
+```
+
+### 2. Create utility functions
+
+Create a `lib/utils.ts` file with the following content:
+
+```tsx
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### 3. Copy components
+
+Visit the documentation page for the hook or component you want to use, and follow the manual installation instructions.
+
+## Using components
+
+Once installed, you can import and use the components in your application:
+
+```tsx
+import { useBoolean } from "@/hooks/use-boolean"
+
+export function MyComponent() {
+  const [value, { toggle, setTrue, setFalse }] = useBoolean(false)
+  
+  return (
+    <div>
+      <p>Value: {value.toString()}</p>
+      <button onClick={toggle}>Toggle</button>
+      <button onClick={setTrue}>Set True</button>
+      <button onClick={setFalse}>Set False</button>
+    </div>
+  )
+}
+```
+
+## Customization
+
+All components in Delta Components are built to be customizable. You can modify the code to suit your needs, or extend the components with your own functionality. 

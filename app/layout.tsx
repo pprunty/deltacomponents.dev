@@ -1,149 +1,144 @@
-import type React from 'react';
-import type { Metadata, Viewport } from 'next';
-import './globals.css';
-import { Hanken_Grotesk } from 'next/font/google';
-import { themeEffect } from '@/components/theme-effect';
-import config from '@/app/config';
-import { doge } from './doge';
-import ClientComponents from './client';
+import type { Metadata, Viewport } from "next"
+import { ThemeProvider } from "next-themes"
 
-const hankenGrotesk = Hanken_Grotesk({
-  variable: '--font-hanken-grotesk',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-});
+import { META_THEME_COLORS, siteConfig } from "@/config/site"
+import { fontMono, fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  userScalable: true,
-  themeColor: "transparent",
-}
+import "@/styles/globals.css"
+
+import { Toaster } from "@/components/ui/sonner"
+import { ActiveThemeProvider } from "@/components/active-theme"
 
 export const metadata: Metadata = {
-  title: `${config.companyName}`,
-  description: `${config.companyDescription}`,
-  keywords: [
-    'React components',
-    'UI library',
-    'Web development',
-    'Frontend development',
-    'React UI',
-    'Design system',
-    'Component library',
-    'shadcn/ui',
-    'TypeScript',
-    'Next.js',
-    'Modern UI',
-    'Web components',
-  ],
-  manifest:
-    process.env.NODE_ENV === 'production'
-      ? '/manifest.prod.json'
-      : '/manifest.json',
-  alternates: {
-    canonical: config.url,
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
   },
-  authors: [{ name: config.author.name, url: config.author.url }],
-  category: 'technology',
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Server Components",
+    "Radix UI",
+  ],
+  authors: [
+    {
+      name: "pprunty",
+      url: "https://patrickprunty.com",
+    },
+  ],
+  creator: "pprunty",
   openGraph: {
-    title: `${config.companyName}`,
-    description: `${config.companyDescription}`,
-    url: config.url,
-    siteName: config.companyName,
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
     images: [
       {
-        url: `${config.url}/icon.png`,
-        width: 512,
-        height: 512,
-        alt: `${config.companyName} - Modern Component Library`,
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
       },
     ],
-    type: 'website',
-    locale: 'en_US',
   },
   twitter: {
-    card: 'summary_large_image',
-    site: config.socials.twitter,
-    creator: config.socials.twitter,
-    images: [
-      {
-        url: `${config.url}/icon.png`,
-        width: 512,
-        height: 512,
-        alt: `${config.companyName} - Modern Component Library`,
-      },
-    ],
-    title: `${config.companyName}`,
-    description: `${config.companyDescription}`,
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@pprunty_",
   },
   icons: {
     icon: [
-      { url: '/icons/16x16.svg', sizes: '16x16', type: 'image/png' },
-      { url: '/icons/32x32.svg', sizes: '32x32', type: 'image/png' },
-      { url: '/icons/72x72.svg', sizes: '72x72', type: 'image/png' },
-      { url: '/icons/96x96.svg', sizes: '96x96', type: 'image/png' },
-      { url: '/icons/128x128.svg', sizes: '128x128', type: 'image/png' },
-      { url: '/icons/144x144.svg', sizes: '144x144', type: 'image/png' },
-      { url: '/icons/152x152.svg', sizes: '152x152', type: 'image/png' },
-      { url: '/icons/192x192.svg', sizes: '192x192', type: 'image/png' },
-      { url: '/icons/384x384.svg', sizes: '384x384', type: 'image/png' },
-      { url: '/icons/512x512.svg', sizes: '512x512', type: 'image/png' },
+      { url: "/icons/16x16.png", sizes: "16x16" },
+      { url: "/icons/32x32.png", sizes: "32x32" },
+      { url: "/icons/96x96.png", sizes: "96x96" },
+      { url: "/icons/128x128.png", sizes: "128x128" },
+      { url: "/icons/192x192.png", sizes: "192x192" },
+      { url: "/icons/512x512.png", sizes: "512x512" },
     ],
+    shortcut: "/icons/16x16.png",
     apple: [
-      { url: '/icons/120x120.svg', sizes: '120x120', type: 'image/png' },
-      { url: '/icons/152x152.svg', sizes: '152x152', type: 'image/png' },
-      { url: '/icons/180x180.svg', sizes: '180x180', type: 'image/png' },
+      { url: "/icons/120x120.png", sizes: "120x120", type: "image/png" },
+      { url: "/icons/152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/icons/180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "apple-touch-icon",
+        sizes: "120x120",
+        url: "/icons/120x120.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "152x152",
+        url: "/icons/152x152.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        url: "/icons/180x180.png",
+      },
+      {
+        rel: "mask-icon",
+        url: "/icons/512x512.png",
+        color: "#09090b",
+      },
     ],
   },
-  metadataBase: new URL(config.url),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1c1c1b' }
-  ]
-};
+  manifest: `${siteConfig.url}/site.webmanifest`,
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: META_THEME_COLORS.light,
+}
+
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${hankenGrotesk.variable} font-sans antialiased`}
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `(${themeEffect.toString()})();(${doge.toString()})();`,
-          }}
-        />
-        <link rel="icon" href="/icons/32x32.svg" sizes="any" />
-        <link rel="apple-touch-icon" href="/icons/180x180.svg" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="10114de9-fbcb-417d-89a2-7ff4ac30db2d"
+        ></script>
       </head>
-      <body className="bg-background">
-        <main>
-        {children}
-        </main>
-        <ClientComponents />
+      <body
+        className={cn(
+          "min-h-svh overflow-x-hidden bg-background font-sans antialiased",
+          fontSans.variable,
+          fontMono.variable
+        )}
+        suppressHydrationWarning
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          enableColorScheme
+        >
+          <ActiveThemeProvider>
+            <TooltipProvider>
+              <div className="relative flex min-h-svh flex-col bg-background">
+                {children}
+              </div>
+            </TooltipProvider>
+          </ActiveThemeProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

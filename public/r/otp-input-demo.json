@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-input-demo",
+  "type": "registry:example",
+  "files": [
+    {
+      "path": "registry/examples/otp-input-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { OtpInput } from \"@/registry/inputs/otp-input\"\n\nexport default function OtpInputDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <OtpInput\n        label=\"Verification Code\"\n        name=\"verificationCode\"\n        length={6}\n        required\n        separator\n        groupSize={3}\n        hint=\"Enter the 6-digit verification code\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

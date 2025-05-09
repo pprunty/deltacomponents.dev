@@ -1,0 +1,73 @@
+---
+title: Tabs
+description: Description goes here
+---
+
+<ComponentPreview name="tabs-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/tabs
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install [dependencies]
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tabs" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/components/tabs"
+
+export function Component() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Account settings</TabsContent>
+      <TabsContent value="password">Password settings</TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |

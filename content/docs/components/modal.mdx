@@ -1,0 +1,64 @@
+---
+title: Modal
+description: Description goes here
+---
+
+<ComponentPreview name="modal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/modal
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install [dependencies]
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="modal" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { Modal } from "@/registry/components/modal"
+
+export function Component() {
+  return <Modal />
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |
