@@ -1,6 +1,15 @@
 import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [  {
+    name: "backdrop-gradient-demo",
+    type: "registry:example",
+    files: [
+      {
+        path: "examples/backdrop-gradient-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },  {
     name: "smart-form-demo",
     type: "registry:example",
     files: [

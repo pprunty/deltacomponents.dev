@@ -146,6 +146,20 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "backdrop-gradient-demo": {
+    name: "backdrop-gradient-demo",
+    type: "registry:example",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/examples/backdrop-gradient-demo.tsx",
+        type: "registry:example",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/backdrop-gradient-demo")),
+    source: "",
+  },
   "smart-form-demo": {
     name: "smart-form-demo",
     type: "registry:example",
@@ -466,6 +480,20 @@ export const Index: Record<string, any> = {
       }
     ],
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
+    source: "",
+  },
+  "backdrop-gradient": {
+    name: "backdrop-gradient",
+    type: "registry:component",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/components/backdrop-gradient.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/components/backdrop-gradient")),
     source: "",
   },
   "retro-video-player": {

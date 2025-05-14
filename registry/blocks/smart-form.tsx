@@ -433,7 +433,7 @@ export function SmartForm({
         return `grid grid-cols-1 md:grid-cols-${columns} gap-${gap}`;
       case 'vertical':
       default:
-        return 'flex flex-col space-y-6';
+        return 'flex flex-col space-y-8';
     }
   };
 

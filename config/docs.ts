@@ -12,20 +12,24 @@ export const docsConfig: DocsConfig = {
       href: "/",
     },
     {
-      title: "Inputs",
-      href: "/docs/inputs/text-input",
+      title: "Getting Started",
+      href: "/docs/introduction",
     },
     {
       title: "Blocks",
       href: "/docs/blocks/smart-form",
     },
     {
-      title: "Animations",
-      href: "/docs/animations/scramble-text",
-    },
-    {
       title: "Components",
       href: "/docs/components/tabs",
+    },
+    {
+      title: "Inputs",
+      href: "/docs/inputs/text-input",
+    },
+    {
+      title: "Animations",
+      href: "/docs/animations/scramble-text",
     },
   ],
   sidebarNav: [
@@ -63,13 +67,14 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Tabs",
-          href: "/docs/components/tabs",
+          title: "Backdrop Gradient",
+          href: "/docs/components/backdrop-gradient",
           items: [],
+          label: "Beta",
         },
         {
-          title: "Modal",
-          href: "/docs/components/modal",
+          title: "Code Block",
+          href: "/docs/components/code-block",
           items: [],
         },
         {
@@ -78,8 +83,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Code Block",
-          href: "/docs/components/code-block",
+          title: "Modal",
+          href: "/docs/components/modal",
           items: [],
         },
         {
@@ -88,19 +93,24 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "Beta",
         },
+        {
+          title: "Tabs",
+          href: "/docs/components/tabs",
+          items: [],
+        },
       ],
     },
     {
       title: "Inputs",
       items: [
         {
-          title: "Text Input",
-          href: "/docs/inputs/text-input",
+          title: "Checkbox Input",
+          href: "/docs/inputs/checkbox-input",
           items: [],
         },
         {
-          title: "OTP Input",
-          href: "/docs/inputs/otp-input",
+          title: "Date Input",
+          href: "/docs/inputs/date-input",
           items: [],
         },
         {
@@ -109,13 +119,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Tags Input",
-          href: "/docs/inputs/tags-input",
+          title: "OTP Input",
+          href: "/docs/inputs/otp-input",
           items: [],
         },
         {
-          title: "Textarea Input",
-          href: "/docs/inputs/textarea-input",
+          title: "Radio Input",
+          href: "/docs/inputs/radio-input",
           items: [],
         },
         {
@@ -129,18 +139,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Checkbox Input",
-          href: "/docs/inputs/checkbox-input",
+          title: "Tags Input",
+          href: "/docs/inputs/tags-input",
           items: [],
         },
         {
-          title: "Radio Input",
-          href: "/docs/inputs/radio-input",
+          title: "Text Input",
+          href: "/docs/inputs/text-input",
           items: [],
         },
         {
-          title: "Date Input",
-          href: "/docs/inputs/date-input",
+          title: "Textarea Input",
+          href: "/docs/inputs/textarea-input",
           items: [],
         },
       ],

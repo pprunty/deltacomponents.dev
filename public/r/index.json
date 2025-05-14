@@ -104,6 +104,16 @@
       ]
     },
     {
+      "name": "backdrop-gradient-demo",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/examples/backdrop-gradient-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "smart-form-demo",
       "type": "registry:example",
       "files": [
@@ -329,6 +339,16 @@
       "files": [
         {
           "path": "registry/animations/scramble-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "backdrop-gradient",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/backdrop-gradient.tsx",
           "type": "registry:component"
         }
       ]
