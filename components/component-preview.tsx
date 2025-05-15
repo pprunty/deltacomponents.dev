@@ -8,7 +8,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/components/
 import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
-import CodeBlock from "@/registry/components/code-block"
+import CodeBlock from "@/registry/media/code-block"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string

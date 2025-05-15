@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "outDir": "/Users/pprunty/GitHub/deltacomponents.dev/.temp/5493f6bf-d667-4d26-8b98-4c8899e04722"
+  },
+  "include": [
+    "/Users/pprunty/GitHub/deltacomponents.dev/.temp/5493f6bf-d667-4d26-8b98-4c8899e04722/registry-data.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

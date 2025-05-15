@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "modal",
   "type": "registry:component",
+  "dependencies": [
+    "framer-motion",
+    "@phosphor-icons/react"
+  ],
   "files": [
     {
       "path": "registry/components/modal.tsx",

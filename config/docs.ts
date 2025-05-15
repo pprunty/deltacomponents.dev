@@ -12,6 +12,10 @@ export const docsConfig: DocsConfig = {
       href: "/",
     },
     {
+      title: "Component Showcase",
+      href: "/docs/components"
+    },
+    {
       title: "Getting Started",
       href: "/docs/introduction",
     },
@@ -22,6 +26,14 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       href: "/docs/components/tabs",
+    },
+    {
+      title: "Media",
+      href: "/docs/media/retro-video-player",
+    },
+    {
+      title: "Landing Page",
+      href: "/docs/landing-page/highlighter",
     },
     {
       title: "Inputs",
@@ -67,17 +79,6 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Backdrop Gradient",
-          href: "/docs/components/backdrop-gradient",
-          items: [],
-          label: "Beta",
-        },
-        {
-          title: "Code Block",
-          href: "/docs/components/code-block",
-          items: [],
-        },
-        {
           title: "Drawer",
           href: "/docs/components/drawer",
           items: [],
@@ -88,15 +89,42 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Retro Video Player",
-          href: "/docs/components/retro-video-player",
+          title: "Tabs",
+          href: "/docs/components/tabs",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Media",
+      items: [
+        {
+          title: "Backdrop Gradient",
+          href: "/docs/media/backdrop-gradient",
           items: [],
           label: "Beta",
         },
         {
-          title: "Tabs",
-          href: "/docs/components/tabs",
+          title: "Code Block",
+          href: "/docs/media/code-block",
           items: [],
+        },
+        {
+          title: "Retro Video Player",
+          href: "/docs/media/retro-video-player",
+          items: [],
+          label: "Beta",
+        },
+      ],
+    },
+    {
+      title: "Landing Page",
+      items: [
+        {
+          title: "Highlighter Text",
+          href: "/docs/landing-page/highlighter",
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -168,3 +196,39 @@ export const docsConfig: DocsConfig = {
     },
   ],
 }
+
+/**
+ * Creates a mapping of component names to their corresponding category paths
+ * This avoids recomputing the category for each component lookup
+ */
+export function createComponentToCategory(): Record<string, string> {
+  const mapping: Record<string, string> = {}
+  
+  // Process each section in the sidebar navigation
+  docsConfig.sidebarNav.forEach(section => {
+    // Skip the "Getting Started" section as it doesn't contain components
+    if (section.title === "Getting Started") return
+    
+    // Format the category name for URL path (lowercase, replace spaces with hyphens)
+    const categoryPath = section.title.toLowerCase().replace(/ /g, "-")
+    
+    // Process each item in this section
+    section.items.forEach(item => {
+      if (item.href) {
+        // Extract the component name from the href
+        // The format is typically /docs/category/component-name
+        const parts = item.href.split("/")
+        const componentName = parts[parts.length - 1]
+        
+        // Add to the mapping
+        mapping[componentName] = categoryPath
+      }
+    })
+  })
+  
+  return mapping
+}
+
+// Create the mapping once at import time for efficiency
+export const componentToCategory = createComponentToCategory()
+

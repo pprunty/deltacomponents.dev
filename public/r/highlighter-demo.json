@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlighter-demo",
+  "type": "registry:block",
+  "registryDependencies": [
+    "highlighter"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/highlighter-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Highlighter } from \"@/registry/landing-page/highlighter\"\n\nexport default function HighlighterDemo() {\n  return (\n    <>\n      <main className=\"flex flex-col pt-16 py-12\">\n        <div className=\"max-w-3xl mx-auto text-center space-y-6 w-full\">\n          <h1 className=\"text-5xl font-bold tracking-tight text-primary lg:text-7xl\">\n            This works <Highlighter shadowColor=\"rgb(240,171,252)\" darkShadowColor=\"rgba(245,140,245,0.8)\">great</Highlighter> in landing pages.\n          </h1>\n        </div>\n      </main>\n    </>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

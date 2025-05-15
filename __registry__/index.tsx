@@ -10,6 +10,7 @@ export const Index: Record<string, any> = {
     name: "checkbox-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","checkbox","input","validation","selection","toggle","accessible"],
     files: [
       {
         path: "registry/inputs/checkbox-input.tsx",
@@ -24,6 +25,7 @@ export const Index: Record<string, any> = {
     name: "radio-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","radio","input","selection","options","accessible","multiple choice"],
     files: [
       {
         path: "registry/inputs/radio-input.tsx",
@@ -38,6 +40,7 @@ export const Index: Record<string, any> = {
     name: "date-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","date","input","calendar","time","datepicker","validation"],
     files: [
       {
         path: "registry/inputs/date-input.tsx",
@@ -52,6 +55,7 @@ export const Index: Record<string, any> = {
     name: "switch-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","switch","input","toggle","on-off","boolean","accessible"],
     files: [
       {
         path: "registry/inputs/switch-input.tsx",
@@ -66,6 +70,7 @@ export const Index: Record<string, any> = {
     name: "select-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","select","dropdown","options","input","validation","choice"],
     files: [
       {
         path: "registry/inputs/select-input.tsx",
@@ -80,6 +85,7 @@ export const Index: Record<string, any> = {
     name: "tags-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","tags","input","multiple","chips","keywords","interactive"],
     files: [
       {
         path: "registry/inputs/tags-input.tsx",
@@ -94,6 +100,7 @@ export const Index: Record<string, any> = {
     name: "textarea-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","textarea","multiline","input","text","validation","large text"],
     files: [
       {
         path: "registry/inputs/textarea-input.tsx",
@@ -108,6 +115,7 @@ export const Index: Record<string, any> = {
     name: "file-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","file","upload","input","attachment","drag-and-drop","validation"],
     files: [
       {
         path: "registry/inputs/file-input.tsx",
@@ -122,6 +130,7 @@ export const Index: Record<string, any> = {
     name: "otp-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","otp","verification","code","input","auth","secure"],
     files: [
       {
         path: "registry/inputs/otp-input.tsx",
@@ -136,6 +145,7 @@ export const Index: Record<string, any> = {
     name: "text-input",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["form","text","input","validation","single-line","accessible","field"],
     files: [
       {
         path: "registry/inputs/text-input.tsx",
@@ -146,14 +156,30 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "highlighter-demo": {
+    name: "highlighter-demo",
+    type: "registry:block",
+    registryDependencies: ["highlighter"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/highlighter-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/highlighter-demo")),
+    source: "",
+  },
   "backdrop-gradient-demo": {
     name: "backdrop-gradient-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["backdrop-gradient"],
+    tags: [],
     files: [
       {
         path: "registry/examples/backdrop-gradient-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -162,12 +188,13 @@ export const Index: Record<string, any> = {
   },
   "smart-form-demo": {
     name: "smart-form-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["smart-form"],
+    tags: [],
     files: [
       {
         path: "registry/examples/smart-form-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -176,12 +203,13 @@ export const Index: Record<string, any> = {
   },
   "checkbox-input-demo": {
     name: "checkbox-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["checkbox-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/checkbox-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -190,12 +218,13 @@ export const Index: Record<string, any> = {
   },
   "radio-input-demo": {
     name: "radio-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["radio-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/radio-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -204,12 +233,13 @@ export const Index: Record<string, any> = {
   },
   "date-input-demo": {
     name: "date-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["date-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/date-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -218,12 +248,13 @@ export const Index: Record<string, any> = {
   },
   "switch-input-demo": {
     name: "switch-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["switch-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/switch-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -232,12 +263,13 @@ export const Index: Record<string, any> = {
   },
   "select-input-demo": {
     name: "select-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["select-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/select-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -246,12 +278,13 @@ export const Index: Record<string, any> = {
   },
   "tags-input-demo": {
     name: "tags-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["tags-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/tags-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -260,12 +293,13 @@ export const Index: Record<string, any> = {
   },
   "textarea-input-demo": {
     name: "textarea-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["textarea-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/textarea-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -274,12 +308,13 @@ export const Index: Record<string, any> = {
   },
   "retro-video-player-demo": {
     name: "retro-video-player-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["retro-video-player"],
+    tags: [],
     files: [
       {
         path: "registry/examples/retro-video-player-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -288,12 +323,13 @@ export const Index: Record<string, any> = {
   },
   "code-block-demo": {
     name: "code-block-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["code-block"],
+    tags: [],
     files: [
       {
         path: "registry/examples/code-block-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -302,12 +338,13 @@ export const Index: Record<string, any> = {
   },
   "drawer-demo": {
     name: "drawer-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["drawer"],
+    tags: [],
     files: [
       {
         path: "registry/examples/drawer-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -316,12 +353,13 @@ export const Index: Record<string, any> = {
   },
   "modal-demo": {
     name: "modal-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["modal"],
+    tags: [],
     files: [
       {
         path: "registry/examples/modal-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -330,12 +368,13 @@ export const Index: Record<string, any> = {
   },
   "tabs-demo": {
     name: "tabs-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["tabs","x-scrollable"],
+    tags: [],
     files: [
       {
         path: "registry/examples/tabs-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -344,12 +383,13 @@ export const Index: Record<string, any> = {
   },
   "scramble-text-demo": {
     name: "scramble-text-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["scramble-text"],
+    tags: [],
     files: [
       {
         path: "registry/examples/scramble-text-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -358,12 +398,13 @@ export const Index: Record<string, any> = {
   },
   "use-copy-to-clipboard-demo": {
     name: "use-copy-to-clipboard-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["use-copy-to-clipboard"],
+    tags: [],
     files: [
       {
         path: "registry/examples/use-copy-to-clipboard-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -372,12 +413,13 @@ export const Index: Record<string, any> = {
   },
   "use-interval-demo": {
     name: "use-interval-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["use-interval"],
+    tags: [],
     files: [
       {
         path: "registry/examples/use-interval-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -386,12 +428,13 @@ export const Index: Record<string, any> = {
   },
   "use-timeout-demo": {
     name: "use-timeout-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["use-timeout"],
+    tags: [],
     files: [
       {
         path: "registry/examples/use-timeout-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -400,12 +443,13 @@ export const Index: Record<string, any> = {
   },
   "use-document-title-demo": {
     name: "use-document-title-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["use-document-title"],
+    tags: [],
     files: [
       {
         path: "registry/examples/use-document-title-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -414,12 +458,13 @@ export const Index: Record<string, any> = {
   },
   "use-mouse-position-demo": {
     name: "use-mouse-position-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["use-mouse-position"],
+    tags: [],
     files: [
       {
         path: "registry/examples/use-mouse-position-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -428,12 +473,13 @@ export const Index: Record<string, any> = {
   },
   "otp-input-demo": {
     name: "otp-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["otp-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/otp-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -442,12 +488,13 @@ export const Index: Record<string, any> = {
   },
   "text-input-demo": {
     name: "text-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["text-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/text-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
@@ -456,22 +503,99 @@ export const Index: Record<string, any> = {
   },
   "file-input-demo": {
     name: "file-input-demo",
-    type: "registry:example",
-    registryDependencies: undefined,
+    type: "registry:block",
+    registryDependencies: ["file-input"],
+    tags: [],
     files: [
       {
         path: "registry/examples/file-input-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
         target: "",
       }
     ],
     component: React.lazy(() => import("@/registry/examples/file-input-demo")),
     source: "",
   },
+  "tabs-spotify-demo": {
+    name: "tabs-spotify-demo",
+    type: "registry:block",
+    registryDependencies: ["tabs","x-scrollable"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/tabs-spotify-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/tabs-spotify-demo")),
+    source: "",
+  },
+  "drawer-modern-demo": {
+    name: "drawer-modern-demo",
+    type: "registry:block",
+    registryDependencies: ["drawer"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/drawer-modern-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/drawer-modern-demo")),
+    source: "",
+  },
+  "backdrop-gradient-artistic-demo": {
+    name: "backdrop-gradient-artistic-demo",
+    type: "registry:block",
+    registryDependencies: ["backdrop-gradient"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/backdrop-gradient-artistic-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/backdrop-gradient-artistic-demo")),
+    source: "",
+  },
+  "x-scrollable-colorful-demo": {
+    name: "x-scrollable-colorful-demo",
+    type: "registry:block",
+    registryDependencies: ["x-scrollable"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/x-scrollable-colorful-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/x-scrollable-colorful-demo")),
+    source: "",
+  },
+  "smart-form-pill-demo": {
+    name: "smart-form-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["smart-form"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/smart-form-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/smart-form-pill-demo")),
+    source: "",
+  },
   "scramble-text": {
     name: "scramble-text",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["animation","text","scramble","effect","motion","interaction","reveal"],
     files: [
       {
         path: "registry/animations/scramble-text.tsx",
@@ -482,52 +606,11 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
     source: "",
   },
-  "backdrop-gradient": {
-    name: "backdrop-gradient",
-    type: "registry:component",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/components/backdrop-gradient.tsx",
-        type: "registry:component",
-        target: "",
-      }
-    ],
-    component: React.lazy(() => import("@/registry/components/backdrop-gradient")),
-    source: "",
-  },
-  "retro-video-player": {
-    name: "retro-video-player",
-    type: "registry:component",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/components/retro-video-player.tsx",
-        type: "registry:component",
-        target: "",
-      }
-    ],
-    component: React.lazy(() => import("@/registry/components/retro-video-player")),
-    source: "",
-  },
-  "code-block": {
-    name: "code-block",
-    type: "registry:component",
-    registryDependencies: undefined,
-    files: [
-      {
-        path: "registry/components/code-block.tsx",
-        type: "registry:component",
-        target: "",
-      }
-    ],
-    component: React.lazy(() => import("@/registry/components/code-block")),
-    source: "",
-  },
   "drawer": {
     name: "drawer",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["overlay","panel","slide","bottom sheet","dialog","mobile","responsive"],
     files: [
       {
         path: "registry/components/drawer.tsx",
@@ -542,6 +625,7 @@ export const Index: Record<string, any> = {
     name: "modal",
     type: "registry:component",
     registryDependencies: undefined,
+    tags: ["dialog","popup","overlay","animated","accessible","responsive"],
     files: [
       {
         path: "registry/components/modal.tsx",
@@ -555,7 +639,8 @@ export const Index: Record<string, any> = {
   "tabs": {
     name: "tabs",
     type: "registry:component",
-    registryDependencies: undefined,
+    registryDependencies: ["x-scrollable"],
+    tags: ["navigation","tabs","interactive","animated","scrollable","content switcher"],
     files: [
       {
         path: "registry/components/tabs.tsx",
@@ -564,6 +649,101 @@ export const Index: Record<string, any> = {
       }
     ],
     component: React.lazy(() => import("@/registry/components/tabs")),
+    source: "",
+  },
+  "x-scrollable": {
+    name: "x-scrollable",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: ["scroll","horizontal","container","utility","overflow","layout"],
+    files: [
+      {
+        path: "registry/components/x-scrollable.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/components/x-scrollable")),
+    source: "",
+  },
+  "smart-form": {
+    name: "smart-form",
+    type: "registry:block",
+    registryDependencies: ["text-input","checkbox-input","select-input","radio-input","switch-input","textarea-input","date-input","file-input","otp-input","tags-input"],
+    tags: ["form","dynamic","smart","validation","reactive","data collection","AI"],
+    files: [
+      {
+        path: "registry/blocks/smart-form.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/blocks/smart-form")),
+    source: "",
+  },
+  "highlighter": {
+    name: "highlighter",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/landing-page/highlighter.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/landing-page/highlighter")),
+    source: "",
+  },
+  "backdrop-gradient": {
+    name: "backdrop-gradient",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: ["effect","image","blur","gradient","background","filter"],
+    files: [
+      {
+        path: "registry/media/backdrop-gradient.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/media/backdrop-gradient")),
+    source: "",
+  },
+  "retro-video-player": {
+    name: "retro-video-player",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: ["video","player","draggable","resizable","retro","ui","media"],
+    files: [
+      {
+        path: "registry/media/retro-video-player.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/media/retro-video-player")),
+    source: "",
+  },
+  "code-block": {
+    name: "code-block",
+    type: "registry:component",
+    registryDependencies: ["button"],
+    tags: ["syntax highlighting","code","copyable","expandable","theme-aware","developer"],
+    files: [
+      {
+        path: "registry/media/code-block.tsx",
+        type: "registry:component",
+        target: "",
+      },
+      {
+        path: "registry/media/code-block.css",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/media/code-block")),
     source: "",
   },
 }

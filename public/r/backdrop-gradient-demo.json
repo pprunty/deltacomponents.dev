@@ -1,12 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "backdrop-gradient-demo",
-  "type": "registry:example",
+  "type": "registry:block",
+  "registryDependencies": [
+    "backdrop-gradient"
+  ],
   "files": [
     {
       "path": "registry/examples/backdrop-gradient-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\nimport { BackdropGradient } from \"@/components/ui/backdrop-gradient\"\nimport { Slider } from \"@/components/ui/slider\"\n\nexport default function BackdropGradientDemo() {\n  // Simple state for the demo controls\n  const [blurAmount, setBlurAmount] = useState(70)\n  const [gradientIntensity, setGradientIntensity] = useState(0.7)\n\n  // Sample image URL - a colorful image works best to demonstrate the effect\n  const imageUrl = \"https://placehold.co/600x400/e91e63/ffffff\"\n\n  // Handle slider changes\n  function handleBlurChange(value) {\n    if (Array.isArray(value) && value.length > 0) {\n      setBlurAmount(value[0])\n    }\n  }\n\n  function handleIntensityChange(value) {\n    if (Array.isArray(value) && value.length > 0) {\n      setGradientIntensity(value[0])\n    }\n  }\n\n  return (\n    <div className=\"space-y-8\">\n      {/* Minimal BackdropGradient example */}\n      <div className=\"flex justify-center\">\n        <BackdropGradient\n          src={imageUrl}\n          alt=\"Colorful demo image\"\n          width={600}\n          height={400}\n          blurAmount={blurAmount}\n          gradientIntensity={gradientIntensity}\n          className=\"w-full max-w-[600px]\"\n        />\n      </div>\n\n      {/* Simple controls */}\n      <div className=\"max-w-[600px] mx-auto space-y-6\">\n        <div className=\"space-y-2\">\n          <div className=\"flex justify-between\">\n            <span className=\"text-sm font-medium\">Blur: {blurAmount}px</span>\n            <span className=\"text-sm text-muted-foreground\">0-150px</span>\n          </div>\n          <Slider min={0} max={150} step={1} value={[blurAmount]} onValueChange={handleBlurChange} />\n        </div>\n\n        <div className=\"space-y-2\">\n          <div className=\"flex justify-between\">\n            <span className=\"text-sm font-medium\">Intensity: {gradientIntensity.toFixed(1)}</span>\n            <span className=\"text-sm text-muted-foreground\">0-1</span>\n          </div>\n          <Slider min={0} max={1} step={0.1} value={[gradientIntensity]} onValueChange={handleIntensityChange} />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "content": "import React from \"react\";\nimport BlurOverlay from \"@/registry/media/backdrop-gradient\";\n\nexport default function BackdropGradientDemo() {\n  const sampleImage = \"/images/desk.webp\"; // replace with your image path or URL\n\n  return (\n    <div className=\"min-h-screen flex items-center justify-center w-full h-full\">\n      <div className=\"w-full max-w-md h-[600px]\">\n        <BlurOverlay src={sampleImage} alt=\"Sample landscape\" />\n      </div>\n    </div>\n  );\n}",
+      "type": "registry:block"
     }
   ]
 }

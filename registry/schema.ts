@@ -22,6 +22,7 @@ export const registryItemSchema = z.object({
   dependencies: z.array(z.string()).optional(),
   devDependencies: z.array(z.string()).optional(),
   registryDependencies: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
   files: z.array(registryItemFileSchema).optional(),
 })
 

@@ -1,0 +1,102 @@
+---
+title: Highlighter
+description: A text highlighter component for landing pages with customizable highlight colors.
+---
+
+<ComponentPreview name="highlighter-demo" />
+
+## Overview
+
+The Highlighter component adds eye-catching highlight styles to text, making it perfect for landing pages, marketing content, and call-to-action elements. It supports multiple styles, colors, and thicknesses with dark mode support.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/highlighter
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="highlighter" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Highlighter } from "@/registry/landing-page/highlighter"
+
+export function Example() {
+  return (
+    <h1 className="text-3xl font-bold">
+      Make your landing page <Highlighter>stand out</Highlighter> with highlighted text.
+    </h1>
+  )
+}
+```
+
+### Variants
+
+```tsx
+<h2>Default style: <Highlighter>Default</Highlighter></h2>
+<h2>Success style: <Highlighter variant="success">Success</Highlighter></h2>
+<h2>Info style: <Highlighter variant="info">Info</Highlighter></h2>
+<h2>Warning style: <Highlighter variant="warning">Warning</Highlighter></h2>
+<h2>Destructive style: <Highlighter variant="destructive">Destructive</Highlighter></h2>
+```
+
+### Thickness
+
+```tsx
+<p>Thin highlight: <Highlighter thickness="thin">Thin</Highlighter></p>
+<p>Default highlight: <Highlighter>Default</Highlighter></p>
+<p>Thick highlight: <Highlighter thickness="thick">Thick</Highlighter></p>
+```
+
+### Custom Colors
+
+```tsx
+<p>
+  <Highlighter shadowColor="rgba(59, 130, 246, 0.5)" darkShadowColor="rgba(59, 130, 246, 0.4)">
+    Custom color highlight
+  </Highlighter>
+</p>
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| variant | "default" \| "success" \| "info" \| "warning" \| "destructive" | The highlight style variant. Default is "default". |
+| thickness | "thin" \| "default" \| "thick" | The thickness of the highlight. Default is "default". |
+| shadowColor | string | Optional custom highlight color (CSS color string). Overrides variant. |
+| darkShadowColor | string | Optional custom highlight color for dark mode. |
+| asChild | boolean | Whether to merge props onto child element. Default is false. |
+| className | string | Optional additional CSS classes. |

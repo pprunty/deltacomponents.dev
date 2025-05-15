@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "date-input",
   "type": "registry:component",
+  "dependencies": [
+    "zod",
+    "date-fns"
+  ],
   "files": [
     {
       "path": "registry/inputs/date-input.tsx",

@@ -20,6 +20,7 @@ import { Contribute } from "@/components/contribute"
 import { DocGridPattern } from "@/components/doc-grid-pattern"
 import { DocsPagination } from "@/components/pagination"
 import ScrambleText from "@/registry/animations/scramble-text"
+import { SimilarComponents } from "@/components/similar-components"
 
 interface DocPageProps {
   params: {
@@ -95,6 +96,20 @@ export default async function DocPage(props: {
   }
 
   const toc = await getTableOfContents(doc.body.raw)
+  
+    const slugPath = doc.slugAsParams
+    let componentName = null
+
+    // Regex to match patterns like "category/component" but not just "category"
+    // This will match URLs like: /docs/components/button, /docs/inputs/date-input, etc.
+    const twoLevelPathRegex = /^([^/]+)\/([^/]+)$/
+
+    if (twoLevelPathRegex.test(slugPath)) {
+      const matches = slugPath.match(twoLevelPathRegex)
+      if (matches) {
+        componentName = matches[2]
+      }
+    }
 
   return (
     <>
@@ -144,15 +159,29 @@ export default async function DocPage(props: {
           <div className="pt-8">
             <Mdx code={doc.body.code} />
           </div>
-          <Suspense
-            fallback={
-              <div className="mt-16 py-12 border-t border-border">
-                Loading navigation...
-              </div>
-            }
-          >
-            <DocsPagination />
-          </Suspense>
+          
+          {/* Only show similar components section for component docs */}
+          {componentName && (
+            <div className="mt-6 pt-4">
+              <Suspense fallback={<div className="py-4">Loading similar components...</div>}>
+                <SimilarComponents 
+                  currentComponent={componentName} 
+                  title="You might also like" 
+                  count={3}
+                />
+              </Suspense>
+            </div>
+          )}
+
+                    <Suspense
+                      fallback={
+                        <div className="mt-4 py-6 border-t border-border">
+                          Loading navigation...
+                        </div>
+                      }
+                    >
+                      <DocsPagination />
+                    </Suspense>
         </div>
         <div className="hidden text-sm xl:block">
           <div className="sticky top-20 -mt-6 h-[calc(100vh-3.5rem)] pt-4">

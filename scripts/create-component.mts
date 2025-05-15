@@ -199,11 +199,11 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
       // Add new example to existing registry
       const newExampleEntry = `  {
     name: "${fileName}-demo",
-    type: "registry:example",
+    type: "registry:block",
     files: [
       {
         path: "examples/${fileName}-demo.tsx",
-        type: "registry:example",
+        type: "registry:block",
       },
     ],
   },`
