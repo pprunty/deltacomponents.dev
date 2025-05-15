@@ -87,7 +87,7 @@
     "sharp": "^0.34.1",
     "shiki": "^1.24.2",
     "tailwindcss": "^4.1.1",
-    "ts-morph": "^24.0.0",
+    "ts-morph": "^25.0.1",
     "tsx": "^4.19.2",
     "typescript": "^5",
     "unist-builder": "3.0.0",
