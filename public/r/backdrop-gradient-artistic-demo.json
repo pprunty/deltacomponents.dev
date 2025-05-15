@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "backdrop-gradient-artistic-demo",
+  "type": "registry:block",
+  "registryDependencies": [
+    "backdrop-gradient"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/backdrop-gradient-artistic-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport BackdropGradient from \"@/registry/media/backdrop-gradient\";\n\nexport default function BackdropGradientArtisticDemo() {\n  // Replace with an appropriate image for the demo\n  const demoImage = \"/images/desk.webp\"; \n\n  return (\n    <div className=\"min-h-[400px] flex items-center justify-center w-full h-full\">\n      <div className=\"w-full max-w-md h-[400px]\">\n        <BackdropGradient \n          src={demoImage} \n          alt=\"Artistic backdrop example\" \n          className=\"artistic-style\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

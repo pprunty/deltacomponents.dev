@@ -100,5 +100,10 @@ prepare:
 	@echo "$(CYAN)Setting up git hooks...$(NC)"
 	$(PNPM) prepare
 
+.PHONY: commit
+commit:
+	@echo "$(CYAN)Committing changes and bypassing pre-commit hooks...$(NC)"
+	git commit --no-verify -m "$(message)"
+
 # Default target
 .DEFAULT_GOAL := help 

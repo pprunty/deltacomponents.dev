@@ -76,7 +76,7 @@ function DocsNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-primary/10",
+              "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-muted-foreground underline-offset-2 hover:bg-primary/10",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href && "bg-primary/10 font-medium text-primary"
             )}

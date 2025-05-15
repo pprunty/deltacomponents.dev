@@ -1,6 +1,6 @@
 'use client';
 
-import CodeBlock from '@/registry/components/code-block';
+import CodeBlock from '@/registry/media/code-block';
 
 export default function CodeBlockDemo() {
   const code = `def calculate_factorial(n):

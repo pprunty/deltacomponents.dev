@@ -21,6 +21,7 @@ import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton } from "@/components/copy-button"
+import { GitHubChangelog } from "@/components/github-changelog"
 
 interface MdxProps {
   code: string
@@ -36,6 +37,7 @@ const components = {
   AlertDescription,
   ComponentSource,
   ComponentPreview,
+  GitHubChangelog,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),

@@ -15,6 +15,7 @@ const fields: FieldDefinition[] = [
     type: 'text',
     required: true,
     placeholder: 'Enter your username',
+    className: 'mb-6',
   },
   {
     name: 'password',
@@ -39,6 +40,7 @@ export default function SmartFormBasicDemo() {
         schema={schema}
         onSubmit={handleSubmit}
         submitText="Sign In"
+        fieldClassName="mb-2"
       />
     </div>
   );

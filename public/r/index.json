@@ -11,6 +11,9 @@
           "path": "registry/inputs/checkbox-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -21,6 +24,9 @@
           "path": "registry/inputs/radio-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -31,6 +37,10 @@
           "path": "registry/inputs/date-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod",
+        "date-fns"
       ]
     },
     {
@@ -41,6 +51,9 @@
           "path": "registry/inputs/switch-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -51,6 +64,9 @@
           "path": "registry/inputs/select-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -61,6 +77,9 @@
           "path": "registry/inputs/tags-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -71,6 +90,9 @@
           "path": "registry/inputs/textarea-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -81,6 +103,10 @@
           "path": "registry/inputs/file-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod",
+        "lucide-react"
       ]
     },
     {
@@ -91,6 +117,9 @@
           "path": "registry/inputs/otp-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
       ]
     },
     {
@@ -101,226 +130,388 @@
           "path": "registry/inputs/text-input.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "zod"
+      ]
+    },
+    {
+      "name": "highlighter-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/highlighter-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "highlighter"
+      ]
+    },
+    {
+      "name": "backdrop-gradient-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/backdrop-gradient-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "backdrop-gradient"
       ]
     },
     {
       "name": "smart-form-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/smart-form-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "smart-form"
       ]
     },
     {
       "name": "checkbox-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/checkbox-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "checkbox-input"
       ]
     },
     {
       "name": "radio-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/radio-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "radio-input"
       ]
     },
     {
       "name": "date-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/date-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "date-input"
       ]
     },
     {
       "name": "switch-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/switch-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "switch-input"
       ]
     },
     {
       "name": "select-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/select-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "select-input"
       ]
     },
     {
       "name": "tags-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/tags-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "tags-input"
       ]
     },
     {
       "name": "textarea-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/textarea-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "textarea-input"
       ]
     },
     {
       "name": "retro-video-player-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/retro-video-player-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "retro-video-player"
       ]
     },
     {
       "name": "code-block-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/code-block-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "code-block"
       ]
     },
     {
       "name": "drawer-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/drawer-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "drawer"
       ]
     },
     {
       "name": "modal-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/modal-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "modal"
       ]
     },
     {
       "name": "tabs-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/tabs-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "tabs",
+        "x-scrollable"
       ]
     },
     {
       "name": "scramble-text-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/scramble-text-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "scramble-text"
       ]
     },
     {
       "name": "use-copy-to-clipboard-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/use-copy-to-clipboard-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "use-copy-to-clipboard"
       ]
     },
     {
       "name": "use-interval-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/use-interval-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "use-interval"
       ]
     },
     {
       "name": "use-timeout-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/use-timeout-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "use-timeout"
       ]
     },
     {
       "name": "use-document-title-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/use-document-title-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "use-document-title"
       ]
     },
     {
       "name": "use-mouse-position-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/use-mouse-position-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "use-mouse-position"
       ]
     },
     {
       "name": "otp-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/otp-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "otp-input"
       ]
     },
     {
       "name": "text-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/text-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "text-input"
       ]
     },
     {
       "name": "file-input-demo",
-      "type": "registry:example",
+      "type": "registry:block",
       "files": [
         {
           "path": "registry/examples/file-input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:block"
         }
+      ],
+      "registryDependencies": [
+        "file-input"
+      ]
+    },
+    {
+      "name": "tabs-spotify-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/tabs-spotify-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "tabs",
+        "x-scrollable"
+      ]
+    },
+    {
+      "name": "drawer-modern-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/drawer-modern-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "drawer"
+      ]
+    },
+    {
+      "name": "backdrop-gradient-artistic-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/backdrop-gradient-artistic-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "backdrop-gradient"
+      ]
+    },
+    {
+      "name": "x-scrollable-colorful-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/x-scrollable-colorful-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "x-scrollable"
+      ]
+    },
+    {
+      "name": "smart-form-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/smart-form-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "smart-form"
       ]
     },
     {
@@ -331,26 +522,9 @@
           "path": "registry/animations/scramble-text.tsx",
           "type": "registry:component"
         }
-      ]
-    },
-    {
-      "name": "retro-video-player",
-      "type": "registry:component",
-      "files": [
-        {
-          "path": "registry/components/retro-video-player.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "code-block",
-      "type": "registry:component",
-      "files": [
-        {
-          "path": "registry/components/code-block.tsx",
-          "type": "registry:component"
-        }
+      ],
+      "dependencies": [
+        "use-scramble"
       ]
     },
     {
@@ -361,6 +535,10 @@
           "path": "registry/components/drawer.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "vaul",
+        "class-variance-authority"
       ]
     },
     {
@@ -371,6 +549,10 @@
           "path": "registry/components/modal.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -381,6 +563,105 @@
           "path": "registry/components/tabs.tsx",
           "type": "registry:component"
         }
+      ],
+      "registryDependencies": [
+        "x-scrollable"
+      ]
+    },
+    {
+      "name": "x-scrollable",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/x-scrollable.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "smart-form",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/blocks/smart-form.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "dependencies": [
+        "zod",
+        "utils"
+      ],
+      "registryDependencies": [
+        "text-input",
+        "checkbox-input",
+        "select-input",
+        "radio-input",
+        "switch-input",
+        "textarea-input",
+        "date-input",
+        "file-input",
+        "otp-input",
+        "tags-input"
+      ]
+    },
+    {
+      "name": "highlighter",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/landing-page/highlighter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "backdrop-gradient",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/media/backdrop-gradient.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "tailwindcss"
+      ]
+    },
+    {
+      "name": "retro-video-player",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/media/retro-video-player.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-rnd",
+        "@phosphor-icons/react"
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/media/code-block.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/media/code-block.css",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "shikiji",
+        "next-themes",
+        "@phosphor-icons/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
       ]
     }
   ]

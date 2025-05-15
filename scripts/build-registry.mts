@@ -24,6 +24,7 @@ interface RegistryItem {
   dependencies?: string[]
   devDependencies?: string[]
   registryDependencies?: string[]
+  tags?: string[]
 }
 
 type Registry = RegistryItem[]
@@ -249,6 +250,40 @@ function deduplicateRegistry(registry: Registry): Registry {
   return Array.from(itemMap.values())
 }
 
+/**
+ * Ensures that demo components have the proper registry dependencies to their base components.
+ * For example, "tabs-demo" should depend on "tabs".
+ */
+function ensureDemoDependencies(registry: Registry): Registry {
+  // Create a set of all available component names for reference
+  const availableComponents = new Set(registry.map(item => item.name))
+  
+  // Process each registry item
+  return registry.map(item => {
+    // Check if this is a demo component (name ends with -demo)
+    if (item.name.endsWith('-demo')) {
+      // Extract the base component name by removing the '-demo' suffix
+      const baseComponentName = item.name.replace(/-demo$/, '')
+      
+      // Check if the base component exists
+      if (availableComponents.has(baseComponentName)) {
+        // Initialize registryDependencies array if it doesn't exist
+        if (!item.registryDependencies) {
+          item.registryDependencies = []
+        }
+        
+        // Add the base component as a dependency if it's not already included
+        if (!item.registryDependencies.includes(baseComponentName)) {
+          console.info(`🔗 Adding ${baseComponentName} as dependency for ${item.name}`)
+          item.registryDependencies.push(baseComponentName)
+        }
+      }
+    }
+    
+    return item
+  })
+}
+
 async function buildRegistry() {
   try {
     console.info("💽 Building registry...")
@@ -260,7 +295,10 @@ async function buildRegistry() {
       'registry/registry-inputs.ts',
       'registry/registry-examples.ts',
       'registry/registry-animations.ts',
-      'registry/registry-components.ts'
+      'registry/registry-components.ts',
+      'registry/registry-blocks.ts',
+        'registry/registry-landing-page.ts',
+      'registry/registry-media.ts',
     ]
     
     const registryDataArray = await Promise.all(
@@ -271,7 +309,10 @@ async function buildRegistry() {
     const combinedRegistry: Registry = registryDataArray.flat()
     
     // Deduplicate registry items
-    const registry = deduplicateRegistry(combinedRegistry)
+    let registry = deduplicateRegistry(combinedRegistry)
+    
+    // Ensure demo components have proper dependencies to their base components
+    registry = ensureDemoDependencies(registry)
     
     // Group items by type for summary
     const byType: Record<string, Registry> = {}
@@ -303,6 +344,7 @@ async function buildRegistry() {
 
     // Map registry items to shadcn format
     for (const item of registry) {
+      // Create a clone of the item without the tags property
       const shadcnItem: ShadcnRegistryItem = {
         name: item.name,
         type: item.type,
@@ -403,16 +445,22 @@ export const Index: Record<string, any> = {`
       ? JSON.stringify(item.registryDependencies) 
       : 'undefined'
 
+    // Format tags for the index - use empty array if not present to avoid error in similar-components.tsx
+    const tags = item.tags && item.tags.length > 0 
+      ? JSON.stringify(item.tags) 
+      : '[]'
+
     // Create import path WITHOUT file extension
     const importPath = item.files[0].path.replace(/\.(tsx|ts|jsx|js)$/, '')
     const fullImportPath = `@/registry/${importPath}`
 
-    // Add the component to the index
+    // Add the component to the index with tags
     indexContent += `
   "${item.name}": {
     name: "${item.name}",
     type: "${item.type}",
     registryDependencies: ${regDependencies},
+    tags: ${tags},
     files: [
       ${formattedFiles.join(',\n      ')}
     ],

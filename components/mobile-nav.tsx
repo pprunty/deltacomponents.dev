@@ -54,7 +54,7 @@ export function MobileNav() {
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
-        <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-12 h-[85vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
+        <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-12 h-[80vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
           <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
           <DrawerHandle />
           <DrawerBody className="flex-1 overflow-auto p-6">

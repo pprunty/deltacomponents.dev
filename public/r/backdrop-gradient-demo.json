@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "backdrop-gradient-demo",
+  "type": "registry:block",
+  "registryDependencies": [
+    "backdrop-gradient"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/backdrop-gradient-demo.tsx",
+      "content": "import React from \"react\";\nimport BlurOverlay from \"@/registry/media/backdrop-gradient\";\n\nexport default function BackdropGradientDemo() {\n  const sampleImage = \"/images/desk.webp\"; // replace with your image path or URL\n\n  return (\n    <div className=\"min-h-screen flex items-center justify-center w-full h-full\">\n      <div className=\"w-full max-w-md h-[600px]\">\n        <BlurOverlay src={sampleImage} alt=\"Sample landscape\" />\n      </div>\n    </div>\n  );\n}",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drawer",
   "type": "registry:component",
+  "dependencies": [
+    "vaul",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/components/drawer.tsx",

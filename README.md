@@ -27,6 +27,23 @@ Every component in this library can be opened and customized using [v0](https://
 
 Please read the [contribution guidelines](./CONTRIBUTING.md).
 
+### Development Scripts
+
+#### Creating Component Demos
+
+You can easily create new demo/example files for existing components using the `create-demo.mjs` script:
+
+```bash
+# Usage: node scripts/create-demo.mjs <component-name> <demo-suffix>
+# Example:
+node scripts/create-demo.mjs tabs spotify
+```
+
+This script will:
+1. Create a new demo file in the `registry/examples` directory
+2. Update the registry entries in `registry/registry-examples.ts`
+3. Add the demo to the component's documentation MDX file
+
 ## Acknowledgments
 
 Huge thanks to [shadcn](https://github.com/shadcn-ui/ui), as many parts of this repository—documentation page, structure, registry system, guides, and many more—is built upon it.
