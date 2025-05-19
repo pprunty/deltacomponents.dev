@@ -303,5 +303,16 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
+  },
+  {
+    name: "code-block-theme-demo",
+    type: "registry:block",
+    registryDependencies: ["code-block"],
+    files: [
+      {
+        path: "examples/code-block-theme-demo.tsx",
+        type: "registry:block",
+      },
+    ],
   }
 ]

@@ -515,6 +515,19 @@
       ]
     },
     {
+      "name": "code-block-theme-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/code-block-theme-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "code-block"
+      ]
+    },
+    {
       "name": "scramble-text",
       "type": "registry:component",
       "files": [

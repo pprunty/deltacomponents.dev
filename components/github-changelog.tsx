@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import * as React from 'react';
+import { cn } from "@/lib/utils";
 
 interface Release {
   version: string;
@@ -10,33 +12,95 @@ interface Release {
   url: string;
 }
 
+// Cache duration in milliseconds (2 days)
+const CACHE_DURATION = 2 * 24 * 60 * 60 * 1000;
+
+interface CacheData {
+  releases: Release[];
+  timestamp: number;
+}
+
 export function GitHubChangelog() {
   const [releases, setReleases] = useState<Release[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchChangelog() {
-      try {
-        setLoading(true);
-        const response = await fetch('/api/changelog');
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch changelog: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setReleases(data);
-      } catch (err) {
-        console.error('Error fetching changelog:', err);
-        setError('Failed to load changelog. Please try again later.');
-      } finally {
+  const fetchChangelog = async () => {
+    try {
+      // Check for cached data
+      const cachedData = getCachedReleases();
+      
+      if (cachedData) {
+        setReleases(cachedData);
         setLoading(false);
+        return;
       }
+      
+      // No cache or expired cache, fetch from API
+      setLoading(true);
+      const response = await fetch('/api/changelog');
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch changelog: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setReleases(data);
+      
+      // Cache the data
+      cacheReleases(data);
+    } catch (err) {
+      console.error('Error fetching changelog:', err);
+      setError('Failed to load changelog. Please try again later.');
+    } finally {
+      setLoading(false);
     }
+  };
 
+  useEffect(() => {
     fetchChangelog();
   }, []);
+  
+  function getCachedReleases(): Release[] | null {
+    try {
+      // Only run on client side
+      if (typeof window === 'undefined') return null;
+      
+      const cachedData = localStorage.getItem('github-changelog');
+      if (!cachedData) return null;
+      
+      const parsedData: CacheData = JSON.parse(cachedData);
+      
+      // Check if cache is expired
+      const now = Date.now();
+      if (now - parsedData.timestamp > CACHE_DURATION) {
+        // Cache expired
+        localStorage.removeItem('github-changelog');
+        return null;
+      }
+      
+      return parsedData.releases;
+    } catch (error) {
+      console.error('Error reading from cache:', error);
+      return null;
+    }
+  }
+  
+  function cacheReleases(releases: Release[]): void {
+    try {
+      // Only run on client side
+      if (typeof window === 'undefined') return;
+      
+      const cacheData: CacheData = {
+        releases,
+        timestamp: Date.now()
+      };
+      
+      localStorage.setItem('github-changelog', JSON.stringify(cacheData));
+    } catch (error) {
+      console.error('Error caching releases:', error);
+    }
+  }
 
   if (loading) {
     return <div className="py-4 text-muted-foreground">Loading changelog...</div>;
@@ -52,22 +116,24 @@ export function GitHubChangelog() {
 
   return (
     <div className="space-y-8 pb-8">
+      <h1 className={cn("font-heading scroll-m-20 text-3xl font-bold")}>
+        Latest Releases
+      </h1>
+      
       {releases.map((release) => (
-        <div key={release.version} className="pb-6 border-b border-border">
-          <h2 className="text-2xl font-bold flex items-center gap-2">
+        <div key={release.version} className="pb-8 pt-2">
+          <h2 className={cn("font-heading mt-8 scroll-m-20 border-b pb-2 text-2xl font-extrabold tracking-tight first:mt-0", "flex items-center gap-2")}>
             <a 
               href={release.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              className="text-primary no-underline hover:text-primary/80"
             >
               {release.title}
             </a>
-            <span className="text-sm font-normal text-muted-foreground">
-              {release.date}
-            </span>
           </h2>
-          <div className="mt-3 changelog-content prose dark:prose-invert">
+          <p className="text-md text-muted-foreground font-bold mt-2">Released: {release.date}</p>
+          <div className="mt-4">
             {formatReleaseBody(release.body)}
           </div>
         </div>
@@ -76,32 +142,99 @@ export function GitHubChangelog() {
   );
 }
 
-// Helper function to format GitHub markdown content
-function formatReleaseBody(body: string) {
-  // For now, we'll do a simple return, but you could add a markdown parser here
-  return <div dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(body) }} />;
+// Process lines to handle multi-line list items correctly
+function processLines(lines: string[]): string[] {
+  const processedLines: string[] = [];
+  let currentListItem = '';
+  let inListItem = false;
+
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      // If we were already in a list item, push it and start a new one
+      if (inListItem) {
+        processedLines.push(currentListItem);
+      }
+      currentListItem = line;
+      inListItem = true;
+    } else if (inListItem && line.trim() !== '' && !line.startsWith('#')) {
+      // If line is indented or is continuing a list item
+      currentListItem += ' ' + line.trim();
+    } else {
+      // Not a list item continuation
+      if (inListItem) {
+        processedLines.push(currentListItem);
+        inListItem = false;
+      }
+      processedLines.push(line);
+    }
+  }
+
+  // Add the last list item if there is one
+  if (inListItem) {
+    processedLines.push(currentListItem);
+  }
+
+  return processedLines;
 }
 
-// Basic markdown to HTML conversion (you might want to use a proper markdown library)
-function convertMarkdownToHtml(markdown: string) {
-  // Convert headings
-  let html = markdown
-    .replace(/### (.*)/g, '<h3>$1</h3>')
-    .replace(/## (.*)/g, '<h2>$1</h2>')
-    .replace(/# (.*)/g, '<h1>$1</h1>');
+// Helper function to format GitHub markdown content
+function formatReleaseBody(body: string) {
+  // Split the markdown into lines and process multi-line list items
+  const lines = processLines(body.split('\n'));
   
-  // Convert lists
-  html = html
-    .replace(/- (.*)/g, '<li>$1</li>')
-    .replace(/<\/li>\n<li>/g, '</li><li>')
-    .replace(/(<li>.*<\/li>)/g, '<ul>$1</ul>');
+  // Group consecutive list items into a single ul element
+  const elements: React.ReactNode[] = [];
+  let listItems: React.ReactNode[] = [];
   
-  // Convert paragraphs
-  html = html
-    .replace(/\n\n(.*)/g, '<p>$1</p>')
+  lines.forEach((line, index) => {
+    if (line.startsWith('- ')) {
+      // Add to current list
+      listItems.push(
+        <li key={`item-${index}`} className={cn("mt-2")}>{line.substring(2)}</li>
+      );
+    } else {
+      // If we have list items, add the ul and clear
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`list-${index}`} className={cn("my-6 ml-6 list-disc")}>{listItems}</ul>
+        );
+        listItems = [];
+      }
+      
+      // Handle headings
+      if (line.startsWith('### ')) {
+        elements.push(
+          <h3 key={index} className={cn("font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight")}>
+            {line.substring(4)}
+          </h3>
+        );
+      } else if (line.startsWith('## ')) {
+        elements.push(
+          <h2 key={index} className={cn("font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0")}>
+            {line.substring(3)}
+          </h2>
+        );
+      } else if (line.startsWith('# ')) {
+        elements.push(
+          <h1 key={index} className={cn("font-heading mt-2 scroll-m-20 text-4xl font-bold")}>
+            {line.substring(2)}
+          </h1>
+        );
+      // Handle paragraphs (non-empty lines)
+      } else if (line.trim() !== '') {
+        elements.push(
+          <p key={index} className={cn("leading-7 not-first:mt-6")}>{line}</p>
+        );
+      }
+    }
+  });
   
-  // Convert links
-  html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Add any remaining list items
+  if (listItems.length > 0) {
+    elements.push(
+      <ul key="list-final" className={cn("my-6 ml-6 list-disc")}>{listItems}</ul>
+    );
+  }
   
-  return html;
+  return <div className="space-y-4">{elements}</div>;
 } 

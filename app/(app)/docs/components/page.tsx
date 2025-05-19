@@ -38,43 +38,46 @@ export default function ComponentsPage() {
   const components = getComponents();
 
   return (
-    <div className="container py-10">
-      <div className="flex flex-col gap-4 mb-10">
-          <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-            <div className="truncate">Docs</div>
-            <ChevronRightIcon className="size-3.5" />
-            <div className="text-foreground">Components</div>
+    <main className="relative py-6 lg:py-8 px-0">
+      <div className="w-full min-w-0">
+        <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
+          <div className="truncate">Docs</div>
+          <ChevronRightIcon className="size-3.5" />
+          <div className="text-foreground">Components Showcase</div>
+        </div>
+        <div className="space-y-2">
+          <ScrambleText
+            text={"Components Showcase"}
+            className={cn(
+              "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
+            )}
+            scrambleSpeed={80}
+            //useIntersectionObserver
+            //retriggerOnIntersection
+          />
+          <p className="text-base text-muted-foreground">
+            <Balancer>Jump in and pick the component that catches your eye.</Balancer>
+          </p>
+        </div>
+        <div className="pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6">
+            {components.map((component) => {
+              const category = getComponentCategory(component.name);
+              
+              return (
+                <ComponentPreviewCard
+                  key={component.name}
+                  name={component.name}
+                  category={category}
+                  tags={component.tags}
+                  showTags={false}
+                  useDocsLink={true}
+                />
+              );
+            })}
           </div>
-        <ScrambleText
-          text={"Components"}
-          className={cn(
-            "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
-          )}
-          scrambleSpeed={80}
-          //               useIntersectionObserver
-          //               retriggerOnIntersection
-        />
-                      <p className="text-base text-muted-foreground">
-                        <Balancer>Jump in and pick the component that catches your eye.</Balancer>
-                      </p>
+        </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {components.map((component) => {
-          const category = getComponentCategory(component.name);
-          
-          return (
-            <ComponentPreviewCard
-              key={component.name}
-              name={component.name}
-              category={category}
-              tags={component.tags}
-              showTags={false}
-              useDocsLink={true}
-            />
-          );
-        })}
-      </div>
-    </div>
+    </main>
   );
 } 

@@ -591,6 +591,21 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/examples/smart-form-pill-demo")),
     source: "",
   },
+  "code-block-theme-demo": {
+    name: "code-block-theme-demo",
+    type: "registry:block",
+    registryDependencies: ["code-block"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/code-block-theme-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/code-block-theme-demo")),
+    source: "",
+  },
   "scramble-text": {
     name: "scramble-text",
     type: "registry:component",

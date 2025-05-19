@@ -24,7 +24,7 @@ const demoName = `${componentName}-${demoSuffix}-demo`;
 // Helper function to find a component file in any subdirectory of registry
 async function findComponentFile(componentName) {
   // Define potential subdirectories to search
-  const subdirs = ['components', 'blocks', 'inputs', 'animations', 'hooks', 'landing-page'];
+  const subdirs = ['components', 'blocks', 'inputs', 'animations', 'hooks', 'landing-page', 'media'];
   
   for (const subdir of subdirs) {
     const componentPath = path.join(rootDir, "registry", subdir, `${componentName}.tsx`);

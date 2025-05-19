@@ -29,6 +29,15 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = React.useState("preview")
   const [code, setCode] = React.useState<string | null>(null)
+  const previewRef = React.useRef<HTMLDivElement>(null)
+  
+  // Handle tab switching to reinitialize IntersectionObserver
+  React.useEffect(() => {
+    if (activeTab === "preview" && previewRef.current) {
+      // Force IntersectionObserver to recalculate by triggering a resize event
+      window.dispatchEvent(new Event('resize'))
+    }
+  }, [activeTab])
   
   // Get component and source file from registry
   const Preview = React.useMemo(() => {
@@ -112,8 +121,9 @@ export function ComponentPreview({
             {code && <CopyButton value={code} />}
           </div>
           <div
+            ref={previewRef}
             className={cn(
-              "preview flex min-h-[350px] w-full justify-center p-10",
+              "preview flex min-h-[350px] w-full justify-center p-10 overflow-x-auto",
               {
                 "items-center": align === "center",
                 "items-start": align === "start",

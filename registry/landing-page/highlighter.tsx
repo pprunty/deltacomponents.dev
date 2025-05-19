@@ -2,26 +2,23 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion, useInView, HTMLMotionProps, PanInfo } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-const highlighterVariants = cva("bg-transparent font-extrabold", {
+const highlighterVariants = cva("bg-transparent font-extrabold relative", {
   variants: {
     variant: {
-      default:
-        "text-primary shadow-[inset_0_-0.5em_0_0_rgb(240,171,252)] dark:shadow-[inset_0_-0.5em_0_0_rgba(245,140,245,0.8)]",
-      success:
-        "text-primary shadow-[inset_0_-0.5em_0_0_rgba(132,204,22,0.5)] dark:shadow-[inset_0_-0.5em_0_0_rgba(132,204,22,0.4)]",
-      info: "text-primary shadow-[inset_0_-0.5em_0_0_rgba(56,189,248,0.5)] dark:shadow-[inset_0_-0.5em_0_0_rgba(56,189,248,0.4)]",
-      warning:
-        "text-primary shadow-[inset_0_-0.5em_0_0_rgba(250,204,21,0.5)] dark:shadow-[inset_0_-0.5em_0_0_rgba(250,204,21,0.4)]",
-      destructive:
-        "text-primary shadow-[inset_0_-0.5em_0_0_rgba(239,68,68,0.5)] dark:shadow-[inset_0_-0.5em_0_0_rgba(239,68,68,0.4)]",
+      default: "text-primary",
+      success: "text-primary",
+      info: "text-primary",
+      warning: "text-primary",
+      destructive: "text-primary",
     },
     thickness: {
-      thin: "shadow-[inset_0_-0.3em_0_0] dark:shadow-[inset_0_-0.3em_0_0]",
-      default: "shadow-[inset_0_-0.5em_0_0] dark:shadow-[inset_0_-0.5em_0_0]",
-      thick: "shadow-[inset_0_-0.7em_0_0] dark:shadow-[inset_0_-0.7em_0_0]",
+      thin: "",
+      default: "",
+      thick: "",
     },
   },
   defaultVariants: {
@@ -34,36 +31,122 @@ export interface HighlighterProps extends React.HTMLAttributes<HTMLElement>, Var
   asChild?: boolean
   shadowColor?: string
   darkShadowColor?: string
+  animate?: boolean
+  text?: string
 }
 
 const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
-  ({ className, variant, thickness, asChild = false, shadowColor, darkShadowColor, style, ...props }, ref) => {
-    const Comp = asChild ? React.Fragment : "mark"
+  (
+    { className, variant, thickness, asChild = false, shadowColor, darkShadowColor, style, animate = false, children, text, ...props },
+    ref,
+  ) => {
+    const highlighterRef = React.useRef<HTMLElement | null>(null)
+    const isInView = useInView(highlighterRef, { once: true, amount: 0.5 })
 
-    // Create custom shadow styles if shadowColor is provided
-    const customStyle = shadowColor
-      ? {
-          ...style,
-          "--highlight-shadow-color": shadowColor,
-          "--highlight-dark-shadow-color": darkShadowColor || shadowColor,
-        }
-      : style
+    // Determine shadow values based on variant and custom colors
+    const getShadowValue = (isDefault = true) => {
+      if (shadowColor) {
+        return isDefault ? shadowColor : darkShadowColor || shadowColor
+      }
 
-    // Apply custom shadow class if shadowColor is provided
-    const customShadowClass = shadowColor
-      ? "shadow-[inset_0_-0.5em_0_0_var(--highlight-shadow-color)] dark:shadow-[inset_0_-0.5em_0_0_var(--highlight-dark-shadow-color)]"
-      : undefined
+      switch (variant) {
+        case "default":
+          return isDefault ? "rgb(240,171,252)" : "rgba(245,140,245,0.8)"
+        case "success":
+          return isDefault ? "rgba(132,204,22,0.5)" : "rgba(132,204,22,0.4)"
+        case "info":
+          return isDefault ? "rgba(56,189,248,0.5)" : "rgba(56,189,248,0.4)"
+        case "warning":
+          return isDefault ? "rgba(250,204,21,0.5)" : "rgba(250,204,21,0.4)"
+        case "destructive":
+          return isDefault ? "rgba(239,68,68,0.5)" : "rgba(239,68,68,0.4)"
+        default:
+          return isDefault ? "rgb(240,171,252)" : "rgba(245,140,245,0.8)"
+      }
+    }
 
+    // Determine thickness value
+    const getThicknessValue = () => {
+      switch (thickness) {
+        case "thin":
+          return "0.3em"
+        case "thick":
+          return "0.7em"
+        default:
+          return "0.5em"
+      }
+    }
+
+    // Create custom styles
+    const customStyle = {
+      ...style,
+      "--highlight-shadow-color": getShadowValue(true),
+      "--highlight-dark-shadow-color": getShadowValue(false),
+      "--highlight-thickness": getThicknessValue(),
+    } as React.CSSProperties
+
+    // Animation variants
+    const highlightVariants = {
+      hidden: { width: "0%" },
+      visible: {
+        width: "100%",
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      },
+    }
+
+    // Static shadow class (no animation)
+    const staticShadowClass = !animate
+      ? "shadow-[inset_0_-var(--highlight-thickness)_0_0_var(--highlight-shadow-color)] dark:shadow-[inset_0_-var(--highlight-thickness)_0_0_var(--highlight-dark-shadow-color)]"
+      : ""
+
+    if (asChild) {
+      // When using as a fragment, just return the children with no wrapping
+      return (
+        <React.Fragment>
+          {children}
+        </React.Fragment>
+      )
+    }
+
+    // When using as a mark element
     return (
-      <Comp
-        ref={ref}
-        className={cn(
-          highlighterVariants({ variant: shadowColor ? undefined : variant, thickness, className }),
-          customShadowClass,
-        )}
+      <mark
+        ref={(node) => {
+          // Handle both the forwarded ref and our local ref
+          if (typeof ref === "function") {
+            ref(node as HTMLElement)
+          } else if (ref) {
+            ref.current = node as HTMLElement
+          }
+          highlighterRef.current = node as HTMLElement
+        }}
+        className={cn(highlighterVariants({ variant, thickness, className }), staticShadowClass, "relative")}
         style={customStyle}
         {...props}
-      />
+      >
+        {text ? (
+          <span className="relative z-10">{text}</span>
+        ) : (
+          children
+        )}
+        
+        {animate ? (
+          <motion.span
+            className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={highlightVariants}
+          />
+        ) : (
+          // Add a static span for non-animated highlights to ensure consistent rendering
+          <span
+            className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] w-full bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0"
+          />
+        )}
+      </mark>
     )
   },
 )

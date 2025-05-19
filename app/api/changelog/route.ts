@@ -32,10 +32,11 @@ export async function GET() {
 
     // Format the releases for display in MDX
     const changelogContent = releases.map((release: any) => {
-      const date = new Date(release.published_at).toLocaleDateString('en-US', {
+      const publishDate = new Date(release.published_at);
+      const date = publishDate.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric',
+        day: '2-digit',
       });
       
       return {

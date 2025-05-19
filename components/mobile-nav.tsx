@@ -32,6 +32,11 @@ export function MobileNav() {
     [setMetaColor, metaColor]
   )
 
+  // Filter top-level navigation to only include Home and Components Showcase
+  const topLevelNav = docsConfig.mainNav?.filter(
+    (item) => item.title === "Home" || item.title === "Component Showcase"
+  )
+
   return (
     <Drawer open={open} onOpenChange={onOpenChange} size="xl">
       <DrawerTrigger asChild>
@@ -59,7 +64,7 @@ export function MobileNav() {
           <DrawerHandle />
           <DrawerBody className="flex-1 overflow-auto p-6">
             <div className="flex flex-col gap-y-3">
-              {docsConfig.mainNav?.map(
+              {topLevelNav.map(
                 (item) =>
                   item.href && (
                     <MobileLink
