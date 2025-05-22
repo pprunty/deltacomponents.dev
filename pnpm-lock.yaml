@@ -220,8 +220,8 @@ importers:
         specifier: ^4.1.7
         version: 4.1.7
       ts-morph:
-        specifier: ^24.0.0
-        version: 24.0.0
+        specifier: ^26.0.0
+        version: 26.0.0
       tsx:
         specifier: ^4.19.2
         version: 4.19.4
@@ -1869,8 +1869,8 @@ packages:
   '@tailwindcss/postcss@4.1.7':
     resolution: {integrity: sha512-88g3qmNZn7jDgrrcp3ZXEQfp9CVox7xjP1HN2TFKI03CltPVd/c61ydn5qJJL8FYunn0OqBaW5HNUga0kmPVvw==}
 
-  '@ts-morph/common@0.25.0':
-    resolution: {integrity: sha512-kMnZz+vGGHi4GoHnLmMhGNjm44kGtKUXGnOvrKmMwAuvNjM/PgKVGfUnL7IDvK7Jb2QQ82jq3Zmp04Gy+r3Dkg==}
+  '@ts-morph/common@0.27.0':
+    resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
@@ -4584,8 +4584,8 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  ts-morph@24.0.0:
-    resolution: {integrity: sha512-2OAOg/Ob5yx9Et7ZX4CvTCc0UFoZHwLEJ+dpDPSUi5TgwwlTlX47w+iFRrEwzUZwYACjq83cgjS/Da50Ga37uw==}
+  ts-morph@26.0.0:
+    resolution: {integrity: sha512-ztMO++owQnz8c/gIENcM9XfCEzgoGphTv+nKpYNM1bgsdOVC/jRZuEBf6N+mLLDNg68Kl+GgUZfOySaRiG1/Ug==}
 
   ts-pattern@5.7.1:
     resolution: {integrity: sha512-EGs8PguQqAAUIcQfK4E9xdXxB6s2GK4sJfT/vcc9V1ELIvC4LH/zXu2t/5fajtv6oiRCxdv7BgtVK3vWgROxag==}
@@ -6520,11 +6520,11 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.1.7
 
-  '@ts-morph/common@0.25.0':
+  '@ts-morph/common@0.27.0':
     dependencies:
-      minimatch: 9.0.5
+      fast-glob: 3.3.3
+      minimatch: 10.0.1
       path-browserify: 1.0.1
-      tinyglobby: 0.2.13
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
@@ -9876,9 +9876,9 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  ts-morph@24.0.0:
+  ts-morph@26.0.0:
     dependencies:
-      '@ts-morph/common': 0.25.0
+      '@ts-morph/common': 0.27.0
       code-block-writer: 13.0.3
 
   ts-pattern@5.7.1: {}
