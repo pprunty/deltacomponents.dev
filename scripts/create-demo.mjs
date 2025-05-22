@@ -9,6 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.join(__dirname, "..");
 
+// Site URL for constructing full dependency URLs
+const SITE_URL = "https://deltacomponents.dev"; // This should match your site URL in config/site.ts
+
 // Parse command line arguments
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -43,6 +46,19 @@ async function findComponentFile(componentName) {
 
 async function main() {
   try {
+    // Try to read site URL from config if available
+    try {
+      const siteConfigPath = path.join(rootDir, 'config/site.ts');
+      const siteConfigContent = await fs.readFile(siteConfigPath, 'utf8');
+      const urlMatch = siteConfigContent.match(/url:\s*["']([^"']+)["']/);
+      if (urlMatch && urlMatch[1]) {
+        // If URL is found in config, update the global SITE_URL
+        SITE_URL = urlMatch[1];
+      }
+    } catch (error) {
+      console.warn("Could not read site config, using default URL:", SITE_URL);
+    }
+    
     // Find the component in registry subdirectories
     const component = await findComponentFile(componentName);
     
@@ -141,11 +157,13 @@ async function updateExamplesRegistry(componentName, demoName) {
     dependencies.push("x-scrollable");
   }
   
-  // Create the new example entry
+  // Create the new example entry with full URLs for dependencies
+  const formattedDependencies = dependencies.map(dep => `"${SITE_URL}/r/${dep}.json"`).join(", ");
+  
   const newExampleEntry = `  {
     name: "${demoName}",
     type: "registry:block",
-    registryDependencies: [${dependencies.map(dep => `"${dep}"`).join(", ")}],
+    registryDependencies: [${formattedDependencies}],
     files: [
       {
         path: "examples/${demoName}.tsx",

@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next"
-import { ThemeProvider } from "next-themes"
 
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
@@ -127,12 +126,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         suppressHydrationWarning
       >
-            <TooltipProvider>
-              <div className="relative flex min-h-svh flex-col bg-background">
-                {children}
-              </div>
-            </TooltipProvider>
-          <Toaster />
+        <TooltipProvider>
+          <div className="relative flex min-h-svh flex-col bg-background">
+            {children}
+          </div>
+        </TooltipProvider>
+        <Toaster />
       </body>
     </html>
   )

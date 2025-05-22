@@ -3,38 +3,30 @@
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { Cross as Hamburger } from 'hamburger-react';
+import { Cross as Hamburger } from "hamburger-react"
 
 import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
-  DrawerTrigger,
-  DrawerContent,
   DrawerBody,
-  DrawerPortal,
-  DrawerOverlay,
+  DrawerContent,
   DrawerHandle,
+  DrawerOverlay,
+  DrawerPortal,
   DrawerTitle,
+  DrawerTrigger,
 } from "@/registry/components/drawer"
-
-// Preserve meta color when drawer is opened/closed
-const preserveThemeOnDrawer = (isOpen: boolean) => {
-  // This function will make sure we don't override the theme-based meta color
-  // No need to set any specific color - the theme system handles this
-  return;
-}
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
-  
+
   // Enhanced drawer handler that preserves theme
   const handleDrawerChange = React.useCallback((isOpen: boolean) => {
-    setOpen(isOpen);
-    preserveThemeOnDrawer(isOpen);
-  }, []);
-  
+    setOpen(isOpen)
+  }, [])
+
   // Filter top-level navigation to only include Home and Components Showcase
   const topLevelNav = docsConfig.mainNav?.filter(
     (item) => item.title === "Home" || item.title === "Component Showcase"
@@ -48,10 +40,10 @@ export function MobileNav() {
           className="mr-2 size-8 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <div className="mx-1">
-            <Hamburger 
-              size={18} 
-              toggled={open} 
-              toggle={setOpen} 
+            <Hamburger
+              size={18}
+              toggled={open}
+              toggle={setOpen}
               label="Toggle menu"
               hideOutline={false}
               rounded
