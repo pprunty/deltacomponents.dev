@@ -3,8 +3,8 @@
   "name": "tabs-spotify-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "tabs",
-    "x-scrollable"
+    "https://deltacomponents.dev/r/tabs.json",
+    "https://deltacomponents.dev/r/x-scrollable.json"
   ],
   "files": [
     {

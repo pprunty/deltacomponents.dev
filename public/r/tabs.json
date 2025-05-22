@@ -3,7 +3,7 @@
   "name": "tabs",
   "type": "registry:component",
   "registryDependencies": [
-    "x-scrollable"
+    "https://deltacomponents.dev/r/x-scrollable.json"
   ],
   "files": [
     {

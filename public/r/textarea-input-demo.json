@@ -3,7 +3,7 @@
   "name": "textarea-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "textarea-input"
+    "https://deltacomponents.dev/r/textarea-input.json"
   ],
   "files": [
     {

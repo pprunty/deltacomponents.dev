@@ -3,7 +3,7 @@
   "name": "checkbox-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "checkbox-input"
+    "https://deltacomponents.dev/r/checkbox-input.json"
   ],
   "files": [
     {

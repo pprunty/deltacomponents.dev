@@ -3,7 +3,7 @@
   "name": "modal-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "modal"
+    "https://deltacomponents.dev/r/modal.json"
   ],
   "files": [
     {

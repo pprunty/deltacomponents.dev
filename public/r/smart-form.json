@@ -7,16 +7,16 @@
     "utils"
   ],
   "registryDependencies": [
-    "text-input",
-    "checkbox-input",
-    "select-input",
-    "radio-input",
-    "switch-input",
-    "textarea-input",
-    "date-input",
-    "file-input",
-    "otp-input",
-    "tags-input"
+    "https://deltacomponents.dev/r/text-input.json",
+    "https://deltacomponents.dev/r/checkbox-input.json",
+    "https://deltacomponents.dev/r/select-input.json",
+    "https://deltacomponents.dev/r/radio-input.json",
+    "https://deltacomponents.dev/r/switch-input.json",
+    "https://deltacomponents.dev/r/textarea-input.json",
+    "https://deltacomponents.dev/r/date-input.json",
+    "https://deltacomponents.dev/r/file-input.json",
+    "https://deltacomponents.dev/r/otp-input.json",
+    "https://deltacomponents.dev/r/tags-input.json"
   ],
   "files": [
     {

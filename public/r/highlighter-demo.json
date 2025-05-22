@@ -3,7 +3,7 @@
   "name": "highlighter-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "highlighter"
+    "https://deltacomponents.dev/r/highlighter.json"
   ],
   "files": [
     {

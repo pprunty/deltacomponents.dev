@@ -3,7 +3,7 @@
   "name": "tags-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "tags-input"
+    "https://deltacomponents.dev/r/tags-input.json"
   ],
   "files": [
     {

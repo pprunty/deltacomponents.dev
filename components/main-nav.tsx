@@ -41,7 +41,7 @@ export function MainNav() {
               : "text-muted-foreground"
           )}
         >
-          Components Showcase
+          Components
         </Link>
       </nav>
     </div>

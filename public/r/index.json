@@ -145,7 +145,7 @@
         }
       ],
       "registryDependencies": [
-        "highlighter"
+        "https://deltacomponents.dev/r/highlighter.json"
       ]
     },
     {
@@ -158,7 +158,7 @@
         }
       ],
       "registryDependencies": [
-        "backdrop-gradient"
+        "https://deltacomponents.dev/r/backdrop-gradient.json"
       ]
     },
     {
@@ -171,7 +171,7 @@
         }
       ],
       "registryDependencies": [
-        "smart-form"
+        "https://deltacomponents.dev/r/smart-form.json"
       ]
     },
     {
@@ -184,7 +184,7 @@
         }
       ],
       "registryDependencies": [
-        "checkbox-input"
+        "https://deltacomponents.dev/r/checkbox-input.json"
       ]
     },
     {
@@ -197,7 +197,7 @@
         }
       ],
       "registryDependencies": [
-        "radio-input"
+        "https://deltacomponents.dev/r/radio-input.json"
       ]
     },
     {
@@ -210,7 +210,7 @@
         }
       ],
       "registryDependencies": [
-        "date-input"
+        "https://deltacomponents.dev/r/date-input.json"
       ]
     },
     {
@@ -223,7 +223,7 @@
         }
       ],
       "registryDependencies": [
-        "switch-input"
+        "https://deltacomponents.dev/r/switch-input.json"
       ]
     },
     {
@@ -236,7 +236,7 @@
         }
       ],
       "registryDependencies": [
-        "select-input"
+        "https://deltacomponents.dev/r/select-input.json"
       ]
     },
     {
@@ -249,7 +249,7 @@
         }
       ],
       "registryDependencies": [
-        "tags-input"
+        "https://deltacomponents.dev/r/tags-input.json"
       ]
     },
     {
@@ -262,7 +262,7 @@
         }
       ],
       "registryDependencies": [
-        "textarea-input"
+        "https://deltacomponents.dev/r/textarea-input.json"
       ]
     },
     {
@@ -275,7 +275,7 @@
         }
       ],
       "registryDependencies": [
-        "retro-video-player"
+        "https://deltacomponents.dev/r/retro-video-player.json"
       ]
     },
     {
@@ -288,7 +288,7 @@
         }
       ],
       "registryDependencies": [
-        "code-block"
+        "https://deltacomponents.dev/r/code-block.json"
       ]
     },
     {
@@ -301,7 +301,7 @@
         }
       ],
       "registryDependencies": [
-        "drawer"
+        "https://deltacomponents.dev/r/drawer.json"
       ]
     },
     {
@@ -314,7 +314,7 @@
         }
       ],
       "registryDependencies": [
-        "modal"
+        "https://deltacomponents.dev/r/modal.json"
       ]
     },
     {
@@ -327,8 +327,8 @@
         }
       ],
       "registryDependencies": [
-        "tabs",
-        "x-scrollable"
+        "https://deltacomponents.dev/r/tabs.json",
+        "https://deltacomponents.dev/r/x-scrollable.json"
       ]
     },
     {
@@ -341,7 +341,7 @@
         }
       ],
       "registryDependencies": [
-        "scramble-text"
+        "https://deltacomponents.dev/r/scramble-text.json"
       ]
     },
     {
@@ -419,7 +419,7 @@
         }
       ],
       "registryDependencies": [
-        "otp-input"
+        "https://deltacomponents.dev/r/otp-input.json"
       ]
     },
     {
@@ -432,7 +432,7 @@
         }
       ],
       "registryDependencies": [
-        "text-input"
+        "https://deltacomponents.dev/r/text-input.json"
       ]
     },
     {
@@ -445,7 +445,7 @@
         }
       ],
       "registryDependencies": [
-        "file-input"
+        "https://deltacomponents.dev/r/file-input.json"
       ]
     },
     {
@@ -458,8 +458,8 @@
         }
       ],
       "registryDependencies": [
-        "tabs",
-        "x-scrollable"
+        "https://deltacomponents.dev/r/tabs.json",
+        "https://deltacomponents.dev/r/x-scrollable.json"
       ]
     },
     {
@@ -472,7 +472,7 @@
         }
       ],
       "registryDependencies": [
-        "drawer"
+        "https://deltacomponents.dev/r/drawer.json"
       ]
     },
     {
@@ -485,7 +485,7 @@
         }
       ],
       "registryDependencies": [
-        "backdrop-gradient"
+        "https://deltacomponents.dev/r/backdrop-gradient.json"
       ]
     },
     {
@@ -498,7 +498,7 @@
         }
       ],
       "registryDependencies": [
-        "x-scrollable"
+        "https://deltacomponents.dev/r/x-scrollable.json"
       ]
     },
     {
@@ -511,7 +511,7 @@
         }
       ],
       "registryDependencies": [
-        "smart-form"
+        "https://deltacomponents.dev/r/smart-form.json"
       ]
     },
     {
@@ -524,7 +524,7 @@
         }
       ],
       "registryDependencies": [
-        "code-block"
+        "https://deltacomponents.dev/r/code-block.json"
       ]
     },
     {
@@ -578,7 +578,7 @@
         }
       ],
       "registryDependencies": [
-        "x-scrollable"
+        "https://deltacomponents.dev/r/x-scrollable.json"
       ]
     },
     {
@@ -605,16 +605,16 @@
         "utils"
       ],
       "registryDependencies": [
-        "text-input",
-        "checkbox-input",
-        "select-input",
-        "radio-input",
-        "switch-input",
-        "textarea-input",
-        "date-input",
-        "file-input",
-        "otp-input",
-        "tags-input"
+        "https://deltacomponents.dev/r/text-input.json",
+        "https://deltacomponents.dev/r/checkbox-input.json",
+        "https://deltacomponents.dev/r/select-input.json",
+        "https://deltacomponents.dev/r/radio-input.json",
+        "https://deltacomponents.dev/r/switch-input.json",
+        "https://deltacomponents.dev/r/textarea-input.json",
+        "https://deltacomponents.dev/r/date-input.json",
+        "https://deltacomponents.dev/r/file-input.json",
+        "https://deltacomponents.dev/r/otp-input.json",
+        "https://deltacomponents.dev/r/tags-input.json"
       ]
     },
     {

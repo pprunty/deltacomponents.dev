@@ -3,7 +3,7 @@
   "name": "radio-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "radio-input"
+    "https://deltacomponents.dev/r/radio-input.json"
   ],
   "files": [
     {

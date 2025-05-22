@@ -10,6 +10,30 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.join(__dirname, "..")
 
+// Get site URL from config - we need to read the file and extract the URL
+// since we can't directly import TypeScript modules in Node.js scripts
+async function getSiteURL(): Promise<string> {
+  try {
+    const siteConfigPath = path.join(rootDir, 'config/site.ts')
+    const siteConfigContent = await fs.readFile(siteConfigPath, 'utf8')
+    
+    // Extract the URL using regex - this is a simple way to get the value
+    const urlMatch = siteConfigContent.match(/url:\s*["']([^"']+)["']/)
+    if (urlMatch && urlMatch[1]) {
+      return urlMatch[1]
+    }
+    
+    // Fallback to default URL if not found
+    return "https://deltacomponents.dev"
+  } catch (error) {
+    console.warn("Could not read site config, using default URL", error)
+    return "https://deltacomponents.dev"
+  }
+}
+
+// We'll set this later in the buildRegistry function
+let SITE_URL = "https://deltacomponents.dev"
+
 // Define types
 interface RegistryItemFile {
   path: string
@@ -284,9 +308,38 @@ function ensureDemoDependencies(registry: Registry): Registry {
   })
 }
 
+/**
+ * Function to transform registry dependencies to full URLs if they are internal components
+ */
+function transformRegistryDependencies(
+  registry: Registry, 
+  registryDependencies?: string[]
+): string[] | undefined {
+  if (!registryDependencies || registryDependencies.length === 0) {
+    return undefined;
+  }
+  
+  // Create a set of available component names for quick lookup
+  const availableComponents = new Set(registry.map(item => item.name));
+  
+  // Transform each dependency
+  return registryDependencies.map(dep => {
+    // If this is an internal component, use the full URL
+    if (availableComponents.has(dep)) {
+      return `${SITE_URL}/r/${dep}.json`;
+    }
+    // Otherwise, keep it as is (for external dependencies like "button")
+    return dep;
+  });
+}
+
 async function buildRegistry() {
   try {
     console.info("💽 Building registry...")
+    
+    // Get the site URL from config
+    SITE_URL = await getSiteURL()
+    console.info(`🌐 Using site URL: ${SITE_URL}`)
     
     // Dynamically load registry files
     console.info("📑 Loading registry files...")
@@ -361,9 +414,9 @@ async function buildRegistry() {
         shadcnItem.devDependencies = item.devDependencies
       }
 
-      // Add registryDependencies if present
+      // Add registryDependencies if present, transforming internal ones to full URLs
       if (item.registryDependencies && item.registryDependencies.length > 0) {
-        shadcnItem.registryDependencies = item.registryDependencies
+        shadcnItem.registryDependencies = transformRegistryDependencies(registry, item.registryDependencies)
       }
 
       // Process files
@@ -389,6 +442,45 @@ async function buildRegistry() {
       outputPath,
       JSON.stringify(shadcnRegistry, null, 2)
     )
+
+    // Additionally, generate individual component JSON files
+    for (const item of shadcnRegistry.items) {
+      const componentJson = {
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        name: item.name,
+        type: item.type,
+        ...(item.dependencies && { dependencies: item.dependencies }),
+        ...(item.devDependencies && { devDependencies: item.devDependencies }),
+        ...(item.registryDependencies && { registryDependencies: item.registryDependencies }),
+        files: item.files,
+      };
+
+      const componentPath = path.join(outputDir, `${item.name}.json`);
+      
+      // Read the existing file content if it exists
+      let existingContent: any = {};
+      try {
+        const existingFile = await fs.readFile(componentPath, 'utf8');
+        existingContent = JSON.parse(existingFile);
+      } catch (e) {
+        // File doesn't exist or is invalid, continue with empty object
+      }
+      
+      // Merge with existing file to preserve file contents
+      const mergedJson = {
+        ...componentJson,
+        files: componentJson.files.map(file => {
+          // Try to find the matching file in the existing content
+          const existingFile = existingContent.files?.find((f: any) => f.path === file.path);
+          if (existingFile && existingFile.content) {
+            return { ...file, content: existingFile.content };
+          }
+          return file;
+        }),
+      };
+      
+      await fs.writeFile(componentPath, JSON.stringify(mergedJson, null, 2));
+    }
 
     console.info(`✅ Registry built successfully: ${outputPath}`)
   } catch (error: unknown) {

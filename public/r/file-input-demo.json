@@ -3,7 +3,7 @@
   "name": "file-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "file-input"
+    "https://deltacomponents.dev/r/file-input.json"
   ],
   "files": [
     {

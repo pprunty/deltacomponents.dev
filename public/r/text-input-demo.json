@@ -3,7 +3,7 @@
   "name": "text-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "text-input"
+    "https://deltacomponents.dev/r/text-input.json"
   ],
   "files": [
     {

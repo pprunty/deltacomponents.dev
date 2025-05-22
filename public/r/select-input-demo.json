@@ -3,7 +3,7 @@
   "name": "select-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "select-input"
+    "https://deltacomponents.dev/r/select-input.json"
   ],
   "files": [
     {

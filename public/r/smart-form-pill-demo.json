@@ -3,7 +3,7 @@
   "name": "smart-form-pill-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "smart-form"
+    "https://deltacomponents.dev/r/smart-form.json"
   ],
   "files": [
     {

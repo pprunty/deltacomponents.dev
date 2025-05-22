@@ -3,7 +3,7 @@
   "name": "switch-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "switch-input"
+    "https://deltacomponents.dev/r/switch-input.json"
   ],
   "files": [
     {

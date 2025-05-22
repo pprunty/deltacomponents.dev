@@ -3,7 +3,7 @@
   "name": "backdrop-gradient-artistic-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "backdrop-gradient"
+    "https://deltacomponents.dev/r/backdrop-gradient.json"
   ],
   "files": [
     {

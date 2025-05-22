@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Delta Components",
-  url: "https://patrickprunty.com",
-  ogImage: "https://patrickprunty.com/og.png",
+  url: "https://deltacomponents.dev",
+  ogImage: "https://deltacomponents.dev/icon.webp",
   description:
     "A collection of reusable react hooks that you can copy and paste into your apps.",
   links: {

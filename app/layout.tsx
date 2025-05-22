@@ -5,12 +5,11 @@ import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { themeEffect } from "@/components/theme-effect"
 
 import "@/styles/globals.css"
 
 import { Toaster } from "@/components/ui/sonner"
-import { ActiveThemeProvider } from "@/components/active-theme"
-import { ThemeMetaUpdater } from "@/components/theme-meta-updater"
 
 export const metadata: Metadata = {
   title: {
@@ -114,6 +113,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           src="https://cloud.umami.is/script.js"
           data-website-id="10114de9-fbcb-417d-89a2-7ff4ac30db2d"
         ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(${themeEffect.toString()})('claude');`,
+          }}
+        />
       </head>
       <body
         className={cn(
@@ -123,23 +127,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          enableColorScheme
-        >
-          <ActiveThemeProvider>
             <TooltipProvider>
-              <ThemeMetaUpdater />
               <div className="relative flex min-h-svh flex-col bg-background">
                 {children}
               </div>
             </TooltipProvider>
-          </ActiveThemeProvider>
           <Toaster />
-        </ThemeProvider>
       </body>
     </html>
   )

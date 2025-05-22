@@ -3,7 +3,7 @@
   "name": "otp-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "otp-input"
+    "https://deltacomponents.dev/r/otp-input.json"
   ],
   "files": [
     {

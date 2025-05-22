@@ -3,7 +3,7 @@
   "name": "x-scrollable-colorful-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "x-scrollable"
+    "https://deltacomponents.dev/r/x-scrollable.json"
   ],
   "files": [
     {

@@ -3,7 +3,7 @@
   "name": "scramble-text-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "scramble-text"
+    "https://deltacomponents.dev/r/scramble-text.json"
   ],
   "files": [
     {

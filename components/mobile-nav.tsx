@@ -7,7 +7,6 @@ import { Cross as Hamburger } from 'hamburger-react';
 
 import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
-import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -20,25 +19,29 @@ import {
   DrawerTitle,
 } from "@/registry/components/drawer"
 
+// Preserve meta color when drawer is opened/closed
+const preserveThemeOnDrawer = (isOpen: boolean) => {
+  // This function will make sure we don't override the theme-based meta color
+  // No need to set any specific color - the theme system handles this
+  return;
+}
+
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
-  const { setMetaColor, metaColor } = useMetaColor()
-
-  const onOpenChange = React.useCallback(
-    (open: boolean) => {
-      setOpen(open)
-      setMetaColor(open ? "#09090b" : metaColor)
-    },
-    [setMetaColor, metaColor]
-  )
-
+  
+  // Enhanced drawer handler that preserves theme
+  const handleDrawerChange = React.useCallback((isOpen: boolean) => {
+    setOpen(isOpen);
+    preserveThemeOnDrawer(isOpen);
+  }, []);
+  
   // Filter top-level navigation to only include Home and Components Showcase
   const topLevelNav = docsConfig.mainNav?.filter(
     (item) => item.title === "Home" || item.title === "Component Showcase"
   )
 
   return (
-    <Drawer open={open} onOpenChange={onOpenChange} size="xl">
+    <Drawer open={open} onOpenChange={handleDrawerChange} size="xl">
       <DrawerTrigger asChild>
         <Button
           variant="ghost"
@@ -58,7 +61,7 @@ export function MobileNav() {
         </Button>
       </DrawerTrigger>
       <DrawerPortal>
-        <DrawerOverlay />
+        <DrawerOverlay className="backdrop-blur-sm" />
         <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-12 h-[80vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
           <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
           <DrawerHandle />

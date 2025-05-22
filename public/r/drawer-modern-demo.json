@@ -3,7 +3,7 @@
   "name": "drawer-modern-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "drawer"
+    "https://deltacomponents.dev/r/drawer.json"
   ],
   "files": [
     {

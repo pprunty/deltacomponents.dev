@@ -3,7 +3,7 @@
   "name": "retro-video-player-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "retro-video-player"
+    "https://deltacomponents.dev/r/retro-video-player.json"
   ],
   "files": [
     {

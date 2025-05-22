@@ -3,7 +3,7 @@
   "name": "code-block-theme-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "code-block"
+    "https://deltacomponents.dev/r/code-block.json"
   ],
   "files": [
     {

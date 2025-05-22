@@ -9,7 +9,7 @@ import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
-import { ThemeCustomizer } from "@/components/theme-customizer"
+import ThemeSwitcher from "@/components/theme-switcher"
 
 export function SiteHeader() {
   return (
@@ -35,7 +35,7 @@ export function SiteHeader() {
               <Icons.gitHub className="size-4" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <ThemeCustomizer theme="claude" />
+            <ThemeSwitcher theme="claude" />
           </nav>
         </div>
       </div>

@@ -3,7 +3,7 @@
   "name": "date-input-demo",
   "type": "registry:block",
   "registryDependencies": [
-    "date-input"
+    "https://deltacomponents.dev/r/date-input.json"
   ],
   "files": [
     {
