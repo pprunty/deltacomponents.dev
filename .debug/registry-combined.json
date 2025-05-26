@@ -42,15 +42,9 @@
   {
     "name": "use-debounce-callback",
     "type": "registry:hook",
-    "registryDependencies": [
-      "https://deltacomponents.dev/r/use-unmount"
-    ],
-    "dependencies": [
-      "lodash.debounce"
-    ],
-    "devDependencies": [
-      "@types/lodash.debounce"
-    ],
+    "registryDependencies": ["https://deltacomponents.dev/r/use-unmount"],
+    "dependencies": ["lodash.debounce"],
+    "devDependencies": ["@types/lodash.debounce"],
     "files": [
       {
         "path": "hooks/use-debounce-callback.tsx",

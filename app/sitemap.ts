@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next"
+
 import { docsConfig } from "@/config/docs"
 
 function getUrlsFromNav(items: typeof docsConfig.sidebarNav): string[] {
@@ -32,7 +33,8 @@ function getUrlsFromNav(items: typeof docsConfig.sidebarNav): string[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev.com"
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev.com"
 
   const urls = getUrlsFromNav(docsConfig.sidebarNav)
 

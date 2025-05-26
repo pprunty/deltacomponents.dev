@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import { useState } from "react"
-import Modal from "@/registry/components/modal"
+
 import { Button } from "@/components/ui/button"
+import Modal from "@/registry/components/modal"
 
 export default function ModalDemo() {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,7 +17,7 @@ export default function ModalDemo() {
       <Button onClick={openModal} className="w-40">
         Open Modal
       </Button>
-      
+
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
@@ -28,22 +29,21 @@ export default function ModalDemo() {
         showCloseButton
       >
         <p className="mb-4 text-muted-foreground">
-          This is an example modal component with a scale animation effect.
-          When you open it, the modal scales up from the center with a smooth animation.
+          This is an example modal component with a scale animation effect. When
+          you open it, the modal scales up from the center with a smooth
+          animation.
         </p>
-        
+
         <p className="mb-6 text-muted-foreground">
-          The overlay background creates a semi-transparent dark layer behind the modal
-          to help focus attention on the modal content.
+          The overlay background creates a semi-transparent dark layer behind
+          the modal to help focus attention on the modal content.
         </p>
-        
+
         <div className="flex justify-end">
           <Button onClick={closeModal} variant="outline" className="mr-2">
             Cancel
           </Button>
-          <Button onClick={closeModal}>
-            Confirm
-          </Button>
+          <Button onClick={closeModal}>Confirm</Button>
         </div>
       </Modal>
     </div>

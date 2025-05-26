@@ -1,42 +1,43 @@
-'use client';
+"use client"
 
-import * as React from 'react';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
-import type { z } from 'zod';
+import * as React from "react"
+import type { z } from "zod"
+
+import { cn } from "@/lib/utils"
+import { Input } from "@/components/ui/input"
 
 export interface TextInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   /** The label for the input field */
-  label: string;
+  label: string
   /** The name of the input field (used for form submission) */
-  name: string;
+  name: string
   /** Optional description text to display below the label */
-  description?: string;
+  description?: string
   /** Optional hint text to display below the input */
-  hint?: string;
+  hint?: string
   /** Error message to display (typically from Zod validation) */
-  error?: string;
+  error?: string
   /** Whether the field is required */
-  required?: boolean;
+  required?: boolean
   /** Whether the field is in a loading/pending state */
-  pending?: boolean;
+  pending?: boolean
   /** Default value for the input */
-  defaultValue?: string;
+  defaultValue?: string
   /** Container className for the entire component */
-  containerClassName?: string;
+  containerClassName?: string
   /** Label className for customizing the label */
-  labelClassName?: string;
+  labelClassName?: string
   /** Label variant - 'default' or 'muted' */
-  labelVariant?: 'default' | 'muted';
+  labelVariant?: "default" | "muted"
   /** Input variant - 'default' or 'pill' */
-  variant?: 'default' | 'pill';
+  variant?: "default" | "pill"
   /** Whether to show a colored border (only applies to pill variant) */
-  coloredBorder?: boolean;
+  coloredBorder?: boolean
   /** Zod schema for validation (optional - can be handled at the form level) */
-  schema?: z.ZodType<string>;
+  schema?: z.ZodType<string>
   /** Callback when validation occurs */
-  onValidate?: (isValid: boolean, value: string, error?: string) => void;
+  onValidate?: (isValid: boolean, value: string, error?: string) => void
 }
 
 /**
@@ -53,8 +54,8 @@ export function TextInput({
   defaultValue,
   containerClassName,
   labelClassName,
-  labelVariant = 'default',
-  variant = 'default',
+  labelVariant = "default",
+  variant = "default",
   coloredBorder = false,
   schema,
   onValidate,
@@ -63,71 +64,71 @@ export function TextInput({
   value,
   ...props
 }: TextInputProps) {
-  const [localError, setLocalError] = React.useState<string | undefined>(error);
-  const hasError = !!localError || !!error;
-  const errorId = `error-${id}`;
-  const hintId = `hint-${id}`;
+  const [localError, setLocalError] = React.useState<string | undefined>(error)
+  const hasError = !!localError || !!error
+  const errorId = `error-${id}`
+  const hintId = `hint-${id}`
 
   // Determine if component is controlled or uncontrolled
-  const isControlled = value !== undefined;
+  const isControlled = value !== undefined
 
   // Update local error when prop changes
   React.useEffect(() => {
-    setLocalError(error);
-  }, [error]);
+    setLocalError(error)
+  }, [error])
 
   // Handle validation with the provided schema
   const validateInput = React.useCallback(
     (value: string) => {
-      if (!schema) return;
+      if (!schema) return
 
-      const result = schema.safeParse(value);
+      const result = schema.safeParse(value)
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || 'Invalid input';
-        setLocalError(errorMessage);
-        onValidate?.(false, value, errorMessage);
+        const errorMessage = result.error.errors[0]?.message || "Invalid input"
+        setLocalError(errorMessage)
+        onValidate?.(false, value, errorMessage)
       } else {
-        setLocalError(undefined);
-        onValidate?.(true, value);
+        setLocalError(undefined)
+        onValidate?.(true, value)
       }
     },
-    [schema, onValidate],
-  );
+    [schema, onValidate]
+  )
 
   // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
+    const newValue = e.target.value
 
     // If we have a schema, validate on change
     if (schema) {
-      validateInput(newValue);
+      validateInput(newValue)
     }
 
     // Call the original onChange if provided
-    props.onChange?.(e);
-  };
+    props.onChange?.(e)
+  }
 
   // Handle blur event for validation
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (schema) {
-      validateInput(e.target.value);
+      validateInput(e.target.value)
     }
 
     // Call the original onBlur if provided
-    props.onBlur?.(e);
-  };
+    props.onBlur?.(e)
+  }
 
   return (
     <div
-      className={cn('group/field grid gap-2', containerClassName)}
+      className={cn("group/field grid gap-2", containerClassName)}
       data-invalid={hasError}
     >
       <label
         htmlFor={id}
         className={cn(
-          'text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
-          labelVariant === 'muted' && 'text-muted-foreground',
-          labelClassName,
+          "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+          labelVariant === "muted" && "text-muted-foreground",
+          labelClassName
         )}
       >
         {label}
@@ -147,20 +148,20 @@ export function TextInput({
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
         className={cn(
-          // Default variant styling
-          'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white',
-          variant === 'default' &&
-            'shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)]',
+          // Default variant styling - only apply shadow to default variant
+          "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
+          variant === "default" &&
+            "shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)]",
 
           // Pill variant styling - less rounded
-          variant === 'pill' &&
-            'bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2',
-          variant === 'pill' && coloredBorder && 'border-2 border-primary',
-          variant === 'pill' && 'placeholder:text-muted-foreground',
+          variant === "pill" &&
+            "bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2",
+          variant === "pill" && coloredBorder && "border-2 border-primary",
+          variant === "pill" && "placeholder:text-muted-foreground",
 
           // Error styling for both variants
-          'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
-          className,
+          "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+          className
         )}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -181,5 +182,5 @@ export function TextInput({
         </p>
       )}
     </div>
-  );
+  )
 }

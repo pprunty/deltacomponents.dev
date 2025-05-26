@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import CodeBlock from '@/registry/media/code-block';
+import CodeBlock from "@/registry/media/code-block"
 
 export default function CodeBlockDemo() {
   const code = `def calculate_factorial(n):
@@ -19,7 +19,7 @@ def main():
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    main()`;
+    main()`
 
   return (
     <div className="w-full">
@@ -31,5 +31,5 @@ if __name__ == "__main__":
         showExpandButton
       />
     </div>
-  );
+  )
 }

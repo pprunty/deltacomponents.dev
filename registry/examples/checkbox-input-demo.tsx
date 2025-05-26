@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import { CheckboxInput } from '@/registry/inputs/checkbox-input';
+import { CheckboxInput } from "@/registry/inputs/checkbox-input"
 
 export default function CheckboxInputBasicDemo() {
   return (
@@ -13,5 +13,5 @@ export default function CheckboxInputBasicDemo() {
         required
       />
     </div>
-  );
+  )
 }

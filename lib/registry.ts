@@ -1,15 +1,18 @@
-import { registry } from "@/registry";
-import type { RegistryItem } from "@/registry/schema";
+import { registry } from "@/registry"
 
-export type ComponentType = RegistryItem;
+import type { RegistryItem } from "@/registry/schema"
 
-export async function getComponentByName(name: string): Promise<ComponentType | null> {
-  const component = registry.find((component) => component.name === name);
-  
+export type ComponentType = RegistryItem
+
+export async function getComponentByName(
+  name: string
+): Promise<ComponentType | null> {
+  const component = registry.find((component) => component.name === name)
+
   if (!component) {
-    return null;
+    return null
   }
 
   // Return the component as is
-  return component as ComponentType;
-} 
+  return component as ComponentType
+}

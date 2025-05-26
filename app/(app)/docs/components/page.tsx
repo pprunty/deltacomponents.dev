@@ -1,22 +1,23 @@
-import React from 'react';
-import { Index } from '@/__registry__';
-import { cn, getComponentCategory } from '@/lib/utils';
-import ScrambleText from "@/registry/animations/scramble-text"
+import React from "react"
+import { Index } from "@/__registry__"
 import { ChevronRightIcon } from "lucide-react"
 import { Balancer } from "react-wrap-balancer"
-import { ComponentPreviewCard } from '@/components/component-preview-card';
+
+import { cn, getComponentCategory } from "@/lib/utils"
+import { ComponentPreviewCard } from "@/components/component-preview-card"
+import ScrambleText from "@/registry/animations/scramble-text"
 
 // Define types for our registry items
 interface RegistryItem {
-  name: string;
-  type: string;
-  dependencies?: string[];
-  registryDependencies?: string[];
-  tags?: string[];
+  name: string
+  type: string
+  dependencies?: string[]
+  registryDependencies?: string[]
+  tags?: string[]
   files?: Array<{
-    path: string;
-    type: string;
-  }>;
+    path: string
+    type: string
+  }>
 }
 
 // Filter out components that are not example components
@@ -24,18 +25,19 @@ function getComponents(): RegistryItem[] {
   return Object.entries(Index)
     .filter(([, component]) => {
       return (
-        (component.type === 'registry:component' || component.type === 'registry:block') &&
-        !component.name.includes('-demo')
-      );
+        (component.type === "registry:component" ||
+          component.type === "registry:block") &&
+        !component.name.includes("-demo")
+      )
     })
     .map(([name, component]) => ({
       name,
       ...component,
-    }));
+    }))
 }
 
 export default function ComponentsPage() {
-  const components = getComponents();
+  const components = getComponents()
 
   return (
     <main className="relative py-6 lg:py-8 px-0">
@@ -56,14 +58,16 @@ export default function ComponentsPage() {
             //retriggerOnIntersection
           />
           <p className="text-base text-muted-foreground">
-            <Balancer>Jump in and pick the component that catches your eye.</Balancer>
+            <Balancer>
+              Jump in and choose the component that catches your eye.
+            </Balancer>
           </p>
         </div>
         <div className="pt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6">
             {components.map((component) => {
-              const category = getComponentCategory(component.name);
-              
+              const category = getComponentCategory(component.name)
+
               return (
                 <ComponentPreviewCard
                   key={component.name}
@@ -73,11 +77,11 @@ export default function ComponentsPage() {
                   showTags={false}
                   useDocsLink={true}
                 />
-              );
+              )
             })}
           </div>
         </div>
       </div>
     </main>
-  );
-} 
+  )
+}

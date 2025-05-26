@@ -1,6 +1,7 @@
+import { Index } from "@/__registry__"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { Index } from "@/__registry__"
+
 import { componentToCategory } from "@/config/docs"
 
 export function cn(...inputs: ClassValue[]) {
@@ -21,42 +22,42 @@ export function getComponentCategory(component: string): string {
   if (componentToCategory[component]) {
     return componentToCategory[component]
   }
-  
+
   // If not in the mapping, fallback to file path and type-based detection
   const componentData = Index[component]
   if (!componentData) return "components"
 
   // Extract the file path for directory-based categorization
   const filePath = componentData.files?.[0]?.path || ""
-  
+
   // Check for special component directories
   if (filePath.includes("landing-page/")) {
     return "landing-page"
   }
-  
+
   if (filePath.includes("media/")) {
     return "media"
   }
-  
+
   if (filePath.includes("inputs/")) {
     return "inputs"
   }
-  
+
   if (filePath.includes("animations/")) {
     return "animations"
   }
-  
+
   if (filePath.includes("blocks/")) {
     return "blocks"
   }
-  
+
   if (filePath.includes("hooks/")) {
     return "hooks"
   }
-  
+
   // Type-based detection as final fallback
   const typeIdentifier = componentData.type.split(":")[1]
-  
+
   switch (typeIdentifier) {
     case "block":
       return "blocks"

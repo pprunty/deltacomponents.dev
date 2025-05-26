@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import { TagsInput } from '@/registry/inputs/tags-input';
+import { TagsInput } from "@/registry/inputs/tags-input"
 
 export default function TagsInputDemo() {
   return (
@@ -13,5 +13,5 @@ export default function TagsInputDemo() {
         hint="Press backspace to remove the last tag"
       />
     </div>
-  );
+  )
 }

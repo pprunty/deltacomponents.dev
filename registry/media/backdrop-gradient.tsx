@@ -1,13 +1,14 @@
-import React from "react";
-import { cn } from "@/lib/utils";
+import React from "react"
+
+import { cn } from "@/lib/utils"
 
 export interface BlurOverlayProps {
   /** Source URL of the image */
-  src: string;
+  src: string
   /** Alt text for the image */
-  alt?: string;
+  alt?: string
   /** Additional container classes */
-  className?: string;
+  className?: string
 }
 
 export default function BackdropGradient({
@@ -32,5 +33,5 @@ export default function BackdropGradient({
         />
       </div>
     </div>
-  );
+  )
 }

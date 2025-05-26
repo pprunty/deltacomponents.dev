@@ -2,11 +2,63 @@ import type { Registry } from "@/registry/schema"
 
 export const components: Registry = [
   {
+    name: "retro-button",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/retro-button.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "admonition",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/admonition.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "embed",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/embed.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "scroll-progress",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/scroll-progress.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "drawer",
     type: "registry:component",
     dependencies: ["vaul", "class-variance-authority"],
     registryDependencies: [],
-    tags: ["overlay", "panel", "slide", "bottom sheet", "dialog", "mobile", "responsive"],
+    tags: [
+      "overlay",
+      "panel",
+      "slide",
+      "bottom sheet",
+      "dialog",
+      "mobile",
+      "responsive",
+    ],
     files: [
       {
         path: "components/drawer.tsx",
@@ -19,7 +71,14 @@ export const components: Registry = [
     type: "registry:component",
     dependencies: ["framer-motion", "@phosphor-icons/react"],
     registryDependencies: [],
-    tags: ["dialog", "popup", "overlay", "animated", "accessible", "responsive"],
+    tags: [
+      "dialog",
+      "popup",
+      "overlay",
+      "animated",
+      "accessible",
+      "responsive",
+    ],
     files: [
       {
         path: "components/modal.tsx",
@@ -32,7 +91,14 @@ export const components: Registry = [
     type: "registry:component",
     dependencies: [],
     registryDependencies: ["x-scrollable"],
-    tags: ["navigation", "tabs", "interactive", "animated", "scrollable", "content switcher"],
+    tags: [
+      "navigation",
+      "tabs",
+      "interactive",
+      "animated",
+      "scrollable",
+      "content switcher",
+    ],
     files: [
       {
         path: "components/tabs.tsx",
@@ -45,7 +111,14 @@ export const components: Registry = [
     type: "registry:component",
     dependencies: [],
     registryDependencies: [],
-    tags: ["scroll", "horizontal", "container", "utility", "overflow", "layout"],
+    tags: [
+      "scroll",
+      "horizontal",
+      "container",
+      "utility",
+      "overflow",
+      "layout",
+    ],
     files: [
       {
         path: "components/x-scrollable.tsx",

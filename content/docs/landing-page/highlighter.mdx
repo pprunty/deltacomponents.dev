@@ -56,7 +56,8 @@ import { Highlighter } from "@/registry/landing-page/highlighter"
 export function Example() {
   return (
     <h1 className="text-3xl font-bold">
-      Make your landing page <Highlighter>stand out</Highlighter> with highlighted text.
+      Make your landing page <Highlighter>stand out</Highlighter> with
+      highlighted text.
     </h1>
   )
 }
@@ -84,7 +85,10 @@ export function Example() {
 
 ```tsx
 <p>
-  <Highlighter shadowColor="rgba(59, 130, 246, 0.5)" darkShadowColor="rgba(59, 130, 246, 0.4)">
+  <Highlighter
+    shadowColor="rgba(59, 130, 246, 0.5)"
+    darkShadowColor="rgba(59, 130, 246, 0.4)"
+  >
     Custom color highlight
   </Highlighter>
 </p>
@@ -94,11 +98,11 @@ export function Example() {
 
 ### Parameters
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| variant | "default" \| "success" \| "info" \| "warning" \| "destructive" | The highlight style variant. Default is "default". |
-| thickness | "thin" \| "default" \| "thick" | The thickness of the highlight. Default is "default". |
-| shadowColor | string | Optional custom highlight color (CSS color string). Overrides variant. |
-| darkShadowColor | string | Optional custom highlight color for dark mode. |
-| asChild | boolean | Whether to merge props onto child element. Default is false. |
-| className | string | Optional additional CSS classes. |
+| Name            | Type                                                           | Description                                                            |
+| --------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| variant         | "default" \| "success" \| "info" \| "warning" \| "destructive" | The highlight style variant. Default is "default".                     |
+| thickness       | "thin" \| "default" \| "thick"                                 | The thickness of the highlight. Default is "default".                  |
+| shadowColor     | string                                                         | Optional custom highlight color (CSS color string). Overrides variant. |
+| darkShadowColor | string                                                         | Optional custom highlight color for dark mode.                         |
+| asChild         | boolean                                                        | Whether to merge props onto child element. Default is false.           |
+| className       | string                                                         | Optional additional CSS classes.                                       |

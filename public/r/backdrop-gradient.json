@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "backdrop-gradient",
   "type": "registry:component",
-  "dependencies": [
-    "tailwindcss"
-  ],
+  "dependencies": ["tailwindcss"],
   "files": [
     {
       "path": "registry/media/backdrop-gradient.tsx",

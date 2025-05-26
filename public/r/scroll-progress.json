@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/components/scroll-progress.tsx",
+      "content": "\nimport React from 'react';\nimport { motion, SpringOptions, useScroll, useSpring } from 'framer-motion';\n\n// ScrollProgress Component\nconst cn = (...classes: (string | undefined | false)[]) =>\n  classes.filter(Boolean).join(' ');\n\ntype ScrollProgressProps = {\n  className?: string;\n  springOptions?: SpringOptions;\n  containerRef?: React.RefObject<HTMLDivElement>;\n  position?: 'top' | 'bottom';\n  variant?: 'default' | 'secondary' | 'destructive' | 'outline';\n  absolute?: boolean;\n};\n\nconst DEFAULT_SPRING_OPTIONS: SpringOptions = {\n  stiffness: 200,\n  damping: 50,\n  restDelta: 0.001,\n};\n\nconst variantStyles = {\n  default: 'bg-slate-900 dark:bg-slate-50',\n  secondary: 'bg-slate-500 dark:bg-slate-400',\n  destructive: 'bg-red-500 dark:bg-red-900',\n  outline: 'bg-slate-200 dark:bg-slate-800',\n};\n\nexport default function ScrollProgress({\n  className,\n  springOptions,\n  containerRef,\n  position = 'bottom',\n  variant = 'default',\n  absolute = false,\n}: ScrollProgressProps) {\n  const { scrollYProgress } = useScroll({\n    container: containerRef,\n    layoutEffect: Boolean(containerRef?.current),\n  });\n\n  const scaleX = useSpring(scrollYProgress, {\n    ...DEFAULT_SPRING_OPTIONS,\n    ...(springOptions ?? {}),\n  });\n\n  const positionStyles = {\n    top: 'top-0',\n    bottom: 'bottom-0',\n  };\n\n  return (\n    <div className={cn(\n      'inset-x-0 h-1 bg-slate-200/20 dark:bg-slate-800/20 z-50',\n      absolute ? 'absolute' : 'fixed',\n      positionStyles[position],\n      className\n    )}>\n      <motion.div\n        className={cn(\n          'h-full origin-left transition-colors',\n          variantStyles[variant]\n        )}\n        style={{\n          scaleX,\n        }}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

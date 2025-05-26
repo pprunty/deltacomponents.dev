@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import { DateInput } from '@/registry/inputs/date-input';
+import { DateInput } from "@/registry/inputs/date-input"
 
 export default function DateInputDemo() {
   return (
@@ -13,5 +13,5 @@ export default function DateInputDemo() {
         minDate={new Date()}
       />
     </div>
-  );
+  )
 }

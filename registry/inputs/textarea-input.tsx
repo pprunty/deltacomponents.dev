@@ -1,44 +1,45 @@
-'use client';
+"use client"
 
-import * as React from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
-import type { z } from 'zod';
+import * as React from "react"
+import type { z } from "zod"
+
+import { cn } from "@/lib/utils"
+import { Textarea } from "@/components/ui/textarea"
 
 export interface TextareaInputProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   /** The label for the textarea field */
-  label: string;
+  label: string
   /** The name of the textarea field (used for form submission) */
-  name: string;
+  name: string
   /** Optional description text to display below the label */
-  description?: string;
+  description?: string
   /** Optional hint text to display below the textarea */
-  hint?: string;
+  hint?: string
   /** Error message to display (typically from Zod validation) */
-  error?: string;
+  error?: string
   /** Whether the field is required */
-  required?: boolean;
+  required?: boolean
   /** Whether the field is in a loading/pending state */
-  pending?: boolean;
+  pending?: boolean
   /** Default value for the textarea */
-  defaultValue?: string;
+  defaultValue?: string
   /** Container className for the entire component */
-  containerClassName?: string;
+  containerClassName?: string
   /** Label className for customizing the label */
-  labelClassName?: string;
+  labelClassName?: string
   /** Label variant - 'default' or 'muted' */
-  labelVariant?: 'default' | 'muted';
+  labelVariant?: "default" | "muted"
   /** Textarea variant - 'default' or 'pill' */
-  variant?: 'default' | 'pill';
+  variant?: "default" | "pill"
   /** Whether to show a colored border (only applies to pill variant) */
-  coloredBorder?: boolean;
+  coloredBorder?: boolean
   /** Size of the textarea - 'sm', 'md', or 'lg' */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg"
   /** Zod schema for validation (optional - can be handled at the form level) */
-  schema?: z.ZodType<string>;
+  schema?: z.ZodType<string>
   /** Callback when validation occurs */
-  onValidate?: (isValid: boolean, value: string, error?: string) => void;
+  onValidate?: (isValid: boolean, value: string, error?: string) => void
 }
 
 /**
@@ -55,10 +56,10 @@ export function TextareaInput({
   defaultValue,
   containerClassName,
   labelClassName,
-  labelVariant = 'default',
-  variant = 'default',
+  labelVariant = "default",
+  variant = "default",
   coloredBorder = false,
-  size = 'md',
+  size = "md",
   schema,
   onValidate,
   className,
@@ -66,71 +67,71 @@ export function TextareaInput({
   value,
   ...props
 }: TextareaInputProps) {
-  const [localError, setLocalError] = React.useState<string | undefined>(error);
-  const hasError = !!localError || !!error;
-  const errorId = `error-${id}`;
-  const hintId = `hint-${id}`;
+  const [localError, setLocalError] = React.useState<string | undefined>(error)
+  const hasError = !!localError || !!error
+  const errorId = `error-${id}`
+  const hintId = `hint-${id}`
 
   // Determine if component is controlled or uncontrolled
-  const isControlled = value !== undefined;
+  const isControlled = value !== undefined
 
   // Update local error when prop changes
   React.useEffect(() => {
-    setLocalError(error);
-  }, [error]);
+    setLocalError(error)
+  }, [error])
 
   // Handle validation with the provided schema
   const validateTextarea = React.useCallback(
     (value: string) => {
-      if (!schema) return;
+      if (!schema) return
 
-      const result = schema.safeParse(value);
+      const result = schema.safeParse(value)
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || 'Invalid input';
-        setLocalError(errorMessage);
-        onValidate?.(false, value, errorMessage);
+        const errorMessage = result.error.errors[0]?.message || "Invalid input"
+        setLocalError(errorMessage)
+        onValidate?.(false, value, errorMessage)
       } else {
-        setLocalError(undefined);
-        onValidate?.(true, value);
+        setLocalError(undefined)
+        onValidate?.(true, value)
       }
     },
-    [schema, onValidate],
-  );
+    [schema, onValidate]
+  )
 
   // Handle textarea change
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = e.target.value;
+    const newValue = e.target.value
 
     // If we have a schema, validate on change
     if (schema) {
-      validateTextarea(newValue);
+      validateTextarea(newValue)
     }
 
     // Call the original onChange if provided
-    props.onChange?.(e);
-  };
+    props.onChange?.(e)
+  }
 
   // Handle blur event for validation
   const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     if (schema) {
-      validateTextarea(e.target.value);
+      validateTextarea(e.target.value)
     }
 
     // Call the original onBlur if provided
-    props.onBlur?.(e);
-  };
+    props.onBlur?.(e)
+  }
 
   return (
     <div
-      className={cn('group/field grid gap-2', containerClassName)}
+      className={cn("group/field grid gap-2", containerClassName)}
       data-invalid={hasError}
     >
       <label
         htmlFor={id}
         className={cn(
-          'text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
-          labelVariant === 'muted' && 'text-muted-foreground',
-          labelClassName,
+          "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+          labelVariant === "muted" && "text-muted-foreground",
+          labelClassName
         )}
       >
         {label}
@@ -151,20 +152,20 @@ export function TextareaInput({
         aria-required={required}
         size={size}
         className={cn(
-          'md:text-md text-md bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white',
-          // Default variant styling
-          variant === 'default' &&
-            'shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]',
+          "md:text-md text-md bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
+          // Default variant styling - only apply shadow to default variant
+          variant === "default" &&
+            "shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]",
 
           // Pill variant styling - less rounded
-          variant === 'pill' && 'bg-muted border-0 rounded-lg px-4 py-3',
-          variant === 'pill' && coloredBorder && 'border-2 border-primary',
-          variant === 'pill' && 'placeholder:text-muted-foreground',
+          variant === "pill" && "bg-muted border-0 rounded-lg px-4 py-3",
+          variant === "pill" && coloredBorder && "border-2 border-primary",
+          variant === "pill" && "placeholder:text-muted-foreground",
 
           // Error styling for both variants
-          'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
-          'scrollbar-hide',
-          className,
+          "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+          "scrollbar-hide",
+          className
         )}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -185,5 +186,5 @@ export function TextareaInput({
         </p>
       )}
     </div>
-  );
+  )
 }

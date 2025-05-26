@@ -9,29 +9,30 @@ export function ChangingScrambleText() {
   const hooks = React.useMemo(() => {
     // Provide a fallback set of hook names
     const defaultHooks = [
-      "useBoolean", 
-      "useToggle", 
-      "useCopyToClipboard", 
-      "useUnmount", 
-      "useDebounceCallback", 
-      "useIsomorphicLayoutEffect", 
-      "useInterval", 
-      "useTimeout", 
-      "useDocumentTitle", 
-      "useCounter", 
-      "useMousePosition"
+      "useBoolean",
+      "useToggle",
+      "useCopyToClipboard",
+      "useUnmount",
+      "useDebounceCallback",
+      "useIsomorphicLayoutEffect",
+      "useInterval",
+      "useTimeout",
+      "useDocumentTitle",
+      "useCounter",
+      "useMousePosition",
     ]
-    
+
     // Safely try to get hooks from the config
     try {
-      const hooksSection = docsConfig.sidebarNav
-        .find((nav) => nav.title.toLocaleLowerCase() === "hooks")
-      
+      const hooksSection = docsConfig.sidebarNav.find(
+        (nav) => nav.title.toLocaleLowerCase() === "hooks"
+      )
+
       // If the hooks section exists and has items, use them
       if (hooksSection && hooksSection.items) {
         return hooksSection.items.map((hook) => hook.title)
       }
-      
+
       return defaultHooks
     } catch (error) {
       console.warn("Error loading hooks from config, using defaults", error)

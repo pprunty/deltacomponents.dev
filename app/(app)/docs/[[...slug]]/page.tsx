@@ -1,8 +1,9 @@
 import { Suspense } from "react"
 import { Metadata } from "next"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+import { ChevronRightIcon, ExternalLinkIcon, TwitterIcon } from "lucide-react"
 import { Balancer } from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
@@ -19,8 +20,8 @@ import { badgeVariants } from "@/components/ui/badge"
 import { Contribute } from "@/components/contribute"
 import { DocGridPattern } from "@/components/doc-grid-pattern"
 import { DocsPagination } from "@/components/pagination"
-import ScrambleText from "@/registry/animations/scramble-text"
 import { SimilarComponents } from "@/components/similar-components"
+import ScrambleText from "@/registry/animations/scramble-text"
 
 interface DocPageProps {
   params: {
@@ -96,24 +97,23 @@ export default async function DocPage(props: {
   }
 
   const toc = await getTableOfContents(doc.body.raw)
-  
-    const slugPath = doc.slugAsParams
-    let componentName = null
 
-    // Regex to match patterns like "category/component" but not just "category"
-    // This will match URLs like: /docs/components/button, /docs/inputs/date-input, etc.
-    const twoLevelPathRegex = /^([^/]+)\/([^/]+)$/
+  const slugPath = doc.slugAsParams
+  let componentName = null
 
-    if (twoLevelPathRegex.test(slugPath)) {
-      const matches = slugPath.match(twoLevelPathRegex)
-      if (matches) {
-        componentName = matches[2]
-      }
+  // Regex to match patterns like "category/component" but not just "category"
+  // This will match URLs like: /docs/components/button, /docs/inputs/date-input, etc.
+  const twoLevelPathRegex = /^([^/]+)\/([^/]+)$/
+
+  if (twoLevelPathRegex.test(slugPath)) {
+    const matches = slugPath.match(twoLevelPathRegex)
+    if (matches) {
+      componentName = matches[2]
     }
+  }
 
   return (
     <>
-      <DocGridPattern />
       <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
         <div className="mx-auto w-full min-w-0 max-w-3xl">
           <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
@@ -127,9 +127,7 @@ export default async function DocPage(props: {
               className={cn(
                 "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
               )}
-              scrambleSpeed={80}
-              //               useIntersectionObserver
-              //               retriggerOnIntersection
+              speed={80}
             />
             {doc.description && (
               <p className="text-base text-muted-foreground">
@@ -147,7 +145,7 @@ export default async function DocPage(props: {
                   rel="noreferrer"
                   className={cn(
                     badgeVariants({ variant: "secondary" }),
-                    "gap-1"
+                    "gap-1 no-after"
                   )}
                 >
                   {k}
@@ -159,29 +157,33 @@ export default async function DocPage(props: {
           <div className="pt-8">
             <Mdx code={doc.body.code} />
           </div>
-          
+
           {/* Only show similar components section for component docs */}
           {componentName && (
             <div className="mt-6 pt-4">
-              <Suspense fallback={<div className="py-4">Loading similar components...</div>}>
-                <SimilarComponents 
-                  currentComponent={componentName} 
-                  title="You might also like" 
+              <Suspense
+                fallback={
+                  <div className="py-4">Loading similar components...</div>
+                }
+              >
+                <SimilarComponents
+                  currentComponent={componentName}
+                  title="You might also like"
                   count={3}
                 />
               </Suspense>
             </div>
           )}
 
-                    <Suspense
-                      fallback={
-                        <div className="mt-4 py-6 border-t border-border">
-                          Loading navigation...
-                        </div>
-                      }
-                    >
-                      <DocsPagination />
-                    </Suspense>
+          <Suspense
+            fallback={
+              <div className="mt-4 py-6 border-t border-border">
+                Loading navigation...
+              </div>
+            }
+          >
+            <DocsPagination />
+          </Suspense>
         </div>
         <div className="hidden text-sm xl:block">
           <div className="sticky top-20 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
@@ -194,6 +196,30 @@ export default async function DocPage(props: {
               <Suspense fallback={<div>Loading contribute links...</div>}>
                 <Contribute slug={doc.slug} />
               </Suspense>
+
+              {/* Twitter follow card */}
+              <div className="mt-4 rounded-lg border border-border p-4">
+                <Link
+                  href="https://twitter.com/pprunty_"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 group no-after"
+                >
+                  <Image
+                    src="/images/pp.png"
+                    alt="Patrick Prunty"
+                    width={42}
+                    height={42}
+                    className="rounded-md object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium">Follow me on 𝕏</span>
+                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                      @pprunty_
+                    </span>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

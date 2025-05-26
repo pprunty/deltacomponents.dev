@@ -1,68 +1,69 @@
-'use client';
+"use client"
 
-import * as React from 'react';
-import { cn } from '@/lib/utils';
-import type { z } from 'zod';
+import * as React from "react"
+import { ChevronDown } from "lucide-react"
+import type { z } from "zod"
+
+import { cn } from "@/lib/utils"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { ChevronDown } from 'lucide-react';
+} from "@/components/ui/select"
 
 export interface SelectOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
+  value: string
+  label: string
+  disabled?: boolean
 }
 
 export interface SelectInputProps {
   /** The label for the select field */
-  label: string;
+  label: string
   /** The name of the select field (used for form submission) */
-  name: string;
+  name: string
   /** Options for the select dropdown */
-  options: SelectOption[];
+  options: SelectOption[]
   /** Optional description text to display below the label */
-  description?: string;
+  description?: string
   /** Optional hint text to display below the select */
-  hint?: string;
+  hint?: string
   /** Error message to display (typically from Zod validation) */
-  error?: string;
+  error?: string
   /** Whether the field is required */
-  required?: boolean;
+  required?: boolean
   /** Whether the field is in a loading/pending state */
-  pending?: boolean;
+  pending?: boolean
   /** Default selected value */
-  defaultValue?: string;
+  defaultValue?: string
   /** Controlled selected value */
-  value?: string;
+  value?: string
   /** Placeholder text when no option is selected */
-  placeholder?: string;
+  placeholder?: string
   /** Container className for the entire component */
-  containerClassName?: string;
+  containerClassName?: string
   /** Select trigger className */
-  selectClassName?: string;
+  selectClassName?: string
   /** Label className */
-  labelClassName?: string;
+  labelClassName?: string
   /** Label variant - 'default' or 'muted' */
-  labelVariant?: 'default' | 'muted';
+  labelVariant?: "default" | "muted"
   /** Select variant - 'default' or 'pill' */
-  variant?: 'default' | 'pill';
+  variant?: "default" | "pill"
   /** Whether to show a colored border (only applies to pill variant) */
-  coloredBorder?: boolean;
+  coloredBorder?: boolean
   /** Zod schema for validation (optional - can be handled at the form level) */
-  schema?: z.ZodType<string>;
+  schema?: z.ZodType<string>
   /** Callback when validation occurs */
-  onValidate?: (isValid: boolean, value: string, error?: string) => void;
+  onValidate?: (isValid: boolean, value: string, error?: string) => void
   /** Callback when selection changes */
-  onValueChange?: (value: string) => void;
+  onValueChange?: (value: string) => void
   /** ID for the select */
-  id?: string;
+  id?: string
   /** Whether the select is disabled */
-  disabled?: boolean;
+  disabled?: boolean
 }
 
 /**
@@ -79,12 +80,12 @@ export function SelectInput({
   pending = false,
   defaultValue,
   value,
-  placeholder = 'Select an option',
+  placeholder = "Select an option",
   containerClassName,
   selectClassName,
   labelClassName,
-  labelVariant = 'default',
-  variant = 'default',
+  labelVariant = "default",
+  variant = "default",
   coloredBorder = false,
   schema,
   onValidate,
@@ -92,75 +93,75 @@ export function SelectInput({
   id = name,
   disabled = false,
 }: SelectInputProps) {
-  const [localError, setLocalError] = React.useState<string | undefined>(error);
-  const hasError = !!localError || !!error;
-  const errorId = `error-${id}`;
-  const hintId = `hint-${id}`;
+  const [localError, setLocalError] = React.useState<string | undefined>(error)
+  const hasError = !!localError || !!error
+  const errorId = `error-${id}`
+  const hintId = `hint-${id}`
 
   // Determine if component is controlled or uncontrolled
-  const isControlled = value !== undefined;
+  const isControlled = value !== undefined
 
   // Update local error when prop changes
   React.useEffect(() => {
-    setLocalError(error);
-  }, [error]);
+    setLocalError(error)
+  }, [error])
 
   // Handle validation with the provided schema
   const validateSelect = React.useCallback(
     (value: string) => {
-      if (!schema) return;
+      if (!schema) return
 
-      const result = schema.safeParse(value);
+      const result = schema.safeParse(value)
       if (!result.success) {
         const errorMessage =
-          result.error.errors[0]?.message || 'Invalid selection';
-        setLocalError(errorMessage);
-        onValidate?.(false, value, errorMessage);
+          result.error.errors[0]?.message || "Invalid selection"
+        setLocalError(errorMessage)
+        onValidate?.(false, value, errorMessage)
       } else {
-        setLocalError(undefined);
-        onValidate?.(true, value);
+        setLocalError(undefined)
+        onValidate?.(true, value)
       }
     },
-    [schema, onValidate],
-  );
+    [schema, onValidate]
+  )
 
   // Handle selection change for shadcn Select
   const handleValueChange = (newValue: string) => {
     // If we have a schema, validate on change
     if (schema) {
-      validateSelect(newValue);
+      validateSelect(newValue)
     }
 
     // Call the original onValueChange if provided
-    onValueChange?.(newValue);
-  };
+    onValueChange?.(newValue)
+  }
 
   // Handle selection change for native select
   const handleNativeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newValue = e.target.value;
+    const newValue = e.target.value
 
     // If we have a schema, validate on change
     if (schema) {
-      validateSelect(newValue);
+      validateSelect(newValue)
     }
 
     // Call the original onValueChange if provided
-    onValueChange?.(newValue);
-  };
+    onValueChange?.(newValue)
+  }
 
   // Render native select for pill variant
-  if (variant === 'pill') {
+  if (variant === "pill") {
     return (
       <div
-        className={cn('group/field grid gap-2', containerClassName)}
+        className={cn("group/field grid gap-2", containerClassName)}
         data-invalid={hasError}
       >
         <label
           htmlFor={id}
           className={cn(
-            'text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
-            labelVariant === 'muted' && 'text-muted-foreground',
-            labelClassName,
+            "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+            labelVariant === "muted" && "text-muted-foreground",
+            labelClassName
           )}
         >
           {label}
@@ -182,17 +183,17 @@ export function SelectInput({
             aria-describedby={hint ? hintId : undefined}
             aria-required={required}
             className={cn(
-              'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white',
-              'bg-muted border-0 rounded-lg px-4 w-full pr-10',
-              'text-foreground',
-              'appearance-none',
-              'md:cursor-pointer',
-              'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
-              selectClassName,
+              "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
+              "bg-muted border-0 rounded-lg px-4 w-full pr-10",
+              "text-foreground",
+              "appearance-none",
+              "md:cursor-pointer",
+              "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+              selectClassName
             )}
             {...(isControlled
               ? { value }
-              : { defaultValue: defaultValue || '' })}
+              : { defaultValue: defaultValue || "" })}
           >
             {!defaultValue && !value && (
               <option value="" disabled>
@@ -224,21 +225,21 @@ export function SelectInput({
           </p>
         )}
       </div>
-    );
+    )
   }
 
   // Render shadcn Select for default variant
   return (
     <div
-      className={cn('group/field grid gap-2', containerClassName)}
+      className={cn("group/field grid gap-2", containerClassName)}
       data-invalid={hasError}
     >
       <label
         htmlFor={id}
         className={cn(
-          'text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
-          labelVariant === 'muted' && 'text-muted-foreground',
-          labelClassName,
+          "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+          labelVariant === "muted" && "text-muted-foreground",
+          labelClassName
         )}
       >
         {label}
@@ -257,11 +258,11 @@ export function SelectInput({
         <SelectTrigger
           id={id}
           className={cn(
-          'h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white',
-            'shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]',
-            'border border-input hover:border-primary focus:border-primary',
-            'group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive',
-            selectClassName,
+            "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
+            "shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]",
+            "border border-input hover:border-primary focus:border-primary",
+            "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+            selectClassName
           )}
           aria-invalid={hasError}
           aria-errormessage={hasError ? errorId : undefined}
@@ -274,9 +275,9 @@ export function SelectInput({
           {options.map((option) => (
             <SelectItem
               className={cn(
-                'h-[46px] md:text-md text-md',
-                'focus:bg-primary/10 focus:text-primary data-[state=checked]:bg-primary/10 data-[state=checked]:text-primary',
-                'outline-none focus:outline-none focus:ring-0'
+                "h-[46px] md:text-md text-md",
+                "focus:bg-primary/10 focus:text-primary data-[state=checked]:bg-primary/10 data-[state=checked]:text-primary",
+                "outline-none focus:outline-none focus:ring-0"
               )}
               key={option.value}
               value={option.value}
@@ -300,5 +301,5 @@ export function SelectInput({
         </p>
       )}
     </div>
-  );
+  )
 }

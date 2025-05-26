@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { TextInput } from "@/registry/inputs/text-input"
 
 export default function TextInputDemo() {
@@ -14,5 +15,5 @@ export default function TextInputDemo() {
         required
       />
     </div>
-  );
+  )
 }

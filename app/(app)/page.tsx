@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { cn } from "@/lib/utils"
+
 import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { GridPattern } from "@/components/grid-pattern"
 
@@ -19,12 +20,10 @@ export default function Home() {
         </svg>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button asChild>
-            <Link href="/docs/introduction">
-              Explore the docs
-            </Link>
+            <Link href="/docs/introduction">Explore the docs</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link 
+            <Link
               href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -33,11 +32,11 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-        <Link 
-          href="https://patrickprunty.com" 
-          target="_blank" 
+        <Link
+          href="https://patrickprunty.com"
+          target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 text-sm font-medium tracking-wider uppercase text-muted-foreground hover:text-foreground"
+          className="mt-6 text-sm font-mono font-medium tracking-wider uppercase text-muted-foreground hover:text-foreground"
         >
           BY PATRICK PRUNTY
         </Link>

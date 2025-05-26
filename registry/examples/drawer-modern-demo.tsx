@@ -1,7 +1,8 @@
 "use client"
 
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React from "react"
+
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerBody,
@@ -15,7 +16,7 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/components/drawer";
+} from "@/registry/components/drawer"
 
 export default function DrawerModernDemo() {
   return (
@@ -32,13 +33,15 @@ export default function DrawerModernDemo() {
             <DrawerHeader>
               <DrawerTitle>Modern Drawer Example</DrawerTitle>
               <DrawerDescription>
-                This is a modern style drawer demonstration with customized appearance.
+                This is a modern style drawer demonstration with customized
+                appearance.
               </DrawerDescription>
             </DrawerHeader>
             <DrawerBody className="p-4">
               <p className="text-muted-foreground mb-2">
-                The modern drawer style offers a unique look and feel suitable for specific design needs.
-                This can be customized further to match any branding requirements.
+                The modern drawer style offers a unique look and feel suitable
+                for specific design needs. This can be customized further to
+                match any branding requirements.
               </p>
             </DrawerBody>
             <DrawerFooter className="border-t border-border p-4">
@@ -53,5 +56,5 @@ export default function DrawerModernDemo() {
         </DrawerPortal>
       </Drawer>
     </div>
-  );
+  )
 }

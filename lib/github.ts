@@ -6,7 +6,7 @@ interface GitHubIssueUrlParams {
 }
 
 export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
-  const baseUrl = `https://github.com/pprunty/hooks/issues/new`
+  const baseUrl = `https://github.com/pprunty/deltacomponents.dev/issues/new`
   const urlParams = new URLSearchParams()
 
   Object.entries(params).forEach(([key, value]) => {
@@ -21,5 +21,5 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/pprunty/hooks/blob/main/content${slug === "/docs" ? "/docs/index" : slug}.mdx`
+  return `https://github.com/pprunty/deltacomponents.dev/blob/main/content${slug === "/docs" ? "/docs/index" : slug}.mdx`
 }

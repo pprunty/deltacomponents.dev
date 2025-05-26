@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion, useInView, HTMLMotionProps, PanInfo } from "framer-motion"
+import { HTMLMotionProps, motion, PanInfo, useInView } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -27,7 +27,9 @@ const highlighterVariants = cva("bg-transparent font-extrabold relative", {
   },
 })
 
-export interface HighlighterProps extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof highlighterVariants> {
+export interface HighlighterProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof highlighterVariants> {
   asChild?: boolean
   shadowColor?: string
   darkShadowColor?: string
@@ -37,8 +39,20 @@ export interface HighlighterProps extends React.HTMLAttributes<HTMLElement>, Var
 
 const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
   (
-    { className, variant, thickness, asChild = false, shadowColor, darkShadowColor, style, animate = false, children, text, ...props },
-    ref,
+    {
+      className,
+      variant,
+      thickness,
+      asChild = false,
+      shadowColor,
+      darkShadowColor,
+      style,
+      animate = false,
+      children,
+      text,
+      ...props
+    },
+    ref
   ) => {
     const highlighterRef = React.useRef<HTMLElement | null>(null)
     const isInView = useInView(highlighterRef, { once: true, amount: 0.5 })
@@ -104,11 +118,7 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
 
     if (asChild) {
       // When using as a fragment, just return the children with no wrapping
-      return (
-        <React.Fragment>
-          {children}
-        </React.Fragment>
-      )
+      return <React.Fragment>{children}</React.Fragment>
     }
 
     // When using as a mark element
@@ -123,16 +133,16 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
           }
           highlighterRef.current = node as HTMLElement
         }}
-        className={cn(highlighterVariants({ variant, thickness, className }), staticShadowClass, "relative")}
+        className={cn(
+          highlighterVariants({ variant, thickness, className }),
+          staticShadowClass,
+          "relative"
+        )}
         style={customStyle}
         {...props}
       >
-        {text ? (
-          <span className="relative z-10">{text}</span>
-        ) : (
-          children
-        )}
-        
+        {text ? <span className="relative z-10">{text}</span> : children}
+
         {animate ? (
           <motion.span
             className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0"
@@ -142,13 +152,11 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
           />
         ) : (
           // Add a static span for non-animated highlights to ensure consistent rendering
-          <span
-            className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] w-full bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0"
-          />
+          <span className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] w-full bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0" />
         )}
       </mark>
     )
-  },
+  }
 )
 Highlighter.displayName = "Highlighter"
 

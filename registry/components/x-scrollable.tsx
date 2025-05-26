@@ -1,19 +1,20 @@
-'use client';
+"use client"
 
-import { type ReactNode, useRef, useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+import { useEffect, useRef, useState, type ReactNode } from "react"
+
+import { cn } from "@/lib/utils"
 
 interface XScrollableProps {
-  children: ReactNode;
-  className?: string;
-  showScrollbar?: boolean;
-  scrollbarTrackClassName?: string;
-  scrollbarThumbClassName?: string;
+  children: ReactNode
+  className?: string
+  showScrollbar?: boolean
+  scrollbarTrackClassName?: string
+  scrollbarThumbClassName?: string
   onScroll?: (
     scrollLeft: number,
     scrollWidth: number,
-    clientWidth: number,
-  ) => void;
+    clientWidth: number
+  ) => void
 }
 
 export function XScrollable({
@@ -24,39 +25,39 @@ export function XScrollable({
   scrollbarThumbClassName,
   onScroll,
 }: XScrollableProps) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [showLeftShadow, setShowLeftShadow] = useState(false);
-  const [showRightShadow, setShowRightShadow] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [showLeftShadow, setShowLeftShadow] = useState(false)
+  const [showRightShadow, setShowRightShadow] = useState(false)
 
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer) return
 
     const handleScroll = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-      setShowLeftShadow(scrollLeft > 0);
-      setShowRightShadow(scrollLeft < scrollWidth - clientWidth);
-      onScroll?.(scrollLeft, scrollWidth, clientWidth);
-    };
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainer
+      setShowLeftShadow(scrollLeft > 0)
+      setShowRightShadow(scrollLeft < scrollWidth - clientWidth)
+      onScroll?.(scrollLeft, scrollWidth, clientWidth)
+    }
 
-    handleScroll(); // Initial check
-    scrollContainer.addEventListener('scroll', handleScroll);
+    handleScroll() // Initial check
+    scrollContainer.addEventListener("scroll", handleScroll)
 
     return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-    };
-  }, [onScroll]);
+      scrollContainer.removeEventListener("scroll", handleScroll)
+    }
+  }, [onScroll])
 
   return (
     <div className="relative">
       <div
         ref={scrollContainerRef}
         className={cn(
-          'overflow-x-auto overflow-y-hidden',
+          "overflow-x-auto overflow-y-hidden",
           showScrollbar
-            ? 'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
-            : 'scrollbar-hide',
-          className,
+            ? "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400"
+            : "scrollbar-hide",
+          className
         )}
       >
         {children}
@@ -70,26 +71,26 @@ export function XScrollable({
       {showScrollbar && (
         <div
           className={cn(
-            'h-1 mt-1 rounded-full bg-gray-200',
-            scrollbarTrackClassName,
+            "h-1 mt-1 rounded-full bg-gray-200",
+            scrollbarTrackClassName
           )}
         >
           <div
             className={cn(
-              'h-full rounded-full bg-gray-400',
-              scrollbarThumbClassName,
+              "h-full rounded-full bg-gray-400",
+              scrollbarThumbClassName
             )}
             style={{
               width: scrollContainerRef.current
                 ? `${(scrollContainerRef.current.clientWidth / scrollContainerRef.current.scrollWidth) * 100}%`
-                : '0%',
+                : "0%",
               transform: scrollContainerRef.current
                 ? `translateX(${(scrollContainerRef.current.scrollLeft / scrollContainerRef.current.clientWidth) * 100}%)`
-                : 'translateX(0%)',
+                : "translateX(0%)",
             }}
           />
         </div>
       )}
     </div>
-  );
+  )
 }

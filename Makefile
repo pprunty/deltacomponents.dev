@@ -23,6 +23,9 @@ help:
 	@echo "  $(GREEN)make clean$(NC)      - Clean build artifacts"
 	@echo "  $(GREEN)make test$(NC)       - Run tests (if configured)"
 	@echo "  $(GREEN)make create$(NC)     - Create new component (usage: make create name=ComponentName category=category)"
+	@echo "  $(GREEN)make component$(NC)  - Create new component (alias for create)"
+	@echo "  $(GREEN)make demo$(NC)       - Create new component demo (usage: make demo component=ComponentName name=DemoName)"
+	@echo "  $(GREEN)make registry$(NC)   - Build component registry (alias for build-registry)"
 
 # Dependencies
 .PHONY: install
@@ -72,6 +75,10 @@ build-registry:
 	@echo "$(CYAN)Building registry...$(NC)"
 	$(PNPM) build:registry
 
+# Registry alias
+.PHONY: registry
+registry: build-registry
+
 # Create component
 .PHONY: create
 create:
@@ -82,6 +89,21 @@ create:
 	fi
 	@echo "$(CYAN)Creating new component: $(name) in category: $(category)$(NC)"
 	$(PNPM) create-component $(name) $(category)
+
+# Component alias
+.PHONY: component
+component: create
+
+# Create demo
+.PHONY: demo
+demo:
+	@if [ -z "$(component)" ] || [ -z "$(name)" ]; then \
+		echo "$(RED)Error: component and name are required$(NC)"; \
+		echo "Usage: make demo component=ComponentName name=DemoName"; \
+		exit 1; \
+	fi
+	@echo "$(CYAN)Creating new demo: $(name) for component: $(component)$(NC)"
+	$(PNPM) create-demo $(component) $(name)
 
 # Clean
 .PHONY: clean

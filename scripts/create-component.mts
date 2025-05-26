@@ -1,6 +1,6 @@
+import { execSync } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
-import { execSync } from "child_process"
 
 type RegistryType =
   | "registry:component"
@@ -29,14 +29,14 @@ function toKebabCase(str: string): string {
 function toPascalCase(str: string): string {
   return str
     .split(/[-_\s]/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join("")
 }
 
 function toTitleCase(str: string): string {
   return str
     .split(/[-_\s]/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ")
 }
 
@@ -158,10 +158,14 @@ export const {{category}}: Registry = [
     ],
   },
 ]
-`
+`,
 }
 
-async function createComponent({ name, category, type }: CreateComponentOptions) {
+async function createComponent({
+  name,
+  category,
+  type,
+}: CreateComponentOptions) {
   // Convert component name to PascalCase and filename to kebab-case
   const componentName = toPascalCase(name)
   const fileName = toKebabCase(name)
@@ -173,11 +177,18 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
 
   // Create component file
   const componentPath = path.join(componentDir, `${fileName}.tsx`)
-  const componentContent = TEMPLATES.component.replace(/{{name}}/g, componentName)
+  const componentContent = TEMPLATES.component.replace(
+    /{{name}}/g,
+    componentName
+  )
   await fs.writeFile(componentPath, componentContent)
 
   // Create example file
-  const examplePath = path.join(process.cwd(), "registry/examples", `${fileName}-demo.tsx`)
+  const examplePath = path.join(
+    process.cwd(),
+    "registry/examples",
+    `${fileName}-demo.tsx`
+  )
   const exampleContent = TEMPLATES.example
     .replace(/{{name}}/g, componentName)
     .replace(/{{category}}/g, category)
@@ -185,16 +196,22 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
   await fs.writeFile(examplePath, exampleContent)
 
   // Update registry-examples.ts
-  const examplesRegistryPath = path.join(process.cwd(), "registry", "registry-examples.ts")
+  const examplesRegistryPath = path.join(
+    process.cwd(),
+    "registry",
+    "registry-examples.ts"
+  )
   let examplesRegistryContent = ""
 
   try {
     // Try to read existing registry file
     examplesRegistryContent = await fs.readFile(examplesRegistryPath, "utf-8")
-    
+
     // Check if example already exists in registry
-    const exampleExists = examplesRegistryContent.includes(`name: "${fileName}-demo"`)
-    
+    const exampleExists = examplesRegistryContent.includes(
+      `name: "${fileName}-demo"`
+    )
+
     if (!exampleExists) {
       // Add new example to existing registry
       const newExampleEntry = `  {
@@ -207,15 +224,17 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
       },
     ],
   },`
-      
+
       examplesRegistryContent = examplesRegistryContent.replace(
         /export const examples: Registry = \[/,
         `export const examples: Registry = [${newExampleEntry}`
       )
-      
+
       await fs.writeFile(examplesRegistryPath, examplesRegistryContent)
     } else {
-      console.log(`\nℹ️ Example "${fileName}-demo" already exists in registry-examples.ts`)
+      console.log(
+        `\nℹ️ Example "${fileName}-demo" already exists in registry-examples.ts`
+      )
     }
   } catch (error) {
     console.error("Error updating registry-examples.ts:", error)
@@ -236,16 +255,22 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
   await fs.writeFile(mdxPath, mdxContent)
 
   // Create or update category registry file
-  const categoryRegistryPath = path.join(process.cwd(), "registry", `registry-${category}.ts`)
+  const categoryRegistryPath = path.join(
+    process.cwd(),
+    "registry",
+    `registry-${category}.ts`
+  )
   let categoryRegistryContent = ""
 
   try {
     // Try to read existing registry file
     categoryRegistryContent = await fs.readFile(categoryRegistryPath, "utf-8")
-    
+
     // Check if component already exists in registry
-    const componentExists = categoryRegistryContent.includes(`name: "${fileName}"`)
-    
+    const componentExists = categoryRegistryContent.includes(
+      `name: "${fileName}"`
+    )
+
     if (!componentExists) {
       // Add new component to existing registry
       const newRegistryEntry = `  {
@@ -259,15 +284,17 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
       },
     ],
   },`
-      
+
       categoryRegistryContent = categoryRegistryContent.replace(
         /export const \w+: Registry = \[/,
         `export const ${category}: Registry = [${newRegistryEntry}`
       )
-      
+
       await fs.writeFile(categoryRegistryPath, categoryRegistryContent)
     } else {
-      console.log(`\nℹ️ Component "${fileName}" already exists in registry-${category}.ts`)
+      console.log(
+        `\nℹ️ Component "${fileName}" already exists in registry-${category}.ts`
+      )
     }
   } catch {
     // Create new registry file if it doesn't exist
@@ -275,7 +302,7 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
       .replace(/{{category}}/g, category)
       .replace(/{{filename}}/g, fileName)
       .replace(/{{type}}/g, type)
-    
+
     await fs.writeFile(categoryRegistryPath, categoryRegistryContent)
   }
 
@@ -284,7 +311,11 @@ async function createComponent({ name, category, type }: CreateComponentOptions)
   let indexContent = await fs.readFile(indexPath, "utf-8")
 
   // Check if category is already imported
-  if (!indexContent.includes(`import { ${category} } from "@/registry/registry-${category}"`)) {
+  if (
+    !indexContent.includes(
+      `import { ${category} } from "@/registry/registry-${category}"`
+    )
+  ) {
     // Add import
     indexContent = indexContent.replace(
       /import type { Registry } from "@\/registry\/schema"/,
@@ -297,14 +328,18 @@ import { ${category} } from "@/registry/registry-${category}"`
       /export const registry: Registry = \[\.\.\.hooks/,
       `export const registry: Registry = [...hooks, ...${category}`
     )
-    
+
     await fs.writeFile(indexPath, indexContent)
   }
 
   // Print instructions for updating docs-nav.tsx
   console.log("\n📝 Next steps:")
-  console.log("1. Update the docs navigation by adding the following to config/docs.ts:")
-  console.log(`   - Add "${titleName}" to the sidebarNav under the "${category}" section`)
+  console.log(
+    "1. Update the docs navigation by adding the following to config/docs.ts:"
+  )
+  console.log(
+    `   - Add "${titleName}" to the sidebarNav under the "${category}" section`
+  )
   console.log(`   - The href should be "/docs/${category}/${fileName}"`)
   console.log("\n2. Run the build-registry script to update the registry:")
   console.log("   pnpm build-registry")
@@ -347,4 +382,4 @@ if (!validTypes.includes(type as RegistryType)) {
   process.exit(1)
 }
 
-createComponent({ name, category, type: type as RegistryType }) 
+createComponent({ name, category, type: type as RegistryType })

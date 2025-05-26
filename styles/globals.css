@@ -153,8 +153,8 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #1f2022;
+  --foreground: #d0c5a7;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -168,7 +168,7 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: #333436;
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
@@ -190,9 +190,6 @@
   * {
     @apply border-border;
   }
-  html {
-    @apply scroll-smooth;
-  }
   body {
     @apply bg-background text-foreground overscroll-none;
     /* font-feature-settings: "rlig" 1, "calt" 1; */
@@ -200,10 +197,10 @@
     text-rendering: optimizeLegibility;
   }
 
-    a:not(.social-link,.no-after,.tweet)[href*="//"]:not([href*="deltacomponents.dev"]):after
-    {
-      content: '⌝';
-    }
+  a:not(.social-link,.no-after,.tweet)[href*="//"]:not([href*="deltacomponents.dev"]):after
+  {
+    content: "⌝";
+  }
 
   ::-webkit-scrollbar {
     width: 5px;

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radio-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/radio-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"],
   "files": [
     {
       "path": "registry/examples/radio-input-demo.tsx",

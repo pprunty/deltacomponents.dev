@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Component Showcase",
-      href: "/docs/components"
+      href: "/docs/components",
     },
     {
       title: "Getting Started",
@@ -91,6 +91,26 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tabs",
           href: "/docs/components/tabs",
+          items: [],
+        },
+        {
+          title: "Scroll Progress",
+          href: "/docs/components/scroll-progress",
+          items: [],
+        },
+        {
+          title: "Embed",
+          href: "/docs/components/embed",
+          items: [],
+        },
+        {
+          title: "Admonition",
+          href: "/docs/components/admonition",
+          items: [],
+        },
+        {
+          title: "Retro Button",
+          href: "/docs/components/retro-button",
           items: [],
         },
       ],
@@ -203,32 +223,31 @@ export const docsConfig: DocsConfig = {
  */
 export function createComponentToCategory(): Record<string, string> {
   const mapping: Record<string, string> = {}
-  
+
   // Process each section in the sidebar navigation
-  docsConfig.sidebarNav.forEach(section => {
+  docsConfig.sidebarNav.forEach((section) => {
     // Skip the "Getting Started" section as it doesn't contain components
     if (section.title === "Getting Started") return
-    
+
     // Format the category name for URL path (lowercase, replace spaces with hyphens)
     const categoryPath = section.title.toLowerCase().replace(/ /g, "-")
-    
+
     // Process each item in this section
-    section.items.forEach(item => {
+    section.items.forEach((item) => {
       if (item.href) {
         // Extract the component name from the href
         // The format is typically /docs/category/component-name
         const parts = item.href.split("/")
         const componentName = parts[parts.length - 1]
-        
+
         // Add to the mapping
         mapping[componentName] = categoryPath
       }
     })
   })
-  
+
   return mapping
 }
 
 // Create the mapping once at import time for efficiency
 export const componentToCategory = createComponentToCategory()
-

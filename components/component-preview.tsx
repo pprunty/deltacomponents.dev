@@ -4,10 +4,15 @@ import * as React from "react"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/components/tabs"
 import { CopyButton } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/components/tabs"
 import CodeBlock from "@/registry/media/code-block"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -30,15 +35,15 @@ export function ComponentPreview({
   const [activeTab, setActiveTab] = React.useState("preview")
   const [code, setCode] = React.useState<string | null>(null)
   const previewRef = React.useRef<HTMLDivElement>(null)
-  
+
   // Handle tab switching to reinitialize IntersectionObserver
   React.useEffect(() => {
     if (activeTab === "preview" && previewRef.current) {
       // Force IntersectionObserver to recalculate by triggering a resize event
-      window.dispatchEvent(new Event('resize'))
+      window.dispatchEvent(new Event("resize"))
     }
   }, [activeTab])
-  
+
   // Get component and source file from registry
   const Preview = React.useMemo(() => {
     const Component = Index[name]?.component
@@ -67,7 +72,9 @@ export function ComponentPreview({
           const filePath = component.files[0]?.path
           if (filePath) {
             // In the browser, use fetch to get the file content
-            const response = await fetch(`/api/source?path=${encodeURIComponent(filePath)}`)
+            const response = await fetch(
+              `/api/source?path=${encodeURIComponent(filePath)}`
+            )
             if (response.ok) {
               const data = await response.json()
               setCode(data.source)
@@ -101,16 +108,10 @@ export function ComponentPreview({
             className="mb-4 w-full"
             size="md"
           >
-            <TabsTrigger
-              value="preview"
-              className="font-medium"
-            >
+            <TabsTrigger value="preview" className="font-medium">
               Preview
             </TabsTrigger>
-            <TabsTrigger
-              value="code"
-              className="font-medium"
-            >
+            <TabsTrigger value="code" className="font-medium">
               Code
             </TabsTrigger>
           </TabsList>
@@ -147,11 +148,11 @@ export function ComponentPreview({
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
               {code ? (
-                <CodeBlock 
-                  code={code} 
-                  language="tsx" 
-                  showLineNumbers 
-                  showCopyButton 
+                <CodeBlock
+                  code={code}
+                  language="tsx"
+                  showLineNumbers
+                  showCopyButton
                   showExpandButton
                   maxHeight="350px"
                   border={false}

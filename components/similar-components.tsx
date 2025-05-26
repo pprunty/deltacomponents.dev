@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Index } from "@/__registry__"
+
 import { cn, getComponentCategory } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ComponentPreviewCard } from "@/components/component-preview-card"
@@ -66,7 +67,11 @@ export function SimilarComponents({
     const currentType = Index[currentComponent]?.type || ""
 
     // These are the component-like types we want to include in our comparisons
-    const componentTypes = ["registry:component", "registry:block", "registry:hook"]
+    const componentTypes = [
+      "registry:component",
+      "registry:block",
+      "registry:hook",
+    ]
 
     // Filter all components that are different from the current one
     // and are of a component-like type
@@ -75,7 +80,7 @@ export function SimilarComponents({
         key !== currentComponent &&
         componentTypes.includes(Index[key].type) &&
         // Make sure we don't include demo components in the recommendations
-        !key.includes("-demo"),
+        !key.includes("-demo")
     )
 
     if (!otherComponents.length) {
@@ -89,7 +94,7 @@ export function SimilarComponents({
       const componentType = Index[component]?.type || ""
 
       // Count matching tags (if current component has tags)
-      const matchingTags = currentTags.length 
+      const matchingTags = currentTags.length
         ? componentTags.filter((tag: string) => currentTags.includes(tag))
         : []
 
@@ -108,42 +113,50 @@ export function SimilarComponents({
 
     // Get top N similar components (based on count prop)
     const topSimilar = sorted.slice(0, count).map((item) => item.component)
-    
+
     const result = [...topSimilar]
-    
+
     // If we need to fill slots with random components
     if (result.length < count) {
       const neededRandomComponents = count - result.length
-      
+
       // Find random components that aren't already in our list
-      let remainingComponents = otherComponents.filter((comp) => !result.includes(comp))
-      
+      let remainingComponents = otherComponents.filter(
+        (comp) => !result.includes(comp)
+      )
+
       // If no remaining components, just use what we have (should never happen but just in case)
       if (remainingComponents.length === 0) {
         remainingComponents = otherComponents
       }
-      
+
       // Add random components to fill the required count
       for (let i = 0; i < neededRandomComponents; i++) {
         if (remainingComponents.length === 0) break
-        
+
         // Select a random component
-        const randomIndex = Math.floor(Math.random() * remainingComponents.length)
+        const randomIndex = Math.floor(
+          Math.random() * remainingComponents.length
+        )
         const randomComponent = remainingComponents[randomIndex]
-        
+
         // Add it to our result and remove it from remaining components
         result.push(randomComponent)
         remainingComponents.splice(randomIndex, 1)
       }
     }
-    
+
     // Add one extra component for variety if we have the space
     if (count >= 3) {
       // Find a random component that isn't already in our list
-      const remainingComponents = otherComponents.filter((comp) => !result.includes(comp))
-      
+      const remainingComponents = otherComponents.filter(
+        (comp) => !result.includes(comp)
+      )
+
       if (remainingComponents.length > 0) {
-        const randomIndex = Math.floor(Math.random() * remainingComponents.length)
+        const randomIndex = Math.floor(
+          Math.random() * remainingComponents.length
+        )
         const randomComponent = remainingComponents[randomIndex]
         result.push(randomComponent)
       }
@@ -165,12 +178,14 @@ export function SimilarComponents({
 
   return (
     <div className={cn("space-y-8", className)}>
-      <h2 className="text-3xl font-bold font-heading mt-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">{title}</h2>
+      <h2 className="text-3xl font-bold font-heading mt-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
+        {title}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {similarComponents.map((component) => {
           const category = getComponentCategory(component)
           const tags = Index[component]?.tags || []
-          
+
           return (
             <ComponentPreviewCard
               key={component}

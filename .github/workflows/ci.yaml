@@ -11,7 +11,7 @@ on:
 
 jobs:
   setup:
-    name: 'Setup: Installing dependencies 🛒'
+    name: "Setup: Installing dependencies 🛒"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code 🛒
@@ -20,7 +20,7 @@ jobs:
       - name: Install Node.js 📦
         uses: actions/setup-node@v2
         with:
-          node-version: '21.x'
+          node-version: "21.x"
 
       - name: Install Dependencies 🧹
         run: npm install --force
@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-node-
 
   lint:
-    name: 'Linting: Running eslint against application 🧹'
+    name: "Linting: Running eslint against application 🧹"
     needs: setup
     runs-on: ubuntu-latest
     steps:

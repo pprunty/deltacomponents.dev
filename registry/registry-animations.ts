@@ -6,7 +6,15 @@ export const animations: Registry = [
     type: "registry:component",
     dependencies: ["use-scramble"],
     registryDependencies: [],
-    tags: ["animation", "text", "scramble", "effect", "motion", "interaction", "reveal"],
+    tags: [
+      "animation",
+      "text",
+      "scramble",
+      "effect",
+      "motion",
+      "interaction",
+      "reveal",
+    ],
     files: [
       {
         path: "animations/scramble-text.tsx",

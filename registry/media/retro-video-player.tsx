@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Minus, SpeakerHigh, SpeakerX } from "@phosphor-icons/react"
-import { CornersOut } from "@phosphor-icons/react"
+import { CornersOut, Minus, SpeakerHigh, SpeakerX } from "@phosphor-icons/react"
 import { Rnd } from "react-rnd"
 
 import { cn } from "@/lib/utils"
@@ -43,8 +42,8 @@ export function RetroVideoPlayer({
   muted: initialMuted,
 }: RetroVideoPlayerProps) {
   // Set default muted state based on if explicit value was provided
-  const muted = initialMuted !== undefined ? initialMuted : false;
-  
+  const muted = initialMuted !== undefined ? initialMuted : false
+
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const containerRef = React.useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = React.useState(autoPlay)
@@ -54,132 +53,168 @@ export function RetroVideoPlayer({
 
   const handleClose = () => {
     if (onClose) {
-      onClose();
+      onClose()
     }
-  };
+  }
 
   const togglePlayPause = (e?: React.MouseEvent | React.TouchEvent) => {
     if (e) {
-      e.stopPropagation(); // Prevent event bubbling
+      e.stopPropagation() // Prevent event bubbling
     }
-    
-    if (!videoRef.current) return;
-    
+
+    if (!videoRef.current) return
+
     if (videoRef.current.paused) {
       // Try to play with audio
-      const playPromise = videoRef.current.play();
-      
+      const playPromise = videoRef.current.play()
+
       // Handle autoplay restrictions
       if (playPromise !== undefined) {
-        playPromise.catch(error => {
+        playPromise.catch((error) => {
           // Auto-play was prevented - try again with muted
           if (error.name === "NotAllowedError") {
-            videoRef.current!.muted = true;
-            setIsMuted(true);
-            videoRef.current!.play().catch(e => console.error("Failed to play even with muted", e));
+            videoRef.current!.muted = true
+            setIsMuted(true)
+            videoRef
+              .current!.play()
+              .catch((e) => console.error("Failed to play even with muted", e))
           }
-        });
+        })
       }
-      
-      setIsPlaying(true);
+
+      setIsPlaying(true)
     } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
+      videoRef.current.pause()
+      setIsPlaying(false)
     }
-  };
-  
+  }
+
   const toggleMute = (e: React.MouseEvent | React.TouchEvent) => {
-    e.stopPropagation(); // Prevent triggering play/pause
-    
-    if (!videoRef.current) return;
-    
-    const newMutedState = !videoRef.current.muted;
-    videoRef.current.muted = newMutedState;
-    setIsMuted(newMutedState);
-  };
+    e.stopPropagation() // Prevent triggering play/pause
+
+    if (!videoRef.current) return
+
+    const newMutedState = !videoRef.current.muted
+    videoRef.current.muted = newMutedState
+    setIsMuted(newMutedState)
+  }
 
   const toggleFullscreen = (e: React.MouseEvent | React.TouchEvent) => {
-    e.stopPropagation(); // Prevent triggering play/pause
-    
-    if (!containerRef.current) return;
-    
+    e.stopPropagation() // Prevent triggering play/pause
+
+    if (!containerRef.current) return
+
     if (!isFullscreen) {
-      if (containerRef.current.requestFullscreen) {
-        containerRef.current.requestFullscreen();
+      try {
+        // Try standard fullscreen API first
+        if (containerRef.current.requestFullscreen) {
+          containerRef.current.requestFullscreen()
+        }
+        // iOS Safari specific
+        else if ((containerRef.current as any).webkitRequestFullscreen) {
+          ;(containerRef.current as any).webkitRequestFullscreen()
+        }
+        // For older browsers
+        else if ((containerRef.current as any).mozRequestFullScreen) {
+          ;(containerRef.current as any).mozRequestFullScreen()
+        }
+        // For Edge/IE
+        else if ((containerRef.current as any).msRequestFullscreen) {
+          ;(containerRef.current as any).msRequestFullscreen()
+        }
+        setIsFullscreen(true)
+      } catch (error) {
+        console.error("Failed to enter fullscreen:", error)
       }
-      setIsFullscreen(true);
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
+      try {
+        // Try standard fullscreen API first
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        }
+        // iOS Safari specific
+        else if ((document as any).webkitExitFullscreen) {
+          ;(document as any).webkitExitFullscreen()
+        }
+        // For older browsers
+        else if ((document as any).mozCancelFullScreen) {
+          ;(document as any).mozCancelFullScreen()
+        }
+        // For Edge/IE
+        else if ((document as any).msExitFullscreen) {
+          ;(document as any).msExitFullscreen()
+        }
+        setIsFullscreen(false)
+      } catch (error) {
+        console.error("Failed to exit fullscreen:", error)
       }
-      setIsFullscreen(false);
     }
-  };
+  }
 
   // Ensure proper unmounting
   React.useEffect(() => {
     return () => {
       if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.src = '';
-        videoRef.current.load();
+        videoRef.current.pause()
+        videoRef.current.src = ""
+        videoRef.current.load()
       }
-    };
-  }, []);
-  
+    }
+  }, [])
+
   // Handle autoplay with sound (try unmute after user interaction)
   React.useEffect(() => {
     if (autoPlay && !muted && videoRef.current) {
       const handleUserInteraction = () => {
         if (videoRef.current && videoRef.current.muted) {
           // Try to unmute after user interaction
-          videoRef.current.muted = false;
-          setIsMuted(false);
+          videoRef.current.muted = false
+          setIsMuted(false)
         }
-        
+
         // Remove listeners after first interaction
-        document.removeEventListener('click', handleUserInteraction);
-        document.removeEventListener('touchstart', handleUserInteraction);
-      };
-      
-      document.addEventListener('click', handleUserInteraction);
-      document.addEventListener('touchstart', handleUserInteraction);
-      
+        document.removeEventListener("click", handleUserInteraction)
+        document.removeEventListener("touchstart", handleUserInteraction)
+      }
+
+      document.addEventListener("click", handleUserInteraction)
+      document.addEventListener("touchstart", handleUserInteraction)
+
       return () => {
-        document.removeEventListener('click', handleUserInteraction);
-        document.removeEventListener('touchstart', handleUserInteraction);
-      };
+        document.removeEventListener("click", handleUserInteraction)
+        document.removeEventListener("touchstart", handleUserInteraction)
+      }
     }
-  }, [autoPlay, muted]);
-  
+  }, [autoPlay, muted])
+
   // Update playing state when video state changes
   React.useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
-    
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('pause', handlePause);
-    
+    const video = videoRef.current
+    if (!video) return
+
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
+
+    video.addEventListener("play", handlePlay)
+    video.addEventListener("pause", handlePause)
+
     return () => {
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
-    };
-  }, []);
+      video.removeEventListener("play", handlePlay)
+      video.removeEventListener("pause", handlePause)
+    }
+  }, [])
 
   // Monitor fullscreen changes
   React.useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+      setIsFullscreen(!!document.fullscreenElement)
+    }
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange)
     return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, []);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange)
+    }
+  }, [])
 
   return (
     <Rnd
@@ -195,7 +230,7 @@ export function RetroVideoPlayer({
         "overflow-hidden border border-primary bg-background z-[9999]",
         isDragging ? "shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]" : "",
         "transition-shadow duration-200",
-        className,
+        className
       )}
       onDragStart={() => setIsDragging(true)}
       onDragStop={() => setIsDragging(false)}
@@ -207,50 +242,52 @@ export function RetroVideoPlayer({
           className={cn(
             "flex h-6 items-center justify-between border-b border-primary bg-muted/40 px-1 cursor-grab",
             "hover:bg-muted transition-colors duration-200",
-            headerClassName,
+            headerClassName
           )}
         >
           <div className="flex-1"></div>
-          <div 
-            className="text-[13px] font-semibold text-foreground text-center"
-          >
+          <div className="text-[13px] font-semibold text-foreground text-center">
             {title}
           </div>
           <div className="flex items-center space-x-1.5 flex-1 justify-end">
             {/* Sound toggle button */}
-            <button 
+            <button
               className={cn(
                 "border border-primary p-[3px] transition-colors duration-150 touch-manipulation cursor-pointer",
-                "text-muted-foreground",
+                "text-muted-foreground"
               )}
               onClick={toggleMute}
               onTouchStart={(e) => e.stopPropagation()}
               onTouchEnd={(e) => {
-                e.preventDefault();
-                toggleMute(e);
+                e.preventDefault()
+                toggleMute(e)
               }}
-              style={{ borderRadius: 0, borderWidth: '0.5px' }}
+              style={{ borderRadius: 0, borderWidth: "0.5px" }}
               aria-label={isMuted ? "Unmute" : "Mute"}
             >
-                <div className="w-2 h-2 flex items-center justify-center">
-                {isMuted ? <SpeakerX weight="fill" className="h-2 w-2" /> : <SpeakerHigh weight="fill" className="h-2 w-2" />}
+              <div className="w-2 h-2 flex items-center justify-center">
+                {isMuted ? (
+                  <SpeakerX weight="fill" className="h-2 w-2" />
+                ) : (
+                  <SpeakerHigh weight="fill" className="h-2 w-2" />
+                )}
               </div>
             </button>
-            
+
             {/* Close button - visible on both mobile and desktop */}
             {onClose && (
-              <button 
+              <button
                 className={cn(
                   "border border-primary p-[3px] transition-colors duration-150 touch-manipulation cursor-pointer",
-                  "text-muted-foreground",
+                  "text-muted-foreground"
                 )}
                 onClick={handleClose}
                 onTouchStart={(e) => e.stopPropagation()}
                 onTouchEnd={(e) => {
-                  e.preventDefault();
-                  handleClose();
+                  e.preventDefault()
+                  handleClose()
                 }}
-                style={{ borderRadius: 0, borderWidth: '0.5px' }}
+                style={{ borderRadius: 0, borderWidth: "0.5px" }}
                 aria-label="Close"
               >
                 <div className="w-2 h-2 flex items-center justify-center">
@@ -262,44 +299,48 @@ export function RetroVideoPlayer({
         </div>
 
         <div className={cn("flex-1 relative cursor-default", contentClassName)}>
-          <div 
+          <div
             className="relative h-full w-full touch-manipulation"
             onClick={!showControls ? togglePlayPause : undefined}
-            onTouchEnd={!showControls ? (e) => {
-              e.preventDefault();
-              togglePlayPause();
-            } : undefined}
+            onTouchEnd={
+              !showControls
+                ? (e) => {
+                    e.preventDefault()
+                    togglePlayPause()
+                  }
+                : undefined
+            }
           >
             <video
               ref={videoRef}
               src={src}
-              className={cn(
-                "h-full w-full object-cover",
-                videoClassName,
-              )}
+              className={cn("h-full w-full object-cover", videoClassName)}
               controls={showControls}
               autoPlay={autoPlay}
               muted={isMuted}
               playsInline
               loop
             />
-            
-            {/* Fullscreen overlay button - always visible */}
+
+            {/* Fullscreen overlay button - enhanced for mobile */}
             <button
-              className="absolute bottom-3 right-3 p-1.5 transition-all duration-200 touch-manipulation opacity-100 cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleFullscreen(e);
+              className="absolute bottom-3 right-3 p-1.5 transition-all duration-200 touch-manipulation opacity-100 cursor-pointer z-10"
+              onClick={toggleFullscreen}
+              onTouchStart={(e) => {
+                e.stopPropagation()
               }}
-              onTouchStart={(e) => e.stopPropagation()}
               onTouchEnd={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleFullscreen(e);
+                e.preventDefault()
+                e.stopPropagation()
+                toggleFullscreen(e)
               }}
-              aria-label="Fullscreen"
+              style={{ WebkitTapHighlightColor: "transparent" }}
+              aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
             >
-              <CornersOut weight="bold" className="h-6 w-6 text-white drop-shadow-sm" />
+              <CornersOut
+                weight="bold"
+                className="h-6 w-6 text-white drop-shadow-sm"
+              />
             </button>
           </div>
         </div>

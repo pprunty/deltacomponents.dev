@@ -1,10 +1,11 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import { SwitchInput } from '@/registry/inputs/switch-input';
+import { useState } from "react"
+
+import { SwitchInput } from "@/registry/inputs/switch-input"
 
 export default function SwitchInputDemo() {
-  const [notifications, setNotifications] = useState(true);
+  const [notifications, setNotifications] = useState(true)
 
   return (
     <div className="w-full min-w-[320px] max-w-md mx-auto p-4">
@@ -16,10 +17,13 @@ export default function SwitchInputDemo() {
         description="Receive notifications about account activity and updates"
         containerClassName="space-y-4"
       />
-      
+
       <div className="text-sm text-muted-foreground mt-6">
-        Notifications are currently: <span className="font-medium">{notifications ? 'Enabled' : 'Disabled'}</span>
+        Notifications are currently:{" "}
+        <span className="font-medium">
+          {notifications ? "Enabled" : "Disabled"}
+        </span>
       </div>
     </div>
-  );
+  )
 }

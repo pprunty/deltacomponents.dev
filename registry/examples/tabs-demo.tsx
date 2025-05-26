@@ -1,9 +1,9 @@
 import {
   Tabs,
+  TabsContent,
   TabsList,
   TabsTrigger,
-  TabsContent,
-} from '@/registry/components/tabs';
+} from "@/registry/components/tabs"
 
 export default function TabsDemo() {
   return (
@@ -38,5 +38,5 @@ export default function TabsDemo() {
         </div>
       </TabsContent>
     </Tabs>
-  );
+  )
 }

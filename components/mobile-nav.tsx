@@ -58,7 +58,7 @@ export function MobileNav() {
           <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
           <DrawerHandle />
           <DrawerBody className="flex-1 overflow-auto p-6">
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 pb-4 mb-4 border-b border-dashed border-border">
               {topLevelNav.map(
                 (item) =>
                   item.href && (
@@ -122,13 +122,26 @@ function MobileLink({
   ...props
 }: MobileLinkProps) {
   const router = useRouter()
+
+  // Handle navigation with scroll reset
+  const handleClick = React.useCallback(() => {
+    // Close the mobile drawer
+    onOpenChange?.(false)
+
+    // Short timeout to allow drawer to close
+    setTimeout(() => {
+      // Scroll to top before navigation
+      window.scrollTo(0, 0)
+
+      // Navigate to the new page
+      router.push(href.toString())
+    }, 100)
+  }, [href, onOpenChange, router])
+
   return (
     <Link
       href={href}
-      onClick={() => {
-        router.push(href.toString())
-        onOpenChange?.(false)
-      }}
+      onClick={handleClick}
       className={cn("text-base", className)}
       {...props}
     >

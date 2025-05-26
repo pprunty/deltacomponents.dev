@@ -29,7 +29,7 @@ export const registryItemSchema = z.object({
 export const registrySchema = z.array(registryItemSchema)
 
 export type RegistryItem = z.infer<typeof registryItemSchema>
-export type Registry     = z.infer<typeof registrySchema>
+export type Registry = z.infer<typeof registrySchema>
 
 // ← add this:
 export default registrySchema

@@ -1,7 +1,47 @@
 import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
-    {
+  {
+    name: "retro-button-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/retro-button-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "admonition-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/admonition-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "embed-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/embed-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "scroll-progress-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/scroll-progress-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "highlighter-demo",
     type: "registry:block",
     files: [
@@ -10,7 +50,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "backdrop-gradient-demo",
     type: "registry:block",
     registryDependencies: ["backdrop-gradient"],
@@ -20,7 +61,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "smart-form-demo",
     type: "registry:block",
     registryDependencies: ["smart-form"],
@@ -30,7 +72,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "checkbox-input-demo",
     type: "registry:block",
     registryDependencies: ["checkbox-input"],
@@ -40,7 +83,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "radio-input-demo",
     type: "registry:block",
     registryDependencies: ["radio-input"],
@@ -50,7 +94,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "date-input-demo",
     type: "registry:block",
     registryDependencies: ["date-input"],
@@ -60,7 +105,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "switch-input-demo",
     type: "registry:block",
     registryDependencies: ["switch-input"],
@@ -70,7 +116,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "select-input-demo",
     type: "registry:block",
     registryDependencies: ["select-input"],
@@ -80,7 +127,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "tags-input-demo",
     type: "registry:block",
     registryDependencies: ["tags-input"],
@@ -90,7 +138,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "textarea-input-demo",
     type: "registry:block",
     registryDependencies: ["textarea-input"],
@@ -100,7 +149,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "retro-video-player-demo",
     type: "registry:block",
     registryDependencies: ["retro-video-player"],
@@ -110,7 +160,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "code-block-demo",
     type: "registry:block",
     registryDependencies: ["code-block"],
@@ -120,7 +171,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "drawer-demo",
     type: "registry:block",
     registryDependencies: ["drawer"],
@@ -130,7 +182,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "modal-demo",
     type: "registry:block",
     registryDependencies: ["modal"],
@@ -140,7 +193,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "tabs-demo",
     type: "registry:block",
     registryDependencies: ["tabs", "x-scrollable"],
@@ -150,7 +204,8 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "scramble-text-demo",
     type: "registry:block",
     registryDependencies: ["scramble-text"],
@@ -314,5 +369,27 @@ export const examples: Registry = [
         type: "registry:block",
       },
     ],
-  }
+  },
+  {
+    name: "modal-drop-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    files: [
+      {
+        path: "examples/modal-drop-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "modal-blur-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    files: [
+      {
+        path: "examples/modal-blur-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
 ]

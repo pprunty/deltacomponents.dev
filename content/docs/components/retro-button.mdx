@@ -1,0 +1,65 @@
+---
+title: Retro Button
+description: Description goes here
+---
+
+<ComponentPreview name="retro-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/retro-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install [dependencies]
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="retro-button" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+
+import { RetroButton } from "@/registry/components/retro-button"
+
+export function Component() {
+  return <RetroButton />
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |

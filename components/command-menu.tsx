@@ -58,13 +58,13 @@ export function CommandMenu() {
       action()
     }, 10)
   }, [])
-  
+
   // The command content with matching rounded corners
   const commandContent = (
     <Command className="rounded-2xl bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
       <div className="sr-only">Type a command or search</div>
-      <CommandInput 
-        placeholder="Type a command or search..." 
+      <CommandInput
+        placeholder="Type a command or search..."
         className="rounded-t-2xl text-sm md:text-sm sm:text-md"
         autoFocus
       />
@@ -77,7 +77,9 @@ export function CommandMenu() {
               <CommandItem
                 key={navItem.href}
                 value={navItem.title}
-                onSelect={() => runCommand(() => router.push(navItem.href as string))}
+                onSelect={() =>
+                  runCommand(() => router.push(navItem.href as string))
+                }
               >
                 <FileIcon className="mr-2 h-4 w-4" />
                 <span>{navItem.title}</span>
@@ -90,7 +92,9 @@ export function CommandMenu() {
               <CommandItem
                 key={navItem.href}
                 value={navItem.title}
-                onSelect={() => runCommand(() => router.push(navItem.href as string))}
+                onSelect={() =>
+                  runCommand(() => router.push(navItem.href as string))
+                }
               >
                 <div className="mr-2 flex size-4 items-center justify-center">
                   <CircleIcon className="size-3" />
@@ -115,10 +119,10 @@ export function CommandMenu() {
           </CommandItem>
         </CommandGroup>
       </CommandList>
-      
+
       {/* Keyboard navigation help - desktop only */}
       <div className="absolute hidden sm:flex items-center justify-start border-t border-border bg-muted w-full bottom-0 px-2 py-2 text-xs text-muted-foreground bg-background/80 backdrop-blur-sm rounded-b-2xl">
-        ↑↓ Navigate  ⏎ Select
+        ↑↓ Navigate ⏎ Select
       </div>
     </Command>
   )
@@ -139,11 +143,11 @@ export function CommandMenu() {
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
-      
+
       {/* Use Modal for both mobile and desktop */}
-      <Modal 
-        isOpen={open} 
-        onClose={() => setOpen(false)} 
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
         className="w-full max-w-[450px] p-0 min-h-[300px] max-h-[60vh]"
         showCloseButton={false}
         animationType="scale"

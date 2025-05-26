@@ -1,8 +1,9 @@
-import React from "react";
-import BlurOverlay from "@/registry/media/backdrop-gradient";
+import React from "react"
+
+import BlurOverlay from "@/registry/media/backdrop-gradient"
 
 export default function BackdropGradientDemo() {
-  const sampleImage = "/images/desk.webp"; // replace with your image path or URL
+  const sampleImage = "/images/desk.webp" // replace with your image path or URL
 
   return (
     <div className="min-h-screen flex items-center justify-center w-full h-full">
@@ -10,5 +11,5 @@ export default function BackdropGradientDemo() {
         <BlurOverlay src={sampleImage} alt="Sample landscape" />
       </div>
     </div>
-  );
+  )
 }

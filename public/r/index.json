@@ -12,9 +12,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "radio-input",
@@ -25,9 +23,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "date-input",
@@ -38,10 +34,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod",
-        "date-fns"
-      ]
+      "dependencies": ["zod", "date-fns"]
     },
     {
       "name": "switch-input",
@@ -52,9 +45,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "select-input",
@@ -65,9 +56,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "tags-input",
@@ -78,9 +67,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "textarea-input",
@@ -91,9 +78,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "file-input",
@@ -104,10 +89,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod",
-        "lucide-react"
-      ]
+      "dependencies": ["zod", "lucide-react"]
     },
     {
       "name": "otp-input",
@@ -118,9 +100,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "text-input",
@@ -131,8 +111,54 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "zod"
+      "dependencies": ["zod"]
+    },
+    {
+      "name": "retro-button-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/retro-button-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/retro-button.json"
+      ]
+    },
+    {
+      "name": "admonition-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/admonition-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
+    },
+    {
+      "name": "embed-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/embed-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/embed.json"]
+    },
+    {
+      "name": "scroll-progress-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/scroll-progress-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/scroll-progress.json"
       ]
     },
     {
@@ -144,9 +170,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/highlighter.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/highlighter.json"]
     },
     {
       "name": "backdrop-gradient-demo",
@@ -170,9 +194,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/smart-form.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
     },
     {
       "name": "checkbox-input-demo",
@@ -196,9 +218,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/radio-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"]
     },
     {
       "name": "date-input-demo",
@@ -209,9 +229,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/date-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/date-input.json"]
     },
     {
       "name": "switch-input-demo",
@@ -248,9 +266,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tags-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
     },
     {
       "name": "textarea-input-demo",
@@ -287,9 +303,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"]
     },
     {
       "name": "drawer-demo",
@@ -300,9 +314,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "modal-demo",
@@ -313,9 +325,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "tabs-demo",
@@ -353,9 +363,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "use-copy-to-clipboard"
-      ]
+      "registryDependencies": ["use-copy-to-clipboard"]
     },
     {
       "name": "use-interval-demo",
@@ -366,9 +374,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "use-interval"
-      ]
+      "registryDependencies": ["use-interval"]
     },
     {
       "name": "use-timeout-demo",
@@ -379,9 +385,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "use-timeout"
-      ]
+      "registryDependencies": ["use-timeout"]
     },
     {
       "name": "use-document-title-demo",
@@ -392,9 +396,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "use-document-title"
-      ]
+      "registryDependencies": ["use-document-title"]
     },
     {
       "name": "use-mouse-position-demo",
@@ -405,9 +407,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "use-mouse-position"
-      ]
+      "registryDependencies": ["use-mouse-position"]
     },
     {
       "name": "otp-input-demo",
@@ -418,9 +418,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "text-input-demo",
@@ -431,9 +429,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/text-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/text-input.json"]
     },
     {
       "name": "file-input-demo",
@@ -444,9 +440,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/file-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
     },
     {
       "name": "tabs-spotify-demo",
@@ -471,9 +465,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "backdrop-gradient-artistic-demo",
@@ -510,9 +502,7 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/smart-form.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
     },
     {
       "name": "code-block-theme-demo",
@@ -523,9 +513,29 @@
           "type": "registry:block"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"]
+    },
+    {
+      "name": "modal-drop-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/modal-drop-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
+    },
+    {
+      "name": "modal-blur-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/modal-blur-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "scramble-text",
@@ -536,8 +546,46 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "use-scramble"
+      "dependencies": ["use-scramble"]
+    },
+    {
+      "name": "retro-button",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/retro-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "admonition",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/admonition.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "embed",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/embed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/scroll-progress.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {
@@ -549,10 +597,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "vaul",
-        "class-variance-authority"
-      ]
+      "dependencies": ["vaul", "class-variance-authority"]
     },
     {
       "name": "modal",
@@ -563,10 +608,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "framer-motion",
-        "@phosphor-icons/react"
-      ]
+      "dependencies": ["framer-motion", "@phosphor-icons/react"]
     },
     {
       "name": "tabs",
@@ -600,10 +642,7 @@
           "type": "registry:block"
         }
       ],
-      "dependencies": [
-        "zod",
-        "utils"
-      ],
+      "dependencies": ["zod", "utils"],
       "registryDependencies": [
         "https://deltacomponents.dev/r/text-input.json",
         "https://deltacomponents.dev/r/checkbox-input.json",
@@ -636,9 +675,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "tailwindcss"
-      ]
+      "dependencies": ["tailwindcss"]
     },
     {
       "name": "retro-video-player",
@@ -649,10 +686,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "react-rnd",
-        "@phosphor-icons/react"
-      ]
+      "dependencies": ["react-rnd", "@phosphor-icons/react"]
     },
     {
       "name": "code-block",
@@ -673,9 +707,7 @@
         "@phosphor-icons/react",
         "lucide-react"
       ],
-      "registryDependencies": [
-        "button"
-      ]
+      "registryDependencies": ["button"]
     }
   ]
 }

@@ -6,37 +6,36 @@ import { Drawer as VaulDrawer } from "vaul"
 
 import { cn } from "@/lib/utils"
 
-const contentVariants = cva(
-  "flex flex-col outline-none",
-  {
-    variants: {
-      position: {
-        top: "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-        bottom: "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left",
-        right: "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
-      },
-      size: {
-        default: "",
-        sm: "",
-        lg: "",
-        xl: "",
-        full: "",
-      },
+const contentVariants = cva("flex flex-col outline-none", {
+  variants: {
+    position: {
+      top: "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+      bottom:
+        "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+      left: "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left",
+      right:
+        "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
     },
-    defaultVariants: {
-      position: "bottom",
-      size: "default",
+    size: {
+      default: "",
+      sm: "",
+      lg: "",
+      xl: "",
+      full: "",
     },
-  }
-)
+  },
+  defaultVariants: {
+    position: "bottom",
+    size: "default",
+  },
+})
 
 interface DrawerOptions {
   shouldScaleBackground?: boolean
   container?: HTMLElement | null
   direction?: "top" | "bottom" | "left" | "right"
   scrollable?: boolean
-  size?: "sm" | "default" | "lg" | "xl" | "full" 
+  size?: "sm" | "default" | "lg" | "xl" | "full"
   closeOnClickOutside?: boolean
   hasOverlay?: boolean
   overlayClassName?: string
@@ -45,8 +44,8 @@ interface DrawerOptions {
   nested?: boolean
 }
 
-const Drawer = ({ 
-  shouldScaleBackground = true, 
+const Drawer = ({
+  shouldScaleBackground = true,
   container,
   direction = "bottom",
   scrollable = false,
@@ -60,7 +59,7 @@ const Drawer = ({
   ...props
 }: React.ComponentProps<typeof VaulDrawer.Root> & DrawerOptions) => {
   const DrawerRoot = nested ? VaulDrawer.NestedRoot : VaulDrawer.Root
-  
+
   return (
     <DrawerRoot
       shouldScaleBackground={shouldScaleBackground}
@@ -73,28 +72,27 @@ const Drawer = ({
 }
 Drawer.displayName = "Drawer"
 
-export interface DrawerTriggerProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Trigger> {}
+export interface DrawerTriggerProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Trigger> {}
 
 const DrawerTrigger = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Trigger>,
   DrawerTriggerProps
 >(({ className, ...props }, ref) => (
-  <VaulDrawer.Trigger
-    ref={ref}
-    className={cn("", className)}
-    {...props}
-  />
+  <VaulDrawer.Trigger ref={ref} className={cn("", className)} {...props} />
 ))
 DrawerTrigger.displayName = "DrawerTrigger"
 
-export interface DrawerPortalProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Portal> {}
+export interface DrawerPortalProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Portal> {}
 
-const DrawerPortal = ({
-  ...props
-}: DrawerPortalProps) => <VaulDrawer.Portal {...props} />
+const DrawerPortal = ({ ...props }: DrawerPortalProps) => (
+  <VaulDrawer.Portal {...props} />
+)
 DrawerPortal.displayName = "DrawerPortal"
 
-export interface DrawerOverlayProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Overlay> {}
+export interface DrawerOverlayProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Overlay> {}
 
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Overlay>,
@@ -108,64 +106,71 @@ const DrawerOverlay = React.forwardRef<
 ))
 DrawerOverlay.displayName = "DrawerOverlay"
 
-export interface DrawerContentProps extends 
-  React.ComponentPropsWithoutRef<typeof VaulDrawer.Content>, 
-  VariantProps<typeof contentVariants> {
-  scrollable?: boolean;
-  initialTransform?: string;
+export interface DrawerContentProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Content>,
+    VariantProps<typeof contentVariants> {
+  scrollable?: boolean
+  initialTransform?: string
 }
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Content>,
   DrawerContentProps
->(({ className, position, size, scrollable = false, style, initialTransform, children, ...props }, ref) => {
-  const combinedStyle = initialTransform 
-    ? { ...style, '--initial-transform': initialTransform } as React.CSSProperties
-    : style;
+>(
+  (
+    {
+      className,
+      position,
+      size,
+      scrollable = false,
+      style,
+      initialTransform,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const combinedStyle = initialTransform
+      ? ({
+          ...style,
+          "--initial-transform": initialTransform,
+        } as React.CSSProperties)
+      : style
 
-  return (
-    <VaulDrawer.Content
-      ref={ref}
-      style={combinedStyle}
-      className={cn(
-        contentVariants({ position, size }), 
-        className
-      )}
-      {...props}
-    >
-      <VaulDrawer.Title className="sr-only">Drawer Content</VaulDrawer.Title>
-      {children}
-    </VaulDrawer.Content>
-  )
-})
+    return (
+      <VaulDrawer.Content
+        ref={ref}
+        style={combinedStyle}
+        className={cn(contentVariants({ position, size }), className)}
+        {...props}
+      >
+        <VaulDrawer.Title className="sr-only">Drawer Content</VaulDrawer.Title>
+        {children}
+      </VaulDrawer.Content>
+    )
+  }
+)
 DrawerContent.displayName = "DrawerContent"
 
 export interface DrawerBodyProps extends React.HTMLAttributes<HTMLDivElement> {
-  scrollable?: boolean;
+  scrollable?: boolean
 }
 
-const DrawerBody = React.forwardRef<
-  HTMLDivElement,
-  DrawerBodyProps
->(({ className, scrollable = true, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "flex-1", 
-      scrollable && "overflow-y-auto",
-      className
-    )}
-    {...props}
-  />
-))
+const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
+  ({ className, scrollable = true, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("flex-1", scrollable && "overflow-y-auto", className)}
+      {...props}
+    />
+  )
+)
 DrawerBody.displayName = "DrawerBody"
 
-export interface DrawerHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DrawerHeaderProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DrawerHeader = ({
-  className,
-  ...props
-}: DrawerHeaderProps) => (
+const DrawerHeader = ({ className, ...props }: DrawerHeaderProps) => (
   <div
     className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
     {...props}
@@ -173,12 +178,10 @@ const DrawerHeader = ({
 )
 DrawerHeader.displayName = "DrawerHeader"
 
-export interface DrawerFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DrawerFooterProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DrawerFooter = ({
-  className,
-  ...props
-}: DrawerFooterProps) => (
+const DrawerFooter = ({ className, ...props }: DrawerFooterProps) => (
   <div
     className={cn("mt-auto flex flex-col gap-2 p-4", className)}
     {...props}
@@ -186,7 +189,8 @@ const DrawerFooter = ({
 )
 DrawerFooter.displayName = "DrawerFooter"
 
-export interface DrawerTitleProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Title> {}
+export interface DrawerTitleProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Title> {}
 
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Title>,
@@ -194,13 +198,17 @@ const DrawerTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <VaulDrawer.Title
     ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    className={cn(
+      "text-lg font-semibold leading-none tracking-tight",
+      className
+    )}
     {...props}
   />
 ))
 DrawerTitle.displayName = "DrawerTitle"
 
-export interface DrawerDescriptionProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Description> {}
+export interface DrawerDescriptionProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Description> {}
 
 const DrawerDescription = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Description>,
@@ -214,32 +222,29 @@ const DrawerDescription = React.forwardRef<
 ))
 DrawerDescription.displayName = "DrawerDescription"
 
-export interface DrawerCloseProps extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Close> {}
+export interface DrawerCloseProps
+  extends React.ComponentPropsWithoutRef<typeof VaulDrawer.Close> {}
 
 const DrawerClose = React.forwardRef<
   React.ElementRef<typeof VaulDrawer.Close>,
   DrawerCloseProps
 >(({ className, ...props }, ref) => (
-  <VaulDrawer.Close
-    ref={ref}
-    className={cn("", className)}
-    {...props}
-  />
+  <VaulDrawer.Close ref={ref} className={cn("", className)} {...props} />
 ))
 DrawerClose.displayName = "DrawerClose"
 
-export interface DrawerHandleProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface DrawerHandleProps
+  extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DrawerHandle = React.forwardRef<
-  HTMLDivElement,
-  DrawerHandleProps
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted", className)}
-    {...props}
-  />
-))
+const DrawerHandle = React.forwardRef<HTMLDivElement, DrawerHandleProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted", className)}
+      {...props}
+    />
+  )
+)
 DrawerHandle.displayName = "DrawerHandle"
 
 export {

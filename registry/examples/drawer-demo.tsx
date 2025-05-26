@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -34,14 +35,14 @@ export default function DrawerDemo() {
               <DrawerHeader>
                 <DrawerTitle>Basic Drawer Example</DrawerTitle>
                 <DrawerDescription>
-                  This is the most basic drawer setup. It shows a simple bottom drawer
-                  with a handle, title, and content.
+                  This is the most basic drawer setup. It shows a simple bottom
+                  drawer with a handle, title, and content.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="p-4">
                 <p className="text-muted-foreground mb-2">
-                  Basic drawers are perfect for simple interactions or information display
-                  that don't require complex layouts.
+                  Basic drawers are perfect for simple interactions or
+                  information display that don't require complex layouts.
                 </p>
               </DrawerBody>
               <DrawerFooter className="border-t border-border p-4">
@@ -59,7 +60,9 @@ export default function DrawerDemo() {
 
       {/* Scrollable Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">Scrollable Drawer</h3>
+        <h3 className="text-center text-lg font-medium mb-4">
+          Scrollable Drawer
+        </h3>
         <Drawer>
           <DrawerTrigger asChild>
             <Button>Open Scrollable Drawer</Button>
@@ -71,7 +74,8 @@ export default function DrawerDemo() {
               <DrawerHeader>
                 <DrawerTitle>Scrollable Content</DrawerTitle>
                 <DrawerDescription>
-                  This drawer contains scrollable content that extends beyond the visible area.
+                  This drawer contains scrollable content that extends beyond
+                  the visible area.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="overflow-y-auto p-4">
@@ -79,10 +83,12 @@ export default function DrawerDemo() {
                   {/* Generate multiple paragraphs to demonstrate scrolling */}
                   {Array.from({ length: 15 }).map((_, i) => (
                     <p key={i} className="text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu 
-                      tincidunt consectetur, nisi nunc pretium nunc, eget tincidunt nisl nunc eget diam. 
-                      Nulla facilisi. Donec euismod, urna eu tincidunt consectetur, nisi nunc pretium 
-                      nunc, eget tincidunt nisl nunc eget diam. Nulla facilisi.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Sed euismod, urna eu tincidunt consectetur, nisi nunc
+                      pretium nunc, eget tincidunt nisl nunc eget diam. Nulla
+                      facilisi. Donec euismod, urna eu tincidunt consectetur,
+                      nisi nunc pretium nunc, eget tincidunt nisl nunc eget
+                      diam. Nulla facilisi.
                     </p>
                   ))}
                 </div>
@@ -94,28 +100,31 @@ export default function DrawerDemo() {
 
       {/* Right Side Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">Right Side Drawer</h3>
+        <h3 className="text-center text-lg font-medium mb-4">
+          Right Side Drawer
+        </h3>
         <Drawer direction="right">
           <DrawerTrigger asChild>
             <Button>Open Right Side Drawer</Button>
           </DrawerTrigger>
           <DrawerPortal>
             <DrawerOverlay />
-            <DrawerContent 
-              className="bg-background flex flex-col rounded-l-[10px] fixed inset-y-0 right-0 h-full w-3/4 sm:max-w-sm z-50 border-l"
+            <DrawerContent
+              className="bg-background flex flex-col rounded-l-xl fixed inset-y-4 right-4 h-[calc(100vh-32px)] w-3/4 sm:max-w-sm z-50 border-l p-2"
               initialTransform="calc(100% + 8px)"
             >
               <DrawerHeader>
                 <DrawerTitle>Right Side Drawer</DrawerTitle>
                 <DrawerDescription>
-                  This is a right side drawer that slides in from the edge of the screen.
+                  This is a right side drawer that slides in from the edge of
+                  the screen.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="overflow-y-auto p-4">
                 <div className="space-y-4">
                   <p className="text-muted-foreground">
-                    The drawer uses initialTransform to set the starting position
-                    and slides in from the right side of the screen.
+                    The drawer uses initialTransform to set the starting
+                    position and slides in from the right side of the screen.
                   </p>
                 </div>
               </DrawerBody>
@@ -131,7 +140,9 @@ export default function DrawerDemo() {
 
       {/* Custom Height Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">Custom Height Drawer</h3>
+        <h3 className="text-center text-lg font-medium mb-4">
+          Custom Height Drawer
+        </h3>
         <Drawer>
           <DrawerTrigger asChild>
             <Button>Open Custom Height Drawer</Button>
@@ -143,13 +154,15 @@ export default function DrawerDemo() {
               <DrawerHeader>
                 <DrawerTitle>Custom Height Drawer</DrawerTitle>
                 <DrawerDescription>
-                  This drawer has a fixed height of exactly 550 pixels, regardless of screen size.
+                  This drawer has a fixed height of exactly 550 pixels,
+                  regardless of screen size.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="p-4">
                 <p className="text-muted-foreground mb-2">
-                  Setting a specific height can be useful when you need consistent spacing or 
-                  when the content requires a specific amount of vertical space.
+                  Setting a specific height can be useful when you need
+                  consistent spacing or when the content requires a specific
+                  amount of vertical space.
                 </p>
               </DrawerBody>
               <DrawerFooter className="border-t border-border p-4">
@@ -167,7 +180,9 @@ export default function DrawerDemo() {
 
       {/* Full Height Right Side Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">Full Height Right Side Drawer</h3>
+        <h3 className="text-center text-lg font-medium mb-4">
+          Full Height Right Side Drawer
+        </h3>
         <Drawer direction="right">
           <DrawerTrigger asChild>
             <Button>Open Full Height Right Drawer</Button>

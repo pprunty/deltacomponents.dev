@@ -30,9 +30,21 @@ export const media: Registry = [
   {
     name: "code-block",
     type: "registry:component",
-    dependencies: ["shikiji", "next-themes", "@phosphor-icons/react", "lucide-react"],
+    dependencies: [
+      "shikiji",
+      "next-themes",
+      "@phosphor-icons/react",
+      "lucide-react",
+    ],
     registryDependencies: ["button"],
-    tags: ["syntax highlighting", "code", "copyable", "expandable", "theme-aware", "developer"],
+    tags: [
+      "syntax highlighting",
+      "code",
+      "copyable",
+      "expandable",
+      "theme-aware",
+      "developer",
+    ],
     files: [
       {
         path: "media/code-block.tsx",

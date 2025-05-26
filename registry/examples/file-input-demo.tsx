@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { FileInput } from "@/registry/inputs/file-input"
 
 export default function FileInputDemo() {
@@ -15,5 +16,5 @@ export default function FileInputDemo() {
         showIcons={true}
       />
     </div>
-  );
+  )
 }

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "date-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/date-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/date-input.json"],
   "files": [
     {
       "path": "registry/examples/date-input-demo.tsx",

@@ -34,11 +34,18 @@ export function rehypeComponent() {
             src = path.join(process.cwd(), srcPath)
           } else {
             const component = Index[name]
-            if (!component || !component.files || !Array.isArray(component.files) || component.files.length === 0) {
-              console.warn(`Component ${name} not found in registry or has no files defined`)
+            if (
+              !component ||
+              !component.files ||
+              !Array.isArray(component.files) ||
+              component.files.length === 0
+            ) {
+              console.warn(
+                `Component ${name} not found in registry or has no files defined`
+              )
               return null
             }
-            
+
             src = fileName
               ? component.files.find((file: unknown) => {
                   if (typeof file === "string") {
@@ -100,11 +107,18 @@ export function rehypeComponent() {
 
         try {
           const component = Index[name]
-          if (!component || !component.files || !Array.isArray(component.files) || component.files.length === 0) {
-            console.warn(`Component ${name} not found in registry or has no files defined`)
+          if (
+            !component ||
+            !component.files ||
+            !Array.isArray(component.files) ||
+            component.files.length === 0
+          ) {
+            console.warn(
+              `Component ${name} not found in registry or has no files defined`
+            )
             return null
           }
-          
+
           const src = component.files[0]?.path
 
           if (!src) {

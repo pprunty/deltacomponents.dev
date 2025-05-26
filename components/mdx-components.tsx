@@ -1,9 +1,9 @@
 "use client"
 
+import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer2/hooks"
-import * as React from "react"
 
 import type { NpmCommands } from "@/types/unist"
 import { cn } from "@/lib/utils"
@@ -22,6 +22,7 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton } from "@/components/copy-button"
 import { GitHubChangelog } from "@/components/github-changelog"
+import Admonition from "@/registry/components/admonition"
 
 interface MdxProps {
   code: string
@@ -135,29 +136,77 @@ const components = {
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="relative w-full overflow-auto border border-border rounded-lg my-6">
-      <table className={cn("w-full caption-bottom text-sm", className)} {...props} />
+      <table
+        className={cn("w-full caption-bottom text-sm", className)}
+        {...props}
+      />
     </div>
   ),
-  thead: ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+  thead: ({
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLTableSectionElement>) => (
     <thead className={cn("[&_tr]:border-b", className)} {...props} />
   ),
-  tbody: ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+  tbody: ({
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLTableSectionElement>) => (
     <tbody className={cn("[&_tr:last-child]:border-0", className)} {...props} />
   ),
-  tfoot: ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <tfoot className={cn("border-t bg-muted/50 font-medium last:[&>tr]:border-b-0", className)} {...props} />
+  tfoot: ({
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <tfoot
+      className={cn(
+        "border-t bg-muted/50 font-medium last:[&>tr]:border-b-0",
+        className
+      )}
+      {...props}
+    />
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className={cn("border-b transition-colors hover:bg-muted/50 !py-4 data-[state=selected]:bg-muted", className)} {...props} />
+    <tr
+      className={cn(
+        "border-b transition-colors hover:bg-muted/50 !py-4 data-[state=selected]:bg-muted",
+        className
+      )}
+      {...props}
+    />
   ),
-  th: ({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
-    <th className={cn("h-10 px-4 text-left align-middle font-medium text-muted-foreground bg-secondary [&:has([role=checkbox])]:pr-0", className)} {...props} />
+  th: ({
+    className,
+    ...props
+  }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+    <th
+      className={cn(
+        "h-10 px-4 text-left align-middle font-medium text-muted-foreground bg-secondary [&:has([role=checkbox])]:pr-0",
+        className
+      )}
+      {...props}
+    />
   ),
-  td: ({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
-    <td className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)} {...props} />
+  td: ({
+    className,
+    ...props
+  }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+    <td
+      className={cn(
+        "p-4 align-middle [&:has([role=checkbox])]:pr-0",
+        className
+      )}
+      {...props}
+    />
   ),
-  caption: ({ className, ...props }: React.HTMLAttributes<HTMLTableCaptionElement>) => (
-    <caption className={cn("mt-4 text-sm text-muted-foreground", className)} {...props} />
+  caption: ({
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLTableCaptionElement>) => (
+    <caption
+      className={cn("mt-4 text-sm text-muted-foreground", className)}
+      {...props}
+    />
   ),
   pre: ({
     className,
@@ -284,6 +333,7 @@ const components = {
       {...props}
     />
   ),
+  Admonition,
 }
 
 export function Mdx({ code }: MdxProps) {

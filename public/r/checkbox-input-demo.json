@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/checkbox-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/checkbox-input.json"],
   "files": [
     {
       "path": "registry/examples/checkbox-input-demo.tsx",

@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useState } from "react";
-import CodeBlock, { ThemeOption } from "@/registry/media/code-block";
+import React, { useState } from "react"
+
+import CodeBlock, { ThemeOption } from "@/registry/media/code-block"
 
 export default function CodeBlockThemeDemo() {
-  const [selectedTheme, setSelectedTheme] = useState<ThemeOption>("vitesse");
-  
+  const [selectedTheme, setSelectedTheme] = useState<ThemeOption>("vitesse")
+
   const tsCode = `// TypeScript example with generics
 function identity<T>(arg: T): T {
   return arg;
@@ -31,19 +32,16 @@ function process<T, U>(value: T, handler: (x: T) => U): U {
 
 const user: User = { id: 1, name: "Alice" };
 const userName = process(user, (u) => u.name);
-// const userName: string`;
+// const userName: string`
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTheme(e.target.value as ThemeOption);
-  };
+    setSelectedTheme(e.target.value as ThemeOption)
+  }
 
   return (
     <div>
-      <div style={{ marginBottom: '16px' }}>
-        <label htmlFor="theme-select">
-          Theme:
-        </label>
-        {' '}
+      <div style={{ marginBottom: "16px" }}>
+        <label htmlFor="theme-select">Theme:</label>{" "}
         <select
           id="theme-select"
           value={selectedTheme}
@@ -56,7 +54,7 @@ const userName = process(user, (u) => u.name);
           <option value="default">Default</option>
         </select>
       </div>
-      
+
       <CodeBlock
         code={tsCode}
         language="typescript"
@@ -67,5 +65,5 @@ const userName = process(user, (u) => u.name);
         border
       />
     </div>
-  );
+  )
 }

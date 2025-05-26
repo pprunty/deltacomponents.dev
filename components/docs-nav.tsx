@@ -1,8 +1,8 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import React from "react"
 
 import { SidebarNavItem } from "@/types/nav"
 import { type DocsConfig } from "@/config/docs"
@@ -12,12 +12,14 @@ export function DocsNav({ config }: { config: DocsConfig }) {
   const pathname = usePathname()
 
   const items = config.sidebarNav
-  
+
   // Calculate and memoize the count of items for each category
   const categoryCounts = React.useMemo(() => {
-    return items.map(category => {
+    return items.map((category) => {
       // Count only enabled items with href
-      const count = category.items?.filter(item => item.href && !item.disabled).length || 0
+      const count =
+        category.items?.filter((item) => item.href && !item.disabled).length ||
+        0
       return count
     })
   }, [items])
@@ -85,10 +87,12 @@ function DocsNavItems({
           >
             {item.title}
             {item.label && (
-              <span className={cn(
-                "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
-                getLabelStyle(item.label)
-              )}>
+              <span
+                className={cn(
+                  "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                  getLabelStyle(item.label)
+                )}
+              >
                 {item.label}
               </span>
             )}
@@ -103,10 +107,12 @@ function DocsNavItems({
           >
             {item.title}
             {item.label && (
-              <span className={cn(
-                "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
-                getLabelStyle(item.label)
-              )}>
+              <span
+                className={cn(
+                  "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                  getLabelStyle(item.label)
+                )}
+              >
                 {item.label}
               </span>
             )}

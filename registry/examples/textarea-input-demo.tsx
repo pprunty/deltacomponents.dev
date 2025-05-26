@@ -1,6 +1,6 @@
-'use client';
+"use client"
 
-import { TextareaInput } from '@/registry/inputs/textarea-input';
+import { TextareaInput } from "@/registry/inputs/textarea-input"
 
 export default function TextareaInputDemo() {
   return (
@@ -12,5 +12,5 @@ export default function TextareaInputDemo() {
         placeholder="Type your feedback here..."
       />
     </div>
-  );
+  )
 }
