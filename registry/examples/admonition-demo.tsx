@@ -9,7 +9,7 @@ export default function AdmonitionDemo() {
     <div className="flex flex-col gap-4">
       <Admonition type="note" title="Note">
         This is a note admonition with some important information that users
-        should be aware of.
+        should be aware of
       </Admonition>
     </div>
   )

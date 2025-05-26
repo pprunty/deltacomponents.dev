@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/examples/scroll-progress-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport ScrollProgress from \"@/registry/components/scroll-progress\"\n\n// Demo Component\nexport default function ScrollProgressDemo() {\n  return (\n    <div className=\"overflow-y-auto \">\n      <ScrollProgress/>\n      You can see the scroll progress bar at the bottom of the page.\n    </div>\n  );\n}",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport ScrollProgress from \"@/registry/components/scroll-progress\"\n\n// Demo Component\nexport default function ScrollProgressDemo() {\n  return (\n    <div className=\"overflow-y-auto \">\n      <ScrollProgress />\n      You can see the scroll progress bar at the bottom of the page.\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ]

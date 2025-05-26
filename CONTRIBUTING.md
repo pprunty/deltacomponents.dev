@@ -134,6 +134,8 @@ After creating a component, you'll need to:
    make registry
    ```
 
+**To hide a component from production, add `hide: true` to its entry in `config/docs.ts` under `sidebarNav`.**
+
 ### Creating a Component Demo
 
 To create a new demo for an existing component:

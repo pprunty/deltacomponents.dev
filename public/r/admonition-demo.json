@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "registry/examples/admonition-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport Admonition from \"@/registry/components/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Admonition type=\"note\" title=\"Note\">\n        This is a note admonition with some important information that users should be aware of.\n      </Admonition>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport Admonition from \"@/registry/components/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Admonition type=\"note\" title=\"Note\">\n        This is a note admonition with some important information that users\n        should be aware of\n      </Admonition>\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ]
