@@ -1,9 +1,21 @@
 import type { Registry } from "@/registry/schema"
 
-export const components: Registry = [
+export const components: Registry = [  {
+    name: "star-rating",
+    type: "registry:component",
+    tags: ["star", "rating", "feedback", "interactive", "component"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/star-rating.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
   {
     name: "retro-button",
     type: "registry:component",
+    tags: ["button", "retro", "ui", "component"],
     registryDependencies: [],
     files: [
       {
@@ -15,6 +27,8 @@ export const components: Registry = [
   {
     name: "admonition",
     type: "registry:component",
+    tags: ["admonition", "alert", "info", "component"],
+    dependencies: ["lucide-react"],
     registryDependencies: [],
     files: [
       {
@@ -26,6 +40,8 @@ export const components: Registry = [
   {
     name: "embed",
     type: "registry:component",
+    tags: ["embed", "iframe", "media", "component"],
+    dependencies: ["lucide-react"],
     registryDependencies: [],
     files: [
       {
@@ -37,6 +53,8 @@ export const components: Registry = [
   {
     name: "scroll-progress",
     type: "registry:component",
+    tags: ["scroll", "progress", "indicator", "component"],
+    dependencies: ["framer-motion"],
     registryDependencies: [],
     files: [
       {
@@ -58,6 +76,7 @@ export const components: Registry = [
       "dialog",
       "mobile",
       "responsive",
+      "component"
     ],
     files: [
       {
@@ -78,6 +97,7 @@ export const components: Registry = [
       "animated",
       "accessible",
       "responsive",
+      "component"
     ],
     files: [
       {
@@ -98,6 +118,7 @@ export const components: Registry = [
       "animated",
       "scrollable",
       "content switcher",
+      "component"
     ],
     files: [
       {
@@ -109,16 +130,9 @@ export const components: Registry = [
   {
     name: "x-scrollable",
     type: "registry:component",
-    dependencies: [],
+    tags: ["scroll", "horizontal", "container", "utility", "layout", "component"],
     registryDependencies: [],
-    tags: [
-      "scroll",
-      "horizontal",
-      "container",
-      "utility",
-      "overflow",
-      "layout",
-    ],
+    dependencies: [],
     files: [
       {
         path: "components/x-scrollable.tsx",

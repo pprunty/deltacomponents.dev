@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Index } from "@/__registry__"
+import { docsConfig } from "@/config/docs"
 
 import { cn, getComponentCategory } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -41,7 +42,7 @@ export function SimilarComponents({
   currentComponent,
   className,
   title = "Similar Components:",
-  count = 3,
+  count = 4,
   useDocsLinks = true,
   showTags = false,
 }: SimilarComponentsProps) {
@@ -49,117 +50,89 @@ export function SimilarComponents({
   const [similarComponents, setSimilarComponents] = React.useState<string[]>([])
 
   React.useEffect(() => {
-    // If component name is empty, there's nothing to do
     if (!currentComponent) {
       setIsLoading(false)
       return
     }
 
-    // Check if the component exists in the registry
     if (!Index[currentComponent]) {
       console.warn(`Component "${currentComponent}" not found in registry.`)
       setIsLoading(false)
       return
     }
 
-    // Get the current component's tags and type
+    // Get current component's tags and category
     const currentTags = Index[currentComponent]?.tags || []
+    // Get category from docsConfig
+    let currentCategory: string | null = null
+    docsConfig.sidebarNav.forEach((section) => {
+      section.items.forEach((item) => {
+        if (item.href && item.href.endsWith(`/${currentComponent}`)) {
+          currentCategory = section.title
+        }
+      })
+    })
     const currentType = Index[currentComponent]?.type || ""
 
-    // These are the component-like types we want to include in our comparisons
-    const componentTypes = [
-      "registry:component",
-      "registry:block",
-      "registry:hook",
-    ]
-
-    // Filter all components that are different from the current one
-    // and are of a component-like type
-    const otherComponents = Object.keys(Index).filter(
+    // Build eligible pool
+    const hiddenComponents = new Set<string>()
+    docsConfig.sidebarNav.forEach((section) => {
+      section.items.forEach((item) => {
+        if (item.hide && item.href) {
+          const parts = item.href.split("/")
+          const componentName = parts[parts.length - 1]
+          hiddenComponents.add(componentName)
+        }
+      })
+    })
+    const eligibleComponents = Object.keys(Index).filter(
       (key) =>
         key !== currentComponent &&
-        componentTypes.includes(Index[key].type) &&
-        // Make sure we don't include demo components in the recommendations
-        !key.includes("-demo")
+        !key.includes("-demo") &&
+        !hiddenComponents.has(key)
     )
 
-    if (!otherComponents.length) {
+    if (!eligibleComponents.length) {
       setIsLoading(false)
       return
     }
 
-    // Calculate tag similarity scores for each component (even if current component has no tags)
-    const scoredComponents = otherComponents.map((component) => {
-      const componentTags = Index[component]?.tags || []
-      const componentType = Index[component]?.type || ""
-
-      // Count matching tags (if current component has tags)
-      const matchingTags = currentTags.length
-        ? componentTags.filter((tag: string) => currentTags.includes(tag))
-        : []
-
-      // Give a type bonus if the types match (e.g., both are components or both are blocks)
-      const typeBonus = componentType === currentType ? 1 : 0
-
-      return {
-        component,
-        score: matchingTags.length + typeBonus,
-        matchingTags,
+    // Score eligible components
+    const scored = eligibleComponents.map((comp) => {
+      // Get category for this comp
+      let compCategory: string | null = null
+      docsConfig.sidebarNav.forEach((section) => {
+        section.items.forEach((item) => {
+          if (item.href && item.href.endsWith(`/${comp}`)) {
+            compCategory = section.title
+          }
+        })
+      })
+      const compTags = Index[comp]?.tags || []
+      const compType = Index[comp]?.type || ""
+      let score = 0
+      if (compCategory && currentCategory && compCategory === currentCategory) score += 3
+      if (currentTags.length && compTags.length) {
+        score += compTags.filter((tag: string) => currentTags.includes(tag)).length * 2
       }
+      if (compType === currentType) score += 1
+      return { comp, score, compCategory, compTags }
     })
 
-    // Sort by score (highest first)
-    const sorted = scoredComponents.sort((a, b) => b.score - a.score)
+    // Sort by score, descending
+    scored.sort((a, b) => b.score - a.score)
 
-    // Get top N similar components (based on count prop)
-    const topSimilar = sorted.slice(0, count).map((item) => item.component)
-
-    const result = [...topSimilar]
-
-    // If we need to fill slots with random components
-    if (result.length < count) {
-      const neededRandomComponents = count - result.length
-
-      // Find random components that aren't already in our list
-      let remainingComponents = otherComponents.filter(
-        (comp) => !result.includes(comp)
-      )
-
-      // If no remaining components, just use what we have (should never happen but just in case)
-      if (remainingComponents.length === 0) {
-        remainingComponents = otherComponents
-      }
-
-      // Add random components to fill the required count
-      for (let i = 0; i < neededRandomComponents; i++) {
-        if (remainingComponents.length === 0) break
-
-        // Select a random component
-        const randomIndex = Math.floor(
-          Math.random() * remainingComponents.length
-        )
-        const randomComponent = remainingComponents[randomIndex]
-
-        // Add it to our result and remove it from remaining components
-        result.push(randomComponent)
-        remainingComponents.splice(randomIndex, 1)
-      }
+    // Build result list
+    const result: string[] = []
+    for (let i = 0; i < scored.length && result.length <= count; i++) {
+      result.push(scored[i].comp)
     }
 
-    // Add one extra component for variety if we have the space
-    if (count >= 3) {
-      // Find a random component that isn't already in our list
-      const remainingComponents = otherComponents.filter(
-        (comp) => !result.includes(comp)
-      )
-
-      if (remainingComponents.length > 0) {
-        const randomIndex = Math.floor(
-          Math.random() * remainingComponents.length
-        )
-        const randomComponent = remainingComponents[randomIndex]
-        result.push(randomComponent)
-      }
+    // Fill up to count with random eligible components (allowing duplicates only if needed)
+    while (result.length <= count) {
+      // Try to pick a random component from eligibleComponents
+      const randomComponent = eligibleComponents[Math.floor(Math.random() * eligibleComponents.length)];
+      result.push(randomComponent);
     }
 
     setSimilarComponents(result)

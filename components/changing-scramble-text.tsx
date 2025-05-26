@@ -69,7 +69,6 @@ export function ChangingScrambleText() {
   return (
     <ScrambleText
       text={text}
-      scrambleSpeed={80}
       className="h-7 text-2xl font-bold md:h-10 md:text-4xl"
     />
   )

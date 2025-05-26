@@ -1,3 +1,4 @@
+/* NOTE: to hide component in production: hide: process.env.NODE_ENV === "production" */
 import type { MainNavItem, SidebarNavItem } from "@/types/nav"
 
 export interface DocsConfig {
@@ -79,23 +80,13 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Admonition",
+          href: "/docs/components/admonition",
+          items: [],
+        },
+        {
           title: "Drawer",
           href: "/docs/components/drawer",
-          items: [],
-        },
-        {
-          title: "Modal",
-          href: "/docs/components/modal",
-          items: [],
-        },
-        {
-          title: "Tabs",
-          href: "/docs/components/tabs",
-          items: [],
-        },
-        {
-          title: "Scroll Progress",
-          href: "/docs/components/scroll-progress",
           items: [],
         },
         {
@@ -104,13 +95,29 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Admonition",
-          href: "/docs/components/admonition",
+          title: "Modal",
+          href: "/docs/components/modal",
           items: [],
         },
         {
           title: "Retro Button",
           href: "/docs/components/retro-button",
+          items: [],
+          hide: process.env.NODE_ENV === "production"
+        },
+        {
+          title: "Scroll Progress",
+          href: "/docs/components/scroll-progress",
+          items: [],
+        },
+        {
+          title: "Star Rating",
+          href: "/docs/components/star-rating",
+          items: [],
+        },
+        {
+          title: "Tabs",
+          href: "/docs/components/tabs",
           items: [],
         },
       ],
@@ -134,6 +141,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/media/retro-video-player",
           items: [],
           label: "Beta",
+        },
+        {
+          title: "Spotify",
+          href: "/docs/media/spotify",
+          items: [],
         },
       ],
     },

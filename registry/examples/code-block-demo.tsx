@@ -22,7 +22,7 @@ if __name__ == "__main__":
     main()`
 
   return (
-    <div className="w-full">
+    <div className="w-full py-4">
       <CodeBlock
         code={code}
         language="python"

@@ -2,11 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "file-input-demo",
   "type": "registry:block",
-  "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/file-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/file-input-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { FileInput } from \"@/registry/inputs/file-input\"\n\nexport default function FileInputDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Document\"\n        name=\"document\"\n        description=\"Upload a file for your application\"\n        accept=\".pdf,.docx,.jpg,.png\"\n        hint=\"Accepted formats: PDF, DOCX, JPG, PNG\"\n        showIcons={true}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { FileInput } from \"@/registry/inputs/file-input\"\n\nexport default function FileInputDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Document\"\n        name=\"document\"\n        description=\"Upload a file for your application\"\n        accept=\".pdf,.docx,.jpg,.png\"\n        hint=\"Accepted formats: PDF, DOCX, JPG, PNG\"\n        showIcons={true}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ]

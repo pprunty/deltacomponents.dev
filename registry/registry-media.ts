@@ -1,6 +1,17 @@
 import type { Registry } from "@/registry/schema"
 
-export const media: Registry = [
+export const media: Registry = [  {
+    name: "spotify",
+    type: "registry:component",
+    tags: ["spotify", "audio", "media", "component"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "media/spotify.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
   {
     name: "backdrop-gradient",
     type: "registry:component",

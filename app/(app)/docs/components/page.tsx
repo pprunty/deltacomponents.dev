@@ -53,7 +53,7 @@ export default function ComponentsPage() {
             className={cn(
               "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
             )}
-            scrambleSpeed={80}
+            //scrambleSpeed={80}
             //useIntersectionObserver
             //retriggerOnIntersection
           />
@@ -64,7 +64,7 @@ export default function ComponentsPage() {
           </p>
         </div>
         <div className="pt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
             {components.map((component) => {
               const category = getComponentCategory(component.name)
 

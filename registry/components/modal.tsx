@@ -184,7 +184,9 @@ const Modal: React.FC<ModalProps> = ({
           style={{
             alignItems: position === 0 ? "center" : "flex-start",
             paddingTop: position === 0 ? 0 : `calc(50vh - ${position}px)`,
+            willChange: type === "blur" ? "backdrop-filter, opacity" : undefined,
           }}
+          layout={type === "blur"}
         >
           <motion.div
             variants={variants}
@@ -193,6 +195,7 @@ const Modal: React.FC<ModalProps> = ({
             exit="exit"
             className={cn(getModalClasses(), className)}
             onClick={(e) => e.stopPropagation()}
+            layout={type === "blur"}
           >
             {title ? (
               <div

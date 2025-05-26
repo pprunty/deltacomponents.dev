@@ -60,9 +60,7 @@ export default function DrawerDemo() {
 
       {/* Scrollable Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">
-          Scrollable Drawer
-        </h3>
+        <h3 className="text-center text-lg font-medium mb-4">Scrollable Drawer</h3>
         <Drawer>
           <DrawerTrigger asChild>
             <Button>Open Scrollable Drawer</Button>
@@ -71,7 +69,7 @@ export default function DrawerDemo() {
             <DrawerOverlay />
             <DrawerContent className="bg-background flex flex-col rounded-t-[10px] mt-24 h-[80%] fixed bottom-0 left-0 right-0 z-50">
               <DrawerHandle className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-muted" />
-              <DrawerHeader>
+              <DrawerHeader className="border-b border-border">
                 <DrawerTitle>Scrollable Content</DrawerTitle>
                 <DrawerDescription>
                   This drawer contains scrollable content that extends beyond
@@ -110,7 +108,7 @@ export default function DrawerDemo() {
           <DrawerPortal>
             <DrawerOverlay />
             <DrawerContent
-              className="bg-background flex flex-col rounded-l-xl fixed inset-y-4 right-4 h-[calc(100vh-32px)] w-3/4 sm:max-w-sm z-50 border-l p-2"
+              className="bg-background flex flex-col rounded-xl fixed inset-y-4 right-4 h-[calc(100vh-32px)] w-3/4 sm:max-w-sm z-50 border p-4 hide-vaul-after"
               initialTransform="calc(100% + 8px)"
             >
               <DrawerHeader>
@@ -178,32 +176,31 @@ export default function DrawerDemo() {
         </Drawer>
       </div>
 
-      {/* Full Height Right Side Drawer Example */}
+      {/* Full Height Left Side Drawer Example */}
       <div>
         <h3 className="text-center text-lg font-medium mb-4">
-          Full Height Right Side Drawer
+          Full Height Left Side Drawer
         </h3>
-        <Drawer direction="right">
+        <Drawer direction="left">
           <DrawerTrigger asChild>
-            <Button>Open Full Height Right Drawer</Button>
+            <Button>Open Full Height Left Drawer</Button>
           </DrawerTrigger>
           <DrawerPortal>
             <DrawerOverlay />
             <DrawerContent
-              className="bg-background flex flex-col rounded-l-[10px] fixed inset-y-0 right-0 h-screen w-3/4 sm:max-w-md z-50 border-l"
-              initialTransform="calc(100% + 8px)"
+              className="bg-background flex flex-col rounded-xl fixed inset-y-4 left-4 h-[calc(100vh-32px)] w-3/4 sm:max-w-sm z-50 border p-4 hide-vaul-after"
+              initialTransform="calc(-100% - 8px)"
             >
               <DrawerHeader>
                 <DrawerTitle>Full Height Drawer</DrawerTitle>
                 <DrawerDescription>
-                  This drawer takes up the full height of the screen.
+                  This drawer takes up the full height of the screen and slides in from the left.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="overflow-y-auto p-4">
                 <div className="space-y-4">
                   <p className="text-muted-foreground">
-                    For a full height drawer, use h-screen and inset-y-0 classes
-                    to ensure it spans the entire height of the viewport.
+                    For a full height drawer, use h-[calc(100vh-32px)] and inset-y-4 classes to ensure it spans the entire height of the viewport. This one slides in from the left and matches the right drawer's style.
                   </p>
                 </div>
               </DrawerBody>

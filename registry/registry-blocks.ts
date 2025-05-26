@@ -25,6 +25,7 @@ export const blocks: Registry = [
       "reactive",
       "data collection",
       "AI",
+      "block"
     ],
     files: [
       {

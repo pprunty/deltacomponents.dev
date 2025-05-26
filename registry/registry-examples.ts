@@ -1,6 +1,24 @@
 import type { Registry } from "@/registry/schema"
 
-export const examples: Registry = [
+export const examples: Registry = [  {
+    name: "spotify-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/spotify-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },  {
+    name: "star-rating-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/star-rating-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
   {
     name: "retro-button-demo",
     type: "registry:block",

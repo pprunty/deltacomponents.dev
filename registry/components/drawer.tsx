@@ -6,6 +6,16 @@ import { Drawer as VaulDrawer } from "vaul"
 
 import { cn } from "@/lib/utils"
 
+// Add this style tag for the hide-vaul-after class:
+if (typeof window !== "undefined") {
+  if (!document.getElementById("hide-vaul-after-style")) {
+    const style = document.createElement("style");
+    style.id = "hide-vaul-after-style";
+    style.innerHTML = `.hide-vaul-after::after { display: none !important; }`;
+    document.head.appendChild(style);
+  }
+}
+
 const contentVariants = cva("flex flex-col outline-none", {
   variants: {
     position: {

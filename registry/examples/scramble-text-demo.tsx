@@ -8,9 +8,6 @@ export default function ScrambleTextDemo() {
       <ScrambleText
         text="Welcome to Delta Components"
         className="text-4xl font-bold"
-        scrambledClassName="text-4xl font-bold"
-        scrambleSpeed={100}
-        scrambledLetterCount={3}
       />
     </div>
   )

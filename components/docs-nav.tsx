@@ -16,9 +16,9 @@ export function DocsNav({ config }: { config: DocsConfig }) {
   // Calculate and memoize the count of items for each category
   const categoryCounts = React.useMemo(() => {
     return items.map((category) => {
-      // Count only enabled items with href
+      // Count only enabled items with href and not hidden
       const count =
-        category.items?.filter((item) => item.href && !item.disabled).length ||
+        category.items?.filter((item) => item.href && !item.disabled && !item.hide).length ||
         0
       return count
     })
@@ -37,7 +37,7 @@ export function DocsNav({ config }: { config: DocsConfig }) {
             )}
           </h4>
           {item?.items?.length && (
-            <DocsNavItems items={item.items} pathname={pathname} />
+            <DocsNavItems items={item.items.filter((i) => !i.hide)} pathname={pathname} />
           )}
         </div>
       ))}
@@ -72,7 +72,7 @@ function DocsNavItems({
 
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm">
-      {items.map((item, index) =>
+      {items.filter((item) => !item.hide).map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}

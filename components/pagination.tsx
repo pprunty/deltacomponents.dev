@@ -14,13 +14,15 @@ interface DocsPaginationProps {
 export function DocsPagination({ className }: DocsPaginationProps) {
   const pathname = usePathname()
 
-  // Create a flat array of all navigation items with their hrefs
+  // Create a flat array of all navigation items with their hrefs, skipping hidden items
   const flattenedLinks = docsConfig.sidebarNav.flatMap((section) =>
-    section.items.map((item) => ({
-      title: item.title,
-      href: item.href as string,
-      section: section.title,
-    }))
+    section.items
+      .filter((item) => !item.hide)
+      .map((item) => ({
+        title: item.title,
+        href: item.href as string,
+        section: section.title,
+      }))
   )
 
   // Find the current page index

@@ -27,9 +27,9 @@ export function MobileNav() {
     setOpen(isOpen)
   }, [])
 
-  // Filter top-level navigation to only include Home and Components Showcase
+  // Filter top-level navigation to only include Home and Components Showcase, and not hidden
   const topLevelNav = docsConfig.mainNav?.filter(
-    (item) => item.title === "Home" || item.title === "Component Showcase"
+    (item) => (item.title === "Home" || item.title === "Component Showcase") && !item.hide
   )
 
   return (
@@ -77,7 +77,7 @@ export function MobileNav() {
                 <div key={index} className="flex flex-col space-y-3 pt-6">
                   <h4 className="font-medium">{item.title}</h4>
                   {item?.items?.length &&
-                    item.items.map((item) => (
+                    item.items.filter((i) => !i.hide).map((item) => (
                       <React.Fragment key={item.href}>
                         {!item.disabled &&
                           (item.href ? (

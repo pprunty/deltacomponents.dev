@@ -2,11 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox-input-demo",
   "type": "registry:block",
-  "registryDependencies": ["https://deltacomponents.dev/r/checkbox-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/checkbox-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/checkbox-input-demo.tsx",
-      "content": "'use client';\n\nimport { CheckboxInput } from '@/registry/inputs/checkbox-input';\n\nexport default function CheckboxInputBasicDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <CheckboxInput\n        label=\"Accept terms and conditions\"\n        name=\"terms\"\n        description=\"By accepting, you agree to our Terms of Service and Privacy Policy\"\n        hint=\"Required for account creation\"\n        required\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\"\n\nimport { CheckboxInput } from \"@/registry/inputs/checkbox-input\"\n\nexport default function CheckboxInputBasicDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <CheckboxInput\n        label=\"Accept terms and conditions\"\n        name=\"terms\"\n        description=\"By accepting, you agree to our Terms of Service and Privacy Policy\"\n        hint=\"Required for account creation\"\n        required\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ]

@@ -72,7 +72,7 @@ export function CommandMenu() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Links">
           {docsConfig.mainNav
-            .filter((navitem) => !navitem.external)
+            .filter((navitem) => !navitem.external && !navitem.hide)
             .map((navItem) => (
               <CommandItem
                 key={navItem.href}
@@ -88,7 +88,7 @@ export function CommandMenu() {
         </CommandGroup>
         {docsConfig.sidebarNav.map((group) => (
           <CommandGroup key={group.title} heading={group.title}>
-            {group.items.map((navItem) => (
+            {group.items.filter((navItem) => !navItem.hide).map((navItem) => (
               <CommandItem
                 key={navItem.href}
                 value={navItem.title}

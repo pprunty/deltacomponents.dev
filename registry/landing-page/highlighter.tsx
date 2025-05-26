@@ -106,7 +106,7 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
         width: "100%",
         transition: {
           duration: 0.5,
-          ease: "easeInOut",
+          ease: [0.4, 0, 0.2, 1],
         },
       },
     }
@@ -145,7 +145,7 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
 
         {animate ? (
           <motion.span
-            className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0"
+            className="absolute bottom-0 left-0 h-[var(--highlight-thickness)] bg-[var(--highlight-shadow-color)] dark:bg-[var(--highlight-dark-shadow-color)] pointer-events-none z-0 will-change-transform will-change-width transform-gpu"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={highlightVariants}

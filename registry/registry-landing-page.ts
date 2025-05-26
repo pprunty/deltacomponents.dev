@@ -4,6 +4,7 @@ export const landingPage: Registry = [
   {
     name: "highlighter",
     type: "registry:component",
+    tags: ["highlight", "text", "landing", "animation", "component"],
     registryDependencies: [],
     files: [
       {
