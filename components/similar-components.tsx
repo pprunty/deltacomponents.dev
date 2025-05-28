@@ -2,8 +2,8 @@
 
 import React from "react"
 import { Index } from "@/__registry__"
-import { docsConfig } from "@/config/docs"
 
+import { docsConfig } from "@/config/docs"
 import { cn, getComponentCategory } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ComponentPreviewCard } from "@/components/component-preview-card"
@@ -111,9 +111,11 @@ export function SimilarComponents({
       const compTags = Index[comp]?.tags || []
       const compType = Index[comp]?.type || ""
       let score = 0
-      if (compCategory && currentCategory && compCategory === currentCategory) score += 3
+      if (compCategory && currentCategory && compCategory === currentCategory)
+        score += 3
       if (currentTags.length && compTags.length) {
-        score += compTags.filter((tag: string) => currentTags.includes(tag)).length * 2
+        score +=
+          compTags.filter((tag: string) => currentTags.includes(tag)).length * 2
       }
       if (compType === currentType) score += 1
       return { comp, score, compCategory, compTags }
@@ -131,8 +133,11 @@ export function SimilarComponents({
     // Fill up to count with random eligible components (allowing duplicates only if needed)
     while (result.length <= count) {
       // Try to pick a random component from eligibleComponents
-      const randomComponent = eligibleComponents[Math.floor(Math.random() * eligibleComponents.length)];
-      result.push(randomComponent);
+      const randomComponent =
+        eligibleComponents[
+          Math.floor(Math.random() * eligibleComponents.length)
+        ]
+      result.push(randomComponent)
     }
 
     setSimilarComponents(result)

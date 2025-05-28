@@ -289,13 +289,82 @@ export function FileInput({
     onFilesSelected?.(newFiles)
   }
 
+  // Helper function to format accepted file types
+  const formatAcceptedTypes = (accept?: string) => {
+    if (!accept) return ""
+
+    const types = accept
+      .split(",")
+      .map((type) => type.trim())
+      .map((type) => {
+        // Handle file extensions (e.g., ".pdf" -> "PDF")
+        if (type.startsWith(".")) {
+          return type.slice(1).toUpperCase()
+        }
+        // Handle MIME types (e.g., "image/*" -> "IMAGE")
+        if (type.includes("/")) {
+          const [category] = type.split("/")
+          return category.toUpperCase()
+        }
+        // Return uppercase without dot
+        return type.toUpperCase()
+      })
+
+    // Format with proper grammar
+    if (types.length === 0) return ""
+    if (types.length === 1) return types[0]
+    if (types.length === 2) return `${types[0]} and ${types[1]}`
+
+    // For 3 or more items: "A, B, and C"
+    const lastType = types.pop()
+    return `${types.join(", ")}, and ${lastType}`
+  }
+
+  // File type to icon mapping
+  const fileTypeIconMap: Record<string, string> = {
+    // PDF files
+    pdf: "/vectors/pdf.svg",
+
+    // Microsoft Office files
+    doc: "/vectors/word.svg",
+    docx: "/vectors/word.svg",
+    ppt: "/vectors/ppt.svg",
+    pptx: "/vectors/ppt.svg",
+
+    // Excel files
+    xls: "/vectors/xlsx.svg",
+    xlsx: "/vectors/xlsx.svg",
+
+    // Audio files
+    mp3: "/vectors/mp3.svg",
+
+    // Video files
+    mp4: "/vectors/mp4.svg",
+  }
+
   // Get appropriate icon for file type
   const getFileIcon = (file: File) => {
+    // For images, continue using the Image icon from phosphor
     if (file.type.startsWith("image/")) {
-      return <Image weight="regular" className="h-5 w-5" />
-    } else {
-      return <Export weight="regular" className="h-5 w-5" />
+      return <Image weight="regular" className="h-6 w-6" />
     }
+
+    // Get file extension
+    const extension = file.name.split(".").pop()?.toLowerCase()
+
+    // Check if we have a specific icon for this file type
+    if (extension && fileTypeIconMap[extension]) {
+      return (
+        <img
+          src={fileTypeIconMap[extension]}
+          alt={`${extension} file`}
+          className="h-10 w-10"
+        />
+      )
+    }
+
+    // Fallback to generic file icon
+    return <img src="/vectors/file.svg" alt="file" className="h-10 w-10" />
   }
 
   // Format file size
@@ -378,9 +447,8 @@ export function FileInput({
           variant === "default" &&
             "sm:border-dashed md:border-dashed lg:border-dashed [border-image:url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg%27%3E%3Cpath d='M0 10H20' stroke='%23666' stroke-width='2' stroke-dasharray='8 8'/%3E%3C/svg%3E\")_1]",
 
-          // Pill variant with solid border (not dashed)
-          variant === "pill" &&
-            "bg-muted border border-solid border-transparent rounded-lg",
+          // Pill variant without border
+          variant === "pill" && "bg-muted border border-transparent rounded-lg",
           variant === "pill" && coloredBorder && "border-primary/30",
 
           // Dragging state
@@ -419,25 +487,51 @@ export function FileInput({
 
         <CloudArrowUp
           weight="regular"
-          className="h-10 w-10 text-muted-foreground/70"
+          className="h-7 w-7 text-muted-foreground/70"
         />
 
-        <div className="space-y-1">
+        <div className="space-y-2">
           <p className="text-md font-medium text-foreground">
-            {dropzoneText || (
-              <>
-                <span className="text-primary">Click to upload</span> or drag
-                and drop
-              </>
-            )}
+            {dropzoneText || "Choose a file or drag and drop it here"}
           </p>
           <p className="text-xs text-muted-foreground">
-            {multiple
-              ? `Upload up to ${maxFiles} file${maxFiles !== 1 ? "s" : ""}`
-              : "Upload a file"}
-            {accept && ` (${accept.replace(/,/g, ", ")})`}
-            {maxSize && ` up to ${formatFileSize(maxSize)}`}
+            {(() => {
+              const parts = []
+
+              // Add file types if accept is provided
+              if (accept) {
+                const formattedTypes = formatAcceptedTypes(accept)
+                if (formattedTypes) {
+                  parts.push(formattedTypes)
+                }
+              }
+
+              // Add size limit (use default 10MB if not provided)
+              const sizeLimit = maxSize || 10 * 1024 * 1024 // Default 10MB
+              parts.push(`up to ${formatFileSize(sizeLimit)}`)
+
+              return parts.length > 0
+                ? parts.join(", ")
+                : multiple
+                  ? `Upload up to ${maxFiles} file${maxFiles !== 1 ? "s" : ""}`
+                  : "Upload a file"
+            })()}
           </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={(e) => {
+              e.stopPropagation()
+              if (!disabled && !pending) {
+                fileInputRef.current?.click()
+              }
+            }}
+            disabled={disabled || pending}
+            className="mt-2 cursor-pointer"
+          >
+            Browse files
+          </Button>
         </div>
       </div>
 
@@ -458,7 +552,7 @@ export function FileInput({
                 )}
               >
                 <div className="flex items-center gap-2 overflow-hidden min-w-0">
-                  {showIcons && (
+                  {showIcons && !imagePreview && (
                     <div className="flex-shrink-0 text-muted-foreground">
                       {getFileIcon(file)}
                     </div>

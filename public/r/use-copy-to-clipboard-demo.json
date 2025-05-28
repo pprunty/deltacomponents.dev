@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-copy-to-clipboard-demo",
   "type": "registry:block",
-  "registryDependencies": ["use-copy-to-clipboard"],
+  "registryDependencies": [
+    "use-copy-to-clipboard"
+  ],
   "files": [
     {
       "path": "registry/examples/use-copy-to-clipboard-demo.tsx",

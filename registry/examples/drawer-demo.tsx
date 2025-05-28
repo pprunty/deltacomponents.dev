@@ -60,7 +60,9 @@ export default function DrawerDemo() {
 
       {/* Scrollable Drawer Example */}
       <div>
-        <h3 className="text-center text-lg font-medium mb-4">Scrollable Drawer</h3>
+        <h3 className="text-center text-lg font-medium mb-4">
+          Scrollable Drawer
+        </h3>
         <Drawer>
           <DrawerTrigger asChild>
             <Button>Open Scrollable Drawer</Button>
@@ -194,13 +196,17 @@ export default function DrawerDemo() {
               <DrawerHeader>
                 <DrawerTitle>Full Height Drawer</DrawerTitle>
                 <DrawerDescription>
-                  This drawer takes up the full height of the screen and slides in from the left.
+                  This drawer takes up the full height of the screen and slides
+                  in from the left.
                 </DrawerDescription>
               </DrawerHeader>
               <DrawerBody className="overflow-y-auto p-4">
                 <div className="space-y-4">
                   <p className="text-muted-foreground">
-                    For a full height drawer, use h-[calc(100vh-32px)] and inset-y-4 classes to ensure it spans the entire height of the viewport. This one slides in from the left and matches the right drawer's style.
+                    For a full height drawer, use h-[calc(100vh-32px)] and
+                    inset-y-4 classes to ensure it spans the entire height of
+                    the viewport. This one slides in from the left and matches
+                    the right drawer's style.
                   </p>
                 </div>
               </DrawerBody>

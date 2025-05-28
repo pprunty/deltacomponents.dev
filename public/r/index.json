@@ -136,6 +136,58 @@
       ]
     },
     {
+      "name": "font-transform-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/font-transform-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/font-transform.json"
+      ]
+    },
+    {
+      "name": "pricing-cards-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/pricing-cards-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/pricing-cards.json"
+      ]
+    },
+    {
+      "name": "floating-object-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/floating-object-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/floating-object.json"
+      ]
+    },
+    {
+      "name": "qr-code-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/qr-code-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qr-code.json"
+      ]
+    },
+    {
       "name": "spotify-demo",
       "type": "registry:block",
       "files": [
@@ -632,6 +684,26 @@
       ]
     },
     {
+      "name": "font-transform",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/animations/font-transform.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "floating-object",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/animations/floating-object.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "scramble-text",
       "type": "registry:component",
       "files": [
@@ -642,6 +714,16 @@
       ],
       "dependencies": [
         "use-scramble"
+      ]
+    },
+    {
+      "name": "pricing-cards",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/components/pricing-cards.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {
@@ -672,6 +754,9 @@
           "path": "registry/components/admonition.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "lucide-react"
       ]
     },
     {
@@ -682,6 +767,9 @@
           "path": "registry/components/embed.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "lucide-react"
       ]
     },
     {
@@ -692,6 +780,9 @@
           "path": "registry/components/scroll-progress.tsx",
           "type": "registry:component"
         }
+      ],
+      "dependencies": [
+        "framer-motion"
       ]
     },
     {
@@ -777,6 +868,16 @@
       "files": [
         {
           "path": "registry/landing-page/highlighter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "qr-code",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/media/qr-code.tsx",
           "type": "registry:component"
         }
       ]

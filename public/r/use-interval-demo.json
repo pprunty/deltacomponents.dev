@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-interval-demo",
   "type": "registry:block",
-  "registryDependencies": ["use-interval"],
+  "registryDependencies": [
+    "use-interval"
+  ],
   "files": [
     {
       "path": "registry/examples/use-interval-demo.tsx",

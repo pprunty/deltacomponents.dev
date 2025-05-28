@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "embed-demo",
   "type": "registry:block",
-  "registryDependencies": ["https://deltacomponents.dev/r/embed.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/embed.json"
+  ],
   "files": [
     {
       "path": "registry/examples/embed-demo.tsx",

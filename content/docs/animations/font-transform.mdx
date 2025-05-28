@@ -1,0 +1,67 @@
+---
+title: Font Transform
+description: Description goes here
+links:
+  Microsoft Design: https://microsoft.design/
+---
+
+<ComponentPreview name="font-transform-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/font-transform
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install [dependencies]
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="font-transform" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+
+import { FontTransform } from "@/registry/animations/font-transform"
+
+export function Component() {
+  return <FontTransform />
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| prop | type | description |

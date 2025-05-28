@@ -239,6 +239,7 @@ export function TagsInput({
         aria-errormessage={hasError ? errorId : undefined}
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
+        autoComplete="off"
         className={cn(
           // Default variant styling
           "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white placeholder:text-muted-foreground",

@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
       href: "/",
     },
     {
-      title: "Component Showcase",
+      title: "Showcase",
       href: "/docs/components",
     },
     {
@@ -103,7 +103,7 @@ export const docsConfig: DocsConfig = {
           title: "Retro Button",
           href: "/docs/components/retro-button",
           items: [],
-          hide: process.env.NODE_ENV === "production"
+          hide: process.env.NODE_ENV === "production",
         },
         {
           title: "Scroll Progress",
@@ -118,6 +118,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tabs",
           href: "/docs/components/tabs",
+          items: [],
+        },
+        {
+          title: "Pricing Cards",
+          href: "/docs/components/pricing-cards",
           items: [],
         },
       ],
@@ -145,6 +150,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Spotify",
           href: "/docs/media/spotify",
+          items: [],
+        },
+        {
+          title: "QR Code",
+          href: "/docs/media/qr-code",
           items: [],
         },
       ],
@@ -221,6 +231,18 @@ export const docsConfig: DocsConfig = {
         {
           title: "Scramble Text",
           href: "/docs/animations/scramble-text",
+          label: "New",
+          items: [],
+        },
+        {
+          title: "Floating Object",
+          href: "/docs/animations/floating-object",
+          label: "New",
+          items: [],
+        },
+        {
+          title: "Font Transform",
+          href: "/docs/animations/font-transform",
           label: "New",
           items: [],
         },

@@ -1,6 +1,18 @@
 import type { Registry } from "@/registry/schema"
 
-export const components: Registry = [  {
+export const components: Registry = [
+  {
+    name: "pricing-cards",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/pricing-cards.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "star-rating",
     type: "registry:component",
     tags: ["star", "rating", "feedback", "interactive", "component"],
@@ -76,7 +88,7 @@ export const components: Registry = [  {
       "dialog",
       "mobile",
       "responsive",
-      "component"
+      "component",
     ],
     files: [
       {
@@ -97,7 +109,7 @@ export const components: Registry = [  {
       "animated",
       "accessible",
       "responsive",
-      "component"
+      "component",
     ],
     files: [
       {
@@ -118,7 +130,7 @@ export const components: Registry = [  {
       "animated",
       "scrollable",
       "content switcher",
-      "component"
+      "component",
     ],
     files: [
       {
@@ -130,7 +142,14 @@ export const components: Registry = [  {
   {
     name: "x-scrollable",
     type: "registry:component",
-    tags: ["scroll", "horizontal", "container", "utility", "layout", "component"],
+    tags: [
+      "scroll",
+      "horizontal",
+      "container",
+      "utility",
+      "layout",
+      "component",
+    ],
     registryDependencies: [],
     dependencies: [],
     files: [

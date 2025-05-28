@@ -3,78 +3,45 @@ title: Installation
 description: How to install and use Delta Components in your project.
 ---
 
-# Installation
+You have two options to add a component to your project:
 
-Delta Components is a library of hooks and components that you can copy and paste into your projects or install via the shadcn CLI.
+1. Using the CLI
+2. Manually
 
-## CLI Installation
+## Using the CLI
 
-The recommended way to install Delta Components is via the shadcn CLI:
+<Steps>
 
-```bash
-npx shadcn@latest add https://deltacomponents.dev/r/use-boolean
-```
-
-You can install multiple hooks at once:
+<Step>Install the following dependencies:</Step>
 
 ```bash
-npx shadcn@latest add https://deltacomponents.dev/r/use-boolean https://deltacomponents.dev/r/use-toggle
+npm install tailwindcss@latest motion
 ```
 
-## Manual Installation
+Or follow the Tailwind CSS installation guide to setup Tailwind CSS in your project.
 
-If you prefer to install components manually, follow these steps:
+<Step>Add a component to your project (choose one):</Step>
 
-### 1. Add dependencies
-
-Ensure you have the required dependencies installed:
+**Using the CLI:**
 
 ```bash
-npm install clsx tailwind-merge
-# or
-yarn add clsx tailwind-merge
-# or
-pnpm add clsx tailwind-merge
+npx shadcn@latest add "https://deltacomponents.dev/r/component-name.json"
 ```
 
-### 2. Create utility functions
+<Admonition type="note" className="my-4">
+  As of now, additional dependencies aren't installed automatically; they just
+  get added to the package.json file. You need to run <code>npm install</code>{" "}
+  or the equivalent command in your preferred package manager to install them.
+</Admonition>
 
-Create a `lib/utils.ts` file with the following content:
+The appropriate link is available in the "Installation" section of each component's documentation page.
 
-```tsx
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+</Steps>
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-```
+## Manually
 
-### 3. Copy components
-
-Visit the documentation page for the hook or component you want to use, and follow the manual installation instructions.
-
-## Using components
-
-Once installed, you can import and use the components in your application:
-
-```tsx
-import { useBoolean } from "@/hooks/use-boolean"
-
-export function MyComponent() {
-  const [value, { toggle, setTrue, setFalse }] = useBoolean(false)
-
-  return (
-    <div>
-      <p>Value: {value.toString()}</p>
-      <button onClick={toggle}>Toggle</button>
-      <button onClick={setTrue}>Set True</button>
-      <button onClick={setFalse}>Set False</button>
-    </div>
-  )
-}
-```
+Go to any of the components you want to use and copy the source code(s) from the "Installation" section. Make sure to update your imports accordingly.
 
 ## Customization
 
-All components in Delta Components are built to be customizable. You can modify the code to suit your needs, or extend the components with your own functionality.
+All components in Delta Components are built to be customizable. You can modify the code to suit your needs, or extend the components with your own functionality. A useful way of modifying the component is by first opening it in [v0](https://v0.dev/chat) and prompt the AI for alterations.

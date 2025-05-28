@@ -18,8 +18,9 @@ export function DocsNav({ config }: { config: DocsConfig }) {
     return items.map((category) => {
       // Count only enabled items with href and not hidden
       const count =
-        category.items?.filter((item) => item.href && !item.disabled && !item.hide).length ||
-        0
+        category.items?.filter(
+          (item) => item.href && !item.disabled && !item.hide
+        ).length || 0
       return count
     })
   }, [items])
@@ -37,7 +38,10 @@ export function DocsNav({ config }: { config: DocsConfig }) {
             )}
           </h4>
           {item?.items?.length && (
-            <DocsNavItems items={item.items.filter((i) => !i.hide)} pathname={pathname} />
+            <DocsNavItems
+              items={item.items.filter((i) => !i.hide)}
+              pathname={pathname}
+            />
           )}
         </div>
       ))}
@@ -72,53 +76,56 @@ function DocsNavItems({
 
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm">
-      {items.filter((item) => !item.hide).map((item, index) =>
-        item.href && !item.disabled ? (
-          <Link
-            key={index}
-            href={item.href}
-            className={cn(
-              "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-muted-foreground underline-offset-2 hover:bg-primary/10",
-              item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href && "bg-primary/10 font-medium text-primary"
-            )}
-            target={item.external ? "_blank" : ""}
-            rel={item.external ? "noreferrer" : ""}
-          >
-            {item.title}
-            {item.label && (
-              <span
-                className={cn(
-                  "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
-                  getLabelStyle(item.label)
-                )}
-              >
-                {item.label}
-              </span>
-            )}
-          </Link>
-        ) : (
-          <span
-            key={index}
-            className={cn(
-              "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60"
-            )}
-          >
-            {item.title}
-            {item.label && (
-              <span
-                className={cn(
-                  "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
-                  getLabelStyle(item.label)
-                )}
-              >
-                {item.label}
-              </span>
-            )}
-          </span>
-        )
-      )}
+      {items
+        .filter((item) => !item.hide)
+        .map((item, index) =>
+          item.href && !item.disabled ? (
+            <Link
+              key={index}
+              href={item.href}
+              className={cn(
+                "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-muted-foreground underline-offset-2 hover:bg-primary/10",
+                item.disabled && "cursor-not-allowed opacity-60",
+                pathname === item.href &&
+                  "bg-primary/10 font-medium text-primary"
+              )}
+              target={item.external ? "_blank" : ""}
+              rel={item.external ? "noreferrer" : ""}
+            >
+              {item.title}
+              {item.label && (
+                <span
+                  className={cn(
+                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    getLabelStyle(item.label)
+                  )}
+                >
+                  {item.label}
+                </span>
+              )}
+            </Link>
+          ) : (
+            <span
+              key={index}
+              className={cn(
+                "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
+                item.disabled && "cursor-not-allowed opacity-60"
+              )}
+            >
+              {item.title}
+              {item.label && (
+                <span
+                  className={cn(
+                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    getLabelStyle(item.label)
+                  )}
+                >
+                  {item.label}
+                </span>
+              )}
+            </span>
+          )
+        )}
     </div>
   ) : null
 }

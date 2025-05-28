@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "admonition-demo",
   "type": "registry:block",
-  "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
   "files": [
     {
       "path": "registry/examples/admonition-demo.tsx",

@@ -1,6 +1,18 @@
 import type { Registry } from "@/registry/schema"
 
-export const media: Registry = [  {
+export const media: Registry = [
+  {
+    name: "qr-code",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "media/qr-code.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "spotify",
     type: "registry:component",
     tags: ["spotify", "audio", "media", "component"],

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -26,41 +26,54 @@ export function GitHubChangelog() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchChangelog = async () => {
-    try {
-      // Check for cached data
-      const cachedData = getCachedReleases()
+  const fetchChangelog = useCallback(async () => {
+    setLoading(true)
+    setError(null)
 
-      if (cachedData) {
-        setReleases(cachedData)
+    try {
+      // Check cache first
+      const cachedReleases = getCachedReleases()
+      if (cachedReleases) {
+        setReleases(cachedReleases)
         setLoading(false)
         return
       }
 
-      // No cache or expired cache, fetch from API
-      setLoading(true)
-      const response = await fetch("/api/changelog")
+      const response = await fetch(
+        "https://api.github.com/repos/pprunty/deltacomponents.dev/releases"
+      )
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch changelog: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
 
       const data = await response.json()
-      setReleases(data)
 
-      // Cache the data
-      cacheReleases(data)
-    } catch (err) {
-      console.error("Error fetching changelog:", err)
+      const formattedReleases: Release[] = data.map((release: any) => ({
+        version: release.tag_name,
+        date: new Date(release.published_at).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
+        title: release.name || release.tag_name,
+        body: release.body || "",
+        url: release.html_url,
+      }))
+
+      setReleases(formattedReleases)
+      cacheReleases(formattedReleases)
+    } catch (error) {
+      console.error("Error fetching changelog:", error)
       setError("Failed to load changelog. Please try again later.")
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
     fetchChangelog()
-  }, [])
+  }, [fetchChangelog])
 
   function getCachedReleases(): Release[] | null {
     try {

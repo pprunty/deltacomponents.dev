@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-timeout-demo",
   "type": "registry:block",
-  "registryDependencies": ["use-timeout"],
+  "registryDependencies": [
+    "use-timeout"
+  ],
   "files": [
     {
       "path": "registry/examples/use-timeout-demo.tsx",

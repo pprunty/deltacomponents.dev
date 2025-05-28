@@ -88,20 +88,22 @@ export function CommandMenu() {
         </CommandGroup>
         {docsConfig.sidebarNav.map((group) => (
           <CommandGroup key={group.title} heading={group.title}>
-            {group.items.filter((navItem) => !navItem.hide).map((navItem) => (
-              <CommandItem
-                key={navItem.href}
-                value={navItem.title}
-                onSelect={() =>
-                  runCommand(() => router.push(navItem.href as string))
-                }
-              >
-                <div className="mr-2 flex size-4 items-center justify-center">
-                  <CircleIcon className="size-3" />
-                </div>
-                <span>{navItem.title}</span>
-              </CommandItem>
-            ))}
+            {group.items
+              .filter((navItem) => !navItem.hide)
+              .map((navItem) => (
+                <CommandItem
+                  key={navItem.href}
+                  value={navItem.title}
+                  onSelect={() =>
+                    runCommand(() => router.push(navItem.href as string))
+                  }
+                >
+                  <div className="mr-2 flex size-4 items-center justify-center">
+                    <CircleIcon className="size-3" />
+                  </div>
+                  <span>{navItem.title}</span>
+                </CommandItem>
+              ))}
           </CommandGroup>
         ))}
         <CommandGroup heading="Theme">

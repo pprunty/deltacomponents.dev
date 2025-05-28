@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { Spotify } from "@/registry/media/spotify"
 
 export default function SpotifyDemo() {

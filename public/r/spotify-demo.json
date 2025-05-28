@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/examples/spotify-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Spotify } from \"@/registry/media/spotify\"\n\nexport default function SpotifyDemo() {\n  return (\n    <div className=\"flex flex-col w-full\">\n      <div>\n        <div className=\"mb-2 font-medium\">Single Track Example:</div>\n        {/* Aphex Twin - #3 */}\n        <Spotify id=\"7glKwbR1DyuIuE6XvZvJbQ\" type=\"track\" />\n      </div>\n      <div>\n        <div className=\"mb-2 font-medium\">Playlist Example:</div>\n        {/* Prrty ·Patrick Prunty playlist */}\n        <Spotify id=\"0o4lcEBqO40818rPGqIHz0\" type=\"playlist\" />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Spotify } from \"@/registry/media/spotify\"\n\nexport default function SpotifyDemo() {\n  return (\n    <div className=\"flex flex-col w-full\">\n      <div>\n        <div className=\"mb-2 font-medium\">Single Track Example:</div>\n        {/* Aphex Twin - #3 */}\n        <Spotify id=\"7glKwbR1DyuIuE6XvZvJbQ\" type=\"track\" />\n      </div>\n      <div>\n        <div className=\"mb-2 font-medium\">Playlist Example:</div>\n        {/* Prrty ·Patrick Prunty playlist */}\n        <Spotify id=\"0o4lcEBqO40818rPGqIHz0\" type=\"playlist\" />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block"
     }
   ]

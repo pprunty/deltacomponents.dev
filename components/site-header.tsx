@@ -16,13 +16,11 @@ import ThemeSwitcher from "@/components/theme-switcher"
 export function SiteHeader() {
   return (
     <header
-      className={
-        cn(
-          // Header should be at the very top so it covers the banner on scroll
-          "border-grid sticky top-0 z-50 w-full border-b bg-background",
-          // "bg-background/95 backdrop-blur-md supports-backdrop-filter:bg-background/90", // TODO: Restore this after banner is removed
-        )
-      }
+      className={cn(
+        // Header should be at the very top so it covers the banner on scroll
+        "border-grid sticky top-0 z-50 w-full border-b bg-background"
+        // "bg-background/95 backdrop-blur-md supports-backdrop-filter:bg-background/90", // TODO: Restore this after banner is removed
+      )}
     >
       <div className="container-wrapper">
         <div className="container flex h-14 items-center">

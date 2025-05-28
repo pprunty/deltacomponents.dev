@@ -141,7 +141,7 @@ export function Embed({
           <div className="flex gap-2 mt-4">
             <button
               onClick={handleRefresh}
-              className="px-4 py-2 bg-muted hover:bg-muted/80 text-muted-foreground rounded-md text-sm flex items-center gap-1"
+              className="px-4 py-2 bg-muted hover:bg-muted/80 text-muted-foreground rounded-sm text-sm flex items-center gap-1"
             >
               <RefreshCw className="h-4 w-4" /> Retry
             </button>
@@ -149,7 +149,7 @@ export function Embed({
               href={src}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm flex items-center gap-1"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-sm text-sm flex items-center gap-1"
             >
               <ExternalLink className="h-4 w-4" /> Open in new tab
             </a>

@@ -1,6 +1,47 @@
 import type { Registry } from "@/registry/schema"
 
-export const examples: Registry = [  {
+export const examples: Registry = [
+  {
+    name: "font-transform-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/font-transform-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "pricing-cards-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/pricing-cards-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "floating-object-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/floating-object-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "qr-code-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/qr-code-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "spotify-demo",
     type: "registry:block",
     files: [
@@ -9,7 +50,8 @@ export const examples: Registry = [  {
         type: "registry:block",
       },
     ],
-  },  {
+  },
+  {
     name: "star-rating-demo",
     type: "registry:block",
     files: [

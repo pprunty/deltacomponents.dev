@@ -12,9 +12,14 @@ interface DocsLayoutProps {
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="border-grid flex flex-1 flex-col">
-      <div className="fixed top-0 left-0 w-full z-30 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 text-white text-center font-medium text-sm flex items-center justify-center py-2 px-2 md:py-2 md:px-4 md:text-[15px]">
-        <span className="block md:hidden">⚠️ The registry is in development and not yet released.</span>
-        <span className="hidden md:block">⚠️ This component registry is in development and has not yet been formally released.</span>
+      <div className="fixed top-0 left-0 w-full z-30 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 text-white text-center font-medium text-xs flex items-center justify-center py-2 px-2 md:py-2 md:px-4 md:text-sm">
+        <span className="block md:hidden">
+          ⚠️ The registry is in development and not yet publicly released.
+        </span>
+        <span className="hidden md:block">
+          ⚠️ This component registry is in development and has not yet been
+          publicly released.
+        </span>
       </div>
       <div className="pt-10">
         <SiteHeader />

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import StarRating from "@/registry/components/star-rating"
 
 export default function StarRatingDemo() {
@@ -21,8 +22,15 @@ export default function StarRatingDemo() {
       </div>
       <div>
         <div className="mb-2 font-medium">Interactive:</div>
-        <StarRating initialValue={value} locked={false} onChange={handleInteractiveChange} showScore />
-        <div className="mt-2 text-sm text-muted-foreground">Selected: {value} star{value !== 1 ? 's' : ''}</div>
+        <StarRating
+          initialValue={value}
+          locked={false}
+          onChange={handleInteractiveChange}
+          showScore
+        />
+        <div className="mt-2 text-sm text-muted-foreground">
+          Selected: {value} star{value !== 1 ? "s" : ""}
+        </div>
       </div>
     </div>
   )

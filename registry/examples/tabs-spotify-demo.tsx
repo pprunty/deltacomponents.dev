@@ -20,6 +20,7 @@ export default function TabsSpotifyDemo() {
     <Tabs defaultValue="discover" className="w-full">
       <TabsList
         variant="pills"
+        className="gap-2"
         showHoverEffect={true}
         showActiveIndicator={false}
       >
@@ -27,7 +28,8 @@ export default function TabsSpotifyDemo() {
           <TabsTrigger
             key={tab.id}
             value={tab.id}
-            activeClassName="bg-[#1cd760] dark:bg-[#1cd760] dark:text-black text-white font-medium"
+            inactiveClassName="bg-muted dark:text-white text-black"
+            activeClassName="bg-[#1cd760] dark:bg-[#1cd760] dark:text-black text-white"
           >
             {tab.label}
           </TabsTrigger>

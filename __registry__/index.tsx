@@ -156,6 +156,66 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "font-transform-demo": {
+    name: "font-transform-demo",
+    type: "registry:block",
+    registryDependencies: ["font-transform"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/font-transform-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/font-transform-demo")),
+    source: "",
+  },
+  "pricing-cards-demo": {
+    name: "pricing-cards-demo",
+    type: "registry:block",
+    registryDependencies: ["pricing-cards"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/pricing-cards-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/pricing-cards-demo")),
+    source: "",
+  },
+  "floating-object-demo": {
+    name: "floating-object-demo",
+    type: "registry:block",
+    registryDependencies: ["floating-object"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/floating-object-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/floating-object-demo")),
+    source: "",
+  },
+  "qr-code-demo": {
+    name: "qr-code-demo",
+    type: "registry:block",
+    registryDependencies: ["qr-code"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/qr-code-demo.tsx",
+        type: "registry:block",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/examples/qr-code-demo")),
+    source: "",
+  },
   "spotify-demo": {
     name: "spotify-demo",
     type: "registry:block",
@@ -726,6 +786,36 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/examples/modal-blur-demo")),
     source: "",
   },
+  "font-transform": {
+    name: "font-transform",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/animations/font-transform.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/animations/font-transform")),
+    source: "",
+  },
+  "floating-object": {
+    name: "floating-object",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/animations/floating-object.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/animations/floating-object")),
+    source: "",
+  },
   "scramble-text": {
     name: "scramble-text",
     type: "registry:component",
@@ -741,11 +831,26 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
     source: "",
   },
+  "pricing-cards": {
+    name: "pricing-cards",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/components/pricing-cards.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/components/pricing-cards")),
+    source: "",
+  },
   "star-rating": {
     name: "star-rating",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["star","rating","feedback","interactive","component"],
     files: [
       {
         path: "registry/components/star-rating.tsx",
@@ -760,7 +865,7 @@ export const Index: Record<string, any> = {
     name: "retro-button",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["button","retro","ui","component"],
     files: [
       {
         path: "registry/components/retro-button.tsx",
@@ -775,7 +880,7 @@ export const Index: Record<string, any> = {
     name: "admonition",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["admonition","alert","info","component"],
     files: [
       {
         path: "registry/components/admonition.tsx",
@@ -790,7 +895,7 @@ export const Index: Record<string, any> = {
     name: "embed",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["embed","iframe","media","component"],
     files: [
       {
         path: "registry/components/embed.tsx",
@@ -805,7 +910,7 @@ export const Index: Record<string, any> = {
     name: "scroll-progress",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["scroll","progress","indicator","component"],
     files: [
       {
         path: "registry/components/scroll-progress.tsx",
@@ -820,7 +925,7 @@ export const Index: Record<string, any> = {
     name: "drawer",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["overlay","panel","slide","bottom sheet","dialog","mobile","responsive"],
+    tags: ["overlay","panel","slide","bottom sheet","dialog","mobile","responsive","component"],
     files: [
       {
         path: "registry/components/drawer.tsx",
@@ -835,7 +940,7 @@ export const Index: Record<string, any> = {
     name: "modal",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["dialog","popup","overlay","animated","accessible","responsive"],
+    tags: ["dialog","popup","overlay","animated","accessible","responsive","component"],
     files: [
       {
         path: "registry/components/modal.tsx",
@@ -850,7 +955,7 @@ export const Index: Record<string, any> = {
     name: "tabs",
     type: "registry:component",
     registryDependencies: ["x-scrollable"],
-    tags: ["navigation","tabs","interactive","animated","scrollable","content switcher"],
+    tags: ["navigation","tabs","interactive","animated","scrollable","content switcher","component"],
     files: [
       {
         path: "registry/components/tabs.tsx",
@@ -865,7 +970,7 @@ export const Index: Record<string, any> = {
     name: "x-scrollable",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["scroll","horizontal","container","utility","overflow","layout"],
+    tags: ["scroll","horizontal","container","utility","layout","component"],
     files: [
       {
         path: "registry/components/x-scrollable.tsx",
@@ -880,7 +985,7 @@ export const Index: Record<string, any> = {
     name: "smart-form",
     type: "registry:block",
     registryDependencies: ["text-input","checkbox-input","select-input","radio-input","switch-input","textarea-input","date-input","file-input","otp-input","tags-input"],
-    tags: ["form","dynamic","smart","validation","reactive","data collection","AI"],
+    tags: ["form","dynamic","smart","validation","reactive","data collection","AI","block"],
     files: [
       {
         path: "registry/blocks/smart-form.tsx",
@@ -895,7 +1000,7 @@ export const Index: Record<string, any> = {
     name: "highlighter",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["highlight","text","landing","animation","component"],
     files: [
       {
         path: "registry/landing-page/highlighter.tsx",
@@ -906,11 +1011,26 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/landing-page/highlighter")),
     source: "",
   },
+  "qr-code": {
+    name: "qr-code",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/media/qr-code.tsx",
+        type: "registry:component",
+        target: "",
+      }
+    ],
+    component: React.lazy(() => import("@/registry/media/qr-code")),
+    source: "",
+  },
   "spotify": {
     name: "spotify",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: [],
+    tags: ["spotify","audio","media","component"],
     files: [
       {
         path: "registry/media/spotify.tsx",

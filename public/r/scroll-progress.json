@@ -2,6 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-progress",
   "type": "registry:component",
+  "dependencies": [
+    "framer-motion"
+  ],
   "files": [
     {
       "path": "registry/components/scroll-progress.tsx",
