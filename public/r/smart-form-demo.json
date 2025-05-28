@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "smart-form-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/smart-form.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"],
   "files": [
     {
       "path": "registry/examples/smart-form-demo.tsx",

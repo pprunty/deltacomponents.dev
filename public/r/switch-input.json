@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch-input",
   "type": "registry:component",
-  "dependencies": [
-    "zod"
-  ],
+  "dependencies": ["zod"],
   "files": [
     {
       "path": "registry/inputs/switch-input.tsx",

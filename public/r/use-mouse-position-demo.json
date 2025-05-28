@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-mouse-position-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "use-mouse-position"
-  ],
+  "registryDependencies": ["use-mouse-position"],
   "files": [
     {
       "path": "registry/examples/use-mouse-position-demo.tsx",

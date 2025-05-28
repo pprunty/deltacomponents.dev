@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "file-input",
   "type": "registry:component",
-  "dependencies": [
-    "zod",
-    "lucide-react"
-  ],
+  "dependencies": ["zod", "lucide-react"],
   "files": [
     {
       "path": "registry/inputs/file-input.tsx",

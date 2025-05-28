@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "font-transform-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/font-transform.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/font-transform.json"],
   "files": [
     {
       "path": "registry/examples/font-transform-demo.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spotify-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/spotify.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/spotify.json"],
   "files": [
     {
       "path": "registry/examples/spotify-demo.tsx",

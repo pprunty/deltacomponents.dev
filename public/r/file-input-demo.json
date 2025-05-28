@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "file-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/file-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"],
   "files": [
     {
       "path": "registry/examples/file-input-demo.tsx",

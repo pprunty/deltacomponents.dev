@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scramble-text-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/scramble-text.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/scramble-text.json"],
   "files": [
     {
       "path": "registry/examples/scramble-text-demo.tsx",

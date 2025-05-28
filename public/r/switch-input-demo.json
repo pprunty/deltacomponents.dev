@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/switch-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/switch-input.json"],
   "files": [
     {
       "path": "registry/examples/switch-input-demo.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea-input-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/textarea-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/textarea-input.json"],
   "files": [
     {
       "path": "registry/examples/textarea-input-demo.tsx",

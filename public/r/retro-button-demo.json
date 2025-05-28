@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "retro-button-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/retro-button.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/retro-button.json"],
   "files": [
     {
       "path": "registry/examples/retro-button-demo.tsx",

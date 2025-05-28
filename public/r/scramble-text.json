@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scramble-text",
   "type": "registry:component",
-  "dependencies": [
-    "use-scramble"
-  ],
+  "dependencies": ["use-scramble"],
   "files": [
     {
       "path": "registry/animations/scramble-text.tsx",

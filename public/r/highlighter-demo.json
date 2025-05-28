@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "highlighter-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/highlighter.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/highlighter.json"],
   "files": [
     {
       "path": "registry/examples/highlighter-demo.tsx",

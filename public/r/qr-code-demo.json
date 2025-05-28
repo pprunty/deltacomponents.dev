@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "qr-code-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/qr-code.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"],
   "files": [
     {
       "path": "registry/examples/qr-code-demo.tsx",

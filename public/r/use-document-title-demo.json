@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-document-title-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "use-document-title"
-  ],
+  "registryDependencies": ["use-document-title"],
   "files": [
     {
       "path": "registry/examples/use-document-title-demo.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "star-rating-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/star-rating.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/star-rating.json"],
   "files": [
     {
       "path": "registry/examples/star-rating-demo.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/code-block.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
   "files": [
     {
       "path": "registry/examples/code-block-demo.tsx",

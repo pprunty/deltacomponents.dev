@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "modal-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/modal.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/modal.json"],
   "files": [
     {
       "path": "registry/examples/modal-demo.tsx",

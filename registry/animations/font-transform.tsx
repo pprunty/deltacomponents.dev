@@ -2,14 +2,16 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
+
 import { cn } from "@/lib/utils"
+
 import "./font-transform.css"
 
 // Font classes matching the exact order and selection from the older version
 const fontClasses = [
   // Professional fonts (matching the older version order)
   "font-inter",
-  "font-roboto", 
+  "font-roboto",
   "font-poppins",
   "font-montserrat",
   "font-playfair",
@@ -17,10 +19,10 @@ const fontClasses = [
   "font-jetbrains",
   "font-source-code",
   "font-ibm-plex",
-  
+
   // Abstract/distinctive fonts (matching the older version order)
   "font-orbitron",
-  "font-righteous", 
+  "font-righteous",
   "font-fredoka",
   "font-bungee",
   "font-monoton",

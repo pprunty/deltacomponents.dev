@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tabs",
   "type": "registry:component",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/x-scrollable.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/x-scrollable.json"],
   "files": [
     {
       "path": "registry/components/tabs.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drawer-modern-demo",
   "type": "registry:block",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/drawer.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"],
   "files": [
     {
       "path": "registry/examples/drawer-modern-demo.tsx",
