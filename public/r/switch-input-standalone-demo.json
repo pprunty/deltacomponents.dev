@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-input-standalone-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/switch-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/switch-input-standalone-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { SwitchInput } from \"@/registry/inputs/switch-input\";\n\nexport default function SwitchInputStandaloneDemo() {\n  const handleToggle = (checked: boolean) => {\n    alert(`Switch ${checked ? 'enabled' : 'disabled'}! This would trigger some action.`)\n  }\n\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <SwitchInput\n        label=\"Trigger Action\"\n        name=\"standaloneSwitch\"\n        onCheckedChange={handleToggle}\n        description=\"Toggle to see alert functionality\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

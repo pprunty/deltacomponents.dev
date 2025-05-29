@@ -228,6 +228,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "mouse-string-connection-demo": {
+    name: "mouse-string-connection-demo",
+    type: "registry:block",
+    registryDependencies: ["mouse-string-connection"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/mouse-string-connection-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/mouse-string-connection-demo")
+    ),
+    source: "",
+  },
   "font-transform-demo": {
     name: "font-transform-demo",
     type: "registry:block",
@@ -902,6 +919,484 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/examples/modal-blur-demo")),
     source: "",
   },
+  "drawer-right-demo": {
+    name: "drawer-right-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/drawer.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/drawer-right-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/drawer-right-demo")
+    ),
+    source: "",
+  },
+  "drawer-scrollable-demo": {
+    name: "drawer-scrollable-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/drawer.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/drawer-scrollable-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/drawer-scrollable-demo")
+    ),
+    source: "",
+  },
+  "drawer-left-demo": {
+    name: "drawer-left-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/drawer.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/drawer-left-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/drawer-left-demo")),
+    source: "",
+  },
+  "otp-input-pill-demo": {
+    name: "otp-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/otp-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-pill-demo")
+    ),
+    source: "",
+  },
+  "otp-input-autofill-demo": {
+    name: "otp-input-autofill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/otp-input-autofill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-autofill-demo")
+    ),
+    source: "",
+  },
+  "otp-input-numeric-demo": {
+    name: "otp-input-numeric-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/otp-input-numeric-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-numeric-demo")
+    ),
+    source: "",
+  },
+  "select-input-pill-demo": {
+    name: "select-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/select-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/select-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/select-input-pill-demo")
+    ),
+    source: "",
+  },
+  "admonition-types-demo": {
+    name: "admonition-types-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/admonition-types-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/admonition-types-demo")
+    ),
+    source: "",
+  },
+  "admonition-custom-demo": {
+    name: "admonition-custom-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/admonition-custom-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/admonition-custom-demo")
+    ),
+    source: "",
+  },
+  "switch-input-pill-demo": {
+    name: "switch-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/switch-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/switch-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-pill-demo")
+    ),
+    source: "",
+  },
+  "switch-input-standalone-demo": {
+    name: "switch-input-standalone-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/switch-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/switch-input-standalone-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-standalone-demo")
+    ),
+    source: "",
+  },
+  "switch-input-color-demo": {
+    name: "switch-input-color-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/switch-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/switch-input-color-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-color-demo")
+    ),
+    source: "",
+  },
+  "switch-input-sizes-demo": {
+    name: "switch-input-sizes-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/switch-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/switch-input-sizes-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-sizes-demo")
+    ),
+    source: "",
+  },
+  "qr-code-custom-demo": {
+    name: "qr-code-custom-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/qr-code.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/qr-code-custom-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/qr-code-custom-demo")
+    ),
+    source: "",
+  },
+  "tags-input-pill-demo": {
+    name: "tags-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tags-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/tags-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/tags-input-pill-demo")
+    ),
+    source: "",
+  },
+  "qr-code-reactive-demo": {
+    name: "qr-code-reactive-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/qr-code.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/qr-code-reactive-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/qr-code-reactive-demo")
+    ),
+    source: "",
+  },
+  "tags-input-max-demo": {
+    name: "tags-input-max-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tags-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/tags-input-max-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/tags-input-max-demo")
+    ),
+    source: "",
+  },
+  "textarea-input-pill-demo": {
+    name: "textarea-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/textarea-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/textarea-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/textarea-input-pill-demo")
+    ),
+    source: "",
+  },
+  "textarea-input-max-demo": {
+    name: "textarea-input-max-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/textarea-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/textarea-input-max-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/textarea-input-max-demo")
+    ),
+    source: "",
+  },
+  "file-input-pill-demo": {
+    name: "file-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/file-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/file-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-pill-demo")
+    ),
+    source: "",
+  },
+  "file-input-multiple-demo": {
+    name: "file-input-multiple-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/file-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/file-input-multiple-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-multiple-demo")
+    ),
+    source: "",
+  },
+  "file-input-preview-demo": {
+    name: "file-input-preview-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/file-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/file-input-preview-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-preview-demo")
+    ),
+    source: "",
+  },
+  "text-input-pill-demo": {
+    name: "text-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/text-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/text-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/text-input-pill-demo")
+    ),
+    source: "",
+  },
+  "otp-input-short-demo": {
+    name: "otp-input-short-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/otp-input-short-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-short-demo")
+    ),
+    source: "",
+  },
+  "modal-custom-header-demo": {
+    name: "modal-custom-header-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/modal-custom-header-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/modal-custom-header-demo")
+    ),
+    source: "",
+  },
+  "modal-no-overlay-close-demo": {
+    name: "modal-no-overlay-close-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/modal-no-overlay-close-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/modal-no-overlay-close-demo")
+    ),
+    source: "",
+  },
+  "floating-object-compass-demo": {
+    name: "floating-object-compass-demo",
+    type: "registry:block",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/floating-object-compass-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/floating-object-compass-demo")
+    ),
+    source: "",
+  },
+  "floating-object-multiple-demo": {
+    name: "floating-object-multiple-demo",
+    type: "registry:block",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/floating-object-multiple-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/floating-object-multiple-demo")
+    ),
+    source: "",
+  },
   "font-transform": {
     name: "font-transform",
     type: "registry:component",
@@ -910,6 +1405,11 @@ export const Index: Record<string, any> = {
     files: [
       {
         path: "registry/animations/font-transform.tsx",
+        type: "registry:component",
+        target: "",
+      },
+      {
+        path: "registry/animations/font-transform.css",
         type: "registry:component",
         target: "",
       },
@@ -1174,6 +1674,23 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/blocks/smart-form")),
+    source: "",
+  },
+  "mouse-string-connection": {
+    name: "mouse-string-connection",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/landing-page/mouse-string-connection.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/landing-page/mouse-string-connection")
+    ),
     source: "",
   },
   highlighter: {

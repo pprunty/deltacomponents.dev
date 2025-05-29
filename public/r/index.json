@@ -114,6 +114,19 @@
       "dependencies": ["zod"]
     },
     {
+      "name": "mouse-string-connection-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/mouse-string-connection-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/mouse-string-connection.json"
+      ]
+    },
+    {
       "name": "font-transform-demo",
       "type": "registry:block",
       "files": [
@@ -610,11 +623,341 @@
       "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
+      "name": "drawer-right-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/drawer-right-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
+    },
+    {
+      "name": "drawer-scrollable-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/drawer-scrollable-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
+    },
+    {
+      "name": "drawer-left-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/drawer-left-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
+    },
+    {
+      "name": "otp-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/otp-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
+    },
+    {
+      "name": "otp-input-autofill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/otp-input-autofill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
+    },
+    {
+      "name": "otp-input-numeric-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/otp-input-numeric-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
+    },
+    {
+      "name": "select-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/select-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/select-input.json"
+      ]
+    },
+    {
+      "name": "admonition-types-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/admonition-types-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
+    },
+    {
+      "name": "admonition-custom-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/admonition-custom-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
+    },
+    {
+      "name": "switch-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/switch-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/switch-input.json"
+      ]
+    },
+    {
+      "name": "switch-input-standalone-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/switch-input-standalone-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/switch-input.json"
+      ]
+    },
+    {
+      "name": "switch-input-color-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/switch-input-color-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/switch-input.json"
+      ]
+    },
+    {
+      "name": "switch-input-sizes-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/switch-input-sizes-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/switch-input.json"
+      ]
+    },
+    {
+      "name": "qr-code-custom-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/qr-code-custom-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"]
+    },
+    {
+      "name": "tags-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/tags-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
+    },
+    {
+      "name": "qr-code-reactive-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/qr-code-reactive-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"]
+    },
+    {
+      "name": "tags-input-max-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/tags-input-max-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
+    },
+    {
+      "name": "textarea-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/textarea-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/textarea-input.json"
+      ]
+    },
+    {
+      "name": "textarea-input-max-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/textarea-input-max-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/textarea-input.json"
+      ]
+    },
+    {
+      "name": "file-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/file-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
+    },
+    {
+      "name": "file-input-multiple-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/file-input-multiple-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
+    },
+    {
+      "name": "file-input-preview-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/file-input-preview-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
+    },
+    {
+      "name": "text-input-pill-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/text-input-pill-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/text-input.json"]
+    },
+    {
+      "name": "otp-input-short-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/otp-input-short-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
+    },
+    {
+      "name": "modal-custom-header-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/modal-custom-header-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
+    },
+    {
+      "name": "modal-no-overlay-close-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/modal-no-overlay-close-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
+    },
+    {
+      "name": "floating-object-compass-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/floating-object-compass-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/floating-object.json"
+      ]
+    },
+    {
+      "name": "floating-object-multiple-demo",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "registry/examples/floating-object-multiple-demo.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/floating-object.json"
+      ]
+    },
+    {
       "name": "font-transform",
       "type": "registry:component",
       "files": [
         {
           "path": "registry/animations/font-transform.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/animations/font-transform.css",
           "type": "registry:component"
         }
       ]
@@ -769,6 +1112,16 @@
         "https://deltacomponents.dev/r/file-input.json",
         "https://deltacomponents.dev/r/otp-input.json",
         "https://deltacomponents.dev/r/tags-input.json"
+      ]
+    },
+    {
+      "name": "mouse-string-connection",
+      "type": "registry:component",
+      "files": [
+        {
+          "path": "registry/landing-page/mouse-string-connection.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {

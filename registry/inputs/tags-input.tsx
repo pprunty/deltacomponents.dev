@@ -42,6 +42,8 @@ export interface TagsInputProps
   onChange?: (tags: string[]) => void
   /** Key that triggers tag addition - defaults to Enter */
   triggerKey?: TagTriggerKey
+  /** Maximum number of tags allowed */
+  maxTags?: number
   /** Zod schema for validation (optional - can be handled at the form level) */
   schema?: z.ZodType<string[]>
   /** Callback when validation occurs */
@@ -63,6 +65,7 @@ export function TagsInput({
   variant = "default",
   coloredBorder = false,
   triggerKey = "Enter",
+  maxTags,
   schema,
   onValidate,
   className,
@@ -84,6 +87,9 @@ export function TagsInput({
 
   // Determine if component is controlled or uncontrolled
   const isControlled = value !== undefined
+
+  // Check if max tags limit is reached
+  const isMaxTagsReached = maxTags !== undefined && localTags.length >= maxTags
 
   // Update local tags when value prop changes (for controlled component)
   React.useEffect(() => {
@@ -136,7 +142,7 @@ export function TagsInput({
     // Only handle comma as a special case in the onChange handler
     if (triggerKey === "Comma" && value.endsWith(",")) {
       const newTag = value.slice(0, -1).trim()
-      if (newTag && !localTags.includes(newTag)) {
+      if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
         const newTags = [...localTags, newTag]
         updateTags(newTags)
         setInputValue("")
@@ -157,7 +163,7 @@ export function TagsInput({
     ) {
       e.preventDefault()
       const newTag = inputValue.trim()
-      if (newTag && !localTags.includes(newTag)) {
+      if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
         const newTags = [...localTags, newTag]
         updateTags(newTags)
       }
@@ -175,9 +181,9 @@ export function TagsInput({
   }
 
   const handleBlur = () => {
-    // Add tag on blur if there's input
+    // Add tag on blur if there's input and limit not reached
     const newTag = inputValue.trim()
-    if (newTag && !localTags.includes(newTag)) {
+    if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
       const newTags = [...localTags, newTag]
       updateTags(newTags)
       setInputValue("")
@@ -201,6 +207,21 @@ export function TagsInput({
       default:
         return "Enter"
     }
+  }
+
+  // Generate dynamic hint text based on maxTags
+  const getHintText = () => {
+    if (maxTags !== undefined) {
+      const remaining = maxTags - localTags.length
+      if (remaining <= 0) {
+        return `Maximum ${maxTags} tags reached`
+      }
+      return (
+        hint ||
+        `${remaining} tag${remaining === 1 ? "" : "s"} remaining (${localTags.length}/${maxTags})`
+      )
+    }
+    return hint
   }
 
   return (
@@ -234,7 +255,7 @@ export function TagsInput({
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
-        disabled={pending || props.disabled}
+        disabled={pending || props.disabled || isMaxTagsReached}
         aria-invalid={hasError}
         aria-errormessage={hasError ? errorId : undefined}
         aria-describedby={hint ? hintId : undefined}
@@ -254,11 +275,16 @@ export function TagsInput({
 
           // Error styling for both variants
           "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+
+          // Disabled styling when max tags reached
+          isMaxTagsReached && "opacity-50 cursor-not-allowed",
           className
         )}
         placeholder={
-          props.placeholder ||
-          `Type and press ${getTriggerKeyText()} to add tags`
+          isMaxTagsReached
+            ? `Maximum ${maxTags} tags reached`
+            : props.placeholder ||
+              `Type and press ${getTriggerKeyText()} to add tags`
         }
         {...props}
       />
@@ -289,9 +315,17 @@ export function TagsInput({
         </div>
       )}
 
-      {hint && !hasError && (
-        <p id={hintId} className="text-xs text-muted-foreground mt-1">
-          {hint}
+      {getHintText() && !hasError && (
+        <p
+          id={hintId}
+          className={cn(
+            "text-xs mt-1",
+            isMaxTagsReached
+              ? "text-orange-600 dark:text-orange-400"
+              : "text-muted-foreground"
+          )}
+        >
+          {getHintText()}
         </p>
       )}
 

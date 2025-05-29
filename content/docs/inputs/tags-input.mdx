@@ -1,6 +1,6 @@
 ---
 title: Tags Input
-description: Description goes here
+description: A flexible tag input component with multiple trigger keys, variants, and Zod validation support.
 ---
 
 <ComponentPreview name="tags-input-demo" />
@@ -29,7 +29,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/tags-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install @phosphor-icons/react zod
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,19 +47,48 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { TagsInput } from "@/registry/inputs/tags-input"
 
 export function Component() {
-  return <TagsInput />
+  return (
+    <TagsInput
+      label="Tags"
+      name="tags"
+      onChange={(tags) => console.log(tags)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+| Prop            | Type                                                          | Default     | Description                             |
+| --------------- | ------------------------------------------------------------- | ----------- | --------------------------------------- |
+| `label`         | `string`                                                      | -           | The label text for the input            |
+| `name`          | `string`                                                      | -           | Form field name for submission          |
+| `value`         | `string[]`                                                    | -           | Controlled tags array                   |
+| `defaultValue`  | `string[]`                                                    | `[]`        | Uncontrolled default tags               |
+| `onChange`      | `(tags: string[]) => void`                                    | -           | Callback when tags change               |
+| `triggerKey`    | `"Enter" \| "Space" \| "Comma"`                               | `"Enter"`   | Key that triggers tag addition          |
+| `variant`       | `"default" \| "pill"`                                         | `"default"` | Input styling variant                   |
+| `coloredBorder` | `boolean`                                                     | `false`     | Show colored border (pill variant only) |
+| `maxTags`       | `number`                                                      | -           | Maximum number of tags allowed          |
+| `disabled`      | `boolean`                                                     | `false`     | Whether the input is disabled           |
+| `required`      | `boolean`                                                     | `false`     | Whether the field is required           |
+| `description`   | `string`                                                      | -           | Optional description text               |
+| `hint`          | `string`                                                      | -           | Optional hint text                      |
+| `error`         | `string`                                                      | -           | Error message to display                |
+| `schema`        | `z.ZodType<string[]>`                                         | -           | Zod schema for validation               |
+| `onValidate`    | `(isValid: boolean, value: string[], error?: string) => void` | -           | Validation callback                     |
+
+## Examples
+
+### Pill Variant
+
+<ComponentPreview name="tags-input-pill-demo" />
+
+### Max Tags Limit
+
+<ComponentPreview name="tags-input-max-demo" />

@@ -192,11 +192,9 @@ function LoadingSkeleton({ count = 4 }: LoadingSkeletonProps) {
         {Array.from({ length: count }).map((_, i) => (
           <div key={i} className="border rounded-xl overflow-hidden w-full">
             <div className="flex flex-col h-full">
-              <Skeleton className="w-full aspect-video m-2 rounded-xl" />
+              <Skeleton className="w-full aspect-video" />
               <div className="p-5 w-full">
                 <Skeleton className="h-8 w-3/4 mb-3" />
-                <Skeleton className="h-5 w-1/2 mb-3" />
-                <Skeleton className="h-5 w-full mb-4" />
               </div>
             </div>
           </div>

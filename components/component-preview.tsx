@@ -119,7 +119,6 @@ export function ComponentPreview({
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="absolute right-4 top-4 flex items-center gap-2">
             {v0 && <OpenInV0Button url={`/docs/${name}`} />}
-            {code && <CopyButton value={code} />}
           </div>
           <div
             ref={previewRef}
@@ -148,16 +147,21 @@ export function ComponentPreview({
           <div className="flex flex-col space-y-4">
             <div className="w-full rounded-md border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
               {code ? (
-                <CodeBlock
-                  code={code}
-                  language="tsx"
-                  showLineNumbers
-                  showCopyButton
-                  showExpandButton
-                  maxHeight="350px"
-                  border={false}
-                  className="w-full rounded-md"
-                />
+                <div className="relative">
+                  <div className="absolute right-4 top-4 z-10">
+                    <CopyButton value={code} />
+                  </div>
+                  <CodeBlock
+                    code={code}
+                    language="tsx"
+                    showLineNumbers
+                    showCopyButton
+                    showExpandButton
+                    maxHeight="350px"
+                    border={false}
+                    className="w-full rounded-md"
+                  />
+                </div>
               ) : (
                 <div className="flex items-center justify-center p-10 text-sm text-muted-foreground">
                   <Icons.spinner className="mr-2 size-4 animate-spin" />

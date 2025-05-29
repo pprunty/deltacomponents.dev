@@ -168,6 +168,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Mouse String Connection",
+          href: "/docs/landing-page/mouse-string-connection",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

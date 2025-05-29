@@ -14,4 +14,5 @@ export const registry: Registry = [
   ...blocks,
   ...animations,
   ...landingPage,
+  ...media,
 ]

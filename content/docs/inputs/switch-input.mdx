@@ -1,6 +1,6 @@
 ---
 title: Switch Input
-description: Description goes here
+description: A customizable toggle switch with Zod validation, animations, and extended functionality.
 ---
 
 <ComponentPreview name="switch-input-demo" />
@@ -29,7 +29,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/switch-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install framer-motion zod
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,19 +47,48 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { SwitchInput } from "@/registry/inputs/switch-input"
 
 export function Component() {
-  return <SwitchInput />
+  return (
+    <SwitchInput
+      label="Enable notifications"
+      name="notifications"
+      onCheckedChange={(checked) => console.log(checked)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+| Prop                | Type                                                         | Default         | Description                                 |
+| ------------------- | ------------------------------------------------------------ | --------------- | ------------------------------------------- |
+| `label`             | `string`                                                     | -               | The label text for the switch               |
+| `name`              | `string`                                                     | -               | Form field name for submission              |
+| `checked`           | `boolean`                                                    | -               | Controlled checked state                    |
+| `defaultChecked`    | `boolean`                                                    | `false`         | Uncontrolled default state                  |
+| `onCheckedChange`   | `(checked: boolean) => void`                                 | -               | Callback when state changes                 |
+| `disabled`          | `boolean`                                                    | `false`         | Whether the switch is disabled              |
+| `required`          | `boolean`                                                    | `false`         | Whether the field is required               |
+| `variant`           | `"pill" \| "rectangular"`                                    | `"rectangular"` | Switch shape variant                        |
+| `size`              | `"default" \| "large"`                                       | `"default"`     | Switch size (24px / 30px height)            |
+| `activeColor`       | `string`                                                     | -               | Custom CSS color for active state           |
+| `extendedClickArea` | `boolean`                                                    | `false`         | Extends clickable area for better mobile UX |
+| `description`       | `string`                                                     | -               | Optional description text                   |
+| `hint`              | `string`                                                     | -               | Optional hint text                          |
+| `error`             | `string`                                                     | -               | Error message to display                    |
+| `schema`            | `z.ZodType<boolean>`                                         | -               | Zod schema for validation                   |
+| `onValidate`        | `(isValid: boolean, value: boolean, error?: string) => void` | -               | Validation callback                         |
+
+## Examples
+
+<ComponentPreview name="switch-input-pill-demo" />
+
+<ComponentPreview name="switch-input-standalone-demo" />
+
+<ComponentPreview name="switch-input-color-demo" />
+
+<ComponentPreview name="switch-input-sizes-demo" />

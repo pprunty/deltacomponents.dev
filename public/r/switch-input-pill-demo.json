@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-input-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/switch-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/switch-input-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { SwitchInput } from \"@/registry/inputs/switch-input\";\n\nexport default function SwitchInputPillDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <SwitchInput\n        label=\"Enable notifications\"\n        name=\"pillSwitch\"\n        variant=\"pill\"\n        description=\"Pill variant has fully rounded corners\"\n        defaultChecked={true}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

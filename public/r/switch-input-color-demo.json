@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-input-color-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/switch-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/switch-input-color-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { SwitchInput } from \"@/registry/inputs/switch-input\";\n\nexport default function SwitchInputColorDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto space-y-6 p-4\">\n      <SwitchInput\n        label=\"Custom Red Switch\"\n        name=\"redSwitch\"\n        activeColor=\"#ef4444\"\n        description=\"Using custom red color\"\n        defaultChecked={true}\n      />\n\n      <SwitchInput\n        label=\"Custom Green Switch\"\n        name=\"greenSwitch\"\n        activeColor=\"#22c55e\"\n        description=\"Using custom green color\"\n        defaultChecked={true}\n      />\n\n      <SwitchInput\n        label=\"Custom Purple Switch\"\n        name=\"purpleSwitch\"\n        activeColor=\"#a855f7\"\n        description=\"Using custom purple color\"\n        defaultChecked={true}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

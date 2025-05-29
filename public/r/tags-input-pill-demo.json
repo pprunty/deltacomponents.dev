@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tags-input-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/tags-input-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { TagsInput } from \"@/registry/inputs/tags-input\";\n\nexport default function TagsInputPillDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <TagsInput\n        label=\"Keywords\"\n        name=\"pillTags\"\n        variant=\"pill\"\n        placeholder=\"Add keywords...\"\n        description=\"Pill variant with rounded corners\"\n        hint=\"Press Enter to add tags\"\n        defaultValue={[\"react\", \"typescript\"]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -7,7 +7,7 @@ export default function FontTransformDemo() {
         Hover over the text to see the effect in action. It is only visible on
         desktop.
       </p>
-      <FontTransform className="text-3xl md:text-5xl font-bold text-center text-gray-900">
+      <FontTransform className="text-3xl md:text-6xl font-bold text-center">
         Delta Components
       </FontTransform>
     </div>

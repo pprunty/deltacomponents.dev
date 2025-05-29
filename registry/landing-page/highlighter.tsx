@@ -9,11 +9,11 @@ import { cn } from "@/lib/utils"
 const highlighterVariants = cva("bg-transparent font-extrabold relative", {
   variants: {
     variant: {
-      default: "text-primary",
-      success: "text-primary",
-      info: "text-primary",
-      warning: "text-primary",
-      destructive: "text-primary",
+      default: "text-foreground",
+      success: "text-foreground",
+      info: "text-foreground",
+      warning: "text-foreground",
+      destructive: "text-foreground",
     },
     thickness: {
       thin: "",

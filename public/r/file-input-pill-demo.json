@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-input-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/file-input-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { FileInput } from \"@/registry/inputs/file-input\";\n\nexport default function FileInputPillDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Profile Photo\"\n        name=\"profilePhoto\"\n        variant=\"pill\"\n        accept=\"image/*\"\n        description=\"Pill variant with modern styling\"\n        hint=\"Upload a profile photo in JPG, PNG, or GIF format\"\n        dropzoneText=\"Drop your profile photo here\"\n        maxSize={5 * 1024 * 1024} // 5MB\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

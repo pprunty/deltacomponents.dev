@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-input-multiple-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/file-input-multiple-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { FileInput } from \"@/registry/inputs/file-input\";\n\nexport default function FileInputMultipleDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Images\"\n        name=\"images\"\n        multiple={true}\n        maxFiles={5}\n        accept=\"image/*,.jpg,.jpeg,.png,.gif,.webp\"\n        description=\"Upload multiple images (up to 5 files)\"\n        hint=\"Drag & drop to add files progressively, or browse to replace selection\"\n        dropzoneText=\"Drop multiple images here or click to browse\"\n        maxSize={10 * 1024 * 1024} // 10MB per file\n        showIcons={true}\n        showPreviews={true}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

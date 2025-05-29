@@ -44,3 +44,4 @@ next-env.d.ts
 
 # temp directory
 .temp/
+pnpm-lock.yaml

@@ -1,9 +1,12 @@
+"use client"
+
 import React from "react"
 import { Index } from "@/__registry__"
 import { ChevronRightIcon } from "lucide-react"
 import { Balancer } from "react-wrap-balancer"
 
 import { cn, getComponentCategory } from "@/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 import { ComponentPreviewCard } from "@/components/component-preview-card"
 import ScrambleText from "@/registry/animations/scramble-text"
 
@@ -36,8 +39,39 @@ function getComponents(): RegistryItem[] {
     }))
 }
 
+function ComponentsSkeleton() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <div key={i} className="border rounded-xl overflow-hidden w-full">
+          <div className="flex flex-col h-full">
+            <Skeleton className="w-full aspect-video" />
+            <div className="p-5 w-full">
+              <Skeleton className="h-8 w-3/4 mb-3" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function ComponentsPage() {
-  const components = getComponents()
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [components, setComponents] = React.useState<RegistryItem[]>([])
+
+  React.useEffect(() => {
+    // Simulate loading time and get components
+    const loadComponents = async () => {
+      // Add a small delay to show the skeleton
+      await new Promise((resolve) => setTimeout(resolve, 100))
+      const loadedComponents = getComponents()
+      setComponents(loadedComponents)
+      setIsLoading(false)
+    }
+
+    loadComponents()
+  }, [])
 
   return (
     <main className="relative py-6 lg:py-8 px-0">
@@ -64,22 +98,26 @@ export default function ComponentsPage() {
           </p>
         </div>
         <div className="pt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-            {components.map((component) => {
-              const category = getComponentCategory(component.name)
+          {isLoading ? (
+            <ComponentsSkeleton />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+              {components.map((component) => {
+                const category = getComponentCategory(component.name)
 
-              return (
-                <ComponentPreviewCard
-                  key={component.name}
-                  name={component.name}
-                  category={category}
-                  tags={component.tags}
-                  showTags={false}
-                  useDocsLink={true}
-                />
-              )
-            })}
-          </div>
+                return (
+                  <ComponentPreviewCard
+                    key={component.name}
+                    name={component.name}
+                    category={category}
+                    tags={component.tags}
+                    showTags={false}
+                    useDocsLink={true}
+                  />
+                )
+              })}
+            </div>
+          )}
         </div>
       </div>
     </main>

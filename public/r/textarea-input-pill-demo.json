@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-input-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/textarea-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/textarea-input-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport { TextareaInput } from \"@/registry/inputs/textarea-input\";\n\nexport default function TextareaInputPillDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <TextareaInput\n        label=\"Comments\"\n        name=\"comments\"\n        variant=\"pill\"\n        placeholder=\"Share your thoughts...\"\n        description=\"Pill variant with modern styling\"\n        hint=\"This textarea uses the pill variant styling\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}
