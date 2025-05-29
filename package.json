@@ -34,7 +34,7 @@
     "aria-hidden": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cmdk": "1.0.0",
+    "cmdk": "1.1.1",
     "contentlayer2": "^0.5.3",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.10.3",
