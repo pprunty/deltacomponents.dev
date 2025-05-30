@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-input-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/text-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/text-input-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { TextInput } from \"@/registry/inputs/text-input\"\n\nexport default function TextInputPillDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <TextInput\n        label=\"Username\"\n        name=\"pillText\"\n        variant=\"pill\"\n        placeholder=\"Enter your username\"\n        hint=\"Pill variant with colored border\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

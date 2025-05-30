@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-transform-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/font-transform.json"],
+  "files": [
+    {
+      "path": "registry/examples/font-transform-demo.tsx",
+      "content": "import { FontTransform } from \"@/registry/animations/font-transform\"\n\nexport default function FontTransformDemo() {\n  return (\n    <div className=\"flex flex-col items-center justify-center bg-background w-full\">\n      <p className=\"mb-4 text-center\">\n        Hover over the text to see the effect in action. It is only visible on\n        desktop.\n      </p>\n      <FontTransform className=\"text-3xl md:text-6xl font-bold text-center\">\n        Delta Components\n      </FontTransform>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

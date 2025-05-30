@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/media/tweet.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TweetProps extends React.HTMLAttributes<HTMLDivElement> {\n  // Add your props here\n}\n\nexport function Tweet({\n  className,\n  ...props\n}: TweetProps) {\n  return (\n    <div\n      className={cn(\"\", className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

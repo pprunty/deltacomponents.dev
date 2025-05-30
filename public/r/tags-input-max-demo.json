@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tags-input-max-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/tags-input-max-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { TagsInput } from \"@/registry/inputs/tags-input\"\n\nexport default function TagsInputMaxDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <TagsInput\n        label=\"Skills (Max 3)\"\n        name=\"maxTags\"\n        maxTags={3}\n        placeholder=\"Add up to 3 skills...\"\n        description=\"Demonstrates maxTags functionality\"\n        defaultValue={[\"JavaScript\", \"React\"]}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

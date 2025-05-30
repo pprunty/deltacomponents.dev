@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet-demo",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "registry/examples/tweet-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Tweet } from \"@/registry/media/tweet\"\n\nexport function TweetDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Tweet />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

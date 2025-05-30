@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-input-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/radio-input-demo.tsx",
+      "content": "\"use client\"\n\nimport { RadioInput } from \"@/registry/inputs/radio-input\"\n\nexport default function RadioInputDemo() {\n  const options = [\n    { value: \"email\", label: \"Email\", description: \"Get updates via email\" },\n    { value: \"sms\", label: \"SMS\", description: \"Get updates via text message\" },\n    {\n      value: \"push\",\n      label: \"Push Notifications\",\n      description: \"Get updates via push notifications\",\n    },\n  ]\n\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <RadioInput\n        label=\"Notification Preferences\"\n        name=\"notifications\"\n        options={options}\n        description=\"How would you like to receive notifications?\"\n        defaultValue=\"email\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

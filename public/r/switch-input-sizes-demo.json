@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-input-sizes-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/switch-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/switch-input-sizes-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { SwitchInput } from \"@/registry/inputs/switch-input\"\n\nexport default function SwitchInputSizesDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto space-y-6 p-4\">\n      <SwitchInput\n        label=\"Default Size Switch\"\n        name=\"defaultSwitch\"\n        size=\"default\"\n        description=\"Standard switch size (24px height)\"\n        defaultChecked={true}\n      />\n\n      <SwitchInput\n        label=\"Large Size Switch\"\n        name=\"largeSwitch\"\n        size=\"large\"\n        description=\"Large switch size (30px height)\"\n        defaultChecked={true}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "payment-cards-demo",
+  "type": "registry:block",
+  "files": [
+    {
+      "path": "registry/examples/payment-cards-demo.tsx",
+      "type": "registry:block"
+    }
+  ]
+}

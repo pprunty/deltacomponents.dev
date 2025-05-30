@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smart-form-pill-demo",
+  "type": "registry:block",
+  "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"],
+  "files": [
+    {
+      "path": "registry/examples/smart-form-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { z } from \"zod\"\n\nimport { SmartForm, type FieldDefinition } from \"@/registry/blocks/smart-form\"\n\nconst schema = z.object({\n  username: z.string().min(3, \"Username must be at least 3 characters\"),\n  password: z.string().min(8, \"Password must be at least 8 characters\"),\n})\n\nconst fields: FieldDefinition[] = [\n  {\n    name: \"username\",\n    label: \"Username\",\n    type: \"text\",\n    required: true,\n    placeholder: \"Enter your username\",\n    variant: \"pill\",\n    className: \"mb-6\",\n  },\n  {\n    name: \"password\",\n    label: \"Password\",\n    type: \"password\",\n    required: true,\n    placeholder: \"Enter your password\",\n    variant: \"pill\",\n  },\n]\n\nexport default function SmartFormPillDemo() {\n  const handleSubmit = async (data: z.infer<typeof schema>) => {\n    alert(`Form submitted with data:\\n${JSON.stringify(data, null, 2)}`)\n    // In a real app, you would handle the form submission here\n    // For example: await login(data.username, data.password)\n  }\n\n  return (\n    <div className=\"w-full max-w-sm mx-auto\">\n      <SmartForm\n        fields={fields}\n        schema={schema}\n        onSubmit={handleSubmit}\n        submitText=\"Sign In\"\n        fieldClassName=\"mb-2\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}
