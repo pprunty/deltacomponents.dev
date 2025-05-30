@@ -45,7 +45,6 @@ next-env.d.ts
 
 # temp directory
 .temp/
-pnpm-lock.yaml
 
 # Generated registry files
 /public/r/
