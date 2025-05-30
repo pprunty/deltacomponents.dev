@@ -65,9 +65,25 @@ export function TextareaInput({
   className,
   id = name,
   value,
+  maxLength,
   ...props
 }: TextareaInputProps) {
   const [localError, setLocalError] = React.useState<string | undefined>(error)
+
+  // Helper function to convert value to string safely
+  const valueToString = (
+    val: string | number | readonly string[] | undefined
+  ): string => {
+    if (val === undefined || val === null) return ""
+    if (typeof val === "string") return val
+    if (typeof val === "number") return String(val)
+    if (Array.isArray(val)) return val.join("")
+    return String(val)
+  }
+
+  const [currentValue, setCurrentValue] = React.useState<string>(
+    valueToString(value) || valueToString(defaultValue) || ""
+  )
   const hasError = !!localError || !!error
   const errorId = `error-${id}`
   const hintId = `hint-${id}`
@@ -75,10 +91,21 @@ export function TextareaInput({
   // Determine if component is controlled or uncontrolled
   const isControlled = value !== undefined
 
+  // Check if max length is reached
+  const isMaxLengthReached =
+    maxLength !== undefined && currentValue.length >= maxLength
+
   // Update local error when prop changes
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
+
+  // Update current value when controlled value changes
+  React.useEffect(() => {
+    if (isControlled && value !== undefined) {
+      setCurrentValue(valueToString(value))
+    }
+  }, [isControlled, value])
 
   // Handle validation with the provided schema
   const validateTextarea = React.useCallback(
@@ -102,6 +129,9 @@ export function TextareaInput({
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value
 
+    // Always update current value for character count tracking
+    setCurrentValue(newValue)
+
     // If we have a schema, validate on change
     if (schema) {
       validateTextarea(newValue)
@@ -119,6 +149,21 @@ export function TextareaInput({
 
     // Call the original onBlur if provided
     props.onBlur?.(e)
+  }
+
+  // Generate dynamic hint text based on maxLength
+  const getHintText = () => {
+    if (maxLength !== undefined) {
+      const remaining = maxLength - currentValue.length
+      if (remaining <= 0) {
+        return `Maximum ${maxLength} characters reached`
+      }
+      return (
+        hint ||
+        `${remaining} character${remaining === 1 ? "" : "s"} remaining (${currentValue.length}/${maxLength})`
+      )
+    }
+    return hint
   }
 
   return (
@@ -151,6 +196,7 @@ export function TextareaInput({
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
         size={size}
+        maxLength={maxLength}
         className={cn(
           "md:text-md text-md bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
           // Default variant styling - only apply shadow to default variant
@@ -174,9 +220,17 @@ export function TextareaInput({
         {...props}
       />
 
-      {hint && !hasError && (
-        <p id={hintId} className="text-xs text-muted-foreground mt-1">
-          {hint}
+      {getHintText() && !hasError && (
+        <p
+          id={hintId}
+          className={cn(
+            "text-xs mt-1",
+            isMaxLengthReached
+              ? "text-orange-600 dark:text-orange-400"
+              : "text-muted-foreground"
+          )}
+        >
+          {getHintText()}
         </p>
       )}
 

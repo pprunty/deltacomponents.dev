@@ -1,11 +1,15 @@
 ---
 title: Drawer
-description: Description goes here
+description: A customizable slide-out panel component built on top of Vaul with support for multiple positions, sizes, and behaviors.
 links:
   Vaul Drawer: https://vaul.emilkowal.ski/
 ---
 
 <ComponentPreview name="drawer-demo" />
+
+## Overview
+
+The Drawer component provides an elegant solution for displaying secondary content and actions without disrupting the main user flow, making it ideal for mobile navigation, form overlays, and contextual panels. It supports gesture-driven interactions and multiple positioning options, enhancing user experience with smooth animations and intuitive controls. Essential for creating modern, mobile-first interfaces that feel natural and responsive.
 
 ## Installation
 
@@ -31,7 +35,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/drawer
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install vaul class-variance-authority
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,29 +51,166 @@ npm install [dependencies]
 ## Usage
 
 ```tsx
-"use client"
-
-import * as React from "react"
-
-import { Drawer } from "@/registry/components/drawer"
+import {
+  Drawer,
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/registry/components/drawer"
 
 export function Component() {
-  return <Drawer />
+  return (
+    <Drawer>
+      <DrawerTrigger>Open Drawer</DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Drawer Title</DrawerTitle>
+          <DrawerDescription>Drawer description</DrawerDescription>
+        </DrawerHeader>
+        <DrawerBody>Your content here</DrawerBody>
+        <DrawerFooter>
+          <DrawerClose>Close</DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  )
 }
+```
+
+### Left/Right Drawer Positioning
+
+For proper left and right drawer animations, use both the `direction` prop on the Drawer root and the `position` prop on DrawerContent:
+
+```tsx
+// Left drawer
+<Drawer direction="left">
+  <DrawerContent
+    position="left"
+    className="fixed inset-y-0 left-0 h-full w-3/4 sm:max-w-sm"
+  >
+    {/* content */}
+  </DrawerContent>
+</Drawer>
+
+// Right drawer
+<Drawer direction="right">
+  <DrawerContent
+    position="right"
+    className="fixed inset-y-0 right-0 h-full w-3/4 sm:max-w-sm"
+  >
+    {/* content */}
+  </DrawerContent>
+</Drawer>
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+#### Drawer
+
+<div className="overflow-x-auto">
+
+| Prop                    | Type                                          | Default     | Description                               |
+| ----------------------- | --------------------------------------------- | ----------- | ----------------------------------------- |
+| `shouldScaleBackground` | `boolean`                                     | `true`      | Whether to scale the background when open |
+| `direction`             | `"top" \| "bottom" \| "left" \| "right"`      | `"bottom"`  | Position of the drawer                    |
+| `scrollable`            | `boolean`                                     | `false`     | Enable scrollable content                 |
+| `size`                  | `"sm" \| "default" \| "lg" \| "xl" \| "full"` | `"default"` | Size variant                              |
+| `closeOnClickOutside`   | `boolean`                                     | `true`      | Close when clicking outside               |
+| `hasOverlay`            | `boolean`                                     | `true`      | Show overlay background                   |
+| `container`             | `HTMLElement \| null`                         | `undefined` | Portal container element                  |
+| `nested`                | `boolean`                                     | `false`     | Support for nested drawers                |
+
+</div>
+
+#### DrawerContent
+
+<div className="overflow-x-auto">
+
+| Prop         | Type                                          | Default     | Description              |
+| ------------ | --------------------------------------------- | ----------- | ------------------------ |
+| `position`   | `"top" \| "bottom" \| "left" \| "right"`      | `"bottom"`  | Content position         |
+| `size`       | `"sm" \| "default" \| "lg" \| "xl" \| "full"` | `"default"` | Content size             |
+| `scrollable` | `boolean`                                     | `false`     | Enable content scrolling |
+| `className`  | `string`                                      | `""`        | Additional CSS classes   |
+
+</div>
+
+#### DrawerBody
+
+<div className="overflow-x-auto">
+
+| Prop         | Type      | Default | Description            |
+| ------------ | --------- | ------- | ---------------------- |
+| `scrollable` | `boolean` | `true`  | Enable body scrolling  |
+| `className`  | `string`  | `""`    | Additional CSS classes |
+
+</div>
+
+## Examples
+
+### Basic Drawer
+
+A standard bottom drawer with header, body, and footer sections.
+
+<ComponentPreview name="drawer-demo" />
+
+### Modern Style
+
+A contemporary drawer design with enhanced styling and animations.
 
 <ComponentPreview name="drawer-modern-demo" />
 
+### Right Position
+
+A drawer that slides in from the right side with rounded corners and padding for a card-like appearance.
+
 <ComponentPreview name="drawer-right-demo" />
+
+### Left Position
+
+A drawer that slides in from the left side with full-height coverage, ideal for navigation menus.
+
+<ComponentPreview name="drawer-left-demo" />
+
+### Scrollable Content
+
+A drawer with scrollable content for handling large amounts of information.
 
 <ComponentPreview name="drawer-scrollable-demo" />
 
-<ComponentPreview name="drawer-left-demo" />
+### Styling Approaches
+
+The drawer examples demonstrate two different design patterns:
+
+**Full-Height Design (Left Drawer)**
+
+- Uses `inset-y-0 left-0 h-full` for complete viewport coverage
+- No padding or rounded corners for seamless edge-to-edge design
+- Ideal for primary navigation, menu systems, and content that requires maximum space
+
+**Card-Style Design (Right Drawer)**
+
+- Uses `inset-y-4 right-4 h-[calc(100vh-32px)]` with `rounded-xl` and `shadow-lg`
+- Includes padding and rounded corners for a floating card appearance
+- Perfect for settings panels, user profiles, and secondary content that benefits from visual separation
+
+```tsx
+// Full-height approach (left drawer)
+<DrawerContent
+  position="left"
+  className="fixed inset-y-0 left-0 h-full border-r"
+>
+
+// Card-style approach (right drawer)
+<DrawerContent
+  position="right"
+  className="fixed inset-y-4 right-4 h-[calc(100vh-32px)] rounded-xl border shadow-lg"
+>
+```

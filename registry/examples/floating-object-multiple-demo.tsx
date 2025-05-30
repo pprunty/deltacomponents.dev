@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import FloatingObject from "@/registry/animations/floating-object"
+import { FloatingObject } from "@/registry/animations/floating-object"
 
 export default function FloatingObjectMultipleDemo() {
   return (
@@ -10,12 +10,27 @@ export default function FloatingObjectMultipleDemo() {
       <h2 className="text-2xl font-bold">FloatingObject Multiple Demo</h2>
 
       <div className="p-6 border rounded-lg">
-        {/* Component usage goes here */}
         <p className="text-muted-foreground mb-4">
-          Add your custom multiple demo for the FloatingObject component below:
+          Multiple floating objects with different patterns and intensities.
         </p>
 
-        <FloatingObject>{/* Component content goes here */}</FloatingObject>
+        <div className="grid grid-cols-3 gap-8 items-center justify-items-center h-64">
+          <FloatingObject pattern="float" intensity="subtle" speed="slow">
+            <div className="w-12 h-12 bg-blue-500 rounded-full" />
+          </FloatingObject>
+
+          <FloatingObject pattern="circular" intensity="medium" speed="medium">
+            <div className="w-12 h-12 bg-green-500 rounded-full" />
+          </FloatingObject>
+
+          <FloatingObject
+            pattern="random-directions"
+            intensity="strong"
+            speed="fast"
+          >
+            <div className="w-12 h-12 bg-purple-500 rounded-full" />
+          </FloatingObject>
+        </div>
       </div>
     </div>
   )

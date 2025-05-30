@@ -1,9 +1,13 @@
 ---
 title: Select Input
-description: Description goes here
+description: A versatile dropdown select component with pill variant support, validation, and Zod integration for efficient option selection.
 ---
 
 <ComponentPreview name="select-input-demo" />
+
+## Overview
+
+The Select Input component delivers an intuitive dropdown selection experience with both default and pill variants, making it essential for forms requiring single-option choices from larger datasets. It features native and custom dropdown implementations, comprehensive validation, and accessibility support. Perfect for category selections, filtering interfaces, and any scenario where users need to choose from multiple predefined options.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/select-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install lucide-react zod
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,21 +51,75 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { SelectInput } from "@/registry/inputs/select-input"
 
 export function Component() {
-  return <SelectInput />
+  const options = [
+    { value: "starter", label: "Starter Plan" },
+    { value: "professional", label: "Professional Plan" },
+    { value: "enterprise", label: "Enterprise Plan" },
+  ]
+
+  return (
+    <SelectInput
+      label="Subscription Plan"
+      name="plan"
+      options={options}
+      placeholder="Choose your plan"
+      required
+      onValueChange={(value) => console.log("Selected:", value)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop                 | Type                                                        | Default              | Description                                             |
+| -------------------- | ----------------------------------------------------------- | -------------------- | ------------------------------------------------------- |
+| `label`              | `string`                                                    | -                    | Label for the select field (required)                   |
+| `name`               | `string`                                                    | -                    | Name of the select field for form submission (required) |
+| `options`            | `SelectOption[]`                                            | -                    | Options for the dropdown (required)                     |
+| `description`        | `string`                                                    | `undefined`          | Description text below the label                        |
+| `hint`               | `string`                                                    | `undefined`          | Hint text below the select                              |
+| `error`              | `string`                                                    | `undefined`          | Error message to display                                |
+| `required`           | `boolean`                                                   | `false`              | Whether the field is required                           |
+| `pending`            | `boolean`                                                   | `false`              | Whether the field is in a loading state                 |
+| `defaultValue`       | `string`                                                    | `undefined`          | Default selected value                                  |
+| `value`              | `string`                                                    | `undefined`          | Controlled selected value                               |
+| `placeholder`        | `string`                                                    | `"Select an option"` | Placeholder text when no option is selected             |
+| `disabled`           | `boolean`                                                   | `false`              | Whether the select is disabled                          |
+| `id`                 | `string`                                                    | `name`               | ID for the select element                               |
+| `variant`            | `"default" \| "pill"`                                       | `"default"`          | Visual variant of the select                            |
+| `coloredBorder`      | `boolean`                                                   | `false`              | Whether to show colored border (pill variant)           |
+| `labelVariant`       | `"default" \| "muted"`                                      | `"default"`          | Label text styling variant                              |
+| `containerClassName` | `string`                                                    | `""`                 | CSS classes for the container                           |
+| `selectClassName`    | `string`                                                    | `""`                 | CSS classes for the select trigger                      |
+| `labelClassName`     | `string`                                                    | `""`                 | CSS classes for the label                               |
+| `schema`             | `ZodType<string>`                                           | `undefined`          | Zod schema for validation                               |
+| `onValidate`         | `(isValid: boolean, value: string, error?: string) => void` | `undefined`          | Validation callback                                     |
+| `onValueChange`      | `(value: string) => void`                                   | `undefined`          | Callback when selection changes                         |
+
+</div>
+
+### SelectOption Interface
+
+```tsx
+interface SelectOption {
+  value: string
+  label: string
+  disabled?: boolean
+}
+```
+
+## Examples
+
+### Pill Variant
+
+Rounded pill variant with muted background styling for modern form interfaces.
 
 <ComponentPreview name="select-input-pill-demo" />

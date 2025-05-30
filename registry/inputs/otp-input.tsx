@@ -1,9 +1,12 @@
 "use client"
 
 import * as React from "react"
+import { motion } from "framer-motion"
 import type { z } from "zod"
 
 import { cn } from "@/lib/utils"
+
+export type OtpInputType = "numeric" | "alphabetic" | "alphanumeric"
 
 export interface OtpInputProps {
   /** The label for the OTP input field */
@@ -34,6 +37,10 @@ export interface OtpInputProps {
   variant?: "default" | "pill"
   /** Whether to show a colored border (only applies to pill variant) */
   coloredBorder?: boolean
+  /** Input type validation - numeric, alphabetic, or alphanumeric */
+  inputType?: OtpInputType
+  /** Whether the OTP is in a success state (shows green border) */
+  success?: boolean
   /** Zod schema for validation (optional - can be handled at the form level) */
   schema?: z.ZodType<string>
   /** Callback when validation occurs */
@@ -80,6 +87,8 @@ export function OtpInput({
   labelVariant = "default",
   variant = "default",
   coloredBorder = false,
+  inputType = "alphanumeric",
+  success = false,
   schema,
   onValidate,
   onChange,
@@ -102,6 +111,8 @@ export function OtpInput({
       .concat(Array(length).fill(""))
       .slice(0, length)
   )
+  const [errorIndexes, setErrorIndexes] = React.useState<Set<number>>(new Set())
+  const [shakeAnimation, setShakeAnimation] = React.useState(false)
   const inputRefs = React.useRef<(HTMLInputElement | null)[]>([])
   const hasError = !!localError || !!error
   const errorId = `error-${id}`
@@ -143,6 +154,33 @@ export function OtpInput({
     }
   }, [autoSubmit])
 
+  // Input type validation function
+  const isValidInputType = (char: string): boolean => {
+    if (!inputType) return true
+
+    switch (inputType) {
+      case "numeric":
+        return /^\d$/.test(char)
+      case "alphabetic":
+        return /^[a-zA-Z]$/.test(char)
+      case "alphanumeric":
+        return /^[a-zA-Z0-9]$/.test(char)
+      default:
+        return true
+    }
+  }
+
+  // Trigger error animation
+  const triggerErrorAnimation = (index: number) => {
+    setErrorIndexes((prev) => new Set(prev.add(index)))
+    setShakeAnimation(true)
+
+    // Clear only the shake animation after it completes, but keep the error border
+    setTimeout(() => {
+      setShakeAnimation(false)
+    }, 500)
+  }
+
   // Handle validation with the provided schema
   const validateOTP = React.useCallback(
     (value: string) => {
@@ -180,6 +218,21 @@ export function OtpInput({
       return
     }
 
+    // Check if the character meets the input type requirements
+    if (value && !isValidInputType(value)) {
+      triggerErrorAnimation(index)
+      return
+    }
+
+    // Clear error state for this index if valid input is entered
+    if (value && isValidInputType(value)) {
+      setErrorIndexes((prev) => {
+        const newSet = new Set(prev)
+        newSet.delete(index)
+        return newSet
+      })
+    }
+
     // Update the OTP value
     const newOtpValue = [...otpValue]
     newOtpValue[index] = value
@@ -198,6 +251,11 @@ export function OtpInput({
     if (newOtpValue.filter(Boolean).length === length) {
       onComplete?.(newValue)
 
+      // Validate the complete OTP
+      if (schema) {
+        validateOTP(newValue)
+      }
+
       // Auto-submit the form if enabled
       if (autoSubmit && formRef.current) {
         setTimeout(() => {
@@ -209,8 +267,25 @@ export function OtpInput({
 
   // Handle paste event
   const handlePaste = (startIndex: number, pastedValue: string) => {
-    // Clean the pasted value to only include digits and letters
-    const cleanedValue = pastedValue.replace(/\s/g, "")
+    // Clean the pasted value based on input type
+    let cleanedValue = pastedValue.replace(/\s/g, "")
+
+    // Filter characters based on input type
+    if (inputType) {
+      cleanedValue = cleanedValue
+        .split("")
+        .filter((char) => isValidInputType(char))
+        .join("")
+    }
+
+    // If no valid characters after filtering, trigger error animation
+    if (
+      cleanedValue.length === 0 &&
+      pastedValue.replace(/\s/g, "").length > 0
+    ) {
+      triggerErrorAnimation(startIndex)
+      return
+    }
 
     // Create a new OTP value array
     const newOtpValue = [...otpValue]
@@ -330,7 +405,7 @@ export function OtpInput({
             <div className="flex items-center space-x-1.5 sm:space-x-2">
               {group.map((index) => (
                 <div key={`input-${index}`} className="relative">
-                  <input
+                  <motion.input
                     ref={(el: HTMLInputElement | null) => {
                       if (inputRefs.current) {
                         inputRefs.current[index] = el
@@ -339,10 +414,10 @@ export function OtpInput({
                     id={index === 0 ? `${id}-0` : `${id}-${index}`}
                     name={index === 0 ? name : `${name}-${index}`}
                     type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
+                    inputMode={inputType === "numeric" ? "tel" : "text"}
+                    pattern={inputType === "numeric" ? "[0-9]*" : undefined}
                     maxLength={1}
-                    autoComplete="off" // Add this line to prevent browser from saving input
+                    autoComplete="off"
                     value={mask && otpValue[index] ? maskChar : otpValue[index]}
                     onChange={(e) => handleChange(index, e)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
@@ -353,8 +428,30 @@ export function OtpInput({
                     aria-describedby={hint ? hintId : undefined}
                     aria-required={required}
                     autoFocus={autoFocus && index === 0}
+                    animate={{
+                      x:
+                        errorIndexes.has(index) && shakeAnimation
+                          ? [-2, 2, -2, 2, 0]
+                          : 0,
+                      borderColor: success
+                        ? "rgb(34 197 94)" // green-500
+                        : errorIndexes.has(index)
+                          ? "rgb(239 68 68)" // red-500
+                          : undefined,
+                      scale: success ? [1, 1.02, 1] : 1,
+                    }}
+                    transition={{
+                      x:
+                        errorIndexes.has(index) && shakeAnimation
+                          ? { duration: 0.4, type: "tween" }
+                          : { duration: 0.4, type: "spring", stiffness: 300 },
+                      borderColor: { duration: 0.3 },
+                      scale: success
+                        ? { duration: 0.6, delay: 0 }
+                        : { duration: 0.6, delay: 0.1 },
+                    }}
                     className={cn(
-                      "w-11 h-12 sm:w-10 sm:h-12 bg-background text-center text-base sm:text-xl font-medium",
+                      "w-11 h-12 sm:w-10 sm:h-12 bg-background text-center text-base sm:text-xl font-medium transition-colors",
                       "focus:outline-none focus:ring-2 focus:ring-primary dark:ring-offset-black ring-offset-white",
                       // Default variant styling
                       variant === "default" &&
@@ -365,11 +462,16 @@ export function OtpInput({
                       variant === "pill" &&
                         coloredBorder &&
                         "border-2 border-primary",
-                      // Error styling for both variants
+                      // Success styling - remove focus ring for consistent appearance
+                      success &&
+                        "border-2 border-green-500 focus:ring-0 focus:ring-transparent",
+                      // Error styling for individual inputs
+                      errorIndexes.has(index) &&
+                        "border-destructive focus:ring-destructive",
+                      // Global error styling
                       "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive"
                     )}
                   />
-                  {/* Animated caret for empty inputs */}
                 </div>
               ))}
             </div>

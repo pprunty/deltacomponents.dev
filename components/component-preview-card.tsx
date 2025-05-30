@@ -91,7 +91,7 @@ export function ComponentPreviewCard({
     >
       <Card className="overflow-hidden h-full w-full border hover:border-primary/20 transition-colors duration-200 hover:shadow-sm">
         <div className="flex flex-col h-full">
-          <div className="relative w-full aspect-video bg-muted overflow-hidden">
+          <div className="relative w-full aspect-video bg-muted overflow-hidden rounded-t-xl">
             {!videoError && videoLoaded ? (
               <video
                 src={videoPath}

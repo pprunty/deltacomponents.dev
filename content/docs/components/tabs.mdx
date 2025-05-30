@@ -1,12 +1,16 @@
 ---
 title: Tabs
-description: Inspired by tabs seen in Vercel and v0 demonstration.
+description: A flexible tabs component inspired by Vercel and v0 with smooth animations, keyboard navigation, and accessible design patterns.
 links:
   vercel.com: https://vercel.com/
   v0 example: https://v0.dev/chat/vercel-tabs-REClrfGTlAi
 ---
 
 <ComponentPreview name="tabs-demo" />
+
+## Overview
+
+The Tabs component organizes content into distinct sections with smooth transitions, improving information architecture and reducing cognitive load for users navigating complex interfaces. It provides accessible keyboard navigation and follows modern design patterns, making it essential for dashboards, settings panels, and any multi-section layouts. Perfect for maintaining clean, organized user experiences while maximizing content density.
 
 ## Installation
 
@@ -32,7 +36,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/tabs
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install @radix-ui/react-tabs framer-motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -50,8 +54,6 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import {
   Tabs,
   TabsContent,
@@ -61,13 +63,34 @@ import {
 
 export function Component() {
   return (
-    <Tabs defaultValue="account">
+    <Tabs defaultValue="overview" className="w-full">
       <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">Account settings</TabsContent>
-      <TabsContent value="password">Password settings</TabsContent>
+      <TabsContent value="overview">
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">Overview</h3>
+          <p className="text-muted-foreground">
+            Your dashboard overview content.
+          </p>
+        </div>
+      </TabsContent>
+      <TabsContent value="analytics">
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">Analytics</h3>
+          <p className="text-muted-foreground">
+            Your analytics data and insights.
+          </p>
+        </div>
+      </TabsContent>
+      <TabsContent value="settings">
+        <div className="p-4">
+          <h3 className="text-lg font-semibold">Settings</h3>
+          <p className="text-muted-foreground">Configure your preferences.</p>
+        </div>
+      </TabsContent>
     </Tabs>
   )
 }
@@ -75,10 +98,83 @@ export function Component() {
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+#### Tabs (Root)
+
+<div className="overflow-x-auto">
+
+| Prop            | Type                      | Default     | Description                 |
+| --------------- | ------------------------- | ----------- | --------------------------- |
+| `defaultValue`  | `string`                  | `""`        | Default active tab value    |
+| `value`         | `string`                  | `""`        | Controlled active tab value |
+| `onValueChange` | `(value: string) => void` | `undefined` | Callback when tab changes   |
+| `className`     | `string`                  | `""`        | Additional CSS classes      |
+
+</div>
+
+#### TabsList
+
+<div className="overflow-x-auto">
+
+| Prop                      | Type                                   | Default     | Description                               |
+| ------------------------- | -------------------------------------- | ----------- | ----------------------------------------- |
+| `variant`                 | `"default" \| "pills" \| "underlined"` | `"default"` | Visual style variant                      |
+| `size`                    | `"sm" \| "md" \| "lg"`                 | `"sm"`      | Size of the tabs                          |
+| `showHoverEffect`         | `boolean`                              | `true`      | Whether to show hover indicator           |
+| `showActiveIndicator`     | `boolean`                              | `true`      | Whether to show active indicator          |
+| `activeIndicatorPosition` | `"top" \| "bottom"`                    | `"bottom"`  | Position of active indicator              |
+| `activeIndicatorOffset`   | `number`                               | `0`         | Offset for active indicator               |
+| `stretch`                 | `boolean`                              | `false`     | Whether tabs should stretch to fill width |
+| `showBottomBorder`        | `boolean`                              | `false`     | Whether to show bottom border             |
+| `ariaLabel`               | `string`                               | `"Tabs"`    | Accessibility label                       |
+| `className`               | `string`                               | `""`        | Additional CSS classes                    |
+
+</div>
+
+#### TabsTrigger
+
+<div className="overflow-x-auto">
+
+| Prop                | Type      | Default     | Description                          |
+| ------------------- | --------- | ----------- | ------------------------------------ |
+| `value`             | `string`  | -           | Unique value for this tab (required) |
+| `disabled`          | `boolean` | `false`     | Whether the tab is disabled          |
+| `label`             | `string`  | `undefined` | Label text (alternative to children) |
+| `activeClassName`   | `string`  | `""`        | CSS classes when tab is active       |
+| `inactiveClassName` | `string`  | `""`        | CSS classes when tab is inactive     |
+| `disabledClassName` | `string`  | `""`        | CSS classes when tab is disabled     |
+| `className`         | `string`  | `""`        | Additional CSS classes               |
+
+</div>
+
+#### TabsContent
+
+<div className="overflow-x-auto">
+
+| Prop        | Type     | Default | Description                                             |
+| ----------- | -------- | ------- | ------------------------------------------------------- |
+| `value`     | `string` | -       | Value that matches the corresponding trigger (required) |
+| `className` | `string` | `""`    | Additional CSS classes                                  |
+
+</div>
+
+## Examples
+
+### Basic Tabs
+
+A simple three-tab interface with overview, analytics, and settings sections.
+
+<ComponentPreview name="tabs-demo" />
+
+### Complex Layout with Spotify Integration
+
+Advanced tab implementation with rich content and external integrations.
 
 <ComponentPreview name="tabs-spotify-demo" />
+
+### Pills Variant
+
+Modern pill-style tabs with rounded corners and subtle active states, perfect for navigation and settings interfaces.
+
+<ComponentPreview name="tabs-pills-demo" />

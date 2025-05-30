@@ -12,11 +12,12 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   children: React.ReactNode
-  closeOnOverlayClick?: boolean
+  allowEasyClose?: boolean
   title?: string
   subtitle?: string
   type?: "blur" | "overlay" | "none"
   showCloseButton?: boolean
+  showEscText?: boolean
   borderBottom?: boolean
   className?: string
   /**
@@ -108,11 +109,12 @@ const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   children,
-  closeOnOverlayClick = true,
+  allowEasyClose = true,
   title,
   subtitle,
   type = "overlay",
   showCloseButton = true,
+  showEscText = true,
   borderBottom = true,
   className,
   animationType = "scale",
@@ -124,6 +126,23 @@ const Modal: React.FC<ModalProps> = ({
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // ESC key handler
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen && allowEasyClose) {
+        onClose()
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscKey)
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey)
+    }
+  }, [isOpen, allowEasyClose, onClose])
 
   useEffect(() => {
     const scrollbarWidth =
@@ -144,7 +163,7 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen])
 
   const handleOverlayClick = () => {
-    if (closeOnOverlayClick) onClose()
+    if (allowEasyClose) onClose()
   }
 
   const getOverlayClasses = () => {
@@ -215,21 +234,35 @@ const Modal: React.FC<ModalProps> = ({
                   )}
                 </div>
                 {showCloseButton && (
-                  <button
+                  <div
                     className={cn(
-                      "p-1 rounded-md hover:bg-muted transition-colors",
+                      "flex items-center gap-2",
                       subtitle && "absolute top-6 right-6"
                     )}
-                    onClick={onClose}
-                    aria-label="Close modal"
                   >
-                    <X size={20} weight="bold" />
-                  </button>
+                    {showEscText && (
+                      <span className="hidden lg:inline px-2 py-1 text-[11px] font-medium bg-muted text-muted-foreground rounded">
+                        ESC
+                      </span>
+                    )}
+                    <button
+                      className="p-1 rounded-md hover:bg-muted transition-colors"
+                      onClick={onClose}
+                      aria-label="Close modal"
+                    >
+                      <X size={20} weight="bold" />
+                    </button>
+                  </div>
                 )}
               </div>
             ) : (
               showCloseButton && (
-                <div className="absolute top-6 right-6">
+                <div className="absolute top-6 right-6 flex items-center gap-2">
+                  {showEscText && (
+                    <span className="hidden lg:inline px-2 py-1 text-xs font-medium bg-muted text-muted-foreground rounded">
+                      ESC
+                    </span>
+                  )}
                   <button
                     className="p-1 rounded-md hover:bg-muted transition-colors"
                     onClick={onClose}

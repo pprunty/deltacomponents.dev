@@ -35,7 +35,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/highlighter
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install class-variance-authority
+npm install class-variance-authority framer-motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -53,7 +53,7 @@ npm install class-variance-authority
 ```tsx
 import { Highlighter } from "@/registry/landing-page/highlighter"
 
-export function Example() {
+export function Component() {
   return (
     <h1 className="text-3xl font-bold">
       Make your landing page <Highlighter>stand out</Highlighter> with
@@ -96,13 +96,21 @@ export function Example() {
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name            | Type                                                           | Description                                                            |
-| --------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| variant         | "default" \| "success" \| "info" \| "warning" \| "destructive" | The highlight style variant. Default is "default".                     |
-| thickness       | "thin" \| "default" \| "thick"                                 | The thickness of the highlight. Default is "default".                  |
-| shadowColor     | string                                                         | Optional custom highlight color (CSS color string). Overrides variant. |
-| darkShadowColor | string                                                         | Optional custom highlight color for dark mode.                         |
-| asChild         | boolean                                                        | Whether to merge props onto child element. Default is false.           |
-| className       | string                                                         | Optional additional CSS classes.                                       |
+<div className="overflow-x-auto">
+
+| Prop              | Type                                                             | Default     | Description                                |
+| ----------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `variant`         | `"default" \| "success" \| "info" \| "warning" \| "destructive"` | `"default"` | The highlight style variant                |
+| `thickness`       | `"thin" \| "default" \| "thick"`                                 | `"default"` | The thickness of the highlight             |
+| `shadowColor`     | `string`                                                         | `undefined` | Custom highlight color (overrides variant) |
+| `darkShadowColor` | `string`                                                         | `undefined` | Custom highlight color for dark mode       |
+| `animate`         | `boolean`                                                        | `false`     | Whether to animate the highlight on scroll |
+| `asChild`         | `boolean`                                                        | `false`     | Whether to merge props onto child element  |
+| `text`            | `string`                                                         | `undefined` | Text content (alternative to children)     |
+| `className`       | `string`                                                         | `""`        | Additional CSS classes                     |
+
+</div>
+
+## Examples

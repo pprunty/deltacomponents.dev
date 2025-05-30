@@ -1,9 +1,13 @@
 ---
 title: Admonition
-description: Description goes here
+description: A versatile callout component for displaying important information with different severity levels and custom styling options.
 ---
 
 <ComponentPreview name="admonition-demo" />
+
+## Overview
+
+The Admonition component helps communicate important information to users through visually distinct callout blocks, making it essential for documentation, warnings, and contextual guidance. It provides seven semantic types with appropriate color schemes and icons, ensuring users can quickly identify the importance and nature of the message. Perfect for improving user comprehension and reducing support requests.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/admonition
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install lucide-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -45,25 +49,43 @@ npm install [dependencies]
 ## Usage
 
 ```tsx
-"use client"
-
-import * as React from "react"
-
-import { Admonition } from "@/registry/components/admonition"
+import Admonition from "@/registry/components/admonition"
 
 export function Component() {
-  return <Admonition />
+  return (
+    <Admonition type="warning" title="Important Notice">
+      This is an important message that users should pay attention to.
+    </Admonition>
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop        | Type                                                                           | Default     | Description                       |
+| ----------- | ------------------------------------------------------------------------------ | ----------- | --------------------------------- |
+| `type`      | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`    | Visual style and semantic meaning |
+| `title`     | `string`                                                                       | `undefined` | Optional heading text             |
+| `children`  | `ReactNode`                                                                    | -           | Content body (required)           |
+| `icon`      | `ComponentType<{className?: string}>`                                          | `undefined` | Custom icon override              |
+| `className` | `string`                                                                       | `""`        | Additional CSS classes            |
+
+</div>
+
+## Examples
+
+### All Types
+
+Display all available admonition types with their default styling and semantic meanings.
 
 <ComponentPreview name="admonition-types-demo" />
+
+### Custom Icons
+
+Override default icons with custom Lucide React components for specialized use cases.
 
 <ComponentPreview name="admonition-custom-demo" />

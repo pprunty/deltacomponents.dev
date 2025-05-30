@@ -1,9 +1,13 @@
 ---
 title: Embed
-description: Description goes here
+description: A responsive iframe wrapper component with loading states, error handling, and site branding for seamless content embedding.
 ---
 
 <ComponentPreview name="embed-demo" />
+
+## Overview
+
+The Embed component simplifies iframe integration by providing intelligent loading states, error handling, and professional site branding, making it perfect for showcasing external content, demos, and third-party tools. It enhances user trust with clear domain identification and fallback options when content fails to load. Essential for maintaining a polished user experience when embedding external websites or applications.
 
 <Admonition
   type="warning"
@@ -42,7 +46,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/embed
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install lucide-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -58,21 +62,44 @@ npm install [dependencies]
 ## Usage
 
 ```tsx
-"use client"
-
-import * as React from "react"
-
 import { Embed } from "@/registry/components/embed"
 
 export function Component() {
-  return <Embed />
+  return (
+    <Embed
+      src="https://example.com"
+      title="Example Website"
+      height={600}
+      allowFullScreen={true}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop              | Type                | Default                                                                                      | Description                            |
+| ----------------- | ------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `src`             | `string`            | -                                                                                            | URL of the content to embed (required) |
+| `title`           | `string`            | `"Embedded content"`                                                                         | Accessible title for the iframe        |
+| `height`          | `number \| string`  | `500`                                                                                        | Height of the embedded content         |
+| `width`           | `number \| string`  | `"100%"`                                                                                     | Width of the embedded content          |
+| `allowFullScreen` | `boolean`           | `true`                                                                                       | Allow fullscreen mode                  |
+| `sandbox`         | `string`            | `"allow-scripts allow-same-origin allow-forms allow-popups"`                                 | Sandbox restrictions                   |
+| `loading`         | `"eager" \| "lazy"` | `"lazy"`                                                                                     | Loading behavior                       |
+| `allow`           | `string`            | `"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"` | Feature permissions                    |
+| `className`       | `string`            | `""`                                                                                         | Additional CSS classes                 |
+
+</div>
+
+## Examples
+
+### Basic Embed
+
+A simple website embed with default settings and responsive sizing.
+
+<ComponentPreview name="embed-demo" />

@@ -50,19 +50,34 @@ const Tabs = forwardRef<
         {React.Children.map(children, (child) => {
           if (!React.isValidElement(child)) return child
 
-          return React.cloneElement(
-            child as React.ReactElement<{
-              activeValue?: string
-              onValueChange?: (value: string) => void
-              className?: string
-              children?: ReactNode
-              [key: string]: any
-            }>,
-            {
-              activeValue,
-              onValueChange: handleValueChange,
-            }
-          )
+          // Only pass tab-related props to tab components
+          const childType = child.type
+          const isTabComponent =
+            childType === TabsList ||
+            childType === TabsTrigger ||
+            childType === TabsContent ||
+            (typeof childType === "function" &&
+              ((childType as any).displayName === "TabsList" ||
+                (childType as any).displayName === "TabsTrigger" ||
+                (childType as any).displayName === "TabsContent"))
+
+          if (isTabComponent) {
+            return React.cloneElement(
+              child as React.ReactElement<{
+                activeValue?: string
+                onValueChange?: (value: string) => void
+                className?: string
+                children?: ReactNode
+                [key: string]: any
+              }>,
+              {
+                activeValue,
+                onValueChange: handleValueChange,
+              }
+            )
+          }
+
+          return child
         })}
       </div>
     )

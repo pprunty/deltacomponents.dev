@@ -1,9 +1,13 @@
 ---
 title: OTP Input
-description: Description goes here
+description: A secure one-time password input component with auto-focus, validation, masking options, and Zod integration for authentication flows.
 ---
 
 <ComponentPreview name="otp-input-demo" />
+
+## Overview
+
+The OTP Input component provides a secure and user-friendly way to capture one-time passwords and verification codes, essential for authentication flows and security verification. It features auto-focus navigation, paste handling, optional masking, and customizable grouping with separators. Perfect for creating modern authentication experiences with seamless keyboard navigation and accessibility support.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/otp-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install zod framer-motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,25 +51,88 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { OtpInput } from "@/registry/inputs/otp-input"
 
 export function Component() {
-  return <OtpInput />
+  return (
+    <OtpInput
+      label="Verification Code"
+      name="verificationCode"
+      length={6}
+      required
+      separator
+      groupSize={3}
+      hint="Enter the 6-digit verification code"
+      onComplete={(value) => console.log("OTP completed:", value)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop                 | Type                                                        | Default          | Description                                                    |
+| -------------------- | ----------------------------------------------------------- | ---------------- | -------------------------------------------------------------- |
+| `label`              | `string`                                                    | -                | Label for the OTP input field (required)                       |
+| `name`               | `string`                                                    | -                | Name of the input field for form submission (required)         |
+| `description`        | `string`                                                    | `undefined`      | Description text below the label                               |
+| `hint`               | `string`                                                    | `undefined`      | Hint text below the OTP input                                  |
+| `error`              | `string`                                                    | `undefined`      | Error message to display                                       |
+| `required`           | `boolean`                                                   | `false`          | Whether the field is required                                  |
+| `pending`            | `boolean`                                                   | `false`          | Whether the field is in a loading state                        |
+| `defaultValue`       | `string`                                                    | `""`             | Default value for the OTP input                                |
+| `value`              | `string`                                                    | `undefined`      | Controlled value                                               |
+| `disabled`           | `boolean`                                                   | `false`          | Whether the OTP input is disabled                              |
+| `length`             | `number`                                                    | `6`              | Length of the OTP code                                         |
+| `id`                 | `string`                                                    | `name`           | ID for the OTP input element                                   |
+| `variant`            | `"default" \| "pill"`                                       | `"default"`      | Visual variant of the input                                    |
+| `coloredBorder`      | `boolean`                                                   | `false`          | Whether to show colored border (pill variant)                  |
+| `inputType`          | `"numeric" \| "alphabetic" \| "alphanumeric"`               | `"alphanumeric"` | Input type validation with error animation                     |
+| `success`            | `boolean`                                                   | `false`          | Whether the OTP is in a success state (green border animation) |
+| `labelVariant`       | `"default" \| "muted"`                                      | `"default"`      | Label text styling variant                                     |
+| `containerClassName` | `string`                                                    | `""`             | CSS classes for the container                                  |
+| `labelClassName`     | `string`                                                    | `""`             | CSS classes for the label                                      |
+| `maskChar`           | `string`                                                    | `"•"`            | Character to display when input is masked                      |
+| `mask`               | `boolean`                                                   | `false`          | Whether to mask the input (like a password)                    |
+| `autoFocus`          | `boolean`                                                   | `false`          | Whether to auto-focus the first input on mount                 |
+| `separator`          | `boolean`                                                   | `false`          | Whether to render with separator between groups                |
+| `groupSize`          | `number`                                                    | `3`              | Size of each group of digits                                   |
+| `autoSubmit`         | `boolean`                                                   | `false`          | Whether to auto-submit form when OTP is completed              |
+| `schema`             | `ZodType<string>`                                           | `undefined`      | Zod schema for validation                                      |
+| `onValidate`         | `(isValid: boolean, value: string, error?: string) => void` | `undefined`      | Validation callback                                            |
+| `onChange`           | `(value: string) => void`                                   | `undefined`      | Callback when OTP value changes                                |
+| `onComplete`         | `(value: string) => void`                                   | `undefined`      | Callback when OTP is completed                                 |
+
+</div>
+
+## Examples
+
+### Pill Variant
+
+Rounded pill variant with muted background styling.
 
 <ComponentPreview name="otp-input-pill-demo" />
 
+### Autofill Support
+
+OTP input with enhanced autofill support for SMS verification codes.
+
 <ComponentPreview name="otp-input-autofill-demo" />
 
+### Short OTP
+
+A 4-digit PIN input with grouping and separator for quick verification.
+
+<ComponentPreview name="otp-input-short-demo" />
+
+### Numeric Only
+
+Numeric-only OTP input with number pattern validation.
+
 <ComponentPreview name="otp-input-numeric-demo" />
+
+<ComponentPreview name="otp-input-validation-demo" />

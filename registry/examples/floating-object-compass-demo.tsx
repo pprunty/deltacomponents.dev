@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import FloatingObject from "@/registry/animations/floating-object"
+import { FloatingObject } from "@/registry/animations/floating-object"
 
 export default function FloatingObjectCompassDemo() {
   return (
@@ -10,12 +10,35 @@ export default function FloatingObjectCompassDemo() {
       <h2 className="text-2xl font-bold">FloatingObject Compass Demo</h2>
 
       <div className="p-6 border rounded-lg">
-        {/* Component usage goes here */}
         <p className="text-muted-foreground mb-4">
-          Add your custom compass demo for the FloatingObject component below:
+          Random directional movement between compass points.
         </p>
 
-        <FloatingObject>{/* Component content goes here */}</FloatingObject>
+        <div className="relative h-80 bg-muted/20 rounded-lg flex items-center justify-center">
+          {/* Compass directions */}
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-muted-foreground text-sm">
+            N
+          </div>
+          <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-muted-foreground text-sm">
+            E
+          </div>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-muted-foreground text-sm">
+            S
+          </div>
+          <div className="absolute top-1/2 left-4 transform -translate-y-1/2 text-muted-foreground text-sm">
+            W
+          </div>
+
+          <FloatingObject
+            pattern="random-directions"
+            intensity="medium"
+            speed="medium"
+          >
+            <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
+              🧭
+            </div>
+          </FloatingObject>
+        </div>
       </div>
     </div>
   )

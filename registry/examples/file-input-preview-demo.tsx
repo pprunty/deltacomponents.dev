@@ -2,21 +2,21 @@
 
 import React from "react"
 
-import FileInput from "@/registry/inputs/file-input"
+import { FileInput } from "@/registry/inputs/file-input"
 
 export default function FileInputPreviewDemo() {
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6 p-4">
-      <h2 className="text-2xl font-bold">FileInput Preview Demo</h2>
-
-      <div className="p-6 border rounded-lg">
-        {/* Component usage goes here */}
-        <p className="text-muted-foreground mb-4">
-          Add your custom preview demo for the FileInput component below:
-        </p>
-
-        <FileInput>{/* Component content goes here */}</FileInput>
-      </div>
+    <div className="w-full min-w-[320px] max-w-md mx-auto p-4">
+      <FileInput
+        label="File Type Icons Preview"
+        name="previewFiles"
+        multiple={true}
+        maxFiles={8}
+        showPreviews={true}
+        showIcons={true}
+        accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.mp3,.mp4"
+        hint="Upload different file types to see their custom SVG icons: Word docs, Excel files, PDFs, PowerPoint, MP3/MP4 files, and images"
+      />
     </div>
   )
 }

@@ -1,11 +1,15 @@
 ---
 title: Font Transform
-description: Description goes here
+description: An interactive text animation component that transforms individual characters into random Google Fonts on hover, creating a playful and dynamic typography effect.
 links:
   Microsoft Design: https://microsoft.design/
 ---
 
 <ComponentPreview name="font-transform-demo" />
+
+## Overview
+
+The Font Transform component creates an engaging interactive typography experience where each character transforms into different Google Fonts on hover, perfect for creative headlines, portfolio showcases, and playful user interfaces. It features smooth animations with Framer Motion, customizable hover duration, and responsive design that works across different screen sizes. Ideal for adding personality and interactivity to text elements while maintaining readability and accessibility.
 
 ## Installation
 
@@ -31,7 +35,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/font-transform
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install framer-motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -49,19 +53,55 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { FontTransform } from "@/registry/animations/font-transform"
 
 export function Component() {
-  return <FontTransform />
+  return (
+    <div className="space-y-6 text-center">
+      <FontTransform
+        className="text-4xl font-bold text-primary"
+        hoverDuration={3000}
+      >
+        Hover over each character
+      </FontTransform>
+
+      <p className="text-muted-foreground">
+        Desktop only - hover effect requires mouse interaction
+      </p>
+    </div>
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop            | Type     | Default | Description                                                |
+| --------------- | -------- | ------- | ---------------------------------------------------------- |
+| `children`      | `string` | -       | The text content to make interactive (required)            |
+| `className`     | `string` | `""`    | Additional CSS classes for styling                         |
+| `hoverDuration` | `number` | `2000`  | Duration in milliseconds before reverting to original font |
+
+</div>
+
+The component also accepts all standard HTML div attributes and forwards them to the underlying element.
+
+### Font Collection
+
+The component includes a curated selection of Google Fonts organized into categories:
+
+- **Professional**: Inter, Roboto, Poppins, Montserrat, Playfair Display, Merriweather
+- **Monospace**: JetBrains Mono, Source Code Pro, IBM Plex Mono
+- **Creative**: Orbitron, Righteous, Fredoka, Bungee, Shrikhand
+- **Decorative**: Creepster, Fascinate, Griffy, Nosifer, Eater, Vampiro One
+
+## Examples
+
+### Interactive Typography
+
+Hover over individual characters to see them transform into different fonts with smooth animations.
+
+<ComponentPreview name="font-transform-demo" />

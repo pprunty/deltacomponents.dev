@@ -1,6 +1,7 @@
 import type { Registry } from "@/registry/schema"
 
-export const examples: Registry = [  {
+export const examples: Registry = [
+  {
     name: "mouse-string-connection-demo",
     type: "registry:block",
     files: [
@@ -750,7 +751,9 @@ export const examples: Registry = [  {
   {
     name: "floating-object-compass-demo",
     type: "registry:block",
-    registryDependencies: ["https://deltacomponents.dev/r/floating-object.json"],
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
     files: [
       {
         path: "examples/floating-object-compass-demo.tsx",
@@ -761,10 +764,45 @@ export const examples: Registry = [  {
   {
     name: "floating-object-multiple-demo",
     type: "registry:block",
-    registryDependencies: ["https://deltacomponents.dev/r/floating-object.json"],
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
     files: [
       {
         path: "examples/floating-object-multiple-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "tabs-pills-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tabs.json"],
+    files: [
+      {
+        path: "examples/tabs-pills-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "modal-minimal-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    files: [
+      {
+        path: "examples/modal-minimal-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "otp-input-validation-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    files: [
+      {
+        path: "examples/otp-input-validation-demo.tsx",
         type: "registry:block",
       },
     ],

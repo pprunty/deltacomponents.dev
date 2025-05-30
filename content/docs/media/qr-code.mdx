@@ -1,9 +1,13 @@
 ---
 title: QR Code
-description: Description goes here
+description: A flexible QR code generator with theme integration, custom styling, error handling, and loading states built with the qrcode library.
 ---
 
 <ComponentPreview name="qr-code-demo" />
+
+## Overview
+
+The QR Code component bridges physical and digital experiences by generating scannable codes that connect users to websites, contact information, or any digital content. It features automatic theme integration and error handling, making it essential for marketing materials, business cards, and any application requiring quick digital access. Perfect for improving user onboarding and reducing friction in offline-to-online conversion funnels.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/qr-code
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install qrcode
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -45,24 +49,55 @@ npm install [dependencies]
 ## Usage
 
 ```tsx
-"use client"
-
-import * as React from "react"
-import { qr-code } from "@/registry/media/qr-code"
+import QRCode from "@/registry/media/qr-code"
 
 export function Component() {
-  return <qr-code />
+  return (
+    <QRCode
+      value="https://deltacomponents.dev"
+      size={200}
+      bgColor="--color-card"
+      fgColor="--color-card-foreground"
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop                   | Type                       | Default                     | Description                                    |
+| ---------------------- | -------------------------- | --------------------------- | ---------------------------------------------- |
+| `value`                | `string`                   | -                           | The data to encode in the QR code (required)   |
+| `size`                 | `number`                   | `200`                       | Size of the QR code in pixels                  |
+| `bgColor`              | `string`                   | `"--color-card"`            | Background color (CSS variable or color value) |
+| `fgColor`              | `string`                   | `"--color-card-foreground"` | Foreground color (CSS variable or color value) |
+| `errorCorrectionLevel` | `"L" \| "M" \| "Q" \| "H"` | `"M"`                       | Error correction level                         |
+| `margin`               | `number`                   | `4`                         | Margin around the QR code                      |
+| `className`            | `string`                   | `""`                        | Additional CSS classes for the canvas          |
+| `containerClassName`   | `string`                   | `""`                        | Additional CSS classes for the container       |
+
+</div>
+
+## Examples
+
+### Basic QR Code
+
+A simple QR code with default theme-aware styling and error correction.
+
+<ComponentPreview name="qr-code-demo" />
+
+### Custom Styling
+
+QR codes with custom colors and enhanced visual styling.
 
 <ComponentPreview name="qr-code-custom-demo" />
+
+### Reactive QR Code
+
+Interactive QR code generation with real-time input and preview.
 
 <ComponentPreview name="qr-code-reactive-demo" />

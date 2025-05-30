@@ -1,11 +1,15 @@
 ---
 title: Scroll Progress
-description: Description goes here
+description: A customizable scroll progress indicator that shows reading progress with smooth animations and multiple positioning options.
 links:
   gwern.net: https://gwern.net/
 ---
 
 <ComponentPreview name="scroll-progress-demo" />
+
+## Overview
+
+The Scroll Progress component provides visual feedback on reading progress, helping users navigate long-form content and understand their position within articles or documentation. It enhances user engagement by reducing uncertainty about content length and encouraging completion of reading tasks. Perfect for blogs, documentation sites, and any content-heavy interfaces where user retention matters.
 
 ## Installation
 
@@ -31,7 +35,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/scroll-progress
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install framer-motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -49,19 +53,36 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { ScrollProgress } from "@/registry/components/scroll-progress"
 
 export function Component() {
-  return <ScrollProgress />
+  return (
+    <ScrollProgress position="top" height={4} color="hsl(var(--primary))" />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop             | Type                | Default                 | Description                          |
+| ---------------- | ------------------- | ----------------------- | ------------------------------------ |
+| `position`       | `"top" \| "bottom"` | `"top"`                 | Position of the progress bar         |
+| `height`         | `number`            | `4`                     | Height of the progress bar in pixels |
+| `color`          | `string`            | `"hsl(var(--primary))"` | Color of the progress bar            |
+| `className`      | `string`            | `""`                    | Additional CSS classes               |
+| `showPercentage` | `boolean`           | `false`                 | Whether to show percentage text      |
+| `smooth`         | `boolean`           | `true`                  | Whether to use smooth animation      |
+
+</div>
+
+## Examples
+
+### Basic Progress Indicator
+
+A simple scroll progress bar positioned at the top of the viewport with default styling.
+
+<ComponentPreview name="scroll-progress-demo" />

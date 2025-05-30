@@ -27,18 +27,29 @@ export default function DrawerLeftDemo() {
         <DrawerPortal>
           <DrawerOverlay />
           <DrawerContent
-            className="bg-background flex flex-col rounded-xl fixed inset-y-4 left-4 h-[calc(100vh-32px)] w-3/4 sm:max-w-sm z-50 border p-4 hide-vaul-after"
-            initialTransform="calc(-100% - 8px)"
+            position="left"
+            className="bg-background flex flex-col fixed inset-y-0 left-0 h-full w-3/4 sm:max-w-sm z-50 border-r border-border hide-vaul-after"
           >
-            <DrawerHeader>
+            <DrawerHeader className="border-b border-border">
               <DrawerTitle>Left Side Drawer</DrawerTitle>
               <DrawerDescription>
-                This drawer slides in from the left side of the screen.
+                This drawer slides in from the left side of the screen using
+                Vaul&apos;s built-in animations.
               </DrawerDescription>
             </DrawerHeader>
             <DrawerBody className="overflow-y-auto p-4">
               <div className="space-y-4">
-                <p className="text-muted-foreground">
+                <div className="p-3 bg-muted rounded-lg">
+                  <h4 className="font-medium text-sm mb-1">
+                    Full Height Design
+                  </h4>
+                  <p className="text-xs text-muted-foreground">
+                    This drawer uses the full viewport height with no padding or
+                    rounded corners, ideal for navigation menus and sidebars.
+                  </p>
+                </div>
+
+                <p className="text-muted-foreground text-sm">
                   Left side drawers are commonly used for:
                 </p>
                 <ul className="text-sm text-muted-foreground space-y-2">
@@ -71,22 +82,31 @@ export default function DrawerLeftDemo() {
                 </div>
 
                 <div className="mt-6 p-4 bg-muted rounded-lg">
-                  <h4 className="font-medium mb-2">Configuration</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Use{" "}
-                    <code className="bg-background px-1 rounded">
-                      direction="left"
-                    </code>{" "}
-                    and
-                    <code className="bg-background px-1 rounded ml-1">
-                      initialTransform="calc(-100% - 8px)"
-                    </code>
-                    to create a left-sliding drawer.
-                  </p>
+                  <h4 className="font-medium mb-2">Implementation</h4>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>
+                      Uses{" "}
+                      <code className="bg-background px-1 rounded">
+                        direction="left"
+                      </code>{" "}
+                      and{" "}
+                      <code className="bg-background px-1 rounded">
+                        position="left"
+                      </code>{" "}
+                      for proper Vaul animations.
+                    </p>
+                    <p>
+                      Styled with{" "}
+                      <code className="bg-background px-1 rounded">
+                        inset-y-0 left-0 h-full
+                      </code>{" "}
+                      for full height coverage without padding or border radius.
+                    </p>
+                  </div>
                 </div>
               </div>
             </DrawerBody>
-            <DrawerFooter>
+            <DrawerFooter className="border-t border-border">
               <DrawerClose asChild>
                 <Button variant="outline" className="w-full">
                   Close

@@ -1,4 +1,4 @@
-# 𝜟 Delta Components
+# 𝚫 Delta Components
 
 A collection of modern, accessible, and customizable React components built on top of shadcn/ui with v0 integration.
 Delta Components is designed to make the difference in your user experience. Free and open source.

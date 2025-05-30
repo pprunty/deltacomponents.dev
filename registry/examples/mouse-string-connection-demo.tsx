@@ -18,7 +18,7 @@ export default function MouseStringConnectionDemo() {
             dashArray={[10, 4]}
             curveIntensity={0.5}
           >
-            <Button variant="outline">Get Started</Button>
+            <Button size="lg">Get Started</Button>
           </MouseStringConnection>
         </div>
       </div>

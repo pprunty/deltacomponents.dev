@@ -2,21 +2,19 @@
 
 import React from "react"
 
-import TextareaInput from "@/registry/inputs/textarea-input"
+import { TextareaInput } from "@/registry/inputs/textarea-input"
 
 export default function TextareaInputPillDemo() {
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6 p-4">
-      <h2 className="text-2xl font-bold">TextareaInput Pill Demo</h2>
-
-      <div className="p-6 border rounded-lg">
-        {/* Component usage goes here */}
-        <p className="text-muted-foreground mb-4">
-          Add your custom pill demo for the TextareaInput component below:
-        </p>
-
-        <TextareaInput>{/* Component content goes here */}</TextareaInput>
-      </div>
+    <div className="w-full min-w-[320px] max-w-md mx-auto p-4">
+      <TextareaInput
+        label="Comments"
+        name="pillTextarea"
+        variant="pill"
+        placeholder="Enter your comments..."
+        size="md"
+        hint="Pill variant with colored border"
+      />
     </div>
   )
 }

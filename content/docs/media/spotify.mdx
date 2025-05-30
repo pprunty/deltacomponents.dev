@@ -1,9 +1,13 @@
 ---
 title: Spotify
-description: Description goes here
+description: A React component for embedding Spotify tracks and playlists with automatic type detection, loading states, and responsive design.
 ---
 
 <ComponentPreview name="spotify-demo" />
+
+## Overview
+
+The Spotify component seamlessly integrates Spotify content into web applications, providing users with rich music previews and discovery without leaving your site. It automatically detects content types and optimizes layouts, enhancing user engagement while maintaining fast loading times. Perfect for music blogs, artist portfolios, and any application where music discovery and sharing are important.
 
 ## Installation
 
@@ -26,12 +30,6 @@ npx shadcn@latest add https://deltacomponents.dev/r/spotify
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install [dependencies]
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="spotify" />
@@ -47,19 +45,39 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { Spotify } from "@/registry/media/spotify"
 
 export function Component() {
-  return <Spotify />
+  return (
+    <Spotify
+      id="4iV5W9uYEdYUVa79Axb7Rh"
+      type="track"
+      width={352}
+      height={152}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop     | Type                    | Default                               | Description                                             |
+| -------- | ----------------------- | ------------------------------------- | ------------------------------------------------------- |
+| `id`     | `string`                | -                                     | Spotify ID for track or playlist (required)             |
+| `type`   | `"track" \| "playlist"` | `"track"`                             | Type of Spotify content (auto-detected if not provided) |
+| `width`  | `string \| number`      | `"100%"`                              | Width of the embedded player                            |
+| `height` | `string \| number`      | `152` for tracks, `380` for playlists | Height of the embedded player                           |
+
+</div>
+
+## Examples
+
+### Basic Spotify Embed
+
+A simple Spotify track embed with automatic type detection and responsive sizing.
+
+<ComponentPreview name="spotify-demo" />

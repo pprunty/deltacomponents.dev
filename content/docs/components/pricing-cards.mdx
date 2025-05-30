@@ -1,9 +1,13 @@
 ---
-title: pricing Cards
-description: Description goes here
+title: Pricing Cards
+description: A comprehensive pricing display component with billing toggles, feature comparisons, and contact options for SaaS and subscription services.
 ---
 
 <ComponentPreview name="pricing-cards-demo" />
+
+## Overview
+
+The Pricing Cards component streamlines subscription plan presentation with clear feature comparisons and pricing options, making it essential for converting visitors into customers. It supports monthly/yearly billing toggles, popular plan highlighting, and contact cards for enterprise inquiries, reducing decision friction and improving conversion rates. Perfect for SaaS landing pages, subscription services, and any business with tiered pricing models.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/pricing-cards
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install lucide-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -45,21 +49,100 @@ npm install [dependencies]
 ## Usage
 
 ```tsx
-"use client"
+import { PricingCards } from "@/registry/components/pricing-cards"
 
-import * as React from "react"
-
-import { pricingCards } from "@/registry/components/pricing-cards"
+const plans = [
+  {
+    id: "basic",
+    name: "Basic",
+    description: "Perfect for getting started",
+    price: { monthly: 9, yearly: 90, currency: "$" },
+    features: [
+      { text: "Up to 1,000 API calls", included: true },
+      { text: "Basic support", included: true },
+      { text: "Advanced analytics", included: false },
+    ],
+    cta: { text: "Get Started" },
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    description: "Best for growing businesses",
+    price: { monthly: 29, yearly: 290, currency: "$" },
+    features: [
+      { text: "Up to 10,000 API calls", included: true },
+      { text: "Priority support", included: true },
+      { text: "Advanced analytics", included: true },
+    ],
+    cta: { text: "Start Free Trial" },
+    popular: true,
+  },
+]
 
 export function Component() {
-  return <PricingCards />
+  return (
+    <PricingCards
+      plans={plans}
+      onPlanSelect={(planId) => console.log("Selected:", planId)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+#### PricingCards
+
+<div className="overflow-x-auto">
+
+| Prop                  | Type                       | Default     | Description                                  |
+| --------------------- | -------------------------- | ----------- | -------------------------------------------- |
+| `plans`               | `PricingPlan[]`            | -           | Array of pricing plans to display (required) |
+| `defaultBillingCycle` | `"monthly" \| "yearly"`    | `"yearly"`  | Default billing cycle selection              |
+| `showBillingToggle`   | `boolean`                  | `true`      | Whether to show monthly/yearly toggle        |
+| `yearlyDiscount`      | `number`                   | `20`        | Discount percentage for yearly billing       |
+| `onPlanSelect`        | `(planId: string) => void` | `undefined` | Callback when a plan is selected             |
+| `contactCard`         | `ContactCard`              | `undefined` | Optional contact card for enterprise plans   |
+| `className`           | `string`                   | `""`        | Additional CSS classes                       |
+
+</div>
+
+#### PricingPlan
+
+<div className="overflow-x-auto">
+
+| Prop          | Type                                                    | Default     | Description                                    |
+| ------------- | ------------------------------------------------------- | ----------- | ---------------------------------------------- |
+| `id`          | `string`                                                | -           | Unique identifier for the plan (required)      |
+| `name`        | `string`                                                | -           | Plan name (required)                           |
+| `description` | `string`                                                | `undefined` | Brief plan description                         |
+| `price`       | `{ monthly: number, yearly: number, currency: string }` | `undefined` | Pricing information                            |
+| `customPrice` | `{ label: string, sublabel?: string }`                  | `undefined` | Custom pricing display (e.g., "Contact Us")    |
+| `features`    | `PricingFeature[]`                                      | -           | List of plan features (required)               |
+| `cta`         | `{ text: string, variant?: string }`                    | -           | Call-to-action button configuration (required) |
+| `popular`     | `boolean`                                               | `false`     | Whether this is the popular/recommended plan   |
+| `badge`       | `string`                                                | `undefined` | Optional badge text (e.g., "Most Popular")     |
+| `billingNote` | `string`                                                | `undefined` | Additional billing information                 |
+
+</div>
+
+#### PricingFeature
+
+<div className="overflow-x-auto">
+
+| Prop       | Type      | Default | Description                                    |
+| ---------- | --------- | ------- | ---------------------------------------------- |
+| `text`     | `string`  | -       | Feature description (required)                 |
+| `included` | `boolean` | -       | Whether feature is included in plan (required) |
+
+</div>
+
+## Examples
+
+### Complete Pricing Layout
+
+A full pricing section with multiple plans, billing toggle, and contact option.
+
+<ComponentPreview name="pricing-cards-demo" />

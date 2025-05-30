@@ -18,6 +18,7 @@ export default function OtpInputNumericDemo() {
         label="Numeric Verification Code"
         name="numericCode"
         length={6}
+        inputType="numeric"
         required
         schema={numericOtpSchema}
         hint="Enter only numbers (0-9)"

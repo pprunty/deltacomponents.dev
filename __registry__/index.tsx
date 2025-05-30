@@ -1397,6 +1397,55 @@ export const Index: Record<string, any> = {
     ),
     source: "",
   },
+  "tabs-pills-demo": {
+    name: "tabs-pills-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tabs.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/tabs-pills-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/tabs-pills-demo")),
+    source: "",
+  },
+  "modal-minimal-demo": {
+    name: "modal-minimal-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/modal-minimal-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/modal-minimal-demo")
+    ),
+    source: "",
+  },
+  "otp-input-validation-demo": {
+    name: "otp-input-validation-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/otp-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/otp-input-validation-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-validation-demo")
+    ),
+    source: "",
+  },
   "font-transform": {
     name: "font-transform",
     type: "registry:component",

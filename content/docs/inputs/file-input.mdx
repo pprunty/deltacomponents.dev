@@ -1,9 +1,13 @@
 ---
 title: File Input
-description: Description goes here
+description: A comprehensive file upload component with drag-and-drop support, preview functionality, validation, and multiple file handling built with Zod integration.
 ---
 
 <ComponentPreview name="file-input-demo" />
+
+## Overview
+
+The File Input component delivers a modern file upload experience with drag-and-drop functionality, visual previews, and comprehensive validation, making it essential for forms requiring file attachments. It supports both single and multiple file uploads with configurable size limits, file type restrictions, and real-time validation feedback. Perfect for creating intuitive upload interfaces that enhance user experience while ensuring data integrity.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/file-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install @phosphor-icons/react zod
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,25 +51,75 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
-import { Fileinput } from "@/registry/inputs/file-input"
+import { FileInput } from "@/registry/inputs/file-input"
 
 export function Component() {
-  return <Fileinput />
+  return (
+    <FileInput
+      label="Upload Document"
+      name="document"
+      accept=".pdf,.docx,.jpg,.png"
+      multiple
+      maxSize={10 * 1024 * 1024} // 10MB
+      hint="Accepted formats: PDF, DOCX, JPG, PNG"
+      onFilesSelected={(files) => console.log(files)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop                 | Type                                                                | Default     | Description                                            |
+| -------------------- | ------------------------------------------------------------------- | ----------- | ------------------------------------------------------ |
+| `label`              | `string`                                                            | -           | Label for the file input field (required)              |
+| `name`               | `string`                                                            | -           | Name of the input field for form submission (required) |
+| `description`        | `string`                                                            | `undefined` | Description text below the label                       |
+| `hint`               | `string`                                                            | `undefined` | Hint text below the file input                         |
+| `error`              | `string`                                                            | `undefined` | Error message to display                               |
+| `required`           | `boolean`                                                           | `false`     | Whether the field is required                          |
+| `pending`            | `boolean`                                                           | `false`     | Whether the field is in a loading state                |
+| `accept`             | `string`                                                            | `undefined` | Accepted file types (e.g., ".pdf,.jpg,image/\*")       |
+| `multiple`           | `boolean`                                                           | `false`     | Whether to accept multiple files                       |
+| `maxSize`            | `number`                                                            | `undefined` | Maximum file size in bytes                             |
+| `maxFiles`           | `number`                                                            | `5`         | Maximum number of files (when multiple is true)        |
+| `disabled`           | `boolean`                                                           | `false`     | Whether the input is disabled                          |
+| `id`                 | `string`                                                            | `name`      | ID for the file input element                          |
+| `variant`            | `"default" \| "pill"`                                               | `"default"` | Visual variant of the input                            |
+| `coloredBorder`      | `boolean`                                                           | `false`     | Whether to show colored border (pill variant)          |
+| `labelVariant`       | `"default" \| "muted"`                                              | `"default"` | Label text styling variant                             |
+| `containerClassName` | `string`                                                            | `""`        | CSS classes for the container                          |
+| `dropzoneClassName`  | `string`                                                            | `""`        | CSS classes for the file drop area                     |
+| `labelClassName`     | `string`                                                            | `""`        | CSS classes for the label                              |
+| `dropzoneText`       | `string`                                                            | `undefined` | Custom text for the dropzone                           |
+| `showPreviews`       | `boolean`                                                           | `true`      | Whether to show file previews                          |
+| `showIcons`          | `boolean`                                                           | `true`      | Whether to show file type icons                        |
+| `schema`             | `ZodType<File \| File[]>`                                           | `undefined` | Zod schema for validation                              |
+| `onValidate`         | `(isValid: boolean, files: File \| File[], error?: string) => void` | `undefined` | Validation callback                                    |
+| `onFilesSelected`    | `(files: File[]) => void`                                           | `undefined` | Callback when files are selected                       |
+
+</div>
+
+## Examples
+
+### Pill Variant
+
+Rounded pill variant with muted background styling and colored border.
 
 <ComponentPreview name="file-input-pill-demo" />
 
+### Multiple Files
+
+Upload multiple files with drag and drop support and configurable limits.
+
 <ComponentPreview name="file-input-multiple-demo" />
+
+### File Previews
+
+Upload files with visual previews for images and type icons for documents.
 
 <ComponentPreview name="file-input-preview-demo" />

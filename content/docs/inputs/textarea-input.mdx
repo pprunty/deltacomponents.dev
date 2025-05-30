@@ -1,9 +1,13 @@
 ---
 title: Textarea Input
-description: Description goes here
+description: A flexible textarea component with multiple size options, validation, variants, and Zod integration for multi-line text input.
 ---
 
 <ComponentPreview name="textarea-input-demo" />
+
+## Overview
+
+The Textarea Input component delivers an intuitive multi-line text entry experience with flexible sizing, validation, and styling options, essential for longer content input like comments, descriptions, and messages. It features three size variants (small, medium, large), both default and pill styling, and comprehensive validation support. Perfect for feedback forms, content creation, and any scenario requiring extended text input with excellent user experience.
 
 ## Installation
 
@@ -29,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/textarea-input
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install [dependencies]
+npm install zod
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -47,23 +51,75 @@ npm install [dependencies]
 ```tsx
 "use client"
 
-import * as React from "react"
-
 import { TextareaInput } from "@/registry/inputs/textarea-input"
 
 export function Component() {
-  return <TextareaInput />
+  return (
+    <TextareaInput
+      label="Message"
+      name="message"
+      placeholder="Enter your message..."
+      description="Share your thoughts or feedback"
+      size="md"
+      required
+      onChange={(e) => console.log("Content:", e.target.value)}
+    />
+  )
 }
 ```
 
 ## API Reference
 
-### Parameters
+### Props
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| prop | type | description |
+<div className="overflow-x-auto">
+
+| Prop                 | Type                                                        | Default     | Description                                                     |
+| -------------------- | ----------------------------------------------------------- | ----------- | --------------------------------------------------------------- |
+| `label`              | `string`                                                    | -           | Label for the textarea field (required)                         |
+| `name`               | `string`                                                    | -           | Name of the textarea field for form submission (required)       |
+| `description`        | `string`                                                    | `undefined` | Description text below the label                                |
+| `hint`               | `string`                                                    | `undefined` | Hint text below the textarea                                    |
+| `error`              | `string`                                                    | `undefined` | Error message to display                                        |
+| `required`           | `boolean`                                                   | `false`     | Whether the field is required                                   |
+| `pending`            | `boolean`                                                   | `false`     | Whether the field is in a loading state                         |
+| `defaultValue`       | `string`                                                    | `undefined` | Default value for the textarea                                  |
+| `disabled`           | `boolean`                                                   | `false`     | Whether the textarea is disabled                                |
+| `id`                 | `string`                                                    | `name`      | ID for the textarea element                                     |
+| `placeholder`        | `string`                                                    | `undefined` | Placeholder text                                                |
+| `variant`            | `"default" \| "pill"`                                       | `"default"` | Visual variant of the textarea                                  |
+| `size`               | `"sm" \| "md" \| "lg"`                                      | `"md"`      | Size variant that adjusts height based on expected input length |
+| `coloredBorder`      | `boolean`                                                   | `false`     | Whether to show colored border (pill variant)                   |
+| `labelVariant`       | `"default" \| "muted"`                                      | `"default"` | Label text styling variant                                      |
+| `containerClassName` | `string`                                                    | `""`        | CSS classes for the container                                   |
+| `labelClassName`     | `string`                                                    | `""`        | CSS classes for the label                                       |
+| `schema`             | `ZodType<string>`                                           | `undefined` | Zod schema for validation                                       |
+| `onValidate`         | `(isValid: boolean, value: string, error?: string) => void` | `undefined` | Validation callback                                             |
+
+</div>
+
+All standard HTML textarea attributes are also supported and passed through to the underlying textarea element.
+
+### Size Guidelines
+
+The `size` prop adjusts the textarea height to accommodate different expected input lengths:
+
+- **`sm`** (Small): 3 rows - Perfect for short text like names, titles, or brief comments
+- **`md`** (Medium): 4 rows - Ideal for moderate content like descriptions, feedback, or messages
+- **`lg`** (Large): 6 rows - Best for longer content like detailed descriptions, reviews, or extensive comments
+
+Choose the size based on the typical content length you expect users to enter. This helps create an appropriate visual affordance and reduces the need for manual resizing.
+
+## Examples
+
+### Pill Variant
+
+Rounded pill variant with muted background styling for modern interfaces.
 
 <ComponentPreview name="textarea-input-pill-demo" />
+
+### Max Length Example
+
+Textarea with character limits and validation for controlled content length. The `lg` size provides adequate space for content approaching the 500-character limit.
 
 <ComponentPreview name="textarea-input-max-demo" />
