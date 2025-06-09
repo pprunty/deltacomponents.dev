@@ -4,6 +4,7 @@ import { components } from "@/registry/registry-components"
 import { examples } from "@/registry/registry-examples"
 import { inputs } from "@/registry/registry-inputs"
 import { landingPage } from "@/registry/registry-landing-page"
+import { layout } from "@/registry/registry-layout"
 import { media } from "@/registry/registry-media"
 import type { Registry } from "@/registry/schema"
 
@@ -15,4 +16,5 @@ export const registry: Registry = [
   ...animations,
   ...landingPage,
   ...media,
+  ...layout,
 ]

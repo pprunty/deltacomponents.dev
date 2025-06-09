@@ -1,0 +1,120 @@
+---
+title: Social Icons
+description: Customizable social media icons with color and monochrome variants, supporting X, LinkedIn, Instagram, and TikTok with built-in dark mode theming.
+---
+
+<ComponentPreview name="social-icons-demo" />
+
+## Overview
+
+The Social Icons component provides both individual social media icons (`SocialIcon`) and grouped collections (`SocialIcons`) with customizable styling. It supports five major platforms: GitHub, X (formerly Twitter), LinkedIn, Instagram, and TikTok. The component offers both colorful brand-accurate icons and monochrome versions that automatically adapt to your theme's color scheme.
+
+Perfect for footers, contact sections, author profiles, and any place where you need to display social media links with consistent, professional styling.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/social-icons
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="social-icons" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+### Individual Social Icon
+
+```tsx
+import { SocialIcon } from "@/registry/components/social-icons"
+
+export default function Example() {
+  return (
+    <SocialIcon
+      platform="x"
+      variant="color"
+      size={32}
+      href="https://x.com/yourhandle"
+    />
+  )
+}
+```
+
+### Social Icons Group
+
+```tsx
+import { SocialIcons } from "@/registry/components/social-icons"
+
+export default function Example() {
+  const socialLinks = [
+    { platform: "github", href: "https://github.com/yourusername" },
+    { platform: "x", href: "https://x.com/yourhandle" },
+    { platform: "linkedin", href: "https://linkedin.com/in/yourprofile" },
+    { platform: "instagram", href: "https://instagram.com/yourhandle" },
+    { platform: "tiktok", href: "https://tiktok.com/@yourhandle" },
+  ]
+
+  return <SocialIcons icons={socialLinks} variant="color" size={28} gap={16} />
+}
+```
+
+## API Reference
+
+### SocialIcon Props
+
+<div className="overflow-x-auto">
+
+| Name      | Type                                                       | Default   | Description                                                         |
+| --------- | ---------------------------------------------------------- | --------- | ------------------------------------------------------------------- |
+| platform  | `"github" \| "x" \| "linkedin" \| "instagram" \| "tiktok"` | -         | The social media platform to display                                |
+| variant   | `"color" \| "monochrome"`                                  | `"color"` | Icon style - color shows brand colors, monochrome adapts to theme   |
+| size      | `number`                                                   | `24`      | Icon size in pixels                                                 |
+| href      | `string`                                                   | -         | Optional URL to link to. When provided, wraps icon in an anchor tag |
+| className | `string`                                                   | -         | Additional CSS classes                                              |
+
+</div>
+
+### SocialIcons Props
+
+<div className="overflow-x-auto">
+
+| Name      | Type                                         | Default   | Description                                  |
+| --------- | -------------------------------------------- | --------- | -------------------------------------------- |
+| icons     | `Array<{ platform: string; href?: string }>` | -         | Array of social platform configurations      |
+| variant   | `"color" \| "monochrome"`                    | `"color"` | Icon style applied to all icons in the group |
+| size      | `number`                                     | `24`      | Icon size in pixels applied to all icons     |
+| gap       | `number`                                     | `16`      | Space between icons in pixels                |
+| className | `string`                                     | -         | Additional CSS classes for the container     |
+
+</div>
+
+## Examples
+
+### Color Variant
+
+<ComponentPreview name="social-icons-demo" />
+
+### Monochrome Variant
+
+<ComponentPreview name="social-icons-monochrome-demo" />

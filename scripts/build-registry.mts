@@ -57,9 +57,11 @@ type Registry = RegistryItem[]
 interface ShadcnRegistryItem {
   name: string
   type: string
+  author: string
   files: Array<{
     path: string
     type: string
+    target: string
   }>
   dependencies?: string[]
   devDependencies?: string[]
@@ -380,6 +382,7 @@ async function buildRegistry() {
       "registry/registry-blocks.ts",
       "registry/registry-landing-page.ts",
       "registry/registry-media.ts",
+      "registry/registry-layout.ts",
     ]
 
     const registryDataArray = await Promise.all(
@@ -429,6 +432,7 @@ async function buildRegistry() {
       const shadcnItem: ShadcnRegistryItem = {
         name: item.name,
         type: item.type,
+        author: "patrick prunty <https://www.patrickprunty.com>",
         files: [],
       }
 
@@ -453,9 +457,12 @@ async function buildRegistry() {
       // Process files
       if (item.files && item.files.length > 0) {
         shadcnItem.files = item.files.map((file) => {
+          const registryPath = `registry/${file.path}`
+          const targetPath = `/components/delta/${file.path}`
           return {
-            path: `registry/${file.path}`,
+            path: registryPath,
             type: file.type,
+            target: targetPath,
           }
         })
       }
@@ -477,6 +484,7 @@ async function buildRegistry() {
         $schema: "https://ui.shadcn.com/schema/registry-item.json",
         name: item.name,
         type: item.type,
+        author: "patrick prunty <https://www.patrickprunty.com>",
         ...(item.dependencies && { dependencies: item.dependencies }),
         ...(item.devDependencies && { devDependencies: item.devDependencies }),
         ...(item.registryDependencies && {

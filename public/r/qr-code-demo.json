@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "qr-code-demo",
   "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
   "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"],
   "files": [
     {
       "path": "registry/examples/qr-code-demo.tsx",
       "content": "import QRCode from \"@/registry/media/qr-code\"\n\nexport default function QRCodeDemo() {\n  return (\n    <div className=\"flex items-center justify-center w-full\">\n      <div className=\"text-center space-y-4\">\n        <QRCode\n          value=\"https://patrickprunty.com\"\n          size={200}\n          bgColor=\"#2a2a2a\"\n          fgColor=\"#ffffff\"\n          errorCorrectionLevel=\"M\"\n        />\n      </div>\n    </div>\n  )\n}\n",
-      "type": "registry:block"
+      "type": "registry:block",
+      "target": "/components/delta/examples/qr-code-demo.tsx"
     }
   ]
 }

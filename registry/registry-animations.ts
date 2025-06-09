@@ -2,6 +2,17 @@ import type { Registry } from "@/registry/schema"
 
 export const animations: Registry = [
   {
+    name: "animate-in",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "animations/animate-in.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "font-transform",
     type: "registry:component",
     registryDependencies: [],

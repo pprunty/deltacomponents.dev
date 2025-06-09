@@ -1,0 +1,81 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+# 33-delta-registry-sync.mdc
+description: Audits every component, infers **npm deps**, **internal deps**, **shadcn-core deps**, plus tags; then patches each `registry-{category}.tsx`.
+alwaysApply: false                # run with @refresh-registry
+globs:
+  - "registry/**/*.tsx"           # sources to inspect
+  - "registry/registry-*.ts"      # target registries
+---
+
+## Trigger phrase
+
+* “Refresh the registry files.”
+* “Audit dependencies for all components.”
+* “@refresh-registry”
+
+---
+
+## Analysis rules
+
+| Import pattern                                                             | Treat as…                  | Registry field                |
+|---------------------------------------------------------------------------|----------------------------|-------------------------------|
+| `from "@/components/ui/<name>"` or `"components/ui/<name>"`               | **shadcn core component**  | `registryDependencies` → `<name>` (kebab-case stem) |
+| `from "@/registry/<cat>/<file>"` or *relative path* that resolves inside `registry/` | **internal component**     | `registryDependencies` → `<file>` (kebab-case stem) |
+| `from "<package-name>"` (no `/registry/`, not path-relative)              | **npm dependency**         | `dependencies` → `<package-name>` |
+| `import type …`                                                           | same logic, strip `type`   | same as above                |
+
+*Deduplicate and sort each array alphabetically.*
+
+---
+
+## Tag heuristics
+
+1. Start with existing `tags`.
+2. Add split words from file name (`checkbox-input` → `checkbox`, `input`).
+3. Add category name (`inputs`, `media`, …).
+4. Keyword hints:  
+   * `framer-motion` → `animation`  
+   * `lucide-react`  → `icon`
+5. Lower-case, dedupe, sort.
+
+---
+
+## Patch logic
+
+* For each component found on disk:
+  * If missing in `registry-{category}.tsx`, **append** a new entry.
+  * Else **update** `dependencies`, `registryDependencies`, and `tags`.
+* Leave `devDependencies` untouched.
+* Preserve ordering/comments of other fields.
+
+---
+
+## Safeguards
+
+* Always include shadcn core component names (**button**, **checkbox**, …) in `registryDependencies`.
+* Remove any listed dependency that no longer appears in code.
+* Skip test/storybook files (`*.test.tsx`, `*.stories.tsx`, etc.).
+
+---
+
+## Workflow
+
+1. **Discover** categories by scanning `registry/*/`.
+2. **Parse** each `*.tsx` with the TypeScript compiler (`ts-morph` or `typescript` AST).
+3. **Generate** sorted arrays for `dependencies`, `registryDependencies`, `tags`.
+4. **Write** changes back to the relevant `registry-{category}.tsx`.
+5. **Open** the modified file(s) for review.
+6. **Reply** with:
+
+   > **Registry sync complete**  
+   > • Categories scanned: {{nCats}}  
+   > • Components updated: {{nFiles}}  
+   > • npm deps added: {{pkgList}}  
+   > • shadcn/core + internal links: {{depCount}}
+
+*(Do not paste full file contents into chat.)*

@@ -265,10 +265,23 @@ export function OtpInput({
     }
   }
 
+  // Handle paste event with dedicated handler
+  const handlePasteEvent = (
+    index: number,
+    e: React.ClipboardEvent<HTMLInputElement>
+  ) => {
+    e.preventDefault()
+    const pastedData = e.clipboardData.getData("text/plain")
+
+    if (pastedData) {
+      handlePaste(index, pastedData)
+    }
+  }
+
   // Handle paste event
   const handlePaste = (startIndex: number, pastedValue: string) => {
-    // Clean the pasted value based on input type
-    let cleanedValue = pastedValue.replace(/\s/g, "")
+    // Clean the pasted value - remove all whitespace and non-printable characters
+    let cleanedValue = pastedValue.replace(/\s/g, "").trim()
 
     // Filter characters based on input type
     if (inputType) {
@@ -287,42 +300,52 @@ export function OtpInput({
       return
     }
 
-    // Create a new OTP value array
-    const newOtpValue = [...otpValue]
+    // Create a new OTP value array - clear existing values first for better UX
+    const newOtpValue = Array(length).fill("")
 
-    // Fill in the OTP value with the pasted characters
-    for (
-      let i = 0;
-      i < Math.min(cleanedValue.length, length - startIndex);
-      i++
-    ) {
-      newOtpValue[startIndex + i] = cleanedValue[i]
+    // Fill in the OTP value with the pasted characters from the beginning
+    // This provides better UX when pasting a complete code
+    const charactersToFill = Math.min(cleanedValue.length, length)
+    for (let i = 0; i < charactersToFill; i++) {
+      newOtpValue[i] = cleanedValue[i]
     }
 
     setOtpValue(newOtpValue)
 
-    // Focus the next empty input or the last input
-    const nextEmptyIndex = newOtpValue.findIndex(
-      (v, i) => i >= startIndex && !v
-    )
-    if (nextEmptyIndex !== -1 && nextEmptyIndex < length) {
-      inputRefs.current[nextEmptyIndex]?.focus()
-    } else {
+    // Clear any previous error states since we're filling with new data
+    setErrorIndexes(new Set())
+
+    // Focus the appropriate input after pasting
+    if (charactersToFill === length) {
+      // If we filled all inputs, focus the last one
       inputRefs.current[length - 1]?.focus()
+    } else {
+      // Focus the next empty input
+      inputRefs.current[charactersToFill]?.focus()
     }
 
     // Call onChange with the new value
     const newValue = newOtpValue.join("")
     onChange?.(newValue)
 
-    // Validate if we have a schema
-    if (schema) {
-      validateOTP(newValue)
-    }
-
-    // Check if OTP is complete and trigger onComplete only once
-    if (newOtpValue.every((v) => v) && newOtpValue.length === length) {
+    // Check if OTP is complete and trigger onComplete
+    if (charactersToFill === length) {
       onComplete?.(newValue)
+
+      // Validate the complete OTP
+      if (schema) {
+        validateOTP(newValue)
+      }
+
+      // Auto-submit the form if enabled
+      if (autoSubmit && formRef.current) {
+        setTimeout(() => {
+          formRef.current?.requestSubmit()
+        }, 100)
+      }
+    } else if (schema) {
+      // Validate partial input if schema exists
+      validateOTP(newValue)
     }
   }
 
@@ -421,6 +444,7 @@ export function OtpInput({
                     value={mask && otpValue[index] ? maskChar : otpValue[index]}
                     onChange={(e) => handleChange(index, e)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
+                    onPaste={(e) => handlePasteEvent(index, e)}
                     onFocus={handleFocus}
                     disabled={pending || disabled}
                     aria-invalid={hasError}

@@ -1,0 +1,127 @@
+---
+title: Animate In
+description: A powerful animation component that animates children elements into view with customizable directions, timing, and intersection observer support.
+---
+
+<ComponentPreview name="animate-in-demo" />
+
+## Overview
+
+The AnimateIn component provides a production-ready solution for animating content into view with full control over timing, direction, and easing. Built on top of Framer Motion, it uses intersection observer to trigger animations when elements come into view, making it perfect for landing pages, feature sections, and any content that needs elegant entrance animations.
+
+The component supports multiple animation directions, custom easing functions, staggered children animations, and comprehensive timing controls. It's fully accessible and respects user motion preferences while providing smooth, hardware-accelerated animations.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/animate-in
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install framer-motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animate-in" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import AnimateIn from "@/registry/animations/animate-in"
+
+export function Component() {
+  return (
+    <AnimateIn direction="up" duration={0.8} overlayBlur>
+      <h1 className="text-4xl font-bold">Hello World</h1>
+      <p className="text-muted-foreground">
+        This content fades in from bottom with blur overlay
+      </p>
+    </AnimateIn>
+  )
+}
+```
+
+## API Reference
+
+<div className="overflow-x-auto">
+
+| Name                      | Type                                  | Description                                                            | Default     |
+| ------------------------- | ------------------------------------- | ---------------------------------------------------------------------- | ----------- |
+| `children`                | `React.ReactNode`                     | Content to animate                                                     | -           |
+| `direction`               | `"up" \| "down" \| "left" \| "right"` | Direction of the animation                                             | `"up"`      |
+| `distance`                | `number`                              | Distance in pixels the element travels during animation                | `50`        |
+| `duration`                | `number`                              | Duration of the animation in seconds                                   | `0.6`       |
+| `delay`                   | `number`                              | Delay before animation starts in seconds                               | `0`         |
+| `useIntersectionObserver` | `boolean`                             | Whether to use intersection observer for triggering animation          | `true`      |
+| `threshold`               | `number`                              | Intersection observer threshold (0-1)                                  | `0.1`       |
+| `once`                    | `boolean`                             | Whether to animate only once or every time it comes into view          | `true`      |
+| `easing`                  | `EasingFunction`                      | Easing function for the animation                                      | `"easeOut"` |
+| `initialOpacity`          | `number`                              | Initial opacity value                                                  | `0`         |
+| `finalOpacity`            | `number`                              | Final opacity value                                                    | `1`         |
+| `immediate`               | `boolean`                             | Whether to start animation immediately (ignores intersection observer) | `false`     |
+| `staggerChildren`         | `number`                              | Stagger delay for child elements in seconds                            | `0`         |
+| `disabled`                | `boolean`                             | Whether animation is disabled                                          | `false`     |
+| `overlayBlur`             | `boolean`                             | Whether to show a blur overlay effect during animation                 | `false`     |
+| `className`               | `string`                              | Additional CSS classes                                                 | -           |
+
+### Easing Functions
+
+| Value          | Description                  |
+| -------------- | ---------------------------- |
+| `"linear"`     | Linear progression           |
+| `"easeIn"`     | Slow start                   |
+| `"easeOut"`    | Slow end                     |
+| `"easeInOut"`  | Slow start and end           |
+| `"circIn"`     | Circular ease in             |
+| `"circOut"`    | Circular ease out            |
+| `"circInOut"`  | Circular ease in and out     |
+| `"backIn"`     | Back ease in                 |
+| `"backOut"`    | Back ease out with overshoot |
+| `"backInOut"`  | Back ease in and out         |
+| `"anticipate"` | Natural anticipation motion  |
+
+</div>
+
+## Examples
+
+### Hero Section
+
+Landing page style hero section with heading and subheading animations.
+
+<ComponentPreview name="animate-in-hero-demo" />
+
+### Staggered Animation
+
+Animate multiple children with staggered timing for a cascading effect.
+
+<ComponentPreview name="animate-in-stagger-demo" />
+
+### Directions
+
+Showcase content animating in from different directions.
+
+<ComponentPreview name="animate-in-directions-demo" />

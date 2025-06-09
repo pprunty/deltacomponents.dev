@@ -2,6 +2,36 @@ import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "social-icons-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/social-icons-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/animate-in-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "footer-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/footer-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "mouse-string-connection-demo",
     type: "registry:block",
     files: [
@@ -803,6 +833,72 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/otp-input-validation-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-hero-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-hero-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-stagger-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-stagger-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-directions-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-directions-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "radio-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    files: [
+      {
+        path: "examples/radio-input-pill-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "radio-input-icons-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    files: [
+      {
+        path: "examples/radio-input-icons-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "social-icons-monochrome-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/social-icons.json"],
+    files: [
+      {
+        path: "examples/social-icons-monochrome-demo.tsx",
         type: "registry:block",
       },
     ],

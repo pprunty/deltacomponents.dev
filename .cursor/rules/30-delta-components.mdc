@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: How the agent should scaffold a NEW REGISTRY COMPONENT
+alwaysApply: true
+---
+
+## TL;DR
+
+> **Human command**  
+> *“Create component CardTilt in inputs”*
+
+> **Agent action**  
+> 1. Make sure the name is **PascalCase** (`CardTilt`).  
+> 2. Make sure the category folder exists (`registry/inputs`). If it does not exist, the script should handle this case by creating folder but ask them before proceeding.
+> 3. Run **one** of:
+>    ```bash
+>    # Makefile alias (preferred – colours + var checks)
+>    make component name=CardTilt category=inputs
+>    # or the bare PNPM script
+>    pnpm create-component CardTilt inputs
+>    ```
+> 4. Afterwards, update `config/docs.ts` → sidebarNav to include the item in appropriate category.  
+> 5. If the command fails, surface stderr verbatim.
+> 6. After the new component is created, run the `make registry` command to sync up with the registry.
+> 7. Ensure the component and demo components created are `export default function` components.
+
+### Reference
+
+- Script: `scripts/create-component.js`  
+- Default `type`: `registry:component` (override via third arg).  
+- Converts names:
+> • *kebab* → `toPascalCase` for the exported symbol  
+> • Generates matching MDX docs, registry files, etc.
+
+### House rules
+
+1. **NEVER** touch `/registry/__generated__` – that’s the build output.  
+2. If the component already exists, *exit early* with the friendly message from the script.  
+3. Follow the **Contentlayer front-matter** template baked into the script: keep `title`, `description`, no extra fields.  

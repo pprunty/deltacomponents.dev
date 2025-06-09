@@ -44,6 +44,10 @@ export const docsConfig: DocsConfig = {
       title: "Animations",
       href: "/docs/animations/scramble-text",
     },
+    {
+      title: "Layout",
+      href: "/docs/layout/footer",
+    },
   ],
   sidebarNav: [
     {
@@ -108,6 +112,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Scroll Progress",
           href: "/docs/components/scroll-progress",
+          items: [],
+        },
+        {
+          title: "Social Icons",
+          href: "/docs/components/social-icons",
           items: [],
         },
         {
@@ -251,6 +260,23 @@ export const docsConfig: DocsConfig = {
           href: "/docs/animations/font-transform",
           label: "New",
           items: [],
+        },
+        {
+          title: "Animate In",
+          href: "/docs/animations/animate-in",
+          label: "New",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Layout",
+      items: [
+        {
+          title: "Footer (Simple)",
+          href: "/docs/layout/footer",
+          items: [],
+          label: "New",
         },
       ],
     },

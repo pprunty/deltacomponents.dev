@@ -228,6 +228,53 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "social-icons-demo": {
+    name: "social-icons-demo",
+    type: "registry:block",
+    registryDependencies: ["social-icons"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/social-icons-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/social-icons-demo")
+    ),
+    source: "",
+  },
+  "animate-in-demo": {
+    name: "animate-in-demo",
+    type: "registry:block",
+    registryDependencies: ["animate-in"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/animate-in-demo")),
+    source: "",
+  },
+  "footer-demo": {
+    name: "footer-demo",
+    type: "registry:block",
+    registryDependencies: ["footer"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/footer-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/footer-demo")),
+    source: "",
+  },
   "mouse-string-connection-demo": {
     name: "mouse-string-connection-demo",
     type: "registry:block",
@@ -1446,6 +1493,123 @@ export const Index: Record<string, any> = {
     ),
     source: "",
   },
+  "animate-in-hero-demo": {
+    name: "animate-in-hero-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-hero-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-hero-demo")
+    ),
+    source: "",
+  },
+  "animate-in-stagger-demo": {
+    name: "animate-in-stagger-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-stagger-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-stagger-demo")
+    ),
+    source: "",
+  },
+  "animate-in-directions-demo": {
+    name: "animate-in-directions-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-directions-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-directions-demo")
+    ),
+    source: "",
+  },
+  "radio-input-pill-demo": {
+    name: "radio-input-pill-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/radio-input-pill-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/radio-input-pill-demo")
+    ),
+    source: "",
+  },
+  "radio-input-icons-demo": {
+    name: "radio-input-icons-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/radio-input-icons-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/radio-input-icons-demo")
+    ),
+    source: "",
+  },
+  "social-icons-monochrome-demo": {
+    name: "social-icons-monochrome-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/social-icons.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/social-icons-monochrome-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/social-icons-monochrome-demo")
+    ),
+    source: "",
+  },
+  "animate-in": {
+    name: "animate-in",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/animations/animate-in.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/animations/animate-in")),
+    source: "",
+  },
   "font-transform": {
     name: "font-transform",
     type: "registry:component",
@@ -1504,6 +1668,21 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
+    source: "",
+  },
+  "social-icons": {
+    name: "social-icons",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/components/social-icons.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/components/social-icons")),
     source: "",
   },
   "pricing-cards": {
@@ -1842,6 +2021,21 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/media/code-block")),
+    source: "",
+  },
+  footer: {
+    name: "footer",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/layout/footer.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/layout/footer")),
     source: "",
   },
 }

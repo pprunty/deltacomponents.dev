@@ -1,0 +1,83 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+# 32-delta-docs-update.mdc
+description: How the agent should **update & finalise MDX docs** once you’ve finished tweaking a component.
+alwaysApply: true               
+globs:
+  - "content/docs/**/*.mdx"
+---
+
+## Trigger phrase
+
+Use this rule when the human says something like:
+
+* “Update the docs for **CardTilt**.”
+* “Finish the API table for that component doc.”
+* “Add the new examples to the MDX.”
+
+---
+
+## Required structure the agent must enforce
+
+Every component doc **must** contain, in this exact order:
+
+1. **Front-matter**  
+   ```yaml
+   ---
+   title: {{PascalName}}
+   description: {{clear, complete sentence without TODOs}}
+   ---
+   ```
+
+2. `<ComponentPreview name="{{filename}}-demo" />`
+
+3. `## Overview` – one or two paragraphs, *no* TODOs left.
+
+4. `## Installation` – Tabs layout exactly as in the Embed & Modal examples:
+   * CLI snippet:  
+     ```bash
+     npx shadcn@latest add https://deltacomponents.dev/r/{{filename}}
+     ```
+   * Manual section with `<Steps>` and `<ComponentSource name="{{filename}}" />`
+
+5. `## Usage` – runnable TSX snippet that imports from  
+   `@/registry/{{category}}/{{filename}}`.
+
+6. `## API Reference`
+   * A markdown table wrapped in  
+     `<div className="overflow-x-auto"> … </div>`
+   * One row per prop; *never* leave placeholders.
+
+7. `## Examples`  
+   * At least one `<ComponentPreview>` per demo file that exists.  
+   * Sub-headings (`### Fancy Variant`) match demo filenames where possible.
+
+---
+
+## Editing rules
+
+* **Preserve** any custom Admonitions or additional sections already present.
+* Strip **all** `TODO:` lines; ask the human for missing info instead of guessing.
+* Do **not** change file paths or front-matter keys.
+* If you’re unsure of precise prop types, **ask** rather than inventing them.
+
+---
+
+## Workflow the agent should follow
+
+1. **Locate** the MDX file: `content/docs/{{category}}/{{filename}}.mdx`.
+2. **Load** the component source (`registry/{{category}}/{{filename}}.tsx`) to mine prop names and defaults.
+3. **Patch** the MDX in place:
+   * Fill in Overview, Usage, API table, Examples.
+   * Remove leftover placeholders.
+4. **Open** the updated MDX in the editor so the developer can review.
+5. **Respond** with a succinct summary, e.g.:
+
+   > Docs for **CardTilt** updated (Overview, prop table, added 2 new demos).  
+   > Let me know if you’d like further tweaks!
+
+*(Never include the entire doc content in chat—that’s what the editor tab is for.)*

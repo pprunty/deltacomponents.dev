@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animate-in-hero-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"],
+  "files": [
+    {
+      "path": "registry/examples/animate-in-hero-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\";\nimport AnimateIn from \"@/registry/animations/animate-in\";\n\nexport default function AnimateInHeroDemo() {\n  return (\n    <div className=\"text-center space-y-8 py-16\">\n      <AnimateIn \n        direction=\"up\" \n        duration={1.0} \n        delay={0.2} \n        overlayBlur\n      >\n        <h1 className=\"text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent\">\n          Welcome to the Future\n        </h1>\n      </AnimateIn>\n      \n      <AnimateIn \n        direction=\"up\" \n        duration={1.0} \n        delay={0.8} \n        overlayBlur\n      >\n        <p className=\"text-xl text-muted-foreground max-w-2xl mx-auto\">\n          Experience seamless animations that bring your content to life with elegant motion design\n        </p>\n      </AnimateIn>\n      \n      <AnimateIn \n        direction=\"up\" \n        duration={0.8} \n        delay={1.4} \n        distance={30}\n      >\n        <div className=\"flex gap-4 justify-center\">\n          <button className=\"px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors\">\n            Get Started\n          </button>\n          <button className=\"px-6 py-3 border border-border rounded-lg hover:bg-muted transition-colors\">\n            Learn More\n          </button>\n        </div>\n      </AnimateIn>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/animate-in-hero-demo.tsx"
+    }
+  ]
+}

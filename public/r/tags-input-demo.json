@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tags-input-demo",
   "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
   "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"],
   "files": [
     {
       "path": "registry/examples/tags-input-demo.tsx",
       "content": "\"use client\"\n\nimport { TagsInput } from \"@/registry/inputs/tags-input\"\n\nexport default function TagsInputDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <TagsInput\n        label=\"Tags\"\n        name=\"tags\"\n        placeholder=\"Add tags...\"\n        description=\"Add tags by pressing enter\"\n        hint=\"Press backspace to remove the last tag\"\n      />\n    </div>\n  )\n}\n",
-      "type": "registry:block"
+      "type": "registry:block",
+      "target": "/components/delta/examples/tags-input-demo.tsx"
     }
   ]
 }

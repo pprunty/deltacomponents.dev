@@ -1,0 +1,31 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: How the agent should scaffold a NEW DEMO FOR AN EXISTING COMPONENT
+alwaysApply: true
+---
+
+## TL;DR
+
+> **Human command**  
+> *“Create a spotify demo for tabs”*
+
+> **Agent action**  
+> 1. Resolve real component filename (`tabs.tsx`) and category (auto-detect).  
+> 2. Run:
+>    ```bash
+>    make demo component=tabs name=spotify
+>    # alias for:
+>    pnpm create-demo tabs spotify
+>    ```
+> 3. Script adds `<ComponentPreview>` to the MDX docs – ask me to curate the copy.  
+> 4. If it’s a special-case dependency (e.g. `"tabs-spotify"` → needs `"x-scrollable"`) the script does it—no manual tweaks.
+
+### House rules
+
+1. Demos live in `registry/examples/*-demo.tsx` and must end `-demo`.  
+2. After generation, run `pnpm build-registry` (or `make registry`).
+3. If the base component can’t be found, surface the script’s error and **do not** fall back to guesswork.

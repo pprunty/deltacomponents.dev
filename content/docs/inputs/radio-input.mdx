@@ -51,13 +51,30 @@ npm install zod
 ```tsx
 "use client"
 
+import { Building, Globe, Users } from "lucide-react"
+
 import { RadioInput } from "@/registry/inputs/radio-input"
 
 export function Component() {
   const options = [
-    { value: "small", label: "Small", description: "Perfect for individuals" },
-    { value: "medium", label: "Medium", description: "Great for small teams" },
-    { value: "large", label: "Large", description: "Ideal for organizations" },
+    {
+      value: "small",
+      label: "Small",
+      description: "Perfect for individuals",
+      icon: <Users className="w-4 h-4" />,
+    },
+    {
+      value: "medium",
+      label: "Medium",
+      description: "Great for small teams",
+      icon: <Building className="w-4 h-4" />,
+    },
+    {
+      value: "large",
+      label: "Large",
+      description: "Ideal for organizations",
+      icon: <Globe className="w-4 h-4" />,
+    },
   ]
 
   return (
@@ -92,6 +109,7 @@ export function Component() {
 | `disabled`            | `boolean`                                                   | `false`      | Whether the radio group is disabled                    |
 | `id`                  | `string`                                                    | `name`       | ID for the radio group                                 |
 | `orientation`         | `"vertical" \| "horizontal"`                                | `"vertical"` | Layout orientation                                     |
+| `variant`             | `"default" \| "pill"`                                       | `"default"`  | Radio input styling variant                            |
 | `labelVariant`        | `"default" \| "muted"`                                      | `"default"`  | Label text styling variant                             |
 | `containerClassName`  | `string`                                                    | `""`         | CSS classes for the container                          |
 | `radioGroupClassName` | `string`                                                    | `""`         | CSS classes for the radio group                        |
@@ -111,13 +129,20 @@ interface RadioOption {
   label: string
   description?: string
   disabled?: boolean
+  icon?: React.ReactNode
 }
 ```
 
 ## Examples
 
-### Basic Radio Input
+### Pill Variant
 
-Single-choice selection with rich option descriptions for notification preferences.
+Modern pill-style radio input with colored border and enhanced visual design for plan selection.
 
-<ComponentPreview name="radio-input-demo" />
+<ComponentPreview name="radio-input-pill-demo" />
+
+### With Icons
+
+Radio input options enhanced with SVG icons or images positioned on the right side, perfect for payment methods, features, or visual categorization.
+
+<ComponentPreview name="radio-input-icons-demo" />

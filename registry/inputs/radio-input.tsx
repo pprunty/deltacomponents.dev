@@ -11,6 +11,7 @@ export interface RadioOption {
   label: string
   description?: string
   disabled?: boolean
+  icon?: React.ReactNode
 }
 
 export interface RadioInputProps {
@@ -42,6 +43,8 @@ export interface RadioInputProps {
   labelClassName?: string
   /** Label variant - 'default' or 'muted' */
   labelVariant?: "default" | "muted"
+  /** Radio input variant - 'default' or 'pill' */
+  variant?: "default" | "pill"
   /** Layout orientation - 'vertical' or 'horizontal' */
   orientation?: "vertical" | "horizontal"
   /** Zod schema for validation (optional - can be handled at the form level) */
@@ -74,6 +77,7 @@ export function RadioInput({
   radioItemClassName,
   labelClassName,
   labelVariant = "default",
+  variant = "default",
   orientation = "vertical",
   schema,
   onValidate,
@@ -82,6 +86,9 @@ export function RadioInput({
   disabled = false,
 }: RadioInputProps) {
   const [localError, setLocalError] = React.useState<string | undefined>(error)
+  const [currentValue, setCurrentValue] = React.useState<string | undefined>(
+    value || defaultValue
+  )
   const hasError = !!localError || !!error
   const errorId = `error-${id}`
 
@@ -89,6 +96,11 @@ export function RadioInput({
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
+
+  // Update current value when controlled value changes
+  React.useEffect(() => {
+    setCurrentValue(value || defaultValue)
+  }, [value, defaultValue])
 
   // Handle validation with the provided schema
   const validateRadio = React.useCallback(
@@ -111,6 +123,9 @@ export function RadioInput({
 
   // Handle selection change
   const handleValueChange = (newValue: string) => {
+    // Update current value for proper state tracking
+    setCurrentValue(newValue)
+
     // If we have a schema, validate on change
     if (schema) {
       validateRadio(newValue)
@@ -128,7 +143,7 @@ export function RadioInput({
       <label
         id={`${id}-label`}
         className={cn(
-          "text-sm mb-2 font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+          "text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
           labelVariant === "muted" && "text-muted-foreground",
           labelClassName
         )}
@@ -143,12 +158,13 @@ export function RadioInput({
 
       <RadioGroup
         defaultValue={defaultValue}
-        value={value}
+        value={value || currentValue}
         onValueChange={handleValueChange}
         disabled={pending || disabled}
         className={cn(
+          // Orientation styling
           orientation === "horizontal"
-            ? "flex items-center space-x-4"
+            ? "flex items-center gap-4"
             : "space-y-3",
           radioGroupClassName
         )}
@@ -157,21 +173,51 @@ export function RadioInput({
         aria-errormessage={hasError ? errorId : undefined}
         aria-required={required}
       >
-        {options.map((option) => (
-          <div key={option.value} className="flex items-start space-x-2">
+        {options.map((option, index) => (
+          <div
+            key={option.value}
+            className={cn(
+              "flex items-start gap-3 p-4 rounded-md transition-all duration-200 cursor-pointer group",
+
+              // Default variant styling
+              variant === "default" && [
+                "bg-background border border-border",
+                // Selected state for default variant
+                `data-[state=checked]:border-primary data-[state=checked]:ring-2 data-[state=checked]:ring-primary/20`,
+              ],
+
+              // Pill variant styling - consistent border width to prevent layout shift
+              variant === "pill" && [
+                "bg-muted rounded-lg border-2 border-transparent",
+                "hover:bg-muted/80",
+                // Selected state for pill variant - shows accent border like text-input
+                `data-[state=checked]:border-primary data-[state=checked]:bg-primary/5`,
+              ],
+
+              // Error styling
+              "group-data-[invalid=true]/field:border-destructive data-[state=checked]:group-data-[invalid=true]/field:border-destructive"
+            )}
+            data-state={currentValue === option.value ? "checked" : "unchecked"}
+            onClick={() => {
+              if (!option.disabled && !pending && !disabled) {
+                handleValueChange(option.value)
+              }
+            }}
+          >
             <RadioGroupItem
               value={option.value}
               id={`${id}-${option.value}`}
               disabled={option.disabled || pending || disabled}
               className={cn(
-                "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+                "mt-0.5 data-[state=checked]:border-primary data-[state=checked]:text-primary focus-visible:ring-primary",
+                "group-data-[invalid=true]/field:border-destructive data-[state=checked]:group-data-[invalid=true]/field:border-destructive",
                 radioItemClassName
               )}
             />
-            <div className="grid gap-1 leading-none">
+            <div className="grid gap-1 leading-none flex-1">
               <label
                 htmlFor={`${id}-${option.value}`}
-                className="text-xs font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
               >
                 {option.label}
               </label>
@@ -181,6 +227,11 @@ export function RadioInput({
                 </p>
               )}
             </div>
+            {option.icon && (
+              <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-muted-foreground">
+                {option.icon}
+              </div>
+            )}
           </div>
         ))}
       </RadioGroup>
@@ -192,7 +243,7 @@ export function RadioInput({
       )}
 
       {/* Hidden input for form submission */}
-      <input type="hidden" name={name} value={value || defaultValue || ""} />
+      <input type="hidden" name={name} value={currentValue || ""} />
     </div>
   )
 }

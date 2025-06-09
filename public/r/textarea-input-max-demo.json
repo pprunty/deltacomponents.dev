@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea-input-max-demo",
   "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
   "registryDependencies": ["https://deltacomponents.dev/r/textarea-input.json"],
   "files": [
     {
       "path": "registry/examples/textarea-input-max-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { TextareaInput } from \"@/registry/inputs/textarea-input\"\n\nexport default function TextareaInputMaxDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <TextareaInput\n        label=\"Description\"\n        name=\"maxTextarea\"\n        size=\"lg\"\n        placeholder=\"Enter a detailed description...\"\n        maxLength={500}\n        hint=\"Maximum 500 characters allowed\"\n        rows={6}\n        defaultValue=\"This is a comprehensive product description that demonstrates the maximum character limit functionality. The textarea will show a character counter that updates in real-time as you type, helping users stay within the specified limit. This feature is particularly useful for forms where you need to enforce content length restrictions, such as product descriptions, reviews, comments, or social media posts. The character count displays both current and maximum characters for clear user guidance.\"\n      />\n    </div>\n  )\n}\n",
-      "type": "registry:block"
+      "type": "registry:block",
+      "target": "/components/delta/examples/textarea-input-max-demo.tsx"
     }
   ]
 }

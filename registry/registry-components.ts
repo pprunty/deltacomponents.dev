@@ -2,6 +2,17 @@ import type { Registry } from "@/registry/schema"
 
 export const components: Registry = [
   {
+    name: "social-icons",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/social-icons.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "pricing-cards",
     type: "registry:component",
     registryDependencies: [],
