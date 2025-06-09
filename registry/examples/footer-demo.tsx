@@ -68,11 +68,10 @@ export default function FooterDemo() {
 
       {/* Footer Demo */}
       <Footer
-        brandName="Delta Components"
-        brandHref="/"
         sections={customSections}
         socialLinks={socialLinks}
-        copyright="© 2024 Delta Components. Crafted with care."
+        brandName="Delta Components"
+        brandHref="/"
       />
     </div>
   )

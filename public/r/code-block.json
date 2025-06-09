@@ -9,7 +9,9 @@
     "@phosphor-icons/react",
     "lucide-react"
   ],
-  "registryDependencies": ["button"],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "registry/media/code-block.tsx",

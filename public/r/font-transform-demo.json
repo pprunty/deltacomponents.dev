@@ -3,7 +3,9 @@
   "name": "font-transform-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/font-transform.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/font-transform.json"
+  ],
   "files": [
     {
       "path": "registry/examples/font-transform-demo.tsx",

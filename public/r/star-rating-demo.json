@@ -3,7 +3,9 @@
   "name": "star-rating-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/star-rating.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/star-rating.json"
+  ],
   "files": [
     {
       "path": "registry/examples/star-rating-demo.tsx",

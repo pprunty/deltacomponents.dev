@@ -3,7 +3,9 @@
   "name": "pricing-cards-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/pricing-cards.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/pricing-cards.json"
+  ],
   "files": [
     {
       "path": "registry/examples/pricing-cards-demo.tsx",

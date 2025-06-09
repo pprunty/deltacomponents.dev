@@ -3,7 +3,9 @@
   "name": "scroll-progress",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["framer-motion"],
+  "dependencies": [
+    "framer-motion"
+  ],
   "files": [
     {
       "path": "registry/components/scroll-progress.tsx",

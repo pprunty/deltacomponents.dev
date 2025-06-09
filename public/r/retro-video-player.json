@@ -3,7 +3,10 @@
   "name": "retro-video-player",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["react-rnd", "@phosphor-icons/react"],
+  "dependencies": [
+    "react-rnd",
+    "@phosphor-icons/react"
+  ],
   "files": [
     {
       "path": "registry/media/retro-video-player.tsx",

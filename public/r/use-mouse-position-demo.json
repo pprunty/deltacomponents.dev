@@ -3,7 +3,9 @@
   "name": "use-mouse-position-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["use-mouse-position"],
+  "registryDependencies": [
+    "use-mouse-position"
+  ],
   "files": [
     {
       "path": "registry/examples/use-mouse-position-demo.tsx",

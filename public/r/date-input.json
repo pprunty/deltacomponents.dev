@@ -3,7 +3,10 @@
   "name": "date-input",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["zod", "date-fns"],
+  "dependencies": [
+    "zod",
+    "date-fns"
+  ],
   "files": [
     {
       "path": "registry/inputs/date-input.tsx",
