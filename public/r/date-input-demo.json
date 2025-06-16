@@ -3,9 +3,7 @@
   "name": "date-input-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/date-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/date-input.json"],
   "files": [
     {
       "path": "registry/examples/date-input-demo.tsx",

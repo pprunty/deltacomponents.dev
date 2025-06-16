@@ -98,6 +98,7 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/embed",
           items: [],
         },
+
         {
           title: "Modal",
           href: "/docs/components/modal",
@@ -277,6 +278,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/layout/footer",
           items: [],
           label: "New",
+        },
+        {
+          title: "Header (Sleek)",
+          href: "/docs/layout/header-sleek",
+          items: [],
         },
       ],
     },

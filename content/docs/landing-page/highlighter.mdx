@@ -11,6 +11,12 @@ links:
 
 The Highlighter component adds eye-catching highlight styles to text, making it perfect for landing pages, marketing content, and call-to-action elements. It supports multiple styles, colors, and thicknesses with dark mode support.
 
+<Admonition type="info" title="Text Prop Required" className="my-2 py-4">
+  The component requires the `text` prop instead of children to ensure proper
+  highlight overlay positioning. Using children would cause the highlight to
+  render behind the text content.
+</Admonition>
+
 ## Installation
 
 <Tabs defaultValue="cli">
@@ -56,8 +62,8 @@ import { Highlighter } from "@/registry/landing-page/highlighter"
 export function Component() {
   return (
     <h1 className="text-3xl font-bold">
-      Make your landing page <Highlighter>stand out</Highlighter> with
-      highlighted text.
+      Make your landing page <Highlighter text="stand out" /> with highlighted
+      text.
     </h1>
   )
 }
@@ -66,19 +72,19 @@ export function Component() {
 ### Variants
 
 ```tsx
-<h2>Default style: <Highlighter>Default</Highlighter></h2>
-<h2>Success style: <Highlighter variant="success">Success</Highlighter></h2>
-<h2>Info style: <Highlighter variant="info">Info</Highlighter></h2>
-<h2>Warning style: <Highlighter variant="warning">Warning</Highlighter></h2>
-<h2>Destructive style: <Highlighter variant="destructive">Destructive</Highlighter></h2>
+<h2>Default style: <Highlighter text="Default" /></h2>
+<h2>Success style: <Highlighter text="Success" variant="success" /></h2>
+<h2>Info style: <Highlighter text="Info" variant="info" /></h2>
+<h2>Warning style: <Highlighter text="Warning" variant="warning" /></h2>
+<h2>Destructive style: <Highlighter text="Destructive" variant="destructive" /></h2>
 ```
 
 ### Thickness
 
 ```tsx
-<p>Thin highlight: <Highlighter thickness="thin">Thin</Highlighter></p>
-<p>Default highlight: <Highlighter>Default</Highlighter></p>
-<p>Thick highlight: <Highlighter thickness="thick">Thick</Highlighter></p>
+<p>Thin highlight: <Highlighter text="Thin" thickness="thin" /></p>
+<p>Default highlight: <Highlighter text="Default" /></p>
+<p>Thick highlight: <Highlighter text="Thick" thickness="thick" /></p>
 ```
 
 ### Custom Colors
@@ -86,11 +92,10 @@ export function Component() {
 ```tsx
 <p>
   <Highlighter
+    text="Custom color highlight"
     shadowColor="rgba(59, 130, 246, 0.5)"
     darkShadowColor="rgba(59, 130, 246, 0.4)"
-  >
-    Custom color highlight
-  </Highlighter>
+  />
 </p>
 ```
 
@@ -108,7 +113,7 @@ export function Component() {
 | `darkShadowColor` | `string`                                                         | `undefined` | Custom highlight color for dark mode       |
 | `animate`         | `boolean`                                                        | `false`     | Whether to animate the highlight on scroll |
 | `asChild`         | `boolean`                                                        | `false`     | Whether to merge props onto child element  |
-| `text`            | `string`                                                         | `undefined` | Text content (alternative to children)     |
+| `text`            | `string`                                                         | -           | Text content to highlight (required)       |
 | `className`       | `string`                                                         | `""`        | Additional CSS classes                     |
 
 </div>

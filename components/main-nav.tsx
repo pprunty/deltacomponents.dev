@@ -25,8 +25,9 @@ export function MainNav() {
       <nav className="flex items-center space-x-6">
         <Link
           href="/docs/introduction"
+          data-text="Docs"
           className={cn(
-            "text-sm transition-colors hover:text-primary",
+            "text-sm transition-colors hover:text-primary inline-flex font-normal border-box after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname.startsWith("/docs") && pathname !== "/docs/components"
               ? "text-primary font-medium"
               : "text-muted-foreground"
@@ -36,8 +37,9 @@ export function MainNav() {
         </Link>
         <Link
           href="/docs/components"
+          data-text="Showcase"
           className={cn(
-            "text-sm transition-colors hover:text-primary",
+            "text-sm transition-colors hover:text-primary inline-flex font-normal border-box after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname === "/docs/components"
               ? "text-primary font-medium"
               : "text-muted-foreground"

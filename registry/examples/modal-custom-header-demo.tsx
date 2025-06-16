@@ -16,7 +16,7 @@ export default function ModalCustomHeaderDemo() {
         {/* Basic Header Modal */}
         <div className="flex flex-col items-center gap-3">
           <h3 className="text-sm font-medium text-center">Basic Header</h3>
-          <Button onClick={() => setIsBasicOpen(true)} className="w-full">
+          <Button onClick={() => setIsBasicOpen(true)} className="w-40">
             Open Modal
           </Button>
           <p className="text-xs text-muted-foreground text-center">
@@ -27,7 +27,7 @@ export default function ModalCustomHeaderDemo() {
         {/* Custom Header Modal */}
         <div className="flex flex-col items-center gap-3">
           <h3 className="text-sm font-medium text-center">Custom Header</h3>
-          <Button onClick={() => setIsCustomOpen(true)} className="w-full">
+          <Button onClick={() => setIsCustomOpen(true)} className="w-40">
             Open Modal
           </Button>
           <p className="text-xs text-muted-foreground text-center">

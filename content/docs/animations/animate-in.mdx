@@ -69,24 +69,24 @@ export function Component() {
 
 <div className="overflow-x-auto">
 
-| Name                      | Type                                  | Description                                                            | Default     |
-| ------------------------- | ------------------------------------- | ---------------------------------------------------------------------- | ----------- |
-| `children`                | `React.ReactNode`                     | Content to animate                                                     | -           |
-| `direction`               | `"up" \| "down" \| "left" \| "right"` | Direction of the animation                                             | `"up"`      |
-| `distance`                | `number`                              | Distance in pixels the element travels during animation                | `50`        |
-| `duration`                | `number`                              | Duration of the animation in seconds                                   | `0.6`       |
-| `delay`                   | `number`                              | Delay before animation starts in seconds                               | `0`         |
-| `useIntersectionObserver` | `boolean`                             | Whether to use intersection observer for triggering animation          | `true`      |
-| `threshold`               | `number`                              | Intersection observer threshold (0-1)                                  | `0.1`       |
-| `once`                    | `boolean`                             | Whether to animate only once or every time it comes into view          | `true`      |
-| `easing`                  | `EasingFunction`                      | Easing function for the animation                                      | `"easeOut"` |
-| `initialOpacity`          | `number`                              | Initial opacity value                                                  | `0`         |
-| `finalOpacity`            | `number`                              | Final opacity value                                                    | `1`         |
-| `immediate`               | `boolean`                             | Whether to start animation immediately (ignores intersection observer) | `false`     |
-| `staggerChildren`         | `number`                              | Stagger delay for child elements in seconds                            | `0`         |
-| `disabled`                | `boolean`                             | Whether animation is disabled                                          | `false`     |
-| `overlayBlur`             | `boolean`                             | Whether to show a blur overlay effect during animation                 | `false`     |
-| `className`               | `string`                              | Additional CSS classes                                                 | -           |
+| Name                      | Type                                             | Description                                                            | Default     |
+| ------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------- | ----------- |
+| `children`                | `React.ReactNode`                                | Content to animate                                                     | -           |
+| `direction`               | `"up" \| "down" \| "left" \| "right" \| "scale"` | Direction of the animation                                             | `"up"`      |
+| `distance`                | `number`                                         | Distance in pixels the element travels during animation                | `50`        |
+| `duration`                | `number`                                         | Duration of the animation in seconds                                   | `0.6`       |
+| `delay`                   | `number`                                         | Delay before animation starts in seconds                               | `0`         |
+| `useIntersectionObserver` | `boolean`                                        | Whether to use intersection observer for triggering animation          | `true`      |
+| `threshold`               | `number`                                         | Intersection observer threshold (0-1)                                  | `0.1`       |
+| `once`                    | `boolean`                                        | Whether to animate only once or every time it comes into view          | `true`      |
+| `easing`                  | `EasingFunction`                                 | Easing function for the animation                                      | `"easeOut"` |
+| `initialOpacity`          | `number`                                         | Initial opacity value                                                  | `0`         |
+| `finalOpacity`            | `number`                                         | Final opacity value                                                    | `1`         |
+| `immediate`               | `boolean`                                        | Whether to start animation immediately (ignores intersection observer) | `false`     |
+| `staggerChildren`         | `number`                                         | Stagger delay for child elements in seconds                            | `0`         |
+| `disabled`                | `boolean`                                        | Whether animation is disabled                                          | `false`     |
+| `overlayBlur`             | `boolean`                                        | Whether to show a blur overlay effect during animation                 | `false`     |
+| `className`               | `string`                                         | Additional CSS classes                                                 | -           |
 
 ### Easing Functions
 
@@ -125,3 +125,9 @@ Animate multiple children with staggered timing for a cascading effect.
 Showcase content animating in from different directions.
 
 <ComponentPreview name="animate-in-directions-demo" />
+
+### Scale Animation
+
+Spring-powered scale animations that grow elements into view with natural bounce physics.
+
+<ComponentPreview name="animate-in-scale-demo" />

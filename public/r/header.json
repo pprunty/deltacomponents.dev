@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "header",
+  "type": "registry:component",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "files": [
+    {
+      "path": "registry/layout/header.tsx",
+      "type": "registry:component",
+      "target": "/components/delta/layout/header.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {\n  // Add your props here\n}\n\nexport function Header({\n  className,\n  ...props\n}: HeaderProps) {\n  return (\n    <div\n      className={cn(\"\", className)}\n      {...props}\n    />\n  )\n}\n"
+    }
+  ]
+}

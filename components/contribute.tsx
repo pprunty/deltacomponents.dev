@@ -52,7 +52,7 @@ export function Contribute({ slug }: ContributeProps) {
 
   return (
     <div className="space-y-2">
-      <p className="font-medium">Contribute</p>
+      <p className="font-medium text-sm md:text-[15px]">Contribute</p>
       <ul className="m-0 list-none">
         {contributeLinks.map((link, index) => (
           <li key={index} className="mt-0 pt-2">
@@ -60,7 +60,7 @@ export function Contribute({ slug }: ContributeProps) {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center text-sm md:text-[15px] text-muted-foreground transition-colors hover:text-foreground"
             >
               <link.icon className="mr-2 size-4" />
               {link.text}

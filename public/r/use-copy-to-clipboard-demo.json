@@ -3,9 +3,7 @@
   "name": "use-copy-to-clipboard-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "use-copy-to-clipboard"
-  ],
+  "registryDependencies": ["use-copy-to-clipboard"],
   "files": [
     {
       "path": "registry/examples/use-copy-to-clipboard-demo.tsx",

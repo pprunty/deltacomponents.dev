@@ -40,6 +40,8 @@ export interface TextareaInputProps
   schema?: z.ZodType<string>
   /** Callback when validation occurs */
   onValidate?: (isValid: boolean, value: string, error?: string) => void
+  /** Whether to show active character count (e.g., "432/500") */
+  showActiveCount?: boolean
 }
 
 /**
@@ -62,6 +64,7 @@ export function TextareaInput({
   size = "md",
   schema,
   onValidate,
+  showActiveCount = false,
   className,
   id = name,
   value,
@@ -157,6 +160,9 @@ export function TextareaInput({
       const remaining = maxLength - currentValue.length
       if (remaining <= 0) {
         return `Maximum ${maxLength} characters reached`
+      }
+      if (showActiveCount) {
+        return `${currentValue.length}/${maxLength} characters`
       }
       return (
         hint ||

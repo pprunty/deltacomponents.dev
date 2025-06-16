@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "embed-blocked-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/embed.json"],
+  "files": [
+    {
+      "path": "registry/examples/embed-blocked-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { Embed } from \"@/registry/components/embed\"\n\nexport default function EmbedBlockedDemo() {\n  return (\n    <div className=\"flex flex-col w-full py-8\">\n      <Embed src=\"https://google.com\" title=\"Google Homepage\" height={400} />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/embed-blocked-demo.tsx"
+    }
+  ]
+}

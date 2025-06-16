@@ -29,13 +29,14 @@ export function DocsNav({ config }: { config: DocsConfig }) {
     <div className="flex flex-col gap-6">
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
+          <h4 className="rounded-md px-2 py-1 text-sm md:text-[15px] font-medium">
             {item.title}
-            {categoryCounts[index] > 0 && (
-              <span className="align-super text-xs text-muted-foreground ml-1">
-                ({categoryCounts[index]})
-              </span>
-            )}
+            {categoryCounts[index] > 0 &&
+              item.title.toLowerCase() !== "getting started" && (
+                <span className="align-super text-xs text-muted-foreground ml-1">
+                  ({categoryCounts[index]})
+                </span>
+              )}
           </h4>
           {item?.items?.length && (
             <DocsNavItems
@@ -75,7 +76,7 @@ function DocsNavItems({
   }
 
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm">
+    <div className="grid grid-flow-row auto-rows-max gap-0.5 text-sm md:text-[15px]">
       {items
         .filter((item) => !item.hide)
         .map((item, index) =>

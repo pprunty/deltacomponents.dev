@@ -17,7 +17,7 @@ export default function ModalNoOverlayCloseDemo() {
           <h3 className="text-sm font-medium text-center">
             Easy Close Enabled
           </h3>
-          <Button onClick={() => setIsEasyCloseOpen(true)} className="w-full">
+          <Button onClick={() => setIsEasyCloseOpen(true)} className="w-40">
             Open Modal
           </Button>
           <p className="text-xs text-muted-foreground text-center">
@@ -30,7 +30,7 @@ export default function ModalNoOverlayCloseDemo() {
           <h3 className="text-sm font-medium text-center">
             Easy Close Disabled
           </h3>
-          <Button onClick={() => setIsNoEasyCloseOpen(true)} className="w-full">
+          <Button onClick={() => setIsNoEasyCloseOpen(true)} className="w-40">
             Open Modal
           </Button>
           <p className="text-xs text-muted-foreground text-center">
@@ -77,7 +77,7 @@ export default function ModalNoOverlayCloseDemo() {
           use the close button.
         </p>
         <div className="flex justify-end">
-          <Button onClick={() => setIsNoEasyCloseOpen(false)} variant="default">
+          <Button onClick={() => setIsNoEasyCloseOpen(false)}>
             Close Modal
           </Button>
         </div>

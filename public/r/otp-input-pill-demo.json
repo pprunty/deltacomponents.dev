@@ -3,9 +3,7 @@
   "name": "otp-input-pill-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/otp-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"],
   "files": [
     {
       "path": "registry/examples/otp-input-pill-demo.tsx",

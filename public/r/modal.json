@@ -3,10 +3,7 @@
   "name": "modal",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "framer-motion",
-    "@phosphor-icons/react"
-  ],
+  "dependencies": ["framer-motion", "@phosphor-icons/react"],
   "files": [
     {
       "path": "registry/components/modal.tsx",

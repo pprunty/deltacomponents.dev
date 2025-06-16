@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-input-no-selection-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"],
+  "files": [
+    {
+      "path": "registry/examples/radio-input-no-selection-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { RadioInput } from \"@/registry/inputs/radio-input\"\n\nexport default function RadioInputNoSelectionDemo() {\n  const options = [\n    {\n      value: \"small\",\n      label: \"Small\",\n      description: \"Perfect for personal projects\",\n    },\n    {\n      value: \"medium\",\n      label: \"Medium\",\n      description: \"Great for small teams\",\n    },\n    {\n      value: \"large\",\n      label: \"Large\",\n      description: \"Ideal for enterprise use\",\n    },\n  ]\n\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <RadioInput\n        label=\"Choose a plan\"\n        name=\"plan\"\n        options={options}\n        description=\"Select the plan that best fits your needs\"\n        allowNoSelection={true}\n        onValueChange={(value) => console.log(\"Selected:\", value)}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/radio-input-no-selection-demo.tsx"
+    }
+  ]
+}

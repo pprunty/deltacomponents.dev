@@ -3,9 +3,7 @@
   "name": "smart-form-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/smart-form.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"],
   "files": [
     {
       "path": "registry/examples/smart-form-demo.tsx",

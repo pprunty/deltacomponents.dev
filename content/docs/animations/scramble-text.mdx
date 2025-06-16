@@ -97,6 +97,7 @@ export function Component() {
 | `retriggerOnIntersection` | `boolean`    | `false`     | Whether to retrigger animation when element comes into view again      |
 | `intersectionThreshold`   | `number`     | `0.3`       | Threshold for intersection observer (0-1)                              |
 | `intersectionRootMargin`  | `string`     | `"0px"`     | Root margin for intersection observer                                  |
+| `scrambleOnHover`         | `boolean`    | `false`     | Whether to scramble text on hover                                      |
 | `onComplete`              | `() => void` | `undefined` | Callback function when animation completes                             |
 
 </div>
@@ -119,3 +120,15 @@ interface ScrambleTextHandle {
 Dynamic text animation with customizable scramble effect for hero sections.
 
 <ComponentPreview name="scramble-text-demo" />
+
+### Intersection Observer
+
+Text that scrambles into view when scrolled, with options for retrigger and hover effects.
+
+<ComponentPreview name="scramble-text-intersection-demo" />
+
+### Album Track List
+
+Cascading scramble effect showcasing multiple text elements with staggered timing.
+
+<ComponentPreview name="scramble-text-albums-demo" />

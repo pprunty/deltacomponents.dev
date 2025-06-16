@@ -45,7 +45,7 @@ function ComponentsSkeleton() {
       {Array.from({ length: 12 }).map((_, i) => (
         <div key={i} className="border rounded-xl overflow-hidden w-full">
           <div className="flex flex-col h-full">
-            <Skeleton className="w-full aspect-video" />
+            <Skeleton className="w-full aspect-video rounded-t-xl rounded-b-none" />
             <div className="p-5 w-full">
               <Skeleton className="h-8 w-3/4 mb-3" />
             </div>

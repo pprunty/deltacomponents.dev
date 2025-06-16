@@ -19,7 +19,7 @@ export interface AnimateInProps
    * Direction of the animation
    * @default "up"
    */
-  direction?: "up" | "down" | "left" | "right"
+  direction?: "up" | "down" | "left" | "right" | "scale"
   /**
    * Distance in pixels the element travels during animation
    * @default 50
@@ -156,6 +156,8 @@ export default function AnimateIn({
         return { x: distance, y: 0 }
       case "right":
         return { x: -distance, y: 0 }
+      case "scale":
+        return { x: 0, y: 0 }
       default:
         return { x: 0, y: distance }
     }
@@ -168,16 +170,21 @@ export default function AnimateIn({
       opacity: initialOpacity,
       x: initialPosition.x,
       y: initialPosition.y,
+      ...(direction === "scale" && { scale: 0.98 }),
     },
     visible: {
       opacity: finalOpacity,
       x: 0,
       y: 0,
+      ...(direction === "scale" && { scale: 1 }),
       transition: {
         duration,
         delay,
         ease: easingMap[easing],
         staggerChildren: staggerChildren > 0 ? staggerChildren : undefined,
+        ...(direction === "scale" && {
+          scale: { type: "spring", bounce: 0.3, duration: duration + 0.1 },
+        }),
       },
     },
   }
@@ -189,14 +196,23 @@ export default function AnimateIn({
             opacity: initialOpacity,
             x: initialPosition.x,
             y: initialPosition.y,
+            ...(direction === "scale" && { scale: 0.98 }),
           },
           visible: {
             opacity: finalOpacity,
             x: 0,
             y: 0,
+            ...(direction === "scale" && { scale: 1 }),
             transition: {
               duration,
               ease: easingMap[easing],
+              ...(direction === "scale" && {
+                scale: {
+                  type: "spring",
+                  bounce: 0.3,
+                  duration: duration + 0.1,
+                },
+              }),
             },
           },
         }

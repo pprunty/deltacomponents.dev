@@ -117,18 +117,18 @@ export function Component() {
 
 <div className="overflow-x-auto">
 
-| Prop                      | Type                                   | Default     | Description                               |
-| ------------------------- | -------------------------------------- | ----------- | ----------------------------------------- |
-| `variant`                 | `"default" \| "pills" \| "underlined"` | `"default"` | Visual style variant                      |
-| `size`                    | `"sm" \| "md" \| "lg"`                 | `"sm"`      | Size of the tabs                          |
-| `showHoverEffect`         | `boolean`                              | `true`      | Whether to show hover indicator           |
-| `showActiveIndicator`     | `boolean`                              | `true`      | Whether to show active indicator          |
-| `activeIndicatorPosition` | `"top" \| "bottom"`                    | `"bottom"`  | Position of active indicator              |
-| `activeIndicatorOffset`   | `number`                               | `0`         | Offset for active indicator               |
-| `stretch`                 | `boolean`                              | `false`     | Whether tabs should stretch to fill width |
-| `showBottomBorder`        | `boolean`                              | `false`     | Whether to show bottom border             |
-| `ariaLabel`               | `string`                               | `"Tabs"`    | Accessibility label                       |
-| `className`               | `string`                               | `""`        | Additional CSS classes                    |
+| Prop                      | Type                                   | Default     | Description                                 |
+| ------------------------- | -------------------------------------- | ----------- | ------------------------------------------- |
+| `variant`                 | `"default" \| "pills" \| "underlined"` | `"default"` | Visual style variant                        |
+| `size`                    | `"sm" \| "md" \| "lg"`                 | `"sm"`      | Size of the tabs (32px, 40px, 48px heights) |
+| `showHoverEffect`         | `boolean`                              | `true`      | Whether to show hover indicator             |
+| `showActiveIndicator`     | `boolean`                              | `true`      | Whether to show active indicator            |
+| `activeIndicatorPosition` | `"top" \| "bottom"`                    | `"bottom"`  | Position of active indicator                |
+| `activeIndicatorOffset`   | `number`                               | `0`         | Offset for active indicator                 |
+| `stretch`                 | `boolean`                              | `false`     | Whether tabs should stretch to fill width   |
+| `showBottomBorder`        | `boolean`                              | `false`     | Whether to show bottom border               |
+| `ariaLabel`               | `string`                               | `"Tabs"`    | Accessibility label                         |
+| `className`               | `string`                               | `""`        | Additional CSS classes                      |
 
 </div>
 
@@ -167,14 +167,20 @@ A simple three-tab interface with overview, analytics, and settings sections.
 
 <ComponentPreview name="tabs-demo" />
 
-### Complex Layout with Spotify Integration
+### Size Variants
 
-Advanced tab implementation with rich content and external integrations.
+Different tab sizes for various interface needs and content density.
 
-<ComponentPreview name="tabs-spotify-demo" />
+<ComponentPreview name="tabs-sizes-demo" />
 
 ### Pills Variant
 
 Modern pill-style tabs with rounded corners and subtle active states, perfect for navigation and settings interfaces.
 
 <ComponentPreview name="tabs-pills-demo" />
+
+### Complex Layout with Spotify Integration
+
+Advanced tab implementation with rich content and external integrations.
+
+<ComponentPreview name="tabs-spotify-demo" />

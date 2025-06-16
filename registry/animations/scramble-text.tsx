@@ -24,6 +24,8 @@ interface ScrambleTextProps {
   intersectionThreshold?: number
   /** Root margin for intersection observer */
   intersectionRootMargin?: string
+  /** Whether to scramble text on hover */
+  scrambleOnHover?: boolean
 }
 
 export interface ScrambleTextHandle {
@@ -43,6 +45,7 @@ const ScrambleText = forwardRef<ScrambleTextHandle, ScrambleTextProps>(
       retriggerOnIntersection = false,
       intersectionThreshold = 0.3,
       intersectionRootMargin = "0px",
+      scrambleOnHover = false,
     },
     ref
   ) => {
@@ -118,6 +121,12 @@ const ScrambleText = forwardRef<ScrambleTextHandle, ScrambleTextProps>(
       replay,
     ])
 
+    const handleMouseEnter = () => {
+      if (scrambleOnHover) {
+        replay()
+      }
+    }
+
     return (
       <>
         <span className="sr-only">{text}</span>
@@ -125,6 +134,7 @@ const ScrambleText = forwardRef<ScrambleTextHandle, ScrambleTextProps>(
           ref={containerRef}
           className={cn("inline-block whitespace-pre-wrap", className)}
           aria-hidden="true"
+          onMouseEnter={scrambleOnHover ? handleMouseEnter : undefined}
         >
           <span ref={scrambleRef} />
         </span>

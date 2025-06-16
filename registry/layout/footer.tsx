@@ -1,142 +1,126 @@
 "use client"
 
-import * as React from "react"
+import type React from "react"
 
-import { cn } from "@/lib/utils"
+// Internal configuration - can be overridden via props
+const defaultConfig = {
+  companyName: "Your Company",
+  companyDescription:
+    "Building the future with innovative solutions and exceptional experiences.",
+  logoPath: "/icon.webp",
+  logoAlt: "Your Logo",
+}
 
+// Footer routes configuration - can be overridden via props
 export interface FooterLink {
   href: string
   label: string
-  external?: boolean
 }
 
-export interface FooterSection {
-  title: string
-  links: FooterLink[]
+export interface FooterSections {
+  [key: string]: FooterLink[]
 }
 
-export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  sections?: FooterSection[]
-  socialLinks?: FooterLink[]
-  copyright?: string
-  brandName?: string
-  brandHref?: string
-}
-
-export default function Footer({
-  className,
-  sections = [
-    {
-      title: "Product",
-      links: [
-        { href: "/features", label: "Features" },
-        { href: "/pricing", label: "Pricing" },
-        { href: "/documentation", label: "Documentation" },
-        { href: "/support", label: "Support" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { href: "/about", label: "About" },
-        { href: "/blog", label: "Blog" },
-        { href: "/careers", label: "Careers" },
-        { href: "/contact", label: "Contact" },
-      ],
-    },
-    {
-      title: "Legal",
-      links: [
-        { href: "/privacy", label: "Privacy Policy" },
-        { href: "/terms", label: "Terms of Service" },
-        { href: "/cookies", label: "Cookie Policy" },
-      ],
-    },
+const defaultFooterRoutes: FooterSections = {
+  Product: [
+    { href: "/features", label: "Features" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/documentation", label: "Documentation" },
+    { href: "/support", label: "Support" },
   ],
-  socialLinks = [
-    { href: "https://twitter.com", label: "Twitter", external: true },
-    { href: "https://github.com", label: "GitHub", external: true },
-    { href: "https://linkedin.com", label: "LinkedIn", external: true },
+  Company: [
+    { href: "/about", label: "About" },
+    { href: "/blog", label: "Blog" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact" },
   ],
-  copyright,
-  brandName = "Your Brand",
-  brandHref = "/",
-  ...props
-}: FooterProps) {
-  const currentYear = new Date().getFullYear()
-  const defaultCopyright = `© ${currentYear} ${brandName}. All rights reserved.`
+  Legal: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Service" },
+    { href: "/cookies", label: "Cookie Policy" },
+  ],
+  Resources: [
+    { href: "/help", label: "Help Center" },
+    { href: "/community", label: "Community" },
+    { href: "/guides", label: "Guides" },
+  ],
+}
+
+interface FooterProps {
+  logo?: string
+  companyName?: string
+  companyDescription?: string
+  logoPath?: string
+  logoAlt?: string
+  links?: FooterSections
+  hideOnMobile?: boolean
+}
+
+const Footer: React.FC<FooterProps> = ({
+  logo = defaultConfig.logoAlt,
+  companyName = defaultConfig.companyName,
+  companyDescription = defaultConfig.companyDescription,
+  logoPath = defaultConfig.logoPath,
+  logoAlt = defaultConfig.logoAlt,
+  links = defaultFooterRoutes,
+  hideOnMobile = false,
+}) => {
+  const linkSections = Object.entries(links)
 
   return (
-    <footer className={cn("border-t bg-background", className)} {...props}>
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <a
-              href={brandHref}
-              className="text-xl font-bold text-foreground hover:text-muted-foreground transition-colors"
-            >
-              {brandName}
+    <footer
+      className={`bg-background border-t border-border mb-[5rem] sm:mb-2 text-foreground ${
+        hideOnMobile ? "hidden sm:block" : ""
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        {/* On mobile: Stack everything vertically */}
+        {/* On desktop: Company info on left, nav sections on right */}
+        <div className="block lg:flex lg:flex-row lg:gap-12">
+          {/* Company info section */}
+          <div className="mb-8 lg:mb-0 lg:w-1/4 lg:flex-shrink-0">
+            <a href="/" className="inline-block">
+              <img
+                src={logoPath}
+                alt={logoAlt}
+                width={120}
+                height={60}
+                className="rounded-lg"
+              />
             </a>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Building the future with innovative solutions and exceptional
-              experiences.
+            <h1 className="text-lg font-bold mt-4 mb-2">{companyName}</h1>
+            <p className="text-sm text-muted-foreground">
+              {companyDescription}
+            </p>
+            <p className="text-xs font-mono text-muted-foreground font-medium mt-4">
+              © {new Date().getFullYear()} {companyName}
             </p>
           </div>
 
-          {/* Navigation Sections */}
-          {sections.map((section, index) => (
-            <div key={index} className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground">
-                {section.title}
-              </h3>
-              <ul className="space-y-2">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      {...(link.external && {
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      })}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
-          <p className="text-sm text-muted-foreground">
-            {copyright || defaultCopyright}
-          </p>
-
-          {/* Social Links */}
-          {socialLinks.length > 0 && (
-            <div className="flex items-center space-x-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label={link.label}
-                  {...(link.external && {
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                >
-                  <span className="text-sm">{link.label}</span>
-                </a>
-              ))}
-            </div>
-          )}
+          {/* Links section - two columns on mobile, side by side on desktop */}
+          <div className="grid grid-cols-2 gap-8 lg:flex-grow lg:grid-cols-4">
+            {linkSections.map(([section, sectionLinks]) => (
+              <div key={section}>
+                <h3 className="text-sm font-semibold mb-4">{section}</h3>
+                <ul className="sm:space-y-2 space-y-1">
+                  {sectionLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
   )
 }
+
+export default Footer

@@ -118,6 +118,7 @@ export function Component() {
 | `schema`              | `ZodType<string>`                                           | `undefined`  | Zod schema for validation                              |
 | `onValidate`          | `(isValid: boolean, value: string, error?: string) => void` | `undefined`  | Validation callback                                    |
 | `onValueChange`       | `(value: string) => void`                                   | `undefined`  | Callback when selection changes                        |
+| `allowNoSelection`    | `boolean`                                                   | `false`      | Whether to allow no selection (no default value)       |
 
 </div>
 
@@ -146,3 +147,9 @@ Modern pill-style radio input with colored border and enhanced visual design for
 Radio input options enhanced with SVG icons or images positioned on the right side, perfect for payment methods, features, or visual categorization.
 
 <ComponentPreview name="radio-input-icons-demo" />
+
+### No Default Selection
+
+Radio input that allows no initial selection by setting `allowNoSelection={true}`, useful for optional choices where users should actively make a decision rather than having a pre-selected option.
+
+<ComponentPreview name="radio-input-no-selection-demo" />

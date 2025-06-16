@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-sizes-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/tabs.json"],
+  "files": [
+    {
+      "path": "registry/examples/tabs-sizes-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n} from \"@/registry/components/tabs\"\n\nexport default function TabsSizesDemo() {\n  return (\n    <div className=\"space-y-8 w-full\">\n      {/* Small Size */}\n      <Tabs defaultValue=\"overview\" className=\"w-full\">\n        <TabsList size=\"sm\">\n          <TabsTrigger value=\"overview\">Overview</TabsTrigger>\n          <TabsTrigger value=\"analytics\">Analytics</TabsTrigger>\n          <TabsTrigger value=\"settings\">Settings</TabsTrigger>\n        </TabsList>\n        <TabsContent value=\"overview\">\n          <div className=\"p-4 text-sm\">Small size tabs content</div>\n        </TabsContent>\n        <TabsContent value=\"analytics\">\n          <div className=\"p-4 text-sm\">Analytics data</div>\n        </TabsContent>\n        <TabsContent value=\"settings\">\n          <div className=\"p-4 text-sm\">Settings options</div>\n        </TabsContent>\n      </Tabs>\n\n      {/* Medium Size */}\n      <Tabs defaultValue=\"overview\" className=\"w-full\">\n        <TabsList size=\"md\">\n          <TabsTrigger value=\"overview\">Overview</TabsTrigger>\n          <TabsTrigger value=\"analytics\">Analytics</TabsTrigger>\n          <TabsTrigger value=\"settings\">Settings</TabsTrigger>\n        </TabsList>\n        <TabsContent value=\"overview\">\n          <div className=\"p-4\">Medium size tabs content</div>\n        </TabsContent>\n        <TabsContent value=\"analytics\">\n          <div className=\"p-4\">Analytics data</div>\n        </TabsContent>\n        <TabsContent value=\"settings\">\n          <div className=\"p-4\">Settings options</div>\n        </TabsContent>\n      </Tabs>\n\n      {/* Large Size */}\n      <Tabs defaultValue=\"overview\" className=\"w-full\">\n        <TabsList size=\"lg\">\n          <TabsTrigger value=\"overview\">Overview</TabsTrigger>\n          <TabsTrigger value=\"analytics\">Analytics</TabsTrigger>\n          <TabsTrigger value=\"settings\">Settings</TabsTrigger>\n        </TabsList>\n        <TabsContent value=\"overview\">\n          <div className=\"p-4 text-lg\">Large size tabs content</div>\n        </TabsContent>\n        <TabsContent value=\"analytics\">\n          <div className=\"p-4 text-lg\">Analytics data</div>\n        </TabsContent>\n        <TabsContent value=\"settings\">\n          <div className=\"p-4 text-lg\">Settings options</div>\n        </TabsContent>\n      </Tabs>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/tabs-sizes-demo.tsx"
+    }
+  ]
+}

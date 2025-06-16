@@ -438,14 +438,11 @@ export function FileInput({
         className={cn(
           "relative cursor-pointer transition-colors bg-background",
           "flex flex-col items-center justify-center gap-2 text-center p-4 rounded-lg",
-          // Default variant with single dashed border
+          // Default variant with dashed border
           variant === "default" &&
             "border border-dashed border-muted-foreground/25",
           variant === "default" &&
             "shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]",
-          // Mobile-specific border dash pattern
-          variant === "default" &&
-            "sm:border-dashed md:border-dashed lg:border-dashed [border-image:url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg%27%3E%3Cpath d='M0 10H20' stroke='%23666' stroke-width='2' stroke-dasharray='8 8'/%3E%3C/svg%3E\")_1]",
 
           // Pill variant without border
           variant === "pill" && "bg-muted border border-transparent rounded-lg",
@@ -487,7 +484,7 @@ export function FileInput({
 
         <CloudArrowUp
           weight="regular"
-          className="h-7 w-7 text-muted-foreground/70"
+          className="h-8 w-8 text-muted-foreground/70"
         />
 
         <div className="space-y-2">
@@ -534,6 +531,15 @@ export function FileInput({
           </Button>
         </div>
       </div>
+
+      {/* File count display */}
+      {files.length > 0 && (
+        <div className="flex items-center gap-2 mt-3">
+          <p className="text-sm text-muted-foreground font-medium">
+            {files.length} file{files.length !== 1 ? "s" : ""} selected
+          </p>
+        </div>
+      )}
 
       {/* File previews */}
       {showPreviews && files.length > 0 && (

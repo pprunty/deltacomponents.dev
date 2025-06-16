@@ -4,7 +4,6 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
-import { Balancer } from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
@@ -128,11 +127,7 @@ export default async function DocPage(props: {
               )}
               speed={80}
             />
-            {doc.description && (
-              <p className="text-base text-muted-foreground">
-                <Balancer>{doc.description}</Balancer>
-              </p>
-            )}
+            {doc.description && <p className="text-base">{doc.description}</p>}
           </div>
           {doc.links ? (
             <div className="flex items-center space-x-2 pt-4">
@@ -185,7 +180,7 @@ export default async function DocPage(props: {
           </Suspense>
         </div>
         <div className="hidden text-sm xl:block">
-          <div className="sticky top-20 -mt-6 h-[calc(100vh-3.5rem)] pt-4">
+          <div className="sticky top-20 h-[calc(100vh-3.5rem)] pt-1">
             <div className="no-scrollbar h-full space-y-4 overflow-auto pb-10">
               {doc.toc && (
                 <Suspense fallback={<div>Loading table of contents...</div>}>

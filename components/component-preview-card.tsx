@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -25,6 +25,9 @@ const Card = ({ className, ...props }: CardProps) => (
 const PLACEHOLDER_IMAGE = "/images/placeholder.png"
 const IMAGE_PATH = "/og/images/"
 const VIDEO_PATH = "/og/videos/"
+
+// Simple cache for video availability checks
+const videoCache = new Map<string, boolean>()
 
 // Format component name from kebab-case to Title Case
 export function formatComponentName(name: string): string {
@@ -54,17 +57,32 @@ export function ComponentPreviewCard({
   const [videoError, setVideoError] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
 
-  // Generate paths
-  const videoPath = `${VIDEO_PATH}${name}.mp4`
-  const imagePath = imageError ? PLACEHOLDER_IMAGE : `${IMAGE_PATH}${name}.png`
+  // Memoize paths to avoid recalculation
+  const videoPath = useMemo(() => `${VIDEO_PATH}${name}.mp4`, [name])
+  const imagePath = useMemo(
+    () => (imageError ? PLACEHOLDER_IMAGE : `${IMAGE_PATH}${name}.png`),
+    [name, imageError]
+  )
 
-  // Create the link URL
-  const linkUrl = useDocsLink
-    ? `/docs/${category}/${name}`
-    : `/${category}/${name}`
+  // Memoize the link URL
+  const linkUrl = useMemo(
+    () => (useDocsLink ? `/docs/${category}/${name}` : `/${category}/${name}`),
+    [useDocsLink, category, name]
+  )
 
-  // Check if video exists by attempting to fetch it
+  // Check if video exists by attempting to fetch it with caching
   useEffect(() => {
+    // Check cache first
+    if (videoCache.has(videoPath)) {
+      const cachedResult = videoCache.get(videoPath)!
+      if (cachedResult) {
+        setVideoLoaded(true)
+      } else {
+        setVideoError(true)
+      }
+      return
+    }
+
     // Only check if we haven't already determined video status
     if (!videoLoaded && !videoError) {
       const checkVideo = async () => {
@@ -72,17 +90,50 @@ export function ComponentPreviewCard({
           const response = await fetch(videoPath, { method: "HEAD" })
           if (response.ok) {
             setVideoLoaded(true)
+            videoCache.set(videoPath, true)
           } else {
             setVideoError(true)
+            videoCache.set(videoPath, false)
           }
         } catch {
           setVideoError(true)
+          videoCache.set(videoPath, false)
         }
       }
 
       checkVideo()
     }
   }, [videoPath, videoLoaded, videoError])
+
+  // Memoize the media element to prevent unnecessary re-renders
+  const mediaElement = useMemo(() => {
+    if (!videoError && videoLoaded) {
+      return (
+        <video
+          src={videoPath}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="object-cover w-full h-full rounded-t-xl"
+          onError={() => setVideoError(true)}
+        />
+      )
+    } else {
+      return (
+        <Image
+          src={imagePath}
+          alt={`${name} component`}
+          width={400}
+          height={225}
+          className="object-cover w-full h-full rounded-t-xl"
+          priority={false}
+          unoptimized={true}
+          onError={() => setImageError(true)}
+        />
+      )
+    }
+  }, [videoError, videoLoaded, videoPath, imagePath, name])
 
   return (
     <Link
@@ -92,28 +143,7 @@ export function ComponentPreviewCard({
       <Card className="overflow-hidden h-full w-full border hover:border-primary/20 transition-colors duration-200 hover:shadow-sm">
         <div className="flex flex-col h-full">
           <div className="relative w-full aspect-video bg-muted overflow-hidden rounded-t-xl">
-            {!videoError && videoLoaded ? (
-              <video
-                src={videoPath}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="object-cover w-full h-full"
-                onError={() => setVideoError(true)}
-              />
-            ) : (
-              <Image
-                src={imagePath}
-                alt={`${name} component`}
-                width={400}
-                height={225}
-                className="object-cover w-full h-full"
-                priority={false}
-                unoptimized={true}
-                onError={() => setImageError(true)}
-              />
-            )}
+            {mediaElement}
           </div>
 
           <div className="flex-1 p-5 overflow-hidden">

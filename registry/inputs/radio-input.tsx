@@ -57,6 +57,8 @@ export interface RadioInputProps {
   id?: string
   /** Whether the radio group is disabled */
   disabled?: boolean
+  /** Whether to allow no selection (no default value) */
+  allowNoSelection?: boolean
 }
 
 /**
@@ -84,10 +86,11 @@ export function RadioInput({
   onValueChange,
   id = name,
   disabled = false,
+  allowNoSelection = false,
 }: RadioInputProps) {
   const [localError, setLocalError] = React.useState<string | undefined>(error)
   const [currentValue, setCurrentValue] = React.useState<string | undefined>(
-    value || defaultValue
+    value || (allowNoSelection ? undefined : defaultValue)
   )
   const hasError = !!localError || !!error
   const errorId = `error-${id}`
@@ -99,8 +102,8 @@ export function RadioInput({
 
   // Update current value when controlled value changes
   React.useEffect(() => {
-    setCurrentValue(value || defaultValue)
-  }, [value, defaultValue])
+    setCurrentValue(value || (allowNoSelection ? undefined : defaultValue))
+  }, [value, defaultValue, allowNoSelection])
 
   // Handle validation with the provided schema
   const validateRadio = React.useCallback(
@@ -157,7 +160,7 @@ export function RadioInput({
       )}
 
       <RadioGroup
-        defaultValue={defaultValue}
+        defaultValue={allowNoSelection ? undefined : defaultValue}
         value={value || currentValue}
         onValueChange={handleValueChange}
         disabled={pending || disabled}

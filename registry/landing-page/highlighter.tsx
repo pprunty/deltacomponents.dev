@@ -34,7 +34,7 @@ export interface HighlighterProps
   shadowColor?: string
   darkShadowColor?: string
   animate?: boolean
-  text?: string
+  text: string
 }
 
 const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
@@ -106,7 +106,7 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
         width: "100%",
         transition: {
           duration: 0.5,
-          ease: [0.4, 0, 0.2, 1],
+          ease: [0.4, 0, 0.2, 1] as const,
         },
       },
     }
@@ -141,7 +141,7 @@ const Highlighter = React.forwardRef<HTMLElement, HighlighterProps>(
         style={customStyle}
         {...props}
       >
-        {text ? <span className="relative z-10">{text}</span> : children}
+        <span className="relative z-10">{text}</span>
 
         {animate ? (
           <motion.span

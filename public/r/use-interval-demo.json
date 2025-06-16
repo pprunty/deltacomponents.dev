@@ -3,9 +3,7 @@
   "name": "use-interval-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "use-interval"
-  ],
+  "registryDependencies": ["use-interval"],
   "files": [
     {
       "path": "registry/examples/use-interval-demo.tsx",

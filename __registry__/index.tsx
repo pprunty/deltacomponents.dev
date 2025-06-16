@@ -10,13 +10,21 @@ export const Index: Record<string, any> = {
     name: "checkbox-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","checkbox","input","validation","selection","toggle","accessible"],
+    tags: [
+      "form",
+      "checkbox",
+      "input",
+      "validation",
+      "selection",
+      "toggle",
+      "accessible",
+    ],
     files: [
       {
         path: "registry/inputs/checkbox-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/checkbox-input")),
     source: "",
@@ -25,13 +33,21 @@ export const Index: Record<string, any> = {
     name: "radio-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","radio","input","selection","options","accessible","multiple choice"],
+    tags: [
+      "form",
+      "radio",
+      "input",
+      "selection",
+      "options",
+      "accessible",
+      "multiple choice",
+    ],
     files: [
       {
         path: "registry/inputs/radio-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/radio-input")),
     source: "",
@@ -40,13 +56,21 @@ export const Index: Record<string, any> = {
     name: "date-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","date","input","calendar","time","datepicker","validation"],
+    tags: [
+      "form",
+      "date",
+      "input",
+      "calendar",
+      "time",
+      "datepicker",
+      "validation",
+    ],
     files: [
       {
         path: "registry/inputs/date-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/date-input")),
     source: "",
@@ -55,13 +79,21 @@ export const Index: Record<string, any> = {
     name: "switch-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","switch","input","toggle","on-off","boolean","accessible"],
+    tags: [
+      "form",
+      "switch",
+      "input",
+      "toggle",
+      "on-off",
+      "boolean",
+      "accessible",
+    ],
     files: [
       {
         path: "registry/inputs/switch-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/switch-input")),
     source: "",
@@ -70,13 +102,21 @@ export const Index: Record<string, any> = {
     name: "select-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","select","dropdown","options","input","validation","choice"],
+    tags: [
+      "form",
+      "select",
+      "dropdown",
+      "options",
+      "input",
+      "validation",
+      "choice",
+    ],
     files: [
       {
         path: "registry/inputs/select-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/select-input")),
     source: "",
@@ -85,13 +125,21 @@ export const Index: Record<string, any> = {
     name: "tags-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","tags","input","multiple","chips","keywords","interactive"],
+    tags: [
+      "form",
+      "tags",
+      "input",
+      "multiple",
+      "chips",
+      "keywords",
+      "interactive",
+    ],
     files: [
       {
         path: "registry/inputs/tags-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/tags-input")),
     source: "",
@@ -100,13 +148,21 @@ export const Index: Record<string, any> = {
     name: "textarea-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","textarea","multiline","input","text","validation","large text"],
+    tags: [
+      "form",
+      "textarea",
+      "multiline",
+      "input",
+      "text",
+      "validation",
+      "large text",
+    ],
     files: [
       {
         path: "registry/inputs/textarea-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/textarea-input")),
     source: "",
@@ -115,13 +171,21 @@ export const Index: Record<string, any> = {
     name: "file-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","file","upload","input","attachment","drag-and-drop","validation"],
+    tags: [
+      "form",
+      "file",
+      "upload",
+      "input",
+      "attachment",
+      "drag-and-drop",
+      "validation",
+    ],
     files: [
       {
         path: "registry/inputs/file-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/file-input")),
     source: "",
@@ -130,13 +194,13 @@ export const Index: Record<string, any> = {
     name: "otp-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","otp","verification","code","input","auth","secure"],
+    tags: ["form", "otp", "verification", "code", "input", "auth", "secure"],
     files: [
       {
         path: "registry/inputs/otp-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/otp-input")),
     source: "",
@@ -145,15 +209,40 @@ export const Index: Record<string, any> = {
     name: "text-input",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["form","text","input","validation","single-line","accessible","field"],
+    tags: [
+      "form",
+      "text",
+      "input",
+      "validation",
+      "single-line",
+      "accessible",
+      "field",
+    ],
     files: [
       {
         path: "registry/inputs/text-input.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/inputs/text-input")),
+    source: "",
+  },
+  "header-sleek-demo": {
+    name: "header-sleek-demo",
+    type: "registry:block",
+    registryDependencies: ["header-sleek"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/header-sleek-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/header-sleek-demo")
+    ),
     source: "",
   },
   "social-icons-demo": {
@@ -166,9 +255,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/social-icons-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/social-icons-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/social-icons-demo")
+    ),
     source: "",
   },
   "animate-in-demo": {
@@ -181,7 +272,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/animate-in-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/animate-in-demo")),
     source: "",
@@ -196,7 +287,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/footer-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/footer-demo")),
     source: "",
@@ -211,9 +302,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/mouse-string-connection-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/mouse-string-connection-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/mouse-string-connection-demo")
+    ),
     source: "",
   },
   "font-transform-demo": {
@@ -226,9 +319,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/font-transform-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/font-transform-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/font-transform-demo")
+    ),
     source: "",
   },
   "pricing-cards-demo": {
@@ -241,9 +336,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/pricing-cards-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/pricing-cards-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/pricing-cards-demo")
+    ),
     source: "",
   },
   "floating-object-demo": {
@@ -256,9 +353,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/floating-object-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/floating-object-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/floating-object-demo")
+    ),
     source: "",
   },
   "qr-code-demo": {
@@ -271,7 +370,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/qr-code-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/qr-code-demo")),
     source: "",
@@ -286,7 +385,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/spotify-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/spotify-demo")),
     source: "",
@@ -301,7 +400,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/star-rating-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/star-rating-demo")),
     source: "",
@@ -316,9 +415,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/retro-button-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/retro-button-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/retro-button-demo")
+    ),
     source: "",
   },
   "admonition-demo": {
@@ -331,7 +432,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/admonition-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/admonition-demo")),
     source: "",
@@ -346,7 +447,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/embed-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/embed-demo")),
     source: "",
@@ -361,9 +462,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/scroll-progress-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/scroll-progress-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/scroll-progress-demo")
+    ),
     source: "",
   },
   "highlighter-demo": {
@@ -376,7 +479,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/highlighter-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/highlighter-demo")),
     source: "",
@@ -391,9 +494,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/backdrop-gradient-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/backdrop-gradient-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/backdrop-gradient-demo")
+    ),
     source: "",
   },
   "smart-form-demo": {
@@ -406,7 +511,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/smart-form-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/smart-form-demo")),
     source: "",
@@ -421,9 +526,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/checkbox-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/checkbox-input-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/checkbox-input-demo")
+    ),
     source: "",
   },
   "radio-input-demo": {
@@ -436,7 +543,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/radio-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/radio-input-demo")),
     source: "",
@@ -451,7 +558,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/date-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/date-input-demo")),
     source: "",
@@ -466,9 +573,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/switch-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/switch-input-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-demo")
+    ),
     source: "",
   },
   "select-input-demo": {
@@ -481,9 +590,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/select-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/select-input-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/select-input-demo")
+    ),
     source: "",
   },
   "tags-input-demo": {
@@ -496,7 +607,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/tags-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/tags-input-demo")),
     source: "",
@@ -511,9 +622,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/textarea-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/textarea-input-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/textarea-input-demo")
+    ),
     source: "",
   },
   "retro-video-player-demo": {
@@ -526,9 +639,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/retro-video-player-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/retro-video-player-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/retro-video-player-demo")
+    ),
     source: "",
   },
   "code-block-demo": {
@@ -541,7 +656,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/code-block-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/code-block-demo")),
     source: "",
@@ -556,7 +671,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/drawer-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/drawer-demo")),
     source: "",
@@ -571,7 +686,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/modal-demo")),
     source: "",
@@ -579,14 +694,14 @@ export const Index: Record<string, any> = {
   "tabs-demo": {
     name: "tabs-demo",
     type: "registry:block",
-    registryDependencies: ["tabs","x-scrollable"],
+    registryDependencies: ["tabs", "x-scrollable"],
     tags: [],
     files: [
       {
         path: "registry/examples/tabs-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/tabs-demo")),
     source: "",
@@ -601,9 +716,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/scramble-text-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/scramble-text-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/scramble-text-demo")
+    ),
     source: "",
   },
   "use-copy-to-clipboard-demo": {
@@ -616,9 +733,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/use-copy-to-clipboard-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/use-copy-to-clipboard-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/use-copy-to-clipboard-demo")
+    ),
     source: "",
   },
   "use-interval-demo": {
@@ -631,9 +750,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/use-interval-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/use-interval-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/use-interval-demo")
+    ),
     source: "",
   },
   "use-timeout-demo": {
@@ -646,7 +767,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/use-timeout-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/use-timeout-demo")),
     source: "",
@@ -661,9 +782,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/use-document-title-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/use-document-title-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/use-document-title-demo")
+    ),
     source: "",
   },
   "use-mouse-position-demo": {
@@ -676,9 +799,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/use-mouse-position-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/use-mouse-position-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/use-mouse-position-demo")
+    ),
     source: "",
   },
   "otp-input-demo": {
@@ -691,7 +816,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/otp-input-demo")),
     source: "",
@@ -706,7 +831,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/text-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/text-input-demo")),
     source: "",
@@ -721,7 +846,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/file-input-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/file-input-demo")),
     source: "",
@@ -729,16 +854,18 @@ export const Index: Record<string, any> = {
   "tabs-spotify-demo": {
     name: "tabs-spotify-demo",
     type: "registry:block",
-    registryDependencies: ["tabs","x-scrollable"],
+    registryDependencies: ["tabs", "x-scrollable"],
     tags: [],
     files: [
       {
         path: "registry/examples/tabs-spotify-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/tabs-spotify-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/tabs-spotify-demo")
+    ),
     source: "",
   },
   "drawer-modern-demo": {
@@ -751,9 +878,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/drawer-modern-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/drawer-modern-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/drawer-modern-demo")
+    ),
     source: "",
   },
   "backdrop-gradient-artistic-demo": {
@@ -766,9 +895,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/backdrop-gradient-artistic-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/backdrop-gradient-artistic-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/backdrop-gradient-artistic-demo")
+    ),
     source: "",
   },
   "x-scrollable-colorful-demo": {
@@ -781,9 +912,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/x-scrollable-colorful-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/x-scrollable-colorful-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/x-scrollable-colorful-demo")
+    ),
     source: "",
   },
   "smart-form-pill-demo": {
@@ -796,9 +929,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/smart-form-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/smart-form-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/smart-form-pill-demo")
+    ),
     source: "",
   },
   "code-block-theme-demo": {
@@ -811,9 +946,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/code-block-theme-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/code-block-theme-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/code-block-theme-demo")
+    ),
     source: "",
   },
   "modal-drop-demo": {
@@ -826,7 +963,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-drop-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/modal-drop-demo")),
     source: "",
@@ -841,7 +978,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-blur-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/modal-blur-demo")),
     source: "",
@@ -856,9 +993,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/drawer-right-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/drawer-right-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/drawer-right-demo")
+    ),
     source: "",
   },
   "drawer-scrollable-demo": {
@@ -871,9 +1010,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/drawer-scrollable-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/drawer-scrollable-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/drawer-scrollable-demo")
+    ),
     source: "",
   },
   "drawer-left-demo": {
@@ -886,7 +1027,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/drawer-left-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/drawer-left-demo")),
     source: "",
@@ -901,9 +1042,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/otp-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-pill-demo")
+    ),
     source: "",
   },
   "otp-input-autofill-demo": {
@@ -916,9 +1059,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-autofill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/otp-input-autofill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-autofill-demo")
+    ),
     source: "",
   },
   "otp-input-numeric-demo": {
@@ -931,9 +1076,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-numeric-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/otp-input-numeric-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-numeric-demo")
+    ),
     source: "",
   },
   "select-input-pill-demo": {
@@ -946,9 +1093,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/select-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/select-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/select-input-pill-demo")
+    ),
     source: "",
   },
   "admonition-types-demo": {
@@ -961,9 +1110,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/admonition-types-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/admonition-types-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/admonition-types-demo")
+    ),
     source: "",
   },
   "admonition-custom-demo": {
@@ -976,9 +1127,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/admonition-custom-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/admonition-custom-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/admonition-custom-demo")
+    ),
     source: "",
   },
   "switch-input-pill-demo": {
@@ -991,9 +1144,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/switch-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/switch-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-pill-demo")
+    ),
     source: "",
   },
   "switch-input-standalone-demo": {
@@ -1006,9 +1161,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/switch-input-standalone-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/switch-input-standalone-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-standalone-demo")
+    ),
     source: "",
   },
   "switch-input-color-demo": {
@@ -1021,9 +1178,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/switch-input-color-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/switch-input-color-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-color-demo")
+    ),
     source: "",
   },
   "switch-input-sizes-demo": {
@@ -1036,9 +1195,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/switch-input-sizes-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/switch-input-sizes-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/switch-input-sizes-demo")
+    ),
     source: "",
   },
   "qr-code-custom-demo": {
@@ -1051,9 +1212,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/qr-code-custom-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/qr-code-custom-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/qr-code-custom-demo")
+    ),
     source: "",
   },
   "tags-input-pill-demo": {
@@ -1066,9 +1229,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/tags-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/tags-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/tags-input-pill-demo")
+    ),
     source: "",
   },
   "qr-code-reactive-demo": {
@@ -1081,9 +1246,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/qr-code-reactive-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/qr-code-reactive-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/qr-code-reactive-demo")
+    ),
     source: "",
   },
   "tags-input-max-demo": {
@@ -1096,9 +1263,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/tags-input-max-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/tags-input-max-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/tags-input-max-demo")
+    ),
     source: "",
   },
   "textarea-input-pill-demo": {
@@ -1111,9 +1280,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/textarea-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/textarea-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/textarea-input-pill-demo")
+    ),
     source: "",
   },
   "textarea-input-max-demo": {
@@ -1126,9 +1297,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/textarea-input-max-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/textarea-input-max-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/textarea-input-max-demo")
+    ),
     source: "",
   },
   "file-input-pill-demo": {
@@ -1141,9 +1314,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/file-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/file-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-pill-demo")
+    ),
     source: "",
   },
   "file-input-multiple-demo": {
@@ -1156,9 +1331,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/file-input-multiple-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/file-input-multiple-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-multiple-demo")
+    ),
     source: "",
   },
   "file-input-preview-demo": {
@@ -1171,9 +1348,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/file-input-preview-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/file-input-preview-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/file-input-preview-demo")
+    ),
     source: "",
   },
   "text-input-pill-demo": {
@@ -1186,9 +1365,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/text-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/text-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/text-input-pill-demo")
+    ),
     source: "",
   },
   "otp-input-short-demo": {
@@ -1201,9 +1382,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-short-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/otp-input-short-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-short-demo")
+    ),
     source: "",
   },
   "modal-custom-header-demo": {
@@ -1216,9 +1399,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-custom-header-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/modal-custom-header-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/modal-custom-header-demo")
+    ),
     source: "",
   },
   "modal-no-overlay-close-demo": {
@@ -1231,39 +1416,49 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-no-overlay-close-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/modal-no-overlay-close-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/modal-no-overlay-close-demo")
+    ),
     source: "",
   },
   "floating-object-compass-demo": {
     name: "floating-object-compass-demo",
     type: "registry:block",
-    registryDependencies: ["https://deltacomponents.dev/r/floating-object.json"],
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
     tags: [],
     files: [
       {
         path: "registry/examples/floating-object-compass-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/floating-object-compass-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/floating-object-compass-demo")
+    ),
     source: "",
   },
   "floating-object-multiple-demo": {
     name: "floating-object-multiple-demo",
     type: "registry:block",
-    registryDependencies: ["https://deltacomponents.dev/r/floating-object.json"],
+    registryDependencies: [
+      "https://deltacomponents.dev/r/floating-object.json",
+    ],
     tags: [],
     files: [
       {
         path: "registry/examples/floating-object-multiple-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/floating-object-multiple-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/floating-object-multiple-demo")
+    ),
     source: "",
   },
   "tabs-pills-demo": {
@@ -1276,7 +1471,7 @@ export const Index: Record<string, any> = {
         path: "registry/examples/tabs-pills-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/examples/tabs-pills-demo")),
     source: "",
@@ -1291,9 +1486,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/modal-minimal-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/modal-minimal-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/modal-minimal-demo")
+    ),
     source: "",
   },
   "otp-input-validation-demo": {
@@ -1306,9 +1503,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/otp-input-validation-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/otp-input-validation-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/otp-input-validation-demo")
+    ),
     source: "",
   },
   "animate-in-hero-demo": {
@@ -1321,9 +1520,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/animate-in-hero-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/animate-in-hero-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-hero-demo")
+    ),
     source: "",
   },
   "animate-in-stagger-demo": {
@@ -1336,9 +1537,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/animate-in-stagger-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/animate-in-stagger-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-stagger-demo")
+    ),
     source: "",
   },
   "animate-in-directions-demo": {
@@ -1351,9 +1554,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/animate-in-directions-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/animate-in-directions-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-directions-demo")
+    ),
     source: "",
   },
   "radio-input-pill-demo": {
@@ -1366,9 +1571,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/radio-input-pill-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/radio-input-pill-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/radio-input-pill-demo")
+    ),
     source: "",
   },
   "radio-input-icons-demo": {
@@ -1381,9 +1588,11 @@ export const Index: Record<string, any> = {
         path: "registry/examples/radio-input-icons-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/radio-input-icons-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/radio-input-icons-demo")
+    ),
     source: "",
   },
   "social-icons-monochrome-demo": {
@@ -1396,9 +1605,111 @@ export const Index: Record<string, any> = {
         path: "registry/examples/social-icons-monochrome-demo.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/examples/social-icons-monochrome-demo")),
+    component: React.lazy(
+      () => import("@/registry/examples/social-icons-monochrome-demo")
+    ),
+    source: "",
+  },
+  "embed-blocked-demo": {
+    name: "embed-blocked-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/embed.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/embed-blocked-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/embed-blocked-demo")
+    ),
+    source: "",
+  },
+  "tabs-sizes-demo": {
+    name: "tabs-sizes-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tabs.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/tabs-sizes-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/tabs-sizes-demo")),
+    source: "",
+  },
+  "scramble-text-intersection-demo": {
+    name: "scramble-text-intersection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/scramble-text.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/scramble-text-intersection-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/scramble-text-intersection-demo")
+    ),
+    source: "",
+  },
+  "scramble-text-albums-demo": {
+    name: "scramble-text-albums-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/scramble-text.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/scramble-text-albums-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/scramble-text-albums-demo")
+    ),
+    source: "",
+  },
+  "radio-input-no-selection-demo": {
+    name: "radio-input-no-selection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/radio-input-no-selection-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/radio-input-no-selection-demo")
+    ),
+    source: "",
+  },
+  "animate-in-scale-demo": {
+    name: "animate-in-scale-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-scale-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-scale-demo")
+    ),
     source: "",
   },
   "animate-in": {
@@ -1411,7 +1722,7 @@ export const Index: Record<string, any> = {
         path: "registry/animations/animate-in.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/animations/animate-in")),
     source: "",
@@ -1431,7 +1742,7 @@ export const Index: Record<string, any> = {
         path: "registry/animations/font-transform.css",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/animations/font-transform")),
     source: "",
@@ -1446,22 +1757,32 @@ export const Index: Record<string, any> = {
         path: "registry/animations/floating-object.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/animations/floating-object")),
+    component: React.lazy(
+      () => import("@/registry/animations/floating-object")
+    ),
     source: "",
   },
   "scramble-text": {
     name: "scramble-text",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["animation","text","scramble","effect","motion","interaction","reveal"],
+    tags: [
+      "animation",
+      "text",
+      "scramble",
+      "effect",
+      "motion",
+      "interaction",
+      "reveal",
+    ],
     files: [
       {
         path: "registry/animations/scramble-text.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
     source: "",
@@ -1476,7 +1797,7 @@ export const Index: Record<string, any> = {
         path: "registry/components/social-icons.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/social-icons")),
     source: "",
@@ -1491,7 +1812,7 @@ export const Index: Record<string, any> = {
         path: "registry/components/pricing-cards.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/pricing-cards")),
     source: "",
@@ -1500,13 +1821,13 @@ export const Index: Record<string, any> = {
     name: "star-rating",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["star","rating","feedback","interactive","component"],
+    tags: ["star", "rating", "feedback", "interactive", "component"],
     files: [
       {
         path: "registry/components/star-rating.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/star-rating")),
     source: "",
@@ -1515,43 +1836,43 @@ export const Index: Record<string, any> = {
     name: "retro-button",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["button","retro","ui","component"],
+    tags: ["button", "retro", "ui", "component"],
     files: [
       {
         path: "registry/components/retro-button.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/retro-button")),
     source: "",
   },
-  "admonition": {
+  admonition: {
     name: "admonition",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["admonition","alert","info","component"],
+    tags: ["admonition", "alert", "info", "component"],
     files: [
       {
         path: "registry/components/admonition.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/admonition")),
     source: "",
   },
-  "embed": {
+  embed: {
     name: "embed",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["embed","iframe","media","component"],
+    tags: ["embed", "iframe", "media", "component"],
     files: [
       {
         path: "registry/components/embed.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/embed")),
     source: "",
@@ -1560,58 +1881,85 @@ export const Index: Record<string, any> = {
     name: "scroll-progress",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["scroll","progress","indicator","component"],
+    tags: ["scroll", "progress", "indicator", "component"],
     files: [
       {
         path: "registry/components/scroll-progress.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/components/scroll-progress")),
+    component: React.lazy(
+      () => import("@/registry/components/scroll-progress")
+    ),
     source: "",
   },
-  "drawer": {
+  drawer: {
     name: "drawer",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["overlay","panel","slide","bottom sheet","dialog","mobile","responsive","component"],
+    tags: [
+      "overlay",
+      "panel",
+      "slide",
+      "bottom sheet",
+      "dialog",
+      "mobile",
+      "responsive",
+      "component",
+    ],
     files: [
       {
         path: "registry/components/drawer.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/drawer")),
     source: "",
   },
-  "modal": {
+  modal: {
     name: "modal",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["dialog","popup","overlay","animated","accessible","responsive","component"],
+    tags: [
+      "dialog",
+      "popup",
+      "overlay",
+      "animated",
+      "accessible",
+      "responsive",
+      "component",
+    ],
     files: [
       {
         path: "registry/components/modal.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/modal")),
     source: "",
   },
-  "tabs": {
+  tabs: {
     name: "tabs",
     type: "registry:component",
     registryDependencies: ["x-scrollable"],
-    tags: ["navigation","tabs","interactive","animated","scrollable","content switcher","component"],
+    tags: [
+      "navigation",
+      "tabs",
+      "interactive",
+      "animated",
+      "scrollable",
+      "content switcher",
+      "component",
+    ],
     files: [
       {
         path: "registry/components/tabs.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/tabs")),
     source: "",
@@ -1620,13 +1968,20 @@ export const Index: Record<string, any> = {
     name: "x-scrollable",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["scroll","horizontal","container","utility","layout","component"],
+    tags: [
+      "scroll",
+      "horizontal",
+      "container",
+      "utility",
+      "layout",
+      "component",
+    ],
     files: [
       {
         path: "registry/components/x-scrollable.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/components/x-scrollable")),
     source: "",
@@ -1634,14 +1989,34 @@ export const Index: Record<string, any> = {
   "smart-form": {
     name: "smart-form",
     type: "registry:block",
-    registryDependencies: ["text-input","checkbox-input","select-input","radio-input","switch-input","textarea-input","date-input","file-input","otp-input","tags-input"],
-    tags: ["form","dynamic","smart","validation","reactive","data collection","AI","block"],
+    registryDependencies: [
+      "text-input",
+      "checkbox-input",
+      "select-input",
+      "radio-input",
+      "switch-input",
+      "textarea-input",
+      "date-input",
+      "file-input",
+      "otp-input",
+      "tags-input",
+    ],
+    tags: [
+      "form",
+      "dynamic",
+      "smart",
+      "validation",
+      "reactive",
+      "data collection",
+      "AI",
+      "block",
+    ],
     files: [
       {
         path: "registry/blocks/smart-form.tsx",
         type: "registry:block",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/blocks/smart-form")),
     source: "",
@@ -1656,22 +2031,24 @@ export const Index: Record<string, any> = {
         path: "registry/landing-page/mouse-string-connection.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
-    component: React.lazy(() => import("@/registry/landing-page/mouse-string-connection")),
+    component: React.lazy(
+      () => import("@/registry/landing-page/mouse-string-connection")
+    ),
     source: "",
   },
-  "highlighter": {
+  highlighter: {
     name: "highlighter",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["highlight","text","landing","animation","component"],
+    tags: ["highlight", "text", "landing", "animation", "component"],
     files: [
       {
         path: "registry/landing-page/highlighter.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/landing-page/highlighter")),
     source: "",
@@ -1686,22 +2063,22 @@ export const Index: Record<string, any> = {
         path: "registry/media/qr-code.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/media/qr-code")),
     source: "",
   },
-  "spotify": {
+  spotify: {
     name: "spotify",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["spotify","audio","media","component"],
+    tags: ["spotify", "audio", "media", "component"],
     files: [
       {
         path: "registry/media/spotify.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/media/spotify")),
     source: "",
@@ -1710,13 +2087,13 @@ export const Index: Record<string, any> = {
     name: "backdrop-gradient",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["effect","image","blur","gradient","background","filter"],
+    tags: ["effect", "image", "blur", "gradient", "background", "filter"],
     files: [
       {
         path: "registry/media/backdrop-gradient.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/media/backdrop-gradient")),
     source: "",
@@ -1725,13 +2102,13 @@ export const Index: Record<string, any> = {
     name: "retro-video-player",
     type: "registry:component",
     registryDependencies: undefined,
-    tags: ["video","player","draggable","resizable","retro","ui","media"],
+    tags: ["video", "player", "draggable", "resizable", "retro", "ui", "media"],
     files: [
       {
         path: "registry/media/retro-video-player.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/media/retro-video-player")),
     source: "",
@@ -1740,7 +2117,14 @@ export const Index: Record<string, any> = {
     name: "code-block",
     type: "registry:component",
     registryDependencies: ["button"],
-    tags: ["syntax highlighting","code","copyable","expandable","theme-aware","developer"],
+    tags: [
+      "syntax highlighting",
+      "code",
+      "copyable",
+      "expandable",
+      "theme-aware",
+      "developer",
+    ],
     files: [
       {
         path: "registry/media/code-block.tsx",
@@ -1751,12 +2135,27 @@ export const Index: Record<string, any> = {
         path: "registry/media/code-block.css",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/media/code-block")),
     source: "",
   },
-  "footer": {
+  "header-sleek": {
+    name: "header-sleek",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/layout/header-sleek.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/layout/header-sleek")),
+    source: "",
+  },
+  footer: {
     name: "footer",
     type: "registry:component",
     registryDependencies: undefined,
@@ -1766,7 +2165,7 @@ export const Index: Record<string, any> = {
         path: "registry/layout/footer.tsx",
         type: "registry:component",
         target: "",
-      }
+      },
     ],
     component: React.lazy(() => import("@/registry/layout/footer")),
     source: "",

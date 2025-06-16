@@ -308,7 +308,7 @@ function SocialIcon({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block transition-opacity hover:opacity-75"
+        className="inline-block transition-opacity hover:opacity-75 no-after"
       >
         <IconComponent />
       </a>

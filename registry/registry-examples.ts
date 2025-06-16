@@ -2,6 +2,17 @@ import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "header-sleek-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/header-sleek-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+
+  {
     name: "social-icons-demo",
     type: "registry:block",
     files: [
@@ -899,6 +910,72 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/social-icons-monochrome-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "embed-blocked-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/embed.json"],
+    files: [
+      {
+        path: "examples/embed-blocked-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "tabs-sizes-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/tabs.json"],
+    files: [
+      {
+        path: "examples/tabs-sizes-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "scramble-text-intersection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/scramble-text.json"],
+    files: [
+      {
+        path: "examples/scramble-text-intersection-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "scramble-text-albums-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/scramble-text.json"],
+    files: [
+      {
+        path: "examples/scramble-text-albums-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "radio-input-no-selection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/radio-input.json"],
+    files: [
+      {
+        path: "examples/radio-input-no-selection-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-scale-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-scale-demo.tsx",
         type: "registry:block",
       },
     ],

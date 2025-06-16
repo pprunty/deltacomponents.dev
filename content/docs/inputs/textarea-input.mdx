@@ -95,6 +95,7 @@ export function Component() {
 | `labelClassName`     | `string`                                                    | `""`        | CSS classes for the label                                       |
 | `schema`             | `ZodType<string>`                                           | `undefined` | Zod schema for validation                                       |
 | `onValidate`         | `(isValid: boolean, value: string, error?: string) => void` | `undefined` | Validation callback                                             |
+| `showActiveCount`    | `boolean`                                                   | `false`     | Whether to show active character count (e.g., "432/500")        |
 
 </div>
 
@@ -120,6 +121,6 @@ Rounded pill variant with muted background styling for modern interfaces.
 
 ### Max Length Example
 
-Textarea with character limits and validation for controlled content length. The `lg` size provides adequate space for content approaching the 500-character limit.
+Textarea with character limits and active character count display. The `showActiveCount` prop displays the current character count in "432/500" format, providing clear feedback to users about their input length.
 
 <ComponentPreview name="textarea-input-max-demo" />
