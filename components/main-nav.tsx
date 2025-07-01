@@ -9,7 +9,7 @@ export function MainNav() {
   const pathname = usePathname()
 
   return (
-    <div className="mr-4 md:px-4 hidden md:flex items-end">
+    <div className="mr-4 md:px-4 hidden lg:flex items-end">
       <Link href="/" className="mr-8 flex items-center gap-3">
         <svg
           className="size-6 fill-foreground dark:fill-foreground transition-colors"

@@ -113,7 +113,7 @@ export default async function DocPage(props: {
 
   return (
     <>
-      <main className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] justify-center w-full">
+      <main className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-4 justify-center w-full">
         <div className="mx-auto w-full min-w-0 max-w-3xl md:rounded-2xl md:bg-background md:border-border md:border md:p-6 md:px-8">
           <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
             <div className="truncate">Docs</div>
@@ -184,7 +184,7 @@ export default async function DocPage(props: {
             <DocsPagination />
           </Suspense>
         </div>
-        <div className="hidden text-sm xl:block pl-2">
+        <div className="hidden text-sm xl:block pr-4">
           <div className="sticky top-4">
             <div className="rounded-2xl bg-background border-border border">
               <ScrollArea className="max-h-[calc(100vh-8rem)]">
