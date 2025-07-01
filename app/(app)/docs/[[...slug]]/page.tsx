@@ -8,6 +8,7 @@ import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { Mdx } from "@/components/mdx-components"
 import { DashboardTableOfContents } from "@/components/toc"
 
@@ -112,8 +113,8 @@ export default async function DocPage(props: {
 
   return (
     <>
-      <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-        <div className="mx-auto w-full min-w-0 max-w-3xl">
+      <main className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] justify-center w-full">
+        <div className="mx-auto w-full min-w-0 max-w-3xl md:rounded-2xl md:bg-background md:border-border md:border md:p-6 md:px-8">
           <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
             <div className="truncate">Docs</div>
             <ChevronRightIcon className="size-3.5" />
@@ -127,7 +128,11 @@ export default async function DocPage(props: {
               )}
               speed={80}
             />
-            {doc.description && <p className="text-base">{doc.description}</p>}
+            {doc.description && (
+              <p className="text-base text-muted-foreground">
+                {doc.description}
+              </p>
+            )}
           </div>
           {doc.links ? (
             <div className="flex items-center space-x-2 pt-4">
@@ -179,41 +184,49 @@ export default async function DocPage(props: {
             <DocsPagination />
           </Suspense>
         </div>
-        <div className="hidden text-sm xl:block">
-          <div className="sticky top-20 h-[calc(100vh-3.5rem)] pt-1">
-            <div className="no-scrollbar h-full space-y-4 overflow-auto pb-10">
-              {doc.toc && (
-                <Suspense fallback={<div>Loading table of contents...</div>}>
-                  <DashboardTableOfContents toc={toc} />
-                </Suspense>
-              )}
-              <Suspense fallback={<div>Loading contribute links...</div>}>
-                <Contribute slug={doc.slug} />
-              </Suspense>
+        <div className="hidden text-sm xl:block pl-2">
+          <div className="sticky top-4">
+            <div className="rounded-2xl bg-background border-border border">
+              <ScrollArea className="max-h-[calc(100vh-8rem)]">
+                <div className="p-4 lg:p-6 space-y-4">
+                  {doc.toc && (
+                    <Suspense
+                      fallback={<div>Loading table of contents...</div>}
+                    >
+                      <DashboardTableOfContents toc={toc} />
+                    </Suspense>
+                  )}
+                  <Suspense fallback={<div>Loading contribute links...</div>}>
+                    <Contribute slug={doc.slug} />
+                  </Suspense>
 
-              {/* Twitter follow card */}
-              <div className="mt-4 rounded-lg border border-border p-4">
-                <Link
-                  href="https://twitter.com/pprunty_"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 group no-after"
-                >
-                  <Image
-                    src="/images/pp.png"
-                    alt="Patrick Prunty"
-                    width={42}
-                    height={42}
-                    className="rounded-md object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium">Follow me on 𝕏</span>
-                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                      @pprunty_
-                    </span>
+                  {/* Twitter follow card */}
+                  <div className="mt-4 rounded-lg border border-border p-4 hover:bg-accent transition-colors">
+                    <Link
+                      href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 group no-after"
+                    >
+                      <Image
+                        src="/images/pp.png"
+                        alt="Patrick Prunty"
+                        width={42}
+                        height={42}
+                        className="rounded-md object-cover"
+                      />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium">
+                          Follow me on 𝕏
+                        </span>
+                        <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                          @pprunty_
+                        </span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </ScrollArea>
             </div>
           </div>
         </div>

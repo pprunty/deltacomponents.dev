@@ -74,8 +74,8 @@ export default function ComponentsPage() {
   }, [])
 
   return (
-    <main className="relative py-6 lg:py-8 px-0">
-      <div className="w-full min-w-0">
+    <main className="relative">
+      <div className="w-full min-w-0 px-8 p-6">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-3.5" />

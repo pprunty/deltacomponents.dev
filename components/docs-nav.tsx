@@ -26,10 +26,10 @@ export function DocsNav({ config }: { config: DocsConfig }) {
   }, [items])
 
   return items.length ? (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 p-4 lg:p-6">
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm md:text-[15px] font-medium">
+          <h4 className="rounded-md px-2 py-1 text-sm md:text-lg font-semibold text-foreground">
             {item.title}
             {categoryCounts[index] > 0 &&
               item.title.toLowerCase() !== "getting started" && (
