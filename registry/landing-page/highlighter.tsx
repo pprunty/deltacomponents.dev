@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { HTMLMotionProps, motion, PanInfo, useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 

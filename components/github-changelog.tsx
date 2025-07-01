@@ -174,12 +174,14 @@ function processLines(lines: string[]): string[] {
   let inListItem = false
 
   for (const line of lines) {
-    if (line.startsWith("- ")) {
+    if (line.startsWith("- ") || line.startsWith("* ")) {
       // If we were already in a list item, push it and start a new one
       if (inListItem) {
         processedLines.push(currentListItem)
       }
-      currentListItem = line
+      currentListItem = line.startsWith("- ")
+        ? line
+        : line.replace(/^\* /, "- ")
       inListItem = true
     } else if (inListItem && line.trim() !== "" && !line.startsWith("#")) {
       // If line is indented or is continuing a list item
@@ -202,6 +204,51 @@ function processLines(lines: string[]): string[] {
   return processedLines
 }
 
+// Helper function to process text with markdown formatting (links, bold, italic)
+function processTextWithLinks(text: string): React.ReactNode {
+  // Combined regex for URLs, bold (**text**), and italic (*text*)
+  const markdownRegex = /(https?:\/\/[^\s]+)|(\*\*[^*]+\*\*)|(\*[^*]+\*)/g
+  const parts = text.split(markdownRegex).filter(Boolean)
+
+  return parts.map((part, index) => {
+    // Handle URLs
+    if (/^https?:\/\//.test(part)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80"
+        >
+          {part}
+        </a>
+      )
+    }
+
+    // Handle bold text (**text**)
+    if (/^\*\*.*\*\*$/.test(part)) {
+      return (
+        <strong key={index} className="font-semibold">
+          {part.slice(2, -2)}
+        </strong>
+      )
+    }
+
+    // Handle italic text (*text*)
+    if (/^\*.*\*$/.test(part)) {
+      return (
+        <em key={index} className="italic">
+          {part.slice(1, -1)}
+        </em>
+      )
+    }
+
+    // Return plain text
+    return part
+  })
+}
+
 // Helper function to format GitHub markdown content
 function formatReleaseBody(body: string) {
   // Split the markdown into lines and process multi-line list items
@@ -212,11 +259,14 @@ function formatReleaseBody(body: string) {
   let listItems: React.ReactNode[] = []
 
   lines.forEach((line, index) => {
-    if (line.startsWith("- ")) {
+    if (line.startsWith("- ") || line.startsWith("* ")) {
       // Add to current list
+      const listText = line.startsWith("- ")
+        ? line.substring(2)
+        : line.substring(2)
       listItems.push(
         <li key={`item-${index}`} className={cn("mt-2")}>
-          {line.substring(2)}
+          {processTextWithLinks(listText)}
         </li>
       )
     } else {
@@ -266,7 +316,7 @@ function formatReleaseBody(body: string) {
       } else if (line.trim() !== "") {
         elements.push(
           <p key={index} className={cn("leading-7 not-first:mt-6")}>
-            {line}
+            {processTextWithLinks(line)}
           </p>
         )
       }

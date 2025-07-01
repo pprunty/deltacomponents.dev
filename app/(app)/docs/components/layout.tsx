@@ -6,8 +6,8 @@ export default function ComponentsLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className="flex min-h-screen flex-col items-center">
-      <div className="w-full max-w-[1400px] md:px-6 lg:px-8">{children}</div>
-    </section>
+    <div className="w-full md:rounded-2xl md:bg-background md:border-border md:border">
+      {children}
+    </div>
   )
 }

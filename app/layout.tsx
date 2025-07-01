@@ -120,16 +120,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={cn(
-          "min-h-svh overflow-x-hidden bg-background font-sans antialiased",
+          "flex items-center justify-center w-full text-foreground antialiased [font-synthesis-weight:none]",
           fontSans.variable,
           fontMono.variable
         )}
         suppressHydrationWarning
       >
         <TooltipProvider>
-          <div className="relative flex min-h-svh flex-col bg-background">
+          <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
             {children}
-          </div>
+          </main>
         </TooltipProvider>
         <Toaster />
       </body>

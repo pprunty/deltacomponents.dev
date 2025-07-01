@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Cross as Hamburger } from "hamburger-react"
 
 import { docsConfig } from "@/config/docs"
@@ -66,6 +66,7 @@ export function MobileNav() {
                       key={item.href}
                       href={item.href}
                       onOpenChange={setOpen}
+                      exactMatch={true}
                     >
                       {item.title}
                     </MobileLink>
@@ -86,7 +87,6 @@ export function MobileNav() {
                               <MobileLink
                                 href={item.href}
                                 onOpenChange={setOpen}
-                                className="text-muted-foreground"
                               >
                                 {item.title}
                                 {item.label && (
@@ -114,6 +114,7 @@ interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void
   children: React.ReactNode
   className?: string
+  exactMatch?: boolean
 }
 
 function MobileLink({
@@ -121,9 +122,16 @@ function MobileLink({
   onOpenChange,
   className,
   children,
+  exactMatch = false,
   ...props
 }: MobileLinkProps) {
   const router = useRouter()
+  const pathname = usePathname()
+
+  // Check if current route is active
+  const isActive = exactMatch
+    ? pathname === href
+    : pathname === href || pathname.startsWith(href + "/")
 
   // Handle navigation with scroll reset
   const handleClick = React.useCallback(() => {
@@ -144,7 +152,11 @@ function MobileLink({
     <Link
       href={href}
       onClick={handleClick}
-      className={cn("text-base", className)}
+      className={cn(
+        "text-base",
+        isActive ? "text-primary font-medium" : "text-muted-foreground",
+        className
+      )}
       {...props}
     >
       {children}

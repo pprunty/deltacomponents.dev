@@ -135,6 +135,7 @@ export default function AnimateIn({
   const isInView = useInView(ref, {
     once,
     margin: "0px 0px -100px 0px", // Start animation slightly before element is fully visible
+    amount: threshold,
   })
 
   // Determine if animation should be active
