@@ -3,8 +3,8 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "pnpm format && next build",
+    "dev": "pnpm format && next dev",
+    "build": "next build",
     "build:registry": "tsx ./scripts/build-registry.mts && shadcn build public/r/index.json --output public/r/",
     "start": "next start",
     "lint": "next lint",
