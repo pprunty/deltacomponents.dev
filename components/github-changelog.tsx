@@ -219,7 +219,7 @@ function processTextWithLinks(text: string): React.ReactNode {
           href={part}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80"
+          className="font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80 break-words break-all"
         >
           {part}
         </a>

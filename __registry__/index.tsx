@@ -228,6 +228,23 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "dropdown-menu-demo": {
+    name: "dropdown-menu-demo",
+    type: "registry:block",
+    registryDependencies: ["dropdown-menu"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/dropdown-menu-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/dropdown-menu-demo")
+    ),
+    source: "",
+  },
   "header-sleek-demo": {
     name: "header-sleek-demo",
     type: "registry:block",
@@ -466,6 +483,23 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(
       () => import("@/registry/examples/scroll-progress-demo")
+    ),
+    source: "",
+  },
+  "scroll-progress-article-demo": {
+    name: "scroll-progress-article-demo",
+    type: "registry:block",
+    registryDependencies: ["scroll-progress"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/scroll-progress-article-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/scroll-progress-article-demo")
     ),
     source: "",
   },
@@ -1712,6 +1746,91 @@ export const Index: Record<string, any> = {
     ),
     source: "",
   },
+  "smart-form-registration-demo": {
+    name: "smart-form-registration-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/smart-form.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/smart-form-registration-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/smart-form-registration-demo")
+    ),
+    source: "",
+  },
+  "dropdown-menu-profile-demo": {
+    name: "dropdown-menu-profile-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/dropdown-menu.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/dropdown-menu-profile-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/dropdown-menu-profile-demo")
+    ),
+    source: "",
+  },
+  "dropdown-menu-positions-demo": {
+    name: "dropdown-menu-positions-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/dropdown-menu.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/dropdown-menu-positions-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/dropdown-menu-positions-demo")
+    ),
+    source: "",
+  },
+  "animate-in-intersection-demo": {
+    name: "animate-in-intersection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-intersection-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-intersection-demo")
+    ),
+    source: "",
+  },
+  "animate-in-fade-demo": {
+    name: "animate-in-fade-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/animate-in-fade-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/animate-in-fade-demo")
+    ),
+    source: "",
+  },
   "animate-in": {
     name: "animate-in",
     type: "registry:component",
@@ -1785,6 +1904,30 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
+    source: "",
+  },
+  "dropdown-menu": {
+    name: "dropdown-menu",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [
+      "dropdown",
+      "menu",
+      "overlay",
+      "popup",
+      "animated",
+      "accessible",
+      "positioning",
+      "component",
+    ],
+    files: [
+      {
+        path: "registry/components/dropdown-menu.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/components/dropdown-menu")),
     source: "",
   },
   "social-icons": {

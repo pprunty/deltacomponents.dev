@@ -1,263 +1,110 @@
 "use client"
 
-import * as React from "react"
-import { motion, useInView, type Variants } from "framer-motion"
+import React, { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 
-import { cn } from "@/lib/utils"
-
-export interface AnimateInProps
-  extends Omit<
-    React.HTMLAttributes<HTMLDivElement>,
-    | "onDrag"
-    | "onDragEnd"
-    | "onDragStart"
-    | "onAnimationStart"
-    | "onAnimationEnd"
-  > {
+interface AnimateInProps {
   children: React.ReactNode
-  /**
-   * Direction of the animation
-   * @default "up"
-   */
-  direction?: "up" | "down" | "left" | "right" | "scale"
-  /**
-   * Distance in pixels the element travels during animation
-   * @default 50
-   */
-  distance?: number
-  /**
-   * Duration of the animation in seconds
-   * @default 0.6
-   */
-  duration?: number
-  /**
-   * Delay before animation starts in seconds
-   * @default 0
-   */
+  direction?: "up" | "left" | "right" | "fade"
   delay?: number
-  /**
-   * Whether to use intersection observer for triggering animation
-   * @default true
-   */
+  className?: string
   useIntersectionObserver?: boolean
-  /**
-   * Intersection observer threshold (0-1)
-   * @default 0.1
-   */
   threshold?: number
-  /**
-   * Whether to animate only once or every time it comes into view
-   * @default true
-   */
-  once?: boolean
-  /**
-   * Easing function for the animation
-   * @default "easeOut"
-   */
-  easing?:
-    | "linear"
-    | "easeIn"
-    | "easeOut"
-    | "easeInOut"
-    | "circIn"
-    | "circOut"
-    | "circInOut"
-    | "backIn"
-    | "backOut"
-    | "backInOut"
-    | "anticipate"
-  /**
-   * Initial opacity value
-   * @default 0
-   */
-  initialOpacity?: number
-  /**
-   * Final opacity value
-   * @default 1
-   */
-  finalOpacity?: number
-  /**
-   * Whether to start animation immediately (ignores intersection observer)
-   * @default false
-   */
-  immediate?: boolean
-  /**
-   * Stagger delay for child elements in seconds
-   * @default 0
-   */
-  staggerChildren?: number
-  /**
-   * Whether animation is disabled
-   * @default false
-   */
-  disabled?: boolean
-  /**
-   * Whether to show a blur overlay effect during animation
-   * @default false
-   */
-  overlayBlur?: boolean
+  triggerOnce?: boolean
+  duration?: number
 }
 
-const easingMap = {
-  linear: [0, 0, 1, 1],
-  easeIn: [0.4, 0, 1, 1],
-  easeOut: [0, 0, 0.2, 1],
-  easeInOut: [0.4, 0, 0.2, 1],
-  circIn: [0.6, 0.04, 0.98, 0.335],
-  circOut: [0.075, 0.82, 0.165, 1],
-  circInOut: [0.785, 0.135, 0.15, 0.86],
-  backIn: [0.6, -0.28, 0.735, 0.045],
-  backOut: [0.175, 0.885, 0.32, 1.275],
-  backInOut: [0.68, -0.55, 0.265, 1.55],
-  anticipate: [0.215, 0.61, 0.355, 1],
-} as const
-
-export default function AnimateIn({
+const AnimateIn: React.FC<AnimateInProps> = ({
   children,
   direction = "up",
-  distance = 50,
-  duration = 0.6,
   delay = 0,
-  useIntersectionObserver = true,
+  className = "",
+  useIntersectionObserver = false,
   threshold = 0.1,
-  once = true,
-  easing = "easeOut",
-  initialOpacity = 0,
-  finalOpacity = 1,
-  immediate = false,
-  staggerChildren = 0,
-  disabled = false,
-  overlayBlur = false,
-  className,
-  ...props
-}: AnimateInProps) {
-  const ref = React.useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, {
-    once,
-    margin: "0px 0px -100px 0px", // Start animation slightly before element is fully visible
-    amount: threshold,
-  })
+  triggerOnce = true,
+  duration = 0.6,
+}) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const elementRef = useRef<HTMLDivElement>(null)
 
-  // Determine if animation should be active
-  const shouldAnimate = React.useMemo(() => {
-    if (disabled) return false
-    if (immediate) return true
-    if (!useIntersectionObserver) return true
-    return isInView
-  }, [disabled, immediate, useIntersectionObserver, isInView])
-
-  // Calculate initial position based on direction
-  const getInitialPosition = React.useCallback(() => {
-    switch (direction) {
-      case "up":
-        return { x: 0, y: distance }
-      case "down":
-        return { x: 0, y: -distance }
-      case "left":
-        return { x: distance, y: 0 }
-      case "right":
-        return { x: -distance, y: 0 }
-      case "scale":
-        return { x: 0, y: 0 }
-      default:
-        return { x: 0, y: distance }
-    }
-  }, [direction, distance])
-
-  const initialPosition = getInitialPosition()
-
-  const variants: Variants = {
-    hidden: {
-      opacity: initialOpacity,
-      x: initialPosition.x,
-      y: initialPosition.y,
-      ...(direction === "scale" && { scale: 0.98 }),
-    },
-    visible: {
-      opacity: finalOpacity,
-      x: 0,
-      y: 0,
-      ...(direction === "scale" && { scale: 1 }),
-      transition: {
-        duration,
-        delay,
-        ease: easingMap[easing],
-        staggerChildren: staggerChildren > 0 ? staggerChildren : undefined,
-        ...(direction === "scale" && {
-          scale: { type: "spring", bounce: 0.3, duration: duration + 0.1 },
-        }),
-      },
-    },
-  }
-
-  const childVariants: Variants =
-    staggerChildren > 0
-      ? {
-          hidden: {
-            opacity: initialOpacity,
-            x: initialPosition.x,
-            y: initialPosition.y,
-            ...(direction === "scale" && { scale: 0.98 }),
-          },
-          visible: {
-            opacity: finalOpacity,
-            x: 0,
-            y: 0,
-            ...(direction === "scale" && { scale: 1 }),
-            transition: {
-              duration,
-              ease: easingMap[easing],
-              ...(direction === "scale" && {
-                scale: {
-                  type: "spring",
-                  bounce: 0.3,
-                  duration: duration + 0.1,
-                },
-              }),
-            },
-          },
-        }
-      : {}
-
-  // If disabled, render without animation
-  if (disabled) {
-    return (
-      <div ref={ref} className={className} {...props}>
-        {children}
-      </div>
-    )
-  }
-
-  // Create variants with blur effect if overlayBlur is enabled
-  const blurVariants = overlayBlur
-    ? {
-        hidden: {
-          ...variants.hidden,
-          filter: "blur(4px)",
+  useEffect(() => {
+    if (useIntersectionObserver) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            if (triggerOnce) {
+              observer.unobserve(entry.target)
+            }
+          } else if (!triggerOnce) {
+            setIsVisible(false)
+          }
         },
-        visible: {
-          ...variants.visible,
-          filter: "blur(0px)",
-        },
+        { threshold }
+      )
+
+      if (elementRef.current) {
+        observer.observe(elementRef.current)
       }
-    : variants
+
+      return () => {
+        if (elementRef.current) {
+          observer.unobserve(elementRef.current)
+        }
+      }
+    } else {
+      // Original delay-based behavior
+      const timer = setTimeout(() => {
+        setIsVisible(true)
+      }, delay)
+
+      return () => clearTimeout(timer)
+    }
+  }, [delay, useIntersectionObserver, threshold, triggerOnce])
+
+  const getInitialState = () => {
+    switch (direction) {
+      case "left":
+        return { opacity: 0, x: -30 }
+      case "right":
+        return { opacity: 0, x: 30 }
+      case "fade":
+        return { opacity: 0 }
+      case "up":
+      default:
+        return { opacity: 0, y: 20 }
+    }
+  }
+
+  const getAnimateState = () => {
+    switch (direction) {
+      case "left":
+        return { opacity: 1, x: 0 }
+      case "right":
+        return { opacity: 1, x: 0 }
+      case "fade":
+        return { opacity: 1 }
+      case "up":
+      default:
+        return { opacity: 1, y: 0 }
+    }
+  }
 
   return (
     <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={shouldAnimate ? "visible" : "hidden"}
-      variants={blurVariants}
-      className={cn(className)}
-      {...props}
+      ref={elementRef}
+      className={className}
+      initial={getInitialState()}
+      animate={isVisible ? getAnimateState() : getInitialState()}
+      transition={{
+        duration,
+        delay: useIntersectionObserver ? 0 : delay / 1000,
+        ease: "easeOut",
+      }}
     >
-      {staggerChildren > 0
-        ? React.Children.map(children, (child, index) => (
-            <motion.div key={index} variants={childVariants}>
-              {child}
-            </motion.div>
-          ))
-        : children}
+      {children}
     </motion.div>
   )
 }
+
+export default AnimateIn

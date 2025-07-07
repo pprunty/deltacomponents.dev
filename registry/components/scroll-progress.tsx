@@ -12,6 +12,9 @@ type ScrollProgressProps = {
   position?: "top" | "bottom"
   variant?: "default" | "secondary" | "destructive" | "outline"
   absolute?: boolean
+  children?: React.ReactNode
+  height?: number
+  color?: string
 }
 
 const DEFAULT_SPRING_OPTIONS: SpringOptions = {
@@ -34,10 +37,17 @@ export default function ScrollProgress({
   position = "bottom",
   variant = "default",
   absolute = false,
+  children,
+  height = 4,
+  color,
 }: ScrollProgressProps) {
+  const contentRef = React.useRef<HTMLDivElement>(null)
+
   const { scrollYProgress } = useScroll({
     container: containerRef,
-    layoutEffect: Boolean(containerRef?.current),
+    target: children ? contentRef : undefined,
+    offset: children ? ["start end", "end start"] : undefined,
+    layoutEffect: Boolean(containerRef?.current) || Boolean(children),
   })
 
   const scaleX = useSpring(scrollYProgress, {
@@ -50,24 +60,37 @@ export default function ScrollProgress({
     bottom: "bottom-0",
   }
 
-  return (
+  const progressBar = (
     <div
       className={cn(
-        "inset-x-0 h-1 bg-slate-200/20 dark:bg-slate-800/20 z-50",
+        "inset-x-0 bg-slate-200/20 dark:bg-slate-800/20 z-50",
         absolute ? "absolute" : "fixed",
         positionStyles[position],
         className
       )}
+      style={{ height: `${height}px` }}
     >
       <motion.div
         className={cn(
           "h-full origin-left transition-colors",
-          variantStyles[variant]
+          !color && variantStyles[variant]
         )}
         style={{
           scaleX,
+          backgroundColor: color,
         }}
       />
     </div>
   )
+
+  if (children) {
+    return (
+      <>
+        {progressBar}
+        <div ref={contentRef}>{children}</div>
+      </>
+    )
+  }
+
+  return progressBar
 }

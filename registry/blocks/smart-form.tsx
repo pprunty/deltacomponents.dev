@@ -434,7 +434,7 @@ export function SmartForm({
         return `grid grid-cols-1 md:grid-cols-${columns} gap-${gap}`
       case "vertical":
       default:
-        return "flex flex-col space-y-8"
+        return "flex flex-col space-y-6"
     }
   }
 
@@ -697,7 +697,6 @@ export function SmartForm({
             key={field.name}
             className={cn(
               layout === "horizontal" && "mr-4 mb-4",
-              layout === "vertical" && "mb-0",
               layout === "grid" && "mb-0"
             )}
             style={
@@ -717,7 +716,7 @@ export function SmartForm({
 
         {/* Render grouped fields */}
         {Object.entries(groupedFields.groups).map(([groupName, fields]) => (
-          <div key={groupName} className="w-full mb-6">
+          <div key={groupName} className="w-full">
             <div className="flex flex-row gap-4">
               {fields.map((field) => (
                 <div
@@ -725,7 +724,6 @@ export function SmartForm({
                   className={cn(
                     "flex-1",
                     layout === "horizontal" && "mr-4 mb-4",
-                    layout === "vertical" && "mb-0",
                     layout === "grid" && "mb-0"
                   )}
                   style={

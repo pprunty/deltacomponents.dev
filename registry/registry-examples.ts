@@ -2,6 +2,16 @@ import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "dropdown-menu-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/dropdown-menu-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "header-sleek-demo",
     type: "registry:block",
     files: [
@@ -148,6 +158,17 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/scroll-progress-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "scroll-progress-article-demo",
+    type: "registry:block",
+    registryDependencies: ["scroll-progress"],
+    files: [
+      {
+        path: "examples/scroll-progress-article-demo.tsx",
         type: "registry:block",
       },
     ],
@@ -976,6 +997,61 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/animate-in-scale-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "smart-form-registration-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/smart-form.json"],
+    files: [
+      {
+        path: "examples/smart-form-registration-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "dropdown-menu-profile-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/dropdown-menu.json"],
+    files: [
+      {
+        path: "examples/dropdown-menu-profile-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "dropdown-menu-positions-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/dropdown-menu.json"],
+    files: [
+      {
+        path: "examples/dropdown-menu-positions-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-intersection-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-intersection-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "animate-in-fade-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/animate-in.json"],
+    files: [
+      {
+        path: "examples/animate-in-fade-demo.tsx",
         type: "registry:block",
       },
     ],

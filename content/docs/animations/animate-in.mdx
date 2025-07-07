@@ -1,15 +1,15 @@
 ---
 title: Animate In
-description: A powerful animation component that animates children elements into view with customizable directions, timing, and intersection observer support.
+description: A simple and lightweight animation component that animates children elements into view with CSS transitions, customizable directions, timing, and intersection observer support.
 ---
 
 <ComponentPreview name="animate-in-demo" />
 
 ## Overview
 
-The AnimateIn component provides a production-ready solution for animating content into view with full control over timing, direction, and easing. Built on top of Framer Motion, it uses intersection observer to trigger animations when elements come into view, making it perfect for landing pages, feature sections, and any content that needs elegant entrance animations.
+The AnimateIn component provides a lightweight solution for animating content into view using CSS animations and React state management. It supports multiple animation directions (up, left, right) with customizable delays and intersection observer functionality for scroll-triggered animations.
 
-The component supports multiple animation directions, custom easing functions, staggered children animations, and comprehensive timing controls. It's fully accessible and respects user motion preferences while providing smooth, hardware-accelerated animations.
+The component uses CSS keyframes for smooth, hardware-accelerated animations and provides both time-based (delay) and viewport-based (intersection observer) triggering options, making it perfect for landing pages, feature sections, and any content that needs elegant entrance animations.
 
 ## Installation
 
@@ -32,12 +32,6 @@ npx shadcn@latest add https://deltacomponents.dev/r/animate-in.json
 
 <Steps>
 
-<Step>Install the required dependencies:</Step>
-
-```bash
-npm install framer-motion
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="animate-in" />
@@ -50,16 +44,54 @@ npm install framer-motion
 
 ## Usage
 
+### Basic Usage with Delay
+
 ```tsx
 import AnimateIn from "@/registry/animations/animate-in"
 
 export function Component() {
   return (
-    <AnimateIn direction="up" duration={0.8} overlayBlur>
+    <AnimateIn direction="up" delay={200}>
       <h1 className="text-4xl font-bold">Hello World</h1>
       <p className="text-muted-foreground">
-        This content fades in from bottom with blur overlay
+        This content fades in from bottom with a delay
       </p>
+    </AnimateIn>
+  )
+}
+```
+
+### Intersection Observer
+
+```tsx
+import AnimateIn from "@/registry/animations/animate-in"
+
+export function Component() {
+  return (
+    <AnimateIn direction="up" useIntersectionObserver threshold={0.2}>
+      <h1 className="text-4xl font-bold">Hello World</h1>
+      <p className="text-muted-foreground">
+        This content animates when it comes into view
+      </p>
+    </AnimateIn>
+  )
+}
+```
+
+### Fade-in Only
+
+```tsx
+import AnimateIn from "@/registry/animations/animate-in"
+
+export function Component() {
+  return (
+    <AnimateIn direction="fade" useIntersectionObserver threshold={0.1}>
+      <div className="p-4 border rounded-lg">
+        <h2 className="text-xl font-semibold">Fade In</h2>
+        <p className="text-muted-foreground">
+          This content fades in smoothly using only opacity
+        </p>
+      </div>
     </AnimateIn>
   )
 }
@@ -69,56 +101,19 @@ export function Component() {
 
 <div className="overflow-x-auto">
 
-| Name                      | Type                                             | Description                                                            | Default     |
-| ------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------- | ----------- |
-| `children`                | `React.ReactNode`                                | Content to animate                                                     | -           |
-| `direction`               | `"up" \| "down" \| "left" \| "right" \| "scale"` | Direction of the animation                                             | `"up"`      |
-| `distance`                | `number`                                         | Distance in pixels the element travels during animation                | `50`        |
-| `duration`                | `number`                                         | Duration of the animation in seconds                                   | `0.6`       |
-| `delay`                   | `number`                                         | Delay before animation starts in seconds                               | `0`         |
-| `useIntersectionObserver` | `boolean`                                        | Whether to use intersection observer for triggering animation          | `true`      |
-| `threshold`               | `number`                                         | Intersection observer threshold (0-1)                                  | `0.1`       |
-| `once`                    | `boolean`                                        | Whether to animate only once or every time it comes into view          | `true`      |
-| `easing`                  | `EasingFunction`                                 | Easing function for the animation                                      | `"easeOut"` |
-| `initialOpacity`          | `number`                                         | Initial opacity value                                                  | `0`         |
-| `finalOpacity`            | `number`                                         | Final opacity value                                                    | `1`         |
-| `immediate`               | `boolean`                                        | Whether to start animation immediately (ignores intersection observer) | `false`     |
-| `staggerChildren`         | `number`                                         | Stagger delay for child elements in seconds                            | `0`         |
-| `disabled`                | `boolean`                                        | Whether animation is disabled                                          | `false`     |
-| `overlayBlur`             | `boolean`                                        | Whether to show a blur overlay effect during animation                 | `false`     |
-| `className`               | `string`                                         | Additional CSS classes                                                 | -           |
-
-### Easing Functions
-
-| Value          | Description                  |
-| -------------- | ---------------------------- |
-| `"linear"`     | Linear progression           |
-| `"easeIn"`     | Slow start                   |
-| `"easeOut"`    | Slow end                     |
-| `"easeInOut"`  | Slow start and end           |
-| `"circIn"`     | Circular ease in             |
-| `"circOut"`    | Circular ease out            |
-| `"circInOut"`  | Circular ease in and out     |
-| `"backIn"`     | Back ease in                 |
-| `"backOut"`    | Back ease out with overshoot |
-| `"backInOut"`  | Back ease in and out         |
-| `"anticipate"` | Natural anticipation motion  |
+| Name                      | Type                                  | Description                                                                            | Default |
+| ------------------------- | ------------------------------------- | -------------------------------------------------------------------------------------- | ------- |
+| `children`                | `React.ReactNode`                     | Content to animate                                                                     | -       |
+| `direction`               | `"up" \| "left" \| "right" \| "fade"` | Direction of the animation. Use "fade" for opacity-only animation                      | `"up"`  |
+| `delay`                   | `number`                              | Delay before animation starts in milliseconds (ignored if using intersection observer) | `0`     |
+| `className`               | `string`                              | Additional CSS classes                                                                 | `""`    |
+| `useIntersectionObserver` | `boolean`                             | Enable intersection observer for scroll-triggered animations                           | `false` |
+| `threshold`               | `number`                              | Intersection observer threshold (0.0 to 1.0)                                           | `0.1`   |
+| `triggerOnce`             | `boolean`                             | Whether animation should only trigger once                                             | `true`  |
 
 </div>
 
 ## Examples
-
-### Hero Section
-
-Landing page style hero section with heading and subheading animations.
-
-<ComponentPreview name="animate-in-hero-demo" />
-
-### Staggered Animation
-
-Animate multiple children with staggered timing for a cascading effect.
-
-<ComponentPreview name="animate-in-stagger-demo" />
 
 ### Directions
 
@@ -126,8 +121,26 @@ Showcase content animating in from different directions.
 
 <ComponentPreview name="animate-in-directions-demo" />
 
-### Scale Animation
+### Intersection Observer
 
-Spring-powered scale animations that grow elements into view with natural bounce physics.
+Scroll-triggered animations using the Intersection Observer API. Elements animate into view as you scroll.
+
+<ComponentPreview name="animate-in-intersection-demo" />
+
+### Staggered Animation
+
+Animate multiple children with staggered timing for a cascading effect.
+
+<ComponentPreview name="animate-in-stagger-demo" />
+
+### Fade Animation
+
+Cards that fade in smoothly using only opacity changes, perfect for component showcases and grids.
+
+<ComponentPreview name="animate-in-fade-demo" />
+
+### Simple Delays
+
+Multiple elements with different delays for smooth sequential animations.
 
 <ComponentPreview name="animate-in-scale-demo" />

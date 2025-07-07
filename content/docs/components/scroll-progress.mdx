@@ -50,14 +50,36 @@ npm install framer-motion
 
 ## Usage
 
+### Basic Usage
+
 ```tsx
 "use client"
 
-import { ScrollProgress } from "@/registry/components/scroll-progress"
+import ScrollProgress from "@/registry/components/scroll-progress"
 
 export function Component() {
+  return <ScrollProgress position="top" height={4} color="#3b82f6" />
+}
+```
+
+### Content-Based Progress
+
+Track progress through specific content by wrapping it with the ScrollProgress component:
+
+```tsx
+"use client"
+
+import ScrollProgress from "@/registry/components/scroll-progress"
+
+export function ArticleWithProgress() {
   return (
-    <ScrollProgress position="top" height={4} color="hsl(var(--primary))" />
+    <ScrollProgress height={6} color="#3b82f6" position="top">
+      <article>
+        <h1>Your Article Title</h1>
+        <p>Your article content...</p>
+        {/* Progress will track through this content */}
+      </article>
+    </ScrollProgress>
   )
 }
 ```
@@ -68,21 +90,24 @@ export function Component() {
 
 <div className="overflow-x-auto">
 
-| Prop             | Type                | Default                 | Description                          |
-| ---------------- | ------------------- | ----------------------- | ------------------------------------ |
-| `position`       | `"top" \| "bottom"` | `"top"`                 | Position of the progress bar         |
-| `height`         | `number`            | `4`                     | Height of the progress bar in pixels |
-| `color`          | `string`            | `"hsl(var(--primary))"` | Color of the progress bar            |
-| `className`      | `string`            | `""`                    | Additional CSS classes               |
-| `showPercentage` | `boolean`           | `false`                 | Whether to show percentage text      |
-| `smooth`         | `boolean`           | `true`                  | Whether to use smooth animation      |
+| Prop            | Type                                                     | Default     | Description                                      |
+| --------------- | -------------------------------------------------------- | ----------- | ------------------------------------------------ |
+| `position`      | `"top" \| "bottom"`                                      | `"bottom"`  | Position of the progress bar                     |
+| `height`        | `number`                                                 | `4`         | Height of the progress bar in pixels             |
+| `color`         | `string`                                                 | `undefined` | Custom color for the progress bar                |
+| `variant`       | `"default" \| "secondary" \| "destructive" \| "outline"` | `"default"` | Preset color variant when color is not specified |
+| `className`     | `string`                                                 | `""`        | Additional CSS classes                           |
+| `children`      | `React.ReactNode`                                        | `undefined` | Content to track progress through                |
+| `absolute`      | `boolean`                                                | `false`     | Use absolute positioning instead of fixed        |
+| `containerRef`  | `React.RefObject<HTMLDivElement>`                        | `undefined` | Reference to scroll container                    |
+| `springOptions` | `SpringOptions`                                          | `undefined` | Custom spring animation options                  |
 
 </div>
 
 ## Examples
 
-### Basic Progress Indicator
+### Article Progress Tracking
 
-A simple scroll progress bar positioned at the top of the viewport with default styling.
+Track reading progress through article content with a custom styled progress bar.
 
-<ComponentPreview name="scroll-progress-demo" />
+<ComponentPreview name="scroll-progress-article-demo" />

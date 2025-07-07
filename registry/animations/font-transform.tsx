@@ -56,6 +56,21 @@ const FontTransform = React.forwardRef<HTMLDivElement, FontTransformProps>(
       Array<{ isTransformed: boolean; fontClass: string }>
     >(() => characters.map(() => ({ isTransformed: false, fontClass: "" })))
     const timeoutRefs = React.useRef<(NodeJS.Timeout | null)[]>([])
+    const [isMobile, setIsMobile] = React.useState(false)
+
+    // Mobile detection
+    React.useEffect(() => {
+      const checkMobile = () => {
+        const isTouchDevice =
+          "ontouchstart" in window || navigator.maxTouchPoints > 0
+        const isSmallScreen = window.matchMedia("(max-width: 768px)").matches
+        setIsMobile(isTouchDevice || isSmallScreen)
+      }
+
+      checkMobile()
+      window.addEventListener("resize", checkMobile)
+      return () => window.removeEventListener("resize", checkMobile)
+    }, [])
 
     // Initialize timeout refs array
     React.useEffect(() => {
@@ -63,6 +78,9 @@ const FontTransform = React.forwardRef<HTMLDivElement, FontTransformProps>(
     }, [characters.length])
 
     const handleCharacterHover = (index: number) => {
+      // Disable on mobile devices
+      if (isMobile) return
+
       // Clear any existing timeout for this character
       if (timeoutRefs.current[index]) {
         clearTimeout(timeoutRefs.current[index]!)
@@ -151,10 +169,14 @@ const FontTransform = React.forwardRef<HTMLDivElement, FontTransformProps>(
                 textAlign: "center",
               }}
               onMouseEnter={() => handleCharacterHover(index)}
-              whileHover={{
-                scale: state.isTransformed ? 1.15 : 1.05,
-                transition: { duration: 0.1 },
-              }}
+              whileHover={
+                !isMobile
+                  ? {
+                      scale: state.isTransformed ? 1.15 : 1.05,
+                      transition: { duration: 0.1 },
+                    }
+                  : {}
+              }
             >
               {char === " " ? "\u00A0" : char}
             </motion.span>

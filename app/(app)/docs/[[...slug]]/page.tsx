@@ -124,7 +124,7 @@ export default async function DocPage(props: {
             <ScrambleText
               text={doc.title}
               className={cn(
-                "h-10 w-fit scroll-m-20 text-3xl font-bold tracking-tight"
+                "h-10 w-fit scroll-m-20 text-4xl font-bold tracking-tight"
               )}
               speed={80}
             />

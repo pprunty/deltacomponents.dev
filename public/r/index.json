@@ -134,6 +134,21 @@
       "dependencies": ["zod"]
     },
     {
+      "name": "dropdown-menu-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/dropdown-menu-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/dropdown-menu-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/dropdown-menu.json"
+      ]
+    },
+    {
       "name": "header-sleek-demo",
       "type": "registry:block",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -338,6 +353,21 @@
           "path": "registry/examples/scroll-progress-demo.tsx",
           "type": "registry:block",
           "target": "/components/delta/examples/scroll-progress-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/scroll-progress.json"
+      ]
+    },
+    {
+      "name": "scroll-progress-article-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/scroll-progress-article-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/scroll-progress-article-demo.tsx"
         }
       ],
       "registryDependencies": [
@@ -1368,6 +1398,75 @@
       "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
+      "name": "smart-form-registration-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/smart-form-registration-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/smart-form-registration-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
+    },
+    {
+      "name": "dropdown-menu-profile-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/dropdown-menu-profile-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/dropdown-menu-profile-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/dropdown-menu.json"
+      ]
+    },
+    {
+      "name": "dropdown-menu-positions-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/dropdown-menu-positions-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/dropdown-menu-positions-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/dropdown-menu.json"
+      ]
+    },
+    {
+      "name": "animate-in-intersection-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/animate-in-intersection-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/animate-in-intersection-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
+    },
+    {
+      "name": "animate-in-fade-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/animate-in-fade-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/animate-in-fade-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
+    },
+    {
       "name": "animate-in",
       "type": "registry:component",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -1420,6 +1519,19 @@
         }
       ],
       "dependencies": ["use-scramble"]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:component",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/components/dropdown-menu.tsx",
+          "type": "registry:component",
+          "target": "/components/delta/components/dropdown-menu.tsx"
+        }
+      ],
+      "dependencies": ["framer-motion"]
     },
     {
       "name": "social-icons",

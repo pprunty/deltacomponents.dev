@@ -7,7 +7,7 @@ import { GridPattern } from "@/components/grid-pattern"
 export default function Home() {
   return (
     <div className="relative grid min-h-screen place-items-center overflow-hidden">
-      <div className="z-10 flex flex-col items-center space-y-6">
+      <div className="z-10 flex flex-col items-center space-y-6 px-6">
         <svg
           className="size-16 fill-foreground dark:fill-foreground transition-colors duration-150 ease-in-out mb-8"
           width="26"

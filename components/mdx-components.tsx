@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Children } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer2/hooks"
@@ -18,6 +19,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
+import { CodeSnippet } from "@/components/code-snippet"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton } from "@/components/copy-button"
@@ -26,6 +28,29 @@ import Admonition from "@/registry/components/admonition"
 
 interface MdxProps {
   code: string
+}
+
+// Helper function to extract text content from MDX children
+function extractTextContent(children: React.ReactNode): string {
+  if (typeof children === "string") {
+    return children
+  }
+
+  if (Array.isArray(children)) {
+    return children.map((child) => extractTextContent(child)).join("")
+  }
+
+  if (
+    React.isValidElement(children) &&
+    children.props &&
+    typeof children.props === "object" &&
+    children.props !== null &&
+    "children" in children.props
+  ) {
+    return extractTextContent(children.props.children as React.ReactNode)
+  }
+
+  return ""
 }
 
 const components = {
@@ -42,6 +67,32 @@ const components = {
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
+  CodeSnippet: ({
+    title,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLElement> & {
+    title?: string
+  }) => {
+    // Extract code content and language from children
+    const preElement = Children.toArray(children)[0] as React.ReactElement
+
+    //@ts-expect-error - accessing nested props from MDX parsed children
+    const codeElement = preElement?.props?.children as React.ReactElement<{
+      className?: string
+      children?: string
+    }>
+
+    if (!codeElement) return null
+
+    const code = codeElement.props.children || ""
+    const language =
+      codeElement.props.className?.replace("language-", "") || "typescript"
+
+    return (
+      <CodeSnippet title={title} code={code} language={language} {...props} />
+    )
+  },
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -215,6 +266,7 @@ const components = {
     __pnpmCommand__,
     __bunCommand__,
     __rawstring__,
+    children,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
     __rawstring__?: string
@@ -234,6 +286,25 @@ const components = {
       )
     }
 
+    // Extract code content and language from children for CodeSnippet
+    const codeElement = Children.toArray(children)[0] as React.ReactElement<{
+      className?: string
+      children?: React.ReactNode
+    }>
+
+    if (codeElement && codeElement.props) {
+      // Use robust text extraction to handle complex MDX children
+      const code = extractTextContent(codeElement.props.children)
+
+      if (code.trim()) {
+        const language =
+          codeElement.props.className?.replace("language-", "") || "typescript"
+
+        return <CodeSnippet code={code} language={language} className="mt-6" />
+      }
+    }
+
+    // Fallback to original pre element if no code content
     return (
       <>
         <pre
@@ -255,10 +326,9 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "font-mono text-xs md:text-sm px-0.5 py-px md:px-1 md:py-0.5 border border-border rounded-md leading-6 bg-muted sm:whitespace-pre box-decoration-clone",
         className
       )}
-      data-line-numbers
       {...props}
     />
   ),

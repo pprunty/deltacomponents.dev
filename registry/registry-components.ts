@@ -2,6 +2,28 @@ import type { Registry } from "@/registry/schema"
 
 export const components: Registry = [
   {
+    name: "dropdown-menu",
+    type: "registry:component",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    tags: [
+      "dropdown",
+      "menu",
+      "overlay",
+      "popup",
+      "animated",
+      "accessible",
+      "positioning",
+      "component",
+    ],
+    files: [
+      {
+        path: "components/dropdown-menu.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "social-icons",
     type: "registry:component",
     registryDependencies: [],

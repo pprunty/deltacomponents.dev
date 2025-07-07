@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Cross as Hamburger } from "hamburger-react"
 
 import { docsConfig } from "@/config/docs"
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -27,10 +28,15 @@ export function MobileNav() {
     setOpen(isOpen)
   }, [])
 
-  // Filter top-level navigation to only include Home and Components Showcase, and not hidden
+  // Filter top-level navigation to only include Home, Components Showcase, and Templates (if enabled), and not hidden
   const topLevelNav = docsConfig.mainNav?.filter(
     (item) => (item.title === "Home" || item.title === "Showcase") && !item.hide
   )
+
+  // Add Templates to top-level nav if enabled
+  const navItems = siteConfig.showTemplates
+    ? [...(topLevelNav || []), { title: "Templates", href: "/templates" }]
+    : topLevelNav
 
   return (
     <Drawer open={open} onOpenChange={handleDrawerChange} size="xl">
@@ -59,7 +65,7 @@ export function MobileNav() {
           <DrawerHandle />
           <DrawerBody className="flex-1 overflow-auto p-6">
             <div className="flex flex-col gap-y-3 pb-4 mb-4 border-b border-dashed border-border">
-              {topLevelNav.map(
+              {navItems?.map(
                 (item) =>
                   item.href && (
                     <MobileLink
@@ -68,7 +74,14 @@ export function MobileNav() {
                       onOpenChange={setOpen}
                       exactMatch={true}
                     >
-                      {item.title}
+                      <div className="flex items-center gap-2">
+                        {item.title}
+                        {item.title === "Templates" && (
+                          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                            new
+                          </span>
+                        )}
+                      </div>
                     </MobileLink>
                   )
               )}

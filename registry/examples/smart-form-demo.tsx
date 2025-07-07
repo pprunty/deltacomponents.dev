@@ -40,6 +40,7 @@ export default function SmartFormBasicDemo() {
         schema={schema}
         onSubmit={handleSubmit}
         submitText="Sign In"
+        fieldClassName="mb-2"
       />
     </div>
   )

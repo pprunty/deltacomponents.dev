@@ -106,6 +106,9 @@ importers:
       next-themes:
         specifier: ^0.4.4
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      prism-react-renderer:
+        specifier: ^2.4.1
+        version: 2.4.1(react@19.1.0)
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
@@ -2747,6 +2750,12 @@ packages:
     resolution:
       {
         integrity: sha512-ieXiYmgSRXUDeOntE1InxjWyvEelZGP63M+cGuquuRLuIKKT1osnkXjxev9B7d1nXSug5vpunx+gNlbVxMlC9A==,
+      }
+
+  "@types/prismjs@1.26.5":
+    resolution:
+      {
+        integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==,
       }
 
   "@types/react-dom@19.1.5":
@@ -6678,6 +6687,14 @@ packages:
       }
     engines: { node: ^14.15.0 || ^16.10.0 || >=18.0.0 }
 
+  prism-react-renderer@2.4.1:
+    resolution:
+      {
+        integrity: sha512-ey8Ls/+Di31eqzUxC46h8MksNuGx/n0AAC8uKpwFau4RPDYLuE3EXTp8N8G2vX2N7UC/+IXeNUnlWBGGcAG+Ig==,
+      }
+    peerDependencies:
+      react: ">=16.0.0"
+
   promise-worker-transferable@1.0.4:
     resolution:
       {
@@ -9950,6 +9967,8 @@ snapshots:
 
   "@types/offscreencanvas@2019.7.3": {}
 
+  "@types/prismjs@1.26.5": {}
+
   "@types/react-dom@19.1.5(@types/react@19.1.5)":
     dependencies:
       "@types/react": 19.1.5
@@ -12675,6 +12694,12 @@ snapshots:
       "@jest/schemas": 29.6.3
       ansi-styles: 5.2.0
       react-is: 18.3.1
+
+  prism-react-renderer@2.4.1(react@19.1.0):
+    dependencies:
+      "@types/prismjs": 1.26.5
+      clsx: 2.1.1
+      react: 19.1.0
 
   promise-worker-transferable@1.0.4:
     dependencies:

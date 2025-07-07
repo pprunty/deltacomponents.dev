@@ -4,16 +4,16 @@ import * as React from "react"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
-import { CopyButton } from "@/components/copy-button"
+import { CodeSnippet } from "@/components/code-snippet"
 import { Icons } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
+import { RefreshButton } from "@/components/refresh-button"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/registry/components/tabs"
-import CodeBlock from "@/registry/media/code-block"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -34,6 +34,7 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = React.useState("preview")
   const [code, setCode] = React.useState<string | null>(null)
+  const [refreshKey, setRefreshKey] = React.useState(0)
   const previewRef = React.useRef<HTMLDivElement>(null)
 
   // Handle tab switching to reinitialize IntersectionObserver
@@ -43,6 +44,11 @@ export function ComponentPreview({
       window.dispatchEvent(new Event("resize"))
     }
   }, [activeTab])
+
+  // Handle refresh functionality
+  const handleRefresh = React.useCallback(() => {
+    setRefreshKey((prev) => prev + 1)
+  }, [])
 
   // Get component and source file from registry
   const Preview = React.useMemo(() => {
@@ -60,8 +66,8 @@ export function ComponentPreview({
       )
     }
 
-    return <Component />
-  }, [name])
+    return <Component key={refreshKey} />
+  }, [name, refreshKey])
 
   // Load code directly from the file
   React.useEffect(() => {
@@ -109,7 +115,7 @@ export function ComponentPreview({
             size="md"
           >
             <TabsTrigger value="preview" className="font-medium">
-              Preview
+              Demo
             </TabsTrigger>
             <TabsTrigger value="code" className="font-medium">
               Code
@@ -118,6 +124,7 @@ export function ComponentPreview({
         )}
         <TabsContent value="preview" className="relative rounded-md border">
           <div className="absolute right-4 top-4 flex items-center gap-2">
+            <RefreshButton onRefresh={handleRefresh} />
             {v0 && <OpenInV0Button url={`/docs/${name}`} />}
           </div>
           <div
@@ -145,30 +152,14 @@ export function ComponentPreview({
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-              {code ? (
-                <div className="relative">
-                  <div className="absolute right-4 top-4 z-10">
-                    <CopyButton value={code} />
-                  </div>
-                  <CodeBlock
-                    code={code}
-                    language="tsx"
-                    showLineNumbers
-                    showCopyButton
-                    showExpandButton
-                    maxHeight="350px"
-                    border={false}
-                    className="w-full rounded-md"
-                  />
-                </div>
-              ) : (
-                <div className="flex items-center justify-center p-10 text-sm text-muted-foreground">
-                  <Icons.spinner className="mr-2 size-4 animate-spin" />
-                  Loading code...
-                </div>
-              )}
-            </div>
+            {code ? (
+              <CodeSnippet title={name + ".tsx"} code={code} language="tsx" />
+            ) : (
+              <div className="flex items-center justify-center p-10 text-sm text-muted-foreground">
+                <Icons.spinner className="mr-2 size-4 animate-spin" />
+                Loading code...
+              </div>
+            )}
           </div>
         </TabsContent>
       </Tabs>

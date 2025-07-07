@@ -97,10 +97,22 @@ export function DotPattern({
     (_, i) => {
       const col = i % Math.ceil(dimensions.width / width)
       const row = Math.floor(i / Math.ceil(dimensions.width / width))
+      const x = col * width + cx
+      const y = row * height + cy
+
+      // Calculate distance from center for radial animation
+      const centerX = dimensions.width / 2
+      const centerY = dimensions.height / 2
+      const distanceFromCenter = Math.sqrt(
+        (x - centerX) ** 2 + (y - centerY) ** 2
+      )
+      const maxDistance = Math.sqrt(centerX ** 2 + centerY ** 2)
+      const normalizedDistance = distanceFromCenter / maxDistance
+
       return {
-        x: col * width + cx,
-        y: row * height + cy,
-        delay: Math.random() * 5,
+        x,
+        y,
+        delay: normalizedDistance * 2, // Radial delay based on distance from center
         duration: Math.random() * 3 + 2,
       }
     }
@@ -129,15 +141,15 @@ export function DotPattern({
           cy={dot.y}
           r={cr}
           fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          className="text-neutral-400/80"
-          initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+          className="text-neutral-400/80 dark:text-neutral-500/65"
+          initial={glow ? { opacity: 0.4, scale: 1 } : { opacity: 0 }}
           animate={
             glow
               ? {
                   opacity: [0.4, 1, 0.4],
                   scale: [1, 1.5, 1],
                 }
-              : {}
+              : { opacity: 1 }
           }
           transition={
             glow
@@ -148,7 +160,11 @@ export function DotPattern({
                   delay: dot.delay,
                   ease: "easeInOut",
                 }
-              : {}
+              : {
+                  duration: 0.75,
+                  delay: dot.delay * 0.1,
+                  ease: "easeOut",
+                }
           }
         />
       ))}

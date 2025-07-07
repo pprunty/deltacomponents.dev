@@ -18,7 +18,6 @@ const fields: FieldDefinition[] = [
     required: true,
     placeholder: "Enter your username",
     variant: "pill",
-    className: "mb-6",
   },
   {
     name: "password",

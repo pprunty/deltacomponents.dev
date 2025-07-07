@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 
 export function MainNav() {
@@ -27,7 +28,9 @@ export function MainNav() {
           href="/docs/introduction"
           data-text="Docs"
           className={cn(
-            "transition-colors hover:text-primary inline-flex font-light border-box after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
+            "transition-colors hover:text-primary inline-flex font-light border-box",
+            // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
+            // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname.startsWith("/docs") && pathname !== "/docs/components"
               ? "text-primary font-medium"
               : "text-muted-foreground"
@@ -39,7 +42,9 @@ export function MainNav() {
           href="/docs/components"
           data-text="Showcase"
           className={cn(
-            "transition-colors hover:text-primary inline-flex font-light border-box after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
+            "transition-colors hover:text-primary inline-flex font-light border-box",
+            // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
+            // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname === "/docs/components"
               ? "text-primary font-medium"
               : "text-muted-foreground"
@@ -47,6 +52,25 @@ export function MainNav() {
         >
           Showcase
         </Link>
+        {siteConfig.showTemplates && (
+          <Link
+            href="/templates"
+            data-text="Templates"
+            className={cn(
+              "transition-colors hover:text-primary inline-flex font-light border-box items-center gap-2",
+              // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
+              // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
+              pathname.startsWith("/templates")
+                ? "text-primary font-medium"
+                : "text-muted-foreground"
+            )}
+          >
+            Templates
+            <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+              new
+            </span>
+          </Link>
+        )}
       </nav>
     </div>
   )

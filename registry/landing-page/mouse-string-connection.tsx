@@ -39,6 +39,7 @@ export default function MouseStringConnection({
   const targetRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number | undefined>(undefined)
   const [mouse, setMouse] = useState<MousePosition>({ x: null, y: null })
+  const [isMobile, setIsMobile] = useState(false)
 
   // Helper function to get the actual CSS variable value
   const getForegroundColor = useCallback((opacity: number) => {
@@ -88,12 +89,26 @@ export default function MouseStringConnection({
     }
   }, [])
 
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      const isTouchDevice =
+        "ontouchstart" in window || navigator.maxTouchPoints > 0
+      const isSmallScreen = window.matchMedia("(max-width: 768px)").matches
+      setIsMobile(isTouchDevice || isSmallScreen)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      if (disabled) return
+      if (disabled || isMobile) return
       setMouse({ x: e.clientX, y: e.clientY })
     },
-    [disabled]
+    [disabled, isMobile]
   )
 
   const drawArrow = useCallback(() => {
@@ -197,12 +212,12 @@ export default function MouseStringConnection({
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    if (!disabled) {
+    if (!disabled && !isMobile) {
       drawArrow()
     }
 
     animationRef.current = requestAnimationFrame(animate)
-  }, [drawArrow, disabled])
+  }, [drawArrow, disabled, isMobile])
 
   useEffect(() => {
     updateCanvasSize()

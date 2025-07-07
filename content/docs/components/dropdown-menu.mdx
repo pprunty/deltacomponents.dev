@@ -1,0 +1,288 @@
+---
+title: Dropdown Menu
+description: A flexible dropdown menu component with smooth animations, smart positioning, and customizable styling.
+---
+
+<ComponentPreview name="dropdown-menu-demo" />
+
+## Overview
+
+The Dropdown Menu component provides a compound component pattern for creating interactive dropdown menus with smooth animations, keyboard navigation, and smart positioning. It automatically adjusts placement based on available screen space and supports multiple alignment options.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/dropdown-menu.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dropdown-menu" />
+
+<Step>Copy the required hooks into your project.</Step>
+
+Create `hooks/use-click-away.tsx`:
+
+```tsx
+"use client"
+
+import { useEffect, type RefObject } from "react"
+
+type RefType = RefObject<HTMLElement | null>
+
+export function useClickAway(refs: RefType | RefType[], callback: () => void) {
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const refsArray = Array.isArray(refs) ? refs : [refs]
+
+      const isOutside = refsArray.every((ref) => {
+        return ref.current && !ref.current.contains(event.target as Node)
+      })
+
+      if (isOutside) {
+        callback()
+      }
+    }
+
+    document.addEventListener("mousedown", handleClick)
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick)
+    }
+  }, [refs, callback])
+}
+```
+
+Create `hooks/use-key-press.tsx`:
+
+```tsx
+"use client"
+
+import { useEffect } from "react"
+
+export function useKeyPress(targetKey: string, callback: () => void) {
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === targetKey) {
+        callback()
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress)
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress)
+    }
+  }, [targetKey, callback])
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { LogOut, Settings, User } from "lucide-react"
+
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownSeparator,
+  DropdownTrigger,
+} from "@/components/dropdown-menu"
+
+export function UserMenu() {
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <button className="p-2 rounded-md border">
+          <User className="h-4 w-4" />
+        </button>
+      </DropdownTrigger>
+      <DropdownContent align="end">
+        <DropdownItem>
+          <Settings className="h-4 w-4 mr-2" />
+          Settings
+        </DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem destructive>
+          <LogOut className="h-4 w-4 mr-2" />
+          Log out
+        </DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  )
+}
+```
+
+## API Reference
+
+### Dropdown
+
+The root container component that provides context for all dropdown subcomponents.
+
+| Name        | Type        | Default | Description                                       |
+| ----------- | ----------- | ------- | ------------------------------------------------- |
+| `children`  | `ReactNode` | -       | The dropdown trigger and content components       |
+| `className` | `string`    | -       | Additional CSS classes for the dropdown container |
+
+### DropdownTrigger
+
+The trigger element that opens/closes the dropdown when clicked.
+
+| Name        | Type        | Default | Description                                |
+| ----------- | ----------- | ------- | ------------------------------------------ |
+| `children`  | `ReactNode` | -       | The trigger content (button, avatar, etc.) |
+| `className` | `string`    | -       | Additional CSS classes for the trigger     |
+
+### DropdownContent
+
+The content container that appears when the dropdown is open.
+
+| Name         | Type                           | Default   | Description                              |
+| ------------ | ------------------------------ | --------- | ---------------------------------------- |
+| `children`   | `ReactNode`                    | -         | The dropdown items and separators        |
+| `className`  | `string`                       | -         | Additional CSS classes for the content   |
+| `align`      | `"start" \| "center" \| "end"` | `"start"` | Horizontal alignment relative to trigger |
+| `side`       | `"left" \| "right"`            | `"left"`  | Which side to align from                 |
+| `placement`  | `"top" \| "bottom" \| "auto"`  | `"auto"`  | Vertical placement relative to trigger   |
+| `sideOffset` | `number`                       | `1`       | Distance from trigger in pixels          |
+
+### DropdownItem
+
+Individual clickable items within the dropdown.
+
+| Name          | Type         | Default | Description                            |
+| ------------- | ------------ | ------- | -------------------------------------- |
+| `children`    | `ReactNode`  | -       | The item content                       |
+| `className`   | `string`     | -       | Additional CSS classes for the item    |
+| `onClick`     | `() => void` | -       | Callback when item is clicked          |
+| `disabled`    | `boolean`    | `false` | Whether the item is disabled           |
+| `destructive` | `boolean`    | `false` | Whether to style as destructive action |
+
+### DropdownSeparator
+
+A visual separator between dropdown items.
+
+| Name        | Type     | Default | Description                              |
+| ----------- | -------- | ------- | ---------------------------------------- |
+| `className` | `string` | -       | Additional CSS classes for the separator |
+
+## Features
+
+### Smart Positioning
+
+The dropdown automatically adjusts its position based on available screen space when `placement="auto"` is used.
+
+### Keyboard Navigation
+
+- **Escape**: Closes the dropdown
+- **Tab**: Normal tab navigation
+- **Click outside**: Closes the dropdown
+
+### Animations
+
+Smooth spring-based animations using Framer Motion with proper transform origins based on positioning.
+
+### Accessibility
+
+- Proper ARIA attributes
+- Keyboard navigation support
+- Focus management
+- Screen reader friendly
+
+## Examples
+
+### Different Alignments
+
+```tsx
+// Align to start (left/right edge)
+<DropdownContent align="start">
+  {/* items */}
+</DropdownContent>
+
+// Center alignment
+<DropdownContent align="center">
+  {/* items */}
+</DropdownContent>
+
+// Align to end (opposite edge)
+<DropdownContent align="end">
+  {/* items */}
+</DropdownContent>
+```
+
+### Custom Positioning
+
+```tsx
+// Position above trigger
+<DropdownContent placement="top" sideOffset={12}>
+  {/* items */}
+</DropdownContent>
+
+// Position below with custom offset
+<DropdownContent placement="bottom" sideOffset={4}>
+  {/* items */}
+</DropdownContent>
+```
+
+### With Icons and States
+
+```tsx
+<DropdownContent>
+  <DropdownItem>
+    <User className="h-4 w-4 mr-2" />
+    Profile
+  </DropdownItem>
+  <DropdownItem disabled>
+    <Settings className="h-4 w-4 mr-2" />
+    Settings (disabled)
+  </DropdownItem>
+  <DropdownSeparator />
+  <DropdownItem destructive>
+    <LogOut className="h-4 w-4 mr-2" />
+    Delete Account
+  </DropdownItem>
+</DropdownContent>
+```
+
+### Profile Dropdown
+
+A more complex example with user profile information:
+
+<ComponentPreview name="dropdown-menu-profile-demo" />
+
+### Auto-Positioning
+
+Demonstrates the smart positioning feature where dropdowns automatically adjust their placement based on available screen space:
+
+<ComponentPreview name="dropdown-menu-positions-demo" />

@@ -64,6 +64,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Showcase",
+          href: "/docs/components",
+          items: [],
+        },
+        {
           title: "Changelog",
           href: "/docs/changelog",
           items: [],
@@ -87,6 +92,12 @@ export const docsConfig: DocsConfig = {
           title: "Admonition",
           href: "/docs/components/admonition",
           items: [],
+        },
+        {
+          title: "Dropdown Menu",
+          href: "/docs/components/dropdown-menu",
+          items: [],
+          label: "New",
         },
         {
           title: "Drawer",

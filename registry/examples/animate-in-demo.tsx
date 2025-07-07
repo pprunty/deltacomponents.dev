@@ -4,33 +4,50 @@ import * as React from "react"
 
 import AnimateIn from "@/registry/animations/animate-in"
 
+const YCombinatorLogo = () => (
+  <div className="w-5 h-5 bg-orange-500 rounded-sm p-0.5 flex items-center justify-center">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/256px-Y_Combinator_logo.svg.png?20161016225220"
+      alt="Y Combinator"
+      className="w-full h-full"
+    />
+  </div>
+)
+
 export default function AnimateInDemo() {
   return (
-    <div className="space-y-8 py-8">
-      <AnimateIn direction="up" duration={0.6} immediate>
-        <div className="text-center">
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            This content animates in from the bottom with a smooth fade effect
-            when the component mounts.
-          </p>
+    <div className="text-center space-y-8 py-16">
+      <AnimateIn direction="up" delay={100}>
+        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          Welcome to the Future
+        </h1>
+      </AnimateIn>
+
+      <AnimateIn direction="up" delay={200}>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Experience seamless animations that bring your content to life with
+          elegant motion design
+        </p>
+      </AnimateIn>
+
+      <AnimateIn direction="up" delay={450}>
+        <div className="flex items-center justify-center gap-2 text-sm mb-6">
+          <div className="bg-muted-foreground/10 px-3 py-1 rounded-full flex items-center gap-2">
+            <span className="text-foreground">Backed by</span>
+            <YCombinatorLogo />
+            <span className="text-foreground">Combinator</span>
+          </div>
         </div>
       </AnimateIn>
 
-      <AnimateIn direction="left" duration={0.8} delay={0.2} immediate>
-        <div className="p-6 border border-border rounded-lg bg-muted/50">
-          <h3 className="text-xl font-semibold mb-2">From the Left</h3>
-          <p className="text-muted-foreground">
-            This card slides in from the left side with a slight delay.
-          </p>
-        </div>
-      </AnimateIn>
-
-      <AnimateIn direction="right" duration={0.8} delay={0.4} immediate>
-        <div className="p-6 border border-border rounded-lg bg-muted/50">
-          <h3 className="text-xl font-semibold mb-2">From the Right</h3>
-          <p className="text-muted-foreground">
-            This card slides in from the right side with more delay.
-          </p>
+      <AnimateIn direction="up" delay={300}>
+        <div className="flex gap-4 justify-center">
+          <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+            Get Started
+          </button>
+          <button className="px-6 py-3 border border-border rounded-lg hover:bg-muted transition-colors">
+            Learn More
+          </button>
         </div>
       </AnimateIn>
     </div>

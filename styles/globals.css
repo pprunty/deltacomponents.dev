@@ -238,6 +238,7 @@
     /* font-feature-settings: "rlig" 1, "calt" 1; */
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    scrollbar-gutter: stable;
   }
 
   a:not(.social-link,.no-after,.tweet)[href*="//"]:not([href*="deltacomponents.dev"]):after
