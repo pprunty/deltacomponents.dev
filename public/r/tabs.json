@@ -3,7 +3,9 @@
   "name": "tabs",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/x-scrollable.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/x-scrollable.json"
+  ],
   "files": [
     {
       "path": "registry/components/tabs.tsx",

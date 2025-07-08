@@ -7,6 +7,7 @@ import { docsConfig } from "@/config/docs"
 import { cn, getComponentCategory } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ComponentPreviewCard } from "@/components/component-preview-card"
+import AnimateIn from "@/registry/animations/animate-in"
 
 interface SimilarComponentsProps {
   /**
@@ -160,19 +161,27 @@ export function SimilarComponents({
         {title}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {similarComponents.map((component) => {
+        {similarComponents.map((component, index) => {
           const category = getComponentCategory(component)
           const tags = Index[component]?.tags || []
 
           return (
-            <ComponentPreviewCard
+            <AnimateIn
               key={component}
-              name={component}
-              category={category}
-              tags={tags}
-              showTags={showTags}
-              useDocsLink={useDocsLinks}
-            />
+              useIntersectionObserver
+              threshold={0.1}
+              triggerOnce={true}
+              direction="fade"
+              delay={index * 100}
+            >
+              <ComponentPreviewCard
+                name={component}
+                category={category}
+                tags={tags}
+                showTags={showTags}
+                useDocsLink={useDocsLinks}
+              />
+            </AnimateIn>
           )
         })}
       </div>

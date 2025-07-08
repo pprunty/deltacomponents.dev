@@ -104,7 +104,7 @@ export function DateInput({
   const [date, setDate] = React.useState<Date | undefined>(
     isControlled ? value : defaultValue
   )
-  
+
   // Controlled open/close state for the popover
   const [open, setOpen] = React.useState(false)
 
@@ -152,7 +152,7 @@ export function DateInput({
 
     // Call the original onValueChange if provided
     onValueChange?.(newDate)
-    
+
     // Auto-close the popover when a date is selected
     if (newDate) {
       setOpen(false)

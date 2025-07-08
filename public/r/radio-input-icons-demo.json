@@ -3,7 +3,9 @@
   "name": "radio-input-icons-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/radio-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/radio-input-icons-demo.tsx",

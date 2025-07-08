@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { memo, useCallback, useState } from "react"
+import React, { memo, useCallback, useState } from "react"
 import type { FC } from "react"
 import type { IconProps } from "@phosphor-icons/react"
 import { Plus } from "@phosphor-icons/react"
@@ -55,13 +54,6 @@ const BarItem = memo(
             showLabels ? "py-2" : "py-4"
           )}
           onClick={(e) => {
-            if (isActive) {
-              e.preventDefault()
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })
-            }
             onItemClick()
           }}
         >
@@ -184,21 +176,57 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   showBorderTop = true,
 }) {
   const [animationKeys, setAnimationKeys] = useState<Record<string, number>>({})
+  const [activeHash, setActiveHash] = useState("#home")
+  const [lastClickedItem, setLastClickedItem] = useState<string | null>(null)
 
-  // Use window.location.pathname in client-side environment
-  const getCurrentPath = () => {
+  // Get current hash or default to #home
+  const getCurrentHash = () => {
     if (typeof window !== "undefined") {
-      return window.location.pathname
+      return window.location.hash || "#home"
     }
-    return ""
+    return "#home"
   }
 
-  const handleItemClick = useCallback((href: string) => {
-    setAnimationKeys((prev) => ({
-      ...prev,
-      [href]: (prev[href] || 0) + 1,
-    }))
+  // Update active hash based on current location
+  React.useEffect(() => {
+    const updateActiveHash = () => {
+      const hash = getCurrentHash()
+      setActiveHash(hash)
+    }
+
+    // Set initial hash
+    updateActiveHash()
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", updateActiveHash)
+
+    return () => {
+      window.removeEventListener("hashchange", updateActiveHash)
+    }
   }, [])
+
+  const handleItemClick = useCallback(
+    (href: string) => {
+      setAnimationKeys((prev) => ({
+        ...prev,
+        [href]: (prev[href] || 0) + 1,
+      }))
+
+      // Check if clicking the same item that's already active
+      if (lastClickedItem === href && activeHash === href) {
+        // Scroll to top if clicking the same active item
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          })
+        }, 100)
+      }
+
+      setLastClickedItem(href)
+    },
+    [lastClickedItem, activeHash]
+  )
 
   const handleCenterButtonClick = useCallback(() => {
     setAnimationKeys((prev) => ({
@@ -237,7 +265,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={getCurrentPath() === href}
+                  isActive={activeHash === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -259,7 +287,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={getCurrentPath() === href}
+                  isActive={activeHash === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -274,7 +302,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                 href={href}
                 label={label}
                 Icon={Icon}
-                isActive={getCurrentPath() === href}
+                isActive={activeHash === href}
                 showLabels={showLabels}
                 onItemClick={() => handleItemClick(href)}
                 animationKey={animationKeys[href] || 0}

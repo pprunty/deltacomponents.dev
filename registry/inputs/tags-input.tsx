@@ -247,12 +247,12 @@ export function TagsInput({
           // Default variant styling
           variant === "default" &&
             "border border-input shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] " +
-            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 rounded-md px-3",
+              "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 rounded-md px-3",
 
           // Pill variant styling (flat, padded, rounded + your ring-offset tweak)
           variant === "pill" &&
             "bg-muted border-0 rounded-lg h-12 px-4 " +
-            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-background",
+              "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-background",
           variant === "pill" && coloredBorder && "border-2 border-primary",
 
           // Error override for both

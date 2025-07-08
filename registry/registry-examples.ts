@@ -294,12 +294,12 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "code-block-demo",
+    name: "code-snippet-demo",
     type: "registry:block",
-    registryDependencies: ["code-block"],
+    registryDependencies: ["code-snippet"],
     files: [
       {
-        path: "examples/code-block-demo.tsx",
+        path: "examples/code-snippet-demo.tsx",
         type: "registry:block",
       },
     ],
@@ -492,12 +492,45 @@ export const examples: Registry = [
     ],
   },
   {
-    name: "code-block-theme-demo",
+    name: "code-snippet-theme-demo",
     type: "registry:block",
-    registryDependencies: ["code-block"],
+    registryDependencies: ["code-snippet"],
     files: [
       {
-        path: "examples/code-block-theme-demo.tsx",
+        path: "examples/code-snippet-theme-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "code-snippet-options-demo",
+    type: "registry:block",
+    registryDependencies: ["code-snippet"],
+    files: [
+      {
+        path: "examples/code-snippet-options-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "code-snippet-cpp-demo",
+    type: "registry:block",
+    registryDependencies: ["code-snippet"],
+    files: [
+      {
+        path: "examples/code-snippet-cpp-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "code-snippet-adaptive-demo",
+    type: "registry:block",
+    registryDependencies: ["code-snippet"],
+    files: [
+      {
+        path: "examples/code-snippet-adaptive-demo.tsx",
         type: "registry:block",
       },
     ],

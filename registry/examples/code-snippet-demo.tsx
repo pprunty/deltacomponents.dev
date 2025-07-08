@@ -1,8 +1,8 @@
 "use client"
 
-import CodeBlock from "@/registry/media/code-block"
+import { CodeSnippet } from "@/registry/media/code-snippet"
 
-export default function CodeBlockDemo() {
+export default function CodeSnippetDemo() {
   const code = `def calculate_factorial(n):
     if n < 0:
         raise ValueError("Factorial is not defined for negative numbers")
@@ -23,13 +23,7 @@ if __name__ == "__main__":
 
   return (
     <div className="w-full py-4">
-      <CodeBlock
-        code={code}
-        language="python"
-        showLineNumbers
-        showCopyButton
-        showExpandButton
-      />
+      <CodeSnippet title="factorial.py" code={code} language="python" />
     </div>
   )
 }

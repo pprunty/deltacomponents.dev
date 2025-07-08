@@ -3,7 +3,9 @@
   "name": "select-input-pill-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/select-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/select-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/select-input-pill-demo.tsx",

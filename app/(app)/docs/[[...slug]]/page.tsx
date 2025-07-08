@@ -198,9 +198,9 @@ export default async function DocPage(props: {
         </div>
         {doc.toc && (
           <div className="hidden text-sm xl:block pr-4">
-            <div className="sticky top-4">
-              <div className="rounded-2xl bg-background border-border border">
-                <ScrollArea className="max-h-[calc(100vh-8rem)]">
+            <div className="sticky top-6">
+              <div className="rounded-2xl bg-background border-border border h-[calc(100vh-6rem)]">
+                <ScrollArea className="h-full">
                   <div className="p-4 lg:p-6 space-y-4">
                     {doc.toc && (
                       <Suspense

@@ -1,5 +1,5 @@
 import type { IconProps } from "@phosphor-icons/react"
-import { BookOpen, GridFour, House, Gear, User } from "@phosphor-icons/react"
+import { BookOpen, Gear, GridFour, House, User } from "@phosphor-icons/react"
 
 export interface Route {
   href: string

@@ -51,30 +51,24 @@ export const media: Registry = [
     ],
   },
   {
-    name: "code-block",
+    name: "code-snippet",
     type: "registry:component",
-    dependencies: [
-      "shikiji",
-      "next-themes",
-      "@phosphor-icons/react",
-      "lucide-react",
-    ],
+    dependencies: ["prism-react-renderer", "lucide-react"],
     registryDependencies: ["button"],
     tags: [
       "syntax highlighting",
       "code",
       "copyable",
-      "expandable",
-      "theme-aware",
+      "lightweight",
       "developer",
     ],
     files: [
       {
-        path: "media/code-block.tsx",
+        path: "media/code-snippet.tsx",
         type: "registry:component",
       },
       {
-        path: "media/code-block.css",
+        path: "media/copy-button.tsx",
         type: "registry:component",
       },
     ],

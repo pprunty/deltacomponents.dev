@@ -365,8 +365,8 @@ export function OtpInput({
                       borderColor: success
                         ? "rgb(34 197 94)"
                         : errorIndexes.has(idx)
-                        ? "rgb(239 68 68)"
-                        : undefined,
+                          ? "rgb(239 68 68)"
+                          : undefined,
                       scale: success ? [1, 1.02, 1] : 1,
                     }}
                     transition={{
@@ -391,7 +391,9 @@ export function OtpInput({
                       // Pill variant
                       variant === "pill" &&
                         "bg-muted border-0 rounded-lg focus-visible:border-primary focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-background",
-                      variant === "pill" && coloredBorder && "border-2 border-primary",
+                      variant === "pill" &&
+                        coloredBorder &&
+                        "border-2 border-primary",
 
                       // Success state
                       success &&

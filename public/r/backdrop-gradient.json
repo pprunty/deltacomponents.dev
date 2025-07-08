@@ -3,7 +3,9 @@
   "name": "backdrop-gradient",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["tailwindcss"],
+  "dependencies": [
+    "tailwindcss"
+  ],
   "files": [
     {
       "path": "registry/media/backdrop-gradient.tsx",

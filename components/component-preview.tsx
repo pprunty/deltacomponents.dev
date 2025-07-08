@@ -4,7 +4,7 @@ import * as React from "react"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
-import { CodeSnippet } from "@/components/code-snippet"
+import { CodeSnippet } from "@/registry/media/code-snippet"
 import { Icons } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { RefreshButton } from "@/components/refresh-button"
@@ -48,7 +48,7 @@ export function ComponentPreview({
 
   // Handle component refresh
   const handleRefresh = React.useCallback(() => {
-    setRefreshKey(prev => prev + 1)
+    setRefreshKey((prev) => prev + 1)
   }, [])
 
   // Get component and source file from registry

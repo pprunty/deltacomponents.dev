@@ -34,7 +34,7 @@ export function SiteHeader() {
                   "p-2"
                 )}
               >
-                <Icons.gitHub className="size-4 md:size-6" />
+                <Icons.gitHub className="size-4 md:w-4.5 md:h-4.5" />
                 <span className="sr-only">GitHub</span>
               </Link>
               <ThemeSwitcher />

@@ -142,12 +142,12 @@ export function TextInput({
           // -- Default variant --
           variant === "default" &&
             "border border-input shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] " +
-            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20",
+              "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20",
 
           // -- Pill variant --
           variant === "pill" &&
             "bg-muted border-0 rounded-lg h-12 px-4" +
-            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background !shadow-none",
+              "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background !shadow-none",
           variant === "pill" && coloredBorder && "border-2 border-primary",
           variant === "pill" && "placeholder:text-muted-foreground",
 

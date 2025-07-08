@@ -3,7 +3,9 @@
   "name": "animate-in-fade-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/animate-in.json"
+  ],
   "files": [
     {
       "path": "registry/examples/animate-in-fade-demo.tsx",

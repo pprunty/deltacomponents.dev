@@ -3,6 +3,11 @@ title: Bottom Bar
 description: A mobile-first navigation bar that sits at the bottom of the screen with support for custom routes, center action buttons, and smooth animations.
 ---
 
+<Admonition type="info" title="Mobile Only">
+  This component only works on mobile and small screen devices. The effect is
+  automatically disabled on desktop and large screen devices.
+</Admonition>
+
 <ComponentPreview name="bottom-bar-demo" />
 
 ## Overview
@@ -204,3 +209,79 @@ Modify the animation duration by updating the transition props in the component:
 - High contrast between active and inactive states
 - Supports both light and dark themes
 - Accessible text size (minimum 10px for labels)
+
+## Examples
+
+### Without Labels
+
+Clean, icon-only navigation for minimal interfaces.
+
+```tsx
+import { routes } from "@/routes"
+
+import BottomBar from "@/registry/layout/bottom-bar"
+
+export default function App() {
+  return (
+    <div className="min-h-screen">
+      {/* Your content */}
+      <BottomBar routes={routes} showLabels={false} />
+    </div>
+  )
+}
+```
+
+### Custom Background
+
+Solid background color with custom styling and no top border.
+
+```tsx
+import { routes } from "@/routes"
+
+import BottomBar from "@/registry/layout/bottom-bar"
+
+export default function App() {
+  return (
+    <div className="min-h-screen">
+      {/* Your content */}
+      <BottomBar
+        routes={routes}
+        showLabels={true}
+        showBorderTop={false}
+        className="bg-slate-900 dark:bg-slate-800"
+      />
+    </div>
+  )
+}
+```
+
+### Center Action Button
+
+Enhanced navigation with prominent center action button for primary actions.
+
+```tsx
+import { routes } from "@/routes"
+
+import BottomBar from "@/registry/layout/bottom-bar"
+
+export default function App() {
+  const handleAddClick = () => {
+    console.log("Add button clicked")
+    // Handle your add action here
+  }
+
+  return (
+    <div className="min-h-screen">
+      {/* Your content */}
+      <BottomBar
+        routes={routes}
+        showLabels={true}
+        centerButton={{
+          onClick: handleAddClick,
+          label: "Add",
+        }}
+      />
+    </div>
+  )
+}
+```

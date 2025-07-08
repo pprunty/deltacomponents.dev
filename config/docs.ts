@@ -162,8 +162,8 @@ export const docsConfig: DocsConfig = {
           hide: true,
         },
         {
-          title: "Code Block",
-          href: "/docs/media/code-block",
+          title: "Code Snippet",
+          href: "/docs/media/code-snippet",
           items: [],
         },
         {

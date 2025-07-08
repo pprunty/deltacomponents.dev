@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-snippet-theme-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/code-snippet.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/code-snippet-theme-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { PrismTheme } from \"prism-react-renderer\"\n\nimport { CodeSnippet } from \"@/registry/media/code-snippet\"\nimport lightTheme from \"@/registry/media/light-theme.json\"\n\nexport default function CodeSnippetThemeDemo() {\n  const [useLight, setUseLight] = useState(false)\n\n  const tsCode = `// TypeScript example with generics\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\n// Usage with type inference\nconst output = identity(\"myString\");\n// const output: string\n\n// Usage with explicit type parameter\nconst numOutput = identity<number>(42);\n// const numOutput: number\n\ninterface User {\n  id: number;\n  name: string;\n}\n\n// Function with multiple type parameters\nfunction process<T, U>(value: T, handler: (x: T) => U): U {\n  return handler(value);\n}\n\nconst user: User = { id: 1, name: \"Alice\" };\nconst userName = process(user, (u) => u.name);\n// const userName: string`\n\n  return (\n    <div className=\"space-y-4\">\n      <div className=\"flex gap-4\">\n        <label className=\"flex items-center gap-2\">\n          <input\n            type=\"checkbox\"\n            checked={useLight}\n            onChange={(e) => setUseLight(e.target.checked)}\n          />\n          Use Light Theme\n        </label>\n      </div>\n\n      <CodeSnippet\n        title=\"generics.ts\"\n        code={tsCode}\n        language=\"typescript\"\n        theme={useLight ? (lightTheme as PrismTheme) : undefined}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/code-snippet-theme-demo.tsx"
+    }
+  ]
+}
