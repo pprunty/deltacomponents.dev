@@ -69,52 +69,36 @@ export function TextInput({
   const errorId = `error-${id}`
   const hintId = `hint-${id}`
 
-  // Determine if component is controlled or uncontrolled
+  // Controlled vs uncontrolled
   const isControlled = value !== undefined
 
-  // Update local error when prop changes
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
 
-  // Handle validation with the provided schema
   const validateInput = React.useCallback(
-    (value: string) => {
+    (val: string) => {
       if (!schema) return
-
-      const result = schema.safeParse(value)
+      const result = schema.safeParse(val)
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || "Invalid input"
-        setLocalError(errorMessage)
-        onValidate?.(false, value, errorMessage)
+        const msg = result.error.errors[0]?.message || "Invalid input"
+        setLocalError(msg)
+        onValidate?.(false, val, msg)
       } else {
         setLocalError(undefined)
-        onValidate?.(true, value)
+        onValidate?.(true, val)
       }
     },
     [schema, onValidate]
   )
 
-  // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value
-
-    // If we have a schema, validate on change
-    if (schema) {
-      validateInput(newValue)
-    }
-
-    // Call the original onChange if provided
+    const v = e.target.value
+    schema && validateInput(v)
     props.onChange?.(e)
   }
-
-  // Handle blur event for validation
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (schema) {
-      validateInput(e.target.value)
-    }
-
-    // Call the original onBlur if provided
+    schema && validateInput(e.target.value)
     props.onBlur?.(e)
   }
 
@@ -147,27 +131,31 @@ export function TextInput({
         aria-errormessage={hasError ? errorId : undefined}
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        {...(isControlled ? { value } : { defaultValue })}
+        {...props}
         className={cn(
-          // Default variant styling - only apply shadow to default variant
-          "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
-          variant === "default" &&
-            "shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)]",
+          // -- Base for both --
+          "h-[46px] md:text-md text-md focus-visible:outline-none bg-background",
 
-          // Pill variant styling - less rounded
+          // -- Default variant --
+          variant === "default" &&
+            "border border-input shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] " +
+            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20",
+
+          // -- Pill variant --
           variant === "pill" &&
-            "bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2",
+            "bg-muted border-0 rounded-lg h-12 px-4" +
+            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background !shadow-none",
           variant === "pill" && coloredBorder && "border-2 border-primary",
           variant === "pill" && "placeholder:text-muted-foreground",
 
-          // Error styling for both variants
+          // -- Error override --
           "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+
           className
         )}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        // Only pass one of value or defaultValue, not both
-        {...(isControlled ? { value } : { defaultValue })}
-        {...props}
       />
 
       {hint && !hasError && (
@@ -175,7 +163,6 @@ export function TextInput({
           {hint}
         </p>
       )}
-
       {hasError && (
         <p id={errorId} className="text-destructive text-xs">
           {localError || error}

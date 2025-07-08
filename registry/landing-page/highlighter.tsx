@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-const highlighterVariants = cva("bg-transparent font-extrabold relative", {
+const highlighterVariants = cva("bg-transparent relative", {
   variants: {
     variant: {
       default: "text-foreground",

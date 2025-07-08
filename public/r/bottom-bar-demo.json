@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bottom-bar-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/bottom-bar.json",
+    "https://deltacomponents.dev/r/bottom-bar.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/bottom-bar-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport type { IconProps } from \"@phosphor-icons/react\"\nimport {\n  Heart,\n  House,\n  Info,\n  MagnifyingGlass,\n  User,\n} from \"@phosphor-icons/react\"\n\nimport BottomBar from \"@/registry/layout/bottom-bar\"\n\ninterface Route {\n  href: string\n  label: string\n  icon: React.ForwardRefExoticComponent<IconProps>\n}\n\nconst demoRoutes: Route[] = [\n  {\n    href: \"/\",\n    label: \"Home\",\n    icon: House,\n  },\n  {\n    href: \"/search\",\n    label: \"Search\",\n    icon: MagnifyingGlass,\n  },\n  {\n    href: \"#about\",\n    label: \"About\",\n    icon: Info,\n  },\n  {\n    href: \"/favorites\",\n    label: \"Favorites\",\n    icon: Heart,\n  },\n  {\n    href: \"/profile\",\n    label: \"Profile\",\n    icon: User,\n  },\n]\n\nexport default function BottomBarDemo() {\n  return (\n    <div className=\"relative h-96 bg-background border border-border rounded-lg overflow-hidden\">\n      <div className=\"p-4 h-full overflow-y-auto\">\n        <div className=\"space-y-6\">\n          <div className=\"text-center\">\n            <h2 className=\"text-lg font-semibold mb-2\">\n              Mobile Navigation Demo\n            </h2>\n            <p className=\"text-muted-foreground text-sm\">\n              Navigation bar with labels enabled. Try tapping \"About\" to scroll\n              to the about section.\n            </p>\n          </div>\n\n          <div className=\"space-y-4\">\n            <div>\n              <h3 className=\"font-medium mb-2\">Welcome</h3>\n              <p className=\"text-sm text-muted-foreground\">\n                This demo shows how the bottom bar works with labels enabled and\n                anchor navigation.\n              </p>\n            </div>\n\n            <div>\n              <h3 className=\"font-medium mb-2\">Features</h3>\n              <ul className=\"text-sm text-muted-foreground space-y-1\">\n                <li>• Mobile-first design</li>\n                <li>• Smooth animations</li>\n                <li>• Anchor link navigation</li>\n                <li>• Active state indicators</li>\n              </ul>\n            </div>\n\n            <div id=\"about\">\n              <h3 className=\"font-medium mb-2\">About</h3>\n              <p className=\"text-sm text-muted-foreground\">\n                This is the About section! When you tap \"About\" in the bottom\n                navigation, it scrolls to this section. The navigation supports\n                both page routing and anchor link navigation for smooth user\n                experiences.\n              </p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <BottomBar routes={demoRoutes} showLabels={true} />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/bottom-bar-demo.tsx"
+    }
+  ]
+}

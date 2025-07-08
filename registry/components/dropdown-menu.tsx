@@ -288,10 +288,10 @@ export function DropdownItem({
     <button
       className={`relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-2 text-sm outline-none transition-colors ${
         disabled
-          ? "pointer-events-none opacity-50"
+          ? "pointer-events-none opacity-50 text-muted-foreground"
           : destructive
             ? "text-destructive hover:bg-destructive/10 focus:bg-destructive/10"
-            : "hover:bg-accent focus:bg-accent"
+            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
       } ${className}`}
       onClick={handleClick}
       role="menuitem"

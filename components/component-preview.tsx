@@ -32,22 +32,23 @@ export function ComponentPreview({
   v0 = true,
   ...props
 }: ComponentPreviewProps) {
-  const [activeTab, setActiveTab] = React.useState("preview")
+  const [activeTab, setActiveTab] = React.useState("demo")
   const [code, setCode] = React.useState<string | null>(null)
+  const [filename, setFilename] = React.useState<string | null>(null)
   const [refreshKey, setRefreshKey] = React.useState(0)
   const previewRef = React.useRef<HTMLDivElement>(null)
 
   // Handle tab switching to reinitialize IntersectionObserver
   React.useEffect(() => {
-    if (activeTab === "preview" && previewRef.current) {
+    if (activeTab === "demo" && previewRef.current) {
       // Force IntersectionObserver to recalculate by triggering a resize event
       window.dispatchEvent(new Event("resize"))
     }
   }, [activeTab])
 
-  // Handle refresh functionality
+  // Handle component refresh
   const handleRefresh = React.useCallback(() => {
-    setRefreshKey((prev) => prev + 1)
+    setRefreshKey(prev => prev + 1)
   }, [])
 
   // Get component and source file from registry
@@ -77,6 +78,10 @@ export function ComponentPreview({
         if (component) {
           const filePath = component.files[0]?.path
           if (filePath) {
+            // Extract filename from path
+            const filename = filePath.split("/").pop() || filePath
+            setFilename(filename)
+
             // In the browser, use fetch to get the file content
             const response = await fetch(
               `/api/source?path=${encodeURIComponent(filePath)}`
@@ -101,7 +106,7 @@ export function ComponentPreview({
       {...props}
     >
       <Tabs
-        defaultValue="preview"
+        defaultValue="demo"
         value={activeTab}
         onValueChange={setActiveTab}
         className="w-full"
@@ -114,7 +119,7 @@ export function ComponentPreview({
             className="mb-4 w-full"
             size="md"
           >
-            <TabsTrigger value="preview" className="font-medium">
+            <TabsTrigger value="demo" className="font-medium">
               Demo
             </TabsTrigger>
             <TabsTrigger value="code" className="font-medium">
@@ -122,7 +127,7 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         )}
-        <TabsContent value="preview" className="relative rounded-md border">
+        <TabsContent value="demo" className="relative rounded-md border">
           <div className="absolute right-4 top-4 flex items-center gap-2">
             <RefreshButton onRefresh={handleRefresh} />
             {v0 && <OpenInV0Button url={`/docs/${name}`} />}
@@ -152,14 +157,22 @@ export function ComponentPreview({
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
-            {code ? (
-              <CodeSnippet title={name + ".tsx"} code={code} language="tsx" />
-            ) : (
-              <div className="flex items-center justify-center p-10 text-sm text-muted-foreground">
-                <Icons.spinner className="mr-2 size-4 animate-spin" />
-                Loading code...
-              </div>
-            )}
+            <div className="w-full rounded-md border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
+              {code ? (
+                <CodeSnippet
+                  title={filename || undefined}
+                  code={code}
+                  language="tsx"
+                  className="w-full rounded-md"
+                  border={false}
+                />
+              ) : (
+                <div className="flex items-center justify-center p-10 text-sm text-muted-foreground">
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
+                  Loading code...
+                </div>
+              )}
+            </div>
           </div>
         </TabsContent>
       </Tabs>

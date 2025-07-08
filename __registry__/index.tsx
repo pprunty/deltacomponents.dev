@@ -1831,6 +1831,58 @@ export const Index: Record<string, any> = {
     ),
     source: "",
   },
+  "bottom-bar-demo": {
+    name: "bottom-bar-demo",
+    type: "registry:block",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/bottom-bar.json",
+      "bottom-bar",
+    ],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/bottom-bar-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/bottom-bar-demo")),
+    source: "",
+  },
+  "bottom-bar-center-demo": {
+    name: "bottom-bar-center-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/bottom-bar.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/bottom-bar-center-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/bottom-bar-center-demo")
+    ),
+    source: "",
+  },
+  "bottom-bar-labels-demo": {
+    name: "bottom-bar-labels-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/bottom-bar.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/bottom-bar-labels-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/bottom-bar-labels-demo")
+    ),
+    source: "",
+  },
   "animate-in": {
     name: "animate-in",
     type: "registry:component",
@@ -2311,6 +2363,21 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/layout/footer")),
+    source: "",
+  },
+  "bottom-bar": {
+    name: "bottom-bar",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/layout/bottom-bar.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/layout/bottom-bar")),
     source: "",
   },
 }

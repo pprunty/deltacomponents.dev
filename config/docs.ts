@@ -202,6 +202,57 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Animations",
+      items: [
+        {
+          title: "Scramble Text",
+          href: "/docs/animations/scramble-text",
+          items: [],
+        },
+        {
+          title: "Floating Object",
+          href: "/docs/animations/floating-object",
+          label: "Beta",
+          items: [],
+        },
+        {
+          title: "Font Transform",
+          href: "/docs/animations/font-transform",
+          items: [],
+        },
+        {
+          title: "Animate In",
+          href: "/docs/animations/animate-in",
+          label: "Beta",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Layout",
+      items: [
+        {
+          title: "Footer (Simple)",
+          href: "/docs/layout/footer",
+          items: [],
+          hide: process.env.NODE_ENV === "production",
+        },
+        {
+          title: "Header (Sleek)",
+          href: "/docs/layout/header-sleek",
+          items: [],
+          label: "Beta",
+          hide: process.env.NODE_ENV === "production",
+        },
+        {
+          title: "Bottom Bar",
+          href: "/docs/layout/bottom-bar",
+          items: [],
+          label: "New",
+        },
+      ],
+    },
+    {
       title: "Inputs",
       items: [
         {
@@ -253,49 +304,6 @@ export const docsConfig: DocsConfig = {
           title: "Textarea Input",
           href: "/docs/inputs/textarea-input",
           items: [],
-        },
-      ],
-    },
-    {
-      title: "Animations",
-      items: [
-        {
-          title: "Scramble Text",
-          href: "/docs/animations/scramble-text",
-          items: [],
-        },
-        {
-          title: "Floating Object",
-          href: "/docs/animations/floating-object",
-          label: "Beta",
-          items: [],
-        },
-        {
-          title: "Font Transform",
-          href: "/docs/animations/font-transform",
-          items: [],
-        },
-        {
-          title: "Animate In",
-          href: "/docs/animations/animate-in",
-          label: "Beta",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Layout",
-      items: [
-        {
-          title: "Footer (Simple)",
-          href: "/docs/layout/footer",
-          items: [],
-        },
-        {
-          title: "Header (Sleek)",
-          href: "/docs/layout/header-sleek",
-          items: [],
-          label: "Beta",
         },
       ],
     },

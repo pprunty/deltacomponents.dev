@@ -13,6 +13,7 @@ interface CodeSnippetProps {
   code: string
   language?: string
   className?: string
+  border?: boolean
 }
 
 export const CodeSnippet: React.FC<CodeSnippetProps> = ({
@@ -20,20 +21,22 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   code,
   language = "typescript",
   className,
+  border = true,
 }) => {
   const lines = code.trim().split("\n")
 
   return (
     <div
       className={cn(
-        "border border-border rounded-2xl overflow-hidden pointer-events-auto",
+        "rounded-2xl overflow-hidden pointer-events-auto",
+        border && "border border-border",
         className
       )}
     >
       {title ? (
         <div
           className="flex items-center justify-between pl-4 pr-3 py-2 border-b h-11"
-          style={{ backgroundColor: "#1a1a1a", borderBottomColor: "#2a2a2a" }}
+          style={{ backgroundColor: "#151515", borderBottomColor: "#2a2a2a" }}
         >
           <h3 className="text-sm font-medium" style={{ color: "#FFFFFF" }}>
             {title}
@@ -42,7 +45,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         </div>
       ) : null}
       <div
-        className="relative overflow-y-auto max-h-[calc(530px-44px)] py-4"
+        className="relative max-h-[calc(530px-44px)] py-4"
         style={{ backgroundColor: "#151515" }}
       >
         {!title && (
@@ -63,7 +66,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={`${className} text-[13px] overflow-x-auto font-mono font-medium`}
+              className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium`}
               style={style}
             >
               {tokens.map((line, i) => (

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { X as PhosphorX } from "@phosphor-icons/react"
+import { X } from "lucide-react"
 import type { z } from "zod"
 
 import { cn } from "@/lib/utils"
@@ -85,34 +85,33 @@ export function TagsInput({
   const errorId = `error-${id}`
   const hintId = `hint-${id}`
 
-  // Determine if component is controlled or uncontrolled
+  // Controlled vs. uncontrolled
   const isControlled = value !== undefined
 
-  // Check if max tags limit is reached
+  // Max tags check
   const isMaxTagsReached = maxTags !== undefined && localTags.length >= maxTags
 
-  // Update local tags when value prop changes (for controlled component)
+  // Sync controlled value → localTags
   React.useEffect(() => {
     if (isControlled && JSON.stringify(value) !== JSON.stringify(localTags)) {
       setLocalTags(value || [])
     }
   }, [value, isControlled, localTags])
 
-  // Update local error when prop changes
+  // Sync error prop → localError
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
 
-  // Handle validation with the provided schema
+  // Zod validation
   const validateTags = React.useCallback(
     (tags: string[]) => {
       if (!schema) return
-
       const result = schema.safeParse(tags)
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || "Invalid input"
-        setLocalError(errorMessage)
-        onValidate?.(false, tags, errorMessage)
+        const msg = result.error.errors[0]?.message || "Invalid input"
+        setLocalError(msg)
+        onValidate?.(false, tags, msg)
       } else {
         setLocalError(undefined)
         onValidate?.(true, tags)
@@ -123,79 +122,53 @@ export function TagsInput({
 
   const updateTags = (newTags: string[]) => {
     if (isControlled) {
-      // For controlled component, just call onChange
       onChange?.(newTags)
     } else {
-      // For uncontrolled, update internal state
       setLocalTags(newTags)
       onChange?.(newTags)
     }
-
-    // Validate if schema is provided
-    if (schema) {
-      validateTags(newTags)
-    }
+    schema && validateTags(newTags)
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    // Only handle comma as a special case in the onChange handler
-    if (triggerKey === "Comma" && value.endsWith(",")) {
-      const newTag = value.slice(0, -1).trim()
-      if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
-        const newTags = [...localTags, newTag]
-        updateTags(newTags)
-        setInputValue("")
-      } else {
-        setInputValue("")
+    const val = e.target.value
+    if (triggerKey === "Comma" && val.endsWith(",")) {
+      const tag = val.slice(0, -1).trim()
+      if (tag && !localTags.includes(tag) && !isMaxTagsReached) {
+        updateTags([...localTags, tag])
       }
+      setInputValue("")
     } else {
-      setInputValue(value)
+      setInputValue(val)
     }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Handle the selected trigger key
     if (
       (triggerKey === "Enter" && e.key === "Enter") ||
       (triggerKey === "Space" && e.key === " ") ||
       (triggerKey === "Comma" && e.key === ",")
     ) {
       e.preventDefault()
-      const newTag = inputValue.trim()
-      if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
-        const newTags = [...localTags, newTag]
-        updateTags(newTags)
+      const tag = inputValue.trim()
+      if (tag && !localTags.includes(tag) && !isMaxTagsReached) {
+        updateTags([...localTags, tag])
       }
       setInputValue("")
     } else if (e.key === "Backspace" && !inputValue && localTags.length > 0) {
-      // Always allow backspace to remove the last tag when input is empty
-      const newTags = localTags.slice(0, -1)
-      updateTags(newTags)
+      updateTags(localTags.slice(0, -1))
     }
-  }
-
-  const removeTag = (tagToRemove: string) => {
-    const newTags = localTags.filter((tag) => tag !== tagToRemove)
-    updateTags(newTags)
   }
 
   const handleBlur = () => {
-    // Add tag on blur if there's input and limit not reached
-    const newTag = inputValue.trim()
-    if (newTag && !localTags.includes(newTag) && !isMaxTagsReached) {
-      const newTags = [...localTags, newTag]
-      updateTags(newTags)
-      setInputValue("")
+    const tag = inputValue.trim()
+    if (tag && !localTags.includes(tag) && !isMaxTagsReached) {
+      updateTags([...localTags, tag])
     }
-
-    // Validate on blur
-    if (schema) {
-      validateTags(localTags)
-    }
+    setInputValue("")
+    schema && validateTags(localTags)
   }
 
-  // Get the trigger key display text for the placeholder
   const getTriggerKeyText = () => {
     switch (triggerKey) {
       case "Enter":
@@ -209,7 +182,6 @@ export function TagsInput({
     }
   }
 
-  // Generate dynamic hint text based on maxTags
   const getHintText = () => {
     if (maxTags !== undefined) {
       const remaining = maxTags - localTags.length
@@ -245,7 +217,7 @@ export function TagsInput({
         <p className="text-xs text-muted-foreground">{description}</p>
       )}
 
-      {/* Input container - styled like TextInput */}
+      {/* -- Unified styling here: */}
       <input
         ref={inputRef}
         type="text"
@@ -261,25 +233,6 @@ export function TagsInput({
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
         autoComplete="off"
-        className={cn(
-          // Default variant styling
-          "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white placeholder:text-muted-foreground",
-          variant === "default" &&
-            "shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] border border-input rounded-md px-3",
-
-          // Pill variant styling - no shadow
-          variant === "pill" &&
-            "bg-muted border-0 rounded-lg h-12 px-4 focus:ring-offset-2",
-          variant === "pill" && coloredBorder && "border-2 border-primary",
-          variant === "pill" && "placeholder:text-muted-foreground",
-
-          // Error styling for both variants
-          "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
-
-          // Disabled styling when max tags reached
-          isMaxTagsReached && "opacity-50 cursor-not-allowed",
-          className
-        )}
         placeholder={
           isMaxTagsReached
             ? `Maximum ${maxTags} tags reached`
@@ -287,9 +240,32 @@ export function TagsInput({
               `Type and press ${getTriggerKeyText()} to add tags`
         }
         {...props}
+        className={cn(
+          // Base for both variants
+          "h-[46px] md:text-md text-md focus-visible:outline-none bg-background placeholder:text-muted-foreground",
+
+          // Default variant styling
+          variant === "default" &&
+            "border border-input shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] " +
+            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 rounded-md px-3",
+
+          // Pill variant styling (flat, padded, rounded + your ring-offset tweak)
+          variant === "pill" &&
+            "bg-muted border-0 rounded-lg h-12 px-4 " +
+            "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-background",
+          variant === "pill" && coloredBorder && "border-2 border-primary",
+
+          // Error override for both
+          "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+
+          // When max reached
+          isMaxTagsReached && "opacity-50 cursor-not-allowed",
+
+          className
+        )}
       />
 
-      {/* Tags container - completely separate from input */}
+      {/* Tags display */}
       {localTags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-1">
           {localTags.map((tag) => (
@@ -303,12 +279,15 @@ export function TagsInput({
               <span>{tag}</span>
               <button
                 type="button"
-                onClick={() => removeTag(tag)}
+                onClick={() => {
+                  const filtered = localTags.filter((t) => t !== tag)
+                  updateTags(filtered)
+                }}
                 className="text-muted-foreground hover:text-foreground"
                 disabled={pending || props.disabled}
                 aria-label={`Remove ${tag}`}
               >
-                <PhosphorX className="h-3 w-3" weight="bold" />
+                <X className="h-3 w-3" />
               </button>
             </div>
           ))}

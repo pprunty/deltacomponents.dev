@@ -1467,6 +1467,48 @@
       "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
+      "name": "bottom-bar-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/bottom-bar-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/bottom-bar-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/bottom-bar.json",
+        "https://deltacomponents.dev/r/bottom-bar.json"
+      ]
+    },
+    {
+      "name": "bottom-bar-center-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/bottom-bar-center-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/bottom-bar-center-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/bottom-bar.json"]
+    },
+    {
+      "name": "bottom-bar-labels-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/bottom-bar-labels-demo.tsx",
+          "type": "registry:block",
+          "target": "/components/delta/examples/bottom-bar-labels-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/bottom-bar.json"]
+    },
+    {
       "name": "animate-in",
       "type": "registry:component",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -1819,6 +1861,19 @@
           "target": "/components/delta/layout/footer.tsx"
         }
       ]
+    },
+    {
+      "name": "bottom-bar",
+      "type": "registry:component",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/layout/bottom-bar.tsx",
+          "type": "registry:component",
+          "target": "/components/delta/layout/bottom-bar.tsx"
+        }
+      ],
+      "dependencies": ["@phosphor-icons/react", "clsx", "framer-motion"]
     }
   ]
 }

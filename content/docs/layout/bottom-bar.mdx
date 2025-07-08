@@ -1,0 +1,206 @@
+---
+title: Bottom Bar
+description: A mobile-first navigation bar that sits at the bottom of the screen with support for custom routes, center action buttons, and smooth animations.
+---
+
+<ComponentPreview name="bottom-bar-demo" />
+
+## Overview
+
+The Bottom Bar component provides a mobile-optimized navigation experience with customizable routes, optional center action buttons, and smooth animations. It automatically hides on desktop and shows route-based active states with scroll-to-top functionality.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/bottom-bar.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @phosphor-icons/react clsx framer-motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bottom-bar" />
+
+<Step>Create a routes configuration file.</Step>
+
+Create `routes.ts`:
+
+```tsx
+import type { IconProps } from "@phosphor-icons/react"
+import { BookOpen, Grid, House, Settings, User } from "@phosphor-icons/react"
+
+export interface Route {
+  href: string
+  label: string
+  icon: React.ForwardRefExoticComponent<IconProps>
+}
+
+export const routes: Route[] = [
+  {
+    href: "/",
+    label: "Home",
+    icon: House,
+  },
+  {
+    href: "/docs/components",
+    label: "Components",
+    icon: Grid,
+  },
+  {
+    href: "/docs/introduction",
+    label: "Docs",
+    icon: BookOpen,
+  },
+  {
+    href: "/profile",
+    label: "Profile",
+    icon: User,
+  },
+  {
+    href: "/settings",
+    label: "Settings",
+    icon: Settings,
+  },
+]
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## API Reference
+
+### BottomBar
+
+The main navigation component that renders the bottom bar.
+
+| Name            | Type                 | Default | Description                                     |
+| --------------- | -------------------- | ------- | ----------------------------------------------- |
+| `showLabels`    | `boolean`            | `false` | Whether to show text labels below icons         |
+| `centerButton`  | `CenterButtonConfig` | -       | Configuration for optional center action button |
+| `showBorderTop` | `boolean`            | `true`  | Whether to show top border                      |
+
+### CenterButtonConfig
+
+Configuration object for the center action button.
+
+| Name      | Type         | Default | Description                              |
+| --------- | ------------ | ------- | ---------------------------------------- |
+| `onClick` | `() => void` | -       | Callback function when button is clicked |
+| `label`   | `string`     | -       | Optional label for the button            |
+
+### Route
+
+Interface for route configuration objects.
+
+| Name    | Type                                         | Description                 |
+| ------- | -------------------------------------------- | --------------------------- |
+| `href`  | `string`                                     | The route path              |
+| `label` | `string`                                     | Display label for the route |
+| `icon`  | `React.ForwardRefExoticComponent<IconProps>` | Phosphor icon component     |
+
+## Features
+
+### Mobile-First Design
+
+The bottom bar automatically hides on desktop (`md:hidden`) and only appears on mobile devices where this navigation pattern is most effective.
+
+### Active State Management
+
+Routes automatically show active states based on the current pathname, with visual feedback through filled icons and color changes.
+
+### Scroll to Top
+
+Tapping on an already active route smoothly scrolls to the top of the page instead of navigating.
+
+### Smooth Animations
+
+Interactive animations powered by Framer Motion provide feedback when tapping navigation items or the center button, including pulse effects, tap scaling, and smooth transitions.
+
+### Backdrop Blur
+
+Modern backdrop blur effect with semi-transparent background for better visual hierarchy.
+
+## Customization
+
+### Route Configuration
+
+Modify the `routes.ts` file to customize your navigation items:
+
+```tsx
+export const routes: Route[] = [
+  {
+    href: "/dashboard",
+    label: "Dashboard",
+    icon: ChartBar,
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    icon: FolderOpen,
+  },
+  // ... more routes
+]
+```
+
+### Styling
+
+The component uses CSS classes that can be customized:
+
+- `backdrop-blur` - Backdrop blur effect
+- `border-t border-border` - Top border styling
+- `bg-background/85` - Semi-transparent background
+- `text-primary` - Active state colors
+
+### Animation Timing
+
+Modify the animation duration by updating the transition props in the component:
+
+```tsx
+// Slower pulse animation
+<motion.div
+  animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+  transition={{ duration: 0.5, ease: "easeInOut" }} // Slower
+>
+```
+
+## Accessibility
+
+### Screen Reader Support
+
+- Proper ARIA labels for the center button
+- Semantic navigation structure
+- Focus management for keyboard navigation
+
+### Keyboard Navigation
+
+- Standard tab navigation support
+- Enter key activation for buttons
+- Focus indicators
+
+### Color Contrast
+
+- High contrast between active and inactive states
+- Supports both light and dark themes
+- Accessible text size (minimum 10px for labels)

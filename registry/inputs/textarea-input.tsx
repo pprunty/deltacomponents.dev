@@ -73,11 +73,11 @@ export function TextareaInput({
 }: TextareaInputProps) {
   const [localError, setLocalError] = React.useState<string | undefined>(error)
 
-  // Helper function to convert value to string safely
+  // Helper to stringify value
   const valueToString = (
     val: string | number | readonly string[] | undefined
   ): string => {
-    if (val === undefined || val === null) return ""
+    if (val == null) return ""
     if (typeof val === "string") return val
     if (typeof val === "number") return String(val)
     if (Array.isArray(val)) return val.join("")
@@ -91,70 +91,48 @@ export function TextareaInput({
   const errorId = `error-${id}`
   const hintId = `hint-${id}`
 
-  // Determine if component is controlled or uncontrolled
   const isControlled = value !== undefined
-
-  // Check if max length is reached
   const isMaxLengthReached =
     maxLength !== undefined && currentValue.length >= maxLength
 
-  // Update local error when prop changes
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
 
-  // Update current value when controlled value changes
   React.useEffect(() => {
     if (isControlled && value !== undefined) {
       setCurrentValue(valueToString(value))
     }
   }, [isControlled, value])
 
-  // Handle validation with the provided schema
   const validateTextarea = React.useCallback(
-    (value: string) => {
+    (val: string) => {
       if (!schema) return
-
-      const result = schema.safeParse(value)
+      const result = schema.safeParse(val)
       if (!result.success) {
-        const errorMessage = result.error.errors[0]?.message || "Invalid input"
-        setLocalError(errorMessage)
-        onValidate?.(false, value, errorMessage)
+        const msg = result.error.errors[0]?.message || "Invalid input"
+        setLocalError(msg)
+        onValidate?.(false, val, msg)
       } else {
         setLocalError(undefined)
-        onValidate?.(true, value)
+        onValidate?.(true, val)
       }
     },
     [schema, onValidate]
   )
 
-  // Handle textarea change
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value
-
-    // Always update current value for character count tracking
     setCurrentValue(newValue)
-
-    // If we have a schema, validate on change
-    if (schema) {
-      validateTextarea(newValue)
-    }
-
-    // Call the original onChange if provided
+    schema && validateTextarea(newValue)
     props.onChange?.(e)
   }
 
-  // Handle blur event for validation
   const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
-    if (schema) {
-      validateTextarea(e.target.value)
-    }
-
-    // Call the original onBlur if provided
+    schema && validateTextarea(e.target.value)
     props.onBlur?.(e)
   }
 
-  // Generate dynamic hint text based on maxLength
   const getHintText = () => {
     if (maxLength !== undefined) {
       const remaining = maxLength - currentValue.length
@@ -196,34 +174,39 @@ export function TextareaInput({
       <Textarea
         id={id}
         name={name}
+        size={size}
+        maxLength={maxLength}
         disabled={pending || props.disabled}
         aria-invalid={hasError}
         aria-errormessage={hasError ? errorId : undefined}
         aria-describedby={hint ? hintId : undefined}
         aria-required={required}
-        size={size}
-        maxLength={maxLength}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        {...(isControlled ? { value } : { defaultValue })}
+        {...props}
         className={cn(
+          // Base
           "md:text-md text-md bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
-          // Default variant styling - only apply shadow to default variant
-          variant === "default" &&
-            "shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]",
 
-          // Pill variant styling - less rounded
-          variant === "pill" && "bg-muted border-0 rounded-lg px-4 py-3",
+          // Default variant: add border and focus-border
+          variant === "default" &&
+            "border border-input shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)] focus-visible:border-primary focus-visible:ring-primary/20",
+
+          // Pill variant
+          variant === "pill" &&
+            "bg-muted border-0 rounded-lg px-4 py-3 focus-visible:ring-offset-background shadow-none",
           variant === "pill" && coloredBorder && "border-2 border-primary",
           variant === "pill" && "placeholder:text-muted-foreground",
 
-          // Error styling for both variants
+          // Error override
           "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+
+          // Hide scrollbar
           "scrollbar-hide",
+
           className
         )}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        // Only pass one of value or defaultValue, not both
-        {...(isControlled ? { value } : { defaultValue })}
-        {...props}
       />
 
       {getHintText() && !hasError && (

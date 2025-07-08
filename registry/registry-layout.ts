@@ -23,4 +23,16 @@ export const layout: Registry = [
       },
     ],
   },
+  {
+    name: "bottom-bar",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "layout/bottom-bar.tsx",
+        type: "registry:component",
+      },
+    ],
+    dependencies: ["@phosphor-icons/react", "clsx", "framer-motion"],
+  },
 ]

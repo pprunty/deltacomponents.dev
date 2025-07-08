@@ -1056,4 +1056,37 @@ export const examples: Registry = [
       },
     ],
   },
+  {
+    name: "bottom-bar-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/bottom-bar.json"],
+    files: [
+      {
+        path: "examples/bottom-bar-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "bottom-bar-center-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/bottom-bar.json"],
+    files: [
+      {
+        path: "examples/bottom-bar-center-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "bottom-bar-labels-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/bottom-bar.json"],
+    files: [
+      {
+        path: "examples/bottom-bar-labels-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
 ]

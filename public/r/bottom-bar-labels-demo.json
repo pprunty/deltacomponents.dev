@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bottom-bar-labels-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/bottom-bar.json"],
+  "files": [
+    {
+      "path": "registry/examples/bottom-bar-labels-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport BottomBar from \"@/registry/layout/bottom-bar\"\n\nexport default function BottomBarLabelsDemo() {\n  const handleCenterAction = () => {\n    console.log(\"New item created!\")\n  }\n\n  return (\n    <div className=\"relative h-96 bg-background border border-border rounded-lg overflow-hidden\">\n      <div className=\"p-4 h-full flex items-center justify-center\">\n        <p className=\"text-muted-foreground text-center\">\n          Bottom bar with labels enabled\n          <br />\n          <span className=\"text-xs\">Shows text labels below each icon</span>\n        </p>\n      </div>\n      <BottomBar\n        showLabels={true}\n        centerButton={{\n          onClick: handleCenterAction,\n          label: \"Create\",\n        }}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/bottom-bar-labels-demo.tsx"
+    }
+  ]
+}

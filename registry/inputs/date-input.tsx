@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { addYears, format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
 import type { z } from "zod"
 
 import { cn } from "@/lib/utils"
@@ -104,6 +104,9 @@ export function DateInput({
   const [date, setDate] = React.useState<Date | undefined>(
     isControlled ? value : defaultValue
   )
+  
+  // Controlled open/close state for the popover
+  const [open, setOpen] = React.useState(false)
 
   // Calculate a far future date (100 years from now) to use as default maxDate
   const farFutureDate = React.useMemo(() => addYears(new Date(), 100), [])
@@ -149,6 +152,11 @@ export function DateInput({
 
     // Call the original onValueChange if provided
     onValueChange?.(newDate)
+    
+    // Auto-close the popover when a date is selected
+    if (newDate) {
+      setOpen(false)
+    }
   }
 
   // Determine the date constraint function based on provided min/max dates
@@ -191,7 +199,7 @@ export function DateInput({
         <p className="text-xs text-muted-foreground">{description}</p>
       )}
 
-      <Popover>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             id={id}
@@ -199,7 +207,7 @@ export function DateInput({
             disabled={pending || disabled}
             className={cn(
               "h-[46px] md:text-md text-md bg-background",
-              "w-full justify-start text-left font-normal",
+              "w-full justify-between text-left font-normal",
               !date && "text-muted-foreground",
               // Default variant styling
               variant === "default" &&
@@ -218,14 +226,15 @@ export function DateInput({
             aria-describedby={hint ? hintId : undefined}
             aria-required={required}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
             {date ? format(date, dateFormat) : <span>{placeholder}</span>}
+            <ChevronDownIcon className="h-4 w-4" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent className="w-auto overflow-hidden p-0" align="start">
           <Calendar
             mode="single"
             selected={date}
+            captionLayout="dropdown"
             onSelect={handleDateChange}
             disabled={
               disabled ||

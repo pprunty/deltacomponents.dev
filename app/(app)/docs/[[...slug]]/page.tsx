@@ -113,8 +113,20 @@ export default async function DocPage(props: {
 
   return (
     <>
-      <main className="xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-4 justify-center w-full">
-        <div className="mx-auto w-full min-w-0 max-w-3xl md:rounded-2xl md:bg-background md:border-border md:border md:p-6 md:px-8">
+      <main
+        className={cn(
+          "justify-center w-full",
+          doc.toc
+            ? "xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-4"
+            : "flex justify-center"
+        )}
+      >
+        <div
+          className={cn(
+            "mx-auto w-full min-w-0 md:rounded-2xl md:bg-background md:border-border md:border md:p-6 md:px-8",
+            doc.toc ? "max-w-3xl" : "max-w-none"
+          )}
+        >
           <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
             <div className="truncate">Docs</div>
             <ChevronRightIcon className="size-3.5" />
@@ -184,52 +196,54 @@ export default async function DocPage(props: {
             <DocsPagination />
           </Suspense>
         </div>
-        <div className="hidden text-sm xl:block pr-4">
-          <div className="sticky top-4">
-            <div className="rounded-2xl bg-background border-border border">
-              <ScrollArea className="max-h-[calc(100vh-8rem)]">
-                <div className="p-4 lg:p-6 space-y-4">
-                  {doc.toc && (
-                    <Suspense
-                      fallback={<div>Loading table of contents...</div>}
-                    >
-                      <DashboardTableOfContents toc={toc} />
+        {doc.toc && (
+          <div className="hidden text-sm xl:block pr-4">
+            <div className="sticky top-4">
+              <div className="rounded-2xl bg-background border-border border">
+                <ScrollArea className="max-h-[calc(100vh-8rem)]">
+                  <div className="p-4 lg:p-6 space-y-4">
+                    {doc.toc && (
+                      <Suspense
+                        fallback={<div>Loading table of contents...</div>}
+                      >
+                        <DashboardTableOfContents toc={toc} />
+                      </Suspense>
+                    )}
+                    <Suspense fallback={<div>Loading contribute links...</div>}>
+                      <Contribute slug={doc.slug} />
                     </Suspense>
-                  )}
-                  <Suspense fallback={<div>Loading contribute links...</div>}>
-                    <Contribute slug={doc.slug} />
-                  </Suspense>
 
-                  {/* Twitter follow card */}
-                  <div className="mt-4 rounded-lg border border-border p-4 hover:bg-accent transition-colors">
-                    <Link
-                      href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 group no-after"
-                    >
-                      <Image
-                        src="/images/pp.png"
-                        alt="Patrick Prunty"
-                        width={42}
-                        height={42}
-                        className="rounded-md object-cover"
-                      />
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium">
-                          Follow me on 𝕏
-                        </span>
-                        <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                          @pprunty_
-                        </span>
-                      </div>
-                    </Link>
+                    {/* Twitter follow card */}
+                    <div className="mt-4 rounded-lg border border-border p-4 hover:bg-accent transition-colors">
+                      <Link
+                        href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-3 group no-after"
+                      >
+                        <Image
+                          src="/images/pp.png"
+                          alt="Patrick Prunty"
+                          width={42}
+                          height={42}
+                          className="rounded-md object-cover"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium">
+                            Follow me on 𝕏
+                          </span>
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                            @pprunty_
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </ScrollArea>
+                </ScrollArea>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
     </>
   )

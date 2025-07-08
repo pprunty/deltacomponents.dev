@@ -98,58 +98,41 @@ export function SelectInput({
   const errorId = `error-${id}`
   const hintId = `hint-${id}`
 
-  // Determine if component is controlled or uncontrolled
+  // Controlled vs uncontrolled
   const isControlled = value !== undefined
 
-  // Update local error when prop changes
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
 
-  // Handle validation with the provided schema
   const validateSelect = React.useCallback(
-    (value: string) => {
+    (val: string) => {
       if (!schema) return
-
-      const result = schema.safeParse(value)
+      const result = schema.safeParse(val)
       if (!result.success) {
-        const errorMessage =
-          result.error.errors[0]?.message || "Invalid selection"
-        setLocalError(errorMessage)
-        onValidate?.(false, value, errorMessage)
+        const msg = result.error.errors[0]?.message || "Invalid selection"
+        setLocalError(msg)
+        onValidate?.(false, val, msg)
       } else {
         setLocalError(undefined)
-        onValidate?.(true, value)
+        onValidate?.(true, val)
       }
     },
     [schema, onValidate]
   )
 
-  // Handle selection change for shadcn Select
-  const handleValueChange = (newValue: string) => {
-    // If we have a schema, validate on change
-    if (schema) {
-      validateSelect(newValue)
-    }
-
-    // Call the original onValueChange if provided
-    onValueChange?.(newValue)
+  const handleValueChange = (newVal: string) => {
+    schema && validateSelect(newVal)
+    onValueChange?.(newVal)
   }
 
-  // Handle selection change for native select
   const handleNativeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newValue = e.target.value
-
-    // If we have a schema, validate on change
-    if (schema) {
-      validateSelect(newValue)
-    }
-
-    // Call the original onValueChange if provided
-    onValueChange?.(newValue)
+    const newVal = e.target.value
+    schema && validateSelect(newVal)
+    onValueChange?.(newVal)
   }
 
-  // Render native select for pill variant
+  // PILL variant uses native <select>
   if (variant === "pill") {
     return (
       <div
@@ -183,11 +166,15 @@ export function SelectInput({
             aria-describedby={hint ? hintId : undefined}
             aria-required={required}
             className={cn(
-              "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
-              "bg-muted border-0 rounded-lg px-4 w-full pr-10",
-              "text-foreground",
+              // Base
+              "h-[46px] md:text-md text-md focus-visible:outline-none bg-muted placeholder:text-muted-foreground",
+              // Pill
+              "border-0 rounded-lg px-4 w-full pr-10",
+              "focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary focus-visible:ring-offset-background",
+              // Hide native select arrow
               "appearance-none",
-              "md:cursor-pointer",
+              coloredBorder && "border-2 border-primary",
+              // Error override
               "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
               selectClassName
             )}
@@ -197,16 +184,12 @@ export function SelectInput({
           >
             {!defaultValue && !value && (
               <option value="" disabled>
-                {placeholder || `Select your ${label.toLowerCase()}`}
+                {placeholder}
               </option>
             )}
-            {options.map((option) => (
-              <option
-                key={option.value}
-                value={option.value}
-                disabled={option.disabled}
-              >
-                {option.label}
+            {options.map((opt) => (
+              <option key={opt.value} value={opt.value} disabled={opt.disabled}>
+                {opt.label}
               </option>
             ))}
           </select>
@@ -218,7 +201,6 @@ export function SelectInput({
             {hint}
           </p>
         )}
-
         {hasError && (
           <p id={errorId} className="text-destructive text-xs">
             {localError || error}
@@ -228,7 +210,7 @@ export function SelectInput({
     )
   }
 
-  // Render shadcn Select for default variant
+  // DEFAULT variant uses shadcn <Select>
   return (
     <div
       className={cn("group/field grid gap-2", containerClassName)}
@@ -258,9 +240,12 @@ export function SelectInput({
         <SelectTrigger
           id={id}
           className={cn(
-            "h-[46px] md:text-md text-md focus-visible:outline-none focus-visible:ring-2 bg-background focus-visible:ring-primary dark:ring-offset-black ring-offset-white",
-            "shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)]",
-            "border border-input hover:border-primary focus:border-primary",
+            // Base
+            "h-[46px] md:text-md text-md focus-visible:outline-none bg-background",
+            // Default
+            "border border-input shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)] " +
+              "focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary",
+            // Error override
             "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
             selectClassName
           )}
@@ -272,18 +257,17 @@ export function SelectInput({
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          {options.map((option) => (
+          {options.map((opt) => (
             <SelectItem
               className={cn(
                 "h-[46px] md:text-md text-md",
-                "focus:bg-primary/10 focus:text-primary data-[state=checked]:bg-primary/10 data-[state=checked]:text-primary",
-                "outline-none focus:outline-none focus:ring-0"
+                "outline-none focus:bg-primary/10 focus:text-primary data-[state=checked]:bg-primary/10 data-[state=checked]:text-primary"
               )}
-              key={option.value}
-              value={option.value}
-              disabled={option.disabled}
+              key={opt.value}
+              value={opt.value}
+              disabled={opt.disabled}
             >
-              {option.label}
+              {opt.label}
             </SelectItem>
           ))}
         </SelectContent>
@@ -294,7 +278,6 @@ export function SelectInput({
           {hint}
         </p>
       )}
-
       {hasError && (
         <p id={errorId} className="text-destructive text-xs">
           {localError || error}

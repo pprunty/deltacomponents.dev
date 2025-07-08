@@ -119,15 +119,13 @@ export function OtpInput({
   const hintId = `hint-${id}`
   const formRef = React.useRef<HTMLFormElement | null>(null)
 
-  // Determine if component is controlled or uncontrolled
+  // Controlled vs uncontrolled
   const isControlled = value !== undefined
 
-  // Update local error when prop changes
   React.useEffect(() => {
     setLocalError(error)
   }, [error])
 
-  // Update OTP value when controlled value changes
   React.useEffect(() => {
     if (isControlled && value !== undefined) {
       setOtpValue(
@@ -140,24 +138,20 @@ export function OtpInput({
     }
   }, [isControlled, value, length])
 
-  // Find the closest form element
   React.useEffect(() => {
     if (autoSubmit) {
       const input = inputRefs.current[0]
       if (input) {
-        let element: HTMLElement | null = input
-        while (element && element.tagName !== "FORM") {
-          element = element.parentElement
+        let el: HTMLElement | null = input
+        while (el && el.tagName !== "FORM") {
+          el = el.parentElement
         }
-        formRef.current = element as HTMLFormElement
+        formRef.current = el as HTMLFormElement
       }
     }
   }, [autoSubmit])
 
-  // Input type validation function
   const isValidInputType = (char: string): boolean => {
-    if (!inputType) return true
-
     switch (inputType) {
       case "numeric":
         return /^\d$/.test(char)
@@ -170,235 +164,148 @@ export function OtpInput({
     }
   }
 
-  // Trigger error animation
   const triggerErrorAnimation = (index: number) => {
-    setErrorIndexes((prev) => new Set(prev.add(index)))
+    setErrorIndexes((prev) => new Set(prev).add(index))
     setShakeAnimation(true)
-
-    // Clear only the shake animation after it completes, but keep the error border
-    setTimeout(() => {
-      setShakeAnimation(false)
-    }, 500)
+    setTimeout(() => setShakeAnimation(false), 500)
   }
 
-  // Handle validation with the provided schema
   const validateOTP = React.useCallback(
-    (value: string) => {
+    (val: string) => {
       if (!schema) return
-
-      // Only validate if all digits are entered or if the form has been submitted
-      if (value.length === length) {
-        const result = schema.safeParse(value)
+      if (val.length === length) {
+        const result = schema.safeParse(val)
         if (!result.success) {
-          const errorMessage = result.error.errors[0]?.message || "Invalid code"
-          setLocalError(errorMessage)
-          onValidate?.(false, value, errorMessage)
+          const msg = result.error.errors[0]?.message || "Invalid code"
+          setLocalError(msg)
+          onValidate?.(false, val, msg)
         } else {
           setLocalError(undefined)
-          onValidate?.(true, value)
+          onValidate?.(true, val)
         }
       } else {
-        // Clear error while user is still typing
         setLocalError(undefined)
       }
     },
     [schema, onValidate, length]
   )
 
-  // Handle input change
   const handleChange = (
     index: number,
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value = e.target.value
+    const val = e.target.value
 
-    // Handle paste event (detected by multiple characters)
-    if (value.length > 1) {
-      handlePaste(index, value)
+    if (val.length > 1) {
+      handlePaste(index, val)
       return
     }
 
-    // Check if the character meets the input type requirements
-    if (value && !isValidInputType(value)) {
+    if (val && !isValidInputType(val)) {
       triggerErrorAnimation(index)
       return
     }
 
-    // Clear error state for this index if valid input is entered
-    if (value && isValidInputType(value)) {
+    if (val) {
       setErrorIndexes((prev) => {
-        const newSet = new Set(prev)
-        newSet.delete(index)
-        return newSet
+        const next = new Set(prev)
+        next.delete(index)
+        return next
       })
     }
 
-    // Update the OTP value
-    const newOtpValue = [...otpValue]
-    newOtpValue[index] = value
-    setOtpValue(newOtpValue)
+    const nextOtp = [...otpValue]
+    nextOtp[index] = val
+    setOtpValue(nextOtp)
 
-    // Move focus to the next input if a value was entered
-    if (value && index < length - 1) {
+    if (val && index < length - 1) {
       inputRefs.current[index + 1]?.focus()
     }
 
-    // Call onChange with the new value - ensure it's a clean string
-    const newValue = newOtpValue.join("")
-    onChange?.(newValue)
+    const joined = nextOtp.join("")
+    onChange?.(joined)
 
-    // Check if OTP is complete
-    if (newOtpValue.filter(Boolean).length === length) {
-      onComplete?.(newValue)
-
-      // Validate the complete OTP
-      if (schema) {
-        validateOTP(newValue)
-      }
-
-      // Auto-submit the form if enabled
+    if (nextOtp.filter(Boolean).length === length) {
+      onComplete?.(joined)
+      schema && validateOTP(joined)
       if (autoSubmit && formRef.current) {
-        setTimeout(() => {
-          formRef.current?.requestSubmit()
-        }, 100)
+        setTimeout(() => formRef.current?.requestSubmit(), 100)
       }
     }
   }
 
-  // Handle paste event with dedicated handler
   const handlePasteEvent = (
     index: number,
     e: React.ClipboardEvent<HTMLInputElement>
   ) => {
     e.preventDefault()
-    const pastedData = e.clipboardData.getData("text/plain")
-
-    if (pastedData) {
-      handlePaste(index, pastedData)
-    }
+    const data = e.clipboardData.getData("text/plain")
+    data && handlePaste(index, data)
   }
 
-  // Handle paste event
-  const handlePaste = (startIndex: number, pastedValue: string) => {
-    // Clean the pasted value - remove all whitespace and non-printable characters
-    let cleanedValue = pastedValue.replace(/\s/g, "").trim()
-
-    // Filter characters based on input type
+  const handlePaste = (start: number, pasted: string) => {
+    let cleaned = pasted.replace(/\s/g, "")
     if (inputType) {
-      cleanedValue = cleanedValue
-        .split("")
-        .filter((char) => isValidInputType(char))
-        .join("")
+      cleaned = cleaned.split("").filter(isValidInputType).join("")
     }
-
-    // If no valid characters after filtering, trigger error animation
-    if (
-      cleanedValue.length === 0 &&
-      pastedValue.replace(/\s/g, "").length > 0
-    ) {
-      triggerErrorAnimation(startIndex)
+    if (!cleaned && pasted.trim()) {
+      triggerErrorAnimation(start)
       return
     }
 
-    // Create a new OTP value array - clear existing values first for better UX
-    const newOtpValue = Array(length).fill("")
-
-    // Fill in the OTP value with the pasted characters from the beginning
-    // This provides better UX when pasting a complete code
-    const charactersToFill = Math.min(cleanedValue.length, length)
-    for (let i = 0; i < charactersToFill; i++) {
-      newOtpValue[i] = cleanedValue[i]
+    const newOtp = Array(length).fill("")
+    for (let i = 0; i < Math.min(cleaned.length, length); i++) {
+      newOtp[i] = cleaned[i]
     }
-
-    setOtpValue(newOtpValue)
-
-    // Clear any previous error states since we're filling with new data
+    setOtpValue(newOtp)
     setErrorIndexes(new Set())
+    const filled = newOtp.filter(Boolean).length
+    filled === length
+      ? inputRefs.current[length - 1]?.focus()
+      : inputRefs.current[filled]?.focus()
 
-    // Focus the appropriate input after pasting
-    if (charactersToFill === length) {
-      // If we filled all inputs, focus the last one
-      inputRefs.current[length - 1]?.focus()
-    } else {
-      // Focus the next empty input
-      inputRefs.current[charactersToFill]?.focus()
-    }
-
-    // Call onChange with the new value
-    const newValue = newOtpValue.join("")
-    onChange?.(newValue)
-
-    // Check if OTP is complete and trigger onComplete
-    if (charactersToFill === length) {
-      onComplete?.(newValue)
-
-      // Validate the complete OTP
-      if (schema) {
-        validateOTP(newValue)
-      }
-
-      // Auto-submit the form if enabled
+    const joined = newOtp.join("")
+    onChange?.(joined)
+    if (filled === length) {
+      onComplete?.(joined)
+      schema && validateOTP(joined)
       if (autoSubmit && formRef.current) {
-        setTimeout(() => {
-          formRef.current?.requestSubmit()
-        }, 100)
+        setTimeout(() => formRef.current?.requestSubmit(), 100)
       }
-    } else if (schema) {
-      // Validate partial input if schema exists
-      validateOTP(newValue)
+    } else {
+      schema && validateOTP(joined)
     }
   }
 
-  // Handle key down event
   const handleKeyDown = (
     index: number,
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
-    // Move focus to the previous input on backspace if the current input is empty
     if (e.key === "Backspace") {
       if (!otpValue[index] && index > 0) {
+        const prev = [...otpValue]
+        prev[index - 1] = ""
+        setOtpValue(prev)
+        onChange?.(prev.join(""))
         inputRefs.current[index - 1]?.focus()
-
-        // Clear the previous input
-        const newOtpValue = [...otpValue]
-        newOtpValue[index - 1] = ""
-        setOtpValue(newOtpValue)
-
-        // Call onChange with the new value
-        onChange?.(newOtpValue.join(""))
       }
-
-      // Don't prevent default for backspace when there's content to delete
-      if (!otpValue[index]) {
-        e.preventDefault()
-      }
-    }
-
-    // Prevent arrow key navigation
-    else if (
-      e.key === "ArrowRight" ||
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowUp" ||
-      e.key === "ArrowDown"
+      if (!otpValue[index]) e.preventDefault()
+    } else if (
+      ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].includes(e.key)
     ) {
       e.preventDefault()
     }
   }
 
-  // Handle focus event
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    // Select the input content on focus
     e.target.select()
   }
 
-  // Create input groups based on groupSize
-  const inputGroups = []
+  const inputGroups: number[][] = []
   for (let i = 0; i < length; i += groupSize) {
-    const group = []
-    for (let j = 0; j < groupSize && i + j < length; j++) {
-      group.push(i + j)
-    }
-    inputGroups.push(group)
+    inputGroups.push(
+      Array.from({ length: Math.min(groupSize, length - i) }, (_, j) => i + j)
+    )
   }
 
   return (
@@ -423,50 +330,48 @@ export function OtpInput({
       )}
 
       <div className="flex items-center justify-center space-x-1.5 sm:space-x-2">
-        {inputGroups.map((group, groupIndex) => (
-          <React.Fragment key={`group-${groupIndex}`}>
+        {inputGroups.map((group, gi) => (
+          <React.Fragment key={gi}>
             <div className="flex items-center space-x-1.5 sm:space-x-2">
-              {group.map((index) => (
-                <div key={`input-${index}`} className="relative">
+              {group.map((idx) => (
+                <div key={idx} className="relative">
                   <motion.input
-                    ref={(el: HTMLInputElement | null) => {
-                      if (inputRefs.current) {
-                        inputRefs.current[index] = el
-                      }
+                    ref={(el) => {
+                      inputRefs.current[idx] = el
                     }}
-                    id={index === 0 ? `${id}-0` : `${id}-${index}`}
-                    name={index === 0 ? name : `${name}-${index}`}
+                    id={`${id}-${idx}`}
+                    name={idx === 0 ? name : `${name}-${idx}`}
                     type="text"
                     inputMode={inputType === "numeric" ? "tel" : "text"}
                     pattern={inputType === "numeric" ? "[0-9]*" : undefined}
                     maxLength={1}
                     autoComplete="off"
-                    value={mask && otpValue[index] ? maskChar : otpValue[index]}
-                    onChange={(e) => handleChange(index, e)}
-                    onKeyDown={(e) => handleKeyDown(index, e)}
-                    onPaste={(e) => handlePasteEvent(index, e)}
+                    value={mask && otpValue[idx] ? maskChar : otpValue[idx]}
+                    onChange={(e) => handleChange(idx, e)}
+                    onKeyDown={(e) => handleKeyDown(idx, e)}
+                    onPaste={(e) => handlePasteEvent(idx, e)}
                     onFocus={handleFocus}
                     disabled={pending || disabled}
                     aria-invalid={hasError}
                     aria-errormessage={hasError ? errorId : undefined}
                     aria-describedby={hint ? hintId : undefined}
                     aria-required={required}
-                    autoFocus={autoFocus && index === 0}
+                    autoFocus={autoFocus && idx === 0}
                     animate={{
                       x:
-                        errorIndexes.has(index) && shakeAnimation
+                        errorIndexes.has(idx) && shakeAnimation
                           ? [-2, 2, -2, 2, 0]
                           : 0,
                       borderColor: success
-                        ? "rgb(34 197 94)" // green-500
-                        : errorIndexes.has(index)
-                          ? "rgb(239 68 68)" // red-500
-                          : undefined,
+                        ? "rgb(34 197 94)"
+                        : errorIndexes.has(idx)
+                        ? "rgb(239 68 68)"
+                        : undefined,
                       scale: success ? [1, 1.02, 1] : 1,
                     }}
                     transition={{
                       x:
-                        errorIndexes.has(index) && shakeAnimation
+                        errorIndexes.has(idx) && shakeAnimation
                           ? { duration: 0.4, type: "tween" }
                           : { duration: 0.4, type: "spring", stiffness: 300 },
                       borderColor: { duration: 0.3 },
@@ -475,31 +380,35 @@ export function OtpInput({
                         : { duration: 0.6, delay: 0.1 },
                     }}
                     className={cn(
+                      // Base styling
                       "w-11 h-12 sm:w-10 sm:h-12 bg-background text-center text-base sm:text-xl font-medium transition-colors",
-                      "focus:outline-none focus:ring-2 focus:ring-primary dark:ring-offset-black ring-offset-white",
-                      // Default variant styling
+                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-white dark:ring-offset-black",
+
+                      // Default variant
                       variant === "default" &&
-                        "border border-input rounded-md shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)]",
-                      // Pill variant styling
+                        "border border-input rounded-md shadow-[0px_2px_2px_rgba(0,0,0,0.03),_0px_4px_7px_rgba(0,0,0,0.02)] focus-visible:border-primary focus-visible:ring-primary/20",
+
+                      // Pill variant
                       variant === "pill" &&
-                        "bg-muted border-0 rounded-lg focus:ring-offset-2",
-                      variant === "pill" &&
-                        coloredBorder &&
-                        "border-2 border-primary",
-                      // Success styling - remove focus ring for consistent appearance
+                        "bg-muted border-0 rounded-lg focus-visible:border-primary focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-background",
+                      variant === "pill" && coloredBorder && "border-2 border-primary",
+
+                      // Success state
                       success &&
                         "border-2 border-green-500 focus:ring-0 focus:ring-transparent",
-                      // Error styling for individual inputs
-                      errorIndexes.has(index) &&
+
+                      // Per-input error
+                      errorIndexes.has(idx) &&
                         "border-destructive focus:ring-destructive",
-                      // Global error styling
+
+                      // Global error override
                       "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive"
                     )}
                   />
                 </div>
               ))}
             </div>
-            {separator && groupIndex < inputGroups.length - 1 && (
+            {separator && gi < inputGroups.length - 1 && (
               <div className="text-muted-foreground text-base sm:text-lg font-medium">
                 -
               </div>
@@ -508,7 +417,7 @@ export function OtpInput({
         ))}
       </div>
 
-      {/* Hidden input for form submission with the complete value */}
+      {/* Hidden for form */}
       <input
         type="hidden"
         name={name}

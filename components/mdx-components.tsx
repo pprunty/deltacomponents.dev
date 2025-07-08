@@ -22,6 +22,7 @@ import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { CodeSnippet } from "@/components/code-snippet"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
+import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
 import { GitHubChangelog } from "@/components/github-changelog"
 import Admonition from "@/registry/components/admonition"
@@ -63,6 +64,7 @@ const components = {
   AlertDescription,
   ComponentSource,
   ComponentPreview,
+  ComponentsShowcase,
   GitHubChangelog,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />

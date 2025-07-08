@@ -4,9 +4,9 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button, type ButtonProps } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 
-interface CopyButtonProps extends ButtonProps {
+interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
   src?: string
 }
