@@ -3,12 +3,10 @@
 import type React from "react"
 import { memo, useCallback, useState } from "react"
 import type { FC } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import type { IconProps } from "@phosphor-icons/react"
 import { Plus } from "@phosphor-icons/react"
 import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 // Route interface
 interface Route {
@@ -50,7 +48,7 @@ const BarItem = memo(
   }: BarItemProps) => {
     return (
       <li className="flex-1">
-        <Link
+        <a
           href={href}
           className={clsx(
             "flex flex-col items-center justify-center w-full h-full px-1",
@@ -103,7 +101,7 @@ const BarItem = memo(
               </motion.span>
             )}
           </motion.div>
-        </Link>
+        </a>
       </li>
     )
   }
@@ -185,8 +183,15 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   centerButton,
   showBorderTop = true,
 }) {
-  const pathname = usePathname()
   const [animationKeys, setAnimationKeys] = useState<Record<string, number>>({})
+
+  // Use window.location.pathname in client-side environment
+  const getCurrentPath = () => {
+    if (typeof window !== "undefined") {
+      return window.location.pathname
+    }
+    return ""
+  }
 
   const handleItemClick = useCallback((href: string) => {
     setAnimationKeys((prev) => ({
@@ -232,7 +237,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={pathname === href}
+                  isActive={getCurrentPath() === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -254,7 +259,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={pathname === href}
+                  isActive={getCurrentPath() === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -269,7 +274,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                 href={href}
                 label={label}
                 Icon={Icon}
-                isActive={pathname === href}
+                isActive={getCurrentPath() === href}
                 showLabels={showLabels}
                 onItemClick={() => handleItemClick(href)}
                 animationKey={animationKeys[href] || 0}

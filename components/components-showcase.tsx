@@ -2,12 +2,10 @@
 
 import React from "react"
 import { Index } from "@/__registry__"
-import { Balancer } from "react-wrap-balancer"
 
-import { cn, getComponentCategory } from "@/lib/utils"
+import { getComponentCategory } from "@/lib/utils"
 import { ComponentPreviewCard } from "@/components/component-preview-card"
 import AnimateIn from "@/registry/animations/animate-in"
-import ScrambleText from "@/registry/animations/scramble-text"
 
 // Define types for our registry items
 interface RegistryItem {
