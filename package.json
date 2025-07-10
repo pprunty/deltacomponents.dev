@@ -85,7 +85,7 @@
     "@types/three": "^0.177.0",
     "@typescript-eslint/parser": "^8.18.0",
     "eslint": "^9",
-    "eslint-config-next": "15.1.0",
+    "eslint-config-next": "15.3.5",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "mdast-util-toc": "^7.1.0",
