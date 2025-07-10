@@ -1,0 +1,149 @@
+---
+title: Toast
+description: A production-grade toast notification component built on top of Sonner with theme-aware styling and comprehensive positioning options.
+---
+
+<ComponentPreview name="toast-demo" />
+
+## Overview
+
+The Toast component provides a comprehensive notification system with theme-aware styling, multiple positioning options, and rich customization capabilities. Built on top of Sonner, it offers a production-ready solution for displaying temporary messages to users.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn add https://deltacomponents.dev/r/toast
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install sonner
+```
+
+<Step>Copy and paste the following code into your project:</Step>
+
+<ComponentSource name="toast" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import Toast, { toast } from "@/registry/components/toast"
+
+export default function App() {
+  return (
+    <div>
+      <Toast />
+      <button onClick={() => toast.success("Success!")}>Show Toast</button>
+    </div>
+  )
+}
+```
+
+## API Reference
+
+### Toast Component
+
+| Prop            | Type                                                                                              | Default          | Description                                    |
+| --------------- | ------------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------- |
+| `position`      | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-right"` | Position of the toast                          |
+| `richColors`    | `boolean`                                                                                         | `true`           | Enable rich colors for better visual hierarchy |
+| `visibleToasts` | `number`                                                                                          | `3`              | Maximum number of toasts to show at once       |
+| `className`     | `string`                                                                                          | `undefined`      | Custom class name for the toaster              |
+| `toastOptions`  | `object`                                                                                          | `undefined`      | Custom styling and behavior options            |
+
+### Toast Function
+
+| Method                             | Description                   |
+| ---------------------------------- | ----------------------------- |
+| `toast(message, options?)`         | Display a default toast       |
+| `toast.success(message, options?)` | Display a success toast       |
+| `toast.error(message, options?)`   | Display an error toast        |
+| `toast.warning(message, options?)` | Display a warning toast       |
+| `toast.info(message, options?)`    | Display an info toast         |
+| `toast.promise(promise, options)`  | Display a promise-based toast |
+
+### Toast Options
+
+| Option        | Type                                   | Description                      |
+| ------------- | -------------------------------------- | -------------------------------- |
+| `duration`    | `number`                               | Duration in milliseconds         |
+| `description` | `string`                               | Additional description text      |
+| `action`      | `{label: string, onClick: () => void}` | Action button configuration      |
+| `cancel`      | `{label: string, onClick: () => void}` | Cancel button configuration      |
+| `id`          | `string`                               | Custom toast ID                  |
+| `onDismiss`   | `() => void`                           | Callback when toast is dismissed |
+| `onAutoClose` | `() => void`                           | Callback when toast auto-closes  |
+
+## Examples
+
+### Basic Toast Types
+
+<ComponentPreview name="toast-demo" />
+
+### Positioning
+
+<ComponentPreview name="toast-positions-demo" />
+
+### Action Buttons and Promises
+
+<ComponentPreview name="toast-actions-demo" />
+
+### Custom Content and Styling
+
+<ComponentPreview name="toast-custom-demo" />
+
+### Theme-Aware Colors
+
+<ComponentPreview name="toast-colors-demo" />
+
+## Theme Integration
+
+The Toast component automatically adapts to your theme using the same color system as the Admonition component:
+
+- **Success**: Emerald colors (`emerald-50/emerald-950` backgrounds)
+- **Error**: Red colors (`red-50/red-950` backgrounds)
+- **Warning**: Amber colors (`amber-50/amber-950` backgrounds)
+- **Info**: Blue colors (`blue-50/blue-950` backgrounds)
+- **Default**: Gray colors (`gray-50/gray-950` backgrounds)
+
+Each color variant includes proper dark mode support with adjusted opacity and contrast ratios.
+
+## Best Practices
+
+1. **Position**: Use `bottom-right` for general notifications, `top-center` for important system messages
+2. **Duration**: Set appropriate durations - success messages can be shorter (2-3s), errors longer (5-8s)
+3. **Actions**: Include action buttons for recoverable errors or important confirmations
+4. **Content**: Keep messages concise and actionable
+5. **Accessibility**: Messages are automatically announced to screen readers
+
+## Accessibility
+
+- Toast messages are announced to screen readers
+- Supports keyboard navigation for action buttons
+- Proper ARIA labeling for toast types
+- Color contrast meets WCAG guidelines
+- Respects prefers-reduced-motion settings

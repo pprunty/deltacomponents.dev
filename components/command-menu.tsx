@@ -61,7 +61,7 @@ export function CommandMenu() {
 
   // The command content with matching rounded corners
   const commandContent = (
-    <Command className="rounded-2xl bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
+    <Command className="rounded-2xl bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-4 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
       <div className="sr-only">Type a command or search</div>
       <CommandInput
         placeholder="Type a command or search..."
@@ -138,7 +138,7 @@ export function CommandMenu() {
         )}
         onClick={() => setOpen(true)}
       >
-        <SearchIcon className="ml-[-4px] mr-1.5 size-5 shrink-0 opacity-50" />
+        <SearchIcon className="ml-[-4px] mr-1 size-4 shrink-0 opacity-50" />
         <span className="hidden lg:inline-flex text-sm lg:text-base">
           Search documentation...
         </span>

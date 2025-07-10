@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import defaultTheme from "@/styles/prism-theme.json"
 
 import { CopyButton } from "./copy-button"
+import lightTheme from "./light-theme.json"
 
 interface CodeSnippetProps {
   title?: string
@@ -20,6 +21,9 @@ interface CodeSnippetProps {
     light: PrismTheme
     dark: PrismTheme
   }
+  tabs?: { [key: string]: { code: string; language?: string } }
+  activeTab?: string
+  onTabChange?: (tab: string) => void
 }
 
 export const CodeSnippet: React.FC<CodeSnippetProps> = ({
@@ -31,8 +35,17 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   theme,
   showLineNumbers = true,
   adaptiveTheme,
+  tabs,
+  activeTab,
+  onTabChange,
 }) => {
-  const lines = code.trim().split("\n")
+  // Handle tabs functionality
+  const currentTab = tabs && activeTab ? activeTab : null
+  const currentCode = currentTab && tabs ? tabs[currentTab].code : code
+  const currentLanguage =
+    currentTab && tabs ? tabs[currentTab].language || language : language
+
+  const lines = currentCode.trim().split("\n")
   const [isDark, setIsDark] = useState(false)
 
   // Hook to detect dark mode
@@ -47,7 +60,10 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
     // Watch for changes
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
           checkDarkMode()
         }
       })
@@ -61,10 +77,13 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
     return () => observer.disconnect()
   }, [])
 
-  // Select theme based on adaptiveTheme prop or fallback to theme/default
-  const selectedTheme = adaptiveTheme 
-    ? (isDark ? adaptiveTheme.dark : adaptiveTheme.light)
-    : theme || (defaultTheme as PrismTheme)
+  // Select theme based on adaptiveTheme prop or auto-detect light/dark mode
+  const selectedTheme = adaptiveTheme
+    ? isDark
+      ? adaptiveTheme.dark
+      : adaptiveTheme.light
+    : theme ||
+      (isDark ? (defaultTheme as PrismTheme) : (lightTheme as PrismTheme))
 
   return (
     <div
@@ -74,34 +93,71 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         className
       )}
     >
-      {title ? (
+      {title || tabs ? (
         <div
-          className="flex items-center justify-between pl-4 pr-3 py-2 border-b h-11"
-          style={{ 
-            backgroundColor: selectedTheme.plain?.backgroundColor || "#151515", 
-            borderBottomColor: selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff" ? "#e5e5e5" : "#2a2a2a"
+          className="flex items-center justify-between border-b"
+          style={{
+            backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
+            borderBottomColor:
+              selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff"
+                ? "#e5e5e5"
+                : "#2a2a2a",
           }}
         >
-          <h3 
-            className="text-sm font-medium" 
-            style={{ color: selectedTheme.plain?.color || "#FFFFFF" }}
-          >
-            {title}
-          </h3>
-          <CopyButton 
-            value={code} 
-            className={selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff" 
-              ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800" 
-              : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
-            } 
+          {title ? (
+            <h3
+              className="text-sm font-medium pl-4 py-2"
+              style={{ color: selectedTheme.plain?.color || "#FFFFFF" }}
+            >
+              {title}
+            </h3>
+          ) : null}
+
+          {tabs && !title ? (
+            <div className="flex items-center px-3 pt-2.5">
+              <div className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1 flex">
+                {Object.entries(tabs).map(([key]) => (
+                  <button
+                    key={key}
+                    onClick={() => onTabChange?.(key)}
+                    className={cn(
+                      "rounded-none border-b-2 border-transparent bg-transparent p-0 pb-1.5 font-mono text-sm transition-colors",
+                      activeTab === key
+                        ? selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                          "#ffffff"
+                          ? "border-b-zinc-900 text-zinc-900"
+                          : "border-b-zinc-50 text-zinc-50"
+                        : selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                            "#ffffff"
+                          ? "text-zinc-600 hover:text-zinc-800"
+                          : "text-zinc-400 hover:text-zinc-200"
+                    )}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          <CopyButton
+            value={currentCode}
+            className={cn(
+              "mr-3",
+              selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff"
+                ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
+                : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
+            )}
           />
         </div>
       ) : null}
       <div
         className="relative max-h-[calc(530px-44px)] py-4"
-        style={{ backgroundColor: selectedTheme.plain?.backgroundColor || "#151515" }}
+        style={{
+          backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
+        }}
       >
-        {!title && (
+        {!title && !tabs && (
           <div
             className={`absolute ${
               lines.length === 1
@@ -109,16 +165,22 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                 : "top-4 right-3"
             }`}
           >
-            <CopyButton 
-              value={code} 
-              className={selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff" 
-                ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800" 
-                : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
-              } 
+            <CopyButton
+              value={currentCode}
+              className={
+                selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                "#ffffff"
+                  ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
+                  : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
+              }
             />
           </div>
         )}
-        <Highlight theme={selectedTheme} code={code.trim()} language={language}>
+        <Highlight
+          theme={selectedTheme}
+          code={currentCode.trim()}
+          language={currentLanguage}
+        >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
               className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium`}
@@ -132,7 +194,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                   style={{}}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
-                      selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff"
+                      selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                      "#ffffff"
                         ? "#f5f5f5"
                         : "#202020")
                   }

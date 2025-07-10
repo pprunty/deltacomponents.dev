@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-snippet-tabs-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/code-snippet.json"],
+  "files": [
+    {
+      "path": "registry/examples/code-snippet-tabs-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { CodeSnippet } from \"@/registry/media/code-snippet\"\n\nexport default function CodeSnippetTabsDemo() {\n  const [activeTab, setActiveTab] = useState(\"npm\")\n\n  const installationTabs = {\n    npm: {\n      code: \"npm install @radix-ui/react-dialog lucide-react\",\n      language: \"bash\",\n    },\n    pnpm: {\n      code: \"pnpm add @radix-ui/react-dialog lucide-react\",\n      language: \"bash\",\n    },\n    yarn: {\n      code: \"yarn add @radix-ui/react-dialog lucide-react\",\n      language: \"bash\",\n    },\n    bun: {\n      code: \"bun add @radix-ui/react-dialog lucide-react\",\n      language: \"bash\",\n    },\n  }\n\n  return (\n    <div className=\"space-y-6\">\n      <div>\n        <h3 className=\"text-sm font-medium mb-3\">Package Installation</h3>\n        <CodeSnippet\n          code={installationTabs[activeTab].code}\n          language=\"bash\"\n          showLineNumbers={false}\n          tabs={installationTabs}\n          activeTab={activeTab}\n          onTabChange={setActiveTab}\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/code-snippet-tabs-demo.tsx"
+    }
+  ]
+}

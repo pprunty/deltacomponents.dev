@@ -106,6 +106,52 @@ export function CustomThemeExample() {
 }
 ```
 
+### Tabbed Code Snippets
+
+The CodeSnippet component supports tabbed interfaces for displaying multiple related code examples or different approaches to the same task.
+
+```tsx
+"use client"
+
+import { useState } from "react"
+
+import { CodeSnippet } from "@/registry/media/code-snippet"
+
+export function TabbedExample() {
+  const [activeTab, setActiveTab] = useState("npm")
+
+  const installationTabs = {
+    npm: {
+      code: "npm install @radix-ui/react-dialog lucide-react",
+      language: "bash",
+    },
+    pnpm: {
+      code: "pnpm add @radix-ui/react-dialog lucide-react",
+      language: "bash",
+    },
+    yarn: {
+      code: "yarn add @radix-ui/react-dialog lucide-react",
+      language: "bash",
+    },
+    bun: {
+      code: "bun add @radix-ui/react-dialog lucide-react",
+      language: "bash",
+    },
+  }
+
+  return (
+    <CodeSnippet
+      code={installationTabs[activeTab].code}
+      language="bash"
+      showLineNumbers={false}
+      tabs={installationTabs}
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+    />
+  )
+}
+```
+
 ### Adaptive Theme Example
 
 ```tsx
@@ -147,16 +193,19 @@ export function AdaptiveThemeExample() {
 
 ### CodeSnippet
 
-| Name              | Type         | Default        | Description                                     |
-| ----------------- | ------------ | -------------- | ----------------------------------------------- |
-| `title`           | `string`     | -              | Optional title displayed in the header          |
-| `code`            | `string`     | -              | The code content to display                     |
-| `language`        | `string`     | `"typescript"` | Programming language for syntax highlighting    |
-| `className`       | `string`     | -              | Additional CSS classes                          |
-| `border`          | `boolean`    | `true`         | Whether to show the border around the component |
-| `theme`           | `PrismTheme` | -              | Custom theme object for syntax highlighting     |
-| `showLineNumbers` | `boolean`    | `true`         | Whether to display line numbers                 |
-| `adaptiveTheme`   | `{ light: PrismTheme, dark: PrismTheme }` | - | Themes that automatically adapt to dark/light mode |
+| Name              | Type                                                     | Default        | Description                                        |
+| ----------------- | -------------------------------------------------------- | -------------- | -------------------------------------------------- |
+| `title`           | `string`                                                 | -              | Optional title displayed in the header             |
+| `code`            | `string`                                                 | -              | The code content to display                        |
+| `language`        | `string`                                                 | `"typescript"` | Programming language for syntax highlighting       |
+| `className`       | `string`                                                 | -              | Additional CSS classes                             |
+| `border`          | `boolean`                                                | `true`         | Whether to show the border around the component    |
+| `theme`           | `PrismTheme`                                             | -              | Custom theme object for syntax highlighting        |
+| `showLineNumbers` | `boolean`                                                | `true`         | Whether to display line numbers                    |
+| `adaptiveTheme`   | `{ light: PrismTheme, dark: PrismTheme }`                | -              | Themes that automatically adapt to dark/light mode |
+| `tabs`            | `{ [key: string]: { code: string; language?: string } }` | -              | Tab data for multi-code display                    |
+| `activeTab`       | `string`                                                 | -              | Currently active tab key                           |
+| `onTabChange`     | `(tab: string) => void`                                  | -              | Callback fired when tab is changed                 |
 
 ## Theme Schema
 
@@ -270,6 +319,12 @@ Automatically adapts to your system's dark/light mode preference using the `adap
 
 <ComponentPreview name="code-snippet-adaptive-demo" />
 
+### Tabbed Code Snippets
+
+Display multiple related code examples with tab navigation, perfect for showing installation commands across different package managers.
+
+<ComponentPreview name="code-snippet-tabs-demo" />
+
 ## Features
 
 ### Syntax Highlighting
@@ -289,6 +344,13 @@ Automatically adapts to your system's dark/light mode preference using the `adap
 - Automatic line numbering
 - Hover effects for better interaction
 - Proper spacing and alignment
+
+### Tabbed Interface
+
+- Support for multiple code examples in tabs
+- Seamless tab switching with state management
+- Compact tab design with underlined active states
+- Perfect for package manager commands or code alternatives
 
 ### Responsive Design
 

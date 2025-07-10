@@ -31,7 +31,8 @@ export function MainNav() {
             "transition-colors hover:text-primary inline-flex font-light border-box",
             // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
             // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
-            pathname.startsWith("/docs") && pathname !== "/docs/components"
+            pathname.startsWith("/docs") &&
+              !pathname.startsWith("/docs/components")
               ? "text-primary font-medium"
               : "text-muted-foreground"
           )}
@@ -45,7 +46,7 @@ export function MainNav() {
             "transition-colors hover:text-primary inline-flex font-light border-box",
             // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
             // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
-            pathname === "/docs/components"
+            pathname.startsWith("/docs/components")
               ? "text-primary font-medium"
               : "text-muted-foreground"
           )}

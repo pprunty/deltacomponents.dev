@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "latex-enhanced-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/latex.json"],
+  "files": [
+    {
+      "path": "registry/examples/latex-enhanced-demo.tsx",
+      "content": "\"use client\"\n\nimport Latex, { LargeBlockMath, LargeInlineMath } from \"@/registry/media/latex\"\n\nexport default function LatexEnhancedDemo() {\n  return (\n    <div className=\"space-y-8\">\n      <div className=\"space-y-4\">\n        <h3 className=\"text-lg font-semibold\">Enhanced Components</h3>\n\n        <div className=\"space-y-3\">\n          <h4 className=\"font-medium\">Large Inline Math</h4>\n          <p>\n            Using the enhanced component:{\" \"}\n            <LargeInlineMath math=\"\\sum_{i=1}^{n} x_i\" />\n            for better visibility in text.\n          </p>\n        </div>\n\n        <div className=\"space-y-3\">\n          <h4 className=\"font-medium\">Large Block Math</h4>\n          <LargeBlockMath math=\"\\lim_{x \\to \\infty} \\frac{1}{x} = 0\" />\n        </div>\n      </div>\n\n      <div className=\"space-y-4\">\n        <h3 className=\"text-lg font-semibold\">\n          Mathematical Notation Examples\n        </h3>\n\n        <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4\">\n          <div className=\"space-y-2\">\n            <p className=\"text-sm font-medium\">Greek Letters</p>\n            <Latex\n              math=\"\\alpha, \\beta, \\gamma, \\delta, \\pi, \\sigma, \\lambda\"\n              block\n            />\n          </div>\n\n          <div className=\"space-y-2\">\n            <p className=\"text-sm font-medium\">Set Theory</p>\n            <Latex math=\"A \\cup B \\cap C \\subseteq \\mathbb{R}\" block />\n          </div>\n\n          <div className=\"space-y-2\">\n            <p className=\"text-sm font-medium\">Logic Symbols</p>\n            <Latex math=\"p \\land q \\lor r \\implies s \\iff t\" block />\n          </div>\n\n          <div className=\"space-y-2\">\n            <p className=\"text-sm font-medium\">Calculus</p>\n            <Latex\n              math=\"\\nabla \\cdot \\vec{F} = \\frac{\\partial F_x}{\\partial x} + \\frac{\\partial F_y}{\\partial y}\"\n              block\n            />\n          </div>\n        </div>\n      </div>\n\n      <div className=\"space-y-4\">\n        <h3 className=\"text-lg font-semibold\">Custom Styling</h3>\n        <div className=\"bg-slate-50 dark:bg-slate-900 p-4 rounded-lg\">\n          <Latex\n            math=\"f(x) = ax^2 + bx + c\"\n            block\n            size=\"large\"\n            className=\"text-blue-600 dark:text-blue-400\"\n          />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/latex-enhanced-demo.tsx"
+    }
+  ]
+}

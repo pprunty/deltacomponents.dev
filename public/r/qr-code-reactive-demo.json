@@ -3,13 +3,11 @@
   "name": "qr-code-reactive-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/qr-code.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"],
   "files": [
     {
       "path": "registry/examples/qr-code-reactive-demo.tsx",
-      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport QRCode from \"@/registry/media/qr-code\"\n\nexport default function QRCodeReactiveDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <div className=\"text-center space-y-4\">\n        <h3 className=\"text-lg font-medium\">Reactive Dark Mode QR Code</h3>\n        <p className=\"text-sm text-muted-foreground\">\n          This QR code automatically adapts to light and dark themes\n        </p>\n\n        <QRCode\n          value=\"https://deltacomponents.dev\"\n          size={200}\n          bgColor=\"--color-background\"\n          fgColor=\"--color-foreground\"\n          containerClassName=\"bg-background border border-border rounded-lg shadow-sm\"\n        />\n\n        <p className=\"text-xs text-muted-foreground\">\n          Uses --color-background and --color-foreground for automatic theme\n          adaptation\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import QRCode from \"@/registry/media/qr-code\"\n\nexport default function QRCodeReactiveDemo() {\n  return (\n    <div className=\"flex items-center justify-center w-full\">\n      <QRCode\n        value=\"https://deltacomponents.dev\"\n        size={200}\n        fgColor=\"--color-primary\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
       "target": "/components/delta/examples/qr-code-reactive-demo.tsx"
     }

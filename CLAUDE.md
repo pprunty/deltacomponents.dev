@@ -99,6 +99,12 @@ Every component must include:
 6. **API Reference** table with all props
 7. **Examples** section with all demo variants
 
+**Demo File Guidelines:**
+
+- Do not add text headings or paragraphs in demo files
+- Content should be captured in the MDX documentation itself
+- Demo files should focus purely on component functionality showcase
+
 ### Dependencies & Registry
 
 - **npm dependencies**: External packages go in `dependencies` field

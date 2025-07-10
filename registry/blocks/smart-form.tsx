@@ -241,6 +241,7 @@ export function SmartForm({
     values: Record<string, any>
     errors: Record<string, string>
     touched: Record<string, boolean>
+    clearedErrors: Record<string, boolean>
     isSubmitting: boolean
     isSubmitted: boolean
     isSuccess: boolean
@@ -251,6 +252,7 @@ export function SmartForm({
     values: { ...initialDefaultValuesRef.current },
     errors: {},
     touched: {},
+    clearedErrors: {},
     isSubmitting: false,
     isSubmitted: false,
     isSuccess: false,
@@ -265,6 +267,7 @@ export function SmartForm({
         values: { ...newValues },
         errors: {},
         touched: {},
+        clearedErrors: {},
         isSubmitted: false,
         isSuccess: false,
         isError: false,
@@ -290,6 +293,7 @@ export function SmartForm({
       isSubmitted: true,
       isSuccess: false,
       isError: false,
+      clearedErrors: {},
     }))
 
     // Set the ref to true to block any parallel submissions
@@ -342,7 +346,7 @@ export function SmartForm({
       if (resetOnSuccess) {
         resetForm()
       }
-    } catch (error) {
+    } catch {
       // Handle submission errors
       setFormState((prev) => ({
         ...prev,
@@ -365,7 +369,7 @@ export function SmartForm({
         return prev
       }
 
-      return {
+      const newState = {
         ...prev,
         values: {
           ...prev.values,
@@ -376,6 +380,16 @@ export function SmartForm({
           [name]: true,
         },
       }
+
+      // If this field has an error, mark it as cleared when user starts typing
+      if (prev.errors[name] && !prev.clearedErrors[name]) {
+        newState.clearedErrors = {
+          ...prev.clearedErrors,
+          [name]: true,
+        }
+      }
+
+      return newState
     })
   }, [])
 
@@ -393,13 +407,21 @@ export function SmartForm({
 
         if (!result.success) {
           const error = result.error.format()[name]?._errors[0]
-          setFormState((prev) => ({
-            ...prev,
-            errors: {
-              ...prev.errors,
-              [name]: error || "Invalid value",
-            },
-          }))
+          setFormState((prev) => {
+            // Don't set the error if it was already cleared by user interaction
+            // This prevents errors from reappearing after the user starts typing
+            if (prev.clearedErrors[name]) {
+              return prev
+            }
+
+            return {
+              ...prev,
+              errors: {
+                ...prev.errors,
+                [name]: error || "Invalid value",
+              },
+            }
+          })
         } else {
           // Clear error if validation passes
           setFormState((prev) => {
@@ -423,6 +445,26 @@ export function SmartForm({
       }
     },
     [schema]
+  )
+
+  // Handle field blur - validate field when user finishes interacting
+  const handleBlur = React.useCallback(
+    (name: string) => {
+      setFormState((prev) => {
+        const value = prev.values[name]
+
+        // Only validate if field has been touched and doesn't have a cleared error
+        if (prev.touched[name] && !prev.clearedErrors[name]) {
+          // Use setTimeout to ensure this runs after the validateField call
+          setTimeout(() => {
+            validateField(name, value)
+          }, 0)
+        }
+
+        return prev
+      })
+    },
+    [validateField]
   )
 
   // Render form layout
@@ -519,7 +561,10 @@ export function SmartForm({
         description: field.description,
         hint: field.hint,
         labelVariant: field.labelVariant,
-        error: formState.errors[field.name],
+        error:
+          formState.errors[field.name] && !formState.clearedErrors[field.name]
+            ? formState.errors[field.name]
+            : undefined,
         className: cn(fieldClassName, field.className),
       }
 
@@ -538,6 +583,7 @@ export function SmartForm({
               placeholder={field.placeholder}
               defaultValue={formState.values[field.name] || ""}
               onChange={(e) => handleChange(field.name, e.target.value)}
+              onBlur={() => handleBlur(field.name)}
               variant={field.variant as "default" | "pill"}
             />
           )
@@ -557,6 +603,7 @@ export function SmartForm({
               placeholder={field.placeholder}
               defaultValue={formState.values[field.name] || ""}
               onValueChange={(value) => handleChange(field.name, value)}
+              onBlur={() => handleBlur(field.name)}
               variant={field.variant as "default" | "pill"}
             />
           )
@@ -589,6 +636,7 @@ export function SmartForm({
               rows={field.rows}
               defaultValue={formState.values[field.name] || ""}
               onChange={(e) => handleChange(field.name, e.target.value)}
+              onBlur={() => handleBlur(field.name)}
               variant={field.variant as "default" | "pill"}
             />
           )
@@ -602,6 +650,7 @@ export function SmartForm({
               maxDate={field.maxDate}
               dateFormat={field.dateFormat}
               onValueChange={(date) => handleChange(field.name, date)}
+              onBlur={() => handleBlur(field.name)}
               variant={field.variant as "default" | "pill"}
             />
           )
@@ -649,6 +698,7 @@ export function SmartForm({
               {...commonProps}
               value={formState.values[field.name] || []}
               onChange={(tags) => handleChange(field.name, tags)}
+              onBlur={() => handleBlur(field.name)}
               variant={field.variant as "default" | "pill"}
               triggerKey={field.triggerKey}
             />
@@ -660,9 +710,11 @@ export function SmartForm({
     [
       fieldClassName,
       formState.errors,
+      formState.clearedErrors,
       formState.isSubmitting,
       formState.values,
       handleChange,
+      handleBlur,
       loading,
       renderCustomField,
     ]

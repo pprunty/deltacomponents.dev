@@ -55,6 +55,8 @@ export interface DateInputProps {
   onValidate?: (isValid: boolean, value: Date, error?: string) => void
   /** Callback when date changes */
   onValueChange?: (value: Date | undefined) => void
+  /** Callback when the date picker loses focus */
+  onBlur?: () => void
   /** ID for the date picker */
   id?: string
   /** Whether the date picker is disabled */
@@ -89,6 +91,7 @@ export function DateInput({
   schema,
   onValidate,
   onValueChange,
+  onBlur,
   id = name,
   disabled = false,
   minDate,
@@ -205,6 +208,7 @@ export function DateInput({
             id={id}
             variant="outline"
             disabled={pending || disabled}
+            onBlur={onBlur}
             className={cn(
               "h-[46px] md:text-md text-md bg-background",
               "w-full justify-between text-left font-normal",

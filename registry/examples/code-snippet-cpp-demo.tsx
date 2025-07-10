@@ -9,67 +9,67 @@ import { CodeSnippet } from "@/registry/media/code-snippet"
 const cppTheme: PrismTheme = {
   plain: {
     color: "#e6e6fa",
-    backgroundColor: "#1a1a2e"
+    backgroundColor: "#1a1a2e",
   },
   styles: [
     {
       types: ["comment"],
       style: {
         color: "#6a7b9a",
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["keyword", "operator"],
       style: {
         color: "#bb86fc",
-        fontWeight: "bold"
-      }
+        fontWeight: "bold",
+      },
     },
     {
       types: ["string", "char"],
       style: {
-        color: "#98d982"
-      }
+        color: "#98d982",
+      },
     },
     {
       types: ["number"],
       style: {
-        color: "#f39c12"
-      }
+        color: "#f39c12",
+      },
     },
     {
       types: ["function", "method"],
       style: {
-        color: "#61dafb"
-      }
+        color: "#61dafb",
+      },
     },
     {
       types: ["class-name", "type"],
       style: {
         color: "#ffd700",
-        fontWeight: "500"
-      }
+        fontWeight: "500",
+      },
     },
     {
       types: ["punctuation", "symbol"],
       style: {
-        color: "#c5c8c6"
-      }
+        color: "#c5c8c6",
+      },
     },
     {
       types: ["preprocessor", "directive"],
       style: {
-        color: "#ff79c6"
-      }
+        color: "#ff79c6",
+      },
     },
     {
       types: ["namespace", "scope"],
       style: {
-        color: "#8be9fd"
-      }
-    }
-  ]
+        color: "#8be9fd",
+      },
+    },
+  ],
 }
 
 export default function CodeSnippetCppDemo() {

@@ -9,146 +9,146 @@ import { CodeSnippet } from "@/registry/media/code-snippet"
 const lightTheme: PrismTheme = {
   plain: {
     color: "#24292f",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
   styles: [
     {
       types: ["comment"],
       style: {
         color: "#656d76",
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["keyword", "operator"],
       style: {
         color: "#cf222e",
-        fontWeight: "600"
-      }
+        fontWeight: "600",
+      },
     },
     {
       types: ["string", "char"],
       style: {
-        color: "#0a3069"
-      }
+        color: "#0a3069",
+      },
     },
     {
       types: ["number"],
       style: {
-        color: "#0550ae"
-      }
+        color: "#0550ae",
+      },
     },
     {
       types: ["function", "method"],
       style: {
-        color: "#8250df"
-      }
+        color: "#8250df",
+      },
     },
     {
       types: ["class-name", "type"],
       style: {
         color: "#953800",
-        fontWeight: "500"
-      }
+        fontWeight: "500",
+      },
     },
     {
       types: ["punctuation", "symbol"],
       style: {
-        color: "#24292f"
-      }
+        color: "#24292f",
+      },
     },
     {
       types: ["tag"],
       style: {
-        color: "#116329"
-      }
+        color: "#116329",
+      },
     },
     {
       types: ["attr-name"],
       style: {
-        color: "#0550ae"
-      }
+        color: "#0550ae",
+      },
     },
     {
       types: ["attr-value"],
       style: {
-        color: "#0a3069"
-      }
-    }
-  ]
+        color: "#0a3069",
+      },
+    },
+  ],
 }
 
 // Dark theme - modern and vibrant
 const darkTheme: PrismTheme = {
   plain: {
     color: "#e6edf3",
-    backgroundColor: "#0d1117"
+    backgroundColor: "#0d1117",
   },
   styles: [
     {
       types: ["comment"],
       style: {
         color: "#7d8590",
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["keyword", "operator"],
       style: {
         color: "#ff7b72",
-        fontWeight: "600"
-      }
+        fontWeight: "600",
+      },
     },
     {
       types: ["string", "char"],
       style: {
-        color: "#a5d6ff"
-      }
+        color: "#a5d6ff",
+      },
     },
     {
       types: ["number"],
       style: {
-        color: "#79c0ff"
-      }
+        color: "#79c0ff",
+      },
     },
     {
       types: ["function", "method"],
       style: {
-        color: "#d2a8ff"
-      }
+        color: "#d2a8ff",
+      },
     },
     {
       types: ["class-name", "type"],
       style: {
         color: "#ffa657",
-        fontWeight: "500"
-      }
+        fontWeight: "500",
+      },
     },
     {
       types: ["punctuation", "symbol"],
       style: {
-        color: "#e6edf3"
-      }
+        color: "#e6edf3",
+      },
     },
     {
       types: ["tag"],
       style: {
-        color: "#7ee787"
-      }
+        color: "#7ee787",
+      },
     },
     {
       types: ["attr-name"],
       style: {
-        color: "#79c0ff"
-      }
+        color: "#79c0ff",
+      },
     },
     {
       types: ["attr-value"],
       style: {
-        color: "#a5d6ff"
-      }
-    }
-  ]
+        color: "#a5d6ff",
+      },
+    },
+  ],
 }
 
 export default function CodeSnippetAdaptiveDemo() {
@@ -296,17 +296,17 @@ export default TodoApp`
   return (
     <div className="w-full py-4">
       <div className="mb-4 text-sm text-muted-foreground">
-        This code snippet automatically adapts to your system&apos;s dark/light mode. 
-        Try toggling the theme switcher to see it change!
+        The code snippet automatically follows your theme preference. This demo
+        shows custom light and dark themes that switch automatically.
       </div>
-      
+
       <CodeSnippet
         title="TodoApp.tsx"
         code={reactCode}
         language="typescript"
         adaptiveTheme={{
           light: lightTheme,
-          dark: darkTheme
+          dark: darkTheme,
         }}
         showLineNumbers={true}
       />

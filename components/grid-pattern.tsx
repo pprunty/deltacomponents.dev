@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useId, useRef, useState } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -57,7 +57,7 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
  * - The component is client-side only ("use client")
  * - Automatically responds to container size changes
  * - When glow is enabled, dots will animate with random delays and durations
- * - Uses Motion for animations
+ * - Uses Framer Motion for animations
  * - Dots color can be controlled via the text color utility classes
  */
 

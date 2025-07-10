@@ -144,6 +144,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Toast",
+          href: "/docs/components/toast",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Pricing Cards",
           href: "/docs/components/pricing-cards",
           items: [],
@@ -164,6 +170,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Code Snippet",
           href: "/docs/media/code-snippet",
+          items: [],
+        },
+        {
+          title: "LaTeX",
+          href: "/docs/media/latex",
           items: [],
         },
         {

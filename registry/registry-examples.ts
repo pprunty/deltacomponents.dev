@@ -536,6 +536,17 @@ export const examples: Registry = [
     ],
   },
   {
+    name: "code-snippet-tabs-demo",
+    type: "registry:block",
+    registryDependencies: ["code-snippet"],
+    files: [
+      {
+        path: "examples/code-snippet-tabs-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "modal-drop-demo",
     type: "registry:block",
     registryDependencies: ["https://deltacomponents.dev/r/modal.json"],
@@ -1118,6 +1129,94 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/bottom-bar-labels-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "toast-demo",
+    type: "registry:block",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "toast-positions-demo",
+    type: "registry:block",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-positions-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "toast-actions-demo",
+    type: "registry:block",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-actions-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "toast-custom-demo",
+    type: "registry:block",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-custom-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "toast-colors-demo",
+    type: "registry:block",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-colors-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "latex-demo",
+    type: "registry:block",
+    registryDependencies: ["latex"],
+    files: [
+      {
+        path: "examples/latex-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "latex-equations-demo",
+    type: "registry:block",
+    registryDependencies: ["latex"],
+    files: [
+      {
+        path: "examples/latex-equations-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "latex-enhanced-demo",
+    type: "registry:block",
+    registryDependencies: ["latex"],
+    files: [
+      {
+        path: "examples/latex-enhanced-demo.tsx",
         type: "registry:block",
       },
     ],

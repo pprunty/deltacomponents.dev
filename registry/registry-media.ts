@@ -73,4 +73,26 @@ export const media: Registry = [
       },
     ],
   },
+  {
+    name: "latex",
+    type: "registry:component",
+    dependencies: ["react-katex", "katex"],
+    registryDependencies: [],
+    tags: [
+      "latex",
+      "math",
+      "mathematical",
+      "equations",
+      "katex",
+      "typography",
+      "scientific",
+      "academic",
+    ],
+    files: [
+      {
+        path: "media/latex.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

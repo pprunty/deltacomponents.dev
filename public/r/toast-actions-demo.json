@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-actions-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/toast.json"],
+  "files": [
+    {
+      "path": "registry/examples/toast-actions-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { toast } from \"@/registry/components/toast\"\n\nexport default function ToastActionsDemo() {\n  const [loading, setLoading] = React.useState(false)\n\n  const handlePromiseToast = async () => {\n    setLoading(true)\n\n    const promise = new Promise((resolve, reject) => {\n      setTimeout(() => {\n        Math.random() > 0.5 ? resolve(\"success\") : reject(\"error\")\n      }, 2000)\n    })\n\n    toast.promise(promise, {\n      loading: \"Loading...\",\n      success: \"Data saved successfully!\",\n      error: \"Failed to save data\",\n    })\n\n    try {\n      await promise\n    } catch (error) {\n      // Handle error\n    } finally {\n      setLoading(false)\n    }\n  }\n\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      <Button\n        onClick={() =>\n          toast.success(\"File uploaded!\", {\n            action: {\n              label: \"Undo\",\n              onClick: () => toast.info(\"Upload cancelled\"),\n            },\n          })\n        }\n      >\n        With Action\n      </Button>\n      <Button\n        onClick={() =>\n          toast.info(\"Changes saved\", {\n            description: \"Your changes have been saved to the cloud.\",\n          })\n        }\n      >\n        With Description\n      </Button>\n      <Button onClick={handlePromiseToast} disabled={loading}>\n        Promise Toast\n      </Button>\n      <Button\n        onClick={() =>\n          toast.error(\"Connection failed\", {\n            action: {\n              label: \"Retry\",\n              onClick: () => toast.info(\"Retrying...\"),\n            },\n          })\n        }\n      >\n        Error with Retry\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/toast-actions-demo.tsx"
+    }
+  ]
+}

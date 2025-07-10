@@ -1,9 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
-@import "./themes.css";
+/* @import "./themes.css"; */
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

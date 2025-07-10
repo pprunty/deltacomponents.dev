@@ -4,7 +4,6 @@ import * as React from "react"
 import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
-import { CodeSnippet } from "@/registry/media/code-snippet"
 import { Icons } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { RefreshButton } from "@/components/refresh-button"
@@ -14,6 +13,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/components/tabs"
+import { CodeSnippet } from "@/registry/media/code-snippet"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string

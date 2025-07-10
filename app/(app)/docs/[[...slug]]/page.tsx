@@ -17,9 +17,11 @@ import "@/styles/mdx.css"
 import Link from "next/link"
 
 import { badgeVariants } from "@/components/ui/badge"
+import { AnalyticsDisplay } from "@/components/analytics-display"
 import { Contribute } from "@/components/contribute"
 import { DocsPagination } from "@/components/pagination"
 import { SimilarComponents } from "@/components/similar-components"
+import redis from "@/app/redis"
 import ScrambleText from "@/registry/animations/scramble-text"
 
 interface DocPageProps {
@@ -84,6 +86,8 @@ export async function generateStaticParams(): Promise<
   }))
 }
 
+export const revalidate = 60 // Revalidate every 60 seconds for analytics updates
+
 export default async function DocPage(props: {
   params: Promise<DocPageProps["params"]>
 }) {
@@ -99,6 +103,7 @@ export default async function DocPage(props: {
 
   const slugPath = doc.slugAsParams
   let componentName = null
+  let initialAnalytics = null
 
   // Regex to match patterns like "category/component" but not just "category"
   // This will match URLs like: /docs/components/button, /docs/inputs/date-input, etc.
@@ -108,6 +113,31 @@ export default async function DocPage(props: {
     const matches = slugPath.match(twoLevelPathRegex)
     if (matches) {
       componentName = matches[2]
+
+      // Fetch initial analytics data server-side
+      if (componentName) {
+        try {
+          const sanitizedComponent = componentName.replace(
+            /[^a-zA-Z0-9-_]/g,
+            ""
+          )
+          const viewsKey = `delta-views:${sanitizedComponent}`
+          const downloadsKey = `delta-downloads:${sanitizedComponent}`
+
+          const [views, downloads] = await Promise.all([
+            redis.get(viewsKey),
+            redis.get(downloadsKey),
+          ])
+
+          initialAnalytics = {
+            views: Number(views) || 0,
+            downloads: Number(downloads) || 0,
+          }
+        } catch (error) {
+          console.error("Error fetching initial analytics:", error)
+          // Continue without initial analytics if Redis fails
+        }
+      }
     }
   }
 
@@ -146,8 +176,21 @@ export default async function DocPage(props: {
               </p>
             )}
           </div>
+          {/* Analytics display for component pages */}
+          {componentName && (
+            <div className="pt-4">
+              <AnalyticsDisplay
+                component={componentName}
+                initialAnalytics={initialAnalytics}
+              />
+            </div>
+          )}
+
           {doc.links ? (
             <div className="flex items-center space-x-2 pt-4">
+              {componentName && (
+                <span className="text-muted-foreground">Based on</span>
+              )}
               {Object.entries(doc.links).map(([k, v]) => (
                 <Link
                   key={k}
@@ -198,9 +241,9 @@ export default async function DocPage(props: {
         </div>
         {doc.toc && (
           <div className="hidden text-sm xl:block pr-4">
-            <div className="sticky top-6">
-              <div className="rounded-2xl bg-background border-border border h-[calc(100vh-6rem)]">
-                <ScrollArea className="h-full">
+            <div className="sticky top-6 pb-5 z-30 w-full shrink-0">
+              <div className="rounded-2xl bg-background border-border border max-h-[calc(100vh-6rem)]">
+                <ScrollArea className="max-h-[calc(100vh-6rem)]">
                   <div className="p-4 lg:p-6 space-y-4">
                     {doc.toc && (
                       <Suspense

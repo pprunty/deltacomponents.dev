@@ -1,13 +1,13 @@
 ---
 title: QR Code
-description: A flexible QR code generator with theme integration, custom styling, error handling, and loading states built with the qrcode library.
+description: A flexible QR code generator with theme integration, custom styling, error handling, and advanced dot customization built with the qr-code-styling library.
 ---
 
 <ComponentPreview name="qr-code-demo" />
 
 ## Overview
 
-The QR Code component bridges physical and digital experiences by generating scannable codes that connect users to websites, contact information, or any digital content. It features automatic theme integration and error handling, making it essential for marketing materials, business cards, and any application requiring quick digital access. Perfect for improving user onboarding and reducing friction in offline-to-online conversion funnels.
+The QR Code component bridges physical and digital experiences by generating scannable codes that connect users to websites, contact information, or any digital content. It features automatic theme integration, advanced dot styling, corner customization, and error handling, making it essential for marketing materials, business cards, and any application requiring quick digital access. Perfect for improving user onboarding and reducing friction in offline-to-online conversion funnels.
 
 ## Installation
 
@@ -33,7 +33,7 @@ npx shadcn@latest add https://deltacomponents.dev/r/qr-code.json
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install qrcode
+npm install qr-code-styling
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -56,8 +56,9 @@ export function Component() {
     <QRCode
       value="https://deltacomponents.dev"
       size={200}
-      bgColor="--color-card"
-      fgColor="--color-card-foreground"
+      dotStyle="rounded"
+      cornerSquareStyle="extra-rounded"
+      cornerDotStyle="rounded"
     />
   )
 }
@@ -69,29 +70,125 @@ export function Component() {
 
 <div className="overflow-x-auto">
 
-| Prop                   | Type                       | Default                     | Description                                    |
-| ---------------------- | -------------------------- | --------------------------- | ---------------------------------------------- |
-| `value`                | `string`                   | -                           | The data to encode in the QR code (required)   |
-| `size`                 | `number`                   | `200`                       | Size of the QR code in pixels                  |
-| `bgColor`              | `string`                   | `"--color-card"`            | Background color (CSS variable or color value) |
-| `fgColor`              | `string`                   | `"--color-card-foreground"` | Foreground color (CSS variable or color value) |
-| `errorCorrectionLevel` | `"L" \| "M" \| "Q" \| "H"` | `"M"`                       | Error correction level                         |
-| `margin`               | `number`                   | `4`                         | Margin around the QR code                      |
-| `className`            | `string`                   | `""`                        | Additional CSS classes for the canvas          |
-| `containerClassName`   | `string`                   | `""`                        | Additional CSS classes for the container       |
+| Prop                | Type                                                                                          | Default                | Description                                    |
+| ------------------- | --------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------- |
+| `value`             | `string`                                                                                      | -                      | The data to encode in the QR code (required)   |
+| `size`              | `number`                                                                                      | `200`                  | Size of the QR code in pixels                  |
+| `bgColor`           | `string`                                                                                      | `"--color-background"` | Background color (CSS variable or color value) |
+| `fgColor`           | `string`                                                                                      | `"--color-foreground"` | Foreground color (CSS variable or color value) |
+| `level`             | `"L" \| "M" \| "Q" \| "H"`                                                                    | `"M"`                  | Error correction level                         |
+| `marginSize`        | `number`                                                                                      | `0`                    | Margin around the QR code                      |
+| `className`         | `string`                                                                                      | `""`                   | Additional CSS classes for the container       |
+| `dotStyle`          | `"rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded"`          | `"square"`             | Style of the QR code data dots                 |
+| `cornerSquareStyle` | `"dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded"` | `"square"`             | Style of the corner positioning squares        |
+| `cornerDotStyle`    | `"dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded"` | `"square"`             | Style of the dots inside corner squares        |
 
 </div>
 
 ## Examples
 
-### Custom Styling
+### Advanced Styling
 
-QR codes with custom colors and enhanced visual styling.
+QR codes with advanced dot styling and corner customization.
 
 <ComponentPreview name="qr-code-custom-demo" />
 
-### Reactive QR Code
+### Custom Colors
 
-Interactive QR code generation with real-time input and preview.
+QR code with custom primary color styling.
 
 <ComponentPreview name="qr-code-reactive-demo" />
+
+## Styling Options
+
+### Dot Styles
+
+The `dotStyle` prop allows you to customize the appearance of the QR code data dots:
+
+- **`square`** - Standard square dots (default)
+- **`rounded`** - Rounded corner dots for a softer look
+- **`dots`** - Circular dots for a modern appearance
+- **`classy`** - Elegant curved dots
+- **`classy-rounded`** - Combination of classy and rounded styles
+- **`extra-rounded`** - Heavily rounded dots for maximum softness
+
+### Corner Square Styles
+
+The `cornerSquareStyle` prop controls the appearance of the three positioning squares:
+
+- **`square`** - Standard square corners (default)
+- **`dot`** - Circular corner squares
+- **`rounded`** - Rounded corner squares
+- **`extra-rounded`** - Heavily rounded corner squares
+- **`dots`** - Dotted corner squares
+- **`classy`** - Elegant curved corner squares
+- **`classy-rounded`** - Combination of classy and rounded corner styles
+
+### Corner Dot Styles
+
+The `cornerDotStyle` prop customizes the dots inside the corner positioning squares:
+
+- **`square`** - Standard square dots (default)
+- **`dot`** - Circular dots
+- **`rounded`** - Rounded corner dots
+- **`dots`** - Multiple small dots
+- **`classy`** - Elegant curved dots
+- **`classy-rounded`** - Combination of classy and rounded dot styles
+- **`extra-rounded`** - Heavily rounded dots
+
+### Theme Integration
+
+The component automatically uses shadcn/ui theme colors by default, providing seamless integration with your design system:
+
+#### Default Theme-Aware Behavior
+
+By default, QR codes automatically adapt to light/dark themes:
+
+```tsx
+// Automatic theme adaptation (default behavior)
+<QRCode value="https://example.com" />
+// Background: --color-background
+// Foreground: --color-foreground
+```
+
+#### Custom Color Options
+
+You can override the default colors with any CSS variable or color value:
+
+```tsx
+// Custom primary color
+<QRCode
+  value="https://example.com"
+  fgColor="--color-primary"
+/>
+
+// Custom background and foreground
+<QRCode
+  value="https://example.com"
+  bgColor="--color-card"
+  fgColor="--color-card-foreground"
+/>
+
+// Direct color values
+<QRCode
+  value="https://example.com"
+  bgColor="#ffffff"
+  fgColor="#000000"
+/>
+
+// Branded colors
+<QRCode
+  value="https://example.com"
+  bgColor="--color-muted"
+  fgColor="--color-primary"
+/>
+```
+
+#### Available Theme Variables
+
+- `--color-background` / `--color-foreground` (default)
+- `--color-card` / `--color-card-foreground`
+- `--color-primary` / `--color-primary-foreground`
+- `--color-secondary` / `--color-secondary-foreground`
+- `--color-muted` / `--color-muted-foreground`
+- `--color-accent` / `--color-accent-foreground`

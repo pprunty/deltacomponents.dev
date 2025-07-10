@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-positions-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/toast.json"],
+  "files": [
+    {
+      "path": "registry/examples/toast-positions-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { toast } from \"@/registry/components/toast\"\n\nexport default function ToastPositionsDemo() {\n  return (\n    <div className=\"grid grid-cols-3 gap-2 max-w-md\">\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Top Left position\")}\n      >\n        Top Left\n      </Button>\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Top Center position\")}\n      >\n        Top Center\n      </Button>\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Top Right position\")}\n      >\n        Top Right\n      </Button>\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Bottom Left position\")}\n      >\n        Bottom Left\n      </Button>\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Bottom Center position\")}\n      >\n        Bottom Center\n      </Button>\n      <Button\n        variant=\"outline\"\n        size=\"sm\"\n        onClick={() => toast.success(\"Bottom Right position\")}\n      >\n        Bottom Right\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/toast-positions-demo.tsx"
+    }
+  ]
+}

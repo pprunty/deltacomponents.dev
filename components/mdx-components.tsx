@@ -19,13 +19,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
-import { CodeSnippet } from "@/registry/media/code-snippet"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
 import { GitHubChangelog } from "@/components/github-changelog"
 import Admonition from "@/registry/components/admonition"
+import { CodeSnippet } from "@/registry/media/code-snippet"
 
 interface MdxProps {
   code: string

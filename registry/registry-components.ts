@@ -192,4 +192,26 @@ export const components: Registry = [
       },
     ],
   },
+  {
+    name: "toast",
+    type: "registry:component",
+    dependencies: ["sonner"],
+    registryDependencies: [],
+    tags: [
+      "notification",
+      "toast",
+      "alert",
+      "feedback",
+      "themed",
+      "positioning",
+      "accessible",
+      "component",
+    ],
+    files: [
+      {
+        path: "components/toast.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

@@ -60,6 +60,8 @@ export interface SelectInputProps {
   onValidate?: (isValid: boolean, value: string, error?: string) => void
   /** Callback when selection changes */
   onValueChange?: (value: string) => void
+  /** Callback when the select loses focus */
+  onBlur?: () => void
   /** ID for the select */
   id?: string
   /** Whether the select is disabled */
@@ -90,6 +92,7 @@ export function SelectInput({
   schema,
   onValidate,
   onValueChange,
+  onBlur,
   id = name,
   disabled = false,
 }: SelectInputProps) {
@@ -122,13 +125,17 @@ export function SelectInput({
   )
 
   const handleValueChange = (newVal: string) => {
-    schema && validateSelect(newVal)
+    if (schema) {
+      validateSelect(newVal)
+    }
     onValueChange?.(newVal)
   }
 
   const handleNativeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newVal = e.target.value
-    schema && validateSelect(newVal)
+    if (schema) {
+      validateSelect(newVal)
+    }
     onValueChange?.(newVal)
   }
 
@@ -160,6 +167,7 @@ export function SelectInput({
             id={id}
             name={name}
             onChange={handleNativeChange}
+            onBlur={onBlur}
             disabled={pending || disabled}
             aria-invalid={hasError}
             aria-errormessage={hasError ? errorId : undefined}
@@ -239,6 +247,7 @@ export function SelectInput({
       >
         <SelectTrigger
           id={id}
+          onBlur={onBlur}
           className={cn(
             // Base
             "h-[46px] md:text-md text-md focus-visible:outline-none bg-background",
