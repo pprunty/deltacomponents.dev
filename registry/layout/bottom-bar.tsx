@@ -167,6 +167,7 @@ interface BottomBarProps {
   showLabels?: boolean
   centerButton?: CenterButtonConfig
   showBorderTop?: boolean
+  enableEntranceAnimation?: boolean
 }
 
 const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
@@ -174,36 +175,45 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   showLabels = false,
   centerButton,
   showBorderTop = true,
+  enableEntranceAnimation = false,
 }) {
   const [animationKeys, setAnimationKeys] = useState<Record<string, number>>({})
-  const [activeHash, setActiveHash] = useState("#home")
+  const [activeRoute, setActiveRoute] = useState<string>("")
   const [lastClickedItem, setLastClickedItem] = useState<string | null>(null)
 
-  // Get current hash or default to #home
-  const getCurrentHash = () => {
-    if (typeof window !== "undefined") {
-      return window.location.hash || "#home"
+  // Get current route (hash or pathname) based on route type
+  const getCurrentRoute = () => {
+    if (typeof window === "undefined") return ""
+    
+    // Check if we have any hash routes
+    const hasHashRoutes = routes.some(route => route.href.startsWith("#"))
+    
+    if (hasHashRoutes) {
+      return window.location.hash
+    } else {
+      return window.location.pathname
     }
-    return "#home"
   }
 
-  // Update active hash based on current location
+  // Update active route based on current location and route types
   React.useEffect(() => {
-    const updateActiveHash = () => {
-      const hash = getCurrentHash()
-      setActiveHash(hash)
+    const updateActiveRoute = () => {
+      const currentRoute = getCurrentRoute()
+      setActiveRoute(currentRoute || (routes.length > 0 ? routes[0].href : ""))
     }
 
-    // Set initial hash
-    updateActiveHash()
+    // Set initial route
+    updateActiveRoute()
 
-    // Listen for hash changes
-    window.addEventListener("hashchange", updateActiveHash)
+    // Listen for both hash changes and navigation changes
+    window.addEventListener("hashchange", updateActiveRoute)
+    window.addEventListener("popstate", updateActiveRoute)
 
     return () => {
-      window.removeEventListener("hashchange", updateActiveHash)
+      window.removeEventListener("hashchange", updateActiveRoute)
+      window.removeEventListener("popstate", updateActiveRoute)
     }
-  }, [])
+  }, [routes])
 
   const handleItemClick = useCallback(
     (href: string) => {
@@ -213,7 +223,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
       }))
 
       // Check if clicking the same item that's already active
-      if (lastClickedItem === href && activeHash === href) {
+      if (lastClickedItem === href && activeRoute === href) {
         // Scroll to top if clicking the same active item
         setTimeout(() => {
           window.scrollTo({
@@ -225,7 +235,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
 
       setLastClickedItem(href)
     },
-    [lastClickedItem, activeHash]
+    [lastClickedItem, activeRoute]
   )
 
   const handleCenterButtonClick = useCallback(() => {
@@ -241,6 +251,18 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   const firstHalf = routes.slice(0, halfLength)
   const secondHalf = routes.slice(halfLength)
 
+  // Define animation props based on enableEntranceAnimation
+  const motionProps = enableEntranceAnimation
+    ? {
+        initial: { y: 100, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+        transition: { duration: 0.3 }
+      }
+    : {
+        initial: { y: 0, opacity: 1 },
+        animate: { y: 0, opacity: 1 }
+      }
+
   return (
     <>
       {/* Inline styles for maintainability */}
@@ -251,9 +273,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
           "block md:hidden fixed py-1 bottom-0 left-0 right-0 z-50 backdrop-blur backdrop-blur-lg supports-[backdrop-filter]:bg-background/85",
           showBorderTop && "border-t border-border"
         )}
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        {...motionProps}
       >
         <ul className="flex justify-around items-center relative">
           {centerButton ? (
@@ -265,7 +285,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={activeHash === href}
+                  isActive={activeRoute === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -287,7 +307,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                   href={href}
                   label={label}
                   Icon={Icon}
-                  isActive={activeHash === href}
+                  isActive={activeRoute === href}
                   showLabels={showLabels}
                   onItemClick={() => handleItemClick(href)}
                   animationKey={animationKeys[href] || 0}
@@ -302,7 +322,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
                 href={href}
                 label={label}
                 Icon={Icon}
-                isActive={activeHash === href}
+                isActive={activeRoute === href}
                 showLabels={showLabels}
                 onItemClick={() => handleItemClick(href)}
                 animationKey={animationKeys[href] || 0}

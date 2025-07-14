@@ -135,7 +135,7 @@ export function ComponentPreview({
           <div
             ref={previewRef}
             className={cn(
-              "preview flex min-h-[350px] w-full justify-center p-10 overflow-x-auto",
+              "preview flex min-h-[350px] w-full justify-center px-4 py-6 overflow-x-auto",
               {
                 "items-center": align === "center",
                 "items-start": align === "start",

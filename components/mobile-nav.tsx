@@ -28,9 +28,10 @@ export function MobileNav() {
     setOpen(isOpen)
   }, [])
 
-  // Filter top-level navigation to only include Home, Components Showcase, and Templates (if enabled), and not hidden
+  // Filter top-level navigation to only include Home, Components, and Templates (if enabled), and not hidden
   const topLevelNav = docsConfig.mainNav?.filter(
-    (item) => (item.title === "Home" || item.title === "Showcase") && !item.hide
+    (item) =>
+      (item.title === "Home" || item.title === "Components") && !item.hide
   )
 
   // Add Templates to top-level nav if enabled
@@ -144,6 +145,8 @@ function MobileLink({
   // Check if current route is active
   const isActive = exactMatch
     ? pathname === href
+    : href === "/docs/components"
+    ? pathname === "/docs/components" // Only exact match for components showcase
     : pathname === href || pathname.startsWith(href + "/")
 
   // Handle navigation with scroll reset

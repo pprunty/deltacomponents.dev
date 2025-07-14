@@ -3,9 +3,7 @@
   "name": "textarea-input-pill-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/textarea-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/textarea-input.json"],
   "files": [
     {
       "path": "registry/examples/textarea-input-pill-demo.tsx",

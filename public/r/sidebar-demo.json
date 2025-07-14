@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/sidebar.json",
+    "https://deltacomponents.dev/r/sidebar.json"
+  ],
+  "files": [
+    {
+      "path": "registry/examples/sidebar-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  Bookmark,\n  House,\n  MagnifyingGlass,\n  Plus,\n  User,\n} from \"@phosphor-icons/react\"\n\nimport Sidebar from \"@/registry/layout/sidebar\"\n\nexport default function SidebarDemo() {\n  const routes = [\n    { href: \"/docs/layout/sidebar#home\", label: \"Home\", icon: House },\n    {\n      href: \"/docs/layout/sidebar#search\",\n      label: \"Search\",\n      icon: MagnifyingGlass,\n    },\n    { href: \"/docs/layout/sidebar#create\", label: \"Create\", icon: Plus },\n    {\n      href: \"/docs/layout/sidebar#bookmarks\",\n      label: \"Bookmarks\",\n      icon: Bookmark,\n    },\n    { href: \"/docs/layout/sidebar#profile\", label: \"Profile\", icon: User },\n  ]\n\n  return (\n    <div className=\"relative h-96 w-full border rounded-lg overflow-hidden bg-background\">\n      <Sidebar routes={routes} />\n\n      {/* Demo content area */}\n      <div className=\"ml-64 p-6 h-full\">\n        <div className=\"space-y-4\">\n          <h3 className=\"text-lg font-semibold text-foreground\">\n            Main Content Area\n          </h3>\n          <p className=\"text-muted-foreground\">\n            Navigate using the sidebar to see active states. Click any\n            navigation item to see the animation effects.\n          </p>\n          <div className=\"space-y-2 text-sm text-muted-foreground\">\n            <p>• Icons use \"fill\" weight when active</p>\n            <p>• Hover effects show accent background</p>\n            <p>• Smooth scale animations on click</p>\n            <p>• Active state persists based on current hash</p>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/components/delta/examples/sidebar-demo.tsx"
+    }
+  ]
+}

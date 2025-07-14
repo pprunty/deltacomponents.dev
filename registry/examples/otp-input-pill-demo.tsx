@@ -6,7 +6,7 @@ import { OtpInput } from "@/registry/inputs/otp-input"
 
 export default function OtpInputPillDemo() {
   return (
-    <div className="w-full max-w-md mx-auto p-4">
+    <div className="w-full max-w-md p-0 mx-auto">
       <OtpInput
         label="Verification Code"
         name="pillCode"

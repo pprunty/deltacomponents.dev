@@ -62,7 +62,7 @@ export default function OtpInputValidationDemo() {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-8 p-4">
+    <div className="w-full max-w-2xl mx-auto space-y-8 p-0">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold">OTP Input Validation</h2>
         <p className="text-muted-foreground">

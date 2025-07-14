@@ -13,7 +13,7 @@ const numericOtpSchema = z
 
 export default function OtpInputNumericDemo() {
   return (
-    <div className="w-full max-w-md mx-auto p-4">
+    <div className="w-full max-w-md p-0 mx-auto">
       <OtpInput
         label="Numeric Verification Code"
         name="numericCode"

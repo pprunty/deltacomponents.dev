@@ -103,7 +103,6 @@ const fields: FieldDefinition[] = [
     name: "marketingEmails",
     label: "Receive marketing emails and product updates",
     type: "switch",
-    variant: "pill",
     description:
       "Get notified about new features, promotions, and company updates",
   },

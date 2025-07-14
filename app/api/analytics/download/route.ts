@@ -25,7 +25,17 @@ export async function POST(request: NextRequest) {
 
     const key = `delta-downloads:${sanitizedComponent}`
 
-    // Increment download count
+    // Skip incrementing in development environments, but still return current count
+    if (process.env.NODE_ENV !== "production") {
+      const currentCount = await redis.get(key)
+      return NextResponse.json({
+        success: true,
+        component: sanitizedComponent,
+        downloads: Number(currentCount) || 0,
+      })
+    }
+
+    // Increment download count in production
     const newCount = await redis.incr(key)
 
     return NextResponse.json({

@@ -147,7 +147,11 @@ export default function BottomBarDemo() {
           </section>
         </div>
       </div>
-      <BottomBar routes={demoRoutes} showLabels={true} />
+      <BottomBar
+        routes={demoRoutes}
+        showLabels={true}
+        enableEntranceAnimation={false}
+      />
     </div>
   )
 }

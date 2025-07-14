@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
       href: "/",
     },
     {
-      title: "Showcase",
+      title: "Components",
       href: "/docs/components",
     },
     {
@@ -23,10 +23,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Blocks",
       href: "/docs/blocks/smart-form",
-    },
-    {
-      title: "Components",
-      href: "/docs/components/tabs",
     },
     {
       title: "Media",
@@ -64,7 +60,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Showcase",
+          title: "Components",
           href: "/docs/components",
           items: [],
         },

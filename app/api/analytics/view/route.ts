@@ -25,7 +25,17 @@ export async function POST(request: NextRequest) {
 
     const key = `delta-views:${sanitizedComponent}`
 
-    // Increment view count
+    // Skip incrementing in development environments, but still return current count
+    if (process.env.NODE_ENV !== "production") {
+      const currentCount = await redis.get(key)
+      return NextResponse.json({
+        success: true,
+        component: sanitizedComponent,
+        views: Number(currentCount) || 0,
+      })
+    }
+
+    // Increment view count in production
     const newCount = await redis.incr(key)
 
     return NextResponse.json({

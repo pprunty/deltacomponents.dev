@@ -2,6 +2,11 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
+  // Skip download tracking in development environments
+  if (process.env.NODE_ENV !== "production") {
+    return NextResponse.next()
+  }
+
   // Track downloads for registry JSON files
   if (
     request.nextUrl.pathname.startsWith("/r/") &&

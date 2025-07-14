@@ -100,11 +100,12 @@ export const routes: Route[] = [
 
 The main navigation component that renders the bottom bar.
 
-| Name            | Type                 | Default | Description                                     |
-| --------------- | -------------------- | ------- | ----------------------------------------------- |
-| `showLabels`    | `boolean`            | `false` | Whether to show text labels below icons         |
-| `centerButton`  | `CenterButtonConfig` | -       | Configuration for optional center action button |
-| `showBorderTop` | `boolean`            | `true`  | Whether to show top border                      |
+| Name                      | Type                 | Default | Description                                     |
+| ------------------------- | -------------------- | ------- | ----------------------------------------------- |
+| `showLabels`              | `boolean`            | `false` | Whether to show text labels below icons         |
+| `centerButton`            | `CenterButtonConfig` | -       | Configuration for optional center action button |
+| `showBorderTop`           | `boolean`            | `true`  | Whether to show top border                      |
+| `enableEntranceAnimation` | `boolean`            | `false` | Whether to enable slide-up entrance animation   |
 
 ### CenterButtonConfig
 
@@ -141,7 +142,7 @@ Tapping on an already active route smoothly scrolls to the top of the page inste
 
 ### Smooth Animations
 
-Interactive animations powered by Framer Motion provide feedback when tapping navigation items or the center button, including pulse effects, tap scaling, and smooth transitions.
+Interactive animations powered by Framer Motion provide feedback when tapping navigation items or the center button, including pulse effects, tap scaling, and smooth transitions. An optional entrance animation slides the bar up from the bottom when the component first loads.
 
 ### Backdrop Blur
 
@@ -190,6 +191,14 @@ Modify the animation duration by updating the transition props in the component:
 >
 ```
 
+### Entrance Animation
+
+Enable the slide-up entrance animation when the component first loads:
+
+```tsx
+<BottomBar routes={routes} showLabels={true} enableEntranceAnimation={true} />
+```
+
 ## Accessibility
 
 ### Screen Reader Support
@@ -226,6 +235,29 @@ export default function App() {
     <div className="min-h-screen">
       {/* Your content */}
       <BottomBar routes={routes} showLabels={false} />
+    </div>
+  )
+}
+```
+
+### With Entrance Animation
+
+Bottom bar with slide-up entrance animation for enhanced user experience.
+
+```tsx
+import { routes } from "@/routes"
+
+import BottomBar from "@/registry/layout/bottom-bar"
+
+export default function App() {
+  return (
+    <div className="min-h-screen">
+      {/* Your content */}
+      <BottomBar
+        routes={routes}
+        showLabels={true}
+        enableEntranceAnimation={true}
+      />
     </div>
   )
 }

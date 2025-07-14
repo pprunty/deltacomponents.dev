@@ -30,41 +30,43 @@ function fibonacciIterative(n) {
 }`
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-4">
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showTitle}
-            onChange={(e) => setShowTitle(e.target.checked)}
-          />
-          Show Title
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showBorder}
-            onChange={(e) => setShowBorder(e.target.checked)}
-          />
-          Show Border
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showLineNumbers}
-            onChange={(e) => setShowLineNumbers(e.target.checked)}
-          />
-          Show Line Numbers
-        </label>
-      </div>
+    <div className="w-full py-4">
+      <div className="space-y-4">
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showTitle}
+              onChange={(e) => setShowTitle(e.target.checked)}
+            />
+            Show Title
+          </label>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showBorder}
+              onChange={(e) => setShowBorder(e.target.checked)}
+            />
+            Show Border
+          </label>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showLineNumbers}
+              onChange={(e) => setShowLineNumbers(e.target.checked)}
+            />
+            Show Line Numbers
+          </label>
+        </div>
 
-      <CodeSnippet
-        title={showTitle ? "fibonacci.js" : undefined}
-        code={code}
-        language="javascript"
-        border={showBorder}
-        showLineNumbers={showLineNumbers}
-      />
+        <CodeSnippet
+          title={showTitle ? "fibonacci.js" : undefined}
+          code={code}
+          language="javascript"
+          border={showBorder}
+          showLineNumbers={showLineNumbers}
+        />
+      </div>
     </div>
   )
 }
