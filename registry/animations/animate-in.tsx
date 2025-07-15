@@ -52,8 +52,9 @@ const AnimateIn: React.FC<AnimateInProps> = ({
       }
 
       return () => {
-        if (elementRef.current) {
-          observer.unobserve(elementRef.current)
+        const currentElement = elementRef.current
+        if (currentElement) {
+          observer.unobserve(currentElement)
         }
       }
     } else {

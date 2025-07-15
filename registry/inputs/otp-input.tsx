@@ -227,7 +227,7 @@ export function OtpInput({
 
     if (nextOtp.filter(Boolean).length === length) {
       onComplete?.(joined)
-      schema && validateOTP(joined)
+      if (schema) validateOTP(joined)
       if (autoSubmit && formRef.current) {
         setTimeout(() => formRef.current?.requestSubmit(), 100)
       }
@@ -240,7 +240,7 @@ export function OtpInput({
   ) => {
     e.preventDefault()
     const data = e.clipboardData.getData("text/plain")
-    data && handlePaste(index, data)
+    if (data) handlePaste(index, data)
   }
 
   const handlePaste = (start: number, pasted: string) => {
@@ -260,15 +260,17 @@ export function OtpInput({
     setOtpValue(newOtp)
     setErrorIndexes(new Set())
     const filled = newOtp.filter(Boolean).length
-    filled === length
-      ? inputRefs.current[length - 1]?.focus()
-      : inputRefs.current[filled]?.focus()
+    if (filled === length) {
+      inputRefs.current[length - 1]?.focus()
+    } else {
+      inputRefs.current[filled]?.focus()
+    }
 
     const joined = newOtp.join("")
     onChange?.(joined)
     if (filled === length) {
       onComplete?.(joined)
-      schema && validateOTP(joined)
+      if (schema) validateOTP(joined)
       if (autoSubmit && formRef.current) {
         setTimeout(() => formRef.current?.requestSubmit(), 100)
       }

@@ -181,22 +181,23 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   const [activeRoute, setActiveRoute] = useState<string>("")
   const [lastClickedItem, setLastClickedItem] = useState<string | null>(null)
 
-  // Get current route (hash or pathname) based on route type
-  const getCurrentRoute = () => {
-    if (typeof window === "undefined") return ""
-
-    // Check if we have any hash routes
-    const hasHashRoutes = routes.some((route) => route.href.startsWith("#"))
-
-    if (hasHashRoutes) {
-      return window.location.hash
-    } else {
-      return window.location.pathname
-    }
-  }
 
   // Update active route based on current location and route types
   React.useEffect(() => {
+    // Get current route (hash or pathname) based on route type
+    const getCurrentRoute = () => {
+      if (typeof window === "undefined") return ""
+
+      // Check if we have any hash routes
+      const hasHashRoutes = routes.some((route) => route.href.startsWith("#"))
+
+      if (hasHashRoutes) {
+        return window.location.hash
+      } else {
+        return window.location.pathname
+      }
+    }
+
     const updateActiveRoute = () => {
       const currentRoute = getCurrentRoute()
       setActiveRoute(currentRoute || (routes.length > 0 ? routes[0].href : ""))
@@ -213,7 +214,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
       window.removeEventListener("hashchange", updateActiveRoute)
       window.removeEventListener("popstate", updateActiveRoute)
     }
-  }, [routes, getCurrentRoute])
+  }, [routes])
 
   const handleItemClick = useCallback(
     (href: string) => {
