@@ -15,7 +15,7 @@ import {
   DrawerPortal,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/components/drawer"
+} from "@/delta/drawer"
 
 export default function DrawerLeftDemo() {
   return (

@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import BottomBar from "@/registry/layout/bottom-bar"
+import BottomBar from "@/delta/bottom-bar"
 
 export default function BottomBarLabelsDemo() {
   const handleCenterAction = () => {

@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import ScrambleText from "@/registry/animations/scramble-text"
+import ScrambleText from "@/delta/scramble-text"
 
 export default function ScrambleTextIntersectionDemo() {
   return (

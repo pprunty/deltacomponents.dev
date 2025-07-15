@@ -1,7 +1,7 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { FloatingObject } from "@/registry/animations/floating-object"
+import { FloatingObject } from "@/delta/floating-object"
 
 export default function FloatingObjectDemo() {
   return (

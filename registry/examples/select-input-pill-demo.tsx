@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { SelectInput } from "@/registry/inputs/select-input"
+import { SelectInput } from "@/delta/select-input"
 
 export default function SelectInputPillDemo() {
   const options = [

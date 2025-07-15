@@ -1,6 +1,6 @@
 "use client"
 
-import Latex from "@/registry/media/latex"
+import Latex from "@/delta/latex"
 
 export default function LatexDemo() {
   return (

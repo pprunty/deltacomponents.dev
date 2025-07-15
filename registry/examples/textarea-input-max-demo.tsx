@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { TextareaInput } from "@/registry/inputs/textarea-input"
+import { TextareaInput } from "@/delta/textarea-input"
 
 export default function TextareaInputMaxDemo() {
   return (

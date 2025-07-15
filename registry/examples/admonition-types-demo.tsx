@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import Admonition from "@/registry/components/admonition"
+import Admonition from "@/delta/admonition"
 
 export default function AdmonitionTypesDemo() {
   return (

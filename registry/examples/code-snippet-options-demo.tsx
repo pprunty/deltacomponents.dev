@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 
-import { CodeSnippet } from "@/registry/media/code-snippet"
+import { CodeSnippet } from "@/delta/code-snippet"
 
 export default function CodeSnippetOptionsDemo() {
   const [showTitle, setShowTitle] = useState(true)

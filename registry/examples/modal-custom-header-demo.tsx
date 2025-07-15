@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { CheckCircle, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import Modal from "@/registry/components/modal"
+import Modal from "@/delta/modal"
 
 export default function ModalCustomHeaderDemo() {
   const [isBasicOpen, setIsBasicOpen] = useState(false)

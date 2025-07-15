@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import AnimateIn from "@/registry/animations/animate-in"
+import AnimateIn from "@/delta/animate-in"
 
 export default function AnimateInHeroDemo() {
   return (

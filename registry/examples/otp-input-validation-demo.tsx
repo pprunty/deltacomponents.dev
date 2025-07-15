@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import { OtpInput } from "@/registry/inputs/otp-input"
+import { OtpInput } from "@/delta/otp-input"
 
 // Different validation schemas for different input types
 const numericSchema = z

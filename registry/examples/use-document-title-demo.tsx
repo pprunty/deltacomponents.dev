@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
-import { useDocumentTitle } from "@/registry/hooks/use-document-title"
+import { useDocumentTitle } from "@/delta/use-document-title"
 
 export default function UseDocumentTitleDemo() {
   const [counter, setCounter] = React.useState(0)

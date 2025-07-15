@@ -3,7 +3,7 @@
 import React from "react"
 import { z } from "zod"
 
-import { OtpInput } from "@/registry/inputs/otp-input"
+import { OtpInput } from "@/delta/otp-input"
 
 // Zod schema that only allows numeric values
 const numericOtpSchema = z

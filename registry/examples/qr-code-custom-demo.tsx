@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 
-import QRCode from "@/registry/media/qr-code"
+import QRCode from "@/delta/qr-code"
 
 export default function QRCodeCustomDemo() {
   const [size, setSize] = useState(200)

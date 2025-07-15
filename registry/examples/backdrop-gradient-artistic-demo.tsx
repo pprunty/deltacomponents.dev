@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import BackdropGradient from "@/registry/media/backdrop-gradient"
+import BackdropGradient from "@/delta/backdrop-gradient"
 
 export default function BackdropGradientArtisticDemo() {
   // Replace with an appropriate image for the demo

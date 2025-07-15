@@ -2,7 +2,7 @@
 
 import { z } from "zod"
 
-import { FieldDefinition, SmartForm } from "@/registry/blocks/smart-form"
+import { FieldDefinition, SmartForm } from "@/delta/smart-form"
 
 const schema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),

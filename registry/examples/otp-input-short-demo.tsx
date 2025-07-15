@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { OtpInput } from "@/registry/inputs/otp-input"
+import { OtpInput } from "@/delta/otp-input"
 
 export default function OtpInputShortDemo() {
   return (

@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { FloatingObject } from "@/registry/animations/floating-object"
+import { FloatingObject } from "@/delta/floating-object"
 
 export default function FloatingObjectCompassDemo() {
   return (

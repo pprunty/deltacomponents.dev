@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { XScrollable } from "@/registry/components/x-scrollable"
+import { XScrollable } from "@/delta/x-scrollable"
 
 export default function XScrollableColorfulDemo() {
   // Generate some demo items

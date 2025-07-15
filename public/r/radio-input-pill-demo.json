@@ -3,13 +3,15 @@
   "name": "radio-input-pill-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/radio-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/radio-input-pill-demo.tsx",
-      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { RadioInput } from \"@/registry/inputs/radio-input\"\n\nexport default function RadioInputPillDemo() {\n  const options = [\n    {\n      value: \"starter\",\n      label: \"Starter Plan\",\n      description: \"Perfect for individuals just getting started\",\n    },\n    {\n      value: \"pro\",\n      label: \"Pro Plan\",\n      description: \"Best for growing teams and businesses\",\n    },\n    {\n      value: \"enterprise\",\n      label: \"Enterprise Plan\",\n      description: \"Custom solutions for large organizations\",\n    },\n  ]\n\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <RadioInput\n        label=\"Choose Your Plan\"\n        name=\"pricing_plan\"\n        options={options}\n        description=\"Select the plan that best fits your needs\"\n        defaultValue=\"pro\"\n        variant=\"pill\"\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { RadioInput } from \"@/delta/radio-input\"\n\nexport default function RadioInputPillDemo() {\n  const options = [\n    {\n      value: \"starter\",\n      label: \"Starter Plan\",\n      description: \"Perfect for individuals just getting started\",\n    },\n    {\n      value: \"pro\",\n      label: \"Pro Plan\",\n      description: \"Best for growing teams and businesses\",\n    },\n    {\n      value: \"enterprise\",\n      label: \"Enterprise Plan\",\n      description: \"Custom solutions for large organizations\",\n    },\n  ]\n\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <RadioInput\n        label=\"Choose Your Plan\"\n        name=\"pricing_plan\"\n        options={options}\n        description=\"Select the plan that best fits your needs\"\n        defaultValue=\"pro\"\n        variant=\"pill\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/examples/radio-input-pill-demo.tsx"
+      "target": "/delta/radio-input-pill-demo.tsx"
     }
   ]
 }

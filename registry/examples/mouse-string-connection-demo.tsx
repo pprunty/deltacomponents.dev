@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import MouseStringConnection from "@/registry/landing-page/mouse-string-connection"
+import MouseStringConnection from "@/delta/mouse-string-connection"
 
 export default function MouseStringConnectionDemo() {
   return (

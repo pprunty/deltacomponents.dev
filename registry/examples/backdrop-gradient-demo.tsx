@@ -1,6 +1,6 @@
 import React from "react"
 
-import BlurOverlay from "@/registry/media/backdrop-gradient"
+import BlurOverlay from "@/delta/backdrop-gradient"
 
 export default function BackdropGradientDemo() {
   const sampleImage = "/images/desk.webp" // replace with your image path or URL

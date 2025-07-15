@@ -2,7 +2,7 @@
 
 import { z } from "zod"
 
-import { FieldDefinition, SmartForm } from "@/registry/blocks/smart-form"
+import { FieldDefinition, SmartForm } from "@/delta/smart-form"
 
 const registrationSchema = z
   .object({

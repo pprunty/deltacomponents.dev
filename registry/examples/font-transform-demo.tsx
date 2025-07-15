@@ -1,4 +1,4 @@
-import { FontTransform } from "@/registry/animations/font-transform"
+import { FontTransform } from "@/delta/font-transform"
 
 export default function FontTransformDemo() {
   return (

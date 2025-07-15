@@ -3,13 +3,15 @@
   "name": "admonition-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
   "files": [
     {
       "path": "registry/examples/admonition-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport Admonition from \"@/registry/components/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Admonition type=\"note\" title=\"Note\">\n        This is a note admonition with some important information that users\n        should be aware of\n      </Admonition>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport Admonition from \"@/delta/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Admonition type=\"note\" title=\"Note\">\n        This is a note admonition with some important information that users\n        should be aware of\n      </Admonition>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/examples/admonition-demo.tsx"
+      "target": "/delta/admonition-demo.tsx"
     }
   ]
 }

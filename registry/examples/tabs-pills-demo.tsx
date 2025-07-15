@@ -8,7 +8,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/components/tabs"
+} from "@/delta/tabs"
 
 export default function TabsPillsDemo() {
   return (

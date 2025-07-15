@@ -3,13 +3,15 @@
   "name": "backdrop-gradient",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["tailwindcss"],
+  "dependencies": [
+    "tailwindcss"
+  ],
   "files": [
     {
       "path": "registry/media/backdrop-gradient.tsx",
       "content": "import React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface BlurOverlayProps {\n  /** Source URL of the image */\n  src: string\n  /** Alt text for the image */\n  alt?: string\n  /** Additional container classes */\n  className?: string\n}\n\nexport default function BackdropGradient({\n  src,\n  alt = \"\",\n  className,\n}: BlurOverlayProps) {\n  return (\n    <div className={cn(\"relative w-full h-full overflow-hidden\", className)}>\n      {/* Blurred background layer */}\n      <div\n        className=\"absolute top-1/2 left-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 bg-cover bg-center filter blur-3xl brightness-75 saturate-75\"\n        style={{ backgroundImage: `url(${src})` }}\n      />\n\n      {/* Foreground image layer */}\n      <div className=\"relative flex justify-center items-center w-full h-full\">\n        <img\n          src={src}\n          alt={alt}\n          className=\"max-w-[80%] max-h-[80%] rounded-2xl shadow-xl\"\n        />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component",
-      "target": "/components/delta/media/backdrop-gradient.tsx"
+      "target": "/delta/backdrop-gradient.tsx"
     }
   ]
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import Latex, { LargeBlockMath } from "@/registry/media/latex"
+import Latex, { LargeBlockMath } from "@/delta/latex"
 
 export default function LatexEquationsDemo() {
   return (

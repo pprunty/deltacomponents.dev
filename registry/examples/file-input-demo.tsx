@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { FileInput } from "@/registry/inputs/file-input"
+import { FileInput } from "@/delta/file-input"
 
 export default function FileInputDemo() {
   return (

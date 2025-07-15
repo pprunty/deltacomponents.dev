@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
 import { Button } from "@/components/ui/button"
-import { CodeSnippet } from "@/registry/media/code-snippet"
+import { CodeSnippet } from "@/delta/code-snippet"
 
 // Custom Monokai-inspired dark theme
 const monokaiTheme: PrismTheme = {

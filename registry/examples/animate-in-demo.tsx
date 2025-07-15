@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import AnimateIn from "@/registry/animations/animate-in"
+import AnimateIn from "@/delta/animate-in"
 
 const YCombinatorLogo = () => (
   <div className="w-5 h-5 bg-orange-500 rounded-sm p-0.5 flex items-center justify-center">

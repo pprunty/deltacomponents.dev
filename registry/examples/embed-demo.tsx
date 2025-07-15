@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Embed } from "@/registry/components/embed"
+import { Embed } from "@/delta/embed"
 
 export default function EmbedDemo() {
   return (

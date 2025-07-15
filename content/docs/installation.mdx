@@ -53,6 +53,22 @@ The appropriate link is available in the "Installation" section of each componen
 
 Go to any of the components you want to use and copy the source code(s) from the "Installation" section. Make sure to update your imports accordingly.
 
+## Tailwind CSS Configuration
+
+<Admonition type="info" className="my-4">
+  If you're using Tailwind CSS, make sure to add the delta directory to your `tailwind.config.ts` content paths so Tailwind can properly detect and compile the classes used in the components:
+
+  ```typescript
+  export default {
+    content: [
+      // ... your existing paths
+      "./delta/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    // ... rest of your config
+  }
+  ```
+</Admonition>
+
 ## Customization
 
 All components in Delta Components are built to be customizable. You can modify the code to suit your needs, or extend the components with your own functionality. A useful way of modifying the component is by first opening it in [v0](https://v0.dev/chat) and prompt the AI for alterations.

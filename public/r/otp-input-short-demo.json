@@ -3,13 +3,15 @@
   "name": "otp-input-short-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/otp-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/otp-input-short-demo.tsx",
-      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { OtpInput } from \"@/registry/inputs/otp-input\"\n\nexport default function OtpInputShortDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <OtpInput\n        label=\"PIN Code\"\n        name=\"shortOtp\"\n        length={4}\n        required\n        hint=\"Enter your 4-digit PIN\"\n        groupSize={2}\n        separator\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { OtpInput } from \"@/delta/otp-input\"\n\nexport default function OtpInputShortDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <OtpInput\n        label=\"PIN Code\"\n        name=\"shortOtp\"\n        length={4}\n        required\n        hint=\"Enter your 4-digit PIN\"\n        groupSize={2}\n        separator\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/examples/otp-input-short-demo.tsx"
+      "target": "/delta/otp-input-short-demo.tsx"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import StarRating from "@/registry/components/star-rating"
+import StarRating from "@/delta/star-rating"
 
 export default function StarRatingDemo() {
   const [value, setValue] = React.useState(3)

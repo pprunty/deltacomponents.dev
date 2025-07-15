@@ -1,6 +1,6 @@
 "use client"
 
-import { TagsInput } from "@/registry/inputs/tags-input"
+import { TagsInput } from "@/delta/tags-input"
 
 export default function TagsInputDemo() {
   return (

@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import { Toaster } from "sonner"
 
 import { Button } from "@/components/ui/button"
-import { toast } from "@/registry/components/toast"
+import { toast } from "@/delta/toast"
 
 export default function ToastColorsDemo() {
   const { theme, setTheme } = useTheme()

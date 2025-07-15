@@ -1,4 +1,4 @@
-import QRCode from "@/registry/media/qr-code"
+import QRCode from "@/delta/qr-code"
 
 export default function QRCodeDemo() {
   return (

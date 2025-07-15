@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { Embed } from "@/registry/components/embed"
+import { Embed } from "@/delta/embed"
 
 export default function EmbedBlockedDemo() {
   return (

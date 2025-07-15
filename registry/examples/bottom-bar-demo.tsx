@@ -10,7 +10,7 @@ import {
   User,
 } from "@phosphor-icons/react"
 
-import BottomBar from "@/registry/layout/bottom-bar"
+import BottomBar from "@/delta/bottom-bar"
 
 interface Route {
   href: string

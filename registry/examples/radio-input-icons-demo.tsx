@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { RadioInput } from "@/registry/inputs/radio-input"
+import { RadioInput } from "@/delta/radio-input"
 
 // Official SVG Icons for LLM providers
 const GeminiIcon = () => (

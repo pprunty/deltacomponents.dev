@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import { SwitchInput } from "@/registry/inputs/switch-input"
+import { SwitchInput } from "@/delta/switch-input"
 
 export default function SwitchInputDemo() {
   const [notifications, setNotifications] = useState(true)

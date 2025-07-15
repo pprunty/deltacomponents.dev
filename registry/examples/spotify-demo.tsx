@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Spotify } from "@/registry/media/spotify"
+import { Spotify } from "@/delta/spotify"
 
 export default function SpotifyDemo() {
   return (

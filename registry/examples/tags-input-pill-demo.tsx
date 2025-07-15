@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { TagsInput } from "@/registry/inputs/tags-input"
+import { TagsInput } from "@/delta/tags-input"
 
 export default function TagsInputPillDemo() {
   return (

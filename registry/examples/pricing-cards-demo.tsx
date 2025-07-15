@@ -1,5 +1,5 @@
-import { PricingCards } from "@/registry/components/pricing-cards"
-import type { PricingPlan } from "@/registry/components/pricing-cards"
+import { PricingCards } from "@/delta/pricing-cards"
+import type { PricingPlan } from "@/delta/pricing-cards"
 
 const samplePlans: PricingPlan[] = [
   {

@@ -3,7 +3,7 @@
 import React from "react"
 import { Gift, Heart, Star, Zap } from "lucide-react"
 
-import Admonition from "@/registry/components/admonition"
+import Admonition from "@/delta/admonition"
 
 export default function AdmonitionCustomDemo() {
   return (

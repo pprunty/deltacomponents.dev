@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import HeaderSleek from "@/registry/layout/header-sleek"
+import HeaderSleek from "@/delta/header-sleek"
 
 export default function HeaderSleekDemo() {
   const [activeHref, setActiveHref] = React.useState("")

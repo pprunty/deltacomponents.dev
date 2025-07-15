@@ -3,7 +3,7 @@
 import React from "react"
 import { PrismTheme } from "prism-react-renderer"
 
-import { CodeSnippet } from "@/registry/media/code-snippet"
+import { CodeSnippet } from "@/delta/code-snippet"
 
 // Custom C++ optimized theme with purple/blue accents
 const cppTheme: PrismTheme = {

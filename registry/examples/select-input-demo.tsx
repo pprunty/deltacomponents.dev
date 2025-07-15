@@ -1,6 +1,6 @@
 "use client"
 
-import { SelectInput } from "@/registry/inputs/select-input"
+import { SelectInput } from "@/delta/select-input"
 
 export default function SelectInputDemo() {
   const options = [

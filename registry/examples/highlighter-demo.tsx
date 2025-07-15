@@ -1,6 +1,6 @@
 "use client"
 
-import { Highlighter } from "@/registry/landing-page/highlighter"
+import { Highlighter } from "@/delta/highlighter"
 
 export default function HighlighterDemo() {
   return (

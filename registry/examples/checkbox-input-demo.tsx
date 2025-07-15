@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckboxInput } from "@/registry/inputs/checkbox-input"
+import { CheckboxInput } from "@/delta/checkbox-input"
 
 export default function CheckboxInputBasicDemo() {
   return (

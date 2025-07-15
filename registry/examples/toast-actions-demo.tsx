@@ -4,7 +4,7 @@ import * as React from "react"
 import { Toaster } from "sonner"
 
 import { Button } from "@/components/ui/button"
-import { toast } from "@/registry/components/toast"
+import { toast } from "@/delta/toast"
 
 export default function ToastActionsDemo() {
   const [loading, setLoading] = React.useState(false)

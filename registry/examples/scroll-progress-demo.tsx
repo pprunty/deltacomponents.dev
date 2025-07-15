@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import ScrollProgress from "@/registry/components/scroll-progress"
+import ScrollProgress from "@/delta/scroll-progress"
 
 // Demo Component
 export default function ScrollProgressDemo() {

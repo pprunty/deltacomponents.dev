@@ -3,13 +3,15 @@
   "name": "highlighter-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/highlighter.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/highlighter.json"
+  ],
   "files": [
     {
       "path": "registry/examples/highlighter-demo.tsx",
-      "content": "\"use client\"\n\nimport { Highlighter } from \"@/registry/landing-page/highlighter\"\n\nexport default function HighlighterDemo() {\n  return (\n    <main className=\"flex flex-col space-y-12 py-12\">\n      <div className=\"max-w-3xl mx-auto text-center w-full\">\n        <h1 className=\"text-5xl font-bold tracking-tight lg:text-7xl text-foreground\">\n          Make your{\" \"}\n          <Highlighter\n            text=\"idea\"\n            animate={true}\n            shadowColor=\"rgb(240,171,252)\"\n            darkShadowColor=\"rgba(245,140,245,0.8)\"\n          />{\" \"}\n          stand out.\n        </h1>\n      </div>\n    </main>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { Highlighter } from \"@/delta/highlighter\"\n\nexport default function HighlighterDemo() {\n  return (\n    <main className=\"flex flex-col space-y-12 py-12\">\n      <div className=\"max-w-3xl mx-auto text-center w-full\">\n        <h1 className=\"text-5xl font-bold tracking-tight lg:text-7xl text-foreground\">\n          Make your{\" \"}\n          <Highlighter\n            text=\"idea\"\n            animate={true}\n            shadowColor=\"rgb(240,171,252)\"\n            darkShadowColor=\"rgba(245,140,245,0.8)\"\n          />{\" \"}\n          stand out.\n        </h1>\n      </div>\n    </main>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/examples/highlighter-demo.tsx"
+      "target": "/delta/highlighter-demo.tsx"
     }
   ]
 }

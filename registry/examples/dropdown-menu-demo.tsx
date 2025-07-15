@@ -9,7 +9,7 @@ import {
   DropdownItem,
   DropdownSeparator,
   DropdownTrigger,
-} from "@/registry/components/dropdown-menu"
+} from "@/delta/dropdown-menu"
 
 export default function DropdownMenuDemo() {
   return (

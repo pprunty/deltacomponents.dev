@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import Footer from "@/registry/layout/footer"
+import Footer from "@/delta/footer"
 
 export default function FooterDemo() {
   return (

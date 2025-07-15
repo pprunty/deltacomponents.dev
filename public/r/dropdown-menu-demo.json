@@ -3,13 +3,15 @@
   "name": "dropdown-menu-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/dropdown-menu.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/dropdown-menu.json"
+  ],
   "files": [
     {
       "path": "registry/examples/dropdown-menu-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CreditCard, LogOut, Settings, User, UserCircle } from \"lucide-react\"\n\nimport {\n  Dropdown,\n  DropdownContent,\n  DropdownItem,\n  DropdownSeparator,\n  DropdownTrigger,\n} from \"@/registry/components/dropdown-menu\"\n\nexport default function DropdownMenuDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px] p-4\">\n      <Dropdown>\n        <DropdownTrigger className=\"cursor-pointer\">\n          <img\n            src=\"https://patrickprunty.com/icon.webp\"\n            alt=\"User avatar\"\n            className=\"h-10 w-10 rounded-full border-2 border-border hover:border-primary transition-colors\"\n          />\n        </DropdownTrigger>\n        <DropdownContent align=\"end\" className=\"w-56\">\n          <DropdownItem className=\"gap-2\">\n            <UserCircle className=\"h-4 w-4\" />\n            Profile\n          </DropdownItem>\n          <DropdownItem className=\"gap-2\">\n            <CreditCard className=\"h-4 w-4\" />\n            Billing\n          </DropdownItem>\n          <DropdownItem className=\"gap-2\">\n            <Settings className=\"h-4 w-4\" />\n            Settings\n          </DropdownItem>\n          <DropdownSeparator />\n          <DropdownItem className=\"gap-2\" destructive>\n            <LogOut className=\"h-4 w-4\" />\n            Log out\n          </DropdownItem>\n        </DropdownContent>\n      </Dropdown>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CreditCard, LogOut, Settings, User, UserCircle } from \"lucide-react\"\n\nimport {\n  Dropdown,\n  DropdownContent,\n  DropdownItem,\n  DropdownSeparator,\n  DropdownTrigger,\n} from \"@/delta/dropdown-menu\"\n\nexport default function DropdownMenuDemo() {\n  return (\n    <div className=\"flex items-center justify-center min-h-[400px] p-4\">\n      <Dropdown>\n        <DropdownTrigger className=\"cursor-pointer\">\n          <img\n            src=\"https://patrickprunty.com/icon.webp\"\n            alt=\"User avatar\"\n            className=\"h-10 w-10 rounded-full border-2 border-border hover:border-primary transition-colors\"\n          />\n        </DropdownTrigger>\n        <DropdownContent align=\"end\" className=\"w-56\">\n          <DropdownItem className=\"gap-2\">\n            <UserCircle className=\"h-4 w-4\" />\n            Profile\n          </DropdownItem>\n          <DropdownItem className=\"gap-2\">\n            <CreditCard className=\"h-4 w-4\" />\n            Billing\n          </DropdownItem>\n          <DropdownItem className=\"gap-2\">\n            <Settings className=\"h-4 w-4\" />\n            Settings\n          </DropdownItem>\n          <DropdownSeparator />\n          <DropdownItem className=\"gap-2\" destructive>\n            <LogOut className=\"h-4 w-4\" />\n            Log out\n          </DropdownItem>\n        </DropdownContent>\n      </Dropdown>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/examples/dropdown-menu-demo.tsx"
+      "target": "/delta/dropdown-menu-demo.tsx"
     }
   ]
 }

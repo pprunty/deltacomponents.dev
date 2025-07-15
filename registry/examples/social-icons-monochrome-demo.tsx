@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { SocialIcons } from "@/registry/components/social-icons"
+import { SocialIcons } from "@/delta/social-icons"
 
 export default function SocialIconsMonochromeDemo() {
   return (

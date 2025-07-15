@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { TextInput } from "@/registry/inputs/text-input"
+import { TextInput } from "@/delta/text-input"
 
 export default function TextInputPillDemo() {
   return (

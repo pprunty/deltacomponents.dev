@@ -1,6 +1,6 @@
 "use client"
 
-import { RadioInput } from "@/registry/inputs/radio-input"
+import { RadioInput } from "@/delta/radio-input"
 
 export default function RadioInputDemo() {
   const options = [

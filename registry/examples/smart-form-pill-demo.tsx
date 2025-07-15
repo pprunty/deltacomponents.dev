@@ -3,7 +3,7 @@
 import React from "react"
 import { z } from "zod"
 
-import { SmartForm, type FieldDefinition } from "@/registry/blocks/smart-form"
+import { SmartForm, type FieldDefinition } from "@/delta/smart-form"
 
 const schema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),

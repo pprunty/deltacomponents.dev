@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import { CodeSnippet } from "@/registry/media/code-snippet"
+import { CodeSnippet } from "@/delta/code-snippet"
 
 export default function CodeSnippetTabsDemo() {
   const installationTabs = {

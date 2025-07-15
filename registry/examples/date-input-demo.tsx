@@ -1,6 +1,6 @@
 "use client"
 
-import { DateInput } from "@/registry/inputs/date-input"
+import { DateInput } from "@/delta/date-input"
 
 export default function DateInputDemo() {
   return (

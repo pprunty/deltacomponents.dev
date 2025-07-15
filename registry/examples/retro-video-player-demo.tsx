@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { RetroVideoPlayer } from "@/registry/media/retro-video-player"
+import { RetroVideoPlayer } from "@/delta/retro-video-player"
 
 export default function RetroVideoPlayerDemo() {
   const [showPlayer, setShowPlayer] = useState(false)

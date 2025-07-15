@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 
 import ScrambleText, {
   ScrambleTextHandle,
-} from "@/registry/animations/scramble-text"
+} from "@/delta/scramble-text"
 
 export default function ScrambleTextAlbumsDemo() {
   const tracks = [

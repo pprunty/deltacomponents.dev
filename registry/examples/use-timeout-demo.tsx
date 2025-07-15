@@ -4,7 +4,7 @@ import React from "react"
 import { RefreshCwIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { useTimeout } from "@/registry/hooks/use-timeout"
+import { useTimeout } from "@/delta/use-timeout"
 
 export default function UseTimeoutDemo() {
   const [hasDefused, setHasDefused] = React.useState(false)

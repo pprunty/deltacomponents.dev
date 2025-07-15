@@ -1,6 +1,6 @@
 "use client"
 
-import { CodeSnippet } from "@/registry/media/code-snippet"
+import { CodeSnippet } from "@/delta/code-snippet"
 
 export default function CodeSnippetDemo() {
   const code = `def calculate_factorial(n):

@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { Settings } from "lucide-react"
 
-import RetroButton from "@/registry/components/retro-button"
+import RetroButton from "@/delta/retro-button"
 
 // Demo component to showcase all variants and features
 export default function RetroButtonDemo() {

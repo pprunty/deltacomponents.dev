@@ -11,7 +11,7 @@ export function OpenInV0Button({ url }: { url: string }) {
   const deltaUrl = `https://deltacomponents.dev/r/${componentName}.json`
 
   // Encode it for v0.dev
-  const v0Url = `https://v0.dev/chat/api/open?url=${encodeURIComponent(deltaUrl)}`
+  const v0Url = `https://v0.dev/chat/api/open?url=${deltaUrl}`
 
   return (
     <Button
