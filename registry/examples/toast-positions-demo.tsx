@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { toast, Toaster, type ToasterProps } from "sonner"
+import { Toaster, type ToasterProps } from "sonner"
 
 import { Button } from "@/components/ui/button"
+import { toast } from "@/registry/components/toast"
 
 type Position = ToasterProps["position"]
 
@@ -35,7 +36,7 @@ export default function ToastPositionsDemo() {
         visibleToasts={1}
         toastOptions={{
           className:
-            "group toast border rounded-lg p-4 shadow-md bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300",
+            "group toast border rounded-lg p-4 shadow-md bg-background text-foreground",
         }}
       />
 

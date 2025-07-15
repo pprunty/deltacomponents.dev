@@ -4,7 +4,7 @@ export const components: Registry = [
   {
     name: "dropdown-menu",
     type: "registry:component",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     registryDependencies: [],
     tags: [
       "dropdown",
@@ -99,7 +99,7 @@ export const components: Registry = [
     name: "scroll-progress",
     type: "registry:component",
     tags: ["scroll", "progress", "indicator", "component"],
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     registryDependencies: [],
     files: [
       {
@@ -133,7 +133,7 @@ export const components: Registry = [
   {
     name: "modal",
     type: "registry:component",
-    dependencies: ["framer-motion", "@phosphor-icons/react"],
+    dependencies: ["motion", "@phosphor-icons/react"],
     registryDependencies: [],
     tags: [
       "dialog",

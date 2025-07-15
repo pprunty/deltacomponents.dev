@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 interface AnimateInProps {
   children: React.ReactNode
@@ -12,6 +12,8 @@ interface AnimateInProps {
   threshold?: number
   triggerOnce?: boolean
   duration?: number
+  enableBlur?: boolean
+  blurAmount?: number
 }
 
 const AnimateIn: React.FC<AnimateInProps> = ({
@@ -23,6 +25,8 @@ const AnimateIn: React.FC<AnimateInProps> = ({
   threshold = 0.1,
   triggerOnce = true,
   duration = 0.6,
+  enableBlur = false,
+  blurAmount = 8,
 }) => {
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -63,31 +67,41 @@ const AnimateIn: React.FC<AnimateInProps> = ({
   }, [delay, useIntersectionObserver, threshold, triggerOnce])
 
   const getInitialState = () => {
-    switch (direction) {
-      case "left":
-        return { opacity: 0, x: -30 }
-      case "right":
-        return { opacity: 0, x: 30 }
-      case "fade":
-        return { opacity: 0 }
-      case "up":
-      default:
-        return { opacity: 0, y: 20 }
-    }
+    const baseState = (() => {
+      switch (direction) {
+        case "left":
+          return { opacity: 0, x: -30 }
+        case "right":
+          return { opacity: 0, x: 30 }
+        case "fade":
+          return { opacity: 0 }
+        case "up":
+        default:
+          return { opacity: 0, y: 20 }
+      }
+    })()
+
+    return enableBlur
+      ? { ...baseState, filter: `blur(${blurAmount}px)` }
+      : baseState
   }
 
   const getAnimateState = () => {
-    switch (direction) {
-      case "left":
-        return { opacity: 1, x: 0 }
-      case "right":
-        return { opacity: 1, x: 0 }
-      case "fade":
-        return { opacity: 1 }
-      case "up":
-      default:
-        return { opacity: 1, y: 0 }
-    }
+    const baseState = (() => {
+      switch (direction) {
+        case "left":
+          return { opacity: 1, x: 0 }
+        case "right":
+          return { opacity: 1, x: 0 }
+        case "fade":
+          return { opacity: 1 }
+        case "up":
+        default:
+          return { opacity: 1, y: 0 }
+      }
+    })()
+
+    return enableBlur ? { ...baseState, filter: "blur(0px)" } : baseState
   }
 
   return (

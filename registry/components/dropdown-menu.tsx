@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "motion/react"
 
 import { useClickAway } from "@/hooks/use-click-away"
 import { useKeyPress } from "@/hooks/use-key-press"

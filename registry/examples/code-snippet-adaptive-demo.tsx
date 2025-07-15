@@ -153,7 +153,7 @@ const darkTheme: PrismTheme = {
 
 export default function CodeSnippetAdaptiveDemo() {
   const reactCode = `import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 interface TodoItem {
   id: string

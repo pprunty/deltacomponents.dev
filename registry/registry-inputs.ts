@@ -67,7 +67,7 @@ export const inputs: Registry = [
   {
     name: "switch-input",
     type: "registry:component",
-    dependencies: ["zod"],
+    dependencies: ["zod", "motion"],
     registryDependencies: [],
     tags: [
       "form",
@@ -172,7 +172,7 @@ export const inputs: Registry = [
   {
     name: "otp-input",
     type: "registry:component",
-    dependencies: ["zod"],
+    dependencies: ["zod", "motion"],
     registryDependencies: [],
     tags: ["form", "otp", "verification", "code", "input", "auth", "secure"],
     files: [

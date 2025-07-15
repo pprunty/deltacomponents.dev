@@ -146,8 +146,8 @@ function MobileLink({
   const isActive = exactMatch
     ? pathname === href
     : href === "/docs/components"
-    ? pathname === "/docs/components" // Only exact match for components showcase
-    : pathname === href || pathname.startsWith(href + "/")
+      ? pathname === "/docs/components" // Only exact match for components showcase
+      : pathname === href || pathname.startsWith(href + "/")
 
   // Handle navigation with scroll reset
   const handleClick = React.useCallback(() => {

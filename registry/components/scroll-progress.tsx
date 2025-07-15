@@ -1,5 +1,5 @@
 import React from "react"
-import { motion, SpringOptions, useScroll, useSpring } from "framer-motion"
+import { motion, SpringOptions, useScroll, useSpring } from "motion/react"
 
 // ScrollProgress Component
 const cn = (...classes: (string | undefined | false)[]) =>

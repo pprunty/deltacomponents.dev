@@ -127,7 +127,7 @@ export default function SmartFormRegistrationDemo() {
     alert(`Form submitted with data:\\n${JSON.stringify(data, null, 2)}`)
 
     // In a real app, you would send this data to your backend
-    console.log("Registration data:", data)
+    // console.log("Registration data:", data)
   }
 
   return (

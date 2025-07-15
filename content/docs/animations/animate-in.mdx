@@ -1,15 +1,15 @@
 ---
 title: Animate In
-description: A simple and lightweight animation component that animates children elements into view with CSS transitions, customizable directions, timing, and intersection observer support.
+description: A simple and lightweight animation component that animates children elements into view with CSS transitions, customizable directions, timing, blur effects, and intersection observer support.
 ---
 
 <ComponentPreview name="animate-in-demo" />
 
 ## Overview
 
-The AnimateIn component provides a lightweight solution for animating content into view using CSS animations and React state management. It supports multiple animation directions (up, left, right) with customizable delays and intersection observer functionality for scroll-triggered animations.
+The AnimateIn component provides a lightweight solution for animating content into view using CSS animations and React state management. It supports multiple animation directions (up, left, right, fade) with customizable delays, optional blur effects, and intersection observer functionality for scroll-triggered animations.
 
-The component uses CSS keyframes for smooth, hardware-accelerated animations and provides both time-based (delay) and viewport-based (intersection observer) triggering options, making it perfect for landing pages, feature sections, and any content that needs elegant entrance animations.
+The component uses CSS transforms and filters for smooth, hardware-accelerated animations and provides both time-based (delay) and viewport-based (intersection observer) triggering options, making it perfect for landing pages, feature sections, and any content that needs elegant entrance animations.
 
 ## Installation
 
@@ -78,6 +78,23 @@ export function Component() {
 }
 ```
 
+### Blur Animation
+
+```tsx
+import AnimateIn from "@/registry/animations/animate-in"
+
+export function Component() {
+  return (
+    <AnimateIn direction="up" delay={200} enableBlur={true} blurAmount={10}>
+      <h1 className="text-4xl font-bold">Blurred Entrance</h1>
+      <p className="text-muted-foreground">
+        This content animates with a blur-to-focus effect
+      </p>
+    </AnimateIn>
+  )
+}
+```
+
 ### Fade-in Only
 
 ```tsx
@@ -110,6 +127,9 @@ export function Component() {
 | `useIntersectionObserver` | `boolean`                             | Enable intersection observer for scroll-triggered animations                           | `false` |
 | `threshold`               | `number`                              | Intersection observer threshold (0.0 to 1.0)                                           | `0.1`   |
 | `triggerOnce`             | `boolean`                             | Whether animation should only trigger once                                             | `true`  |
+| `duration`                | `number`                              | Animation duration in seconds                                                          | `0.6`   |
+| `enableBlur`              | `boolean`                             | Enable blur animation effect that transitions from blurred to clear                    | `false` |
+| `blurAmount`              | `number`                              | Initial blur amount in pixels (used when enableBlur is true)                           | `8`     |
 
 </div>
 

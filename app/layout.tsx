@@ -5,7 +5,6 @@ import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { themeEffect } from "@/components/theme-effect"
-import { ToastProvider } from "@/registry/components/toast"
 
 import "@/styles/globals.css"
 
@@ -129,7 +128,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
             {children}
           </main>
-          <ToastProvider />
         </TooltipProvider>
       </body>
     </html>

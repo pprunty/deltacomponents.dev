@@ -4,6 +4,7 @@ export const animations: Registry = [
   {
     name: "animate-in",
     type: "registry:component",
+    dependencies: ["motion"],
     registryDependencies: [],
     files: [
       {
@@ -15,6 +16,7 @@ export const animations: Registry = [
   {
     name: "font-transform",
     type: "registry:component",
+    dependencies: ["motion"],
     registryDependencies: [],
     files: [
       {
@@ -30,6 +32,7 @@ export const animations: Registry = [
   {
     name: "floating-object",
     type: "registry:component",
+    dependencies: ["motion"],
     registryDependencies: [],
     files: [
       {

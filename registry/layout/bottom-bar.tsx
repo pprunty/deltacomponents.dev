@@ -5,7 +5,7 @@ import type { FC } from "react"
 import type { IconProps } from "@phosphor-icons/react"
 import { Plus } from "@phosphor-icons/react"
 import clsx from "clsx"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 // Route interface
 interface Route {
@@ -53,7 +53,7 @@ const BarItem = memo(
             "flex flex-col items-center justify-center w-full h-full px-1",
             showLabels ? "py-2" : "py-4"
           )}
-          onClick={(e) => {
+          onClick={() => {
             onItemClick()
           }}
         >
@@ -184,10 +184,10 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   // Get current route (hash or pathname) based on route type
   const getCurrentRoute = () => {
     if (typeof window === "undefined") return ""
-    
+
     // Check if we have any hash routes
-    const hasHashRoutes = routes.some(route => route.href.startsWith("#"))
-    
+    const hasHashRoutes = routes.some((route) => route.href.startsWith("#"))
+
     if (hasHashRoutes) {
       return window.location.hash
     } else {
@@ -213,7 +213,7 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
       window.removeEventListener("hashchange", updateActiveRoute)
       window.removeEventListener("popstate", updateActiveRoute)
     }
-  }, [routes])
+  }, [routes, getCurrentRoute])
 
   const handleItemClick = useCallback(
     (href: string) => {
@@ -256,11 +256,11 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
     ? {
         initial: { y: 100, opacity: 0 },
         animate: { y: 0, opacity: 1 },
-        transition: { duration: 0.3 }
+        transition: { duration: 0.3 },
       }
     : {
         initial: { y: 0, opacity: 1 },
-        animate: { y: 0, opacity: 1 }
+        animate: { y: 0, opacity: 1 },
       }
 
   return (

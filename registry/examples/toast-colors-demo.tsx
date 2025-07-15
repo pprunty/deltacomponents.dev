@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
+import { Toaster } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import { toast } from "@/registry/components/toast"
@@ -11,6 +12,15 @@ export default function ToastColorsDemo() {
 
   return (
     <div className="space-y-4">
+      <Toaster
+        position="bottom-right"
+        richColors
+        toastOptions={{
+          className:
+            "group toast border rounded-lg p-4 shadow-md bg-background text-foreground",
+        }}
+      />
+
       <div className="flex items-center gap-2 mb-4">
         <Button
           variant="outline"

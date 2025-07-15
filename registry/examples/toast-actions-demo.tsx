@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Toaster } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import { toast } from "@/registry/components/toast"
@@ -37,43 +38,54 @@ export default function ToastActionsDemo() {
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
-      <Button
-        onClick={() =>
-          toast.success("File uploaded!", {
-            action: {
-              label: "Undo",
-              onClick: () => toast.info("Upload cancelled"),
-            },
-          })
-        }
-      >
-        With Action
-      </Button>
-      <Button
-        onClick={() =>
-          toast.info("Changes saved", {
-            description: "Your changes have been saved to the cloud.",
-          })
-        }
-      >
-        With Description
-      </Button>
-      <Button onClick={handlePromiseToast} disabled={loading}>
-        Promise Toast
-      </Button>
-      <Button
-        onClick={() =>
-          toast.error("Connection failed", {
-            action: {
-              label: "Retry",
-              onClick: () => toast.info("Retrying..."),
-            },
-          })
-        }
-      >
-        Error with Retry
-      </Button>
+    <div className="space-y-4">
+      <Toaster
+        position="bottom-right"
+        richColors
+        toastOptions={{
+          className:
+            "group toast border rounded-lg p-4 shadow-md bg-background text-foreground",
+        }}
+      />
+
+      <div className="flex flex-wrap gap-2">
+        <Button
+          onClick={() =>
+            toast.success("File uploaded!", {
+              action: {
+                label: "Undo",
+                onClick: () => toast.info("Upload cancelled"),
+              },
+            })
+          }
+        >
+          With Action
+        </Button>
+        <Button
+          onClick={() =>
+            toast.info("Changes saved", {
+              description: "Your changes have been saved to the cloud.",
+            })
+          }
+        >
+          With Description
+        </Button>
+        <Button onClick={handlePromiseToast} disabled={loading}>
+          Promise Toast
+        </Button>
+        <Button
+          onClick={() =>
+            toast.error("Connection failed", {
+              action: {
+                label: "Retry",
+                onClick: () => toast.info("Retrying..."),
+              },
+            })
+          }
+        >
+          Error with Retry
+        </Button>
+      </div>
     </div>
   )
 }

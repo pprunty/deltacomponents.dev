@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 import { X } from "@phosphor-icons/react"
-import { AnimatePresence, motion, type Variants } from "framer-motion"
+import { AnimatePresence, motion, type Variants } from "motion/react"
 import { createPortal } from "react-dom"
 
 import { cn } from "@/lib/utils"

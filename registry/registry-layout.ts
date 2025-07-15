@@ -33,6 +33,6 @@ export const layout: Registry = [
         type: "registry:component",
       },
     ],
-    dependencies: ["@phosphor-icons/react", "clsx", "framer-motion"],
+    dependencies: ["@phosphor-icons/react", "clsx", "motion"],
   },
 ]
