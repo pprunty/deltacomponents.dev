@@ -128,7 +128,7 @@ export function ComponentPreview({
           </TabsList>
         )}
         <TabsContent value="demo" className="relative rounded-md border">
-          <div className="absolute right-4 top-4 flex items-center gap-2">
+          <div className="absolute right-4 top-4 flex items-center gap-2 z-[100]">
             <RefreshButton onRefresh={handleRefresh} />
             {v0 && <OpenInV0Button url={`/docs/${name}`} />}
           </div>

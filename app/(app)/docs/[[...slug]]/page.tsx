@@ -1,10 +1,9 @@
-import { Suspense } from "react"
+import { cache, Suspense } from "react"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
-import { unstable_cache } from "next/cache"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
@@ -87,34 +86,31 @@ export async function generateStaticParams(): Promise<
   }))
 }
 
-// Cache analytics data for static generation
-const getCachedAnalytics = unstable_cache(
-  async (componentName: string) => {
-    try {
-      const sanitizedComponent = componentName.replace(/[^a-zA-Z0-9-_]/g, "")
-      const viewsKey = `delta-views:${sanitizedComponent}`
-      const downloadsKey = `delta-downloads:${sanitizedComponent}`
+// Cache analytics data to avoid build errors while still allowing revalidation
+const getCachedAnalytics = cache(async (componentName: string) => {
+  try {
+    const sanitizedComponent = componentName.replace(/[^a-zA-Z0-9-_]/g, "")
+    const viewsKey = `delta-views:${sanitizedComponent}`
+    const downloadsKey = `delta-downloads:${sanitizedComponent}`
 
-      const [views, downloads] = await Promise.all([
-        redis.get(viewsKey),
-        redis.get(downloadsKey),
-      ])
+    const [views, downloads] = await Promise.all([
+      redis.get(viewsKey),
+      redis.get(downloadsKey),
+    ])
 
-      return {
-        views: Number(views) || 0,
-        downloads: Number(downloads) || 0,
-      }
-    } catch (error) {
-      console.error("Error fetching analytics:", error)
-      return {
-        views: 0,
-        downloads: 0,
-      }
+    return {
+      views: Number(views) || 0,
+      downloads: Number(downloads) || 0,
     }
-  },
-  ["analytics"],
-  { revalidate: 60 }
-)
+  } catch (error) {
+    console.error("Error fetching initial analytics:", error)
+    // Return zero values during build/error to avoid blocking static generation
+    return {
+      views: 0,
+      downloads: 0,
+    }
+  }
+})
 
 export const revalidate = 60 // Revalidate every 60 seconds for analytics updates
 

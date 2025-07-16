@@ -1,3 +1,5 @@
+"use client"
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/delta/tabs"
 
 export default function TabsDemo() {
