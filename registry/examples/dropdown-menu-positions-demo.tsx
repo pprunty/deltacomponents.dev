@@ -2,6 +2,13 @@
 
 import * as React from "react"
 import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownSeparator,
+  DropdownTrigger,
+} from "@/delta/dropdown-menu"
+import {
   CreditCard,
   Crown,
   LogOut,
@@ -9,14 +16,6 @@ import {
   User,
   UserCircle,
 } from "lucide-react"
-
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-  DropdownTrigger,
-} from "@/delta/dropdown-menu"
 
 export default function DropdownMenuPositionsDemo() {
   return (

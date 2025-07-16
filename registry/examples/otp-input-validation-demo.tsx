@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
+import { OtpInput } from "@/delta/otp-input"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import { OtpInput } from "@/delta/otp-input"
 
 // Different validation schemas for different input types
 const numericSchema = z

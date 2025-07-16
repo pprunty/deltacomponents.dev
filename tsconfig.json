@@ -21,7 +21,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/delta/*": ["./registry/inputs/*", "./registry/components/*", "./registry/animations/*", "./registry/blocks/*", "./registry/layout/*", "./registry/media/*", "./registry/landing-page/*", "./registry/hooks/*"],
+      "@/delta/*": [
+        "./registry/inputs/*",
+        "./registry/components/*",
+        "./registry/animations/*",
+        "./registry/blocks/*",
+        "./registry/layout/*",
+        "./registry/media/*",
+        "./registry/landing-page/*",
+        "./registry/hooks/*"
+      ],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },

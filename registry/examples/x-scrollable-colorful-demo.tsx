@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { XScrollable } from "@/delta/x-scrollable"
 
 export default function XScrollableColorfulDemo() {

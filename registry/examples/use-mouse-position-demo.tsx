@@ -1,13 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { useMousePosition, type Position } from "@/delta/use-mouse-position"
 import { createPortal } from "react-dom"
 
 import { cn } from "@/lib/utils"
-import {
-  useMousePosition,
-  type Position,
-} from "@/delta/use-mouse-position"
 
 export default function UseMousePositionDemo() {
   const [mouse, ref] = useMousePosition<HTMLParagraphElement>()

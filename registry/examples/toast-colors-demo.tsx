@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { toast } from "@/delta/toast"
 import { useTheme } from "next-themes"
 import { Toaster } from "sonner"
 
 import { Button } from "@/components/ui/button"
-import { toast } from "@/delta/toast"
 
 export default function ToastColorsDemo() {
   const { theme, setTheme } = useTheme()

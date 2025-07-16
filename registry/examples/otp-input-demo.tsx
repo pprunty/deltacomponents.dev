@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { OtpInput } from "@/delta/otp-input"
 
 export default function OtpInputDemo() {

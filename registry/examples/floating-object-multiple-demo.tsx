@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { FloatingObject } from "@/delta/floating-object"
 
 export default function FloatingObjectMultipleDemo() {

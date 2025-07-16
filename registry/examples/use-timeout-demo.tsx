@@ -1,10 +1,10 @@
 "use client"
 
 import React from "react"
+import { useTimeout } from "@/delta/use-timeout"
 import { RefreshCwIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { useTimeout } from "@/delta/use-timeout"
 
 export default function UseTimeoutDemo() {
   const [hasDefused, setHasDefused] = React.useState(false)

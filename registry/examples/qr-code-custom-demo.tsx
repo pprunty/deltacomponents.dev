@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-
 import QRCode from "@/delta/qr-code"
 
 export default function QRCodeCustomDemo() {

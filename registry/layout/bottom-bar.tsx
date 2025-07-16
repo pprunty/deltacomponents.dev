@@ -181,7 +181,6 @@ const BottomBar: FC<BottomBarProps> = memo(function BottomBar({
   const [activeRoute, setActiveRoute] = useState<string>("")
   const [lastClickedItem, setLastClickedItem] = useState<string | null>(null)
 
-
   // Update active route based on current location and route types
   React.useEffect(() => {
     // Get current route (hash or pathname) based on route type

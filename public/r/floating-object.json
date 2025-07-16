@@ -3,9 +3,7 @@
   "name": "floating-object",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/animations/floating-object.tsx",

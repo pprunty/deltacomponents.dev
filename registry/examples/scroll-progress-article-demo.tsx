@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import ScrollProgress from "@/delta/scroll-progress"
 
 export default function ScrollProgressArticleDemo() {

@@ -3,9 +3,7 @@
   "name": "select-input",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "zod"
-  ],
+  "dependencies": ["zod"],
   "files": [
     {
       "path": "registry/inputs/select-input.tsx",

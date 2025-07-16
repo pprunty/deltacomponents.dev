@@ -1,8 +1,7 @@
 "use client"
 
-import { z } from "zod"
-
 import { FieldDefinition, SmartForm } from "@/delta/smart-form"
+import { z } from "zod"
 
 const registrationSchema = z
   .object({

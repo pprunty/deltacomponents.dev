@@ -34,6 +34,31 @@ async function getSiteURL(): Promise<string> {
 // We'll set this later in the buildRegistry function
 let SITE_URL = "https://deltacomponents.dev"
 
+/**
+ * Transform import paths from @/registry/ to @/delta/ for external consumption
+ */
+function transformImportPaths(content: string): string {
+  // Transform import paths from @/registry/ to @/delta/
+  return content
+    .replace(/from ["']@\/registry\/inputs\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(
+      /from ["']@\/registry\/components\/([^"']+)["']/g,
+      'from "@/delta/$1"'
+    )
+    .replace(
+      /from ["']@\/registry\/animations\/([^"']+)["']/g,
+      'from "@/delta/$1"'
+    )
+    .replace(/from ["']@\/registry\/blocks\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(/from ["']@\/registry\/layout\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(/from ["']@\/registry\/media\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(
+      /from ["']@\/registry\/landing-page\/([^"']+)["']/g,
+      'from "@/delta/$1"'
+    )
+    .replace(/from ["']@\/registry\/hooks\/([^"']+)["']/g, 'from "@/delta/$1"')
+}
+
 // Define types
 interface RegistryItemFile {
   path: string
@@ -523,10 +548,80 @@ async function buildRegistry() {
     }
 
     console.info(`✅ Registry built successfully: ${outputPath}`)
+
+    // Run the shadcn build command to populate file contents
+    console.info(`🔨 Running shadcn build to populate file contents...`)
+    execSync(`npx shadcn build ${outputPath} --output public/r/`, {
+      stdio: "inherit",
+      cwd: rootDir,
+    })
+
+    // Post-process the generated JSON files to transform import paths
+    console.info(`🔄 Post-processing JSON files to transform import paths...`)
+    await postProcessJsonFiles()
+
+    console.info(`✅ Registry build completed with transformed import paths`)
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error)
     console.error(`Error building registry: ${errorMessage}`)
     process.exit(1)
+  }
+}
+
+/**
+ * Post-process the generated JSON files to transform import paths
+ */
+async function postProcessJsonFiles() {
+  const outputDir = path.join(rootDir, "public/r")
+
+  try {
+    // Read all JSON files in the output directory
+    const files = await fs.readdir(outputDir)
+    const jsonFiles = files.filter((file) => file.endsWith(".json"))
+
+    for (const file of jsonFiles) {
+      const filePath = path.join(outputDir, file)
+      const fileContent = await fs.readFile(filePath, "utf8")
+
+      try {
+        const jsonData = JSON.parse(fileContent)
+
+        // Transform the content field in each file
+        if (jsonData.files && Array.isArray(jsonData.files)) {
+          jsonData.files = jsonData.files.map((fileEntry: any) => {
+            if (fileEntry.content) {
+              fileEntry.content = transformImportPaths(fileEntry.content)
+            }
+            return fileEntry
+          })
+        }
+
+        // If it's the main index.json with items array
+        if (jsonData.items && Array.isArray(jsonData.items)) {
+          jsonData.items = jsonData.items.map((item: any) => {
+            if (item.files && Array.isArray(item.files)) {
+              item.files = item.files.map((fileEntry: any) => {
+                if (fileEntry.content) {
+                  fileEntry.content = transformImportPaths(fileEntry.content)
+                }
+                return fileEntry
+              })
+            }
+            return item
+          })
+        }
+
+        // Write the transformed JSON back to file
+        await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2))
+      } catch (parseError) {
+        console.warn(`⚠️ Could not parse JSON file ${file}, skipping...`)
+      }
+    }
+
+    console.info(`✅ Post-processed ${jsonFiles.length} JSON files`)
+  } catch (error) {
+    console.error(`Error post-processing JSON files:`, error)
+    throw error
   }
 }
 

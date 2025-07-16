@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { RadioInput } from "@/delta/radio-input"
 
 export default function RadioInputNoSelectionDemo() {

@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
+import Modal from "@/delta/modal"
 import { Calendar, MessageCircle, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import Modal from "@/delta/modal"
 
 export default function ModalMinimalDemo() {
   const [isOpen, setIsOpen] = useState(false)

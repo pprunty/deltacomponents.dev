@@ -4,6 +4,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+import { unstable_cache } from "next/cache"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
@@ -86,6 +87,35 @@ export async function generateStaticParams(): Promise<
   }))
 }
 
+// Cache analytics data for static generation
+const getCachedAnalytics = unstable_cache(
+  async (componentName: string) => {
+    try {
+      const sanitizedComponent = componentName.replace(/[^a-zA-Z0-9-_]/g, "")
+      const viewsKey = `delta-views:${sanitizedComponent}`
+      const downloadsKey = `delta-downloads:${sanitizedComponent}`
+
+      const [views, downloads] = await Promise.all([
+        redis.get(viewsKey),
+        redis.get(downloadsKey),
+      ])
+
+      return {
+        views: Number(views) || 0,
+        downloads: Number(downloads) || 0,
+      }
+    } catch (error) {
+      console.error("Error fetching analytics:", error)
+      return {
+        views: 0,
+        downloads: 0,
+      }
+    }
+  },
+  ["analytics"],
+  { revalidate: 60 }
+)
+
 export const revalidate = 60 // Revalidate every 60 seconds for analytics updates
 
 export default async function DocPage(props: {
@@ -135,27 +165,7 @@ export default async function DocPage(props: {
 
       // Fetch initial analytics data server-side
       if (componentName) {
-        try {
-          const sanitizedComponent = componentName.replace(
-            /[^a-zA-Z0-9-_]/g,
-            ""
-          )
-          const viewsKey = `delta-views:${sanitizedComponent}`
-          const downloadsKey = `delta-downloads:${sanitizedComponent}`
-
-          const [views, downloads] = await Promise.all([
-            redis.get(viewsKey),
-            redis.get(downloadsKey),
-          ])
-
-          initialAnalytics = {
-            views: Number(views) || 0,
-            downloads: Number(downloads) || 0,
-          }
-        } catch (error) {
-          console.error("Error fetching initial analytics:", error)
-          // Continue without initial analytics if Redis fails
-        }
+        initialAnalytics = await getCachedAnalytics(componentName)
       }
     }
   }

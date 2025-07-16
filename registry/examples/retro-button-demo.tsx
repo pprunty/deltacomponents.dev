@@ -1,9 +1,8 @@
 "use client"
 
 import React, { useState } from "react"
-import { Settings } from "lucide-react"
-
 import RetroButton from "@/delta/retro-button"
+import { Settings } from "lucide-react"
 
 // Demo component to showcase all variants and features
 export default function RetroButtonDemo() {

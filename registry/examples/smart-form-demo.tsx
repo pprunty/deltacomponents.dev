@@ -1,8 +1,7 @@
 "use client"
 
-import { z } from "zod"
-
 import { FieldDefinition, SmartForm } from "@/delta/smart-form"
+import { z } from "zod"
 
 const schema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),

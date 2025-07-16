@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { FileInput } from "@/delta/file-input"
 
 export default function FileInputPreviewDemo() {

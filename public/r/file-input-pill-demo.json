@@ -3,13 +3,11 @@
   "name": "file-input-pill-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/file-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"],
   "files": [
     {
       "path": "registry/examples/file-input-pill-demo.tsx",
-      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { FileInput } from \"@/delta/file-input\"\n\nexport default function FileInputPillDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Files (Pill Style)\"\n        name=\"pillFiles\"\n        variant=\"pill\"\n        accept=\".jpg,.png,.pdf\"\n        hint=\"Pill variant with colored border\"\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { FileInput } from \"@/delta/file-input\"\n\nexport default function FileInputPillDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <FileInput\n        label=\"Upload Files (Pill Style)\"\n        name=\"pillFiles\"\n        variant=\"pill\"\n        accept=\".jpg,.png,.pdf\"\n        hint=\"Pill variant with colored border\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
       "target": "/delta/file-input-pill-demo.tsx"
     }

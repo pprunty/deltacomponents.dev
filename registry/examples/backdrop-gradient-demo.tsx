@@ -1,5 +1,4 @@
 import React from "react"
-
 import BlurOverlay from "@/delta/backdrop-gradient"
 
 export default function BackdropGradientDemo() {

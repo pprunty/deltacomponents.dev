@@ -11,105 +11,105 @@ import { CopyButton } from "./copy-button"
 const defaultTheme: PrismTheme = {
   plain: {
     color: "#FFFFFF",
-    backgroundColor: "#151515"
+    backgroundColor: "#151515",
   },
   styles: [
     {
       types: ["comment"],
       style: {
         color: "#757575",
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["keyword", "property", "property-access", "attr-name"],
       style: {
-        color: "#77b7d7"
-      }
+        color: "#77b7d7",
+      },
     },
     {
       types: ["tag"],
       style: {
-        color: "#dfab5c"
-      }
+        color: "#dfab5c",
+      },
     },
     {
       types: ["punctuation", "symbol", "dom"],
       style: {
-        color: "#ffffff"
-      }
+        color: "#ffffff",
+      },
     },
     {
       types: ["definition", "function"],
       style: {
-        color: "#86d9ca"
-      }
+        color: "#86d9ca",
+      },
     },
     {
       types: ["string", "char", "attr-value"],
       style: {
-        color: "#977cdc"
-      }
+        color: "#977cdc",
+      },
     },
     {
       types: ["static", "number"],
       style: {
-        color: "#ff6658"
-      }
-    }
-  ]
+        color: "#ff6658",
+      },
+    },
+  ],
 }
 
 const lightTheme: PrismTheme = {
   plain: {
     color: "#24292e",
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#FFFFFF",
   },
   styles: [
     {
       types: ["comment"],
       style: {
         color: "#6a737d",
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["keyword", "property", "property-access", "attr-name"],
       style: {
-        color: "#d73a49"
-      }
+        color: "#d73a49",
+      },
     },
     {
       types: ["tag"],
       style: {
-        color: "#22863a"
-      }
+        color: "#22863a",
+      },
     },
     {
       types: ["punctuation", "symbol", "dom"],
       style: {
-        color: "#24292e"
-      }
+        color: "#24292e",
+      },
     },
     {
       types: ["definition", "function"],
       style: {
-        color: "#6f42c1"
-      }
+        color: "#6f42c1",
+      },
     },
     {
       types: ["string", "char", "attr-value"],
       style: {
-        color: "#032f62"
-      }
+        color: "#032f62",
+      },
     },
     {
       types: ["static", "number"],
       style: {
-        color: "#005cc5"
-      }
-    }
-  ]
+        color: "#005cc5",
+      },
+    },
+  ],
 }
 
 interface CodeSnippetProps {
@@ -185,8 +185,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
     ? isDark
       ? adaptiveTheme.dark
       : adaptiveTheme.light
-    : theme ||
-      (isDark ? defaultTheme : lightTheme)
+    : theme || (isDark ? defaultTheme : lightTheme)
 
   return (
     <div
@@ -255,7 +254,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         </div>
       ) : null}
       <div
-        className="relative max-h-[calc(530px-44px)] py-4"
+        className="relative max-h-[calc(530px-44px)] pt-4"
         style={{
           backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
         }}

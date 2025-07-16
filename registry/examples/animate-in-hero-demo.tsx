@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import AnimateIn from "@/delta/animate-in"
 
 export default function AnimateInHeroDemo() {

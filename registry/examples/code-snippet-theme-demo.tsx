@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
+import { CodeSnippet } from "@/delta/code-snippet"
 import { PrismTheme } from "prism-react-renderer"
 
 import { Button } from "@/components/ui/button"
-import { CodeSnippet } from "@/delta/code-snippet"
 
 // Custom Monokai-inspired dark theme
 const monokaiTheme: PrismTheme = {

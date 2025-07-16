@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { SocialIcons } from "@/delta/social-icons"
 
 export default function SocialIconsDemo() {

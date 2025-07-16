@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import HeaderSleek from "@/delta/header-sleek"
 
 export default function HeaderSleekDemo() {

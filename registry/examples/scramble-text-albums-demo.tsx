@@ -1,10 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-
-import ScrambleText, {
-  ScrambleTextHandle,
-} from "@/delta/scramble-text"
+import ScrambleText, { ScrambleTextHandle } from "@/delta/scramble-text"
 
 export default function ScrambleTextAlbumsDemo() {
   const tracks = [

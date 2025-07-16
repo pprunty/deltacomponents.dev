@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import StarRating from "@/delta/star-rating"
 
 export default function StarRatingDemo() {

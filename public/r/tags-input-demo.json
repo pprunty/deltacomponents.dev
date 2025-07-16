@@ -3,9 +3,7 @@
   "name": "tags-input-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/tags-input.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"],
   "files": [
     {
       "path": "registry/examples/tags-input-demo.tsx",

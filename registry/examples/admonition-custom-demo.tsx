@@ -1,9 +1,8 @@
 "use client"
 
 import React from "react"
-import { Gift, Heart, Star, Zap } from "lucide-react"
-
 import Admonition from "@/delta/admonition"
+import { Gift, Heart, Star, Zap } from "lucide-react"
 
 export default function AdmonitionCustomDemo() {
   return (

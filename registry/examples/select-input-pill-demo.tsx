@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { SelectInput } from "@/delta/select-input"
 
 export default function SelectInputPillDemo() {

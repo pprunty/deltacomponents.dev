@@ -2,9 +2,9 @@
 
 import * as React from "react"
 import { useState } from "react"
+import Modal from "@/delta/modal"
 
 import { Button } from "@/components/ui/button"
-import Modal from "@/delta/modal"
 
 export default function ModalBlurDemo() {
   const [isOpen, setIsOpen] = useState(false)

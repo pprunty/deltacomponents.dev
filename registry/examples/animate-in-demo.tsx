@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import AnimateIn from "@/delta/animate-in"
 
 const YCombinatorLogo = () => (

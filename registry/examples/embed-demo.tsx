@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { Embed } from "@/delta/embed"
 
 export default function EmbedDemo() {

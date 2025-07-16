@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useState } from "react"
+import { RetroVideoPlayer } from "@/delta/retro-video-player"
 
 import { Button } from "@/components/ui/button"
-import { RetroVideoPlayer } from "@/delta/retro-video-player"
 
 export default function RetroVideoPlayerDemo() {
   const [showPlayer, setShowPlayer] = useState(false)

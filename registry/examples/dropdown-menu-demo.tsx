@@ -1,8 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { CreditCard, LogOut, Settings, UserCircle } from "lucide-react"
-
 import {
   Dropdown,
   DropdownContent,
@@ -10,6 +8,7 @@ import {
   DropdownSeparator,
   DropdownTrigger,
 } from "@/delta/dropdown-menu"
+import { CreditCard, LogOut, Settings, UserCircle } from "lucide-react"
 
 export default function DropdownMenuDemo() {
   return (

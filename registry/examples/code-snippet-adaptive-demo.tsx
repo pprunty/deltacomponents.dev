@@ -1,9 +1,8 @@
 "use client"
 
 import React from "react"
-import { PrismTheme } from "prism-react-renderer"
-
 import { CodeSnippet } from "@/delta/code-snippet"
+import { PrismTheme } from "prism-react-renderer"
 
 // Light theme - clean and professional
 const lightTheme: PrismTheme = {

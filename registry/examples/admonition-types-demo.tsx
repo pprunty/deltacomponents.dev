@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import Admonition from "@/delta/admonition"
 
 export default function AdmonitionTypesDemo() {

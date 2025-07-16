@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { Spotify } from "@/delta/spotify"
 
 export default function SpotifyDemo() {

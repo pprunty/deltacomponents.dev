@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { SwitchInput } from "@/delta/switch-input"
 
 export default function SwitchInputStandaloneDemo() {

@@ -58,15 +58,16 @@ Go to any of the components you want to use and copy the source code(s) from the
 <Admonition type="info" className="my-4">
   If you're using Tailwind CSS, make sure to add the delta directory to your `tailwind.config.ts` content paths so Tailwind can properly detect and compile the classes used in the components:
 
-  ```typescript
-  export default {
-    content: [
-      // ... your existing paths
-      "./delta/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    // ... rest of your config
-  }
-  ```
+```typescript
+export default {
+  content: [
+    // ... your existing paths
+    "./delta/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  // ... rest of your config
+}
+```
+
 </Admonition>
 
 ## Customization

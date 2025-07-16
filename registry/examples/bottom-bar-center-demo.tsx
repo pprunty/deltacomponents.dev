@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import BottomBar from "@/delta/bottom-bar"
 
 export default function BottomBarCenterDemo() {

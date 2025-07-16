@@ -3,9 +3,7 @@
   "name": "animate-in",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/animations/animate-in.tsx",

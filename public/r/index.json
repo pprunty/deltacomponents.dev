@@ -14,9 +14,7 @@
           "target": "/delta/checkbox-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "radio-input",
@@ -29,9 +27,7 @@
           "target": "/delta/radio-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "date-input",
@@ -44,10 +40,7 @@
           "target": "/delta/date-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod",
-        "date-fns"
-      ]
+      "dependencies": ["zod", "date-fns"]
     },
     {
       "name": "switch-input",
@@ -60,10 +53,7 @@
           "target": "/delta/switch-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod",
-        "motion"
-      ]
+      "dependencies": ["zod", "motion"]
     },
     {
       "name": "select-input",
@@ -76,9 +66,7 @@
           "target": "/delta/select-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "tags-input",
@@ -91,9 +79,7 @@
           "target": "/delta/tags-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "textarea-input",
@@ -106,9 +92,7 @@
           "target": "/delta/textarea-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "file-input",
@@ -121,10 +105,7 @@
           "target": "/delta/file-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod",
-        "lucide-react"
-      ]
+      "dependencies": ["zod", "lucide-react"]
     },
     {
       "name": "otp-input",
@@ -137,10 +118,7 @@
           "target": "/delta/otp-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod",
-        "motion"
-      ]
+      "dependencies": ["zod", "motion"]
     },
     {
       "name": "text-input",
@@ -153,9 +131,7 @@
           "target": "/delta/text-input.tsx"
         }
       ],
-      "dependencies": [
-        "zod"
-      ]
+      "dependencies": ["zod"]
     },
     {
       "name": "dropdown-menu-demo",
@@ -213,9 +189,7 @@
           "target": "/delta/animate-in-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "footer-demo",
@@ -228,9 +202,7 @@
           "target": "/delta/footer-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/footer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/footer.json"]
     },
     {
       "name": "mouse-string-connection-demo",
@@ -303,9 +275,7 @@
           "target": "/delta/qr-code-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/qr-code.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"]
     },
     {
       "name": "spotify-demo",
@@ -318,9 +288,7 @@
           "target": "/delta/spotify-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/spotify.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/spotify.json"]
     },
     {
       "name": "star-rating-demo",
@@ -333,9 +301,7 @@
           "target": "/delta/star-rating-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/star-rating.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/star-rating.json"]
     },
     {
       "name": "retro-button-demo",
@@ -363,9 +329,7 @@
           "target": "/delta/admonition-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
     },
     {
       "name": "embed-demo",
@@ -378,9 +342,7 @@
           "target": "/delta/embed-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/embed.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/embed.json"]
     },
     {
       "name": "scroll-progress-demo",
@@ -423,9 +385,7 @@
           "target": "/delta/highlighter-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/highlighter.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/highlighter.json"]
     },
     {
       "name": "backdrop-gradient-demo",
@@ -453,9 +413,7 @@
           "target": "/delta/smart-form-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/smart-form.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
     },
     {
       "name": "checkbox-input-demo",
@@ -483,9 +441,7 @@
           "target": "/delta/radio-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/radio-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"]
     },
     {
       "name": "date-input-demo",
@@ -498,9 +454,7 @@
           "target": "/delta/date-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/date-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/date-input.json"]
     },
     {
       "name": "switch-input-demo",
@@ -543,9 +497,7 @@
           "target": "/delta/tags-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tags-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
     },
     {
       "name": "textarea-input-demo",
@@ -603,9 +555,7 @@
           "target": "/delta/drawer-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "modal-demo",
@@ -618,9 +568,7 @@
           "target": "/delta/modal-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "tabs-demo",
@@ -664,9 +612,7 @@
           "target": "/delta/use-copy-to-clipboard-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "use-copy-to-clipboard"
-      ]
+      "registryDependencies": ["use-copy-to-clipboard"]
     },
     {
       "name": "use-interval-demo",
@@ -679,9 +625,7 @@
           "target": "/delta/use-interval-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "use-interval"
-      ]
+      "registryDependencies": ["use-interval"]
     },
     {
       "name": "use-timeout-demo",
@@ -694,9 +638,7 @@
           "target": "/delta/use-timeout-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "use-timeout"
-      ]
+      "registryDependencies": ["use-timeout"]
     },
     {
       "name": "use-document-title-demo",
@@ -709,9 +651,7 @@
           "target": "/delta/use-document-title-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "use-document-title"
-      ]
+      "registryDependencies": ["use-document-title"]
     },
     {
       "name": "use-mouse-position-demo",
@@ -724,9 +664,7 @@
           "target": "/delta/use-mouse-position-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "use-mouse-position"
-      ]
+      "registryDependencies": ["use-mouse-position"]
     },
     {
       "name": "otp-input-demo",
@@ -739,9 +677,7 @@
           "target": "/delta/otp-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "text-input-demo",
@@ -754,9 +690,7 @@
           "target": "/delta/text-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/text-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/text-input.json"]
     },
     {
       "name": "file-input-demo",
@@ -769,9 +703,7 @@
           "target": "/delta/file-input-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/file-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
     },
     {
       "name": "tabs-spotify-demo",
@@ -800,9 +732,7 @@
           "target": "/delta/drawer-modern-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "backdrop-gradient-artistic-demo",
@@ -845,9 +775,7 @@
           "target": "/delta/smart-form-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/smart-form.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
     },
     {
       "name": "code-snippet-theme-demo",
@@ -935,9 +863,7 @@
           "target": "/delta/modal-drop-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "modal-blur-demo",
@@ -950,9 +876,7 @@
           "target": "/delta/modal-blur-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "drawer-right-demo",
@@ -965,9 +889,7 @@
           "target": "/delta/drawer-right-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "drawer-scrollable-demo",
@@ -980,9 +902,7 @@
           "target": "/delta/drawer-scrollable-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "drawer-left-demo",
@@ -995,9 +915,7 @@
           "target": "/delta/drawer-left-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/drawer.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/drawer.json"]
     },
     {
       "name": "otp-input-pill-demo",
@@ -1010,9 +928,7 @@
           "target": "/delta/otp-input-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "otp-input-autofill-demo",
@@ -1025,9 +941,7 @@
           "target": "/delta/otp-input-autofill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "otp-input-numeric-demo",
@@ -1040,9 +954,7 @@
           "target": "/delta/otp-input-numeric-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "select-input-pill-demo",
@@ -1070,9 +982,7 @@
           "target": "/delta/admonition-types-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
     },
     {
       "name": "admonition-custom-demo",
@@ -1085,9 +995,7 @@
           "target": "/delta/admonition-custom-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"]
     },
     {
       "name": "switch-input-pill-demo",
@@ -1160,9 +1068,7 @@
           "target": "/delta/qr-code-custom-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/qr-code.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"]
     },
     {
       "name": "tags-input-pill-demo",
@@ -1175,9 +1081,7 @@
           "target": "/delta/tags-input-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tags-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
     },
     {
       "name": "qr-code-reactive-demo",
@@ -1190,9 +1094,7 @@
           "target": "/delta/qr-code-reactive-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/qr-code.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/qr-code.json"]
     },
     {
       "name": "tags-input-max-demo",
@@ -1205,9 +1107,7 @@
           "target": "/delta/tags-input-max-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tags-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"]
     },
     {
       "name": "textarea-input-pill-demo",
@@ -1250,9 +1150,7 @@
           "target": "/delta/file-input-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/file-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
     },
     {
       "name": "file-input-multiple-demo",
@@ -1265,9 +1163,7 @@
           "target": "/delta/file-input-multiple-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/file-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
     },
     {
       "name": "file-input-preview-demo",
@@ -1280,9 +1176,7 @@
           "target": "/delta/file-input-preview-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/file-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/file-input.json"]
     },
     {
       "name": "text-input-pill-demo",
@@ -1295,9 +1189,7 @@
           "target": "/delta/text-input-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/text-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/text-input.json"]
     },
     {
       "name": "otp-input-short-demo",
@@ -1310,9 +1202,7 @@
           "target": "/delta/otp-input-short-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "modal-custom-header-demo",
@@ -1325,9 +1215,7 @@
           "target": "/delta/modal-custom-header-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "modal-no-overlay-close-demo",
@@ -1340,9 +1228,7 @@
           "target": "/delta/modal-no-overlay-close-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "floating-object-compass-demo",
@@ -1385,9 +1271,7 @@
           "target": "/delta/tabs-pills-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tabs.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tabs.json"]
     },
     {
       "name": "modal-minimal-demo",
@@ -1400,9 +1284,7 @@
           "target": "/delta/modal-minimal-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/modal.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/modal.json"]
     },
     {
       "name": "otp-input-validation-demo",
@@ -1415,9 +1297,7 @@
           "target": "/delta/otp-input-validation-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/otp-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/otp-input.json"]
     },
     {
       "name": "animate-in-hero-demo",
@@ -1430,9 +1310,7 @@
           "target": "/delta/animate-in-hero-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "animate-in-stagger-demo",
@@ -1445,9 +1323,7 @@
           "target": "/delta/animate-in-stagger-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "animate-in-directions-demo",
@@ -1460,9 +1336,7 @@
           "target": "/delta/animate-in-directions-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "radio-input-pill-demo",
@@ -1475,9 +1349,7 @@
           "target": "/delta/radio-input-pill-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/radio-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"]
     },
     {
       "name": "radio-input-icons-demo",
@@ -1490,9 +1362,7 @@
           "target": "/delta/radio-input-icons-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/radio-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"]
     },
     {
       "name": "social-icons-monochrome-demo",
@@ -1520,9 +1390,7 @@
           "target": "/delta/embed-blocked-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/embed.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/embed.json"]
     },
     {
       "name": "tabs-sizes-demo",
@@ -1535,9 +1403,7 @@
           "target": "/delta/tabs-sizes-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/tabs.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/tabs.json"]
     },
     {
       "name": "scramble-text-intersection-demo",
@@ -1580,9 +1446,7 @@
           "target": "/delta/radio-input-no-selection-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/radio-input.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/radio-input.json"]
     },
     {
       "name": "animate-in-scale-demo",
@@ -1595,9 +1459,7 @@
           "target": "/delta/animate-in-scale-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "smart-form-registration-demo",
@@ -1610,9 +1472,7 @@
           "target": "/delta/smart-form-registration-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/smart-form.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/smart-form.json"]
     },
     {
       "name": "dropdown-menu-profile-demo",
@@ -1655,9 +1515,7 @@
           "target": "/delta/animate-in-intersection-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "animate-in-fade-demo",
@@ -1670,9 +1528,7 @@
           "target": "/delta/animate-in-fade-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/animate-in.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/animate-in.json"]
     },
     {
       "name": "bottom-bar-demo",
@@ -1701,9 +1557,7 @@
           "target": "/delta/bottom-bar-center-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/bottom-bar.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/bottom-bar.json"]
     },
     {
       "name": "bottom-bar-labels-demo",
@@ -1716,9 +1570,7 @@
           "target": "/delta/bottom-bar-labels-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/bottom-bar.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/bottom-bar.json"]
     },
     {
       "name": "toast-demo",
@@ -1731,9 +1583,7 @@
           "target": "/delta/toast-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/toast.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/toast.json"]
     },
     {
       "name": "toast-positions-demo",
@@ -1746,9 +1596,7 @@
           "target": "/delta/toast-positions-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/toast.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/toast.json"]
     },
     {
       "name": "toast-actions-demo",
@@ -1761,9 +1609,7 @@
           "target": "/delta/toast-actions-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/toast.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/toast.json"]
     },
     {
       "name": "toast-custom-demo",
@@ -1776,9 +1622,7 @@
           "target": "/delta/toast-custom-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/toast.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/toast.json"]
     },
     {
       "name": "toast-colors-demo",
@@ -1791,9 +1635,7 @@
           "target": "/delta/toast-colors-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/toast.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/toast.json"]
     },
     {
       "name": "latex-demo",
@@ -1806,9 +1648,7 @@
           "target": "/delta/latex-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/latex.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/latex.json"]
     },
     {
       "name": "latex-equations-demo",
@@ -1821,9 +1661,7 @@
           "target": "/delta/latex-equations-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/latex.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/latex.json"]
     },
     {
       "name": "latex-enhanced-demo",
@@ -1836,9 +1674,7 @@
           "target": "/delta/latex-enhanced-demo.tsx"
         }
       ],
-      "registryDependencies": [
-        "https://deltacomponents.dev/r/latex.json"
-      ]
+      "registryDependencies": ["https://deltacomponents.dev/r/latex.json"]
     },
     {
       "name": "animate-in",
@@ -1851,9 +1687,7 @@
           "target": "/delta/animate-in.tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "font-transform",
@@ -1871,9 +1705,7 @@
           "target": "/delta/font-transform.css"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "floating-object",
@@ -1886,9 +1718,7 @@
           "target": "/delta/floating-object.tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "scramble-text",
@@ -1901,9 +1731,7 @@
           "target": "/delta/scramble-text.tsx"
         }
       ],
-      "dependencies": [
-        "use-scramble"
-      ]
+      "dependencies": ["use-scramble"]
     },
     {
       "name": "dropdown-menu",
@@ -1916,9 +1744,7 @@
           "target": "/delta/dropdown-menu.tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "social-icons",
@@ -1979,9 +1805,7 @@
           "target": "/delta/admonition.tsx"
         }
       ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "embed",
@@ -1994,9 +1818,7 @@
           "target": "/delta/embed.tsx"
         }
       ],
-      "dependencies": [
-        "lucide-react"
-      ]
+      "dependencies": ["lucide-react"]
     },
     {
       "name": "scroll-progress",
@@ -2009,9 +1831,7 @@
           "target": "/delta/scroll-progress.tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "drawer",
@@ -2024,10 +1844,7 @@
           "target": "/delta/drawer.tsx"
         }
       ],
-      "dependencies": [
-        "vaul",
-        "class-variance-authority"
-      ]
+      "dependencies": ["vaul", "class-variance-authority"]
     },
     {
       "name": "modal",
@@ -2040,10 +1857,7 @@
           "target": "/delta/modal.tsx"
         }
       ],
-      "dependencies": [
-        "motion",
-        "@phosphor-icons/react"
-      ]
+      "dependencies": ["motion", "@phosphor-icons/react"]
     },
     {
       "name": "tabs",
@@ -2083,9 +1897,7 @@
           "target": "/delta/toast.tsx"
         }
       ],
-      "dependencies": [
-        "sonner"
-      ]
+      "dependencies": ["sonner"]
     },
     {
       "name": "smart-form",
@@ -2098,10 +1910,7 @@
           "target": "/delta/smart-form.tsx"
         }
       ],
-      "dependencies": [
-        "zod",
-        "utils"
-      ],
+      "dependencies": ["zod", "utils"],
       "registryDependencies": [
         "https://deltacomponents.dev/r/text-input.json",
         "https://deltacomponents.dev/r/checkbox-input.json",
@@ -2138,9 +1947,7 @@
           "target": "/delta/highlighter.tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
       "name": "qr-code",
@@ -2177,9 +1984,7 @@
           "target": "/delta/backdrop-gradient.tsx"
         }
       ],
-      "dependencies": [
-        "tailwindcss"
-      ]
+      "dependencies": ["tailwindcss"]
     },
     {
       "name": "retro-video-player",
@@ -2192,10 +1997,7 @@
           "target": "/delta/retro-video-player.tsx"
         }
       ],
-      "dependencies": [
-        "react-rnd",
-        "@phosphor-icons/react"
-      ]
+      "dependencies": ["react-rnd", "@phosphor-icons/react"]
     },
     {
       "name": "code-snippet",
@@ -2213,13 +2015,8 @@
           "target": "/delta/copy-button.tsx"
         }
       ],
-      "dependencies": [
-        "prism-react-renderer",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ]
+      "dependencies": ["prism-react-renderer", "lucide-react"],
+      "registryDependencies": ["button"]
     },
     {
       "name": "latex",
@@ -2232,10 +2029,7 @@
           "target": "/delta/latex.tsx"
         }
       ],
-      "dependencies": [
-        "react-katex",
-        "katex"
-      ]
+      "dependencies": ["react-katex", "katex"]
     },
     {
       "name": "header-sleek",
@@ -2272,11 +2066,7 @@
           "target": "/delta/bottom-bar.tsx"
         }
       ],
-      "dependencies": [
-        "@phosphor-icons/react",
-        "clsx",
-        "motion"
-      ]
+      "dependencies": ["@phosphor-icons/react", "clsx", "motion"]
     }
   ]
 }

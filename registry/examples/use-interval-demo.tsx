@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { useInterval } from "@/delta/use-interval"
 
 export default function UseIntervalDemo() {

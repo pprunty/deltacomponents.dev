@@ -1,9 +1,8 @@
 "use client"
 
 import React from "react"
-import { z } from "zod"
-
 import { OtpInput } from "@/delta/otp-input"
+import { z } from "zod"
 
 // Zod schema that only allows numeric values
 const numericOtpSchema = z

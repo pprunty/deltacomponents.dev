@@ -1,14 +1,8 @@
 "use client"
 
 import React from "react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/delta/tabs"
 import { Bell, Settings, User } from "lucide-react"
-
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/delta/tabs"
 
 export default function TabsPillsDemo() {
   return (

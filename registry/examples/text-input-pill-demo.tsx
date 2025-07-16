@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { TextInput } from "@/delta/text-input"
 
 export default function TextInputPillDemo() {

@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-
 import { CodeSnippet } from "@/delta/code-snippet"
 
 export default function CodeSnippetOptionsDemo() {

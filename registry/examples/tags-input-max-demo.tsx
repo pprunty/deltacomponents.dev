@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { TagsInput } from "@/delta/tags-input"
 
 export default function TagsInputMaxDemo() {

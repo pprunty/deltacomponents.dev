@@ -3,13 +3,11 @@
   "name": "social-icons-monochrome-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/social-icons.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/social-icons.json"],
   "files": [
     {
       "path": "registry/examples/social-icons-monochrome-demo.tsx",
-      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { SocialIcons } from \"@/delta/social-icons\"\n\nexport default function SocialIconsMonochromeDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <SocialIcons\n        icons={[\n          { platform: \"github\", href: \"https://github.com\" },\n          { platform: \"x\", href: \"https://x.com\" },\n          { platform: \"linkedin\", href: \"https://linkedin.com\" },\n          { platform: \"instagram\", href: \"https://instagram.com\" },\n          { platform: \"tiktok\", href: \"https://tiktok.com\" },\n        ]}\n        variant=\"monochrome\"\n        size={32}\n        gap={20}\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { SocialIcons } from \"@/delta/social-icons\"\n\nexport default function SocialIconsMonochromeDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <SocialIcons\n        icons={[\n          { platform: \"github\", href: \"https://github.com\" },\n          { platform: \"x\", href: \"https://x.com\" },\n          { platform: \"linkedin\", href: \"https://linkedin.com\" },\n          { platform: \"instagram\", href: \"https://instagram.com\" },\n          { platform: \"tiktok\", href: \"https://tiktok.com\" },\n        ]}\n        variant=\"monochrome\"\n        size={32}\n        gap={20}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
       "target": "/delta/social-icons-monochrome-demo.tsx"
     }

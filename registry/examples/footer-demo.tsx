@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import Footer from "@/delta/footer"
 
 export default function FooterDemo() {

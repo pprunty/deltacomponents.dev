@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pnpm format && next dev",
     "build": "next build",
-    "build:registry": "tsx ./scripts/build-registry.mts && shadcn build public/r/index.json --output public/r/",
+    "build:registry": "tsx ./scripts/build-registry.mts",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --cache .",

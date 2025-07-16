@@ -3,10 +3,7 @@
   "name": "drawer",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "vaul",
-    "class-variance-authority"
-  ],
+  "dependencies": ["vaul", "class-variance-authority"],
   "files": [
     {
       "path": "registry/components/drawer.tsx",

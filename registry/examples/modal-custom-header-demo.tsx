@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
+import Modal from "@/delta/modal"
 import { CheckCircle, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import Modal from "@/delta/modal"
 
 export default function ModalCustomHeaderDemo() {
   const [isBasicOpen, setIsBasicOpen] = useState(false)

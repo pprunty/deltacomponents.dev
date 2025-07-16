@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import BackdropGradient from "@/delta/backdrop-gradient"
 
 export default function BackdropGradientArtisticDemo() {

@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import ScrambleText from "@/delta/scramble-text"
 
 export default function ScrambleTextIntersectionDemo() {

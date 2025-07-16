@@ -9,7 +9,7 @@
       "path": "registry/examples/header-demo.tsx",
       "type": "registry:block",
       "target": "/components/delta/examples/header-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Header } from \"@/registry/layout/header\"\n\nexport function HeaderDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Header />\n    </div>\n  )\n}\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Header } from \"@/delta/header\"\n\nexport function HeaderDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Header />\n    </div>\n  )\n}\n"
     }
   ]
 }

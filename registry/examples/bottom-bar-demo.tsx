@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import BottomBar from "@/delta/bottom-bar"
 import type { IconProps } from "@phosphor-icons/react"
 import {
   Heart,
@@ -9,8 +10,6 @@ import {
   MagnifyingGlass,
   User,
 } from "@phosphor-icons/react"
-
-import BottomBar from "@/delta/bottom-bar"
 
 interface Route {
   href: string
