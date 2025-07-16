@@ -4,10 +4,113 @@ import React, { useEffect, useState } from "react"
 import { Highlight, PrismTheme } from "prism-react-renderer"
 
 import { cn } from "@/lib/utils"
-import defaultTheme from "@/styles/prism-theme.json"
 
 import { CopyButton } from "./copy-button"
-import lightTheme from "./light-theme.json"
+
+// Inline theme definitions to make component self-contained
+const defaultTheme: PrismTheme = {
+  plain: {
+    color: "#FFFFFF",
+    backgroundColor: "#151515"
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "#757575",
+        fontStyle: "italic"
+      }
+    },
+    {
+      types: ["keyword", "property", "property-access", "attr-name"],
+      style: {
+        color: "#77b7d7"
+      }
+    },
+    {
+      types: ["tag"],
+      style: {
+        color: "#dfab5c"
+      }
+    },
+    {
+      types: ["punctuation", "symbol", "dom"],
+      style: {
+        color: "#ffffff"
+      }
+    },
+    {
+      types: ["definition", "function"],
+      style: {
+        color: "#86d9ca"
+      }
+    },
+    {
+      types: ["string", "char", "attr-value"],
+      style: {
+        color: "#977cdc"
+      }
+    },
+    {
+      types: ["static", "number"],
+      style: {
+        color: "#ff6658"
+      }
+    }
+  ]
+}
+
+const lightTheme: PrismTheme = {
+  plain: {
+    color: "#24292e",
+    backgroundColor: "#FFFFFF"
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "#6a737d",
+        fontStyle: "italic"
+      }
+    },
+    {
+      types: ["keyword", "property", "property-access", "attr-name"],
+      style: {
+        color: "#d73a49"
+      }
+    },
+    {
+      types: ["tag"],
+      style: {
+        color: "#22863a"
+      }
+    },
+    {
+      types: ["punctuation", "symbol", "dom"],
+      style: {
+        color: "#24292e"
+      }
+    },
+    {
+      types: ["definition", "function"],
+      style: {
+        color: "#6f42c1"
+      }
+    },
+    {
+      types: ["string", "char", "attr-value"],
+      style: {
+        color: "#032f62"
+      }
+    },
+    {
+      types: ["static", "number"],
+      style: {
+        color: "#005cc5"
+      }
+    }
+  ]
+}
 
 interface CodeSnippetProps {
   title?: string
@@ -83,7 +186,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
       ? adaptiveTheme.dark
       : adaptiveTheme.light
     : theme ||
-      (isDark ? (defaultTheme as PrismTheme) : (lightTheme as PrismTheme))
+      (isDark ? defaultTheme : lightTheme)
 
   return (
     <div

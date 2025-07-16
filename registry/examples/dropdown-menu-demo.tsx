@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CreditCard, LogOut, Settings, User, UserCircle } from "lucide-react"
+import { CreditCard, LogOut, Settings, UserCircle } from "lucide-react"
 
 import {
   Dropdown,
