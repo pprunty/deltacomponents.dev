@@ -216,7 +216,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
           ) : null}
 
           {tabs && !title ? (
-            <div className="flex items-center px-3 pt-2.5">
+            <div className="flex items-center px-3 py-4">
               <div className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1 flex">
                 {Object.entries(tabs).map(([key]) => (
                   <button
