@@ -292,7 +292,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                 <div
                   key={i}
                   {...getLineProps({ line })}
-                  className="flex items-center py-px px-4"
+                  className="flex items-center p-4"
                   style={{}}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
