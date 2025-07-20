@@ -254,7 +254,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         </div>
       ) : null}
       <div
-        className="relative max-h-[calc(530px-44px)] pt-4"
+        className="relative max-h-[calc(530px-44px)] py-4"
         style={{
           backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
         }}
@@ -292,7 +292,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                 <div
                   key={i}
                   {...getLineProps({ line })}
-                  className="flex items-center p-4"
+                  className="flex items-center py-px px-4"
                   style={{}}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
