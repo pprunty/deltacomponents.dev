@@ -35,6 +35,7 @@
     "@react-three/drei": "^10.2.0",
     "@react-three/fiber": "^9.1.2",
     "@upstash/redis": "^1.35.1",
+    "@vercel/analytics": "^1.5.0",
     "aria-hidden": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

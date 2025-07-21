@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
@@ -129,6 +130,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {children}
           </main>
         </TooltipProvider>
+        <Analytics />
       </body>
     </html>
   )
