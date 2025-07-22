@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react"
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { TooltipProvider } from "@/components/ui/tooltip"
 import { themeEffect } from "@/components/theme-effect"
 
 import "@/styles/globals.css"
@@ -125,11 +124,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         suppressHydrationWarning
       >
-        <TooltipProvider>
-          <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
-            {children}
-          </main>
-        </TooltipProvider>
+        <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
+          {children}
+        </main>
         <Analytics />
       </body>
     </html>

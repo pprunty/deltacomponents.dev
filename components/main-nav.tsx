@@ -13,7 +13,7 @@ export function MainNav() {
     <div className="mr-4 md:px-4 hidden lg:flex items-end">
       <Link href="/" className="mr-8 flex items-center gap-3">
         <svg
-          className="size-6 fill-foreground dark:fill-foreground transition-colors"
+          className="size-8 fill-foreground dark:fill-foreground transition-colors"
           width="26"
           height="26"
           viewBox="0 0 282 308"
