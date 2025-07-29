@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site"
 
 export function SiteFooter() {
   return (
-    <div className="py-12 px-4 md:py-4 md:px-4">
+    <div className="py-6 px-4 md:py-8 md:px-4">
       <footer className="md:border-t border-border h-14 md:h-20 md:rounded-2xl md:bg-background md:border md:px-4 flex items-center justify-center md:justify-start">
         <div className="text-balance text-center text-sm md:text-base leading-loose text-muted-foreground md:text-left">
           💙 Built by{" "}

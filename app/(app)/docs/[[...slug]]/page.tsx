@@ -178,7 +178,7 @@ export default async function DocPage(props: {
       >
         <div
           className={cn(
-            "mx-auto w-full min-w-0 md:rounded-2xl md:bg-background md:border-border md:border md:p-6 md:px-8",
+            "mx-auto w-full min-w-0 md:rounded-2xl md:bg-background md:border-border md:border md:p-6",
             doc.toc ? "max-w-3xl" : "max-w-none"
           )}
         >
@@ -265,15 +265,15 @@ export default async function DocPage(props: {
           </Suspense>
         </div>
         {doc.toc && (
-          <div className="hidden text-sm xl:block pr-4">
-            <div className="sticky top-6 pb-5 z-30 w-full shrink-0">
+          <div className="hidden text-sm xl:block">
+            <div className="sticky top-4 pb-5 z-30 w-full shrink-0">
               <ScrollArea
                 className={cn(
                   "rounded-2xl bg-background border-border border",
-                  isLargeToc ? "max-h-screen" : "max-h-[calc(100vh-6rem)]"
+                  isLargeToc ? "max-h-screen" : "max-h-[calc(100vh-4rem)]"
                 )}
               >
-                <div className="p-4 lg:p-6 space-y-4">
+                <div className="p-4 lg:p-6 space-y-5">
                   {doc.toc && (
                     <Suspense
                       fallback={<div>Loading table of contents...</div>}
@@ -284,34 +284,32 @@ export default async function DocPage(props: {
                   <Suspense fallback={<div>Loading contribute links...</div>}>
                     <Contribute slug={doc.slug} />
                   </Suspense>
-
-                  {/* Twitter follow card */}
-                  <div className="mt-4 rounded-lg border border-border p-4 hover:bg-accent transition-colors">
-                    <Link
-                      href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 group no-after"
-                    >
-                      <Image
-                        src="/images/pp.png"
-                        alt="Patrick Prunty"
-                        width={42}
-                        height={42}
-                        className="rounded-md object-cover"
-                      />
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium">
-                          Follow me on 𝕏
-                        </span>
-                        <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                          @pprunty_
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
                 </div>
               </ScrollArea>
+
+              {/* Twitter follow card - beneath TOC border */}
+              <div className="mt-6 rounded-2xl bg-background border-border border px-4 py-6 hover:bg-accent transition-colors">
+                <Link
+                  href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 group no-after"
+                >
+                  <Image
+                    src="/images/pp.png"
+                    alt="Patrick Prunty"
+                    width={42}
+                    height={42}
+                    className="rounded-md object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium">Follow me on 𝕏</span>
+                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                      @pprunty_
+                    </span>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         )}
