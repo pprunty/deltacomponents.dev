@@ -1,0 +1,97 @@
+---
+title: Marquee
+description: A smooth, highly customizable marquee component with support for dragging, hover effects, scroll velocity, and various animation options.
+---
+
+<ComponentPreview name="marquee-basic-demo" />
+
+## Overview
+
+The Marquee component provides smooth horizontal or vertical scrolling animation for content. It supports advanced features like drag interaction, hover slowdown, scroll-aware direction changes, and custom easing functions.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/marquee
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="marquee" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import Marquee from "@/registry/components/marquee"
+
+export function Component() {
+  return (
+    <div className="w-full overflow-hidden">
+      <Marquee baseVelocity={20} className="py-4">
+        <div className="flex gap-8 mr-8">
+          <div className="rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium">
+            React
+          </div>
+          <div className="rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium">
+            Next.js
+          </div>
+          <div className="rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium">
+            TypeScript
+          </div>
+        </div>
+      </Marquee>
+    </div>
+  )
+}
+```
+
+## API Reference
+
+| Parameter              | Type                                            | Default                           | Description                                                          |
+| ---------------------- | ----------------------------------------------- | --------------------------------- | -------------------------------------------------------------------- |
+| `children`             | `React.ReactNode`                               | -                                 | The elements to be scrolled                                          |
+| `className`            | `string`                                        | -                                 | Additional CSS classes for the container                             |
+| `direction`            | `"left" \| "right" \| "up" \| "down"`           | `"right"`                         | The direction of the marquee                                         |
+| `baseVelocity`         | `number`                                        | `5`                               | The base velocity of the marquee in pixels per second                |
+| `easing`               | `(value: number) => number`                     | -                                 | The easing function for the animation                                |
+| `slowdownOnHover`      | `boolean`                                       | `false`                           | Whether to slow down the animation on hover                          |
+| `slowDownFactor`       | `number`                                        | `0.3`                             | The factor to slow down the animation on hover                       |
+| `slowDownSpringConfig` | `SpringOptions`                                 | `{ damping: 50, stiffness: 400 }` | The spring config for the slow down animation                        |
+| `useScrollVelocity`    | `boolean`                                       | `false`                           | Whether to use the scroll velocity to control the marquee speed      |
+| `scrollAwareDirection` | `boolean`                                       | `false`                           | Whether to adjust the direction based on the scroll direction        |
+| `scrollSpringConfig`   | `SpringOptions`                                 | `{ damping: 50, stiffness: 400 }` | The spring config for the scroll velocity-based direction adjustment |
+| `scrollContainer`      | `RefObject<HTMLElement> \| HTMLElement \| null` | -                                 | The container to use for the scroll velocity                         |
+| `repeat`               | `number`                                        | `3`                               | The number of times to repeat the children                           |
+| `draggable`            | `boolean`                                       | `false`                           | Whether to allow dragging of the marquee                             |
+| `dragSensitivity`      | `number`                                        | `0.2`                             | The sensitivity of the drag movement                                 |
+| `dragVelocityDecay`    | `number`                                        | `0.96`                            | The decay of the drag velocity                                       |
+| `dragAwareDirection`   | `boolean`                                       | `false`                           | Whether to adjust the direction based on the drag velocity           |
+| `dragAngle`            | `number`                                        | `0`                               | The angle of the drag movement in degrees                            |
+| `grabCursor`           | `boolean`                                       | `false`                           | Whether to change the cursor to grabbing when dragging               |

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/marquee.json"],
+  "files": [
+    {
+      "path": "registry/examples/marquee-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Marquee } from \"@/delta/marquee\"\n\nexport function MarqueeDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Marquee />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/delta/marquee-demo.tsx"
+    }
+  ]
+}

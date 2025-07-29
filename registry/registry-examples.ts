@@ -2,6 +2,16 @@ import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "marquee-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/marquee-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "dropdown-menu-demo",
     type: "registry:block",
     files: [
@@ -1217,6 +1227,17 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/latex-enhanced-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "marquee-basic-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    files: [
+      {
+        path: "examples/marquee-basic-demo.tsx",
         type: "registry:block",
       },
     ],

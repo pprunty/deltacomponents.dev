@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { themeEffect } from "@/components/theme-effect"
+import Marquee from "@/registry/components/marquee"
 
 import "@/styles/globals.css"
 
@@ -118,15 +119,27 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={cn(
-          "flex items-center justify-center w-full text-foreground antialiased [font-synthesis-weight:none]",
+          "flex flex-col w-full text-foreground antialiased [font-synthesis-weight:none]",
           fontSans.variable,
           fontMono.variable
         )}
         suppressHydrationWarning
       >
-        <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
-          {children}
-        </main>
+        <div className="fixed top-0 left-0 right-0 z-[60] h-4 bg-black dark:bg-white overflow-hidden">
+          <Marquee baseVelocity={5} className="h-full">
+            <div className="flex items-center h-full px-4 py-1">
+              <span className="text-sm text-white dark:text-black whitespace-nowrap py-2">
+                Note: This project is still in development and has not been
+                publicly released. Coming soon.
+              </span>
+            </div>
+          </Marquee>
+        </div>
+        <div className="flex items-center justify-center w-full pt-4">
+          <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
+            {children}
+          </main>
+        </div>
         <Analytics />
       </body>
     </html>

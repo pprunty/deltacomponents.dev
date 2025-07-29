@@ -105,7 +105,12 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/embed",
           items: [],
         },
-
+        {
+          title: "Marquee",
+          href: "/docs/components/marquee",
+          items: [],
+          label: "New",
+        },
         {
           title: "Modal",
           href: "/docs/components/modal",

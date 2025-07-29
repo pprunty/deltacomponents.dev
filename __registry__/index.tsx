@@ -228,6 +228,21 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "marquee-demo": {
+    name: "marquee-demo",
+    type: "registry:block",
+    registryDependencies: ["marquee"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/marquee-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/marquee-demo")),
+    source: "",
+  },
   "dropdown-menu-demo": {
     name: "dropdown-menu-demo",
     type: "registry:block",
@@ -2085,6 +2100,23 @@ export const Index: Record<string, any> = {
     ),
     source: "",
   },
+  "marquee-basic-demo": {
+    name: "marquee-basic-demo",
+    type: "registry:block",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/marquee-basic-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/marquee-basic-demo")
+    ),
+    source: "",
+  },
   "animate-in": {
     name: "animate-in",
     type: "registry:component",
@@ -2158,6 +2190,21 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/animations/scramble-text")),
+    source: "",
+  },
+  marquee: {
+    name: "marquee",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/components/marquee.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/components/marquee")),
     source: "",
   },
   "dropdown-menu": {

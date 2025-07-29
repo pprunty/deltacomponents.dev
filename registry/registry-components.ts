@@ -2,6 +2,17 @@ import type { Registry } from "@/registry/schema"
 
 export const components: Registry = [
   {
+    name: "marquee",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/marquee.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "dropdown-menu",
     type: "registry:component",
     dependencies: ["motion"],

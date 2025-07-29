@@ -134,6 +134,19 @@
       "dependencies": ["zod"]
     },
     {
+      "name": "marquee-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/marquee-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/marquee-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/marquee.json"]
+    },
+    {
       "name": "dropdown-menu-demo",
       "type": "registry:block",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -1677,6 +1690,19 @@
       "registryDependencies": ["https://deltacomponents.dev/r/latex.json"]
     },
     {
+      "name": "marquee-basic-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/marquee-basic-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/marquee-basic-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/marquee.json"]
+    },
+    {
       "name": "animate-in",
       "type": "registry:component",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -1732,6 +1758,18 @@
         }
       ],
       "dependencies": ["use-scramble"]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:component",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/components/marquee.tsx",
+          "type": "registry:component",
+          "target": "/delta/marquee.tsx"
+        }
+      ]
     },
     {
       "name": "dropdown-menu",
