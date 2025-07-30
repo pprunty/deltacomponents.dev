@@ -125,10 +125,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         suppressHydrationWarning
       >
-        <div className="fixed top-0 left-0 right-0 z-[60] h-4 bg-black dark:bg-white overflow-hidden">
+        <div className="fixed top-0 left-0 right-0 z-[60] h-8 bg-black dark:bg-white overflow-hidden">
           <Marquee baseVelocity={5} className="h-full">
-            <div className="flex items-center h-full px-4 py-1">
-              <span className="text-sm text-white dark:text-black whitespace-nowrap py-2">
+            <div className="flex items-center h-full px-4 py-2">
+              <span className="text-sm text-white dark:text-black whitespace-nowrap">
                 Note: This project is still in development and has not been
                 publicly released. Coming soon.
               </span>

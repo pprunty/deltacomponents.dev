@@ -15,8 +15,8 @@ import ThemeSwitcher from "@/components/theme-switcher"
 
 export function SiteHeader() {
   return (
-    <div className="px-4 pt-4  md:px-4 md:pt-6">
-      <header className="fixed top-4 left-0 right-0 z-50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/90 border-b border-border md:static md:top-0 md:rounded-2xl md:bg-background md:border md:backdrop-blur-none">
+    <div className="px-4 pt-14  md:px-4 md:pt-6">
+      <header className="fixed top-8 left-0 right-0 z-50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/90 border-b border-border md:static md:top-0 md:rounded-2xl md:bg-background md:border md:backdrop-blur-none">
         <div className="flex h-14 md:h-20 items-center px-4 md:px-4">
           <MainNav />
           <MobileNav />
