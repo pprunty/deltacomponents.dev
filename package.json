@@ -46,7 +46,7 @@
     "jotai": "^2.12.5",
     "katex": "^0.16.22",
     "lodash.debounce": "^4.0.8",
-    "lucide-react": "^0.468.0",
+    "lucide-react": "^0.535.0",
     "maath": "^0.10.7",
     "motion": "^12.12.1",
     "next": "15.3.3",
