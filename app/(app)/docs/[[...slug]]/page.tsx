@@ -288,7 +288,7 @@ export default async function DocPage(props: {
               </ScrollArea>
 
               {/* Twitter follow card - beneath TOC border */}
-              <div className="mt-6 rounded-2xl bg-background border-border border px-4 py-6 hover:bg-accent transition-colors">
+              <div className="mt-6 rounded-2xl bg-background border-border border px-4 py-4 hover:bg-accent transition-colors">
                 <Link
                   href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
                   target="_blank"
