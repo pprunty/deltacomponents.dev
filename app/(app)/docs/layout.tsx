@@ -16,7 +16,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
       <SiteHeader />
       <div className="px-4 md:px-4">
         <div className="items-start xl:grid xl:grid-cols-[340px_minmax(0,1fr)] xl:gap-4 justify-center">
-          <aside className="sticky top-4 pb-5 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 lg:block mt-4">
+          <aside className="sticky top-4 pb-5 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 xl:block mt-4">
             <div className="rounded-2xl bg-background h-full border-border border">
               <ScrollArea className="h-full">
                 <DocsNav config={docsConfig} />
