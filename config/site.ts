@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://deltacomponents.dev",
   ogImage: "https://deltacomponents.dev/icon.webp",
   description:
-    "A collection of reusable react hooks that you can copy and paste into your apps.",
+    "A collection of modern, high-performance, and customizable React components.",
   links: {
     twitter: "https://twitter.com/pprunty_",
     github: "https://github.com/pprunty/deltacomponents.dev",
