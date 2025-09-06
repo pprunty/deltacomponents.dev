@@ -208,6 +208,11 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "YouTube",
+          href: "/docs/media/youtube",
+          items: [],
+        },
       ],
     },
     {
