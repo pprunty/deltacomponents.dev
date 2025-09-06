@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/sonner"
 import { themeEffect } from "@/components/theme-effect"
 import Marquee from "@/registry/components/marquee"
 
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: "/og/og.png",
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: ["/og/1200x6238-twitter.png"],
     creator: "@pprunty_",
   },
   icons: {
@@ -141,6 +142,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </main>
         </div>
         <Analytics />
+        <Toaster />
       </body>
     </html>
   )

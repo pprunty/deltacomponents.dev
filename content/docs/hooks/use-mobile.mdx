@@ -1,0 +1,74 @@
+---
+title: useMobile
+description: A React hook that detects if the current viewport is mobile-sized.
+---
+
+<ComponentPreview name="use-mobile-demo" />
+
+## Overview
+
+The `useMobile` hook provides a simple way to detect if the current viewport width is below the mobile breakpoint (640px). It automatically updates on window resize and is useful for conditional rendering based on screen size.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/use-mobile
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="use-mobile" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import { useMobile } from "@/registry/hooks/use-mobile"
+
+export function Component() {
+  const isMobile = useMobile()
+
+  return (
+    <div>
+      {isMobile ? <p>You're on mobile! 📱</p> : <p>You're on desktop! 🖥️</p>}
+    </div>
+  )
+}
+```
+
+## API Reference
+
+### Return Value
+
+| Type    | Description                                                        |
+| ------- | ------------------------------------------------------------------ |
+| boolean | `true` if the viewport width is less than 640px, `false` otherwise |
+
+## Features
+
+- **Reactive**: Automatically updates on window resize
+- **Performance**: Uses efficient event listeners with proper cleanup
+- **SSR-safe**: Handles server-side rendering gracefully
+- **Tailwind-aligned**: Uses the same breakpoint as Tailwind's `sm` (640px)

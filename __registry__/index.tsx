@@ -228,6 +228,138 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/inputs/text-input")),
     source: "",
   },
+  "use-mobile-demo": {
+    name: "use-mobile-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/use-mobile-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/use-mobile-demo")),
+    source: "",
+  },
+  "youtube-demo": {
+    name: "youtube-demo",
+    type: "registry:block",
+    registryDependencies: ["youtube"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/youtube-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/examples/youtube-demo")),
+    source: "",
+  },
+  "cambio-image-demo": {
+    name: "cambio-image-demo",
+    type: "registry:block",
+    registryDependencies: ["cambio-image"],
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-demo")
+    ),
+    source: "",
+  },
+  "cambio-image-grid-demo": {
+    name: "cambio-image-grid-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-grid-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-grid-demo")
+    ),
+    source: "",
+  },
+  "cambio-image-accessible-demo": {
+    name: "cambio-image-accessible-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-accessible-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-accessible-demo")
+    ),
+    source: "",
+  },
+  "cambio-image-bouncy-demo": {
+    name: "cambio-image-bouncy-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-bouncy-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-bouncy-demo")
+    ),
+    source: "",
+  },
+  "cambio-image-snappy-demo": {
+    name: "cambio-image-snappy-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-snappy-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-snappy-demo")
+    ),
+    source: "",
+  },
+  "cambio-image-advanced-demo": {
+    name: "cambio-image-advanced-demo",
+    type: "registry:block",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/examples/cambio-image-advanced-demo.tsx",
+        type: "registry:block",
+        target: "",
+      },
+    ],
+    component: React.lazy(
+      () => import("@/registry/examples/cambio-image-advanced-demo")
+    ),
+    source: "",
+  },
   "marquee-demo": {
     name: "marquee-demo",
     type: "registry:block",
@@ -2519,6 +2651,36 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/landing-page/highlighter")),
+    source: "",
+  },
+  youtube: {
+    name: "youtube",
+    type: "registry:component",
+    registryDependencies: ["use-mobile"],
+    tags: [],
+    files: [
+      {
+        path: "registry/media/youtube.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/media/youtube")),
+    source: "",
+  },
+  "cambio-image": {
+    name: "cambio-image",
+    type: "registry:component",
+    registryDependencies: undefined,
+    tags: [],
+    files: [
+      {
+        path: "registry/media/cambio-image.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(() => import("@/registry/media/cambio-image")),
     source: "",
   },
   "qr-code": {

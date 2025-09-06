@@ -2,6 +2,86 @@ import type { Registry } from "@/registry/schema"
 
 export const examples: Registry = [
   {
+    name: "use-mobile-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/use-mobile-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "youtube-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/youtube-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-grid-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-grid-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-accessible-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-accessible-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-bouncy-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-bouncy-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-snappy-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-snappy-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-advanced-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/cambio-image-advanced-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "marquee-demo",
     type: "registry:block",
     files: [

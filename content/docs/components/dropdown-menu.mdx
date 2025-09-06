@@ -1,13 +1,13 @@
 ---
 title: Dropdown Menu
-description: A flexible dropdown menu component with smooth animations, smart positioning, and customizable styling.
+description: A flexible dropdown menu component built on Radix UI with smooth animations and customizable styling.
 ---
 
 <ComponentPreview name="dropdown-menu-demo" />
 
 ## Overview
 
-The Dropdown Menu component provides a compound component pattern for creating interactive dropdown menus with smooth animations, keyboard navigation, and smart positioning. It automatically adjusts placement based on available screen space and supports multiple alignment options.
+The Dropdown Menu component is built on top of Radix UI's dropdown-menu primitive, providing a robust and accessible dropdown menu solution with built-in keyboard navigation, focus management, and positioning capabilities.
 
 ## Installation
 
@@ -33,70 +33,12 @@ npx shadcn@latest add https://deltacomponents.dev/r/dropdown-menu.json
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install framer-motion lucide-react
+npm install @radix-ui/react-dropdown-menu lucide-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="dropdown-menu" />
-
-<Step>Copy the required hooks into your project.</Step>
-
-Create `hooks/use-click-away.tsx`:
-
-```tsx
-"use client"
-
-import { useEffect, type RefObject } from "react"
-
-type RefType = RefObject<HTMLElement | null>
-
-export function useClickAway(refs: RefType | RefType[], callback: () => void) {
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      const refsArray = Array.isArray(refs) ? refs : [refs]
-
-      const isOutside = refsArray.every((ref) => {
-        return ref.current && !ref.current.contains(event.target as Node)
-      })
-
-      if (isOutside) {
-        callback()
-      }
-    }
-
-    document.addEventListener("mousedown", handleClick)
-
-    return () => {
-      document.removeEventListener("mousedown", handleClick)
-    }
-  }, [refs, callback])
-}
-```
-
-Create `hooks/use-key-press.tsx`:
-
-```tsx
-"use client"
-
-import { useEffect } from "react"
-
-export function useKeyPress(targetKey: string, callback: () => void) {
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === targetKey) {
-        callback()
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyPress)
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress)
-    }
-  }, [targetKey, callback])
-}
-```
 
 </Steps>
 
@@ -109,89 +51,88 @@ export function useKeyPress(targetKey: string, callback: () => void) {
 ```tsx
 "use client"
 
-import * as React from "react"
-import { LogOut, Settings, User } from "lucide-react"
+import { LogOut, Settings } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
 import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-  DropdownTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/dropdown-menu"
 
 export function UserMenu() {
   return (
-    <Dropdown>
-      <DropdownTrigger>
-        <button className="p-2 rounded-md border">
-          <User className="h-4 w-4" />
-        </button>
-      </DropdownTrigger>
-      <DropdownContent align="end">
-        <DropdownItem>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem>
           <Settings className="h-4 w-4 mr-2" />
           Settings
-        </DropdownItem>
-        <DropdownSeparator />
-        <DropdownItem destructive>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="text-destructive focus:text-destructive focus:bg-destructive/10">
           <LogOut className="h-4 w-4 mr-2" />
           Log out
-        </DropdownItem>
-      </DropdownContent>
-    </Dropdown>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 ```
 
 ## API Reference
 
-### Dropdown
+### DropdownMenu
 
-The root container component that provides context for all dropdown subcomponents.
+The root container component that provides context for all dropdown subcomponents. Built on Radix UI's DropdownMenu.Root.
 
-| Name        | Type        | Default | Description                                       |
-| ----------- | ----------- | ------- | ------------------------------------------------- |
-| `children`  | `ReactNode` | -       | The dropdown trigger and content components       |
-| `className` | `string`    | -       | Additional CSS classes for the dropdown container |
+| Name           | Type                      | Default | Description                                            |
+| -------------- | ------------------------- | ------- | ------------------------------------------------------ |
+| `children`     | `ReactNode`               | -       | The dropdown trigger and content components            |
+| `open`         | `boolean`                 | -       | The controlled open state of the dropdown              |
+| `onOpenChange` | `(open: boolean) => void` | -       | Event handler called when the open state changes       |
+| `defaultOpen`  | `boolean`                 | `false` | The open state of the dropdown when initially rendered |
 
-### DropdownTrigger
+### DropdownMenuTrigger
 
-The trigger element that opens/closes the dropdown when clicked.
+The trigger element that opens/closes the dropdown when clicked. Built on Radix UI's DropdownMenu.Trigger.
 
-| Name        | Type        | Default | Description                                |
-| ----------- | ----------- | ------- | ------------------------------------------ |
-| `children`  | `ReactNode` | -       | The trigger content (button, avatar, etc.) |
-| `className` | `string`    | -       | Additional CSS classes for the trigger     |
+| Name       | Type        | Default | Description                                        |
+| ---------- | ----------- | ------- | -------------------------------------------------- |
+| `children` | `ReactNode` | -       | The trigger content (button, avatar, etc.)         |
+| `asChild`  | `boolean`   | `false` | Change the component to merge props into the child |
 
-### DropdownContent
+### DropdownMenuContent
 
-The content container that appears when the dropdown is open.
+The content container that appears when the dropdown is open. Built on Radix UI's DropdownMenu.Content.
 
-| Name         | Type                           | Default   | Description                              |
-| ------------ | ------------------------------ | --------- | ---------------------------------------- |
-| `children`   | `ReactNode`                    | -         | The dropdown items and separators        |
-| `className`  | `string`                       | -         | Additional CSS classes for the content   |
-| `align`      | `"start" \| "center" \| "end"` | `"start"` | Horizontal alignment relative to trigger |
-| `side`       | `"left" \| "right"`            | `"left"`  | Which side to align from                 |
-| `placement`  | `"top" \| "bottom" \| "auto"`  | `"auto"`  | Vertical placement relative to trigger   |
-| `sideOffset` | `number`                       | `1`       | Distance from trigger in pixels          |
+| Name          | Type                                     | Default    | Description                                                     |
+| ------------- | ---------------------------------------- | ---------- | --------------------------------------------------------------- |
+| `children`    | `ReactNode`                              | -          | The dropdown items and separators                               |
+| `className`   | `string`                                 | -          | Additional CSS classes for the content                          |
+| `side`        | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | The preferred side of the trigger to render against             |
+| `align`       | `"start" \| "center" \| "end"`           | `"center"` | The preferred alignment against the trigger                     |
+| `sideOffset`  | `number`                                 | `4`        | The distance in pixels from the trigger                         |
+| `alignOffset` | `number`                                 | `0`        | An offset in pixels from the "start" or "end" alignment options |
 
-### DropdownItem
+### DropdownMenuItem
 
-Individual clickable items within the dropdown.
+Individual clickable items within the dropdown. Built on Radix UI's DropdownMenu.Item.
 
-| Name          | Type         | Default | Description                            |
-| ------------- | ------------ | ------- | -------------------------------------- |
-| `children`    | `ReactNode`  | -       | The item content                       |
-| `className`   | `string`     | -       | Additional CSS classes for the item    |
-| `onClick`     | `() => void` | -       | Callback when item is clicked          |
-| `disabled`    | `boolean`    | `false` | Whether the item is disabled           |
-| `destructive` | `boolean`    | `false` | Whether to style as destructive action |
+| Name        | Type                     | Default | Description                                        |
+| ----------- | ------------------------ | ------- | -------------------------------------------------- |
+| `children`  | `ReactNode`              | -       | The item content                                   |
+| `className` | `string`                 | -       | Additional CSS classes for the item                |
+| `onSelect`  | `(event: Event) => void` | -       | Event handler called when the user selects an item |
+| `disabled`  | `boolean`                | `false` | Whether the item is disabled                       |
 
-### DropdownSeparator
+### DropdownMenuSeparator
 
-A visual separator between dropdown items.
+A visual separator between dropdown items. Built on Radix UI's DropdownMenu.Separator.
 
 | Name        | Type     | Default | Description                              |
 | ----------- | -------- | ------- | ---------------------------------------- |
@@ -201,78 +142,81 @@ A visual separator between dropdown items.
 
 ### Smart Positioning
 
-The dropdown automatically adjusts its position based on available screen space when `placement="auto"` is used.
+Built on Radix UI's collision detection system, the dropdown automatically adjusts its position based on available viewport space.
 
 ### Keyboard Navigation
 
 - **Escape**: Closes the dropdown
-- **Tab**: Normal tab navigation
+- **Arrow Keys**: Navigate between items
+- **Enter/Space**: Activate focused item
+- **Tab**: Close dropdown and continue tab sequence
 - **Click outside**: Closes the dropdown
 
 ### Animations
 
-Smooth spring-based animations using Framer Motion with proper transform origins based on positioning.
+Smooth CSS-based animations with proper transform origins using Tailwind CSS animation utilities.
 
 ### Accessibility
 
-- Proper ARIA attributes
+- Full compliance with WAI-ARIA design patterns
 - Keyboard navigation support
-- Focus management
-- Screen reader friendly
+- Focus management with focus trapping
+- Screen reader announcements
+- Proper semantic markup
 
 ## Examples
 
 ### Different Alignments
 
 ```tsx
-// Align to start (left/right edge)
-<DropdownContent align="start">
+// Align to start (left edge)
+<DropdownMenuContent side="bottom" align="start">
   {/* items */}
-</DropdownContent>
+</DropdownMenuContent>
 
 // Center alignment
-<DropdownContent align="center">
+<DropdownMenuContent side="bottom" align="center">
   {/* items */}
-</DropdownContent>
+</DropdownMenuContent>
 
-// Align to end (opposite edge)
-<DropdownContent align="end">
+// Align to end (right edge)
+<DropdownMenuContent side="bottom" align="end">
   {/* items */}
-</DropdownContent>
+</DropdownMenuContent>
 ```
 
 ### Custom Positioning
 
 ```tsx
 // Position above trigger
-<DropdownContent placement="top" sideOffset={12}>
+<DropdownMenuContent side="top" sideOffset={8}>
   {/* items */}
-</DropdownContent>
+</DropdownMenuContent>
 
-// Position below with custom offset
-<DropdownContent placement="bottom" sideOffset={4}>
+// Position to the right with custom offset
+<DropdownMenuContent side="right" sideOffset={4}>
   {/* items */}
-</DropdownContent>
+</DropdownMenuContent>
 ```
 
 ### With Icons and States
 
 ```tsx
-<DropdownContent>
-  <DropdownItem>
+<DropdownMenuContent>
+  <DropdownMenuItem>
     <User className="h-4 w-4 mr-2" />
     Profile
-  </DropdownItem>
-  <DropdownItem disabled>
+  </DropdownMenuItem>
+  <DropdownMenuItem disabled>
     <Settings className="h-4 w-4 mr-2" />
     Settings (disabled)
-  </DropdownItem>
-  <DropdownSeparator />
-  <DropdownItem destructive>
+  </DropdownMenuItem>
+  <DropdownMenuSeparator />
+  <DropdownMenuItem className="text-destructive focus:text-destructive focus:bg-destructive/10">
     <LogOut className="h-4 w-4 mr-2" />
     Delete Account
-  </DropdownItem>
-</DropdownContent>
+  </DropdownMenuItem>
+</DropdownMenuContent>
 ```
 
 ### Profile Dropdown
@@ -281,8 +225,8 @@ A more complex example with user profile information:
 
 <ComponentPreview name="dropdown-menu-profile-demo" />
 
-### Auto-Positioning
+### Positioning
 
-Demonstrates the smart positioning feature where dropdowns automatically adjust their placement based on available screen space:
+Demonstrates different positioning options using Radix UI's built-in collision detection:
 
 <ComponentPreview name="dropdown-menu-positions-demo" />

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "youtube",
+  "type": "registry:component",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["use-mobile"],
+  "files": [
+    {
+      "path": "registry/media/youtube.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { useMobile } from \"@/delta/use-mobile\"\nimport { Skeleton } from \"@/components/ui/skeleton\"\n\ninterface YouTubeProps {\n  videoId: string\n  className?: string\n  autoplay?: boolean\n}\n\nexport default function YouTube({ videoId, className = \"\", autoplay = false }: YouTubeProps) {\n  const isMobile = useMobile()\n  const [isLoaded, setIsLoaded] = useState(false)\n\n  const params = new URLSearchParams({\n    rel: \"0\",\n    modestbranding: \"1\",\n    controls: \"1\",\n    playsinline: \"1\",\n    ...(autoplay && !isMobile ? { autoplay: \"1\", mute: \"1\" } : {}),\n  }).toString()\n\n  const src = `https://www.youtube-nocookie.com/embed/${videoId}?${params}`\n\n  return (\n    <div className={`relative w-full aspect-video overflow-hidden ${className}`}>\n      {!isLoaded && (\n        <Skeleton className=\"absolute inset-0 w-full h-full\" />\n      )}\n      <iframe\n        title=\"YouTube video\"\n        src={src}\n        className=\"absolute inset-0 h-full w-full\"\n        loading=\"lazy\"\n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        allowFullScreen\n        onLoad={() => setIsLoaded(true)}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "/delta/youtube.tsx"
+    }
+  ]
+}

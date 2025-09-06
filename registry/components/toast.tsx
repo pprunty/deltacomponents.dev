@@ -1,10 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { toast as sonnerToast, Toaster as SonnerToaster } from "sonner"
-import type { ToasterProps } from "sonner"
+import { toast as sonnerToast } from "sonner"
 
 import { cn } from "@/lib/utils"
+import { Toaster as ShadcnToaster } from "@/components/ui/sonner"
 
 // Toast theme configuration based on admonition colors
 const toastTheme = {
@@ -35,7 +35,8 @@ const toastTheme = {
   },
 }
 
-export interface ToastProviderProps extends Omit<ToasterProps, "theme"> {
+export interface ToastProviderProps
+  extends Omit<React.ComponentProps<typeof ShadcnToaster>, "theme"> {
   /**
    * Position of the toast
    * @default "bottom-right"
@@ -88,7 +89,7 @@ export function ToastProvider({
   ...props
 }: ToastProviderProps) {
   return (
-    <SonnerToaster
+    <ShadcnToaster
       position={position}
       richColors={richColors}
       visibleToasts={visibleToasts}
@@ -179,8 +180,11 @@ export const toast = Object.assign(
   }
 )
 
-// Re-export types for convenience
-export type { ToasterProps } from "sonner"
+// Re-export the Toaster for convenience
+export const Toaster = ShadcnToaster
 
-// Default export for backwards compatibility (deprecated - use ToastProvider instead)
+// Re-export types for convenience
+export type ToasterProps = React.ComponentProps<typeof ShadcnToaster>
+
+// Default export for backwards compatibility
 export default ToastProvider

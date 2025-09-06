@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cambio-image-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/cambio-image.json"],
+  "files": [
+    {
+      "path": "registry/examples/cambio-image-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport CambioImage from \"@/delta/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"w-full max-w-lg mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Delta Components Twitter Card\"\n        width={1200}\n        height={6238}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/delta/cambio-image-demo.tsx"
+    }
+  ]
+}

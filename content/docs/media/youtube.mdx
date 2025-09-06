@@ -1,0 +1,81 @@
+---
+title: YouTube
+description: A responsive YouTube video component with privacy-focused embedding and loading states.
+---
+
+<ComponentPreview name="youtube-demo" />
+
+## Overview
+
+The YouTube component provides a clean, responsive way to embed YouTube videos using the privacy-enhanced youtube-nocookie.com domain. It includes skeleton loading states and mobile-optimized autoplay behavior.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/youtube
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="youtube" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+"use client"
+
+import YouTube from "@/registry/media/youtube"
+
+export function Component() {
+  return (
+    <div className="w-full max-w-2xl mx-auto">
+      <YouTube videoId="0RXdd0pCJ9Q" />
+    </div>
+  )
+}
+```
+
+## API Reference
+
+### Parameters
+
+| Name      | Type    | Default | Description                                         |
+| --------- | ------- | ------- | --------------------------------------------------- |
+| videoId   | string  | -       | The YouTube video ID (extracted from the video URL) |
+| className | string  | ""      | Additional CSS classes to apply to the container    |
+| autoplay  | boolean | false   | Whether to autoplay the video (disabled on mobile)  |
+
+## Features
+
+- **Privacy-focused**: Uses youtube-nocookie.com for enhanced privacy
+- **Responsive**: Maintains 16:9 aspect ratio across all screen sizes
+- **Loading states**: Shows skeleton while video loads
+- **Mobile-optimized**: Disables autoplay on mobile devices for better UX
+- **Accessible**: Includes proper iframe attributes and titles

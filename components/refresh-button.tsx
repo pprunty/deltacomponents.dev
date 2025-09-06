@@ -11,7 +11,7 @@ export function RefreshButton({ onRefresh }: RefreshButtonProps) {
     <Button
       aria-label="Refresh component"
       variant="default"
-      className="h-8 w-8 rounded-[6px] border p-0"
+      className="h-8 w-8 rounded-[6px] border p-0 z-[995]"
       onClick={onRefresh}
     >
       <ArrowClockwise className="h-3 w-3" />

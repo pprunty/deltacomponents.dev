@@ -2,6 +2,28 @@ import type { Registry } from "@/registry/schema"
 
 export const media: Registry = [
   {
+    name: "youtube",
+    type: "registry:component",
+    registryDependencies: ["use-mobile"],
+    files: [
+      {
+        path: "media/youtube.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "cambio-image",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "media/cambio-image.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "qr-code",
     type: "registry:component",
     registryDependencies: [],

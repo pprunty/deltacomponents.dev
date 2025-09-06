@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "youtube-demo",
+  "type": "registry:block",
+  "author": "patrick prunty <https://www.patrickprunty.com>",
+  "registryDependencies": ["https://deltacomponents.dev/r/youtube.json"],
+  "files": [
+    {
+      "path": "registry/examples/youtube-demo.tsx",
+      "content": "\"use client\"\n\nimport YouTube from \"@/delta/youtube\"\n\nexport default function YouTubeDemo() {\n  return (\n    <div className=\"w-full max-w-2xl mx-auto\">\n      <YouTube videoId=\"0RXdd0pCJ9Q\" />\n    </div>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "/delta/youtube-demo.tsx"
+    }
+  ]
+}

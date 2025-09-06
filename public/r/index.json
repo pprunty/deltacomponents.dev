@@ -134,6 +134,106 @@
       "dependencies": ["zod"]
     },
     {
+      "name": "use-mobile-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/use-mobile-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/use-mobile-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "youtube-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/youtube-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/youtube-demo.tsx"
+        }
+      ],
+      "registryDependencies": ["https://deltacomponents.dev/r/youtube.json"]
+    },
+    {
+      "name": "cambio-image-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/cambio-image.json"
+      ]
+    },
+    {
+      "name": "cambio-image-grid-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-grid-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-grid-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image-accessible-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-accessible-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-accessible-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image-bouncy-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-bouncy-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-bouncy-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image-snappy-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-snappy-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-snappy-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image-advanced-demo",
+      "type": "registry:block",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/examples/cambio-image-advanced-demo.tsx",
+          "type": "registry:block",
+          "target": "/delta/cambio-image-advanced-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "marquee-demo",
       "type": "registry:block",
       "author": "patrick prunty <https://www.patrickprunty.com>",
@@ -1986,6 +2086,31 @@
         }
       ],
       "dependencies": ["motion"]
+    },
+    {
+      "name": "youtube",
+      "type": "registry:component",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/media/youtube.tsx",
+          "type": "registry:component",
+          "target": "/delta/youtube.tsx"
+        }
+      ],
+      "registryDependencies": ["use-mobile"]
+    },
+    {
+      "name": "cambio-image",
+      "type": "registry:component",
+      "author": "patrick prunty <https://www.patrickprunty.com>",
+      "files": [
+        {
+          "path": "registry/media/cambio-image.tsx",
+          "type": "registry:component",
+          "target": "/delta/cambio-image.tsx"
+        }
+      ]
     },
     {
       "name": "qr-code",

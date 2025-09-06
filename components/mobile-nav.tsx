@@ -22,6 +22,8 @@ import {
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
+  const drawerBodyRef = React.useRef<HTMLDivElement>(null)
+  const activeItemRefs = React.useRef<Map<string, HTMLAnchorElement>>(new Map())
 
   // Enhanced drawer handler that preserves theme
   const handleDrawerChange = React.useCallback((isOpen: boolean) => {
@@ -38,6 +40,25 @@ export function MobileNav() {
   const navItems = siteConfig.showTemplates
     ? [...(topLevelNav || []), { title: "Templates", href: "/templates" }]
     : topLevelNav
+
+  // Scroll to active item when drawer opens
+  React.useEffect(() => {
+    if (open) {
+      const timeout = setTimeout(() => {
+        const activeItemRef = Array.from(activeItemRefs.current.values()).find(
+          (element) => element?.dataset.active === "true"
+        )
+
+        if (activeItemRef) {
+          activeItemRef.scrollIntoView({
+            block: "center",
+          })
+        }
+      }, 100)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [open])
 
   return (
     <Drawer open={open} onOpenChange={handleDrawerChange} size="xl">
@@ -64,7 +85,7 @@ export function MobileNav() {
         <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-12 h-[80vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
           <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
           <DrawerHandle />
-          <DrawerBody className="flex-1 overflow-auto p-6">
+          <DrawerBody ref={drawerBodyRef} className="flex-1 overflow-auto p-6">
             <div className="flex flex-col gap-y-3 pb-4 mb-4 border-b border-dashed border-border">
               {navItems?.map(
                 (item) =>
@@ -74,6 +95,7 @@ export function MobileNav() {
                       href={item.href}
                       onOpenChange={setOpen}
                       exactMatch={true}
+                      activeItemRefs={activeItemRefs}
                     >
                       <div className="flex items-center gap-2">
                         {item.title}
@@ -101,6 +123,7 @@ export function MobileNav() {
                               <MobileLink
                                 href={item.href}
                                 onOpenChange={setOpen}
+                                activeItemRefs={activeItemRefs}
                               >
                                 {item.title}
                                 {item.label && (
@@ -129,53 +152,83 @@ interface MobileLinkProps extends LinkProps {
   children: React.ReactNode
   className?: string
   exactMatch?: boolean
+  activeItemRefs?: React.MutableRefObject<Map<string, HTMLAnchorElement>>
 }
 
-function MobileLink({
-  href,
-  onOpenChange,
-  className,
-  children,
-  exactMatch = false,
-  ...props
-}: MobileLinkProps) {
-  const router = useRouter()
-  const pathname = usePathname()
+const MobileLink = React.forwardRef<HTMLAnchorElement, MobileLinkProps>(
+  (
+    {
+      href,
+      onOpenChange,
+      className,
+      children,
+      exactMatch = false,
+      activeItemRefs,
+      ...props
+    },
+    ref
+  ) => {
+    const router = useRouter()
+    const pathname = usePathname()
 
-  // Check if current route is active
-  const isActive = exactMatch
-    ? pathname === href
-    : href === "/docs/components"
-      ? pathname === "/docs/components" // Only exact match for components showcase
-      : pathname === href || pathname.startsWith(href + "/")
+    // Check if current route is active
+    const isActive = exactMatch
+      ? pathname === href
+      : href === "/docs/components"
+        ? pathname === "/docs/components" // Only exact match for components showcase
+        : pathname === href || pathname.startsWith(href + "/")
 
-  // Handle navigation with scroll reset
-  const handleClick = React.useCallback(() => {
-    // Close the mobile drawer
-    onOpenChange?.(false)
+    // Set up ref callback to track active items
+    const linkRef = React.useCallback(
+      (node: HTMLAnchorElement | null) => {
+        if (node && activeItemRefs) {
+          if (isActive) {
+            activeItemRefs.current.set(href.toString(), node)
+          } else {
+            activeItemRefs.current.delete(href.toString())
+          }
+        }
+        if (typeof ref === "function") {
+          ref(node)
+        } else if (ref) {
+          ref.current = node
+        }
+      },
+      [href, isActive, activeItemRefs, ref]
+    )
 
-    // Short timeout to allow drawer to close
-    setTimeout(() => {
-      // Scroll to top before navigation
-      window.scrollTo(0, 0)
+    // Handle navigation with scroll reset
+    const handleClick = React.useCallback(() => {
+      // Close the mobile drawer
+      onOpenChange?.(false)
 
-      // Navigate to the new page
-      router.push(href.toString())
-    }, 100)
-  }, [href, onOpenChange, router])
+      // Short timeout to allow drawer to close
+      setTimeout(() => {
+        // Scroll to top before navigation
+        window.scrollTo(0, 0)
 
-  return (
-    <Link
-      href={href}
-      onClick={handleClick}
-      className={cn(
-        "text-base",
-        isActive ? "text-primary font-medium" : "text-muted-foreground",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </Link>
-  )
-}
+        // Navigate to the new page
+        router.push(href.toString())
+      }, 100)
+    }, [href, onOpenChange, router])
+
+    return (
+      <Link
+        ref={linkRef}
+        href={href}
+        onClick={handleClick}
+        data-active={isActive}
+        className={cn(
+          "text-base",
+          isActive ? "text-primary font-medium" : "text-muted-foreground",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </Link>
+    )
+  }
+)
+
+MobileLink.displayName = "MobileLink"

@@ -4,7 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* @import "./themes.css"; */
+.root {
+  isolation: isolate;
+}
+
+[data-state="open"] {
+  z-index: 999 !important;
+}
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

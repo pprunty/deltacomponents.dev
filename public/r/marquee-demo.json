@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/examples/marquee-demo.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Marquee } from \"@/delta/marquee\"\n\nexport function MarqueeDemo() {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Marquee />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Marquee } from \"@/delta/marquee\"\n\nexport function MarqueeDemo() {\n  return (\n    <div className=\"w-full overflow-hidden\">\n      <Marquee baseVelocity={20} className=\"py-4\">\n        <div className=\"flex gap-8 mr-8\">\n          <div className=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium\">\n            React\n          </div>\n          <div className=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium\">\n            Next.js\n          </div>\n          <div className=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium\">\n            TypeScript\n          </div>\n          <div className=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium\">\n            Tailwind CSS\n          </div>\n          <div className=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium\">\n            Framer Motion\n          </div>\n        </div>\n      </Marquee>\n    </div>\n  )\n}\n",
       "type": "registry:block",
       "target": "/delta/marquee-demo.tsx"
     }

@@ -138,7 +138,7 @@ export function CheckboxInput({
           aria-describedby={hint ? hintId : undefined}
           aria-required={required}
           className={cn(
-            "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+            "h-[19px] w-[19px] rounded [&>span>svg]:h-3.5 [&>span>svg]:w-3.5 group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
             checkboxClassName
           )}
           required={required}

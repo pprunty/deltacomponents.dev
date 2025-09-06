@@ -69,6 +69,12 @@ export const docsConfig: DocsConfig = {
           href: "/docs/changelog",
           items: [],
         },
+        {
+          title: "llms.txt",
+          href: "/llms.txt",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -149,6 +155,7 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/toast",
           items: [],
           label: "New",
+          hide: process.env.NODE_ENV === "production",
         },
         {
           title: "Pricing Cards",
@@ -183,6 +190,7 @@ export const docsConfig: DocsConfig = {
           href: "/docs/media/retro-video-player",
           items: [],
           label: "Beta",
+          hide: process.env.NODE_ENV === "production",
         },
         {
           title: "Spotify",
@@ -193,6 +201,12 @@ export const docsConfig: DocsConfig = {
           title: "QR Code",
           href: "/docs/media/qr-code",
           items: [],
+        },
+        {
+          title: "Cambio Image",
+          href: "/docs/media/cambio-image",
+          items: [],
+          label: "New",
         },
       ],
     },

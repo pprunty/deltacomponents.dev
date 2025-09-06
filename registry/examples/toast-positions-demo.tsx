@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { toast } from "@/delta/toast"
-import { Toaster, type ToasterProps } from "sonner"
+import { toast, Toaster, type ToasterProps } from "@/delta/toast"
 
 import { Button } from "@/components/ui/button"
 

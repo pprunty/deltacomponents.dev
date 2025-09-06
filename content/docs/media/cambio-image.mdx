@@ -1,0 +1,239 @@
+---
+title: Cambio Image
+description: An enhanced image component with zoom functionality and lazy loading effects, based on Cambio.
+---
+
+<ComponentPreview name="cambio-image-demo" />
+
+## Overview
+
+The Cambio Image component provides an enhanced image viewing experience with smooth zoom functionality and elegant lazy loading effects. Images fade in with a blur effect when they enter the viewport, and can be clicked to open in a full-screen zoom view with backdrop overlay.
+
+Based on [Cambio](https://cambio.raphaelsalaja.com/) by Raphael Salaja.
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/cambio-image
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install cambio
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="cambio-image" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+<Admonition type="warning" title="Required CSS">
+  Add the following CSS to your `globals.css` for proper z-index management in grid layouts:
+
+```css
+.root {
+  isolation: isolate;
+}
+
+[data-state="open"] {
+  z-index: 999 !important;
+}
+```
+
+</Admonition>
+
+```tsx
+import CambioImage from "@/registry/media/cambio-image"
+
+export function Component() {
+  return (
+    <CambioImage
+      src="/your-image.jpg"
+      alt="Description of image"
+      width={800}
+      height={600}
+      motion="bouncy"
+    />
+  )
+}
+```
+
+### With Custom Motion Configuration
+
+```tsx
+<CambioImage
+  src="/your-image.jpg"
+  alt="Description of image"
+  width={800}
+  height={600}
+  motion={{
+    trigger: "snappy",
+    popup: "bouncy",
+    backdrop: "smooth",
+  }}
+  dismissible={false}
+/>
+```
+
+## Examples
+
+### Basic Image
+
+<ComponentPreview name="cambio-image-demo" />
+
+### Grid Layout
+
+Multiple images in a grid layout with proper z-index isolation for smooth zoom interactions.
+
+<ComponentPreview name="cambio-image-grid-demo" />
+
+### Motion Variants
+
+Choose from different animation presets to match your design needs:
+
+#### Snappy Preset
+
+Fast, responsive 240ms ease-out animations for quick interactions.
+
+<ComponentPreview name="cambio-image-snappy-demo" />
+
+#### Bouncy Preset
+
+Playful spring animations with overshoot effect.
+
+<ComponentPreview name="cambio-image-bouncy-demo" />
+
+#### Accessible Preset
+
+Reduced motion (10ms linear) that respects user accessibility preferences.
+
+<ComponentPreview name="cambio-image-accessible-demo" />
+
+### Advanced Configuration
+
+You can customize individual components with different motion presets:
+
+```tsx
+<CambioImage
+  src="/your-image.jpg"
+  alt="Mixed motion configuration"
+  width={800}
+  height={600}
+  motion={{
+    trigger: "snappy", // Fast trigger animation
+    popup: "bouncy", // Bouncy popup entrance
+    backdrop: "smooth", // Smooth backdrop fade
+  }}
+  dismissible={false} // Prevent dismissing by clicking outside
+/>
+```
+
+## API Reference
+
+### CambioImageProps
+
+| Name        | Type                         | Default  | Description                                            |
+| ----------- | ---------------------------- | -------- | ------------------------------------------------------ |
+| src         | string                       | -        | The image source URL                                   |
+| alt         | string                       | -        | Alternative text description for the image             |
+| width       | number                       | -        | The width of the image in pixels                       |
+| height      | number                       | -        | The height of the image in pixels                      |
+| loading     | "lazy" \| "eager"            | "lazy"   | Loading strategy for the image                         |
+| index       | number                       | 0        | Z-index offset for stacking multiple images            |
+| motion      | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration               |
+| dismissible | boolean                      | true     | Whether the popup can be dismissed by clicking outside |
+
+### Motion Types
+
+#### MotionPreset
+
+```tsx
+type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced"
+```
+
+- **`"snappy"`** - Fast 240ms ease-out animations for responsive interactions
+- **`"smooth"`** - Balanced 300ms ease-in-out animations (default)
+- **`"bouncy"`** - Spring animations with playful overshoot effect
+- **`"reduced"`** - Minimal 10ms linear animations for accessibility
+
+#### MotionConfig
+
+```tsx
+interface MotionConfig {
+  trigger?: MotionPreset // Animation for the trigger element
+  popup?: MotionPreset // Animation for the popup/zoom view
+  backdrop?: MotionPreset // Animation for the backdrop overlay
+}
+```
+
+### Usage Examples
+
+#### Basic Usage
+
+```tsx
+<CambioImage src="/image.jpg" alt="Basic example" width={400} height={300} />
+```
+
+#### With Motion Preset
+
+```tsx
+<CambioImage
+  src="/image.jpg"
+  alt="Bouncy animation"
+  width={400}
+  height={300}
+  motion="bouncy"
+/>
+```
+
+#### Advanced Configuration
+
+```tsx
+<CambioImage
+  src="/image.jpg"
+  alt="Custom motion config"
+  width={400}
+  height={300}
+  motion={{
+    trigger: "snappy",
+    popup: "bouncy",
+    backdrop: "reduced",
+  }}
+  dismissible={false}
+  loading="eager"
+  index={5}
+/>
+```
+
+## Features
+
+- **Intersection Observer**: Images fade in with a blur effect when they enter the viewport
+- **Zoom Functionality**: Click to open images in full-screen zoom view
+- **Motion Variants**: Four animation presets (snappy, smooth, bouncy, reduced) for different user experiences
+- **Z-Index Management**: Proper layering for grid layouts with multiple images
+- **Next.js Integration**: Uses Next.js Image component for optimization
+- **Accessibility**: Reduced motion preset respects user preferences, proper ARIA attributes and keyboard navigation
+- **Responsive**: Adapts to different screen sizes with responsive zoom behavior

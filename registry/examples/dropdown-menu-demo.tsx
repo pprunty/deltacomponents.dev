@@ -1,46 +1,78 @@
 "use client"
 
-import * as React from "react"
+import { Button } from "@/components/ui/button"
 import {
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownSeparator,
-  DropdownTrigger,
-} from "@/delta/dropdown-menu"
-import { CreditCard, LogOut, Settings, UserCircle } from "lucide-react"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/registry/components/dropdown-menu"
 
 export default function DropdownMenuDemo() {
   return (
     <div className="flex items-center justify-center min-h-[400px] p-4">
-      <Dropdown>
-        <DropdownTrigger className="cursor-pointer">
-          <img
-            src="https://patrickprunty.com/icon.webp"
-            alt="User avatar"
-            className="h-10 w-10 rounded-full border-2 border-border hover:border-primary transition-colors"
-          />
-        </DropdownTrigger>
-        <DropdownContent align="end" className="w-56">
-          <DropdownItem className="gap-2">
-            <UserCircle className="h-4 w-4" />
-            Profile
-          </DropdownItem>
-          <DropdownItem className="gap-2">
-            <CreditCard className="h-4 w-4" />
-            Billing
-          </DropdownItem>
-          <DropdownItem className="gap-2">
-            <Settings className="h-4 w-4" />
-            Settings
-          </DropdownItem>
-          <DropdownSeparator />
-          <DropdownItem className="gap-2" destructive>
-            <LogOut className="h-4 w-4" />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">Open</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56" align="start">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              Profile
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              Billing
+              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              Settings
+              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              Keyboard shortcuts
+              <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem>Email</DropdownMenuItem>
+                  <DropdownMenuItem>Message</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>More...</DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            <DropdownMenuItem>
+              New Team
+              <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>GitHub</DropdownMenuItem>
+          <DropdownMenuItem>Support</DropdownMenuItem>
+          <DropdownMenuItem disabled>API</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
             Log out
-          </DropdownItem>
-        </DropdownContent>
-      </Dropdown>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   )
 }

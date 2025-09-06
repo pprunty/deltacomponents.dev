@@ -127,7 +127,10 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         )}
-        <TabsContent value="demo" className="relative rounded-md border">
+        <TabsContent
+          value="demo"
+          className="relative rounded-md border overflow-visible"
+        >
           <div className="absolute right-4 top-4 flex items-center gap-2 z-40">
             <RefreshButton onRefresh={handleRefresh} />
             {v0 && <OpenInV0Button url={`/docs/${name}`} />}
@@ -135,7 +138,7 @@ export function ComponentPreview({
           <div
             ref={previewRef}
             className={cn(
-              "preview flex min-h-[350px] w-full justify-center px-4 py-6 overflow-x-auto",
+              "preview flex min-h-[350px] w-full justify-center px-4 py-6 overflow-visible",
               {
                 "items-center": align === "center",
                 "items-start": align === "start",

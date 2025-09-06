@@ -50,13 +50,34 @@ npm install sonner
 
 ## Usage
 
+### Add the Toaster Component
+
+First, add the Toaster component to your root layout:
+
+```tsx title="app/layout.tsx"
+import { Toaster } from "@/components/ui/sonner"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+### Use the Toast Function
+
 ```tsx
-import Toast, { toast } from "@/registry/components/toast"
+import { toast } from "@/registry/components/toast"
 
 export default function App() {
   return (
     <div>
-      <Toast />
       <button onClick={() => toast.success("Success!")}>Show Toast</button>
     </div>
   )
