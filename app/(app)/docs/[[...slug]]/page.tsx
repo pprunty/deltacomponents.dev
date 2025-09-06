@@ -61,7 +61,7 @@ export async function generateMetadata(props: {
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: siteConfig.ogImage,
+          url: "/icon.webp",
           width: 1200,
           height: 630,
           alt: siteConfig.name,
@@ -72,9 +72,11 @@ export async function generateMetadata(props: {
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [siteConfig.ogImage],
+      images: ["/og/1200x6238-twitter.png"],
       creator: "@pprunty_",
     },
+    // TODO: Add component-specific open graph images later
+    // This would generate custom OG images based on component content
   }
 }
 
