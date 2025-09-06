@@ -125,7 +125,10 @@ export function CheckboxInput({
       className={cn("group/field space-y-2", containerClassName)}
       data-invalid={hasError}
     >
-      <div className="flex items-center space-x-2">
+      <div className={cn(
+        "flex space-x-2",
+        description ? "items-start" : "items-center"
+      )}>
         <Checkbox
           id={id}
           name={name}
@@ -139,6 +142,7 @@ export function CheckboxInput({
           aria-required={required}
           className={cn(
             "h-[19px] w-[19px] rounded [&>span>svg]:h-3.5 [&>span>svg]:w-3.5 group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+            description && "mt-0.5",
             checkboxClassName
           )}
           required={required}

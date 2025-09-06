@@ -61,7 +61,7 @@ export async function generateMetadata(props: {
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: "/icon.webp",
+          url: `${siteConfig.url}/og/og.webp`,
           width: 1200,
           height: 630,
           alt: siteConfig.name,
