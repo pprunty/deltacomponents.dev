@@ -11,7 +11,7 @@
       "path": "registry/examples/retro-button-demo.tsx",
       "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport RetroButton from \"@/delta/retro-button\"\nimport { Settings } from \"lucide-react\"\n\n// Demo component to showcase all variants and features\nexport default function RetroButtonDemo() {\n  const [clickCount, setClickCount] = useState(0)\n\n  return (\n    <div className=\"max-w-4xl mx-auto p-8 space-y-80\">\n      <RetroButton size=\"md\" icon={Settings} />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/retro-button-demo.tsx"
+      "target": "components/delta/retro-button-demo.tsx"
     }
   ]
 }

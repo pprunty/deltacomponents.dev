@@ -11,7 +11,7 @@
       "path": "registry/examples/scramble-text-demo.tsx",
       "content": "\"use client\"\n\nimport ScrambleText from \"@/delta/scramble-text\"\n\nexport default function ScrambleTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <ScrambleText\n        text=\"Welcome to Delta Components\"\n        className=\"text-4xl font-bold\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/scramble-text-demo.tsx"
+      "target": "components/delta/scramble-text-demo.tsx"
     }
   ]
 }

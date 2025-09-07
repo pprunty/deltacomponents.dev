@@ -11,7 +11,7 @@
       "path": "registry/examples/mouse-string-connection-demo.tsx",
       "content": "\"use client\"\n\nimport MouseStringConnection from \"@/delta/mouse-string-connection\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function MouseStringConnectionDemo() {\n  return (\n    <div className=\"bg-background text-foreground flex flex-col items-center justify-center px-4\">\n      <div className=\"max-w-3xl mx-auto text-center\">\n        <h1 className=\"text-5xl font-medium mb-4\">Something you really want</h1>\n        <p className=\"text-muted-foreground text-lg mb-12\">\n          {\"You can't live without this product. I'm sure of it.\"}\n        </p>\n\n        <div className=\"flex justify-center\">\n          <MouseStringConnection\n            strokeWidth={1}\n            dashArray={[10, 4]}\n            curveIntensity={0.5}\n          >\n            <Button size=\"lg\">Get Started</Button>\n          </MouseStringConnection>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/mouse-string-connection-demo.tsx"
+      "target": "components/delta/mouse-string-connection-demo.tsx"
     }
   ]
 }

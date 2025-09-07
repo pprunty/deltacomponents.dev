@@ -8,7 +8,7 @@
       "path": "registry/examples/cambio-image-bouncy-demo.tsx",
       "content": "\"use client\"\n\nimport CambioImage from \"@/components/delta/cambio-image\"\n\nexport default function CambioImageBouncyDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Bouncy spring animation example\"\n        width={400}\n        height={300}\n        motion=\"bouncy\"\n      />\n      <p className=\"text-center text-sm text-muted-foreground mt-2\">\n        Bouncy preset - Spring with overshoot\n      </p>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/cambio-image-bouncy-demo.tsx"
+      "target": "components/delta/cambio-image-bouncy-demo.tsx"
     }
   ]
 }

@@ -8,7 +8,7 @@
       "path": "registry/examples/use-mobile-demo.tsx",
       "content": "\"use client\"\n\nimport { useMobile } from \"@/components/delta/use-mobile\"\n\nexport default function UseMobileDemo() {\n  const isMobile = useMobile()\n\n  return (\n    <div className=\"flex flex-col gap-4 p-4\">\n      <div className=\"text-lg font-semibold\">Mobile Detection</div>\n      <div className=\"p-4 border rounded-lg bg-muted/50\">\n        <p className=\"text-sm text-muted-foreground mb-2\">\n          Current screen size:\n        </p>\n        <div className=\"text-2xl font-mono\">\n          {isMobile ? (\n            <span className=\"text-orange-500\">📱 Mobile</span>\n          ) : (\n            <span className=\"text-blue-500\">🖥️ Desktop</span>\n          )}\n        </div>\n        <p className=\"text-xs text-muted-foreground mt-2\">\n          Resize your window to see the detection change (breakpoint: 640px)\n        </p>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/use-mobile-demo.tsx"
+      "target": "components/delta/use-mobile-demo.tsx"
     }
   ]
 }

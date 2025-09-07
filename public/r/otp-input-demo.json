@@ -11,7 +11,7 @@
       "path": "registry/examples/otp-input-demo.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { OtpInput } from \"@/delta/otp-input\"\n\nexport default function OtpInputDemo() {\n  return (\n    <div className=\"w-full max-w-md p-0 mx-auto\">\n      <OtpInput\n        label=\"Verification Code\"\n        name=\"verificationCode\"\n        length={6}\n        required\n        separator\n        groupSize={3}\n        hint=\"Enter the 6-digit verification code\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/otp-input-demo.tsx"
+      "target": "components/delta/otp-input-demo.tsx"
     }
   ]
 }

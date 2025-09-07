@@ -483,7 +483,7 @@ async function buildRegistry() {
       if (item.files && item.files.length > 0) {
         shadcnItem.files = item.files.map((file) => {
           const registryPath = `registry/${file.path}`
-          const targetPath = `/components/delta/${path.basename(file.path)}`
+          const targetPath = `components/delta/${path.basename(file.path)}`
           return {
             path: registryPath,
             type: file.type,

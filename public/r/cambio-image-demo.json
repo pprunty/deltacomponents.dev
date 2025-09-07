@@ -11,7 +11,7 @@
       "path": "registry/examples/cambio-image-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\n\nimport CambioImage from \"@/components/delta/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"w-full max-w-lg mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Delta Components Twitter Card\"\n        width={1200}\n        height={6238}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/cambio-image-demo.tsx"
+      "target": "components/delta/cambio-image-demo.tsx"
     }
   ]
 }

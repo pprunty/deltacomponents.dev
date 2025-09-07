@@ -11,7 +11,7 @@
       "path": "registry/examples/youtube-demo.tsx",
       "content": "\"use client\"\n\nimport YouTube from \"@/components/delta/youtube\"\n\nexport default function YouTubeDemo() {\n  return (\n    <div className=\"w-full max-w-2xl py-10 mx-auto\">\n      <YouTube videoId=\"0RXdd0pCJ9Q\" />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/youtube-demo.tsx"
+      "target": "components/delta/youtube-demo.tsx"
     }
   ]
 }

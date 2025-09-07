@@ -11,7 +11,7 @@
       "path": "registry/examples/backdrop-gradient-demo.tsx",
       "content": "import React from \"react\"\nimport BlurOverlay from \"@/delta/backdrop-gradient\"\n\nexport default function BackdropGradientDemo() {\n  const sampleImage = \"/images/desk.webp\" // replace with your image path or URL\n\n  return (\n    <div className=\"min-h-screen flex items-center justify-center w-full h-full\">\n      <div className=\"w-full max-w-md h-[600px]\">\n        <BlurOverlay src={sampleImage} alt=\"Sample landscape\" />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/backdrop-gradient-demo.tsx"
+      "target": "components/delta/backdrop-gradient-demo.tsx"
     }
   ]
 }

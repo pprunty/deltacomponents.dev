@@ -11,7 +11,7 @@
       "path": "registry/examples/select-input-pill-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\nimport { SelectInput } from \"@/delta/select-input\"\n\nexport default function SelectInputPillDemo() {\n  const options = [\n    { value: \"apple\", label: \"Apple\" },\n    { value: \"banana\", label: \"Banana\" },\n    { value: \"orange\", label: \"Orange\" },\n    { value: \"grape\", label: \"Grape\" },\n  ]\n\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <SelectInput\n        label=\"Select Fruit\"\n        name=\"pillSelect\"\n        options={options}\n        variant=\"pill\"\n        placeholder=\"Choose a fruit\"\n        hint=\"Pill variant has a rounded, muted background style\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/select-input-pill-demo.tsx"
+      "target": "components/delta/select-input-pill-demo.tsx"
     }
   ]
 }

@@ -11,7 +11,7 @@
       "path": "registry/examples/scramble-text-intersection-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\nimport ScrambleText from \"@/delta/scramble-text\"\n\nexport default function ScrambleTextIntersectionDemo() {\n  return (\n    <div className=\"h-[80vh] flex items-center justify-center\">\n      <ScrambleText\n        text=\"Scroll to see me scramble every time\"\n        className=\"text-2xl font-bold text-center\"\n        useIntersectionObserver={true}\n        retriggerOnIntersection={true}\n        speed={120}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/components/delta/scramble-text-intersection-demo.tsx"
+      "target": "components/delta/scramble-text-intersection-demo.tsx"
     }
   ]
 }

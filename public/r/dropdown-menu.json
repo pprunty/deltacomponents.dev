@@ -11,7 +11,7 @@
       "path": "registry/components/dropdown-menu.tsx",
       "content": "\"use client\"\n\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuPortal,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuTrigger,\n} from \"@/components/ui/dropdown-menu\"\n\n// Re-export all shadcn components directly\nexport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuPortal,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuSub,\n  DropdownMenuSubContent,\n  DropdownMenuSubTrigger,\n  DropdownMenuTrigger,\n}\n",
       "type": "registry:component",
-      "target": "/components/delta/dropdown-menu.tsx"
+      "target": "components/delta/dropdown-menu.tsx"
     }
   ]
 }
