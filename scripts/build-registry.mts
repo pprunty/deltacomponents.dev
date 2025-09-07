@@ -35,28 +35,28 @@ async function getSiteURL(): Promise<string> {
 let SITE_URL = "https://deltacomponents.dev"
 
 /**
- * Transform import paths from @/registry/ to @/delta/ for external consumption
+ * Transform import paths from @/registry/ to @/components/delta/ for external consumption
  */
 function transformImportPaths(content: string): string {
-  // Transform import paths from @/registry/ to @/delta/
+  // Transform import paths from @/registry/ to @/components/delta/
   return content
-    .replace(/from ["']@\/registry\/inputs\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(/from ["']@\/registry\/inputs\/([^"']+)["']/g, 'from "@/components/delta/$1"')
     .replace(
       /from ["']@\/registry\/components\/([^"']+)["']/g,
-      'from "@/delta/$1"'
+      'from "@/components/delta/$1"'
     )
     .replace(
       /from ["']@\/registry\/animations\/([^"']+)["']/g,
-      'from "@/delta/$1"'
+      'from "@/components/delta/$1"'
     )
-    .replace(/from ["']@\/registry\/blocks\/([^"']+)["']/g, 'from "@/delta/$1"')
-    .replace(/from ["']@\/registry\/layout\/([^"']+)["']/g, 'from "@/delta/$1"')
-    .replace(/from ["']@\/registry\/media\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(/from ["']@\/registry\/blocks\/([^"']+)["']/g, 'from "@/components/delta/$1"')
+    .replace(/from ["']@\/registry\/layout\/([^"']+)["']/g, 'from "@/components/delta/$1"')
+    .replace(/from ["']@\/registry\/media\/([^"']+)["']/g, 'from "@/components/delta/$1"')
     .replace(
       /from ["']@\/registry\/landing-page\/([^"']+)["']/g,
-      'from "@/delta/$1"'
+      'from "@/components/delta/$1"'
     )
-    .replace(/from ["']@\/registry\/hooks\/([^"']+)["']/g, 'from "@/delta/$1"')
+    .replace(/from ["']@\/registry\/hooks\/([^"']+)["']/g, 'from "@/components/delta/$1"')
 }
 
 // Define types
@@ -483,7 +483,7 @@ async function buildRegistry() {
       if (item.files && item.files.length > 0) {
         shadcnItem.files = item.files.map((file) => {
           const registryPath = `registry/${file.path}`
-          const targetPath = `/delta/${path.basename(file.path)}`
+          const targetPath = `/components/delta/${path.basename(file.path)}`
           return {
             path: registryPath,
             type: file.type,

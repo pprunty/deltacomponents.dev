@@ -3,13 +3,15 @@
   "name": "latex-equations-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/latex.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/latex.json"
+  ],
   "files": [
     {
       "path": "registry/examples/latex-equations-demo.tsx",
       "content": "\"use client\"\n\nimport Latex, { LargeBlockMath } from \"@/delta/latex\"\n\nexport default function LatexEquationsDemo() {\n  return (\n    <div className=\"space-y-8\">\n      <div className=\"space-y-4\">\n        <h3 className=\"text-lg font-semibold\">\n          Complex Mathematical Expressions\n        </h3>\n\n        <div className=\"space-y-3\">\n          <p className=\"text-sm text-muted-foreground\">Quadratic Formula</p>\n          <Latex\n            math=\"x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\"\n            block\n            size=\"large\"\n          />\n        </div>\n\n        <div className=\"space-y-3\">\n          <p className=\"text-sm text-muted-foreground\">Taylor Series</p>\n          <Latex\n            math=\"f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n\"\n            block\n            size=\"medium\"\n          />\n        </div>\n\n        <div className=\"space-y-3\">\n          <p className=\"text-sm text-muted-foreground\">Matrix Multiplication</p>\n          <LargeBlockMath math=\"\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}\" />\n        </div>\n\n        <div className=\"space-y-3\">\n          <p className=\"text-sm text-muted-foreground\">Fourier Transform</p>\n          <Latex\n            math=\"\\mathcal{F}\\{f(t)\\} = \\int_{-\\infty}^{\\infty} f(t) e^{-2\\pi i \\xi t} dt\"\n            block\n            size=\"large\"\n          />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/latex-equations-demo.tsx"
+      "target": "/components/delta/latex-equations-demo.tsx"
     }
   ]
 }

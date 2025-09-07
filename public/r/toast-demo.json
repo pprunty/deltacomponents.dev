@@ -3,13 +3,15 @@
   "name": "toast-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/toast.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/toast.json"
+  ],
   "files": [
     {
       "path": "registry/examples/toast-demo.tsx",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { toast } from \"@/delta/toast\"\nimport { Toaster } from \"sonner\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function ToastDemo() {\n  return (\n    <div className=\"space-y-4\">\n      <Toaster\n        position=\"bottom-right\"\n        richColors\n        toastOptions={{\n          className:\n            \"group toast border rounded-lg p-4 shadow-md bg-background text-foreground\",\n        }}\n      />\n\n      <div className=\"flex flex-wrap gap-2\">\n        <Button onClick={() => toast.success(\"Task completed successfully!\")}>\n          Success\n        </Button>\n        <Button onClick={() => toast.error(\"Something went wrong!\")}>\n          Error\n        </Button>\n        <Button onClick={() => toast.warning(\"Please check your input\")}>\n          Warning\n        </Button>\n        <Button onClick={() => toast.info(\"New update available\")}>Info</Button>\n        <Button onClick={() => toast.default(\"Default notification\")}>\n          Default\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/toast-demo.tsx"
+      "target": "/components/delta/toast-demo.tsx"
     }
   ]
 }

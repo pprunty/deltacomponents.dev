@@ -3,13 +3,15 @@
   "name": "select-input-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/select-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/select-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/select-input-demo.tsx",
       "content": "\"use client\"\n\nimport { SelectInput } from \"@/delta/select-input\"\n\nexport default function SelectInputDemo() {\n  const options = [\n    { value: \"option1\", label: \"Option 1\" },\n    { value: \"option2\", label: \"Option 2\" },\n    { value: \"option3\", label: \"Option 3\" },\n  ]\n\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <SelectInput\n        label=\"Select an option\"\n        name=\"basic-select\"\n        options={options}\n        description=\"Choose one of the available options\"\n        placeholder=\"Select an option\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/select-input-demo.tsx"
+      "target": "/components/delta/select-input-demo.tsx"
     }
   ]
 }

@@ -11,7 +11,7 @@
       "path": "registry/examples/retro-video-player-demo.tsx",
       "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { RetroVideoPlayer } from \"@/delta/retro-video-player\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function RetroVideoPlayerDemo() {\n  const [showPlayer, setShowPlayer] = useState(false)\n\n  return (\n    <div className=\"w-full max-w-4xl mx-auto\">\n      <div className=\"flex flex-col items-center justify-center\">\n        <Button onClick={() => setShowPlayer(true)} className=\"mt-4\">\n          Open Video Player\n        </Button>\n      </div>\n\n      {/* Player overlay */}\n      {showPlayer && (\n        <div className=\"fixed inset-0 pointer-events-none flex items-center justify-center z-[9998]\">\n          <div className=\"pointer-events-auto\">\n            <RetroVideoPlayer\n              src=\"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\"\n              title=\"Video Player\"\n              defaultWidth={400}\n              defaultHeight={300}\n              onClose={() => setShowPlayer(false)}\n              muted={false}\n            />\n          </div>\n        </div>\n      )}\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/retro-video-player-demo.tsx"
+      "target": "/components/delta/retro-video-player-demo.tsx"
     }
   ]
 }

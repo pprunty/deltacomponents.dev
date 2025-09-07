@@ -3,13 +3,15 @@
   "name": "tags-input-max-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/tags-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/tags-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/tags-input-max-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\nimport { TagsInput } from \"@/delta/tags-input\"\n\nexport default function TagsInputMaxDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto p-4\">\n      <TagsInput\n        label=\"Skills (Max 3)\"\n        name=\"maxTags\"\n        maxTags={3}\n        placeholder=\"Add up to 3 skills...\"\n        description=\"Demonstrates maxTags functionality\"\n        defaultValue={[\"JavaScript\", \"React\"]}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/tags-input-max-demo.tsx"
+      "target": "/components/delta/tags-input-max-demo.tsx"
     }
   ]
 }

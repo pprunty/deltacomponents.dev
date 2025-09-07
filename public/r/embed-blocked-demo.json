@@ -3,13 +3,15 @@
   "name": "embed-blocked-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/embed.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/embed.json"
+  ],
   "files": [
     {
       "path": "registry/examples/embed-blocked-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\nimport { Embed } from \"@/delta/embed\"\n\nexport default function EmbedBlockedDemo() {\n  return (\n    <div className=\"flex flex-col w-full py-8\">\n      <Embed src=\"https://google.com\" title=\"Google Homepage\" height={400} />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/embed-blocked-demo.tsx"
+      "target": "/components/delta/embed-blocked-demo.tsx"
     }
   ]
 }

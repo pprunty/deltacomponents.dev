@@ -3,7 +3,9 @@
   "name": "sidebar-labels-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/sidebar.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/sidebar.json"
+  ],
   "files": [
     {
       "path": "registry/examples/sidebar-labels-demo.tsx",

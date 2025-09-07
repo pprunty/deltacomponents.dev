@@ -3,13 +3,15 @@
   "name": "scroll-progress",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/components/scroll-progress.tsx",
       "content": "import React from \"react\"\nimport { motion, SpringOptions, useScroll, useSpring } from \"motion/react\"\n\n// ScrollProgress Component\nconst cn = (...classes: (string | undefined | false)[]) =>\n  classes.filter(Boolean).join(\" \")\n\ntype ScrollProgressProps = {\n  className?: string\n  springOptions?: SpringOptions\n  containerRef?: React.RefObject<HTMLDivElement>\n  position?: \"top\" | \"bottom\"\n  variant?: \"default\" | \"secondary\" | \"destructive\" | \"outline\"\n  absolute?: boolean\n  children?: React.ReactNode\n  height?: number\n  color?: string\n}\n\nconst DEFAULT_SPRING_OPTIONS: SpringOptions = {\n  stiffness: 200,\n  damping: 50,\n  restDelta: 0.001,\n}\n\nconst variantStyles = {\n  default: \"bg-slate-900 dark:bg-slate-50\",\n  secondary: \"bg-slate-500 dark:bg-slate-400\",\n  destructive: \"bg-red-500 dark:bg-red-900\",\n  outline: \"bg-slate-200 dark:bg-slate-800\",\n}\n\nexport default function ScrollProgress({\n  className,\n  springOptions,\n  containerRef,\n  position = \"bottom\",\n  variant = \"default\",\n  absolute = false,\n  children,\n  height = 4,\n  color,\n}: ScrollProgressProps) {\n  const contentRef = React.useRef<HTMLDivElement>(null)\n\n  const { scrollYProgress } = useScroll({\n    container: containerRef,\n    target: children ? contentRef : undefined,\n    offset: children ? [\"start end\", \"end start\"] : undefined,\n    layoutEffect: Boolean(containerRef?.current) || Boolean(children),\n  })\n\n  const scaleX = useSpring(scrollYProgress, {\n    ...DEFAULT_SPRING_OPTIONS,\n    ...(springOptions ?? {}),\n  })\n\n  const positionStyles = {\n    top: \"top-0\",\n    bottom: \"bottom-0\",\n  }\n\n  const progressBar = (\n    <div\n      className={cn(\n        \"inset-x-0 bg-slate-200/20 dark:bg-slate-800/20 z-50\",\n        absolute ? \"absolute\" : \"fixed\",\n        positionStyles[position],\n        className\n      )}\n      style={{ height: `${height}px` }}\n    >\n      <motion.div\n        className={cn(\n          \"h-full origin-left transition-colors\",\n          !color && variantStyles[variant]\n        )}\n        style={{\n          scaleX,\n          backgroundColor: color,\n        }}\n      />\n    </div>\n  )\n\n  if (children) {\n    return (\n      <>\n        {progressBar}\n        <div ref={contentRef}>{children}</div>\n      </>\n    )\n  }\n\n  return progressBar\n}\n",
       "type": "registry:component",
-      "target": "/delta/scroll-progress.tsx"
+      "target": "/components/delta/scroll-progress.tsx"
     }
   ]
 }

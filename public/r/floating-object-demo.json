@@ -11,7 +11,7 @@
       "path": "registry/examples/floating-object-demo.tsx",
       "content": "\"use client\"\n\nimport { FloatingObject } from \"@/delta/floating-object\"\n\nimport { Badge } from \"@/components/ui/badge\"\n\nexport default function FloatingObjectDemo() {\n  return (\n    <div className=\"w-full\">\n      <div className=\"mx-auto\">\n        {/* Main floating image showcase */}\n        <div className=\"relative h-96 overflow-hidden\">\n          <div className=\"absolute inset-0\">\n            <FloatingObject\n              pattern=\"random-directions\"\n              intensity=\"medium\"\n              speed=\"slow\"\n              className=\"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2\"\n            >\n              <div className=\"relative\">\n                <img\n                  src=\"/images/pp.png\"\n                  alt=\"Floating demonstration image\"\n                  className=\"w-20 h-20 sm:w-24 sm:h-24 md:w-30 md:h-30 rounded-full border-4 border-primary/20 shadow-lg\"\n                />\n                <div className=\"absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full animate-pulse\" />\n              </div>\n            </FloatingObject>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/floating-object-demo.tsx"
+      "target": "/components/delta/floating-object-demo.tsx"
     }
   ]
 }

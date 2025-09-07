@@ -3,13 +3,15 @@
   "name": "checkbox-input-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/checkbox-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/checkbox-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/checkbox-input-demo.tsx",
       "content": "\"use client\"\n\nimport { CheckboxInput } from \"@/delta/checkbox-input\"\n\nexport default function CheckboxInputBasicDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <CheckboxInput\n        label=\"Accept terms and conditions\"\n        name=\"terms\"\n        description=\"By accepting, you agree to our Terms of Service and Privacy Policy\"\n        hint=\"Required for account creation\"\n        required\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/checkbox-input-demo.tsx"
+      "target": "/components/delta/checkbox-input-demo.tsx"
     }
   ]
 }

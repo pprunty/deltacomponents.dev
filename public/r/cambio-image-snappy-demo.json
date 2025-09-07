@@ -6,9 +6,9 @@
   "files": [
     {
       "path": "registry/examples/cambio-image-snappy-demo.tsx",
-      "content": "\"use client\"\n\nimport CambioImage from \"@/delta/cambio-image\"\n\nexport default function CambioImageSnappyDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Fast snappy animation example\"\n        width={400}\n        height={300}\n        motion=\"snappy\"\n      />\n      <p className=\"text-center text-sm text-muted-foreground mt-2\">\n        Snappy preset - 240ms ease-out\n      </p>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport CambioImage from \"@/components/delta/cambio-image\"\n\nexport default function CambioImageSnappyDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Fast snappy animation example\"\n        width={400}\n        height={300}\n        motion=\"snappy\"\n      />\n      <p className=\"text-center text-sm text-muted-foreground mt-2\">\n        Snappy preset - 240ms ease-out\n      </p>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/cambio-image-snappy-demo.tsx"
+      "target": "/components/delta/cambio-image-snappy-demo.tsx"
     }
   ]
 }

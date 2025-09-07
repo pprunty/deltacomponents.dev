@@ -3,13 +3,15 @@
   "name": "latex-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/latex.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/latex.json"
+  ],
   "files": [
     {
       "path": "registry/examples/latex-demo.tsx",
       "content": "\"use client\"\n\nimport Latex from \"@/delta/latex\"\n\nexport default function LatexDemo() {\n  return (\n    <div className=\"space-y-6\">\n      <div className=\"space-y-2\">\n        <h3 className=\"text-lg font-semibold\">Inline Math</h3>\n        <p>\n          The famous equation <Latex math=\"E = mc^2\" /> demonstrates mass-energy\n          equivalence. In calculus, we often use derivatives like{\" \"}\n          <Latex math=\"\\frac{dy}{dx}\" size=\"small\" />.\n        </p>\n      </div>\n\n      <div className=\"space-y-2\">\n        <h3 className=\"text-lg font-semibold\">Block Math</h3>\n        <Latex\n          math=\"\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}\"\n          block\n          size=\"large\"\n        />\n      </div>\n\n      <div className=\"space-y-2\">\n        <h3 className=\"text-lg font-semibold\">Different Sizes</h3>\n        <div className=\"flex items-center gap-4\">\n          <Latex math=\"x^2\" size=\"small\" />\n          <Latex math=\"x^2\" size=\"medium\" />\n          <Latex math=\"x^2\" size=\"large\" />\n          <Latex math=\"x^2\" size=\"x-large\" />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/latex-demo.tsx"
+      "target": "/components/delta/latex-demo.tsx"
     }
   ]
 }

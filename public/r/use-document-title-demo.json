@@ -3,13 +3,15 @@
   "name": "use-document-title-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["use-document-title"],
+  "registryDependencies": [
+    "use-document-title"
+  ],
   "files": [
     {
       "path": "registry/examples/use-document-title-demo.tsx",
       "content": "import * as React from \"react\"\nimport { useDocumentTitle } from \"@/delta/use-document-title\"\n\nimport { Button } from \"@/components/ui/button\"\n\nexport default function UseDocumentTitleDemo() {\n  const [counter, setCounter] = React.useState(0)\n\n  useDocumentTitle(`Clicked ${counter} times.`)\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <Button className=\"w-fit\" onClick={() => setCounter(counter + 1)}>\n        Increment Counter: {counter}\n      </Button>\n      <p className=\"w-3/4 text-center text-muted-foreground\">\n        Click to increment the counter and watch the document title update in\n        real-time!\n      </p>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/use-document-title-demo.tsx"
+      "target": "/components/delta/use-document-title-demo.tsx"
     }
   ]
 }

@@ -6,9 +6,9 @@
   "files": [
     {
       "path": "registry/examples/cambio-image-accessible-demo.tsx",
-      "content": "\"use client\"\n\nimport CambioImage from \"@/delta/cambio-image\"\n\nexport default function CambioImageAccessibleDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Reduced motion for accessibility\"\n        width={400}\n        height={300}\n        motion=\"reduced\"\n      />\n      <p className=\"text-center text-sm text-muted-foreground mt-2\">\n        Reduced preset - 10ms linear (accessible)\n      </p>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport CambioImage from \"@/components/delta/cambio-image\"\n\nexport default function CambioImageAccessibleDemo() {\n  return (\n    <div className=\"w-full max-w-md mx-auto\">\n      <CambioImage\n        src=\"/og/1200x6238-twitter.png\"\n        alt=\"Reduced motion for accessibility\"\n        width={400}\n        height={300}\n        motion=\"reduced\"\n      />\n      <p className=\"text-center text-sm text-muted-foreground mt-2\">\n        Reduced preset - 10ms linear (accessible)\n      </p>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/cambio-image-accessible-demo.tsx"
+      "target": "/components/delta/cambio-image-accessible-demo.tsx"
     }
   ]
 }

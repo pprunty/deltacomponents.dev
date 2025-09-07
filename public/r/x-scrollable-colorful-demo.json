@@ -3,13 +3,15 @@
   "name": "x-scrollable-colorful-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/x-scrollable.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/x-scrollable.json"
+  ],
   "files": [
     {
       "path": "registry/examples/x-scrollable-colorful-demo.tsx",
       "content": "\"use client\"\n\nimport React from \"react\"\nimport { XScrollable } from \"@/delta/x-scrollable\"\n\nexport default function XScrollableColorfulDemo() {\n  // Generate some demo items\n  const demoItems = Array.from({ length: 12 }, (_, i) => ({\n    id: i,\n    title: `Item ${i + 1}`,\n    description: `This is a sample item ${i + 1} for the colorful demo`,\n  }))\n\n  return (\n    <div className=\"w-full\">\n      <h3 className=\"text-lg font-medium mb-4\">Colorful XScrollable</h3>\n\n      <XScrollable className=\"colorful-style\">\n        {demoItems.map((item) => (\n          <div\n            key={item.id}\n            className=\"flex-shrink-0 w-64 p-4 border rounded-md mr-4 bg-card\"\n          >\n            <h4 className=\"font-medium\">{item.title}</h4>\n            <p className=\"text-sm text-muted-foreground\">{item.description}</p>\n          </div>\n        ))}\n      </XScrollable>\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/x-scrollable-colorful-demo.tsx"
+      "target": "/components/delta/x-scrollable-colorful-demo.tsx"
     }
   ]
 }

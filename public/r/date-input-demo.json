@@ -3,13 +3,15 @@
   "name": "date-input-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": ["https://deltacomponents.dev/r/date-input.json"],
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/date-input.json"
+  ],
   "files": [
     {
       "path": "registry/examples/date-input-demo.tsx",
       "content": "\"use client\"\n\nimport { DateInput } from \"@/delta/date-input\"\n\nexport default function DateInputDemo() {\n  return (\n    <div className=\"w-full min-w-[320px] max-w-md mx-auto p-4\">\n      <DateInput\n        label=\"Event Date\"\n        name=\"event-date\"\n        description=\"Select the date of your event\"\n        placeholder=\"Select a date\"\n        minDate={new Date()}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:block",
-      "target": "/delta/date-input-demo.tsx"
+      "target": "/components/delta/date-input-demo.tsx"
     }
   ]
 }
