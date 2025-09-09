@@ -3,9 +3,7 @@
   "name": "code-block-theme-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/code-block.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
   "files": [
     {
       "path": "registry/examples/code-block-theme-demo.tsx",

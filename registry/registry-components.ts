@@ -2,6 +2,17 @@ import type { Registry } from "@/registry/schema"
 
 export const components: Registry = [
   {
+    name: "progressive-blur",
+    type: "registry:component",
+    registryDependencies: [],
+    files: [
+      {
+        path: "components/progressive-blur.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "marquee",
     type: "registry:component",
     registryDependencies: [],

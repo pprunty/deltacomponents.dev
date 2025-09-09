@@ -3,9 +3,7 @@
   "name": "marquee-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/marquee.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/marquee.json"],
   "files": [
     {
       "path": "registry/examples/marquee-demo.tsx",

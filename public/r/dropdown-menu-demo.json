@@ -3,9 +3,7 @@
   "name": "dropdown-menu-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/dropdown-menu.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/dropdown-menu.json"],
   "files": [
     {
       "path": "registry/examples/dropdown-menu-demo.tsx",

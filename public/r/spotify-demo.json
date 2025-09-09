@@ -3,9 +3,7 @@
   "name": "spotify-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/spotify.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/spotify.json"],
   "files": [
     {
       "path": "registry/examples/spotify-demo.tsx",

@@ -3,10 +3,7 @@
   "name": "file-input",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "zod",
-    "lucide-react"
-  ],
+  "dependencies": ["zod", "lucide-react"],
   "files": [
     {
       "path": "registry/inputs/file-input.tsx",

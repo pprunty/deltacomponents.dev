@@ -3,9 +3,7 @@
   "name": "toast",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "sonner"
-  ],
+  "dependencies": ["sonner"],
   "files": [
     {
       "path": "registry/components/toast.tsx",

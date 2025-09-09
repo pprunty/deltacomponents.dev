@@ -3,9 +3,7 @@
   "name": "scramble-text",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "dependencies": [
-    "use-scramble"
-  ],
+  "dependencies": ["use-scramble"],
   "files": [
     {
       "path": "registry/animations/scramble-text.tsx",

@@ -125,10 +125,12 @@ export function CheckboxInput({
       className={cn("group/field space-y-2", containerClassName)}
       data-invalid={hasError}
     >
-      <div className={cn(
-        "flex space-x-2",
-        description ? "items-start" : "items-center"
-      )}>
+      <div
+        className={cn(
+          "flex space-x-2",
+          description ? "items-start" : "items-center"
+        )}
+      >
         <Checkbox
           id={id}
           name={name}

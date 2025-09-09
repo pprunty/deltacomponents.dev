@@ -3,9 +3,7 @@
   "name": "youtube",
   "type": "registry:component",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "use-mobile"
-  ],
+  "registryDependencies": ["use-mobile"],
   "files": [
     {
       "path": "registry/media/youtube.tsx",

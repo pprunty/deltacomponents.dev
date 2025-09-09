@@ -3,9 +3,7 @@
   "name": "embed-blocked-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/embed.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/embed.json"],
   "files": [
     {
       "path": "registry/examples/embed-blocked-demo.tsx",

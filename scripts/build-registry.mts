@@ -40,7 +40,10 @@ let SITE_URL = "https://deltacomponents.dev"
 function transformImportPaths(content: string): string {
   // Transform import paths from @/registry/ to @/components/delta/
   return content
-    .replace(/from ["']@\/registry\/inputs\/([^"']+)["']/g, 'from "@/components/delta/$1"')
+    .replace(
+      /from ["']@\/registry\/inputs\/([^"']+)["']/g,
+      'from "@/components/delta/$1"'
+    )
     .replace(
       /from ["']@\/registry\/components\/([^"']+)["']/g,
       'from "@/components/delta/$1"'
@@ -49,14 +52,26 @@ function transformImportPaths(content: string): string {
       /from ["']@\/registry\/animations\/([^"']+)["']/g,
       'from "@/components/delta/$1"'
     )
-    .replace(/from ["']@\/registry\/blocks\/([^"']+)["']/g, 'from "@/components/delta/$1"')
-    .replace(/from ["']@\/registry\/layout\/([^"']+)["']/g, 'from "@/components/delta/$1"')
-    .replace(/from ["']@\/registry\/media\/([^"']+)["']/g, 'from "@/components/delta/$1"')
+    .replace(
+      /from ["']@\/registry\/blocks\/([^"']+)["']/g,
+      'from "@/components/delta/$1"'
+    )
+    .replace(
+      /from ["']@\/registry\/layout\/([^"']+)["']/g,
+      'from "@/components/delta/$1"'
+    )
+    .replace(
+      /from ["']@\/registry\/media\/([^"']+)["']/g,
+      'from "@/components/delta/$1"'
+    )
     .replace(
       /from ["']@\/registry\/landing-page\/([^"']+)["']/g,
       'from "@/components/delta/$1"'
     )
-    .replace(/from ["']@\/registry\/hooks\/([^"']+)["']/g, 'from "@/components/delta/$1"')
+    .replace(
+      /from ["']@\/registry\/hooks\/([^"']+)["']/g,
+      'from "@/components/delta/$1"'
+    )
 }
 
 // Define types

@@ -123,6 +123,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Progressive Blur",
+          href: "/docs/components/progressive-blur",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Retro Button",
           href: "/docs/components/retro-button",
           items: [],

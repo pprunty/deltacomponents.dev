@@ -1322,4 +1322,27 @@ export const examples: Registry = [
       },
     ],
   },
+  {
+    name: "progressive-blur-basic-demo",
+    type: "registry:block",
+    files: [
+      {
+        path: "examples/progressive-blur-basic-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "progressive-blur-no-blur-demo",
+    type: "registry:block",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/progressive-blur.json",
+    ],
+    files: [
+      {
+        path: "examples/progressive-blur-no-blur-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
 ]

@@ -3,9 +3,7 @@
   "name": "modal-custom-header-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/modal.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/modal.json"],
   "files": [
     {
       "path": "registry/examples/modal-custom-header-demo.tsx",

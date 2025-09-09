@@ -3,9 +3,7 @@
   "name": "toast-positions-demo",
   "type": "registry:block",
   "author": "patrick prunty <https://www.patrickprunty.com>",
-  "registryDependencies": [
-    "https://deltacomponents.dev/r/toast.json"
-  ],
+  "registryDependencies": ["https://deltacomponents.dev/r/toast.json"],
   "files": [
     {
       "path": "registry/examples/toast-positions-demo.tsx",
