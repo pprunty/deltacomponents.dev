@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import Modal from "@/registry/components/modal"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 export function CommandMenu() {
   const router = useRouter()
@@ -61,14 +61,14 @@ export function CommandMenu() {
 
   // The command content with matching rounded corners
   const commandContent = (
-    <Command className="rounded-2xl bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-4 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
+    <Command className="rounded-sm bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-4 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
       <div className="sr-only">Type a command or search</div>
       <CommandInput
         placeholder="Type a command or search..."
-        className="rounded-t-2xl text-sm lg:text-base"
+        className="rounded-t-sm text-sm [&::placeholder]:text-[15px]"
         autoFocus
       />
-      <CommandList className="flex-1 rounded-b-2xl pb-12">
+      <CommandList className="flex-1 rounded-b-sm pb-12">
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Links">
           {docsConfig.mainNav
@@ -123,7 +123,7 @@ export function CommandMenu() {
       </CommandList>
 
       {/* Keyboard navigation help - desktop only */}
-      <div className="absolute hidden sm:flex items-center justify-start border-t border-border bg-muted w-full bottom-0 px-2 py-2 text-xs text-muted-foreground bg-background/80 backdrop-blur-sm rounded-b-2xl">
+      <div className="absolute hidden sm:flex items-center justify-start border-t border-border bg-muted w-full bottom-0 px-2 py-2 text-xs text-muted-foreground bg-background/80 backdrop-blur-sm rounded-b-sm">
         ↑↓ Navigate ⏎ Select
       </div>
     </Command>
@@ -134,32 +134,23 @@ export function CommandMenu() {
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 md:h-10 w-full justify-start rounded-[0.5rem] bg-muted text-sm lg:text-base font-normal text-muted-foreground shadow-none sm:pr-12 lg:w-64 xl:w-80"
+          "relative h-8 md:h-10 w-full justify-start rounded-[0.5rem] bg-muted text-sm font-normal text-muted-foreground shadow-none sm:pr-12 lg:w-56 xl:w-64"
         )}
         onClick={() => setOpen(true)}
       >
-        <SearchIcon className="ml-[-4px] mr-1 size-4 shrink-0 opacity-50" />
-        <span className="hidden lg:inline-flex text-sm lg:text-base">
-          Search documentation...
-        </span>
+        <SearchIcon className="ml-[-4px] mr-1 size-3.5 shrink-0 opacity-50" />
+        <span className="hidden lg:inline-flex text-sm">Search docs...</span>
         <span className="inline-flex lg:hidden text-sm">Search...</span>
         <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] md:top-[0.5rem] hidden h-5 select-none items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
 
-      {/* Use Modal for both mobile and desktop */}
-      <Modal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        className="w-full max-w-[450px] p-0 min-h-[300px] max-h-[60vh]"
-        showCloseButton={false}
-        animationType="scale"
-        disablePadding
-        position={380}
-      >
-        {commandContent}
-      </Modal>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="overflow-hidden p-0 shadow-lg w-full max-w-[600px] min-h-[400px] max-h-[70vh] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] [&_*]:no-scrollbar">
+          {commandContent}
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

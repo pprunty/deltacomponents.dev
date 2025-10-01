@@ -5,8 +5,8 @@ import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
+import { SiteHeader } from "@/components/site-header"
 import { themeEffect } from "@/components/theme-effect"
-import Marquee from "@/registry/components/marquee"
 
 import "@/styles/globals.css"
 
@@ -126,21 +126,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
         suppressHydrationWarning
       >
-        <div className="fixed top-0 left-0 right-0 z-[60] h-8 bg-black dark:bg-white overflow-hidden">
-          <Marquee baseVelocity={5} className="h-full">
-            <div className="flex items-center h-full px-4 py-1">
-              <span className="text-sm text-white dark:text-black whitespace-nowrap">
-                Note: This project is still in development and has not been
-                publicly released. Coming soon.
-              </span>
-            </div>
-          </Marquee>
-        </div>
-        <div className="flex items-center justify-center w-full pt-4">
-          <main className="h-full w-full max-w-[96rem] flex flex-col items-center justify-center">
-            {children}
-          </main>
-        </div>
+        <SiteHeader />
+        <div className="flex w-full">{children}</div>
         <Analytics />
         <Toaster />
       </body>

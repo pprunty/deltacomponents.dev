@@ -17,7 +17,7 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components",
     },
     {
-      title: "Getting Started",
+      title: "Get Started",
       href: "/docs/introduction",
     },
     {
@@ -47,7 +47,7 @@ export const docsConfig: DocsConfig = {
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "Get Started",
       items: [
         {
           title: "Introduction",
@@ -356,8 +356,8 @@ export function createComponentToCategory(): Record<string, string> {
 
   // Process each section in the sidebar navigation
   docsConfig.sidebarNav.forEach((section) => {
-    // Skip the "Getting Started" section as it doesn't contain components
-    if (section.title === "Getting Started") return
+    // Skip the "Get Started" section as it doesn't contain components
+    if (section.title === "Get Started") return
 
     // Format the category name for URL path (lowercase, replace spaces with hyphens)
     const categoryPath = section.title.toLowerCase().replace(/ /g, "-")

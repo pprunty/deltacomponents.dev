@@ -1,13 +1,13 @@
-import React from "react";
+import React from "react"
 
 type ProgressiveBlurProps = {
-  className?: string;
-  backgroundColor?: string;
-  position?: "top" | "bottom";
-  height?: string;
-  blurAmount?: string;
-  blurEnabled?: boolean;
-};
+  className?: string
+  backgroundColor?: string
+  position?: "top" | "bottom"
+  height?: string
+  blurAmount?: string
+  blurEnabled?: boolean
+}
 
 const ProgressiveBlur = ({
   className = "",
@@ -17,7 +17,7 @@ const ProgressiveBlur = ({
   blurAmount = "4px",
   blurEnabled = true,
 }: ProgressiveBlurProps) => {
-  const isTop = position === "top";
+  const isTop = position === "top"
 
   return (
     <div
@@ -39,7 +39,7 @@ const ProgressiveBlur = ({
         userSelect: "none",
       }}
     />
-  );
-};
+  )
+}
 
-export default ProgressiveBlur;
+export default ProgressiveBlur

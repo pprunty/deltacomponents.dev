@@ -31,7 +31,6 @@ export function DashboardTableOfContents({ toc }: TocProps) {
 
   return (
     <div className="space-y-2">
-      <p className="font-medium text-sm md:text-[15px]">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   )
