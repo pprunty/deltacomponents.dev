@@ -24,7 +24,6 @@ export default function ModalDemo() {
         title="Example Modal"
         subtitle="This modal uses scale animation with overlay"
         type="overlay"
-        animationType="scale"
         borderBottom
         showCloseButton
       >

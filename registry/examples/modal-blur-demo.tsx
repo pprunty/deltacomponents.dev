@@ -24,7 +24,6 @@ export default function ModalBlurDemo() {
         title="Blur Modal"
         subtitle="This modal uses blur background effect"
         type="blur"
-        animationType="scale"
         borderBottom
         showCloseButton
       >

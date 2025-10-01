@@ -21,7 +21,6 @@ export default function ModalMinimalDemo() {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         showCloseButton={false}
-        animationType="scale"
         disablePadding={false}
       >
         <div className="space-y-6">

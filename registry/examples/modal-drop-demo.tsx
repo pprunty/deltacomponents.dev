@@ -23,7 +23,6 @@ export default function ModalDropDemo() {
         onClose={closeModal}
         title="Drop Animation Modal"
         subtitle="This modal uses default background with drop animation"
-        animationType="drop"
         borderBottom
         showCloseButton
       >
@@ -34,7 +33,7 @@ export default function ModalDropDemo() {
 
         <p className="mb-6 text-muted-foreground">
           This animation style creates a dynamic entrance that draws attention
-          while maintaining context through the blurred background. It's
+          while maintaining context through the blurred background. It&apos;s
           particularly effective for action confirmations or important
           notifications.
         </p>
