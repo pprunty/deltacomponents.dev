@@ -20,7 +20,7 @@ export default function Home() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button
             variant="outline"
-            className="transition-transform duration-150 ease-in-out active:scale-[0.98]"
+            className="bg-muted transition-transform duration-150 ease-in-out active:scale-[0.98]"
             asChild
           >
             <Link
