@@ -102,7 +102,7 @@ export function ComponentPreview({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col space-y-2", className)}
+      className={cn("group relative flex flex-col space-y-2", className)}
       {...props}
     >
       <Tabs
@@ -129,7 +129,7 @@ export function ComponentPreview({
         )}
         <TabsContent
           value="demo"
-          className="relative rounded-md border overflow-visible"
+          className="relative rounded-sm border overflow-visible"
         >
           <div className="absolute right-4 top-4 flex items-center gap-2 z-40">
             <RefreshButton onRefresh={handleRefresh} />
@@ -160,13 +160,13 @@ export function ComponentPreview({
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
+            <div className="w-full rounded-sm border [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
               {code ? (
                 <CodeSnippet
                   title={filename || undefined}
                   code={code}
                   language="tsx"
-                  className="w-full rounded-md"
+                  className="w-full rounded-sm"
                   border={false}
                 />
               ) : (

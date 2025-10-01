@@ -190,7 +190,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   return (
     <div
       className={cn(
-        "rounded-2xl overflow-hidden pointer-events-auto my-4",
+        "rounded-sm overflow-hidden pointer-events-auto",
         border && "border border-border",
         className
       )}
