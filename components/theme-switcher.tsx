@@ -20,7 +20,7 @@ const themeEffect = function () {
     document.documentElement.classList.add("dark")
     document.head
       .querySelector("meta[name=theme-color]")
-      ?.setAttribute("content", "oklch(0.145 0 0)")
+      ?.setAttribute("content", "#13120A")
 
     requestAnimationFrame(() => {
       document.documentElement.classList.remove("pause-transitions")
