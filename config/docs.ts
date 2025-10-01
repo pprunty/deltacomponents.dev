@@ -65,11 +65,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Changelog",
-          href: "/docs/changelog",
-          items: [],
-        },
-        {
           title: "llms.txt",
           href: "/llms.txt",
           items: [],
@@ -127,12 +122,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/progressive-blur",
           items: [],
           label: "New",
-        },
-        {
-          title: "Retro Button",
-          href: "/docs/components/retro-button",
-          items: [],
-          hide: process.env.NODE_ENV === "production",
         },
         {
           title: "Scroll Progress",

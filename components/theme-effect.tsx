@@ -16,7 +16,7 @@ export const themeEffect = function () {
     document.documentElement.classList.add("dark")
     document.head
       .querySelector("meta[name=theme-color]")
-      ?.setAttribute("content", "#1e1b18")
+      ?.setAttribute("content", "oklch(0.145 0 0)")
 
     requestAnimationFrame(() => {
       document.documentElement.classList.remove("pause-transitions")
@@ -27,7 +27,7 @@ export const themeEffect = function () {
     document.documentElement.classList.remove("dark")
     document.head
       .querySelector("meta[name=theme-color]")
-      ?.setAttribute("content", "#e7e5e4")
+      ?.setAttribute("content", "oklch(0.99 0.002 190)")
     requestAnimationFrame(() => {
       document.documentElement.classList.remove("pause-transitions")
     })

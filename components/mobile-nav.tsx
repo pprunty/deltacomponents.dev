@@ -82,9 +82,9 @@ export function MobileNav() {
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay className="backdrop-blur-sm" />
-        <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-12 h-[80vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
+        <DrawerContent className="bg-background flex flex-col rounded-t-lg mt-6 h-[82vh] fixed bottom-0 left-0 right-0 z-[100] outline-none">
           <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
-          <DrawerHandle />
+          <DrawerHandle className="bg-muted-foreground/60" />
           <DrawerBody ref={drawerBodyRef} className="flex-1 overflow-auto p-6">
             <div className="flex flex-col gap-y-3 pb-4 mb-4 border-b border-dashed border-border">
               {navItems?.map(
@@ -100,7 +100,7 @@ export function MobileNav() {
                       <div className="flex items-center gap-2">
                         {item.title}
                         {item.title === "Templates" && (
-                          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                          <span className="ml-2 rounded-sm bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                             new
                           </span>
                         )}
@@ -111,27 +111,35 @@ export function MobileNav() {
             </div>
             <div className="flex flex-col space-y-2">
               {docsConfig.sidebarNav.map((item, index) => (
-                <div key={index} className="flex flex-col space-y-3 pt-6">
+                <div key={index} className="flex flex-col space-y-2 pt-6">
                   <h4 className="font-medium">{item.title}</h4>
                   {item?.items?.length &&
                     item.items
                       .filter((i) => !i.hide)
-                      .map((item) => (
+                      .map((item, itemIndex, items) => (
                         <React.Fragment key={item.href}>
                           {!item.disabled &&
                             (item.href ? (
-                              <MobileLink
-                                href={item.href}
-                                onOpenChange={setOpen}
-                                activeItemRefs={activeItemRefs}
-                              >
-                                {item.title}
-                                {item.label && (
-                                  <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                                    {item.label}
-                                  </span>
+                              <div
+                                className={cn(
+                                  "pb-2",
+                                  itemIndex < items.length - 1 &&
+                                    "border-b border-dashed border-border"
                                 )}
-                              </MobileLink>
+                              >
+                                <MobileLink
+                                  href={item.href}
+                                  onOpenChange={setOpen}
+                                  activeItemRefs={activeItemRefs}
+                                >
+                                  {item.title}
+                                  {item.label && (
+                                    <span className="ml-2 rounded-sm bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                                      {item.label}
+                                    </span>
+                                  )}
+                                </MobileLink>
+                              </div>
                             ) : (
                               item.title
                             ))}

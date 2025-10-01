@@ -3,7 +3,6 @@ import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
-import { ExternalLinkIcon } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
@@ -16,7 +15,6 @@ import "@/styles/mdx.css"
 
 import Link from "next/link"
 
-import { badgeVariants } from "@/components/ui/badge"
 import { Contribute } from "@/components/contribute"
 import { DocsPagination } from "@/components/pagination"
 import { SimilarComponents } from "@/components/similar-components"
@@ -148,44 +146,22 @@ export default async function DocPage(props: {
                 : "max-w-3xl mx-auto"
             )}
           >
-            <div className="py-6">
+            <div className="sm:py-4">
               <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
                 <div className="truncate">Docs</div>
               </div>
               <div className="space-y-2">
-                <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+                <h1 className="font-heading font-medium scroll-m-20 text-4xl lg:text-3xl font-bold tracking-tight text-pretty">
                   {doc.title}
                 </h1>
                 {doc.description && (
-                  <p className="text-base text-muted-foreground">
+                  <p className="text-base text-muted-foreground text-pretty">
                     {doc.description}
                   </p>
                 )}
               </div>
 
-              {doc.links ? (
-                <div className="flex items-center space-x-2 pt-4">
-                  {componentName && (
-                    <span className="text-muted-foreground">Based on</span>
-                  )}
-                  {Object.entries(doc.links).map(([k, v]) => (
-                    <Link
-                      key={k}
-                      href={v as any}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={cn(
-                        badgeVariants({ variant: "secondary" }),
-                        "gap-1 no-after"
-                      )}
-                    >
-                      {k}
-                      <ExternalLinkIcon className="size-3" />
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-              <div className="pt-8">
+              <div className="pt-4">
                 <Mdx code={doc.body.code} />
               </div>
 
@@ -237,34 +213,34 @@ export default async function DocPage(props: {
                     <Suspense fallback={<div>Loading contribute links...</div>}>
                       <Contribute slug={doc.slug} />
                     </Suspense>
+
+                    {/* Twitter follow card - within same container */}
+                    <div className="rounded-sm border border-border px-4 py-3 hover:bg-accent transition-colors">
+                      <Link
+                        href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-3 group no-after"
+                      >
+                        <Image
+                          src="/images/pp.png"
+                          alt="Patrick Prunty"
+                          width={42}
+                          height={42}
+                          className="rounded-md object-cover"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium">
+                            Follow me on 𝕏
+                          </span>
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                            @pprunty_
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </ScrollArea>
-
-                {/* Twitter follow card - beneath TOC border */}
-                <div className="mt-6 rounded-2xl bg-background border-border border px-4 py-4 hover:bg-accent transition-colors">
-                  <Link
-                    href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-3 group no-after"
-                  >
-                    <Image
-                      src="/images/pp.png"
-                      alt="Patrick Prunty"
-                      width={42}
-                      height={42}
-                      className="rounded-md object-cover"
-                    />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-medium">
-                        Follow me on 𝕏
-                      </span>
-                      <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                        @pprunty_
-                      </span>
-                    </div>
-                  </Link>
-                </div>
               </div>
             </aside>
           )}

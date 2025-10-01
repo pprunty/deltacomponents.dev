@@ -111,7 +111,6 @@ export const examples: Registry = [
       },
     ],
   },
-
   {
     name: "social-icons-demo",
     type: "registry:block",
@@ -208,16 +207,6 @@ export const examples: Registry = [
     files: [
       {
         path: "examples/star-rating-demo.tsx",
-        type: "registry:block",
-      },
-    ],
-  },
-  {
-    name: "retro-button-demo",
-    type: "registry:block",
-    files: [
-      {
-        path: "examples/retro-button-demo.tsx",
         type: "registry:block",
       },
     ],

@@ -5,7 +5,6 @@ import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
-import { SiteHeader } from "@/components/site-header"
 import { themeEffect } from "@/components/theme-effect"
 
 import "@/styles/globals.css"
@@ -120,14 +119,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={cn(
-          "flex flex-col w-full text-foreground antialiased [font-synthesis-weight:none]",
+          "w-full text-foreground antialiased [font-synthesis-weight:none] md:flex md:flex-col",
           fontSans.variable,
           fontMono.variable
         )}
         suppressHydrationWarning
       >
-        <SiteHeader />
-        <div className="flex w-full">{children}</div>
+        <div className="w-full md:flex">{children}</div>
         <Analytics />
         <Toaster />
       </body>

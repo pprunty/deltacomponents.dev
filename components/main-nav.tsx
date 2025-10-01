@@ -32,8 +32,8 @@ export function MainNav() {
             // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname.startsWith("/docs") &&
               !pathname.startsWith("/docs/components")
-              ? "text-primary font-medium border-b-[3px] border-primary"
-              : "text-muted-foreground border-b-[3px] border-transparent"
+              ? "text-primary font-medium border-b-[2px] border-primary"
+              : "text-muted-foreground border-b-[2px] border-transparent"
           )}
         >
           Docs
@@ -46,12 +46,40 @@ export function MainNav() {
             // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
             // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
             pathname.startsWith("/docs/components")
-              ? "text-primary font-medium border-b-[3px] border-primary"
-              : "text-muted-foreground border-b-[3px] border-transparent"
+              ? "text-primary font-medium border-b-[2px] border-primary"
+              : "text-muted-foreground border-b-[2px] border-transparent"
           )}
         >
           Components
         </Link>
+        {siteConfig.showBlocks && (
+          <Link
+            href="/blocks"
+            data-text="Blocks"
+            className={cn(
+              "hover:text-primary inline-flex font-light border-box relative h-full items-center px-1",
+              pathname.startsWith("/blocks")
+                ? "text-primary font-medium border-b-[2px] border-primary"
+                : "text-muted-foreground border-b-[2px] border-transparent"
+            )}
+          >
+            Blocks
+          </Link>
+        )}
+        {siteConfig.showThemes && (
+          <Link
+            href="/themes"
+            data-text="Themes"
+            className={cn(
+              "hover:text-primary inline-flex font-light border-box relative h-full items-center px-1",
+              pathname.startsWith("/themes")
+                ? "text-primary font-medium border-b-[2px] border-primary"
+                : "text-muted-foreground border-b-[2px] border-transparent"
+            )}
+          >
+            Themes
+          </Link>
+        )}
         {siteConfig.showTemplates && (
           <Link
             href="/templates"
@@ -61,12 +89,12 @@ export function MainNav() {
               // LLM: DO NOT DELETE - Hover animation classes commented out but may be restored later
               // "after:content-[attr(data-text)] after:font-black after:pointer-none after:overflow-hidden after:select-none after:invisible after:h-0 duration-300 transition-all hover:font-semibold flex-col ease-out",
               pathname.startsWith("/templates")
-                ? "text-primary font-medium border-b-[3px] border-primary"
-                : "text-muted-foreground border-b-[3px] border-transparent"
+                ? "text-primary font-medium border-b-[2px] border-primary"
+                : "text-muted-foreground border-b-[2px] border-transparent"
             )}
           >
             Templates
-            <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+            <span className="ml-2 rounded-sm bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
               new
             </span>
           </Link>

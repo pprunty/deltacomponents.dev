@@ -23,7 +23,6 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
-import { GitHubChangelog } from "@/components/github-changelog"
 import Admonition from "@/registry/components/admonition"
 import { CodeSnippet } from "@/registry/media/code-snippet"
 
@@ -65,7 +64,6 @@ const components = {
   ComponentSource,
   ComponentPreview,
   ComponentsShowcase,
-  GitHubChangelog,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
@@ -98,7 +96,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "font-heading mt-2 scroll-m-20 text-4xl font-bold",
+        "font-heading font-medium mt-2 scroll-m-20 text-3xl tracking-tight",
         className
       )}
       {...props}
@@ -107,7 +105,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+        "font-heading font-medium mt-12 scroll-m-20 pb-2 text-xl tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -116,7 +114,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-lg tracking-tight",
         className
       )}
       {...props}
@@ -125,7 +123,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-base tracking-tight",
         className
       )}
       {...props}
@@ -134,7 +132,7 @@ const components = {
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-base tracking-tight",
         className
       )}
       {...props}
@@ -143,7 +141,7 @@ const components = {
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-sm tracking-tight",
         className
       )}
       {...props}
@@ -188,7 +186,7 @@ const components = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="relative w-full overflow-auto border border-border rounded-lg my-6">
+    <div className="relative w-full overflow-auto border border-border rounded-sm my-6">
       <table
         className={cn("w-full caption-bottom text-sm", className)}
         {...props}
@@ -339,7 +337,7 @@ const components = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-lg tracking-tight",
         className
       )}
       {...props}

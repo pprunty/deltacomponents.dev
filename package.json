@@ -13,6 +13,7 @@
     "prepare": "husky",
     "prebuild:registry": "rimraf \"registry/**/*.js\"",
     "create-component": "tsx scripts/create-component.mts",
+    "delete-component": "tsx scripts/delete-component.mts",
     "create-demo": "node scripts/create-demo.mjs",
     "pwa": "tsx scripts/pwa.mts"
   },

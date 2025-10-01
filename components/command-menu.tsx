@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 export function CommandMenu() {
   const router = useRouter()
@@ -148,6 +148,9 @@ export function CommandMenu() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="overflow-hidden p-0 shadow-lg w-full max-w-[600px] min-h-[400px] max-h-[70vh] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] [&_*]:no-scrollbar">
+          <div className="sr-only">
+            <DialogTitle>Command Menu</DialogTitle>
+          </div>
           {commandContent}
         </DialogContent>
       </Dialog>

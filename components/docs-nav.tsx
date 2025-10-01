@@ -97,7 +97,7 @@ function DocsNavItems({
               {item.label && (
                 <span
                   className={cn(
-                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    "ml-2 rounded-sm px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
                     getLabelStyle(item.label)
                   )}
                 >
@@ -117,7 +117,7 @@ function DocsNavItems({
               {item.label && (
                 <span
                   className={cn(
-                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    "ml-2 rounded-sm px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
                     getLabelStyle(item.label)
                   )}
                 >

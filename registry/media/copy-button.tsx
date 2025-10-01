@@ -30,7 +30,7 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:size-2",
+        "relative z-10 size-6 bg-muted text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 rounded-sm border border-border p-1 [&_svg]:size-2",
         className
       )}
       onClick={() => {
