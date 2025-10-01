@@ -219,7 +219,7 @@ export default async function DocPage(props: {
           </main>
           {doc.toc && (
             <aside className="hidden xl:block w-70 shrink-0">
-              <div className="sticky top-16 py-6">
+              <div className="sticky top-14 py-6">
                 <ScrollArea
                   className={cn(
                     "bg-background",
