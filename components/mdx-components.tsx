@@ -23,6 +23,7 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
+import { Discover } from "@/components/discover"
 import Admonition from "@/registry/components/admonition"
 import { CodeSnippet } from "@/registry/media/code-snippet"
 
@@ -64,6 +65,7 @@ const components = {
   ComponentSource,
   ComponentPreview,
   ComponentsShowcase,
+  Discover,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),

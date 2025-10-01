@@ -6,7 +6,7 @@ import { GridPattern } from "@/components/grid-pattern"
 
 export default function Home() {
   return (
-    <div className="relative grid min-h-screen place-items-center overflow-hidden">
+    <div className="relative grid h-screen max-h-screen place-items-center overflow-y-hidden overflow-x-hidden">
       <div className="z-10 flex flex-col items-center space-y-6 px-6">
         <svg
           className="size-16 fill-foreground dark:fill-foreground transition-colors duration-150 ease-in-out mb-8"
@@ -35,7 +35,7 @@ export default function Home() {
             className="transition-transform duration-150 ease-in-out active:scale-[0.98]"
             asChild
           >
-            <Link href="/docs/introduction">Explore the docs</Link>
+            <Link href="/docs/welcome">Explore the docs</Link>
           </Button>
         </div>
         <Link

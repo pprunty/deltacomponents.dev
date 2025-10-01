@@ -43,7 +43,7 @@ export function DocsPagination({ className }: DocsPaginationProps) {
   return (
     <div
       className={cn(
-        "mt-16 py-12 pb-12 border-t border-border flex justify-between",
+        "mt-16 py-12 pb-[6rem] sm:pb-12 border-t border-border flex justify-between",
         className
       )}
     >

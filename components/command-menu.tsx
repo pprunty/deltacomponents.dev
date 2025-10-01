@@ -134,7 +134,7 @@ export function CommandMenu() {
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 md:h-9 w-full justify-start rounded-[0.5rem] bg-muted text-sm font-normal text-muted-foreground shadow-none sm:pr-12 lg:w-56 xl:w-64 px-2"
+          "relative h-8 md:h-9 w-full justify-start rounded-sm bg-muted text-sm font-normal text-muted-foreground shadow-none sm:pr-12 lg:w-56 xl:w-64 px-2"
         )}
         onClick={() => setOpen(true)}
       >

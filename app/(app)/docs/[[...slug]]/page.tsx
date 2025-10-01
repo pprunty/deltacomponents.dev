@@ -131,7 +131,7 @@ export default async function DocPage(props: {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div
           className={cn(
             "flex flex-col xl:flex-row gap-8",

@@ -35,7 +35,7 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
       isOpen={open}
       onClose={() => onOpenChange(false)}
       title="Feedback"
-      className="w-[496px]"
+      className="w-[496px] rounded-sm"
       showCloseButton={true}
       showEscText={true}
       borderBottom={false}
@@ -45,11 +45,11 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
           placeholder="How was your experience?"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
-          className="w-full self-stretch h-[108px] py-3 px-2 rounded-md resize-none bg-muted text-foreground border border-border placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent text-sm"
+          className="w-full self-stretch h-[108px] py-3 px-2 rounded-sm resize-none bg-muted text-foreground border border-border placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent text-sm cursor-text"
         />
 
         <div className="flex justify-between items-center self-stretch pt-2">
-          <div className="flex p-1 items-center gap-1 rounded-md border border-border bg-background">
+          <div className="flex p-1 items-center gap-1 rounded-sm border border-border bg-background">
             <button
               type="button"
               onClick={() => setSelectedMood("sad")}

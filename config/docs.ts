@@ -18,7 +18,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Get Started",
-      href: "/docs/introduction",
+      href: "/docs/welcome",
     },
     {
       title: "Blocks",
@@ -50,8 +50,8 @@ export const docsConfig: DocsConfig = {
       title: "Get Started",
       items: [
         {
-          title: "Introduction",
-          href: "/docs/introduction",
+          title: "Welcome",
+          href: "/docs/welcome",
           items: [],
         },
         {

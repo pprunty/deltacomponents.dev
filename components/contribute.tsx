@@ -82,7 +82,7 @@ export function Contribute({ slug }: ContributeProps) {
               ) : (
                 <button
                   onClick={link.onClick}
-                  className="inline-flex items-center text-xs md:text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="inline-flex items-center text-xs md:text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
                 >
                   <link.icon className="mr-2 size-3.5" />
                   {link.text}
