@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Cambio } from "cambio"
 
+import { cn } from "@/lib/utils"
+
 type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced"
 
 interface CambioImageProps {
@@ -20,6 +22,7 @@ interface CambioImageProps {
         backdrop?: MotionPreset
       }
   dismissible?: boolean
+  className?: string
 }
 
 export default function CambioImage({
@@ -31,6 +34,7 @@ export default function CambioImage({
   index = 0,
   motion = "smooth",
   dismissible = true,
+  className,
 }: CambioImageProps) {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -64,9 +68,9 @@ export default function CambioImage({
   const zIndex = open ? 999 : 10 + index
 
   return (
-    <div
+    <span
       ref={ref}
-      className="relative transition-all duration-500 ease-out"
+      className={cn("relative transition-all duration-500 ease-out inline-block w-full", className)}
       style={{
         opacity: isVisible ? 1 : 0,
         filter: isVisible ? "blur(0)" : "blur(4px)",
@@ -88,7 +92,7 @@ export default function CambioImage({
             width={width}
             height={height}
             loading={loading}
-            className="w-full h-auto"
+            className={cn("w-full h-auto", className)}
             style={{ pointerEvents: "none" }}
           />
         </Cambio.Trigger>
@@ -111,6 +115,6 @@ export default function CambioImage({
           </Cambio.Popup>
         </Cambio.Portal>
       </Cambio.Root>
-    </div>
+    </span>
   )
 }

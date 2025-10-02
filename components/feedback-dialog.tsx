@@ -35,7 +35,7 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
       isOpen={open}
       onClose={() => onOpenChange(false)}
       title="Feedback"
-      className="w-[496px] rounded-sm"
+      className="w-[496px] rounded-md border-none"
       showCloseButton={true}
       showEscText={true}
       borderBottom={false}

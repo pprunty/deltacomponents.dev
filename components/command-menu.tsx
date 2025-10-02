@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import Modal from "@/registry/components/modal"
 
 export function CommandMenu() {
   const router = useRouter()
@@ -61,14 +61,14 @@ export function CommandMenu() {
 
   // The command content with matching rounded corners
   const commandContent = (
-    <Command className="rounded-sm bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-4 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 h-full flex flex-col overflow-hidden relative">
+    <Command className="rounded-md bg-background [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:size-4 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:size-5 w-full flex flex-col overflow-hidden relative">
       <div className="sr-only">Type a command or search</div>
       <CommandInput
         placeholder="Type a command or search..."
-        className="rounded-t-sm text-sm [&::placeholder]:text-[15px]"
+        className="rounded-t-md text-sm [&::placeholder]:text-[15px]"
         autoFocus
       />
-      <CommandList className="flex-1 rounded-b-sm pb-12">
+      <CommandList className="flex-1 rounded-b-md pb-2">
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Links">
           {docsConfig.mainNav
@@ -146,14 +146,19 @@ export function CommandMenu() {
         </kbd>
       </Button>
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="overflow-hidden p-0 shadow-lg w-full max-w-[600px] min-h-[400px] max-h-[70vh] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] [&_*]:no-scrollbar">
-          <div className="sr-only">
-            <DialogTitle>Command Menu</DialogTitle>
-          </div>
-          {commandContent}
-        </DialogContent>
-      </Dialog>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        className="w-full max-w-[90vw] sm:max-w-[600px] max-h-[70vh] p-0 overflow-hidden rounded-md border-border"
+        showCloseButton={false}
+        showEscText={false}
+        borderBottom={false}
+        animationType="scale"
+        position={350}
+        disablePadding={true}
+      >
+        {commandContent}
+      </Modal>
     </>
   )
 }

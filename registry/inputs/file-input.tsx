@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import {
-  CloudArrowUp,
   Export,
   File,
   FileAudio,
@@ -11,6 +10,7 @@ import {
   Image,
   X,
 } from "@phosphor-icons/react"
+import { CloudUpload } from "lucide-react"
 import type { z } from "zod"
 
 import { cn } from "@/lib/utils"
@@ -482,10 +482,7 @@ export function FileInput({
           aria-required={required}
         />
 
-        <CloudArrowUp
-          weight="regular"
-          className="h-8 w-8 text-muted-foreground/70"
-        />
+        <CloudUpload className="h-8 w-8 text-muted-foreground/70" />
 
         <div className="space-y-2">
           <p className="text-md font-medium text-foreground">

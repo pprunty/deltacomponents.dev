@@ -21,40 +21,40 @@ interface DiscoverItem {
 const discoverItems: DiscoverItem[] = [
   {
     title: "Get started",
-    description: "Install and start using Delta Components in your project.",
+    description: "Add Delta Components to your React project with shadcn/ui CLI.",
     href: "/docs/installation",
     icon: RocketIcon,
   },
   {
     title: "Components",
-    description: "Browse our collection of modern React components.",
+    description: "Explore animations, inputs, layouts and media components.",
     href: "/docs/components",
     icon: BookOpenIcon,
   },
   {
     title: "What's new",
-    description: "Check out the latest features and updates.",
+    description: "See the latest component releases and feature updates.",
     href: "https://github.com/pprunty/deltacomponents.dev/releases",
     icon: SparklesIcon,
     external: true,
   },
   {
     title: "Download",
-    description: "Get the source code and start contributing.",
+    description: "Clone the repository and contribute new components.",
     href: "https://github.com/pprunty/deltacomponents.dev",
     icon: DownloadIcon,
     external: true,
   },
   {
     title: "Community",
-    description: "Connect with other developers and get help.",
+    description: "Join discussions about component design and best practices.",
     href: "https://github.com/pprunty/deltacomponents.dev/discussions",
     icon: UsersIcon,
     external: true,
   },
   {
     title: "Support",
-    description: "Get help and support for your projects.",
+    description: "Report bugs or request new component features.",
     href: "https://github.com/pprunty/deltacomponents.dev/issues",
     icon: HeartHandshakeIcon,
     external: true,
@@ -63,7 +63,7 @@ const discoverItems: DiscoverItem[] = [
 
 export function Discover() {
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
       {discoverItems.map((item) => {
         const Component = item.external ? "a" : Link
         const props = item.external

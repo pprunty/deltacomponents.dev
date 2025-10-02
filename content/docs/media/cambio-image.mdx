@@ -165,6 +165,7 @@ You can customize individual components with different motion presets:
 | index       | number                       | 0        | Z-index offset for stacking multiple images            |
 | motion      | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration               |
 | dismissible | boolean                      | true     | Whether the popup can be dismissed by clicking outside |
+| className   | string                       | -        | Additional CSS classes to apply to the image element   |
 
 ### Motion Types
 
@@ -225,6 +226,7 @@ interface MotionConfig {
   dismissible={false}
   loading="eager"
   index={5}
+  className="rounded-xl shadow-lg"
 />
 ```
 

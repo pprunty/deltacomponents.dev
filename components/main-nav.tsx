@@ -11,7 +11,7 @@ export function MainNav() {
 
   return (
     <div className="mr-4 md:px-4 hidden lg:flex items-center">
-      <Link href="/" className="mr-8 flex items-center">
+      <Link href="/docs/welcome" className="mr-8 flex items-center">
         <svg
           className="size-5 fill-foreground dark:fill-foreground transition-colors"
           width="26"

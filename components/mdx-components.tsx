@@ -26,6 +26,7 @@ import { CopyButton } from "@/components/copy-button"
 import { Discover } from "@/components/discover"
 import Admonition from "@/registry/components/admonition"
 import { CodeSnippet } from "@/registry/media/code-snippet"
+import CambioImage from "@/registry/media/cambio-image"
 
 interface MdxProps {
   code: string
@@ -179,11 +180,23 @@ const components = {
   img: ({
     className,
     alt,
-    ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
-  ),
+    src,
+    width,
+    height,
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    // Return the CambioImage directly as an inline-block element
+    // This avoids wrapping in any block element that could cause nesting issues
+    return (
+      <CambioImage
+        src={typeof src === "string" ? src : ""}
+        alt={alt || ""}
+        width={typeof width === "string" ? parseInt(width) : width || 800}
+        height={typeof height === "string" ? parseInt(height) : height || 600}
+        motion="snappy"
+        className={cn("rounded-lg my-6 block", className)}
+      />
+    )
+  },
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
