@@ -17,8 +17,8 @@ export const docsConfig: DocsConfig = {
       href: "/docs/components",
     },
     {
-      title: "Getting Started",
-      href: "/docs/introduction",
+      title: "Get Started",
+      href: "/docs/welcome",
     },
     {
       title: "Blocks",
@@ -47,11 +47,11 @@ export const docsConfig: DocsConfig = {
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "Get Started",
       items: [
         {
-          title: "Introduction",
-          href: "/docs/introduction",
+          title: "Welcome",
+          href: "/docs/welcome",
           items: [],
         },
         {
@@ -62,11 +62,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Components",
           href: "/docs/components",
-          items: [],
-        },
-        {
-          title: "Changelog",
-          href: "/docs/changelog",
           items: [],
         },
         {
@@ -127,12 +122,6 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/progressive-blur",
           items: [],
           label: "New",
-        },
-        {
-          title: "Retro Button",
-          href: "/docs/components/retro-button",
-          items: [],
-          hide: process.env.NODE_ENV === "production",
         },
         {
           title: "Scroll Progress",
@@ -356,8 +345,8 @@ export function createComponentToCategory(): Record<string, string> {
 
   // Process each section in the sidebar navigation
   docsConfig.sidebarNav.forEach((section) => {
-    // Skip the "Getting Started" section as it doesn't contain components
-    if (section.title === "Getting Started") return
+    // Skip the "Get Started" section as it doesn't contain components
+    if (section.title === "Get Started") return
 
     // Format the category name for URL path (lowercase, replace spaces with hyphens)
     const categoryPath = section.title.toLowerCase().replace(/ /g, "-")

@@ -80,18 +80,6 @@ export const components: Registry = [
     ],
   },
   {
-    name: "retro-button",
-    type: "registry:component",
-    tags: ["button", "retro", "ui", "component"],
-    registryDependencies: [],
-    files: [
-      {
-        path: "components/retro-button.tsx",
-        type: "registry:component",
-      },
-    ],
-  },
-  {
     name: "admonition",
     type: "registry:component",
     tags: ["admonition", "alert", "info", "component"],

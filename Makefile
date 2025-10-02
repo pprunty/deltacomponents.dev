@@ -24,6 +24,7 @@ help:
 	@echo "  $(GREEN)make test$(NC)       - Run tests (if configured)"
 	@echo "  $(GREEN)make create$(NC)     - Create new component (usage: make create name=ComponentName category=category)"
 	@echo "  $(GREEN)make component$(NC)  - Create new component (alias for create)"
+	@echo "  $(GREEN)make delete$(NC)     - Delete component (usage: make delete name=ComponentName category=category)"
 	@echo "  $(GREEN)make demo$(NC)       - Create new component demo (usage: make demo component=ComponentName name=DemoName)"
 	@echo "  $(GREEN)make registry$(NC)   - Build component registry (alias for build-registry)"
 
@@ -93,6 +94,17 @@ create:
 # Component alias
 .PHONY: component
 component: create
+
+# Delete component
+.PHONY: delete
+delete:
+	@if [ -z "$(name)" ] || [ -z "$(category)" ]; then \
+		echo "$(RED)Error: name and category are required$(NC)"; \
+		echo "Usage: make delete name=ComponentName category=category"; \
+		exit 1; \
+	fi
+	@echo "$(CYAN)Deleting component: $(name) in category: $(category)$(NC)"
+	$(PNPM) delete-component $(name) $(category)
 
 # Create demo
 .PHONY: demo

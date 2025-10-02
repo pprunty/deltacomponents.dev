@@ -20,7 +20,7 @@ const themeEffect = function () {
     document.documentElement.classList.add("dark")
     document.head
       .querySelector("meta[name=theme-color]")
-      ?.setAttribute("content", "#1e1b18")
+      ?.setAttribute("content", "#13120A")
 
     requestAnimationFrame(() => {
       document.documentElement.classList.remove("pause-transitions")
@@ -31,7 +31,7 @@ const themeEffect = function () {
     document.documentElement.classList.remove("dark")
     document.head
       .querySelector("meta[name=theme-color]")
-      ?.setAttribute("content", "#e7e5e4")
+      ?.setAttribute("content", "oklch(0.99 0.002 190)")
     requestAnimationFrame(() => {
       document.documentElement.classList.remove("pause-transitions")
     })
@@ -105,7 +105,7 @@ function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       width={16}
       height={16}
-      className="md:w-4.5 md:h-4.5"
+      className="w-4 h-4"
       strokeWidth={0}
       viewBox="0 0 56 56"
       {...props}
@@ -125,7 +125,7 @@ function SunIcon(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       width={16}
       height={16}
-      className="md:w-4.5 md:h-4.5"
+      className="w-4 h-4"
       strokeWidth={0}
       viewBox="0 0 56 56"
       {...props}

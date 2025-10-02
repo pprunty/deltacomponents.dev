@@ -23,9 +23,10 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
-import { GitHubChangelog } from "@/components/github-changelog"
+import { Discover } from "@/components/discover"
 import Admonition from "@/registry/components/admonition"
 import { CodeSnippet } from "@/registry/media/code-snippet"
+import CambioImage from "@/registry/media/cambio-image"
 
 interface MdxProps {
   code: string
@@ -65,7 +66,7 @@ const components = {
   ComponentSource,
   ComponentPreview,
   ComponentsShowcase,
-  GitHubChangelog,
+  Discover,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
@@ -98,7 +99,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "font-heading mt-2 scroll-m-20 text-4xl font-bold",
+        "font-heading font-medium mt-2 scroll-m-20 text-3xl tracking-tight",
         className
       )}
       {...props}
@@ -107,7 +108,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+        "font-heading font-medium mt-12 scroll-m-20 pb-2 text-xl tracking-tight first:mt-0",
         className
       )}
       {...props}
@@ -116,7 +117,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-lg tracking-tight",
         className
       )}
       {...props}
@@ -125,7 +126,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-base tracking-tight",
         className
       )}
       {...props}
@@ -134,7 +135,7 @@ const components = {
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-base tracking-tight",
         className
       )}
       {...props}
@@ -143,7 +144,7 @@ const components = {
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-sm tracking-tight",
         className
       )}
       {...props}
@@ -152,23 +153,23 @@ const components = {
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
-        "font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80",
+        "font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80 text-foreground/97",
         className
       )}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className={cn("leading-7 not-first:mt-6", className)} {...props} />
+    <p className={cn("leading-7 not-first:mt-6 text-foreground/97", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc text-foreground/97", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal text-foreground/97", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <li className={cn("mt-2", className)} {...props} />
+    <li className={cn("mt-2 text-foreground/97", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
@@ -179,16 +180,29 @@ const components = {
   img: ({
     className,
     alt,
-    ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
-  ),
+    src,
+    width,
+    height,
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    // Return the CambioImage directly as an inline-block element
+    // This avoids wrapping in any block element that could cause nesting issues
+    return (
+      <CambioImage
+        src={typeof src === "string" ? src : ""}
+        alt={alt || ""}
+        width={typeof width === "string" ? parseInt(width) : width || 800}
+        height={typeof height === "string" ? parseInt(height) : height || 600}
+        motion="snappy"
+        dismissible={false}
+        className={cn("rounded-lg my-6 block select-none", className)}
+      />
+    )
+  },
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="relative w-full overflow-auto border border-border rounded-lg my-6">
+    <div className="relative w-full overflow-auto border border-border rounded-sm my-6">
       <table
         className={cn("w-full caption-bottom text-sm", className)}
         {...props}
@@ -339,7 +353,7 @@ const components = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading font-medium mt-8 scroll-m-20 text-lg tracking-tight",
         className
       )}
       {...props}

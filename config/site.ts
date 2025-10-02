@@ -9,6 +9,8 @@ export const siteConfig = {
     github: "https://github.com/pprunty/deltacomponents.dev",
   },
   showTemplates: process.env.NODE_ENV !== "production",
+  showBlocks: process.env.NODE_ENV !== "production",
+  showThemes: process.env.NODE_ENV !== "production",
 }
 
 export type SiteConfig = typeof siteConfig

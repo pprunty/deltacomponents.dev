@@ -10,8 +10,8 @@ export function RefreshButton({ onRefresh }: RefreshButtonProps) {
   return (
     <Button
       aria-label="Refresh component"
-      variant="default"
-      className="h-8 w-8 rounded-[6px] border p-0 z-[995]"
+      variant="outline"
+      className="h-8 w-8 rounded-[6px] p-0 z-[995] font-medium transition-transform duration-150 ease-in-out active:scale-[0.98] bg-card active:bg-gray-100"
       onClick={onRefresh}
     >
       <ArrowClockwise className="h-3 w-3" />

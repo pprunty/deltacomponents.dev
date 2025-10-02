@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -30,7 +30,7 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:size-3",
+        "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 rounded-sm border border-border p-1 [&_svg]:size-3",
         className
       )}
       onClick={() => {
@@ -40,7 +40,7 @@ export function CopyButton({
       {...props}
     >
       <span className="sr-only">Copy</span>
-      {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+      {hasCopied ? <CheckIcon /> : <CopyIcon />}
     </Button>
   )
 }

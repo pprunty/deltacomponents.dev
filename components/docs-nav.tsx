@@ -29,7 +29,7 @@ export function DocsNav({ config }: { config: DocsConfig }) {
     <div className="flex flex-col gap-6 p-4 lg:p-6">
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
-          <h4 className="rounded-md px-2 py-1 text-sm md:text-lg font-semibold text-foreground">
+          <h4 className="rounded-md px-2 py-1 text-sm md:text-[15px] font-semibold text-foreground">
             {item.title}
             {categoryCounts[index] > 0 &&
               item.title.toLowerCase() !== "getting started" && (
@@ -97,7 +97,7 @@ function DocsNavItems({
               {item.label && (
                 <span
                   className={cn(
-                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    "ml-2 rounded-sm px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
                     getLabelStyle(item.label)
                   )}
                 >
@@ -117,7 +117,7 @@ function DocsNavItems({
               {item.label && (
                 <span
                   className={cn(
-                    "ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
+                    "ml-2 rounded-sm px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline",
                     getLabelStyle(item.label)
                   )}
                 >

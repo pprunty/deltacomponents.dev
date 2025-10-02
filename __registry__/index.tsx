@@ -569,23 +569,6 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/registry/examples/star-rating-demo")),
     source: "",
   },
-  "retro-button-demo": {
-    name: "retro-button-demo",
-    type: "registry:block",
-    registryDependencies: ["retro-button"],
-    tags: [],
-    files: [
-      {
-        path: "registry/examples/retro-button-demo.tsx",
-        type: "registry:block",
-        target: "",
-      },
-    ],
-    component: React.lazy(
-      () => import("@/registry/examples/retro-button-demo")
-    ),
-    source: "",
-  },
   "admonition-demo": {
     name: "admonition-demo",
     type: "registry:block",
@@ -2459,21 +2442,6 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(() => import("@/registry/components/star-rating")),
-    source: "",
-  },
-  "retro-button": {
-    name: "retro-button",
-    type: "registry:component",
-    registryDependencies: undefined,
-    tags: ["button", "retro", "ui", "component"],
-    files: [
-      {
-        path: "registry/components/retro-button.tsx",
-        type: "registry:component",
-        target: "",
-      },
-    ],
-    component: React.lazy(() => import("@/registry/components/retro-button")),
     source: "",
   },
   admonition: {

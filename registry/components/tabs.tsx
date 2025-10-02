@@ -221,9 +221,9 @@ const TabsList = forwardRef<
 
     // Active indicator classes
     const activeIndicatorClasses = {
-      default: "h-[4px] bg-primary dark:bg-primary",
+      default: "h-[3px] bg-primary dark:bg-primary",
       pills: "hidden",
-      underlined: "h-[4px] bg-primary dark:bg-primary",
+      underlined: "h-[3px] bg-primary dark:bg-primary",
     }
 
     // Hover indicator classes

@@ -14,7 +14,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 const Card = ({ className, ...props }: CardProps) => (
   <div
     className={cn(
-      "rounded-xl border bg-background text-card-foreground",
+      "rounded-sm border bg-background text-card-foreground",
       className
     )}
     {...props}
@@ -115,7 +115,7 @@ export function ComponentPreviewCard({
           muted
           loop
           playsInline
-          className="object-cover w-full h-full rounded-t-xl"
+          className="object-cover w-full h-full rounded-t-sm"
           onError={() => setVideoError(true)}
         />
       )
@@ -126,7 +126,7 @@ export function ComponentPreviewCard({
           alt={`${name} component`}
           width={400}
           height={225}
-          className="object-cover w-full h-full rounded-t-xl"
+          className="object-cover w-full h-full rounded-t-sm"
           priority={false}
           unoptimized={true}
           onError={() => setImageError(true)}
@@ -140,16 +140,16 @@ export function ComponentPreviewCard({
       href={linkUrl}
       className="block transition-all hover:border-primary/50"
     >
-      <Card className="overflow-hidden h-full w-full border hover:border-primary/20 transition-colors duration-200 hover:shadow-sm">
+      <Card className="overflow-hidden h-full w-full border hover:border-primary/20 transition-colors duration-200">
         <div className="flex flex-col h-full">
-          <div className="relative w-full aspect-video bg-muted overflow-hidden rounded-t-xl">
+          <div className="relative w-full aspect-video bg-muted overflow-hidden rounded-t-sm">
             {mediaElement}
           </div>
 
           <div className="flex-1 p-5 overflow-hidden">
             <div className="flex flex-col h-full">
               <div className="mb-3">
-                <h3 className="text-2xl font-semibold leading-tight truncate">
+                <h3 className="text-2xl font-medium font-heading leading-tight truncate">
                   {formatComponentName(name)}
                 </h3>
               </div>

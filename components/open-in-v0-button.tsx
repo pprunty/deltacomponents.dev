@@ -16,8 +16,8 @@ export function OpenInV0Button({ url }: { url: string }) {
   return (
     <Button
       aria-label="Open in v0"
-      variant="default"
-      className="h-8 gap-1 rounded-[6px] border px-3 text-xs z-[995]"
+      variant="outline"
+      className="h-8 gap-1 rounded-[6px] px-3 text-xs z-[995] font-medium transition-transform duration-150 ease-in-out active:scale-[0.98] bg-card active:bg-gray-100"
       asChild
     >
       <a href={v0Url} target="_blank" rel="noreferrer" className="no-after">

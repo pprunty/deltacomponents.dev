@@ -11,7 +11,7 @@ import { CopyButton } from "./copy-button"
 const defaultTheme: PrismTheme = {
   plain: {
     color: "#FFFFFF",
-    backgroundColor: "#151515",
+    backgroundColor: "#1B1912",
   },
   styles: [
     {
@@ -63,20 +63,32 @@ const defaultTheme: PrismTheme = {
 const lightTheme: PrismTheme = {
   plain: {
     color: "#24292e",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FAFAFA",
   },
   styles: [
     {
       types: ["comment"],
       style: {
-        color: "#6a737d",
+        color: "#8b949e",
         fontStyle: "italic",
       },
     },
     {
-      types: ["keyword", "property", "property-access", "attr-name"],
+      types: ["variable", "parameter"],
+      style: {
+        color: "#e36209",
+      },
+    },
+    {
+      types: ["keyword", "builtin", "function-definition"],
       style: {
         color: "#d73a49",
+      },
+    },
+    {
+      types: ["property", "property-access", "attr-name"],
+      style: {
+        color: "#005cc5",
       },
     },
     {
@@ -86,13 +98,19 @@ const lightTheme: PrismTheme = {
       },
     },
     {
-      types: ["punctuation", "symbol", "dom"],
+      types: ["punctuation", "symbol", "dom", "operator"],
       style: {
         color: "#24292e",
       },
     },
     {
-      types: ["definition", "function"],
+      types: ["function"],
+      style: {
+        color: "#6f42c1",
+      },
+    },
+    {
+      types: ["class-name"],
       style: {
         color: "#6f42c1",
       },
@@ -190,22 +208,13 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   return (
     <div
       className={cn(
-        "rounded-2xl overflow-hidden pointer-events-auto",
+        "rounded-sm overflow-hidden pointer-events-auto",
         border && "border border-border",
         className
       )}
     >
       {title || tabs ? (
-        <div
-          className="flex items-center justify-between border-b"
-          style={{
-            backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
-            borderBottomColor:
-              selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff"
-                ? "#e5e5e5"
-                : "#2a2a2a",
-          }}
-        >
+        <div className="flex items-center justify-between border-b bg-muted">
           {title ? (
             <h3
               className="text-sm font-medium pl-4 py-2"
@@ -216,7 +225,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
           ) : null}
 
           {tabs && !title ? (
-            <div className="flex items-center px-3 py-4">
+            <div className="flex items-center px-3 ">
               <div className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1 flex">
                 {Object.entries(tabs).map(([key]) => (
                   <button
@@ -226,11 +235,13 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                       "rounded-none border-b-2 border-transparent bg-transparent p-0 pb-1.5 font-mono text-sm transition-colors",
                       activeTab === key
                         ? selectedTheme.plain?.backgroundColor?.toLowerCase() ===
-                          "#ffffff"
+                            "#ffffff" ||
+                          selectedTheme.plain?.backgroundColor === "#FAFAFA"
                           ? "border-b-zinc-900 text-zinc-900"
                           : "border-b-zinc-50 text-zinc-50"
                         : selectedTheme.plain?.backgroundColor?.toLowerCase() ===
-                            "#ffffff"
+                              "#ffffff" ||
+                            selectedTheme.plain?.backgroundColor === "#FAFAFA"
                           ? "text-zinc-600 hover:text-zinc-800"
                           : "text-zinc-400 hover:text-zinc-200"
                     )}
@@ -246,7 +257,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
             value={currentCode}
             className={cn(
               "mr-3",
-              selectedTheme.plain?.backgroundColor?.toLowerCase() === "#ffffff"
+              selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                "#ffffff" || selectedTheme.plain?.backgroundColor === "#FAFAFA"
                 ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
                 : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
             )}
@@ -271,7 +283,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
               value={currentCode}
               className={
                 selectedTheme.plain?.backgroundColor?.toLowerCase() ===
-                "#ffffff"
+                  "#ffffff" ||
+                selectedTheme.plain?.backgroundColor === "#FAFAFA"
                   ? "text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
                   : "text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
               }
@@ -285,8 +298,17 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium`}
-              style={style}
+              className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium thin-scrollbar`}
+              style={{
+                ...style,
+                scrollbarWidth: "thin",
+                scrollbarColor:
+                  selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                    "#ffffff" ||
+                  selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                    ? "#d1d5db transparent"
+                    : "#4b5563 transparent",
+              }}
             >
               {tokens.map((line, i) => (
                 <div
@@ -297,7 +319,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
                       selectedTheme.plain?.backgroundColor?.toLowerCase() ===
-                      "#ffffff"
+                        "#ffffff" ||
+                      selectedTheme.plain?.backgroundColor === "#FAFAFA"
                         ? "#f5f5f5"
                         : "#202020")
                   }
@@ -310,7 +333,8 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
                       className="mr-4 select-none text-right text-[10px] items-center flex"
                       style={{
                         color:
-                          selectedTheme.plain?.backgroundColor === "#FFFFFF"
+                          selectedTheme.plain?.backgroundColor === "#FFFFFF" ||
+                          selectedTheme.plain?.backgroundColor === "#FAFAFA"
                             ? "#999999"
                             : "#757575",
                         minWidth: "1.5rem",

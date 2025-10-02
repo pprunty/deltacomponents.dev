@@ -40,7 +40,7 @@ export function ComponentsShowcase() {
   const components = getComponents()
 
   return (
-    <div className="w-full min-w-0">
+    <div className="w-full min-w-0 pb-[6rem] sm:pb-12">
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {components.map((component, index) => {

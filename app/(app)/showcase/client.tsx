@@ -67,7 +67,7 @@ export default function ShowcaseClient() {
         </div>
       )}
       <div className="flex-1 flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-3xl flex items-center justify-center">
+        <div className="w-full flex items-center justify-center">
           {DemoComponent ? (
             <React.Suspense
               fallback={<div className="text-center">Loading…</div>}

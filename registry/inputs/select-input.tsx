@@ -251,11 +251,8 @@ export function SelectInput({
           className={cn(
             // Base
             "h-[46px] md:text-md text-md focus-visible:outline-none bg-background",
-            // Default
-            "border border-input shadow-[0px_1px_1px_rgba(0,0,0,0.03),_0px_3px_6px_rgba(0,0,0,0.02)] " +
-              "focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary",
-            // Error override
-            "group-data-[invalid=true]/field:border-destructive focus-visible:group-data-[invalid=true]/field:ring-destructive",
+            // Default (let shadcn handle styling)
+            "",
             selectClassName
           )}
           aria-invalid={hasError}

@@ -1,7 +1,30 @@
 {
   "name": "deltacomponents.dev",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "private": true,
+  "license": "MIT",
+  "author": "Patrick Prunty",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pprunty/deltacomponents.dev"
+  },
+  "homepage": "https://deltacomponents.dev",
+  "bugs": "https://github.com/pprunty/deltacomponents.dev/issues",
+  "keywords": [
+    "components",
+    "react",
+    "tailwind",
+    "shadcn",
+    "ui",
+    "design"
+  ],
+  "contributors": [
+    {
+      "name": "Patrick Prunty",
+      "email": "patrickprunty.business@gmail.com",
+      "url": "https://github.com/pprunty"
+    }
+  ],
   "scripts": {
     "dev": "pnpm format && next dev",
     "build": "next build",
@@ -13,6 +36,7 @@
     "prepare": "husky",
     "prebuild:registry": "rimraf \"registry/**/*.js\"",
     "create-component": "tsx scripts/create-component.mts",
+    "delete-component": "tsx scripts/delete-component.mts",
     "create-demo": "node scripts/create-demo.mjs",
     "pwa": "tsx scripts/pwa.mts"
   },

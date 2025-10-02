@@ -1,9 +1,8 @@
-import { cache, Suspense } from "react"
+import { Suspense } from "react"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { getTableOfContents } from "@/lib/toc"
@@ -16,13 +15,9 @@ import "@/styles/mdx.css"
 
 import Link from "next/link"
 
-import { badgeVariants } from "@/components/ui/badge"
-import { AnalyticsDisplay } from "@/components/analytics-display"
 import { Contribute } from "@/components/contribute"
 import { DocsPagination } from "@/components/pagination"
 import { SimilarComponents } from "@/components/similar-components"
-import redis from "@/app/redis"
-import ScrambleText from "@/registry/animations/scramble-text"
 
 interface DocPageProps {
   params: {
@@ -88,34 +83,6 @@ export async function generateStaticParams(): Promise<
   }))
 }
 
-// Cache analytics data to avoid build errors while still allowing revalidation
-const getCachedAnalytics = cache(async (componentName: string) => {
-  try {
-    const sanitizedComponent = componentName.replace(/[^a-zA-Z0-9-_]/g, "")
-    const viewsKey = `delta-views:${sanitizedComponent}`
-    const downloadsKey = `delta-downloads:${sanitizedComponent}`
-
-    const [views, downloads] = await Promise.all([
-      redis.get(viewsKey),
-      redis.get(downloadsKey),
-    ])
-
-    return {
-      views: Number(views) || 0,
-      downloads: Number(downloads) || 0,
-    }
-  } catch (error) {
-    console.error("Error fetching initial analytics:", error)
-    // Return zero values during build/error to avoid blocking static generation
-    return {
-      views: 0,
-      downloads: 0,
-    }
-  }
-})
-
-export const revalidate = 60 // Revalidate every 60 seconds for analytics updates
-
 export default async function DocPage(props: {
   params: Promise<DocPageProps["params"]>
 }) {
@@ -150,7 +117,6 @@ export default async function DocPage(props: {
 
   const slugPath = doc.slugAsParams
   let componentName = null
-  let initialAnalytics = null
 
   // Regex to match patterns like "category/component" but not just "category"
   // This will match URLs like: /docs/components/button, /docs/inputs/date-input, etc.
@@ -160,162 +126,126 @@ export default async function DocPage(props: {
     const matches = slugPath.match(twoLevelPathRegex)
     if (matches) {
       componentName = matches[2]
-
-      // Fetch initial analytics data server-side
-      if (componentName) {
-        initialAnalytics = await getCachedAnalytics(componentName)
-      }
     }
   }
 
   return (
     <>
-      <main
-        className={cn(
-          "justify-center w-full",
-          doc.toc
-            ? "xl:grid xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-4"
-            : "flex justify-center"
-        )}
-      >
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div
           className={cn(
-            "mx-auto w-full min-w-0 md:rounded-2xl md:bg-background md:border-border md:border md:p-6",
-            doc.toc ? "max-w-3xl" : "max-w-none"
+            "flex flex-col xl:flex-row gap-8",
+            doc.toc ? "min-[1424px]:justify-center" : "justify-center"
           )}
         >
-          <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-            <div className="truncate">Docs</div>
-            <ChevronRightIcon className="size-3.5" />
-            <div className="text-foreground">{doc.title}</div>
-          </div>
-          <div className="space-y-2">
-            <ScrambleText
-              text={doc.title}
-              className={cn(
-                "h-10 w-fit scroll-m-20 text-4xl font-bold tracking-tight"
-              )}
-              speed={80}
-            />
-            {doc.description && (
-              <p className="text-base text-muted-foreground">
-                {doc.description}
-              </p>
+          <main
+            className={cn(
+              "min-w-0 w-full",
+              doc.toc
+                ? "max-w-2xl min-[1424px]:max-w-3xl min-[1424px]:mx-auto"
+                : "max-w-3xl mx-auto"
             )}
-          </div>
-          {/* Analytics display for component pages */}
-          {componentName && (
-            <div className="pt-4">
-              <AnalyticsDisplay
-                component={componentName}
-                initialAnalytics={initialAnalytics}
-              />
-            </div>
-          )}
-
-          {doc.links ? (
-            <div className="flex items-center space-x-2 pt-4">
-              {componentName && (
-                <span className="text-muted-foreground">Based on</span>
-              )}
-              {Object.entries(doc.links).map(([k, v]) => (
-                <Link
-                  key={k}
-                  href={v as any}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(
-                    badgeVariants({ variant: "secondary" }),
-                    "gap-1 no-after"
-                  )}
-                >
-                  {k}
-                  <ExternalLinkIcon className="size-3" />
-                </Link>
-              ))}
-            </div>
-          ) : null}
-          <div className="pt-8">
-            <Mdx code={doc.body.code} />
-          </div>
-
-          {/* Only show similar components section for component docs */}
-          {componentName && (
-            <div className="mt-6 pt-4">
-              <Suspense
-                fallback={
-                  <div className="py-4">Loading similar components...</div>
-                }
-              >
-                <SimilarComponents
-                  currentComponent={componentName}
-                  title="You might also like"
-                  count={3}
-                />
-              </Suspense>
-            </div>
-          )}
-
-          <Suspense
-            fallback={
-              <div className="mt-4 py-6 border-t border-border">
-                Loading navigation...
-              </div>
-            }
           >
-            <DocsPagination />
-          </Suspense>
-        </div>
-        {doc.toc && (
-          <div className="hidden text-sm xl:block">
-            <div className="sticky top-4 pb-5 z-30 w-full shrink-0">
-              <ScrollArea
-                className={cn(
-                  "rounded-2xl bg-background border-border border",
-                  isLargeToc ? "max-h-screen" : "max-h-[calc(100vh-4rem)]"
+            <div className="sm:py-4">
+              <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
+                <div className="truncate">Docs</div>
+              </div>
+              <div className="space-y-2">
+                <h1 className="font-heading font-medium scroll-m-20 text-4xl lg:text-3xl font-bold tracking-tight text-pretty">
+                  {doc.title}
+                </h1>
+                {doc.description && (
+                  <p className="text-base text-muted-foreground text-pretty">
+                    {doc.description}
+                  </p>
                 )}
-              >
-                <div className="p-4 lg:p-6 space-y-5">
-                  {doc.toc && (
-                    <Suspense
-                      fallback={<div>Loading table of contents...</div>}
-                    >
-                      <DashboardTableOfContents toc={toc} />
-                    </Suspense>
-                  )}
-                  <Suspense fallback={<div>Loading contribute links...</div>}>
-                    <Contribute slug={doc.slug} />
+              </div>
+
+              <div className="pt-4">
+                <Mdx code={doc.body.code} />
+              </div>
+
+              {/* Only show similar components section for component docs */}
+              {componentName && (
+                <div className="mt-6 pt-4">
+                  <Suspense
+                    fallback={
+                      <div className="py-4">Loading similar components...</div>
+                    }
+                  >
+                    <SimilarComponents
+                      currentComponent={componentName}
+                      title="You might also like"
+                      count={3}
+                    />
                   </Suspense>
                 </div>
-              </ScrollArea>
+              )}
 
-              {/* Twitter follow card - beneath TOC border */}
-              <div className="mt-6 rounded-2xl bg-background border-border border px-4 py-4 hover:bg-accent transition-colors">
-                <Link
-                  href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 group no-after"
-                >
-                  <Image
-                    src="/images/pp.png"
-                    alt="Patrick Prunty"
-                    width={42}
-                    height={42}
-                    className="rounded-md object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium">Follow me on 𝕏</span>
-                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                      @pprunty_
-                    </span>
+              <Suspense
+                fallback={
+                  <div className="mt-4 py-6 border-t border-border">
+                    Loading navigation...
                   </div>
-                </Link>
-              </div>
+                }
+              >
+                <DocsPagination />
+              </Suspense>
             </div>
-          </div>
-        )}
-      </main>
+          </main>
+          {doc.toc && (
+            <aside className="hidden xl:block w-70 shrink-0">
+              <div className="sticky top-14 py-6">
+                <ScrollArea
+                  className={cn(
+                    "bg-background",
+                    isLargeToc ? "max-h-screen" : "max-h-[calc(100vh-8rem)]"
+                  )}
+                >
+                  <div className="p-4 lg:p-6 space-y-5">
+                    {doc.toc && (
+                      <Suspense
+                        fallback={<div>Loading table of contents...</div>}
+                      >
+                        <DashboardTableOfContents toc={toc} />
+                      </Suspense>
+                    )}
+                    <Suspense fallback={<div>Loading contribute links...</div>}>
+                      <Contribute slug={doc.slug} />
+                    </Suspense>
+
+                    {/* Twitter follow card - within same container */}
+                    <div className="rounded-sm border border-border px-4 py-3 hover:bg-accent transition-colors">
+                      <Link
+                        href="https://x.com/intent/follow?screen_name=pprunty_&original_referer=https://deltacomponents.dev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-3 group no-after"
+                      >
+                        <Image
+                          src="/images/pp.png"
+                          alt="Patrick Prunty"
+                          width={42}
+                          height={42}
+                          className="rounded-md object-cover"
+                        />
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium">
+                            Follow me on 𝕏
+                          </span>
+                          <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                            @pprunty_
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </ScrollArea>
+              </div>
+            </aside>
+          )}
+        </div>
+      </div>
     </>
   )
 }

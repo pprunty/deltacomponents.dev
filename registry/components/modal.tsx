@@ -40,7 +40,7 @@ interface ModalProps {
 
 const backdropVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4 } },
+  visible: { opacity: 1, transition: { duration: 0.2 } },
   exit: { opacity: 0, transition: { duration: 0.2 } },
 }
 
@@ -75,13 +75,13 @@ const dropVariants: Variants = {
   },
 }
 
-// Scale from center animation
+// Scale from center animation (matching ui/dialog timing)
 const scaleVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.8,
+    scale: 0.95,
     transition: {
-      duration: 0.15,
+      duration: 0.2,
       ease: [0.4, 0, 0.2, 1],
     },
   },
@@ -89,17 +89,15 @@ const scaleVariants: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 500,
-      damping: 30,
-      mass: 0.5,
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
     },
   },
   exit: {
     opacity: 0,
-    scale: 0.8,
+    scale: 0.95,
     transition: {
-      duration: 0.15,
+      duration: 0.2,
       ease: [0.4, 0, 0.2, 1],
     },
   },
