@@ -23,6 +23,7 @@ interface CambioImageProps {
       }
   dismissible?: boolean
   className?: string
+  draggable?: boolean
 }
 
 export default function CambioImage({
@@ -35,6 +36,7 @@ export default function CambioImage({
   motion = "smooth",
   dismissible = true,
   className,
+  draggable = false,
 }: CambioImageProps) {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -92,6 +94,7 @@ export default function CambioImage({
             width={width}
             height={height}
             loading={loading}
+            draggable={draggable}
             className={cn("w-full h-auto", className)}
             style={{ pointerEvents: "none" }}
           />
@@ -109,6 +112,7 @@ export default function CambioImage({
               width={width}
               height={height}
               loading="eager"
+              draggable={draggable}
               className="w-full h-auto object-contain"
               style={{ pointerEvents: "none" }}
             />

@@ -252,7 +252,7 @@
 .dark {
   --background: #13120a;
   --foreground: oklch(1 0 0);
-  --card: #1a1915;
+  --card: #1B1912;
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(1 0 0);

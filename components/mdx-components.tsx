@@ -153,23 +153,23 @@ const components = {
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
-        "font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80",
+        "font-medium text-primary underline decoration-primary decoration-wavy underline-offset-4 transition-colors hover:text-primary/80 hover:decoration-primary/80 text-foreground/97",
         className
       )}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className={cn("leading-7 not-first:mt-6", className)} {...props} />
+    <p className={cn("leading-7 not-first:mt-6 text-foreground/97", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc text-foreground/97", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal text-foreground/97", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <li className={cn("mt-2", className)} {...props} />
+    <li className={cn("mt-2 text-foreground/97", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
@@ -193,7 +193,8 @@ const components = {
         width={typeof width === "string" ? parseInt(width) : width || 800}
         height={typeof height === "string" ? parseInt(height) : height || 600}
         motion="snappy"
-        className={cn("rounded-lg my-6 block", className)}
+        dismissible={false}
+        className={cn("rounded-lg my-6 block select-none", className)}
       />
     )
   },
