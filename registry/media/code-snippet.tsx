@@ -11,7 +11,7 @@ import { CopyButton } from "./copy-button"
 const defaultTheme: PrismTheme = {
   plain: {
     color: "#FFFFFF",
-    backgroundColor: "#151515",
+    backgroundColor: "#1B1912",
   },
   styles: [
     {

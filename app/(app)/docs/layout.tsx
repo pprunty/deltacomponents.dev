@@ -11,7 +11,7 @@ interface DocsLayoutProps {
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="relative w-full flex">
-      <aside className="sticky top-12 pb-5 z-30 hidden h-[calc(100vh-3rem)] w-72 shrink-0 sm:block bg-muted dark:bg-background border-r border-border">
+      <aside className="sticky top-12 pb-5 z-30 hidden h-[calc(100vh-3rem)] w-72 shrink-0 sm:block bg-muted dark:bg-popover border-r border-border">
         <ScrollArea className="h-full">
           <DocsNav config={docsConfig} />
         </ScrollArea>
