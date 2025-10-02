@@ -19,6 +19,12 @@ export default function Home() {
         </svg>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button
+            className="transition-transform duration-150 ease-in-out active:scale-[0.98]"
+            asChild
+          >
+            <Link href="/docs/welcome">Explore the docs</Link>
+          </Button>
+          <Button
             variant="outline"
             className="bg-muted transition-transform duration-150 ease-in-out active:scale-[0.98]"
             asChild
@@ -30,12 +36,6 @@ export default function Home() {
             >
               Support on GitHub
             </Link>
-          </Button>
-          <Button
-            className="transition-transform duration-150 ease-in-out active:scale-[0.98]"
-            asChild
-          >
-            <Link href="/docs/welcome">Explore the docs</Link>
           </Button>
         </div>
         <Link
