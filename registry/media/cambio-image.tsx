@@ -72,7 +72,10 @@ export default function CambioImage({
   return (
     <span
       ref={ref}
-      className={cn("relative transition-all duration-500 ease-out inline-block w-full", className)}
+      className={cn(
+        "relative transition-all duration-500 ease-out inline-block w-full",
+        className
+      )}
       style={{
         opacity: isVisible ? 1 : 0,
         filter: isVisible ? "blur(0)" : "blur(4px)",

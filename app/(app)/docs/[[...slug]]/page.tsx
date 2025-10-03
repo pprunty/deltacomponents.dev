@@ -135,15 +135,13 @@ export default async function DocPage(props: {
         <div
           className={cn(
             "flex flex-col xl:flex-row gap-8",
-            doc.toc ? "min-[1424px]:justify-center" : "justify-center"
+            doc.toc ? "justify-center" : "justify-center"
           )}
         >
           <main
             className={cn(
-              "min-w-0 w-full",
-              doc.toc
-                ? "max-w-2xl min-[1424px]:max-w-3xl min-[1424px]:mx-auto"
-                : "max-w-3xl mx-auto"
+              "min-w-0 w-full overflow-x-hidden",
+              doc.toc ? "max-w-2xl md:max-w-3xl mx-auto" : "max-w-3xl mx-auto"
             )}
           >
             <div className="sm:py-4">

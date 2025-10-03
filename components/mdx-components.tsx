@@ -25,8 +25,8 @@ import { ComponentsShowcase } from "@/components/components-showcase"
 import { CopyButton } from "@/components/copy-button"
 import { Discover } from "@/components/discover"
 import Admonition from "@/registry/components/admonition"
-import { CodeSnippet } from "@/registry/media/code-snippet"
 import CambioImage from "@/registry/media/cambio-image"
+import { CodeSnippet } from "@/registry/media/code-snippet"
 
 interface MdxProps {
   code: string
@@ -68,34 +68,12 @@ const components = {
   ComponentsShowcase,
   Discover,
   CodeBlockWrapper: ({ ...props }) => (
-    <CodeBlockWrapper className="rounded-md border" {...props} />
+    <CodeBlockWrapper
+      className="rounded-md border w-full max-w-full"
+      {...props}
+    />
   ),
-  CodeSnippet: ({
-    title,
-    children,
-    ...props
-  }: React.HTMLAttributes<HTMLElement> & {
-    title?: string
-  }) => {
-    // Extract code content and language from children
-    const preElement = Children.toArray(children)[0] as React.ReactElement
-
-    //@ts-expect-error - accessing nested props from MDX parsed children
-    const codeElement = preElement?.props?.children as React.ReactElement<{
-      className?: string
-      children?: string
-    }>
-
-    if (!codeElement) return null
-
-    const code = codeElement.props.children || ""
-    const language =
-      codeElement.props.className?.replace("language-", "") || "typescript"
-
-    return (
-      <CodeSnippet title={title} code={code} language={language} {...props} />
-    )
-  },
+  CodeSnippet,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -160,13 +138,22 @@ const components = {
     />
   ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className={cn("leading-7 not-first:mt-6 text-foreground/97", className)} {...props} />
+    <p
+      className={cn("leading-7 not-first:mt-6 text-foreground/97", className)}
+      {...props}
+    />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 ml-6 list-disc text-foreground/97", className)} {...props} />
+    <ul
+      className={cn("my-6 ml-6 list-disc text-foreground/97", className)}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 ml-6 list-decimal text-foreground/97", className)} {...props} />
+    <ol
+      className={cn("my-6 ml-6 list-decimal text-foreground/97", className)}
+      {...props}
+    />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={cn("mt-2 text-foreground/97", className)} {...props} />
@@ -260,7 +247,7 @@ const components = {
   }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "p-4 align-middle [&:has([role=checkbox])]:pr-0",
+        "p-4 align-middle [&:has([role=checkbox])]:pr-0 break-words max-w-0",
         className
       )}
       {...props}
@@ -316,13 +303,22 @@ const components = {
         const language =
           codeElement.props.className?.replace("language-", "") || "typescript"
 
-        return <CodeSnippet code={code} language={language} className="mt-6" />
+        return (
+          <div className="w-full max-w-full min-w-0 overflow-hidden">
+            <CodeSnippet
+              code={code}
+              language={language}
+              showLineNumbers={false}
+              className="mt-6"
+            />
+          </div>
+        )
       }
     }
 
     // Fallback to original pre element if no code content
     return (
-      <>
+      <div className="w-full max-w-full min-w-0 overflow-hidden">
         <pre
           className={cn(
             "mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 py-4 dark:bg-zinc-900",
@@ -336,13 +332,13 @@ const components = {
             className="absolute right-4 top-4"
           />
         )}
-      </>
+      </div>
     )
   },
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "font-mono text-xs md:text-sm px-0.5 py-px md:px-1 md:py-0.5 border border-border rounded-md leading-6 bg-muted sm:whitespace-pre box-decoration-clone",
+        "font-mono text-xs md:text-sm px-0.5 py-px md:px-1 md:py-0.5 border border-border rounded-md leading-6 bg-muted box-decoration-clone max-w-full min-w-0 break-words",
         className
       )}
       {...props}
@@ -426,7 +422,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className="mdx">
+    <div className="mdx w-full max-w-full min-w-0 overflow-hidden break-words">
       <Component components={components} />
     </div>
   )

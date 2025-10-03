@@ -119,7 +119,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body
         className={cn(
-          "w-full text-foreground antialiased [font-synthesis-weight:none] md:flex md:flex-col",
+          "w-full text-foreground antialiased [font-synthesis-weight:none] sm:flex",
           fontSans.variable,
           fontMono.variable
         )}

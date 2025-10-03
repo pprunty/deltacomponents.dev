@@ -112,7 +112,9 @@ export function MobileNav() {
             <div className="flex flex-col space-y-2">
               {docsConfig.sidebarNav.map((item, index) => (
                 <div key={index} className="flex flex-col space-y-2 pt-6">
-                  <h4 className="font-medium border-b border-border pb-2">{item.title}</h4>
+                  <h4 className="font-medium border-b border-border pb-2">
+                    {item.title}
+                  </h4>
                   {item?.items?.length &&
                     item.items
                       .filter((i) => !i.hide)

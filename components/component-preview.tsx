@@ -99,7 +99,7 @@ export function ComponentPreview({
   return (
     <div
       className={cn(
-        "group relative flex flex-col space-y-2 w-full max-w-full min-w-0 py-4",
+        "group relative grid gap-2 w-full max-w-full min-w-0 py-4",
         className
       )}
       {...props}

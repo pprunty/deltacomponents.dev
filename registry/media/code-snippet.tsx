@@ -208,13 +208,13 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   return (
     <div
       className={cn(
-        "rounded-sm overflow-hidden pointer-events-auto",
+        "rounded-sm overflow-y-hidden overflow-x-auto pointer-events-auto w-full max-w-full",
         border && "border border-border",
         className
       )}
     >
       {title || tabs ? (
-        <div className="flex items-center justify-between border-b bg-muted">
+        <div className="flex items-center justify-between border-b bg-secondary">
           {title ? (
             <h3
               className="text-sm font-medium pl-4 py-2"
@@ -266,7 +266,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         </div>
       ) : null}
       <div
-        className="relative max-h-[calc(530px-44px)] py-4"
+        className="relative max-h-[calc(530px-44px)] py-4 w-full"
         style={{
           backgroundColor: selectedTheme.plain?.backgroundColor || "#151515",
         }}
@@ -298,7 +298,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium thin-scrollbar`}
+              className={`${className} text-[13px] overflow-x-auto overflow-y-auto max-h-[calc(530px-88px)] font-mono font-medium thin-scrollbar w-full`}
               style={{
                 ...style,
                 scrollbarWidth: "thin",

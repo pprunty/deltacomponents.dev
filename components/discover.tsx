@@ -21,7 +21,8 @@ interface DiscoverItem {
 const discoverItems: DiscoverItem[] = [
   {
     title: "Get started",
-    description: "Add Delta Components to your React project with shadcn/ui CLI.",
+    description:
+      "Add Delta Components to your React project with shadcn/ui CLI.",
     href: "/docs/installation",
     icon: RocketIcon,
   },
