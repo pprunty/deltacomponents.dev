@@ -26,7 +26,7 @@ export function ComponentGrid() {
           className="group"
         >
           {list.indexOf(component) === 0 ? (
-            <Card className="relative h-48 md:h-40 transition-colors hover:bg-accent/50 border-0 overflow-hidden p-0">
+            <Card className="relative h-48 md:h-40 transition-colors hover:hover:bg-accent/50 border-0 overflow-hidden p-0">
               <video
                 src="https://fancycomponents.b-cdn.net/demos/marquee-along-svg-path.mp4"
                 autoPlay
@@ -43,7 +43,7 @@ export function ComponentGrid() {
               </div>
             </Card>
           ) : (
-            <Card className="relative h-48 md:h-40 transition-colors hover:bg-accent/50 border-0 overflow-hidden p-0">
+            <Card className="relative h-48 md:h-40 transition-colors hover:hover:bg-accent/50 border-0 overflow-hidden p-0">
               <Image
                 src="/placeholder.jpeg"
                 alt={String(component.name) || "Component"}
