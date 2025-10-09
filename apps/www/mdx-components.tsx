@@ -135,10 +135,10 @@ export const mdxComponents = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className="my-6 w-full overflow-y-auto rounded-sm border border-border">
       <table
         className={cn(
-          "relative w-full overflow-hidden rounded-sm border border-border text-sm",
+          "relative w-full text-sm",
           className
         )}
         {...props}
@@ -147,7 +147,7 @@ export const mdxComponents = {
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
-      className={cn("last:border-b-0 m-0 border-b border-border has-[th]:border-b-2", className)}
+      className={cn("last:border-b-0 m-0 border-b border-border", className)}
       {...props}
     />
   ),
