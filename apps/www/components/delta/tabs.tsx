@@ -57,9 +57,12 @@ const Tabs = forwardRef<
             childType === TabsTrigger ||
             childType === TabsContent ||
             (typeof childType === "function" &&
-              ((childType as { displayName?: string }).displayName === "TabsList" ||
-                (childType as { displayName?: string }).displayName === "TabsTrigger" ||
-                (childType as { displayName?: string }).displayName === "TabsContent"))
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              ((childType as any).displayName === "TabsList" ||
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (childType as any).displayName === "TabsTrigger" ||
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (childType as any).displayName === "TabsContent"))
 
           if (isTabComponent) {
             return React.cloneElement(
@@ -68,7 +71,8 @@ const Tabs = forwardRef<
                 onValueChange?: (value: string) => void
                 className?: string
                 children?: ReactNode
-                [key: string]: unknown
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                [key: string]: any
               }>,
               {
                 activeValue,
@@ -264,7 +268,7 @@ const TabsList = forwardRef<
 
         return () => clearTimeout(timer)
       }
-    }, [activeIndex]) // Only include activeIndex dependency
+    }, [activeIndex, scrollTabToCenter]) // Include dependencies to fix ESLint warning
 
     return (
       <div
@@ -328,7 +332,8 @@ const TabsList = forwardRef<
                   }>
                 ).props
 
-                const { value, disabled } = props
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                const { value, disabled, label } = props
                 const isActive = value === activeValue
 
                 return (
@@ -420,8 +425,18 @@ const TabsTrigger = forwardRef<
 >(
   (
     {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       value,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      disabled = false,
+      label,
       className,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      activeClassName,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      inactiveClassName,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      disabledClassName,
       children,
       ...props
     },
@@ -453,7 +468,8 @@ const TabsContent = forwardRef<
       value,
       className,
       activeValue,
-      onValueChange: _onValueChange, // Destructure this prop to prevent it from being passed to the div
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onValueChange, // Destructure this prop to prevent it from being passed to the div
       children,
       ...props
     },
