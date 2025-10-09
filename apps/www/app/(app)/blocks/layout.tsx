@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
+import { BlocksContent } from "@/components/blocks-content"
 import { BlocksNav } from "@/components/blocks-nav"
 import {
   PageActions,
@@ -62,7 +63,9 @@ export default function BlocksLayout({
         <BlocksNav />
       </PageNav>
       <div className="container-wrapper section-soft flex-1 md:py-12">
-        <div className="container">{children}</div>
+        <div className="container">
+          <BlocksContent>{children}</BlocksContent>
+        </div>
       </div>
     </>
   )

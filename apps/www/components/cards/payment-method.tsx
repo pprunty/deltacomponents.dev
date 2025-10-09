@@ -11,10 +11,7 @@ import {
 } from "@/registry/delta-ui/ui/card"
 import { Input } from "@/registry/delta-ui/ui/input"
 import { Label } from "@/registry/delta-ui/ui/label"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/delta-ui/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/delta-ui/ui/radio-group"
 import {
   Select,
   SelectContent,

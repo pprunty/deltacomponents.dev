@@ -22,7 +22,7 @@ export function Installation({
       <h2 className="font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl">
         Installation
       </h2>
-      
+
       <InstallationTabs
         name={name}
         dependencies={dependencies}

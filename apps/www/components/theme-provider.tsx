@@ -13,7 +13,10 @@ function MetaThemeColorUpdater() {
     const metaThemeColor = document.querySelector('meta[name="theme-color"]')
     if (metaThemeColor) {
       const currentTheme = resolvedTheme || theme
-      const color = currentTheme === "dark" ? META_THEME_COLORS.dark : META_THEME_COLORS.light
+      const color =
+        currentTheme === "dark"
+          ? META_THEME_COLORS.dark
+          : META_THEME_COLORS.light
       metaThemeColor.setAttribute("content", color)
     }
   }, [theme, resolvedTheme])

@@ -139,7 +139,7 @@ function BlockViewerToolbar() {
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
       >
-        <TabsList className="grid h-8 grid-cols-2 items-center rounded-md p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs">
+        <TabsList size="md" variant="default" className="h-auto grid-cols-2">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>

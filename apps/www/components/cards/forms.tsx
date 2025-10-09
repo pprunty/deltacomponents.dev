@@ -12,10 +12,7 @@ import {
 import { Checkbox } from "@/registry/delta-ui/ui/checkbox"
 import { Input } from "@/registry/delta-ui/ui/input"
 import { Label } from "@/registry/delta-ui/ui/label"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/delta-ui/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/delta-ui/ui/radio-group"
 import { Textarea } from "@/registry/delta-ui/ui/textarea"
 
 const plans = [

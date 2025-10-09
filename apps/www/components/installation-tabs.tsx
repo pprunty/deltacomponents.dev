@@ -2,19 +2,20 @@
 
 import * as React from "react"
 import { TerminalIcon } from "lucide-react"
+
 import { useConfig } from "@/hooks/use-config"
 import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from "@/registry/delta-ui/ui/tabs"
-import {
   Tabs as PackageManagerTabs,
+  TabsContent as PackageManagerTabsContent,
   TabsList as PackageManagerTabsList,
   TabsTrigger as PackageManagerTabsTrigger,
-  TabsContent as PackageManagerTabsContent,
 } from "@/components/ui/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 interface InstallationTabsProps {
   name: string
@@ -52,7 +53,7 @@ export function InstallationTabs({
           Manual
         </TabsTrigger>
       </TabsList>
-      
+
       <TabsContent value="cli" className="relative">
         <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
           <PackageManagerTabs
@@ -101,7 +102,10 @@ export function InstallationTabs({
               <h3 className="font-heading mt-4 scroll-m-32 text-xl font-medium tracking-tight">
                 1. Install the following dependencies:
               </h3>
-              <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
+              <figure
+                data-rehype-pretty-code-figure=""
+                className="[&>pre]:max-h-96"
+              >
                 <PackageManagerTabs
                   value={packageManager}
                   className="gap-0"
@@ -141,15 +145,17 @@ export function InstallationTabs({
               </figure>
             </>
           )}
-          
+
           <h3 className="font-heading mt-4 scroll-m-32 text-xl font-medium tracking-tight">
-            {dependencies && dependencies.length > 0 ? '2' : '1'}. Copy and paste the following code into your project.
+            {dependencies && dependencies.length > 0 ? "2" : "1"}. Copy and
+            paste the following code into your project.
           </h3>
-          
+
           {componentSourceElement}
-          
+
           <h3 className="font-heading mt-4 scroll-m-32 text-xl font-medium tracking-tight">
-            {dependencies && dependencies.length > 0 ? '3' : '2'}. Update the import paths to match your project setup.
+            {dependencies && dependencies.length > 0 ? "3" : "2"}. Update the
+            import paths to match your project setup.
           </h3>
         </div>
       </TabsContent>

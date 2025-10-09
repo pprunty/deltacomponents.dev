@@ -8,10 +8,10 @@ export function SiteFooter() {
           <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
             Developed by{" "}
             <a
-               href={siteConfig.links.x}
-               target="_blank"
-               rel="noreferrer"
-               className="font-medium underline underline-offset-4"
+              href={siteConfig.links.x}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
             >
               Patrick Prunty
             </a>

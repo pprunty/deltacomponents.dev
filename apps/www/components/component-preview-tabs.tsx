@@ -3,7 +3,12 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/delta-ui/ui/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 export function ComponentPreviewTabs({
   className,
@@ -51,7 +56,7 @@ export function ComponentPreviewTabs({
         )}
         <TabsContent
           value="preview"
-          className="relative rounded-lg border overflow-hidden"
+          className="relative overflow-hidden rounded-lg border"
         >
           <div
             data-align={align}
@@ -63,7 +68,10 @@ export function ComponentPreviewTabs({
             {component}
           </div>
         </TabsContent>
-        <TabsContent value="code" className="relative rounded-lg border overflow-hidden">
+        <TabsContent
+          value="code"
+          className="relative overflow-hidden rounded-lg border"
+        >
           <div className="h-[450px] overflow-hidden **:[figure]:!m-0 **:[pre]:h-[450px]">
             {source}
           </div>

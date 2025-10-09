@@ -196,10 +196,7 @@ export function fixImport(content: string, pathMappings: Map<string, string>) {
   })
 
   // Fix UI component imports
-  content = content.replaceAll(
-    "@/registry/delta-ui/ui/",
-    "@/components/ui/"
-  )
+  content = content.replaceAll("@/registry/delta-ui/ui/", "@/components/ui/")
 
   // Fix example imports
   content = content.replaceAll(

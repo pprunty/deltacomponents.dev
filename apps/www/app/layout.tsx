@@ -17,7 +17,9 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev"
+  ),
   description: siteConfig.description,
   keywords: ["ElevenLabs", "UI", "shadcn", "Components", "audio", "agents"],
   authors: [
@@ -47,7 +49,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev"}/opengraph-image.png`],
+    images: [
+      `${process.env.NEXT_PUBLIC_APP_URL || "https://deltacomponents.dev"}/opengraph-image.png`,
+    ],
     creator: "@elevenlabsio",
   },
   icons: {

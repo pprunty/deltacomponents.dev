@@ -36,11 +36,17 @@ export function StatusBadge({ label, className }: StatusBadgeProps) {
         className
       )}
       style={{
-        backgroundColor: getLabelStyle(label).includes('bg-[#adfa1d]') ? '#adfa1d' : 
-                        getLabelStyle(label).includes('bg-[#ff9800]') ? '#ff9800' :
-                        getLabelStyle(label).includes('bg-[#2196f3]') ? '#2196f3' :
-                        getLabelStyle(label).includes('bg-[#9c27b0]') ? '#9c27b0' :
-                        getLabelStyle(label).includes('bg-[#f44336]') ? '#f44336' : '#adfa1d'
+        backgroundColor: getLabelStyle(label).includes("bg-[#adfa1d]")
+          ? "#adfa1d"
+          : getLabelStyle(label).includes("bg-[#ff9800]")
+            ? "#ff9800"
+            : getLabelStyle(label).includes("bg-[#2196f3]")
+              ? "#2196f3"
+              : getLabelStyle(label).includes("bg-[#9c27b0]")
+                ? "#9c27b0"
+                : getLabelStyle(label).includes("bg-[#f44336]")
+                  ? "#f44336"
+                  : "#adfa1d",
       }}
     >
       {label}

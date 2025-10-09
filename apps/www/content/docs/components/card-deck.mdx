@@ -20,24 +20,18 @@ const images = [
 ]
 
 export default function Example() {
-  return (
-    <CardDeck 
-      images={images}
-      infinite={true}
-      autoplay={true}
-    />
-  )
+  return <CardDeck images={images} infinite={true} autoplay={true} />
 }
 ```
 
 ## API Reference
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| images | `{ src: string; alt: string }[]` | - | Array of image objects |
-| infinite | boolean | true | Enable infinite loop cycling |
-| autoplay | boolean | false | Enable automatic card cycling |
-| showPagination | boolean | false | Show pagination dots |
-| showNavigation | boolean | false | Show navigation arrows |
-| spaceBetween | number | 40 | Space between cards in pixels |
-| className | string | - | Additional CSS classes |
+| Prop           | Type                             | Default | Description                   |
+| -------------- | -------------------------------- | ------- | ----------------------------- |
+| images         | `{ src: string; alt: string }[]` | -       | Array of image objects        |
+| infinite       | boolean                          | true    | Enable infinite loop cycling  |
+| autoplay       | boolean                          | false   | Enable automatic card cycling |
+| showPagination | boolean                          | false   | Show pagination dots          |
+| showNavigation | boolean                          | false   | Show navigation arrows        |
+| spaceBetween   | number                           | 40      | Space between cards in pixels |
+| className      | string                           | -       | Additional CSS classes        |

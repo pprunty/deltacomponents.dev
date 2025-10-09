@@ -70,11 +70,11 @@ Source code and documentation available at: https://github.com/pprunty/deltacomp
 ## License
 
 Open source components that can be customized and extended for any project.
-`;
+`
 
   return new Response(llmsContent, {
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
+      "Content-Type": "text/plain; charset=utf-8",
     },
   })
 }

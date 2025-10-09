@@ -85,7 +85,7 @@ export function MobileNav({
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
-                return (
+                const groupElement = (
                   <div key={index} className="flex flex-col gap-4">
                     <div className="text-muted-foreground text-sm font-medium">
                       {group.name}
@@ -100,7 +100,16 @@ export function MobileNav({
                               onOpenChange={setOpen}
                             >
                               {item.name}
-                              {(item.name.toLowerCase().includes('admonition') || item.name.toLowerCase().includes('tabs') || item.name.toLowerCase().includes('card deck')) && <StatusBadge label="beta" />}
+                              {typeof item.name === "string" &&
+                                (item.name
+                                  .toLowerCase()
+                                  .includes("admonition") ||
+                                  item.name.toLowerCase().includes("tabs") ||
+                                  item.name
+                                    .toLowerCase()
+                                    .includes("card deck")) && (
+                                  <StatusBadge label="beta" />
+                                )}
                             </MobileLink>
                           )
                         }
@@ -108,6 +117,31 @@ export function MobileNav({
                     </div>
                   </div>
                 )
+
+                // If this is the Components section, add Blocks section after it
+                if (group.name === "Components") {
+                  return (
+                    <React.Fragment key={index}>
+                      {groupElement}
+                      <div className="flex flex-col gap-4">
+                        <div className="text-muted-foreground text-sm font-medium">
+                          Blocks
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <MobileLink
+                            href="/blocks/landing-page#testimonials"
+                            onOpenChange={setOpen}
+                          >
+                            Testimonials
+                            <StatusBadge label="beta" />
+                          </MobileLink>
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  )
+                }
+
+                return groupElement
               }
             })}
           </div>
@@ -136,7 +170,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium flex items-center", className)}
+      className={cn("flex items-center text-2xl font-medium", className)}
       {...props}
     >
       {children}

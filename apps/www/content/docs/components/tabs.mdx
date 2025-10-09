@@ -11,7 +11,7 @@ status: beta
 ## Usage
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function Example() {
   return (
@@ -23,9 +23,7 @@ export default function Example() {
       <TabsContent value="account">
         Make changes to your account here.
       </TabsContent>
-      <TabsContent value="password">
-        Change your password here.
-      </TabsContent>
+      <TabsContent value="password">Change your password here.</TabsContent>
     </Tabs>
   )
 }
@@ -35,31 +33,31 @@ export default function Example() {
 
 **Tabs**
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| defaultValue | string | - | The value of the tab that should be active when initially rendered |
-| value | string | - | The controlled value of the tab to activate |
-| onValueChange | function | - | Event handler called when the value changes |
-| orientation | "horizontal" \| "vertical" | "horizontal" | The orientation of the component |
-| className | string | - | Additional CSS classes |
+| Prop          | Type                       | Default      | Description                                                        |
+| ------------- | -------------------------- | ------------ | ------------------------------------------------------------------ |
+| defaultValue  | string                     | -            | The value of the tab that should be active when initially rendered |
+| value         | string                     | -            | The controlled value of the tab to activate                        |
+| onValueChange | function                   | -            | Event handler called when the value changes                        |
+| orientation   | "horizontal" \| "vertical" | "horizontal" | The orientation of the component                                   |
+| className     | string                     | -            | Additional CSS classes                                             |
 
 **TabsList**
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | string | - | Additional CSS classes |
+| Prop      | Type   | Default | Description            |
+| --------- | ------ | ------- | ---------------------- |
+| className | string | -       | Additional CSS classes |
 
 **TabsTrigger**
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | string | - | A unique value that associates the trigger with a content |
-| disabled | boolean | false | When true, prevents the user from interacting with the tab |
-| className | string | - | Additional CSS classes |
+| Prop      | Type    | Default | Description                                                |
+| --------- | ------- | ------- | ---------------------------------------------------------- |
+| value     | string  | -       | A unique value that associates the trigger with a content  |
+| disabled  | boolean | false   | When true, prevents the user from interacting with the tab |
+| className | string  | -       | Additional CSS classes                                     |
 
 **TabsContent**
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | string | - | A unique value that associates the content with a trigger |
-| className | string | - | Additional CSS classes |
+| Prop      | Type   | Default | Description                                               |
+| --------- | ------ | ------- | --------------------------------------------------------- |
+| value     | string | -       | A unique value that associates the content with a trigger |
+| className | string | -       | Additional CSS classes                                    |

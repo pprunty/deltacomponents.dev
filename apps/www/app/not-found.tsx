@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight">404</h1>
-        <p className="mt-2 text-muted-foreground">
+        <p className="text-muted-foreground mt-2">
           Sorry, we couldn&apos;t find the page you&apos;re looking for.
         </p>
         <div className="mt-6">

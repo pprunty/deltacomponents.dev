@@ -7,13 +7,13 @@ import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
+import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
-import { ComponentGrid } from "@/components/component-grid"
 import { ComponentsNavGrid } from "@/components/components-nav-grid"
-import { Installation } from "@/components/installation"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
+import { Installation } from "@/components/installation"
 import {
   Accordion,
   AccordionContent,
@@ -131,23 +131,30 @@ export const mdxComponents = {
     // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
+  video: ({ className, ...props }: React.ComponentProps<"video">) => (
+    <video
+      className={cn(
+        "bg-muted mt-6 h-auto min-h-[200px] w-full rounded-md md:min-h-[350px]",
+        className
+      )}
+      controls
+      {...props}
+    />
+  ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="my-6 w-full overflow-y-auto rounded-sm border border-border">
-      <table
-        className={cn(
-          "relative w-full text-sm",
-          className
-        )}
-        {...props}
-      />
+    <div className="border-border my-6 w-full overflow-y-auto rounded-sm border">
+      <table className={cn("relative w-full text-sm", className)} {...props} />
     </div>
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
-      className={cn("last:border-b-0 m-0 border-b border-border has-[th]:bg-muted has-[th]:border-b", className)}
+      className={cn(
+        "border-border has-[th]:bg-muted m-0 border-b last:border-b-0 has-[th]:border-b",
+        className
+      )}
       {...props}
     />
   ),
@@ -367,7 +374,10 @@ export const mdxComponents = {
   ),
   Video: ({ className, ...props }: React.ComponentProps<"video">) => (
     <video
-      className={cn("mt-6 rounded-md border w-full", className)}
+      className={cn(
+        "bg-muted mt-6 min-h-[200px] w-full rounded-md md:min-h-[300px]",
+        className
+      )}
       controls
       {...props}
     />
