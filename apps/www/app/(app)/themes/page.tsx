@@ -1,5 +1,10 @@
 import { Metadata } from "next"
 
+import {
+  PageHeader,
+  PageHeaderDescription,
+  PageHeaderHeading,
+} from "@/components/page-header"
 import { Button } from "@/registry/delta-ui/ui/button"
 
 export const metadata: Metadata = {
@@ -9,18 +14,15 @@ export const metadata: Metadata = {
 
 export default function ThemesPage() {
   return (
-    <div className="container py-6 md:py-8 lg:py-12">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
-            Themes
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Beautiful themes and color schemes for ElevenLabs UI components. Customize your app&apos;s appearance.
-          </p>
-        </div>
-      </div>
-      <hr className="my-8" />
+    <>
+      <PageHeader>
+        <PageHeaderHeading>Themes</PageHeaderHeading>
+        <PageHeaderDescription>
+          Beautiful themes and color schemes for Delta Components UI components. Customize your app&apos;s appearance.
+        </PageHeaderDescription>
+      </PageHeader>
+      <div className="container-wrapper section-soft flex-1 md:py-12">
+        <div className="container">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div className="group relative rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
           <div className="flex flex-col space-y-4">
@@ -107,6 +109,8 @@ export default function ThemesPage() {
           </div>
         </div>
       </div>
-    </div>
+        </div>
+      </div>
+    </>
   )
 }

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
+import { StatusBadge } from "@/components/status-badge"
 import { Button } from "@/registry/delta-ui/ui/button"
 
 export function MainNav({
@@ -11,7 +12,7 @@ export function MainNav({
   className,
   ...props
 }: React.ComponentProps<"nav"> & {
-  items: { href: string; label: string }[]
+  items: { href: string; label: string; badge?: string }[]
 }) {
   const pathname = usePathname()
 
@@ -24,6 +25,7 @@ export function MainNav({
             className={cn(pathname === item.href && "text-primary")}
           >
             {item.label}
+            {item.badge && <StatusBadge label={item.badge} />}
           </Link>
         </Button>
       ))}
