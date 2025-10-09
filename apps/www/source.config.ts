@@ -40,6 +40,7 @@ export const docs = defineDocs({
           api: z.string().optional(),
         })
         .optional(),
+      status: z.string().optional(),
     }),
   },
 })

@@ -26,6 +26,42 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "card-deck": {
+    name: "card-deck",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/ui/card-deck.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/ui/card-deck.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "admonition": {
+    name: "admonition",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/ui/admonition.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/ui/admonition.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "orb": {
     name: "orb",
     description: "",
@@ -460,6 +496,28 @@ export const Index: Record<string, any> = {
     categories: ["audio"],
     meta: {"iframeHeight":"900px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-center md:py-20 justify-center min-w-0","mobile":"component"},
   },
+  "testimonials": {
+    name: "testimonials",
+    description: "Customer testimonials grid",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [{
+      path: "registry/delta-ui/blocks/testimonials/page.tsx",
+      type: "registry:page",
+      target: "app/testimonials/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/testimonials/components/testimonials.tsx",
+      type: "registry:component",
+      target: "components/testimonials.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/testimonials/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["landing-page"],
+    meta: {"iframeHeight":"800px","container":"w-full bg-background min-h-svh flex items-center justify-center","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -472,6 +530,78 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/hooks/use-mobile.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "card-deck-demo": {
+    name: "card-deck-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    files: [{
+      path: "registry/delta-ui/examples/card-deck-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/card-deck-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "card-deck-demo-interactive": {
+    name: "card-deck-demo-interactive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    files: [{
+      path: "registry/delta-ui/examples/card-deck-demo-interactive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/card-deck-demo-interactive.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "admonition-demo": {
+    name: "admonition-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    files: [{
+      path: "registry/delta-ui/examples/admonition-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/admonition-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "admonition-demo-interactive": {
+    name: "admonition-demo-interactive",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    files: [{
+      path: "registry/delta-ui/examples/admonition-demo-interactive.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/admonition-demo-interactive.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

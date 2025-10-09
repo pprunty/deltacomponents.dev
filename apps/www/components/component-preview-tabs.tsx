@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/delta/tabs"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/delta-ui/ui/tabs"
 
 export function ComponentPreviewTabs({
   className,

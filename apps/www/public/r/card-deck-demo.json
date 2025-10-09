@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-deck-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/card-deck.json"
+  ],
+  "files": [
+    {
+      "path": "examples/card-deck-demo.tsx",
+      "content": "import { CardDeck } from \"@/components/ui/card-deck\"\n\nexport default function CardDeckDemo() {\n  const images = [\n    {\n      src: \"https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=400&h=600&fit=crop\",\n      alt: \"Coffee Cup\",\n    },\n    {\n      src: \"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=600&fit=crop\",\n      alt: \"Mountain Lake\",\n    },\n    {\n      src: \"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=600&fit=crop\",\n      alt: \"Nature Path\",\n    },\n  ]\n\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <CardDeck images={images} infinite={false} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

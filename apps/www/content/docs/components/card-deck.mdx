@@ -1,0 +1,43 @@
+---
+title: Card Deck
+description: A swipeable card deck component with autoplay and infinite scroll options.
+status: beta
+---
+
+<ComponentPreview name="card-deck-demo" />
+
+<Installation name="card-deck" />
+
+## Usage
+
+```tsx
+import { CardDeck } from "@/components/ui/card-deck"
+
+const images = [
+  { src: "/image1.jpg", alt: "Image 1" },
+  { src: "/image2.jpg", alt: "Image 2" },
+  { src: "/image3.jpg", alt: "Image 3" },
+]
+
+export default function Example() {
+  return (
+    <CardDeck 
+      images={images}
+      infinite={true}
+      autoplay={true}
+    />
+  )
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| images | `{ src: string; alt: string }[]` | - | Array of image objects |
+| infinite | boolean | true | Enable infinite loop cycling |
+| autoplay | boolean | false | Enable automatic card cycling |
+| showPagination | boolean | false | Show pagination dots |
+| showNavigation | boolean | false | Show navigation arrows |
+| spaceBetween | number | 40 | Space between cards in pixels |
+| className | string | - | Additional CSS classes |

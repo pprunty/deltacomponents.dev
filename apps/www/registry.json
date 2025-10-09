@@ -21,6 +21,28 @@
       "cssVars": {}
     },
     {
+      "name": "card-deck",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react", "framer-motion", "swiper"],
+      "files": [
+        {
+          "path": "registry/delta-ui/ui/card-deck.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "admonition",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/delta-ui/ui/admonition.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "orb",
       "type": "registry:ui",
       "dependencies": [
@@ -452,12 +474,80 @@
       "categories": ["audio"]
     },
     {
+      "name": "testimonials",
+      "type": "registry:block",
+      "description": "Customer testimonials grid",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/testimonials/page.tsx",
+          "type": "registry:page",
+          "target": "app/testimonials/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/testimonials/components/testimonials.tsx",
+          "type": "registry:component",
+          "target": "components/testimonials.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full bg-background min-h-svh flex items-center justify-center",
+        "mobile": "component"
+      },
+      "categories": ["landing-page"]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "card-deck-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/card-deck-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "card-deck-demo-interactive",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/card-deck-demo-interactive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "admonition-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/admonition-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "admonition-demo-interactive",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/admonition-demo-interactive.tsx",
+          "type": "registry:example"
         }
       ]
     },

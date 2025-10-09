@@ -43,5 +43,10 @@
     "name": "voice-nav-01",
     "description": "Voice-nav site navigation",
     "categories": ["audio"]
+  },
+  {
+    "name": "testimonials",
+    "description": "Customer testimonials grid",
+    "categories": ["landing-page"]
   }
 ]

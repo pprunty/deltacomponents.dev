@@ -2,6 +2,28 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "card-deck",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "framer-motion", "swiper"],
+    files: [
+      {
+        path: "ui/card-deck.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "admonition",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "ui/admonition.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "orb",
     type: "registry:ui",
     dependencies: [

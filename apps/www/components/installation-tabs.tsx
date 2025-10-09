@@ -8,7 +8,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-} from "@/components/delta/tabs"
+} from "@/registry/delta-ui/ui/tabs"
 import {
   Tabs as PackageManagerTabs,
   TabsList as PackageManagerTabsList,

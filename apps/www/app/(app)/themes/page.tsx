@@ -9,7 +9,7 @@ import { Button } from "@/registry/delta-ui/ui/button"
 
 export const metadata: Metadata = {
   title: "Themes",
-  description: "Beautiful themes and color schemes for Delta Components UI components.",
+  description: "Beautiful themes and color schemes for Delta and shadcn components, created using tweakcn. Customize your app's appearance.",
 }
 
 export default function ThemesPage() {
@@ -18,7 +18,7 @@ export default function ThemesPage() {
       <PageHeader>
         <PageHeaderHeading>Themes</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautiful themes and color schemes for Delta Components UI components. Customize your app&apos;s appearance.
+          Beautiful themes and color schemes for Delta and <a href="https://ui.shadcn.com" className="underline">shadcn</a> components, created using <a href="https://tweakcn.com" className="underline">tweakcn</a>. Customize your app&apos;s appearance.
         </PageHeaderDescription>
       </PageHeader>
       <div className="container-wrapper section-soft flex-1 md:py-12">

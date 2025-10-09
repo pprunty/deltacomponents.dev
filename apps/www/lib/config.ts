@@ -20,7 +20,7 @@ export const siteConfig = {
     },
     {
       href: "/blocks",
-      label: "Examples",
+      label: "Blocks",
     },
     {
       href: "/templates",

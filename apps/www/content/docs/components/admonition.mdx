@@ -1,0 +1,33 @@
+---
+title: Admonition
+description: A callout component for displaying important information with different severity levels and visual styling.
+status: beta
+---
+
+<ComponentPreview name="admonition-demo" />
+
+<Installation name="admonition" />
+
+## Usage
+
+```tsx
+import { Admonition } from "@/components/ui/admonition"
+
+export default function Example() {
+  return (
+    <Admonition type="warning" title="Important Notice">
+      This is a warning message that users should pay attention to.
+    </Admonition>
+  )
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | "note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution" | "note" | The type of admonition determining color and icon |
+| title | string | - | Optional title text displayed above the content |
+| children | ReactNode | - | The content to display inside the admonition |
+| icon | React.ComponentType | - | Custom icon component to override the default type icon |
+| className | string | - | Additional CSS classes |

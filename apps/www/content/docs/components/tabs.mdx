@@ -1,10 +1,10 @@
 ---
 title: Tabs
 description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+status: beta
 ---
 
 <ComponentPreview name="tabs-demo" />
-
 
 <Installation name="tabs" dependencies={["streamdown"]} />
 
@@ -33,7 +33,7 @@ export default function Example() {
 
 ## API Reference
 
-### Tabs
+**Tabs**
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -41,14 +41,15 @@ export default function Example() {
 | value | string | - | The controlled value of the tab to activate |
 | onValueChange | function | - | Event handler called when the value changes |
 | orientation | "horizontal" \| "vertical" | "horizontal" | The orientation of the component |
+| className | string | - | Additional CSS classes |
 
-### TabsList
+**TabsList**
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | className | string | - | Additional CSS classes |
 
-### TabsTrigger
+**TabsTrigger**
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -56,7 +57,7 @@ export default function Example() {
 | disabled | boolean | false | When true, prevents the user from interacting with the tab |
 | className | string | - | Additional CSS classes |
 
-### TabsContent
+**TabsContent**
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |

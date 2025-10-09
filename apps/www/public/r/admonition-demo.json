@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "admonition-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
+  "files": [
+    {
+      "path": "examples/admonition-demo.tsx",
+      "content": "import { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <Admonition type=\"note\" title=\"Note\">\n      This is a note admonition. Use it to provide additional information that\n      users should be aware of.\n    </Admonition>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

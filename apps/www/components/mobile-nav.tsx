@@ -100,6 +100,7 @@ export function MobileNav({
                               onOpenChange={setOpen}
                             >
                               {item.name}
+                              {(item.name.toLowerCase().includes('admonition') || item.name.toLowerCase().includes('tabs') || item.name.toLowerCase().includes('card deck')) && <StatusBadge label="beta" />}
                             </MobileLink>
                           )
                         }

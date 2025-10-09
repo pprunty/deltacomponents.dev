@@ -351,6 +351,74 @@ if (!fs.existsSync(demoFile)) {
   console.log(`✅ Created demo: ${demoFile}`)
 }
 
+// Update registry files
+function updateRegistryFiles() {
+  // Update registry-ui.ts for UI components
+  if (componentType === 'ui') {
+    const registryUiPath = path.join(__dirname, '..', 'registry', 'registry-ui.ts')
+    if (fs.existsSync(registryUiPath)) {
+      const registryContent = fs.readFileSync(registryUiPath, 'utf8')
+      
+      // Check if component is already in registry
+      if (!registryContent.includes(`name: "${kebabCase}"`)) {
+        // Create new component entry
+        const newEntry = `  {
+    name: "${kebabCase}",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "ui/${kebabCase}.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },`
+        
+        // Insert after the opening bracket of the array
+        const insertAfter = 'export const ui: Registry["items"] = ['
+        const insertIndex = registryContent.indexOf(insertAfter) + insertAfter.length
+        const updatedContent = registryContent.slice(0, insertIndex) + '\n' + newEntry + registryContent.slice(insertIndex)
+        
+        fs.writeFileSync(registryUiPath, updatedContent)
+        console.log(`✅ Updated registry: ${registryUiPath}`)
+      }
+    }
+  }
+
+  // Update registry-examples.ts for all component types
+  const registryExamplesPath = path.join(__dirname, '..', 'registry', 'registry-examples.ts')
+  if (fs.existsSync(registryExamplesPath)) {
+    const examplesContent = fs.readFileSync(registryExamplesPath, 'utf8')
+    
+    // Check if demo is already in registry
+    if (!examplesContent.includes(`name: "${kebabCase}-demo"`)) {
+      // Create new demo entry
+      const newDemoEntry = `  {
+    name: "${kebabCase}-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/${kebabCase}.json"],
+    files: [
+      {
+        path: "examples/${kebabCase}-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },`
+      
+      // Insert after the opening bracket of the array
+      const insertAfter = 'export const examples: Registry["items"] = ['
+      const insertIndex = examplesContent.indexOf(insertAfter) + insertAfter.length
+      const updatedContent = examplesContent.slice(0, insertIndex) + '\n' + newDemoEntry + examplesContent.slice(insertIndex)
+      
+      fs.writeFileSync(registryExamplesPath, updatedContent)
+      console.log(`✅ Updated registry: ${registryExamplesPath}`)
+    }
+  }
+}
+
+// Call the registry update function
+updateRegistryFiles()
+
 // Optionally update docs sidebar for components
 if (componentType === 'components') {
   const sidebarPath = path.join(__dirname, '..', 'components', 'docs-sidebar.tsx')
@@ -374,9 +442,17 @@ console.log(`1. Edit the component: ${componentFile}`)
 console.log(`2. Update the documentation: ${docsFile}`)
 console.log(`3. Update the example: ${exampleFile}`)
 console.log(`4. Customize the demo: ${demoFile}`)
-if (componentType === 'components') {
+if (componentType === 'ui') {
+  console.log(`5. Registry files have been automatically updated`)
+  console.log(`6. Run: npm run registry:build to rebuild the registry`)
+  console.log(`7. Run: npm run dev to see your changes`)
+} else if (componentType === 'components') {
   console.log(`5. Add to sidebar navigation if it's a main component`)
-  console.log(`6. Run: npm run dev to see your changes`)
+  console.log(`6. Demo has been added to registry automatically`)
+  console.log(`7. Run: npm run registry:build to rebuild the registry`)
+  console.log(`8. Run: npm run dev to see your changes`)
 } else {
-  console.log(`5. Run: npm run dev to see your changes`)
+  console.log(`5. Demo has been added to registry automatically`)
+  console.log(`6. Run: npm run registry:build to rebuild the registry`)
+  console.log(`7. Run: npm run dev to see your changes`)
 }

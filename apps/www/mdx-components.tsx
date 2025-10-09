@@ -154,7 +154,7 @@ export const mdxComponents = {
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
     <th
       className={cn(
-        "border-r border-border px-4 py-2 text-left font-bold last:border-r-0 [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
@@ -163,7 +163,7 @@ export const mdxComponents = {
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
     <td
       className={cn(
-        "border-r border-border px-4 py-2 text-left last:border-r-0 [&[align=center]]:text-center [&[align=right]]:text-right",
+        "px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
         className
       )}
       {...props}
@@ -362,6 +362,13 @@ export const mdxComponents = {
         "bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col items-center rounded-xl p-6 transition-colors sm:p-10",
         className
       )}
+      {...props}
+    />
+  ),
+  Video: ({ className, ...props }: React.ComponentProps<"video">) => (
+    <video
+      className={cn("mt-6 rounded-md border w-full", className)}
+      controls
       {...props}
     />
   ),

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-deck",
+  "type": "registry:ui",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion",
+    "swiper"
+  ],
+  "files": [
+    {
+      "path": "components/ui/card-deck.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { motion } from \"framer-motion\"\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\"\nimport { Autoplay, EffectCards, Navigation, Pagination } from \"swiper/modules\"\nimport { Swiper, SwiperSlide } from \"swiper/react\"\n\nimport \"swiper/css/effect-cards\"\nimport \"swiper/css/pagination\"\nimport \"swiper/css/navigation\"\nimport \"swiper/css\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface CardDeckProps {\n  images: { src: string; alt: string }[]\n  className?: string\n  showPagination?: boolean\n  showNavigation?: boolean\n  loop?: boolean\n  infinite?: boolean\n  autoplay?: boolean\n  spaceBetween?: number\n}\n\nexport function CardDeck({\n  images,\n  className,\n  showPagination = false,\n  showNavigation = false,\n  loop = true,\n  infinite = true,\n  autoplay = false,\n  spaceBetween = 40,\n}: CardDeckProps) {\n  const css = `\n  .card-deck {\n    padding-bottom: 50px !important;\n  }\n  `\n\n  return (\n    <motion.div\n      initial={{ opacity: 0, translateY: 20 }}\n      animate={{ opacity: 1, translateY: 0 }}\n      transition={{\n        duration: 0.3,\n        delay: 0.5,\n      }}\n      className={cn(\"relative w-full max-w-3xl\", className)}\n    >\n      <style>{css}</style>\n\n      <Swiper\n        spaceBetween={spaceBetween}\n        autoplay={\n          autoplay\n            ? {\n                delay: 1000,\n                disableOnInteraction: false,\n              }\n            : false\n        }\n        effect=\"cards\"\n        grabCursor={true}\n        loop={infinite}\n        allowTouchMove={true}\n        touchRatio={1}\n        resistance={true}\n        resistanceRatio={infinite ? 0 : 0.85}\n        pagination={\n          showPagination\n            ? {\n                clickable: true,\n              }\n            : false\n        }\n        navigation={\n          showNavigation\n            ? {\n                nextEl: \".swiper-button-next\",\n                prevEl: \".swiper-button-prev\",\n              }\n            : false\n        }\n        className=\"card-deck h-[380px] w-[260px]\"\n        modules={[EffectCards, Autoplay, Pagination, Navigation]}\n      >\n        {images.map((image, index) => (\n          <SwiperSlide key={index} className=\"rounded-3xl\">\n            <img\n              className=\"h-full w-full object-cover\"\n              src={image.src}\n              alt={image.alt}\n            />\n          </SwiperSlide>\n        ))}\n        {showNavigation && (\n          <div>\n            <div className=\"swiper-button-next after:hidden\">\n              <ChevronRightIcon className=\"h-6 w-6 text-white\" />\n            </div>\n            <div className=\"swiper-button-prev after:hidden\">\n              <ChevronLeftIcon className=\"h-6 w-6 text-white\" />\n            </div>\n          </div>\n        )}\n      </Swiper>\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

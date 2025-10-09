@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { source } from "@/lib/source"
+import { StatusBadge } from "@/components/status-badge"
 import {
   Sidebar,
   SidebarContent,
@@ -87,23 +88,24 @@ export function DocsSidebar({
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
                     {item.children.map((item) => {
-                      return (
-                        item.type === "page" &&
-                        !EXCLUDED_PAGES.includes(item.url) && (
+                      if (item.type === "page" && !EXCLUDED_PAGES.includes(item.url)) {
+                        return (
                           <SidebarMenuItem key={item.url}>
                             <SidebarMenuButton
                               asChild
                               isActive={item.url === pathname}
                               className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                             >
-                              <Link href={item.url}>
+                              <Link href={item.url} className="flex items-center gap-2">
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
+                                {(item.name.toLowerCase().includes('admonition') || item.name.toLowerCase().includes('tabs') || item.name.toLowerCase().includes('card deck')) && <StatusBadge label="beta" />}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
                         )
-                      )
+                      }
+                      return null
                     })}
                   </SidebarMenu>
                 )}
