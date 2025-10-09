@@ -1,202 +1,143 @@
 # Contributing
 
-> 🎉 **Recognition for Contributors!** deltacomponents.dev receives regular traffic, and as a contributor, your work will be recognized as yours by providing a link to your personal website or social media profile of choice in the component's page you contribute (i.e deltacomponents.dev/docs/admonition), GitHub README.md and contributors page.
+Thanks for your interest in contributing to deltacomponents.dev.
 
-Thank you for your interest in contributing to Delta Components! This document provides guidelines and instructions to help you get started.
+Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
 
-## Stack
+If you need any help, feel free to reach out to [@louisjoejordan](https://twitter.com/louisjoejordan).
 
-Delta Components is built with the following technologies:
+## About this repository
 
-- **Next.js 15**: React framework for production
-- **React 19**: UI library
-- **TypeScript**: Static type checking
-- **Tailwind CSS 4**: Utility-first CSS framework
-- **Contentlayer2**: Content SDK for MDX documentation
-- **Shadcn UI**: Component base with integration
-- **Radix UI**: Headless UI components
-- **Framer Motion**: Animation library
-- **PNPM**: Package manager
+This repository is a monorepo.
+
+- We use [pnpm](https://pnpm.io) and [`workspaces`](https://pnpm.io/workspaces) for development.
+- We use [Turborepo](https://turbo.build/repo) as our build system.
 
 ## Structure
 
-The repository is organized as follows:
+This repository is structured as follows:
 
 ```
-deltacomponents.dev/
-├── .github/              # GitHub workflows and templates
-├── .husky/               # Git hooks for linting and formatting
-├── app/                  # Next.js app directory
-├── components/           # React components for the website
-├── config/               # Configuration files
-│   └── docs.ts           # Documentation navigation configuration
-├── content/              # Content files
-│   └── docs/             # Documentation MDX files
-├── lib/                  # Utility functions
-├── public/               # Static assets
-│   └── r/                # Registry output directory
-├── registry/             # Component registry
-│   ├── animations/       # Animation components
-│   ├── blocks/           # Block components
-│   ├── components/       # UI components
-│   ├── examples/         # Component demos
-│   ├── hooks/            # React hooks
-│   ├── inputs/           # Form input components
-│   ├── landing-page/     # Landing page components
-│   └── media/            # Media components
-├── scripts/              # Utility scripts
-│   ├── build-registry.mts # Script to build component registry
-│   ├── create-component.mts # Script to create new components
-│   └── create-demo.mjs   # Script to create component demos
-├── styles/               # Global styles
-├── Makefile              # Makefile with development commands
-├── package.json          # Dependencies and scripts
-└── tailwind.config.ts    # Tailwind CSS configuration
+apps
+└── www
+    ├── app
+    ├── components
+    ├── content
+    └── registry
+        └── elevenlabs-ui
+            ├── example
+            └── ui
 ```
+
+| Path                  | Description                              |
+| --------------------- | ---------------------------------------- |
+| `apps/www/app`        | The Next.js application for the website. |
+| `apps/www/components` | The React components for the website.    |
+| `apps/www/content`    | The content for the website.             |
+| `apps/www/registry`   | The registry for the components.         |
 
 ## Development
 
-### Getting Started
+### Fork this repo
 
-1. **Clone the repository**
+You can fork this repo by clicking the fork button in the top right corner of this page.
 
-   ```bash
-   git clone https://github.com/pprunty/deltacomponents.dev.git
-   cd deltacomponents.dev
-   ```
-
-2. **Create a new branch**
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-3. **Install dependencies**
-
-   ```bash
-   pnpm install
-   ```
-
-4. **Build the component registry**
-
-   ```bash
-   make registry
-   ```
-
-   This is an alias for `pnpm build:registry` which compiles the component registry.
-
-5. **Start the development server**
-
-   ```bash
-   make dev
-   ```
-
-   The site should now be running at http://localhost:3000.
-
-### Creating a New Component
-
-To create a new component, use the `make component` command:
+### Clone on your local machine
 
 ```bash
-make component name=component-name category=components
+git clone https://github.com/elevenlabs/ui.git
 ```
 
-Available categories include:
-
-- `components` - UI components
-- `blocks` - Larger UI blocks
-- `animations` - Animation components
-- `hooks` - React hooks
-- `inputs` - Form input components
-- `landing-page` - Landing page components
-- `media` - Media components
-
-After creating a component, you'll need to:
-
-1. Update the documentation navigation in `config/docs.ts`:
-
-   ```typescript
-   // Add to the appropriate section in sidebarNav
-   {
-     title: "Components",
-     items: [
-       // ... other components
-       {
-         title: "Component Name",
-         href: "/docs/components/component-name",
-       },
-     ],
-   },
-   ```
-
-2. Build the registry:
-   ```bash
-   make registry
-   ```
-
-**To hide a component from production, add `hide: true` to its entry in `config/docs.ts` under `sidebarNav`.**
-
-### Creating a Component Demo
-
-To create a new demo for an existing component:
+### Navigate to project directory
 
 ```bash
-make demo component=component-name name=demo-name
+cd ui
 ```
 
-This will:
-
-1. Create a new demo file in `registry/examples/`
-2. Add the demo to the examples registry
-3. Update the component's documentation to include the demo
-
-### Code Style and Formatting
-
-The project uses ESLint and Prettier for code linting and formatting. You can run:
+### Create a new Branch
 
 ```bash
-# Format code
-make format
-
-# Check formatting
-make format-check
-
-# Run linting
-make lint
+git checkout -b my-new-branch
 ```
 
-### Submitting a Pull Request
+### Install dependencies
 
-1. Commit your changes with a descriptive message
+```bash
+pnpm install
+```
 
-   ```bash
-   git commit -m "feat: add new component"
-   ```
+### Run a workspace
 
-2. Push your branch to GitHub
+You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
 
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+#### Examples
 
-3. Open a pull request on GitHub
+1. To run the `deltacomponents.dev` website:
 
-   - Provide a clear description of the changes with label 'new component'
-   - Reference any related issues
-   - Include screenshots or videos if applicable
+```bash
+pnpm dev
+```
+## Documentation
 
-4. Wait for a review from the maintainers
+The documentation for this project is located in the `www` workspace. You can run the documentation locally by running the following command:
 
-#### Acceptance Criteria
+```bash
+pnpm dev
+```
 
-For your component to be merged to the default main branch, it must meet some of the following criteria:
+Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/www/content/docs` directory.
 
-1. Be unique. If not, the component should perform better or offer something another component seen out in the wild doesn't. If possible,
-   the contributor should reference said component they outperform and the how and why.
-2. Be applicable to modern application usage, i.e in LLM interfaces, etc.
-3. Should consider backend integration if applicable. For example, in an infinite vertical snap scroll component, like used by TikTok, it should
-   adequately consider integration with backend fetching for new items.
+## Components
 
-## License
+We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
 
-By contributing to Delta Components, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
+```bash
+apps
+└── www
+    └── registry
+        └── elevenlabs-ui
+            ├── example
+            └── ui
+```
+
+When adding or modifying components, please ensure that:
+
+1. You make the changes for every style.
+2. You update the documentation.
+3. You run `pnpm build:registry` to update the registry.
+
+## Commit Convention
+
+Before you create a Pull Request, please check whether your commits comply with
+the commit conventions used in this repository.
+
+When you create a commit we kindly ask you to follow the convention
+`category(scope or module): message` in your commit message while using one of
+the following categories:
+
+- `feat / feature`: all changes that introduce completely new code or new
+  features
+- `fix`: changes that fix a bug (ideally you will additionally reference an
+  issue if present)
+- `refactor`: any code related change that is not a fix nor a feature
+- `docs`: changing existing or creating new documentation (i.e. README, docs for
+  usage of a lib or cli usage)
+- `build`: all changes regarding the build of the software, changes to
+  dependencies or the addition of new dependencies
+- `test`: all changes regarding tests (adding new tests or changing existing
+  ones)
+- `ci`: all changes regarding the configuration of continuous integration (i.e.
+  github actions, ci system)
+- `chore`: all changes to the repository that do not fit into any of the above
+  categories
+
+  e.g. `feat(components): add new prop to the avatar component`
+
+If you are interested in the detailed specification you can visit
+https://www.conventionalcommits.org/ or check out the
+[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
+
+## Requests for new components
+
+If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
+Please ensure that the tests are passing when submitting a pull request. If you're adding new features, please include tests.

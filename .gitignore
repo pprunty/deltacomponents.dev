@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.*
 .pnpm/
@@ -12,19 +12,18 @@
 !.yarn/versions
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out/
+dist/
 
 # production
-/build
+build/
 
 # misc
-.DS_Store
 *.pem
-.idea/
 
 # debug
 npm-debug.log*
@@ -48,6 +47,18 @@ next-env.d.ts
 
 # temp directory
 .temp/
+temp/
 
 # Generated registry files
 #/public/r/
+
+# Turbo
+.turbo/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

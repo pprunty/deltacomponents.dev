@@ -1,0 +1,64 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+---
+
+<ComponentPreview name="tabs-demo" />
+
+
+<Installation name="tabs" dependencies={["streamdown"]} />
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+
+export default function Example() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Make changes to your account here.
+      </TabsContent>
+      <TabsContent value="password">
+        Change your password here.
+      </TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## API Reference
+
+### Tabs
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| defaultValue | string | - | The value of the tab that should be active when initially rendered |
+| value | string | - | The controlled value of the tab to activate |
+| onValueChange | function | - | Event handler called when the value changes |
+| orientation | "horizontal" \| "vertical" | "horizontal" | The orientation of the component |
+
+### TabsList
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | string | - | Additional CSS classes |
+
+### TabsTrigger
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | string | - | A unique value that associates the trigger with a content |
+| disabled | boolean | false | When true, prevents the user from interacting with the tab |
+| className | string | - | Additional CSS classes |
+
+### TabsContent
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | string | - | A unique value that associates the content with a trigger |
+| className | string | - | Additional CSS classes |
