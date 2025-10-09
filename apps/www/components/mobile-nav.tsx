@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
+import { StatusBadge } from "@/components/status-badge"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Popover,
@@ -19,7 +20,7 @@ export function MobileNav({
   className,
 }: {
   tree: typeof source.pageTree
-  items: { href: string; label: string }[]
+  items: { href: string; label: string; badge?: string }[]
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
@@ -75,6 +76,7 @@ export function MobileNav({
               {items.map((item, index) => (
                 <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
                   {item.label}
+                  {item.badge && <StatusBadge label={item.badge} />}
                 </MobileLink>
               ))}
             </div>
@@ -133,7 +135,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("text-2xl font-medium flex items-center", className)}
       {...props}
     >
       {children}

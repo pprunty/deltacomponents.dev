@@ -147,7 +147,7 @@ export const mdxComponents = {
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
-      className={cn("last:border-b-0 m-0 border-b border-border", className)}
+      className={cn("last:border-b-0 m-0 border-b border-border has-[th]:bg-muted has-[th]:border-b", className)}
       {...props}
     />
   ),
