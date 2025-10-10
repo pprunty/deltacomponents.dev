@@ -1,0 +1,123 @@
+---
+title: Cambio Image
+description: An interactive image component with zoom functionality using the Cambio library.
+---
+
+<ComponentPreview name="cambio-image-demo" />
+
+<Installation name="cambio-image" />
+
+<Admonition type="warning" title="Required CSS">
+Add the following CSS to your `globals.css` for proper z-index management in grid layouts:
+
+```css
+.root {
+  isolation: isolate;
+}
+
+[data-state="open"] {
+  z-index: 999 !important;
+}
+```
+</Admonition>
+
+## Usage
+
+```tsx
+import { CambioImage } from "@/components/ui/cambio-image"
+
+export default function Example() {
+  return (
+    <CambioImage
+      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+      alt="Beautiful mountain landscape"
+      width={800}
+      height={600}
+      motion="smooth"
+      className="rounded-lg"
+    />
+  )
+}
+```
+
+## Examples
+
+### Grid Layout
+
+Perfect for image galleries and portfolios:
+
+<ComponentPreview name="cambio-image-grid-demo" />
+
+## Features
+
+- **Click to zoom**: Images can be clicked to open in a full-screen overlay
+- **Intersection Observer**: Lazy loading with optional blur-to-focus animation
+- **Animation control**: Toggle initial animation with `enableInitialAnimation` prop
+- **Motion presets**: Customizable animation styles (smooth, snappy, bouncy, reduced)
+- **Dismissible**: Click outside or use escape key to close
+- **Responsive**: Automatically scales on different screen sizes
+- **Grid-friendly**: Proper z-index management for grid layouts
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| src | string | - | **Required.** Image source URL |
+| alt | string | - | **Required.** Image alt text for accessibility |
+| width | number | - | **Required.** Image width in pixels |
+| height | number | - | **Required.** Image height in pixels |
+| loading | "lazy" \| "eager" | "lazy" | Image loading strategy |
+| index | number | 0 | Z-index offset for stacking multiple images |
+| motion | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration |
+| dismissible | boolean | true | Whether the zoom overlay can be dismissed |
+| className | string | - | Additional CSS classes for styling |
+| draggable | boolean | false | Whether the image can be dragged |
+| enableInitialAnimation | boolean | true | Enable blur-to-focus animation when image enters viewport |
+
+### Motion Presets
+
+| Preset | Description |
+| --- | --- |
+| "smooth" | Default smooth animation |
+| "snappy" | Quick, snappy transitions |
+| "bouncy" | Bouncy spring animation |
+| "reduced" | Reduced motion for accessibility |
+
+### Motion Configuration
+
+For advanced users, you can provide a custom motion configuration:
+
+```tsx
+<CambioImage
+  motion={{
+    trigger: "smooth",
+    popup: "bouncy", 
+    backdrop: "reduced"
+  }}
+  // ... other props
+/>
+```
+
+### Disabling Initial Animation
+
+To disable the blur-to-focus animation and show images immediately:
+
+```tsx
+<CambioImage
+  src="your-image-url"
+  alt="Description"
+  width={800}
+  height={600}
+  enableInitialAnimation={false}
+/>
+```
+
+## Dependencies
+
+This component requires the `cambio` package:
+
+```bash
+npm install cambio
+```

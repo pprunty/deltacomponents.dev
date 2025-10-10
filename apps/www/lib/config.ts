@@ -26,6 +26,7 @@ export const siteConfig = {
       href: "/templates",
       label: "Templates",
       badge: "new",
+      hide: process.env.NODE_ENV === "production",
     },
     {
       href: "/themes",

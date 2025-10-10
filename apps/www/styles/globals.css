@@ -331,6 +331,15 @@
 }
 
 @layer components {
+  /* Cambio Image z-index management */
+  .root {
+    isolation: isolate;
+  }
+
+  [data-state="open"] {
+    z-index: 999 !important;
+  }
+
   .steps {
     &:first-child {
       @apply !mt-0;

@@ -13,30 +13,40 @@ import "swiper/css"
 
 import { cn } from "@/lib/utils"
 
-interface CardDeckProps {
-  images: { src: string; alt: string }[]
+interface CardDeckContainerProps {
+  children: React.ReactNode
   className?: string
   showPagination?: boolean
   showNavigation?: boolean
-  loop?: boolean
   infinite?: boolean
   autoplay?: boolean
   spaceBetween?: number
 }
 
-export function CardDeck({
-  images,
+interface CardDeckItemProps {
+  children: React.ReactNode
+  className?: string
+}
+
+// New modular API components
+export function CardDeckContainer({
+  children,
   className,
   showPagination = false,
   showNavigation = false,
-  loop = true,
   infinite = true,
   autoplay = false,
   spaceBetween = 40,
-}: CardDeckProps) {
+}: CardDeckContainerProps) {
   const css = `
   .card-deck {
-    padding-bottom: 50px !important;
+    padding: 20px 0 50px 0 !important;
+  }
+  .card-deck .swiper-slide {
+    overflow: visible !important;
+  }
+  .card-deck .swiper-slide-shadow-cards {
+    border-radius: 1.5rem !important;
   }
   `
 
@@ -48,7 +58,7 @@ export function CardDeck({
         duration: 0.3,
         delay: 0.5,
       }}
-      className={cn("relative w-full max-w-3xl", className)}
+      className={cn("relative w-full max-w-3xl overflow-visible", className)}
     >
       <style>{css}</style>
 
@@ -84,18 +94,24 @@ export function CardDeck({
               }
             : false
         }
-        className="card-deck h-[380px] w-[260px]"
+        className="card-deck h-[360px] w-[240px] sm:h-[420px] sm:w-[280px]"
         modules={[EffectCards, Autoplay, Pagination, Navigation]}
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index} className="rounded-3xl">
-            <img
-              className="h-full w-full object-cover"
-              src={image.src}
-              alt={image.alt}
-            />
-          </SwiperSlide>
-        ))}
+        {React.Children.map(children, (child, index) => {
+          if (React.isValidElement(child)) {
+            const slideClass = child.props.className || "rounded-3xl"
+
+            return (
+              <SwiperSlide
+                key={index}
+                className={cn(slideClass, "overflow-hidden")}
+              >
+                {child.props.children}
+              </SwiperSlide>
+            )
+          }
+          return null
+        })}
         {showNavigation && (
           <div>
             <div className="swiper-button-next after:hidden">
@@ -109,4 +125,9 @@ export function CardDeck({
       </Swiper>
     </motion.div>
   )
+}
+
+export function CardDeckItem({ children, className }: CardDeckItemProps) {
+  // This component passes its children and className to CardDeckContainer for rendering
+  return <>{children}</>
 }

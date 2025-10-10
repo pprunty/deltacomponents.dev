@@ -62,7 +62,7 @@ export function ComponentPreviewTabs({
             data-align={align}
             className={cn(
               "preview flex h-[450px] w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
-              marginOff ? "p-0" : "p-10"
+              marginOff ? "p-0" : "p-4 sm:p-6 md:p-10"
             )}
           >
             {component}

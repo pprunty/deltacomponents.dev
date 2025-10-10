@@ -12,13 +12,15 @@ export function MainNav({
   className,
   ...props
 }: React.ComponentProps<"nav"> & {
-  items: { href: string; label: string; badge?: string }[]
+  items: { href: string; label: string; badge?: string; hide?: boolean }[]
 }) {
   const pathname = usePathname()
 
+  const visibleItems = items.filter(item => !item.hide)
+
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>
-      {items.map((item) => (
+      {visibleItems.map((item) => (
         <Button key={item.href} variant="ghost" asChild size="sm">
           <Link
             href={item.href}

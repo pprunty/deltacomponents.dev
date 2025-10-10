@@ -20,7 +20,7 @@ export function MobileNav({
   className,
 }: {
   tree: typeof source.pageTree
-  items: { href: string; label: string; badge?: string }[]
+  items: { href: string; label: string; badge?: string; hide?: boolean }[]
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
@@ -73,7 +73,7 @@ export function MobileNav({
               <MobileLink href="/" onOpenChange={setOpen}>
                 Home
               </MobileLink>
-              {items.map((item, index) => (
+              {items.filter(item => !item.hide).map((item, index) => (
                 <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
                   {item.label}
                   {item.badge && <StatusBadge label={item.badge} />}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "qrcode-purple-dots-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/qrcode.json"
+  ],
+  "files": [
+    {
+      "path": "examples/qrcode-purple-dots-demo.tsx",
+      "content": "\"use client\"\n\nimport QRCode from \"@/registry/delta-ui/components/qrcode\"\n\nexport default function QrcodePurpleDotsDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <QRCode\n        value=\"https://patrickprunty.com\"\n        size={200}\n        dotStyle=\"rounded\"\n        fgColor=\"#8b5cf6\"\n        cornerSquareStyle=\"dot\"\n        cornerDotStyle=\"dot\"\n        level={\"H\"}\n        enableNavigation={true}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

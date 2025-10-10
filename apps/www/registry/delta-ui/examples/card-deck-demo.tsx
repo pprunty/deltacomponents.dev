@@ -1,4 +1,7 @@
-import { CardDeck } from "@/registry/delta-ui/ui/card-deck"
+import {
+  CardDeckContainer,
+  CardDeckItem,
+} from "@/registry/delta-ui/ui/card-deck"
 
 export default function CardDeckDemo() {
   const images = [
@@ -18,7 +21,17 @@ export default function CardDeckDemo() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <CardDeck images={images} infinite={false} />
+      <CardDeckContainer infinite={false}>
+        {images.map((image, index) => (
+          <CardDeckItem key={index} className="rounded-3xl">
+            <img
+              className="h-full w-full rounded-3xl object-cover"
+              src={image.src}
+              alt={image.alt}
+            />
+          </CardDeckItem>
+        ))}
+      </CardDeckContainer>
     </div>
   )
 }

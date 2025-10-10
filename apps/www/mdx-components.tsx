@@ -4,6 +4,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
+import { EnhancedVideo, EnhancedVideoLarge } from "@/components/enhanced-video"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
@@ -20,6 +21,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/delta-ui/ui/accordion"
+import { Admonition } from "@/registry/delta-ui/ui/admonition"
 import {
   Alert,
   AlertDescription,
@@ -131,16 +133,7 @@ export const mdxComponents = {
     // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
-  video: ({ className, ...props }: React.ComponentProps<"video">) => (
-    <video
-      className={cn(
-        "bg-muted mt-6 h-auto min-h-[200px] w-full rounded-md md:min-h-[350px]",
-        className
-      )}
-      controls
-      {...props}
-    />
-  ),
+  video: (props: React.ComponentProps<"video">) => <EnhancedVideo {...props} />,
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
@@ -342,6 +335,7 @@ export const mdxComponents = {
   ),
   Button,
   Callout,
+  Admonition,
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -372,14 +366,5 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Video: ({ className, ...props }: React.ComponentProps<"video">) => (
-    <video
-      className={cn(
-        "bg-muted mt-6 min-h-[200px] w-full rounded-md md:min-h-[300px]",
-        className
-      )}
-      controls
-      {...props}
-    />
-  ),
+  Video: (props: React.ComponentProps<"video">) => <EnhancedVideoLarge {...props} />,
 }

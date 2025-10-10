@@ -1,0 +1,67 @@
+---
+title: QR Code
+description: A customizable QR code component with styling options for Delta applications.
+---
+
+<ComponentPreview name="qrcode-demo" />
+
+<Installation name="qrcode" />
+
+## Usage
+
+```tsx
+import QRCode from "@/components/ui/qrcode"
+
+export default function Example() {
+  return (
+    <QRCode 
+      value="https://example.com" 
+      size={200} 
+    />
+  )
+}
+```
+
+## Examples
+
+### Purple Dots Style
+
+<ComponentPreview name="qrcode-purple-dots-demo" />
+
+### Clickable Navigation
+
+When `enableNavigation` is set to `true`, the QR code becomes clickable and will open the encoded URL in a new tab:
+
+```tsx
+<QRCode 
+  value="https://example.com" 
+  enableNavigation={true}
+  size={200} 
+/>
+```
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | string | - | The data to encode in the QR code (required) |
+| size | number | 200 | Width and height of the QR code in pixels |
+| bgColor | string | "--color-background" | Background color (CSS variable or color value) |
+| fgColor | string | "--color-foreground" | Foreground color (CSS variable or color value) |
+| level | "L" \| "M" \| "Q" \| "H" | "M" | Error correction level |
+| marginSize | number | 0 | Margin size around the QR code |
+| className | string | - | Additional CSS classes |
+| enableNavigation | boolean | false | Enable click navigation to open the QR code URL in a new tab |
+| dotStyle | "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded" | "square" | Style of the QR code dots |
+| cornerSquareStyle | "dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" | "square" | Style of the corner squares |
+| cornerDotStyle | "dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded" | "square" | Style of the corner dots |
+
+### Dependencies
+
+This component requires the `qr-code-styling` package:
+
+```bash
+npm install qr-code-styling
+```

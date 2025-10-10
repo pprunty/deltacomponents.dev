@@ -35,6 +35,19 @@
       "cssVars": {}
     },
     {
+      "name": "cambio-image",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/ui/cambio-image.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "card-deck",
       "type": "registry:ui",
       "dependencies": [
@@ -122,6 +135,71 @@
       ]
     },
     {
+      "name": "cambio-image-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/cambio-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/cambio-image-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image-grid-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/cambio-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/cambio-image-grid-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "qrcode-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/qrcode-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "qrcode-purple-dots-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/qrcode-purple-dots-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "qrcode-demo-interactive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/qrcode-demo-interactive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "card-deck-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -182,6 +260,19 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/tabs-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "card-stack-yugioh-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/card-deck.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/card-stack-yugioh-demo.tsx",
           "type": "registry:example"
         }
       ]

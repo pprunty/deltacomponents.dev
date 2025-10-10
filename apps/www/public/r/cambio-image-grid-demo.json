@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cambio-image-grid-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/cambio-image.json"
+  ],
+  "files": [
+    {
+      "path": "examples/cambio-image-grid-demo.tsx",
+      "content": "\"use client\"\n\nimport { CambioImage } from \"@/components/ui/cambio-image\"\n\nconst images = [\n  {\n    src: \"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop\",\n    alt: \"Beautiful mountain landscape with snow-capped peaks\",\n    width: 400,\n    height: 300,\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop\",\n    alt: \"Dense forest with tall trees and misty atmosphere\",\n    width: 400,\n    height: 300,\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop\",\n    alt: \"Winding path through peaceful countryside\",\n    width: 400,\n    height: 300,\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop\",\n    alt: \"Serene lake reflecting mountains and sky\",\n    width: 400,\n    height: 300,\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&sat=-100\",\n    alt: \"Dramatic black and white mountain vista\",\n    width: 400,\n    height: 300,\n  },\n  {\n    src: \"https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop\",\n    alt: \"Golden sunset over rolling hills and valleys\",\n    width: 400,\n    height: 300,\n  },\n]\n\nexport default function CambioImageGridDemo() {\n  return (\n    <div className=\"mx-auto w-full max-w-4xl p-6\">\n      <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n        {images.map((image, index) => (\n          <div key={index} className=\"aspect-[4/3] overflow-hidden rounded-lg\">\n            <CambioImage\n              src={image.src}\n              alt={image.alt}\n              width={image.width}\n              height={image.height}\n              index={index}\n              motion=\"smooth\"\n              className=\"h-full w-full object-cover transition-transform duration-300 hover:scale-105\"\n            />\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
