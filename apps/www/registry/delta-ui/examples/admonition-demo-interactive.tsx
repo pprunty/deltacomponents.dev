@@ -63,11 +63,13 @@ export default function AdmonitionDemoInteractive() {
   const currentAdmonition = admonitionTypes[currentIndex]
 
   return (
-    <Admonition
+    <div className="max-w-md">
+ <Admonition
       type={currentAdmonition.type as any}
       title={currentAdmonition.title}
     >
       {currentAdmonition.content}
     </Admonition>
+    </div>
   )
 }

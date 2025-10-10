@@ -27,5 +27,9 @@ export const THEMES = [
     name: "Scaled",
     value: "scaled",
   },
+  {
+    name: "Claymorphism",
+    value: "claymorphism",
+  },
 ]
 export type Theme = (typeof THEMES)[number]

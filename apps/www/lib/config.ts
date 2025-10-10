@@ -23,14 +23,19 @@ export const siteConfig = {
       label: "Blocks",
     },
     {
+      href: "/themes",
+      label: "Themes",
+    },
+    {
+      href: "/learning",
+      label: "Learn",
+      badge: "new"
+    },
+    {
       href: "/templates",
       label: "Templates",
       badge: "new",
       hide: process.env.NODE_ENV === "production",
-    },
-    {
-      href: "/themes",
-      label: "Themes",
     },
   ],
   utm: {

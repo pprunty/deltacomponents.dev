@@ -92,7 +92,7 @@ export function Admonition({
               {title}
             </div>
           )}
-          <div className={`${config.textColor} text-sm leading-relaxed`}>
+          <div className={`${config.textColor} text-base leading-relaxed`}>
             {children}
           </div>
         </div>

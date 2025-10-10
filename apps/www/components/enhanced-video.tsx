@@ -104,7 +104,7 @@ export function EnhancedVideoLarge({
   return (
     <div className="my-6">
       <div 
-        className="relative w-full overflow-hidden rounded-md bg-muted shadow-lg"
+        className="relative w-full overflow-hidden rounded-md bg-muted"
         style={{
           aspectRatio: aspectRatio ? `${aspectRatio}` : '16/9'
         }}

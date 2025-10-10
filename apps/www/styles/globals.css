@@ -219,8 +219,9 @@
   @apply relative;
 
   &:before {
-    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply text-muted-foreground absolute -left-14.5 flex size-6 items-center justify-center rounded-full bg-background border text-center font-mono text-xs font-medium z-10;
     content: counter(step);
+    transform: translateX(60%);
   }
 }
 
@@ -356,6 +357,15 @@
     > h3 + p {
       @apply !mt-2;
     }
+  }
+
+
+  .steps > h3 {
+    @apply mt-8 mb-4 text-base font-semibold;
+  }
+
+  .mdx > .steps:first-child > h3:first-child {
+    @apply mt-0;
   }
 
   [data-rehype-pretty-code-figure] {

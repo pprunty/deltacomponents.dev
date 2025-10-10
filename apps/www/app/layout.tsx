@@ -80,6 +80,9 @@ export default function RootLayout({
                 if (localStorage.layout) {
                   document.documentElement.classList.add('layout-' + localStorage.layout)
                 }
+                if (localStorage['active-theme']) {
+                  document.documentElement.setAttribute('data-theme', localStorage['active-theme'])
+                }
               } catch (_) {}
             `,
           }}
@@ -88,7 +91,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          "bg-background text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >
