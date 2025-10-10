@@ -71,6 +71,7 @@ export async function generateStaticParams() {
         "registry:component",
         "registry:example",
         "registry:internal",
+        "registry:ui",
       ].includes(block.type)
     )
     .map((block) => ({
