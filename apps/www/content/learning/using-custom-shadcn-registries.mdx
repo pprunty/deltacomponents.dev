@@ -1,0 +1,266 @@
+---
+title: Using Custom shadcn Registries
+description: Learn how to consume and work with custom shadcn component registries in your projects.
+---
+
+# Using Custom shadcn Registries
+
+Once you have access to a custom shadcn registry, you can leverage it to quickly add pre-built, tested components to your projects while maintaining consistency across your organization.
+
+## Configuring Your Project
+
+### 1. Update components.json
+
+Modify your `components.json` to point to the custom registry:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registry": "https://your-custom-registry.com"
+}
+```
+
+### 2. Install Custom CLI (if available)
+
+Some custom registries provide their own CLI:
+
+```bash
+npm install -g @company/ui-cli
+```
+
+## Installing Components
+
+### 1. List Available Components
+
+View available components in the registry:
+
+```bash
+shadcn list
+# or with custom CLI
+ui-cli list
+```
+
+### 2. Add Components
+
+Install components from the custom registry:
+
+```bash
+shadcn add button
+shadcn add data-table
+shadcn add custom-card
+```
+
+### 3. Batch Installation
+
+Install multiple components at once:
+
+```bash
+shadcn add button input card form select
+```
+
+## Working with Registry Components
+
+### 1. Understanding Component Variants
+
+Custom registries often provide multiple variants:
+
+```tsx
+import { Button } from "@/components/ui/button"
+
+// Different variants from the registry
+<Button variant="default">Default</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+### 2. Customizing Registry Components
+
+Even with registry components, you can still customize:
+
+```tsx
+// Extend existing components
+import { Button, ButtonProps } from "@/components/ui/button"
+
+interface CustomButtonProps extends ButtonProps {
+  icon?: React.ReactNode
+  loading?: boolean
+}
+
+export function CustomButton({ 
+  icon, 
+  loading, 
+  children, 
+  ...props 
+}: CustomButtonProps) {
+  return (
+    <Button {...props}>
+      {loading ? <Spinner /> : icon}
+      {children}
+    </Button>
+  )
+}
+```
+
+### 3. Composing Registry Components
+
+Combine multiple registry components:
+
+```tsx
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
+export function LoginCard() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Login</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form className="space-y-4">
+          <Input placeholder="Email" type="email" />
+          <Input placeholder="Password" type="password" />
+          <Button className="w-full">Sign In</Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## Best Practices
+
+### 1. Keep Components Updated
+
+Regularly update registry components:
+
+```bash
+# Check for updates
+shadcn diff
+
+# Update specific components
+shadcn update button card
+
+# Update all components
+shadcn update --all
+```
+
+### 2. Override Thoughtfully
+
+When customizing registry components:
+
+- Preserve the original API when possible
+- Document your customizations
+- Consider contributing back to the registry
+
+### 3. Follow Registry Guidelines
+
+Each registry may have specific guidelines:
+
+- Naming conventions
+- Usage patterns
+- Styling approaches
+- Integration requirements
+
+## Advanced Usage
+
+### 1. Multiple Registries
+
+You can configure multiple registries for different purposes:
+
+```json
+{
+  "registries": {
+    "ui": "https://ui-registry.com",
+    "charts": "https://charts-registry.com",
+    "forms": "https://forms-registry.com"
+  }
+}
+```
+
+### 2. Private Registries
+
+For private registries, configure authentication:
+
+```json
+{
+  "registry": {
+    "url": "https://private-registry.company.com",
+    "auth": {
+      "token": "your-access-token"
+    }
+  }
+}
+```
+
+### 3. Local Development
+
+For local development with a registry:
+
+```bash
+# Link to local registry
+shadcn add button --registry file:///path/to/local/registry
+
+# Use development registry
+shadcn add button --registry https://dev-registry.company.com
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Component not found** - Verify the registry URL and component name
+2. **Version conflicts** - Check for conflicting dependencies
+3. **Styling issues** - Ensure Tailwind config matches registry requirements
+
+### Debug Commands
+
+```bash
+# Check registry connection
+shadcn registry ping
+
+# Verify component metadata
+shadcn info button
+
+# Clear registry cache
+shadcn cache clear
+```
+
+## Contributing Back
+
+### 1. Report Issues
+
+Report bugs or feature requests to the registry maintainers.
+
+### 2. Submit Components
+
+Many registries accept community contributions:
+
+```bash
+# Fork the registry repository
+# Add your component
+# Submit a pull request
+```
+
+### 3. Share Feedback
+
+Provide feedback on component APIs and documentation to help improve the registry.
+
+## Conclusion
+
+Custom shadcn registries provide a powerful way to share and maintain components across projects. By following best practices and staying engaged with the registry community, you can build more consistent and efficient applications.

@@ -1,0 +1,128 @@
+---
+title: Integrating shadcn with Next.js Projects
+description: Learn how to set up and integrate shadcn/ui components in your Next.js applications.
+---
+
+# Integrating shadcn with Next.js Projects
+
+Integrating shadcn/ui with Next.js creates a powerful combination for building modern web applications. This guide will walk you through the setup process and best practices.
+
+## Prerequisites
+
+Before integrating shadcn/ui with Next.js, ensure you have:
+
+- A Next.js 13+ project (App Router recommended)
+- Tailwind CSS configured
+- TypeScript (recommended)
+
+## Installation Steps
+
+### 1. Initialize shadcn/ui
+
+Run the shadcn/ui CLI to set up your project:
+
+```bash
+npx shadcn@latest init
+```
+
+This will:
+- Install required dependencies
+- Create a `components.json` config file
+- Set up your `lib/utils.ts` file
+- Configure your Tailwind CSS
+
+### 2. Configure components.json
+
+Your `components.json` should look something like:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+### 3. Add Components
+
+Add components as needed:
+
+```bash
+npx shadcn@latest add button
+npx shadcn@latest add input
+npx shadcn@latest add card
+```
+
+## Project Structure
+
+After setup, your project structure should include:
+
+```
+my-app/
+├── app/
+│   ├── globals.css
+│   └── page.tsx
+├── components/
+│   └── ui/
+│       ├── button.tsx
+│       ├── input.tsx
+│       └── card.tsx
+├── lib/
+│   └── utils.ts
+├── components.json
+└── tailwind.config.js
+```
+
+## Using Components
+
+Import and use components in your Next.js pages:
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+
+export default function HomePage() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Welcome</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Get Started</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## Best Practices
+
+### 1. Organize Components
+- Keep UI components in `components/ui/`
+- Create composed components in `components/`
+- Use barrel exports for better imports
+
+### 2. Customize Thoughtfully
+- Modify components to match your design system
+- Use CSS variables for consistent theming
+- Document your customizations
+
+### 3. TypeScript Integration
+- Use proper TypeScript interfaces
+- Extend component props when needed
+- Leverage type safety for better DX
+
+## Next Steps
+
+With shadcn/ui integrated into your Next.js project, you can start building beautiful, accessible user interfaces. Consider creating your own component registry for team-wide consistency.

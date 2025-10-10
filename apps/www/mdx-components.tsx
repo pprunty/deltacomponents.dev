@@ -12,9 +12,11 @@ import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsNavGrid } from "@/components/components-nav-grid"
+import { LearningNavGrid } from "@/components/learning-nav-grid"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { Installation } from "@/components/installation"
+import { Steps, Step } from "@/components/steps"
 import {
   Accordion,
   AccordionContent,
@@ -259,21 +261,8 @@ export const mdxComponents = {
       </>
     )
   },
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn(
-        "font-heading mt-8 scroll-m-32 text-xl font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
-  Steps: ({ ...props }) => (
-    <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] *:[h3]:first:!mt-0"
-      {...props}
-    />
-  ),
+  Step,
+  Steps,
   Image: ({
     src,
     className,
@@ -335,7 +324,9 @@ export const mdxComponents = {
   ),
   Button,
   Callout,
-  Admonition,
+  Admonition: ({ className, ...props }: React.ComponentProps<typeof Admonition>) => (
+    <Admonition className={cn("my-6", className)} {...props} />
+  ),
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -350,6 +341,7 @@ export const mdxComponents = {
   CodeCollapsibleWrapper,
   ComponentGrid,
   ComponentsNavGrid,
+  LearningNavGrid,
   Installation,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link

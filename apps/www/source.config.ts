@@ -44,3 +44,18 @@ export const docs = defineDocs({
     }),
   },
 })
+
+export const learning = defineDocs({
+  dir: "content/learning",
+  docs: {
+    schema: frontmatterSchema.extend({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+      status: z.string().optional(),
+    }),
+  },
+})

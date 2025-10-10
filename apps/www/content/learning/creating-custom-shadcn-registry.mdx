@@ -1,0 +1,195 @@
+---
+title: Creating a Custom shadcn Registry
+description: Build your own component registry to share components across teams and projects.
+---
+
+# Creating a Custom shadcn Registry
+
+Creating a custom shadcn registry allows you to build and maintain your own collection of components that can be shared across multiple projects and teams.
+
+## Why Create a Custom Registry?
+
+A custom registry provides several benefits:
+
+- **Consistency** - Ensure all projects use the same component versions
+- **Customization** - Tailor components to your specific design system
+- **Sharing** - Distribute components across teams efficiently
+- **Version Control** - Manage component updates centrally
+
+## Registry Structure
+
+A typical shadcn registry follows this structure:
+
+```
+registry/
+├── components/
+│   ├── ui/
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   └── input.tsx
+│   └── composed/
+│       ├── data-table.tsx
+│       └── form-builder.tsx
+├── registry.json
+└── index.ts
+```
+
+## Setting Up the Registry
+
+### 1. Create Registry Configuration
+
+Create a `registry.json` file:
+
+```json
+{
+  "name": "my-custom-registry",
+  "version": "1.0.0",
+  "description": "Custom component registry",
+  "components": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": ["components/ui/button.tsx"],
+      "dependencies": ["@radix-ui/react-slot"]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui", 
+      "files": ["components/ui/card.tsx"]
+    }
+  ]
+}
+```
+
+### 2. Component Metadata
+
+Each component should include proper metadata:
+
+```tsx
+/**
+ * @name Button
+ * @description A customizable button component
+ * @dependencies @radix-ui/react-slot
+ * @registry my-custom-registry
+ */
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    // Component implementation
+  }
+)
+```
+
+### 3. Build Scripts
+
+Create build scripts to generate registry files:
+
+```javascript
+// scripts/build-registry.js
+const fs = require('fs')
+const path = require('path')
+
+function buildRegistry() {
+  const components = []
+  
+  // Scan components directory
+  // Generate registry entries
+  // Write registry files
+  
+  fs.writeFileSync(
+    'public/registry.json',
+    JSON.stringify({ components }, null, 2)
+  )
+}
+
+buildRegistry()
+```
+
+## Component Guidelines
+
+### 1. Consistent API
+- Use consistent prop naming across components
+- Follow React best practices
+- Implement proper TypeScript types
+
+### 2. Documentation
+- Include JSDoc comments
+- Provide usage examples
+- Document all props and variants
+
+### 3. Testing
+- Write comprehensive tests
+- Test accessibility features
+- Verify component behavior
+
+## Publishing Your Registry
+
+### 1. Static Hosting
+Host your registry files on a CDN or static site:
+
+```
+https://my-registry.com/
+├── registry.json
+├── components/
+└── styles/
+```
+
+### 2. NPM Package
+Alternatively, publish as an NPM package:
+
+```json
+{
+  "name": "@company/ui-registry",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
+}
+```
+
+## Using Your Custom Registry
+
+Configure projects to use your custom registry:
+
+```json
+{
+  "registry": {
+    "url": "https://my-registry.com",
+    "components": "@company/ui-registry"
+  }
+}
+```
+
+## Maintenance and Updates
+
+### 1. Version Management
+- Use semantic versioning
+- Maintain changelog
+- Test breaking changes
+
+### 2. Documentation
+- Keep component docs updated
+- Provide migration guides
+- Share best practices
+
+### 3. Community
+- Accept contributions
+- Review pull requests
+- Maintain issue tracking
+
+## Advanced Features
+
+Consider adding advanced features to your registry:
+
+- **Theming system** - Support multiple themes
+- **Component variants** - Provide different component styles
+- **Composition helpers** - Tools for combining components
+- **Design tokens** - Centralized design system values
+
+## Next Steps
+
+With your custom registry set up, you can start building a comprehensive component library that serves your organization's needs while maintaining the flexibility that makes shadcn/ui so powerful.

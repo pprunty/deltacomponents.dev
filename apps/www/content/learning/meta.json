@@ -1,0 +1,11 @@
+{
+  "title": "Learning",
+  "pages": [
+    "index",
+    "introduction-to-nextjs",
+    "what-is-shadcn",
+    "integrating-shadcn-with-nextjs",
+    "creating-custom-shadcn-registry",
+    "using-custom-shadcn-registries"
+  ]
+}
