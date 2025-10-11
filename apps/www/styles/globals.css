@@ -219,7 +219,8 @@
   @apply relative;
 
   &:before {
-    @apply text-muted-foreground absolute -left-14.5 flex size-6 items-center justify-center rounded-full bg-background border text-center font-mono text-xs font-medium z-10;
+    @apply text-muted-foreground absolute flex size-6 items-center justify-center rounded-full bg-background border text-center font-mono text-xs font-medium z-10;
+    left: -3.69rem;
     content: counter(step);
     transform: translateX(60%);
   }

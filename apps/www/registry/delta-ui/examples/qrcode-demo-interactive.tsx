@@ -64,15 +64,17 @@ export default function QrcodeDemoInteractive() {
 
   return (
     <div className="flex items-center justify-center p-8">
-      <QRCode
-        value="https://patrickprunty.com"
-        size={200}
-        dotStyle={currentConfig.dotStyle}
-        cornerSquareStyle={currentConfig.cornerSquareStyle}
-        cornerDotStyle={currentConfig.cornerDotStyle}
-        fgColor={currentConfig.fgColor}
-        level={currentConfig.level}
-      />
+      <div className="h-[200px] w-[200px] flex items-center justify-center">
+        <QRCode
+          value="https://patrickprunty.com"
+          size={200}
+          dotStyle={currentConfig.dotStyle}
+          cornerSquareStyle={currentConfig.cornerSquareStyle}
+          cornerDotStyle={currentConfig.cornerDotStyle}
+          fgColor={currentConfig.fgColor}
+          level={currentConfig.level}
+        />
+      </div>
     </div>
   )
 }

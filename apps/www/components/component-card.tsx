@@ -46,7 +46,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
             className="object-cover"
           />
         )}
-        <div className="absolute top-2 right-2 rounded bg-black/40 px-2 py-1">
+        <div className="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1">
           <span className="text-[13px] font-medium text-white">
             {component.name}
           </span>

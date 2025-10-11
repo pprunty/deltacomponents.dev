@@ -1,4 +1,4 @@
-![elevenlabs-ui](https://github.com/user-attachments/assets/a5b73bfc-b0a3-4b4e-8915-f90a086c5723)
+![delta-ui](https://github.com/user-attachments/assets/a5b73bfc-b0a3-4b4e-8915-f90a086c5723)
 
 # II ElevenLabs UI
 

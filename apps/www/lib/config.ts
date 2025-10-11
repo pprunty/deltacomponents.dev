@@ -29,7 +29,8 @@ export const siteConfig = {
     {
       href: "/learning",
       label: "Learn",
-      badge: "new"
+      badge: "new",
+      hide: process.env.NODE_ENV === "production",
     },
     {
       href: "/templates",

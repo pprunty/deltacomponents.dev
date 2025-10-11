@@ -116,6 +116,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "qrcode": {
+    name: "qrcode",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/components/qrcode.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/components/qrcode.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "testimonials": {
     name: "testimonials",
     description: "Customer testimonials grid",
@@ -336,18 +354,36 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "card-stack-yugioh-demo": {
-    name: "card-stack-yugioh-demo",
+  "card-deck-yugioh-demo": {
+    name: "card-deck-yugioh-demo",
     description: "",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
     files: [{
-      path: "registry/delta-ui/examples/card-stack-yugioh-demo.tsx",
+      path: "registry/delta-ui/examples/card-deck-yugioh-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/delta-ui/examples/card-stack-yugioh-demo.tsx")
+      const mod = await import("@/registry/delta-ui/examples/card-deck-yugioh-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "card-deck-balatro-demo": {
+    name: "card-deck-balatro-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    files: [{
+      path: "registry/delta-ui/examples/card-deck-balatro-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/card-deck-balatro-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

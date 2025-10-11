@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import {
   PageHeader,
@@ -16,8 +17,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/delta-ui/ui/dialog"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/delta-ui/ui/tooltip"
 import { useThemeConfig } from "@/components/active-theme"
 import { getIconForLanguageExtension } from "@/components/icons"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
 
 // Note: metadata export removed for client component
 // export const metadata: Metadata = {
@@ -191,14 +198,15 @@ export default function ThemesPage() {
     setActiveTheme("default")
   }
 
-  const handleCopyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(claymorphismThemeCode)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error('Failed to copy code:', err)
-    }
+  const handleCopyCode = () => {
+    copyToClipboardWithMeta(claymorphismThemeCode, {
+      name: "copy_theme_code",
+      properties: {
+        theme: "claymorphism",
+      },
+    })
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -258,7 +266,7 @@ export default function ThemesPage() {
                       <div className="relative overflow-x-auto">
                         <figcaption
                           data-rehype-pretty-code-title=""
-                          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 border-b px-3 py-1 bg-muted rounded-t-md [&_svg]:size-4 [&_svg]:opacity-70"
+                          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 border-b px-3 py-2 bg-muted rounded-t-md [&_svg]:size-4 [&_svg]:opacity-70"
                           data-language="css"
                         >
                           {getIconForLanguageExtension("css")}
@@ -267,14 +275,22 @@ export default function ThemesPage() {
                         <pre className="max-h-[400px] overflow-auto rounded-t-none rounded-md bg-muted p-4 text-sm">
                           <code>{claymorphismThemeCode}</code>
                         </pre>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="absolute top-2 right-2"
-                          onClick={handleCopyCode}
-                        >
-                          {copied ? "Copied!" : "Copy"}
-                        </Button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              size="icon"
+                              variant="ghost"
+                              className="absolute top-1.5 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+                              onClick={handleCopyCode}
+                            >
+                              <span className="sr-only">Copy</span>
+                              {copied ? <CheckIcon /> : <ClipboardIcon />}
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {copied ? "Copied" : "Copy to Clipboard"}
+                          </TooltipContent>
+                        </Tooltip>
                       </div>
                     </DialogContent>
                   </Dialog>

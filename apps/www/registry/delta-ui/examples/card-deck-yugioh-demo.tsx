@@ -3,7 +3,7 @@ import {
   CardDeckItem,
 } from "@/registry/delta-ui/ui/card-deck"
 
-export default function CardStackYugiohDemo() {
+export default function CardDeckYugiohDemo() {
   const images = [
     {
       src: "/images/yu-gi-oh/IMG_9598.JPG",

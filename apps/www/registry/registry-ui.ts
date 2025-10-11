@@ -4,7 +4,7 @@ export const ui: Registry["items"] = [
   {
     name: "cambio-image",
     type: "registry:ui",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "cambio"],
     files: [
       {
         path: "ui/cambio-image.tsx",
@@ -51,6 +51,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/tabs.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "qrcode",
+    type: "registry:ui",
+    dependencies: ["qr-code-styling"],
+    files: [
+      {
+        path: "components/qrcode.tsx",
         type: "registry:ui",
       },
     ],

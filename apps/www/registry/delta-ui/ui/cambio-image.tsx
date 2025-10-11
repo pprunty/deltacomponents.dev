@@ -35,7 +35,7 @@ export function CambioImage({
   loading = "lazy",
   index = 0,
   motion = "smooth",
-  dismissible = true,
+  dismissible = false,
   className,
   draggable = false,
   enableInitialAnimation = true,
@@ -101,7 +101,7 @@ export function CambioImage({
         onOpenChange={handleOpenChange}
       >
         {/* @ts-ignore */}
-        <Cambio.Trigger className="relative w-full cursor-zoom-in overflow-hidden">
+        <Cambio.Trigger className="relative w-full overflow-hidden cursor-zoom-in">
           <img
             src={src}
             alt={alt}

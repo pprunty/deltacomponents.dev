@@ -112,12 +112,23 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "card-stack-yugioh-demo",
+    name: "card-deck-yugioh-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
     files: [
       {
-        path: "examples/card-stack-yugioh-demo.tsx",
+        path: "examples/card-deck-yugioh-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "card-deck-balatro-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    files: [
+      {
+        path: "examples/card-deck-balatro-demo.tsx",
         type: "registry:example",
       },
     ],

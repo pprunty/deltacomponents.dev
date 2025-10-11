@@ -111,6 +111,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@svgr/core": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",
@@ -122,6 +123,7 @@
     "eslint-config-next": "15.5.4",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "sharp": "^0.34.4",
     "tailwindcss": "^4.1.11",
     "tw-animate-css": "^1.2.4",
     "typescript": "^5",

@@ -4,12 +4,10 @@ import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { useMetaColor } from "@/hooks/use-meta-color"
 import { Button } from "@/registry/delta-ui/ui/button"
 
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()
-  const { setMetaColor, metaColor } = useMetaColor()
 
 
   const toggleTheme = React.useCallback(() => {

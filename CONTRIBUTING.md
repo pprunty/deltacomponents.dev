@@ -4,7 +4,7 @@ Thanks for your interest in contributing to deltacomponents.dev.
 
 Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
 
-If you need any help, feel free to reach out to [@louisjoejordan](https://twitter.com/louisjoejordan).
+If you need any help, feel free to reach out to [@pprunty_](https://x.com/pprunty_).
 
 ## About this repository
 
@@ -24,7 +24,7 @@ apps
     ├── components
     ├── content
     └── registry
-        └── elevenlabs-ui
+        └── delta-ui
             ├── example
             └── ui
 ```
@@ -95,7 +95,7 @@ We use a registry system for developing components. You can find the source code
 apps
 └── www
     └── registry
-        └── elevenlabs-ui
+        └── delta-ui
             ├── example
             └── ui
 ```

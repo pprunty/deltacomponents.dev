@@ -77,7 +77,7 @@ export function InstallationTabs({
                   <PackageManagerTabsTrigger
                     key={pm}
                     value={pm}
-                    className="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
+                    className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-primary h-7 border-0 pt-0.5 data-[state=active]:shadow-none rounded-none"
                   >
                     {pm}
                   </PackageManagerTabsTrigger>
@@ -127,7 +127,7 @@ export function InstallationTabs({
                         <PackageManagerTabsTrigger
                           key={pm}
                           value={pm}
-                          className="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
+                          className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-primary h-7 border-0 pt-0.5 data-[state=active]:shadow-none rounded-none"
                         >
                           {pm}
                         </PackageManagerTabsTrigger>

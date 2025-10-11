@@ -69,7 +69,7 @@ export const Index: Record<string, any> = {`
 }
 
 async function buildRegistryJsonFile() {
-  // 1. Add registry/elevenlabs-ui prefix for the build to work
+  // 1. Add registry/delta-ui prefix for the build to work
   const fixedRegistry = {
     ...registry,
     items: registry.items.map((item) => {
@@ -97,7 +97,7 @@ async function buildRegistryJsonFile() {
   // 3. Format the registry.json file.
   await exec(`prettier --write registry.json`)
 
-  // 3. Copy the registry.json to the www/public/r/styles/elevenlabs-ui directory.
+  // 3. Copy the registry.json to the www/public/r/styles/delta-ui directory.
   await fs.cp(
     path.join(process.cwd(), "registry.json"),
     path.join(
