@@ -4,6 +4,23 @@ export const siteConfig = {
   ogImage: "https://ui.delta.io/og.jpg",
   description:
     "A collection of Open Source agent and audio components that you can customize, extend, and build on.",
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Server Components",
+    "Radix UI",
+    "Delta Components",
+    "UI Components",
+    "Agent Components",
+  ],
+  authors: [
+    {
+      name: "pprunty",
+      url: "https://patrickprunty.com",
+    },
+  ],
+  creator: "pprunty",
   links: {
     twitter: "https://x.com/pprunty_",
     x: "https://x.com/pprunty_",
