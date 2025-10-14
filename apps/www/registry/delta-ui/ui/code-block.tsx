@@ -228,6 +228,9 @@ export function CodeBlock({
       : adaptiveTheme.light
     : theme || (isDark ? defaultTheme : lightTheme)
 
+  // Use the theme's text foreground color for the copy button
+  const iconColor = selectedTheme.plain?.color || "#000000"
+
   // If we have package manager commands, show the tabbed interface
   if (availableCommands.length > 0) {
     return (
@@ -299,6 +302,7 @@ export function CodeBlock({
         <CopyButton
           value={commands[packageManager] || ""}
           className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+          iconColor={iconColor}
         />
       </div>
     )
@@ -321,7 +325,7 @@ export function CodeBlock({
               </div>
               <span className="text-sm font-medium">{filename}</span>
             </div>
-            <CopyButton value={code} className="mr-3" />
+            <CopyButton value={code} className="mr-3" iconColor={iconColor} />
           </div>
         )}
 
@@ -333,7 +337,7 @@ export function CodeBlock({
         >
           {!filename && (
             <div className="absolute top-4 right-3">
-              <CopyButton value={code} />
+              <CopyButton value={code} iconColor={iconColor} />
             </div>
           )}
 

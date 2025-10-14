@@ -177,7 +177,7 @@ function MobileLink({
       className={cn(
         "flex items-center text-2xl font-medium transition-colors",
         isActive 
-          ? "text-foreground font-semibold" 
+          ? "text-primary font-semibold" 
           : "text-muted-foreground hover:text-foreground",
         className
       )}

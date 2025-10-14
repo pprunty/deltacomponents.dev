@@ -38,6 +38,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "code-block-interactive-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-interactive-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "cambio-image-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],

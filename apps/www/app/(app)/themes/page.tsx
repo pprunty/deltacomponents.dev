@@ -186,12 +186,91 @@ const claymorphismThemeCode = `/* Claymorphism Theme */
   --radius-xl: calc(var(--radius) + 4px);
 }`;
 
+const solarizedThemeCode = `/* Solarized Theme */
+:root {
+  /* Solarized Light Colors */
+  --solarized-base03: #002b36;
+  --solarized-base02: #073642;
+  --solarized-base01: #586e75;
+  --solarized-base00: #657b83;
+  --solarized-base0: #839496;
+  --solarized-base1: #93a1a1;
+  --solarized-base2: #eee8d5;
+  --solarized-base3: #fdf6e3;
+  --solarized-yellow: #b58900;
+  --solarized-orange: #cb4b16;
+  --solarized-red: #dc322f;
+  --solarized-magenta: #d33682;
+  --solarized-violet: #6c71c4;
+  --solarized-blue: #268bd2;
+  --solarized-cyan: #2aa198;
+  --solarized-green: #859900;
+
+  /* Light mode mappings */
+  --background: var(--solarized-base3);
+  --foreground: var(--solarized-base00);
+  --card: var(--solarized-base3);
+  --card-foreground: var(--solarized-base00);
+  --popover: var(--solarized-base3);
+  --popover-foreground: var(--solarized-base00);
+  --primary: var(--solarized-blue);
+  --primary-foreground: var(--solarized-base3);
+  --secondary: var(--solarized-base2);
+  --secondary-foreground: var(--solarized-base01);
+  --muted: var(--solarized-base2);
+  --muted-foreground: var(--solarized-base01);
+  --accent: var(--solarized-cyan);
+  --accent-foreground: var(--solarized-base3);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --border: var(--solarized-base1);
+  --input: var(--solarized-base2);
+  --ring: var(--solarized-blue);
+  --chart-1: var(--solarized-blue);
+  --chart-2: var(--solarized-green);
+  --chart-3: var(--solarized-yellow);
+  --chart-4: var(--solarized-orange);
+  --chart-5: var(--solarized-red);
+}
+
+.dark {
+  /* Dark mode mappings */
+  --background: var(--solarized-base03);
+  --foreground: var(--solarized-base0);
+  --card: var(--solarized-base02);
+  --card-foreground: var(--solarized-base0);
+  --popover: var(--solarized-base02);
+  --popover-foreground: var(--solarized-base0);
+  --primary: var(--solarized-blue);
+  --primary-foreground: var(--solarized-base03);
+  --secondary: var(--solarized-base02);
+  --secondary-foreground: var(--solarized-base1);
+  --muted: var(--solarized-base02);
+  --muted-foreground: var(--solarized-base01);
+  --accent: var(--solarized-cyan);
+  --accent-foreground: var(--solarized-base03);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --border: var(--solarized-base01);
+  --input: var(--solarized-base02);
+  --ring: var(--solarized-blue);
+  --chart-1: var(--solarized-blue);
+  --chart-2: var(--solarized-green);
+  --chart-3: var(--solarized-yellow);
+  --chart-4: var(--solarized-orange);
+  --chart-5: var(--solarized-red);
+}`;
+
 export default function ThemesPage() {
   const { setActiveTheme } = useThemeConfig()
   const [copied, setCopied] = useState(false)
 
   const handleTryTheme = () => {
     setActiveTheme("claymorphism")
+  }
+
+  const handleTrySolarizedTheme = () => {
+    setActiveTheme("solarized")
   }
 
   const handleResetToDefault = () => {
@@ -203,6 +282,17 @@ export default function ThemesPage() {
       name: "copy_theme_code",
       properties: {
         theme: "claymorphism",
+      },
+    })
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleCopySolarizedCode = () => {
+    copyToClipboardWithMeta(solarizedThemeCode, {
+      name: "copy_theme_code",
+      properties: {
+        theme: "solarized",
       },
     })
     setCopied(true)
@@ -282,6 +372,71 @@ export default function ThemesPage() {
                               variant="ghost"
                               className="absolute top-1.5 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
                               onClick={handleCopyCode}
+                            >
+                              <span className="sr-only">Copy</span>
+                              {copied ? <CheckIcon /> : <ClipboardIcon />}
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {copied ? "Copied" : "Copy to Clipboard"}
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+            </div>
+
+            <div className="group relative rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
+              <div className="flex flex-col space-y-4">
+                <img 
+                  src="/images/themes/solarized.png" 
+                  alt="Solarized theme preview"
+                  className="aspect-video w-full object-cover"
+                />
+                <div className="space-y-2">
+                  <h3 className="font-semibold">Solarized</h3>
+                  <p className="text-muted-foreground text-sm">
+                    A sixteen color palette designed for use with terminal and gui applications.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" className="flex-1" onClick={handleTrySolarizedTheme}>
+                    Try it out
+                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button size="sm" variant="outline" className="flex-1">
+                        &#123; &#125; Code
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader>
+                        <DialogTitle>Solarized Theme Code</DialogTitle>
+                        <DialogDescription>
+                          Copy and paste this CSS into your project to use the Solarized theme.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="relative overflow-x-auto">
+                        <figcaption
+                          data-rehype-pretty-code-title=""
+                          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 border-b px-3 py-2 bg-muted rounded-t-md [&_svg]:size-4 [&_svg]:opacity-70"
+                          data-language="css"
+                        >
+                          {getIconForLanguageExtension("css")}
+                          globals.css
+                        </figcaption>
+                        <pre className="max-h-[400px] overflow-auto rounded-t-none rounded-md bg-muted p-4 text-sm">
+                          <code>{solarizedThemeCode}</code>
+                        </pre>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              size="icon"
+                              variant="ghost"
+                              className="absolute top-1.5 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+                              onClick={handleCopySolarizedCode}
                             >
                               <span className="sr-only">Copy</span>
                               {copied ? <CheckIcon /> : <ClipboardIcon />}

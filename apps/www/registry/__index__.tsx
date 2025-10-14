@@ -30,7 +30,7 @@ export const Index: Record<string, any> = {
     name: "code-block",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["copy-button","tabs"],
+    registryDependencies: ["copy-button"],
     files: [{
       path: "registry/delta-ui/ui/code-block.tsx",
       type: "registry:ui",
@@ -258,6 +258,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/code-block-theme-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "code-block-interactive-demo": {
+    name: "code-block-interactive-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [{
+      path: "registry/delta-ui/examples/code-block-interactive-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/code-block-interactive-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

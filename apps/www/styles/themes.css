@@ -432,3 +432,116 @@ html[data-theme="claymorphism"].dark {
   --selection: oklch(0.7 0.09 80);
   --selection-foreground: oklch(0.08 0.01 245);
 }
+
+/* Solarized Theme - Light Mode */
+html[data-theme="solarized"] {
+  /* Solarized Light Colors */
+  --solarized-base03: #002b36;
+  --solarized-base02: #073642;
+  --solarized-base01: #586e75;
+  --solarized-base00: #657b83;
+  --solarized-base0: #839496;
+  --solarized-base1: #93a1a1;
+  --solarized-base2: #eee8d5;
+  --solarized-base3: #fdf6e3;
+  --solarized-yellow: #b58900;
+  --solarized-orange: #cb4b16;
+  --solarized-red: #dc322f;
+  --solarized-magenta: #d33682;
+  --solarized-violet: #6c71c4;
+  --solarized-blue: #268bd2;
+  --solarized-cyan: #2aa198;
+  --solarized-green: #859900;
+
+  /* Light mode mappings */
+  --background: var(--solarized-base3);
+  --foreground: var(--solarized-base00);
+  --card: var(--solarized-base3);
+  --card-foreground: var(--solarized-base00);
+  --popover: var(--solarized-base3);
+  --popover-foreground: var(--solarized-base00);
+  --primary: #cb4b15;
+  --primary-foreground: var(--solarized-base3);
+  --secondary: var(--solarized-base2);
+  --secondary-foreground: var(--solarized-base01);
+  --muted: var(--solarized-base2);
+  --muted-foreground: var(--solarized-base01);
+  --accent: #f8e4d0;
+  --accent-foreground: var(--solarized-base00);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --border: #cb4b15;
+  --surface: #f2ecda;
+  --input: var(--solarized-base2);
+  --ring: var(--solarized-blue);
+  --chart-1: var(--solarized-blue);
+  --chart-2: var(--solarized-green);
+  --chart-3: var(--solarized-yellow);
+  --chart-4: var(--solarized-orange);
+  --chart-5: var(--solarized-red);
+  --sidebar: var(--solarized-base2);
+  --sidebar-foreground: var(--solarized-base00);
+  --sidebar-primary: var(--solarized-blue);
+  --sidebar-primary-foreground: var(--solarized-base3);
+  --sidebar-accent: #ece6d4;
+  --sidebar-accent-foreground: var(--solarized-base00);
+  --sidebar-border: var(--solarized-base1);
+  --sidebar-ring: var(--solarized-blue);
+}
+
+/* Solarized Theme - Heading Colors */
+html[data-theme="solarized"] h1,
+html[data-theme="solarized"] h2,
+html[data-theme="solarized"] h3,
+html[data-theme="solarized"] h4,
+html[data-theme="solarized"] h5,
+html[data-theme="solarized"] h6 {
+  color: #2aa198;
+}
+
+/* Solarized Theme - Dark Mode */
+html[data-theme="solarized"].dark {
+  /* Dark mode mappings */
+  --background: var(--solarized-base03);
+  --foreground: var(--solarized-base0);
+  --card: var(--solarized-base02);
+  --card-foreground: var(--solarized-base0);
+  --popover: var(--solarized-base02);
+  --popover-foreground: var(--solarized-base0);
+  --primary: var(--solarized-blue);
+  --primary-foreground: var(--solarized-base03);
+  --secondary: var(--solarized-base02);
+  --secondary-foreground: var(--solarized-base1);
+  --muted: var(--solarized-base02);
+  --muted-foreground: var(--solarized-base01);
+  --accent: var(--solarized-cyan);
+  --accent-foreground: var(--solarized-base03);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --border: var(--solarized-base01);
+  --input: var(--solarized-base02);
+  --ring: var(--solarized-blue);
+  --chart-1: var(--solarized-blue);
+  --chart-2: var(--solarized-green);
+  --chart-3: var(--solarized-yellow);
+  --chart-4: var(--solarized-orange);
+  --chart-5: var(--solarized-red);
+  --sidebar: var(--solarized-base02);
+  --sidebar-foreground: var(--solarized-base0);
+  --sidebar-primary: var(--solarized-blue);
+  --sidebar-primary-foreground: var(--solarized-base03);
+  --sidebar-accent: #ece6d4;
+  --sidebar-accent-foreground: var(--solarized-base03);
+  --sidebar-border: var(--solarized-base01);
+  --sidebar-ring: var(--solarized-blue);
+}
+
+/* Solarized Theme Dark Mode - Heading Colors */
+html[data-theme="solarized"].dark h1,
+html[data-theme="solarized"].dark h2,
+html[data-theme="solarized"].dark h3,
+html[data-theme="solarized"].dark h4,
+html[data-theme="solarized"].dark h5,
+html[data-theme="solarized"].dark h6 {
+  color: #2aa198;
+}

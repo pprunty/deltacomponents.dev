@@ -154,44 +154,42 @@ export default function CodeBlockThemeDemo() {
   const [customStyling, setCustomStyling] = useState(false)
 
   return (
-    <div className="flex justify-center">
-      <div className="w-full max-w-md space-y-4">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Button
-            variant={showLineNumbers ? "default" : "outline"}
-            size="sm"
-            onClick={() => setShowLineNumbers(!showLineNumbers)}
-          >
-            {showLineNumbers ? "Hide" : "Show"} Line Numbers
-          </Button>
-          <Button
-            variant={showHeader ? "default" : "outline"}
-            size="sm"
-            onClick={() => setShowHeader(!showHeader)}
-          >
-            {showHeader ? "Hide" : "Show"} Header
-          </Button>
-          <Button
-            variant={customStyling ? "default" : "outline"}
-            size="sm"
-            onClick={() => setCustomStyling(!customStyling)}
-          >
-            Custom Styling
-          </Button>
-        </div>
-
-        <CodeBlock
-          code={goCode}
-          language="go"
-          filename={showHeader ? "hello.go" : undefined}
-          showLineNumbers={showLineNumbers}
-          adaptiveTheme={{
-            dark: cppTheme,
-            light: cppLightTheme,
-          }}
-          className={customStyling ? "border-0 rounded-none text-lg" : undefined}
-        />
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 flex-wrap">
+        <Button
+          variant={showLineNumbers ? "default" : "outline"}
+          size="sm"
+          onClick={() => setShowLineNumbers(!showLineNumbers)}
+        >
+          {showLineNumbers ? "Hide" : "Show"} Line Numbers
+        </Button>
+        <Button
+          variant={showHeader ? "default" : "outline"}
+          size="sm"
+          onClick={() => setShowHeader(!showHeader)}
+        >
+          {showHeader ? "Hide" : "Show"} Header
+        </Button>
+        <Button
+          variant={customStyling ? "default" : "outline"}
+          size="sm"
+          onClick={() => setCustomStyling(!customStyling)}
+        >
+          Custom Styling
+        </Button>
       </div>
+
+      <CodeBlock
+        code={goCode}
+        language="go"
+        filename={showHeader ? "hello.go" : undefined}
+        showLineNumbers={showLineNumbers}
+        adaptiveTheme={{
+          dark: cppTheme,
+          light: cppLightTheme,
+        }}
+        className={customStyling ? "border-0 rounded-none text-lg" : undefined}
+      />
     </div>
   )
 }
