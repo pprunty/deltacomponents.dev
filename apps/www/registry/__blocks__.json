@@ -2,8 +2,6 @@
   {
     "name": "testimonials",
     "description": "Customer testimonials grid",
-    "categories": [
-      "landing-page"
-    ]
+    "categories": ["landing-page"]
   }
 ]

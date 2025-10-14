@@ -1,0 +1,406 @@
+"use client"
+
+import * as React from "react"
+import { useEffect, useState } from "react"
+import { TerminalIcon } from "lucide-react"
+import { Highlight, PrismTheme } from "prism-react-renderer"
+
+import { cn } from "@/lib/utils"
+import { CopyButton } from "@/registry/delta-ui/ui/copy-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+
+type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
+
+
+// Inline theme definitions
+const defaultTheme: PrismTheme = {
+  plain: {
+    color: "#FFFFFF",
+    backgroundColor: "#161616",
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "#757575",
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["keyword", "property", "property-access", "attr-name"],
+      style: {
+        color: "#77b7d7",
+      },
+    },
+    {
+      types: ["tag"],
+      style: {
+        color: "#dfab5c",
+      },
+    },
+    {
+      types: ["punctuation", "symbol", "dom"],
+      style: {
+        color: "#ffffff",
+      },
+    },
+    {
+      types: ["definition", "function"],
+      style: {
+        color: "#86d9ca",
+      },
+    },
+    {
+      types: ["string", "char", "attr-value"],
+      style: {
+        color: "#977cdc",
+      },
+    },
+    {
+      types: ["static", "number"],
+      style: {
+        color: "#ff6658",
+      },
+    },
+  ],
+}
+
+const lightTheme: PrismTheme = {
+  plain: {
+    color: "#24292e",
+    backgroundColor: "#F9F9F9",
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "#8b949e",
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["variable", "parameter"],
+      style: {
+        color: "#e36209",
+      },
+    },
+    {
+      types: ["keyword", "builtin", "function-definition"],
+      style: {
+        color: "#d73a49",
+      },
+    },
+    {
+      types: ["property", "property-access", "attr-name"],
+      style: {
+        color: "#005cc5",
+      },
+    },
+    {
+      types: ["tag"],
+      style: {
+        color: "#22863a",
+      },
+    },
+    {
+      types: ["punctuation", "symbol", "dom", "operator"],
+      style: {
+        color: "#24292e",
+      },
+    },
+    {
+      types: ["function"],
+      style: {
+        color: "#6f42c1",
+      },
+    },
+    {
+      types: ["class-name"],
+      style: {
+        color: "#6f42c1",
+      },
+    },
+    {
+      types: ["string", "char", "attr-value"],
+      style: {
+        color: "#032f62",
+      },
+    },
+    {
+      types: ["static", "number"],
+      style: {
+        color: "#005cc5",
+      },
+    },
+  ],
+}
+
+interface CodeBlockProps {
+  // Package manager commands
+  npm?: string
+  yarn?: string
+  pnpm?: string
+  bun?: string
+  defaultPackageManager?: PackageManager
+
+  // Code highlighting props
+  code?: string
+  language?: string
+  filename?: string
+  showLineNumbers?: boolean
+  theme?: PrismTheme
+  adaptiveTheme?: {
+    light: PrismTheme
+    dark: PrismTheme
+  }
+
+  className?: string
+}
+
+export function CodeBlock({
+  npm,
+  yarn,
+  pnpm,
+  bun,
+  defaultPackageManager = "npm",
+  code,
+  language = "typescript",
+  filename,
+  showLineNumbers = true,
+  theme,
+  adaptiveTheme,
+  className,
+}: CodeBlockProps) {
+  const [packageManager, setPackageManager] = React.useState<PackageManager>(
+    defaultPackageManager
+  )
+  const [isDark, setIsDark] = useState(false)
+
+  // Hook to detect dark mode
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains("dark"))
+    }
+
+    checkDarkMode()
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          checkDarkMode()
+        }
+      })
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const commands = React.useMemo(() => {
+    return {
+      npm,
+      yarn,
+      pnpm,
+      bun,
+    }
+  }, [npm, yarn, pnpm, bun])
+
+  const availableCommands = Object.entries(commands).filter(
+    ([, command]) => command
+  )
+
+  // Select theme based on adaptiveTheme prop or auto-detect light/dark mode
+  const selectedTheme = adaptiveTheme
+    ? isDark
+      ? adaptiveTheme.dark
+      : adaptiveTheme.light
+    : theme || (isDark ? defaultTheme : lightTheme)
+
+  // If we have package manager commands, show the tabbed interface
+  if (availableCommands.length > 0) {
+    return (
+      <div className={cn("rounded-lg border bg-card text-card-foreground overflow-x-auto", className)} data-slot="tabs">
+        <Tabs
+          value={packageManager}
+          className="gap-0"
+          onValueChange={(value) => setPackageManager(value as PackageManager)}
+        >
+          <div className="bg-secondary flex items-center gap-2 border-b px-3 py-1">
+            <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
+              <TerminalIcon className="text-code size-3" />
+            </div>
+            <TabsList className="rounded-none bg-transparent p-0">
+              {availableCommands.map(([key]) => (
+                <TabsTrigger
+                  key={key}
+                  value={key}
+                  className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                >
+                  {key}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+          <div className="no-scrollbar overflow-x-auto">
+            {availableCommands.map(([key, command]) => (
+              <TabsContent key={key} value={key} className="mt-0">
+                <div
+                  className="relative py-4"
+                  style={{
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                  }}
+                >
+                  <Highlight
+                    theme={selectedTheme}
+                    code={command || ""}
+                    language="bash"
+                  >
+                    {({
+                      className: highlightClassName,
+                      style,
+                      tokens,
+                      getLineProps,
+                      getTokenProps,
+                    }) => (
+                      <pre
+                        className={`${highlightClassName} w-full overflow-x-auto font-mono text-sm font-medium leading-relaxed px-4`}
+                        style={{
+                          ...style,
+                          fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined
+                        }}
+                      >
+                        {tokens.map((line, i) => (
+                          <div key={i} {...getLineProps({ line })}>
+                            {line.map((token, key) => (
+                              <span key={key} {...getTokenProps({ token })} />
+                            ))}
+                          </div>
+                        ))}
+                      </pre>
+                    )}
+                  </Highlight>
+                </div>
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
+        <CopyButton
+          value={commands[packageManager] || ""}
+          className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        />
+      </div>
+    )
+  }
+
+  // If we have code to highlight, show the syntax highlighted version
+  if (code) {
+    return (
+      <div
+        className={cn(
+          "border-border pointer-events-auto w-full max-w-full overflow-x-auto overflow-y-hidden rounded-sm border",
+          className
+        )}
+      >
+        {filename && (
+          <div className="bg-secondary flex items-center justify-between border-b">
+            <div className="flex items-center gap-2 px-3 py-1">
+              <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
+                <TerminalIcon className="text-code size-3" />
+              </div>
+              <span className="text-sm font-medium">{filename}</span>
+            </div>
+            <CopyButton value={code} className="mr-3" />
+          </div>
+        )}
+
+        <div
+          className="relative max-h-[calc(530px-44px)] w-full py-4"
+          style={{
+            backgroundColor: selectedTheme.plain?.backgroundColor,
+          }}
+        >
+          {!filename && (
+            <div className="absolute top-4 right-3">
+              <CopyButton value={code} />
+            </div>
+          )}
+
+          <Highlight
+            theme={selectedTheme}
+            code={code.trim()}
+            language={language}
+          >
+            {({
+              className: highlightClassName,
+              style,
+              tokens,
+              getLineProps,
+              getTokenProps,
+            }) => (
+              <pre
+                className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm font-medium leading-relaxed`}
+                style={{
+                  ...style,
+                  fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined,
+                  scrollbarWidth: "thin",
+                  scrollbarColor:
+                    selectedTheme.plain?.backgroundColor?.toLowerCase() ===
+                      "#ffffff" ||
+                    selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                      ? "#d1d5db transparent"
+                      : "#4b5563 transparent",
+                }}
+              >
+                {tokens.map((line, i) => (
+                  <div
+                    key={i}
+                    {...getLineProps({ line })}
+                    className="flex items-center px-4 py-px"
+                  >
+                    {showLineNumbers && (
+                      <span
+                        className="mr-4 flex items-center text-right text-sm select-none"
+                        style={{
+                          color:
+                            selectedTheme.plain?.backgroundColor ===
+                              "#FFFFFF" ||
+                            selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                              ? "#999999"
+                              : "#757575",
+                          minWidth: "1.5rem",
+                          fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined,
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                    )}
+                    <span className={!showLineNumbers ? "ml-0" : ""}>
+                      {line.map((token, key) => (
+                        <span key={key} {...getTokenProps({ token })} />
+                      ))}
+                    </span>
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        </div>
+      </div>
+    )
+  }
+
+  // Return null if no content
+  return null
+}

@@ -21,9 +21,33 @@
       "cssVars": {}
     },
     {
-      "name": "cambio-image",
+      "name": "code-block",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react", "prism-react-renderer"],
+      "registryDependencies": ["copy-button", "tabs"],
+      "files": [
+        {
+          "path": "registry/delta-ui/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
       "type": "registry:ui",
       "dependencies": ["lucide-react"],
+      "registryDependencies": ["button", "tooltip"],
+      "files": [
+        {
+          "path": "registry/delta-ui/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cambio-image",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react", "cambio"],
       "files": [
         {
           "path": "registry/delta-ui/ui/cambio-image.tsx",
@@ -75,6 +99,17 @@
       ]
     },
     {
+      "name": "qrcode",
+      "type": "registry:ui",
+      "dependencies": ["qr-code-styling"],
+      "files": [
+        {
+          "path": "registry/delta-ui/components/qrcode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "testimonials",
       "type": "registry:block",
       "description": "Customer testimonials grid",
@@ -105,6 +140,42 @@
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "code-block-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/code-block-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "code-block-package-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/code-block-package-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "code-block-theme-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/code-block.json",
+        "https://deltacomponents.dev/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/code-block-theme-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },
@@ -223,12 +294,23 @@
       ]
     },
     {
-      "name": "card-stack-yugioh-demo",
+      "name": "card-deck-yugioh-demo",
       "type": "registry:example",
       "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
       "files": [
         {
-          "path": "registry/delta-ui/examples/card-stack-yugioh-demo.tsx",
+          "path": "registry/delta-ui/examples/card-deck-yugioh-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "card-deck-balatro-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/card-deck-balatro-demo.tsx",
           "type": "registry:example"
         }
       ]

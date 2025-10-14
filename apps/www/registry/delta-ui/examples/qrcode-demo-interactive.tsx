@@ -64,7 +64,7 @@ export default function QrcodeDemoInteractive() {
 
   return (
     <div className="flex items-center justify-center p-8">
-      <div className="h-[200px] w-[200px] flex items-center justify-center">
+      <div className="flex h-[200px] w-[200px] items-center justify-center">
         <QRCode
           value="https://patrickprunty.com"
           size={200}

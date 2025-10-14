@@ -21,6 +21,7 @@ interface CardDeckContainerProps {
   infinite?: boolean
   autoplay?: boolean
   spaceBetween?: number
+  enableInitialAnimation?: boolean
 }
 
 interface CardDeckItemProps {
@@ -37,6 +38,7 @@ export function CardDeckContainer({
   infinite = true,
   autoplay = false,
   spaceBetween = 40,
+  enableInitialAnimation = true,
 }: CardDeckContainerProps) {
   const css = `
   .card-deck {
@@ -52,12 +54,12 @@ export function CardDeckContainer({
 
   return (
     <motion.div
-      initial={{ opacity: 0, translateY: 20 }}
-      animate={{ opacity: 1, translateY: 0 }}
-      transition={{
+      initial={enableInitialAnimation ? { opacity: 0, translateY: 20 } : false}
+      animate={enableInitialAnimation ? { opacity: 1, translateY: 0 } : false}
+      transition={enableInitialAnimation ? {
         duration: 0.3,
         delay: 0.5,
-      }}
+      } : undefined}
       className={cn("relative w-full max-w-3xl overflow-visible", className)}
     >
       <style>{css}</style>
@@ -97,7 +99,7 @@ export function CardDeckContainer({
         className="card-deck h-[360px] w-[240px] sm:h-[420px] sm:w-[280px]"
         modules={[EffectCards, Autoplay, Pagination, Navigation]}
       >
-        {React.Children.map(children, (child, index) => {
+        {children && React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
             const slideClass = child.props.className || "rounded-3xl"
 
@@ -130,4 +132,49 @@ export function CardDeckContainer({
 export function CardDeckItem({ children, className }: CardDeckItemProps) {
   // This component passes its children and className to CardDeckContainer for rendering
   return <>{children}</>
+}
+
+// Legacy API for backward compatibility
+interface CardDeckProps {
+  images: { src: string; alt: string }[]
+  infinite?: boolean
+  autoplay?: boolean
+  showPagination?: boolean
+  showNavigation?: boolean
+  spaceBetween?: number
+  className?: string
+  enableInitialAnimation?: boolean
+}
+
+export function CardDeck({
+  images,
+  infinite = true,
+  autoplay = false,
+  showPagination = false,
+  showNavigation = false,
+  spaceBetween = 40,
+  className,
+  enableInitialAnimation = true,
+}: CardDeckProps) {
+  return (
+    <CardDeckContainer
+      infinite={infinite}
+      autoplay={autoplay}
+      showPagination={showPagination}
+      showNavigation={showNavigation}
+      spaceBetween={spaceBetween}
+      className={className}
+      enableInitialAnimation={enableInitialAnimation}
+    >
+      {images && images.map((image, index) => (
+        <CardDeckItem key={index} className="rounded-3xl">
+          <img
+            className="h-full w-full rounded-3xl object-cover"
+            src={image.src}
+            alt={image.alt}
+          />
+        </CardDeckItem>
+      ))}
+    </CardDeckContainer>
+  )
 }

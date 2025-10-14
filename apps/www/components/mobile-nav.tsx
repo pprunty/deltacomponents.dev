@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
@@ -64,7 +64,7 @@ export function MobileNav({
         alignOffset={-16}
         sideOffset={14}
       >
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+        <div className="flex flex-col gap-12 px-6 py-6">
           <div className="flex flex-col gap-4">
             <div className="text-muted-foreground text-sm font-medium">
               Menu
@@ -163,14 +163,24 @@ function MobileLink({
   className?: string
 }) {
   const router = useRouter()
+  const pathname = usePathname()
+  const isActive = pathname === href
+  
   return (
     <Link
       href={href}
+      data-href={href}
       onClick={() => {
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("flex items-center text-2xl font-medium", className)}
+      className={cn(
+        "flex items-center text-2xl font-medium transition-colors",
+        isActive 
+          ? "text-foreground font-semibold" 
+          : "text-muted-foreground hover:text-foreground",
+        className
+      )}
       {...props}
     >
       {children}

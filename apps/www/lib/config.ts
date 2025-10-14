@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Delta Components UI",
-  url: "https://ui.delta.io",
-  ogImage: "https://ui.delta.io/og.jpg",
+  url: "https://deltacomponents.dev",
+  ogImage: "https://deltacomponents.dev/og.jpg",
   description:
     "A collection of Open Source agent and audio components that you can customize, extend, and build on.",
   keywords: [
@@ -57,11 +57,11 @@ export const siteConfig = {
     },
   ],
   utm: {
-    main: "https://delta.io?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
+    main: "https://deltacomponents.dev?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
     agents:
-      "https://delta.io/agents?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
+      "https://deltacomponents.dev/agents?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
     sales:
-      "https://delta.io/contact-sales?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
+      "https://deltacomponents.dev/contact-sales?utm_source=ui_delta&utm_medium=web&utm_campaign=growth_experiments_ui_components",
   },
 }
 

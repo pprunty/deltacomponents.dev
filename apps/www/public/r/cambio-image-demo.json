@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/cambio-image-demo.tsx",
-      "content": "import { CambioImage } from \"@/components/ui/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <div className=\"m-8 max-w-md\">\n        <CambioImage\n          src=\"https://images.unsplash.com/photo-1611065695756-1d50152352e5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"\n          alt=\"Beautiful landscape photography\"\n          width={1170}\n          height={600}\n          motion=\"smooth\"\n          className=\"rounded-lg\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import { CambioImage } from \"@/components/ui/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <div className=\"m-8 max-w-md\">\n        <CambioImage\n          src=\"/images/4d26c515-f5f1-43af-a9e5-e2be495ceddb.png\"\n          alt=\"Beautiful landscape photography\"\n          width={1170}\n          height={600}\n          motion=\"smooth\"\n        />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

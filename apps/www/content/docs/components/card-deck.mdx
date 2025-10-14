@@ -8,7 +8,7 @@ status: beta
 
 ## Installation
 
-<Installation name="card-deck" />
+<Installation name="card-deck" dependencies={["lucide-react", "framer-motion", "swiper"]} />
 
 ## Usage
 
@@ -26,18 +26,6 @@ export default function Example() {
 }
 ```
 
-## API Reference
-
-| Prop           | Type                             | Default | Description                   |
-| -------------- | -------------------------------- | ------- | ----------------------------- |
-| images         | `{ src: string; alt: string }[]` | -       | Array of image objects        |
-| infinite       | boolean                          | true    | Enable infinite loop cycling  |
-| autoplay       | boolean                          | false   | Enable automatic card cycling |
-| showPagination | boolean                          | false   | Show pagination dots          |
-| showNavigation | boolean                          | false   | Show navigation arrows        |
-| spaceBetween   | number                           | 40      | Space between cards in pixels |
-| className      | string                           | -       | Additional CSS classes        |
-
 ## Examples
 
 ### Yu-Gi-Oh Card Stack
@@ -51,3 +39,16 @@ Here's an example using actual card images without rounded corners:
 Here's an example using Balatro-style card images:
 
 <ComponentPreview name="card-deck-balatro-demo" dependencies={["framer-motion", "swiper", "lucide-react"]} />
+
+## API Reference
+
+| Prop           | Type                             | Default | Description                   |
+| -------------- | -------------------------------- | ------- | ----------------------------- |
+| images         | `{ src: string; alt: string }[]` | -       | Array of image objects        |
+| infinite       | boolean                          | true    | Enable infinite loop cycling  |
+| autoplay       | boolean                          | false   | Enable automatic card cycling |
+| showPagination | boolean                          | false   | Show pagination dots          |
+| showNavigation | boolean                          | false   | Show navigation arrows        |
+| spaceBetween   | number                           | 40      | Space between cards in pixels |
+| enableInitialAnimation | boolean                   | true    | Enable entrance animation when component mounts |
+| className      | string                           | -       | Additional CSS classes        |

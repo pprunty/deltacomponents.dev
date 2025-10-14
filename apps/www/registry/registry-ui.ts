@@ -2,6 +2,30 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "code-block",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "prism-react-renderer"],
+    registryDependencies: ["copy-button"],
+    files: [
+      {
+        path: "ui/code-block.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "copy-button",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "tooltip"],
+    files: [
+      {
+        path: "ui/copy-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "cambio-image",
     type: "registry:ui",
     dependencies: ["lucide-react", "cambio"],

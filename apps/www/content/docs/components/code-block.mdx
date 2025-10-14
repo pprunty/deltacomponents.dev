@@ -1,0 +1,106 @@
+---
+title: Code Block
+description: A versatile code block component supporting package manager commands and syntax highlighting with themes.
+---
+
+<ComponentPreview name="code-block-demo" />
+
+## Installation
+
+<Installation name="code-block" dependencies={["lucide-react", "prism-react-renderer"]} />
+
+## Usage
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block"
+
+export default function Example() {
+  return (
+    <CodeBlock
+      code={`print("Hello, World!")`}
+      language="python"
+      filename="hello.py"
+      showLineNumbers={true}
+    />
+  )
+}
+```
+
+## Features
+
+- **Dual Mode**: Package manager commands or syntax-highlighted code
+- **Syntax Highlighting**: Powered by Prism with custom themes
+- **Package Manager Tabs**: Support for npm, yarn, pnpm, and bun
+- **Copy to Clipboard**: One-click copy functionality with visual feedback
+- **Line Numbers**: Optional line numbering for code blocks
+- **Custom Themes**: Light/dark adaptive themes with hover effects
+- **Terminal Styling**: Command-line interface appearance
+- **Responsive**: Horizontal scrolling for long content
+- **Flexible**: Shows only provided package managers or code content
+
+## Examples
+
+### Package Manager Commands
+
+<ComponentPreview name="code-block-package-demo" />
+
+### Interactive Theme Demo
+
+<ComponentPreview name="code-block-theme-demo" />
+
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| **Package Manager Props** | | | |
+| npm | string | - | npm command to display |
+| yarn | string | - | yarn command to display |
+| pnpm | string | - | pnpm command to display |
+| bun | string | - | bun command to display |
+| defaultPackageManager | PackageManager | "npm" | Default selected package manager |
+| **Code Highlighting Props** | | | |
+| code | string | - | Code content to highlight |
+| language | string | "typescript" | Programming language for syntax highlighting |
+| filename | string | - | Filename to display in header |
+| showLineNumbers | boolean | true | Whether to show line numbers |
+| theme | PrismTheme | - | Custom Prism theme object |
+| adaptiveTheme | object | - | Object with `light` and `dark` theme variants |
+| **General Props** | | | |
+| className | string | - | Additional CSS classes for styling |
+
+### Types
+
+```tsx
+type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
+
+interface AdaptiveTheme {
+  light: PrismTheme
+  dark: PrismTheme
+}
+```
+
+### Theme Structure
+
+Custom themes follow the Prism theme structure:
+
+```tsx
+const customTheme: PrismTheme = {
+  plain: {
+    color: "#e6e6fa",
+    backgroundColor: "#1a1a2e",
+  },
+  styles: [
+    {
+      types: ["comment"],
+      style: {
+        color: "#6a7b9a",
+        fontStyle: "italic",
+      },
+    },
+    // ... more styles
+  ],
+}
+```

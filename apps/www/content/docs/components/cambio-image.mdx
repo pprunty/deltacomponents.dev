@@ -9,7 +9,7 @@ This component is based on [Cambio Image by Raphael Salaja](https://cambio.rapha
 
 ## Installation
 
-<Installation name="cambio-image" />
+<Installation name="cambio-image" dependencies={["cambio"]} />
 
 <Admonition type="warning" title="Required CSS">
 Add the following CSS to your `globals.css` for proper z-index management in grid layouts:
@@ -116,12 +116,4 @@ To disable the blur-to-focus animation and show images immediately:
   height={600}
   enableInitialAnimation={false}
 />
-```
-
-## Dependencies
-
-This component requires the `cambio` package:
-
-```bash
-npm install cambio
 ```

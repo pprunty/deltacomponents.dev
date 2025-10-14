@@ -64,12 +64,12 @@ export default function AdmonitionDemoInteractive() {
 
   return (
     <div className="max-w-md">
- <Admonition
-      type={currentAdmonition.type as any}
-      title={currentAdmonition.title}
-    >
-      {currentAdmonition.content}
-    </Admonition>
+      <Admonition
+        type={currentAdmonition.type as any}
+        title={currentAdmonition.title}
+      >
+        {currentAdmonition.content}
+      </Admonition>
     </div>
   )
 }

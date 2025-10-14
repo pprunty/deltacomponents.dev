@@ -2,6 +2,42 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "code-block-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-package-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-package-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-theme-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/code-block.json",
+      "https://deltacomponents.dev/r/button.json",
+    ],
+    files: [
+      {
+        path: "examples/code-block-theme-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "cambio-image-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],

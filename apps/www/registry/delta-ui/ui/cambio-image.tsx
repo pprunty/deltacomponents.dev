@@ -101,7 +101,7 @@ export function CambioImage({
         onOpenChange={handleOpenChange}
       >
         {/* @ts-ignore */}
-        <Cambio.Trigger className="relative w-full overflow-hidden cursor-zoom-in">
+        <Cambio.Trigger className="relative w-full cursor-zoom-in overflow-hidden">
           <img
             src={src}
             alt={alt}
