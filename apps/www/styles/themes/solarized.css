@@ -1,0 +1,81 @@
+/* Solarized Theme - Light Mode */
+html[data-theme="solarized"] {
+  --background: #fdf6e3;
+  --foreground: #657b83;
+  --card: #fdf6e3;
+  --card-foreground: #657b83;
+  --popover: #fdf6e3;
+  --popover-foreground: #657b83;
+  --primary: #cb4b15;
+  --primary-foreground: #fdf6e3;
+  --secondary: #eee8d5;
+  --secondary-foreground: #586e75;
+  --muted: #eee8d5;
+  --muted-foreground: #586e75;
+  --accent: #f8e4d0;
+  --accent-foreground: #657b83;
+  --destructive: #dc322f;
+  --destructive-foreground: #fdf6e3;
+  --border: #cb4b15;
+  --surface: #f2ecda;
+  --input: #eee8d5;
+  --ring: #268bd2;
+  --chart-1: #268bd2;
+  --chart-2: #859900;
+  --chart-3: #b58900;
+  --chart-4: #cb4b16;
+  --chart-5: #dc322f;
+  --sidebar: #eee8d5;
+  --sidebar-foreground: #657b83;
+  --sidebar-primary: #cb4b15;
+  --sidebar-primary-foreground: #fdf6e3;
+  --sidebar-accent: #ece6d4;
+  --sidebar-accent-foreground: #657b83;
+  --sidebar-border: #93a1a1;
+  --sidebar-ring: #268bd2;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #2aa198;
+  }
+}
+
+/* Solarized Theme - Dark Mode */
+html[data-theme="solarized"].dark {
+  /* Dark mode mappings */
+  --background: #002b36;
+  --foreground: #839496;
+  --card: #073642;
+  --card-foreground: #839496;
+  --popover: #073642;
+  --popover-foreground: #839496;
+  --primary: #268bd2;
+  --primary-foreground: #002b36;
+  --secondary: #073642;
+  --secondary-foreground: #93a1a1;
+  --muted: #073642;
+  --muted-foreground: #586e75;
+  --accent: #2aa198;
+  --accent-foreground: #002b36;
+  --destructive: #dc322f;
+  --destructive-foreground: #fdf6e3;
+  --border: #586e75;
+  --input: #073642;
+  --ring: #268bd2;
+  --chart-1: #268bd2;
+  --chart-2: #859900;
+  --chart-3: #b58900;
+  --chart-4: #cb4b16;
+  --chart-5: #dc322f;
+  --sidebar: #073642;
+  --sidebar-foreground: #839496;
+  --sidebar-primary: #268bd2;
+  --sidebar-primary-foreground: #002b36;
+  --sidebar-accent: #2aa198;
+  --sidebar-accent-foreground: #002b36;
+  --sidebar-border: #586e75;
+  --sidebar-ring: #268bd2;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #2aa198;
+  }
+}

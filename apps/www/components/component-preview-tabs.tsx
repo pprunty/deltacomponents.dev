@@ -72,7 +72,7 @@ export function ComponentPreviewTabs({
           value="code"
           className="relative overflow-hidden rounded-lg border"
         >
-          <div className="h-[450px] overflow-hidden **:[figure]:!m-0 **:[pre]:h-[450px]">
+          <div className="h-[450px] overflow-hidden **:[figure]:!m-0 **:[pre]:h-[450px] **:[pre]:relative **:[pre]:z-0 **:button:!z-[5]">
             {source}
           </div>
         </TabsContent>

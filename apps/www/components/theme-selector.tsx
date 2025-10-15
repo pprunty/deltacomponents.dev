@@ -33,34 +33,19 @@ const DEFAULT_THEMES = [
   },
 ]
 
-const COLOR_THEMES = [
+
+const SPECIAL_THEMES = [
   {
-    name: "Blue",
-    value: "blue",
+    name: "Claymorphism",
+    value: "claymorphism",
   },
   {
-    name: "Green",
-    value: "green",
+    name: "Solarized",
+    value: "solarized",
   },
   {
-    name: "Amber",
-    value: "amber",
-  },
-  {
-    name: "Rose",
-    value: "rose",
-  },
-  {
-    name: "Purple",
-    value: "purple",
-  },
-  {
-    name: "Orange",
-    value: "orange",
-  },
-  {
-    name: "Teal",
-    value: "teal",
+    name: "Neobrutalism",
+    value: "neobrutalism",
   },
 ]
 
@@ -113,8 +98,8 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           </SelectGroup>
           <SelectSeparator />
           <SelectGroup>
-            <SelectLabel>Colors</SelectLabel>
-            {COLOR_THEMES.map((theme) => (
+            <SelectLabel>Special</SelectLabel>
+            {SPECIAL_THEMES.map((theme) => (
               <SelectItem
                 key={theme.name}
                 value={theme.value}

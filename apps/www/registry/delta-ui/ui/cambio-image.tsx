@@ -25,6 +25,7 @@ interface CambioImageProps {
   className?: string
   draggable?: boolean
   enableInitialAnimation?: boolean
+  dismissOnImageClick?: boolean
 }
 
 export function CambioImage({
@@ -34,11 +35,12 @@ export function CambioImage({
   height,
   loading = "lazy",
   index = 0,
-  motion = "smooth",
+  motion = "snappy",
   dismissible = false,
   className,
   draggable = false,
   enableInitialAnimation = true,
+  dismissOnImageClick = false,
 }: CambioImageProps) {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -46,11 +48,6 @@ export function CambioImage({
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
-  /* Grace-period so the close animation can finish on top */
-  const handleOpenChange = (o: boolean) => {
-    setOpen(true) // keep it on top immediately
-    if (!o) setTimeout(() => setOpen(false), 400) // default "smooth" preset ≈ 300 ms
-  }
 
   useEffect(() => {
     if (!enableInitialAnimation) {
@@ -98,10 +95,13 @@ export function CambioImage({
         motion={motion}
         dismissible={dismissible}
         open={open}
-        onOpenChange={handleOpenChange}
+        onOpenChange={setOpen}
       >
         {/* @ts-ignore */}
-        <Cambio.Trigger className="relative w-full cursor-zoom-in overflow-hidden">
+        <Cambio.Trigger 
+          className="relative w-full cursor-zoom-in overflow-hidden"
+          style={{ pointerEvents: open ? "none" : "auto" }}
+        >
           <img
             src={src}
             alt={alt}
@@ -117,7 +117,7 @@ export function CambioImage({
         {/* @ts-ignore */}
         <Cambio.Portal>
           {/* @ts-ignore */}
-          <Cambio.Backdrop className="fixed inset-0 z-[100] bg-black/40" />
+          <Cambio.Backdrop motion="reduced" className="fixed inset-0 z-[100] bg-black/40" />
           {/* @ts-ignore */}
           <Cambio.Popup className="z-[101] w-full overflow-hidden md:w-[70%]">
             <img
@@ -127,8 +127,12 @@ export function CambioImage({
               height={height}
               loading="eager"
               draggable={draggable}
-              className="h-auto w-full object-contain"
-              style={{ pointerEvents: "none" }}
+              className={cn(
+                "h-auto w-full object-contain",
+                dismissOnImageClick && "cursor-zoom-out"
+              )}
+              style={{ pointerEvents: dismissOnImageClick ? "auto" : "none" }}
+              onClick={dismissOnImageClick ? () => setOpen(false) : undefined}
             />
           </Cambio.Popup>
         </Cambio.Portal>

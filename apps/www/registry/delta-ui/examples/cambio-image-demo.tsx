@@ -9,7 +9,8 @@ export default function CambioImageDemo() {
           alt="Beautiful landscape photography"
           width={1170}
           height={600}
-          motion="smooth"
+          motion="snappy"
+          dismissOnImageClick={true}
         />
       </div>
     </div>

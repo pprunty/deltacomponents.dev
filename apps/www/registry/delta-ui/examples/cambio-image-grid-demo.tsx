@@ -4,38 +4,26 @@ import { CambioImage } from "@/registry/delta-ui/ui/cambio-image"
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
-    alt: "Beautiful mountain landscape with snow-capped peaks",
+    src: "/images/4d26c515-f5f1-43af-a9e5-e2be495ceddb.png",
+    alt: "Beautiful landscape photography",
+    width: 1170,
+    height: 600,
+  },
+  {
+    src: "/images/2.png",
+    alt: "Image gallery example",
     width: 400,
     height: 300,
   },
   {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop",
-    alt: "Dense forest with tall trees and misty atmosphere",
+    src: "/images/3.png",
+    alt: "Image gallery example",
     width: 400,
     height: 300,
   },
   {
-    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop",
-    alt: "Winding path through peaceful countryside",
-    width: 400,
-    height: 300,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop",
-    alt: "Serene lake reflecting mountains and sky",
-    width: 400,
-    height: 300,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&sat=-100",
-    alt: "Dramatic black and white mountain vista",
-    width: 400,
-    height: 300,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop",
-    alt: "Golden sunset over rolling hills and valleys",
+    src: "/images/4.png",
+    alt: "Image gallery example",
     width: 400,
     height: 300,
   },
@@ -44,9 +32,9 @@ const images = [
 export default function CambioImageGridDemo() {
   return (
     <div className="mx-auto w-full max-w-4xl p-6">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-x-2 gap-y-1">
         {images.map((image, index) => (
-          <div key={index} className="aspect-[4/3] overflow-hidden rounded-lg">
+          <div key={index}>
             <CambioImage
               src={image.src}
               alt={image.alt}
@@ -54,7 +42,7 @@ export default function CambioImageGridDemo() {
               height={image.height}
               index={index}
               motion="smooth"
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+              className="h-full w-full object-cover"
             />
           </div>
         ))}

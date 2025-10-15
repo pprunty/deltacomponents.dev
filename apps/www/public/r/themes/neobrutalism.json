@@ -1,0 +1,77 @@
+{
+  "name": "neobrutalism",
+  "type": "registry:theme",
+  "description": "Bold, high-contrast design with thick borders and vibrant colors inspired by brutalist architecture",
+  "homepage": "https://deltacomponents.dev",
+  "files": [
+    {
+      "path": "themes/neobrutalism.css",
+      "content": "/* Neobrutalism Theme - Light Mode */\nhtml[data-theme=\"neobrutalism\"] {\n  --background: oklch(1.0000 0 0);\n  --foreground: oklch(0 0 0);\n  --card: oklch(1.0000 0 0);\n  --card-foreground: oklch(0 0 0);\n  --popover: oklch(1.0000 0 0);\n  --popover-foreground: oklch(0 0 0);\n  --primary: oklch(0.6489 0.2370 26.9728);\n  --primary-foreground: oklch(1.0000 0 0);\n  --secondary: oklch(0.9680 0.2110 109.7692);\n  --secondary-foreground: oklch(0 0 0);\n  --muted: oklch(0.9551 0 0);\n  --muted-foreground: oklch(0.3211 0 0);\n  --accent: oklch(0.5635 0.2408 260.8178);\n  --accent-foreground: oklch(1.0000 0 0);\n  --destructive: oklch(0 0 0);\n  --destructive-foreground: oklch(1.0000 0 0);\n  --border: oklch(0 0 0);\n  --input: oklch(0 0 0);\n  --ring: oklch(0.6489 0.2370 26.9728);\n  --chart-1: oklch(0.6489 0.2370 26.9728);\n  --chart-2: oklch(0.9680 0.2110 109.7692);\n  --chart-3: oklch(0.5635 0.2408 260.8178);\n  --chart-4: oklch(0.7323 0.2492 142.4953);\n  --chart-5: oklch(0.5931 0.2726 328.3634);\n  --sidebar: oklch(0.9551 0 0);\n  --sidebar-foreground: oklch(0 0 0);\n  --sidebar-primary: oklch(0.6489 0.2370 26.9728);\n  --sidebar-primary-foreground: oklch(1.0000 0 0);\n  --sidebar-accent: oklch(0.5635 0.2408 260.8178);\n  --sidebar-accent-foreground: oklch(1.0000 0 0);\n  --sidebar-border: oklch(0 0 0);\n  --sidebar-ring: oklch(0.6489 0.2370 26.9728);\n  --font-sans: DM Sans, sans-serif;\n  --font-serif: ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif;\n  --font-mono: Space Mono, monospace;\n  --radius: 0px;\n  --shadow-x: 4px;\n  --shadow-y: 4px;\n  --shadow-blur: 0px;\n  --shadow-spread: 0px;\n  --shadow-opacity: 1;\n  --shadow-color: hsl(0 0% 0%);\n  --shadow-2xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);\n  --shadow-xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);\n  --shadow-sm: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);\n  --shadow: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);\n  --shadow-md: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00);\n  --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);\n  --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);\n  --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);\n  --tracking-normal: 0em;\n  --spacing: 0.25rem;\n}\n\n/* Neobrutalism Theme - Dark Mode */\nhtml[data-theme=\"neobrutalism\"].dark {\n  --background: oklch(0 0 0);\n  --foreground: oklch(1.0000 0 0);\n  --card: oklch(0.3211 0 0);\n  --card-foreground: oklch(1.0000 0 0);\n  --popover: oklch(0.3211 0 0);\n  --popover-foreground: oklch(1.0000 0 0);\n  --primary: oklch(0.7044 0.1872 23.1858);\n  --primary-foreground: oklch(0 0 0);\n  --secondary: oklch(0.9691 0.2005 109.6228);\n  --secondary-foreground: oklch(0 0 0);\n  --muted: oklch(0.2178 0 0);\n  --muted-foreground: oklch(0.8452 0 0);\n  --accent: oklch(0.6755 0.1765 252.2592);\n  --accent-foreground: oklch(0 0 0);\n  --destructive: oklch(1.0000 0 0);\n  --destructive-foreground: oklch(0 0 0);\n  --border: oklch(1.0000 0 0);\n  --input: oklch(1.0000 0 0);\n  --ring: oklch(0.7044 0.1872 23.1858);\n  --chart-1: oklch(0.7044 0.1872 23.1858);\n  --chart-2: oklch(0.9691 0.2005 109.6228);\n  --chart-3: oklch(0.6755 0.1765 252.2592);\n  --chart-4: oklch(0.7395 0.2268 142.8504);\n  --chart-5: oklch(0.6131 0.2458 328.0714);\n  --sidebar: oklch(0 0 0);\n  --sidebar-foreground: oklch(1.0000 0 0);\n  --sidebar-primary: oklch(0.7044 0.1872 23.1858);\n  --sidebar-primary-foreground: oklch(0 0 0);\n  --sidebar-accent: oklch(0.6755 0.1765 252.2592);\n  --sidebar-accent-foreground: oklch(0 0 0);\n  --sidebar-border: oklch(1.0000 0 0);\n  --sidebar-ring: oklch(0.7044 0.1872 23.1858);\n  --font-sans: DM Sans, sans-serif;\n  --font-serif: ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif;\n  --font-mono: Space Mono, monospace;\n  --radius: 0px;\n  --shadow-x: 4px;\n  --shadow-y: 4px;\n  --shadow-blur: 0px;\n  --shadow-spread: 0px;\n  --shadow-opacity: 1;\n  --shadow-color: hsl(0 0% 0%);\n  --shadow-2xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);\n  --shadow-xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);\n  --shadow-sm: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);\n  --shadow: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);\n  --shadow-md: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00);\n  --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);\n  --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);\n  --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);\n}",
+      "type": "registry:theme"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "colors": {
+            "background": "hsl(var(--background))",
+            "foreground": "hsl(var(--foreground))",
+            "card": {
+              "DEFAULT": "hsl(var(--card))",
+              "foreground": "hsl(var(--card-foreground))"
+            },
+            "popover": {
+              "DEFAULT": "hsl(var(--popover))",
+              "foreground": "hsl(var(--popover-foreground))"
+            },
+            "primary": {
+              "DEFAULT": "hsl(var(--primary))",
+              "foreground": "hsl(var(--primary-foreground))"
+            },
+            "secondary": {
+              "DEFAULT": "hsl(var(--secondary))",
+              "foreground": "hsl(var(--secondary-foreground))"
+            },
+            "muted": {
+              "DEFAULT": "hsl(var(--muted))",
+              "foreground": "hsl(var(--muted-foreground))"
+            },
+            "accent": {
+              "DEFAULT": "hsl(var(--accent))",
+              "foreground": "hsl(var(--accent-foreground))"
+            },
+            "destructive": {
+              "DEFAULT": "hsl(var(--destructive))",
+              "foreground": "hsl(var(--destructive-foreground))"
+            },
+            "border": "hsl(var(--border))",
+            "input": "hsl(var(--input))",
+            "ring": "hsl(var(--ring))",
+            "chart": {
+              "1": "hsl(var(--chart-1))",
+              "2": "hsl(var(--chart-2))",
+              "3": "hsl(var(--chart-3))",
+              "4": "hsl(var(--chart-4))",
+              "5": "hsl(var(--chart-5))"
+            }
+          },
+          "borderRadius": {
+            "lg": "var(--radius)",
+            "md": "calc(var(--radius) - 2px)",
+            "sm": "calc(var(--radius) - 4px)"
+          },
+          "boxShadow": {
+            "xs": "var(--shadow-xs)",
+            "sm": "var(--shadow-sm)",
+            "DEFAULT": "var(--shadow)",
+            "md": "var(--shadow-md)",
+            "lg": "var(--shadow-lg)",
+            "xl": "var(--shadow-xl)",
+            "2xl": "var(--shadow-2xl)"
+          }
+        }
+      }
+    }
+  }
+}

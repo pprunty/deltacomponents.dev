@@ -1,0 +1,63 @@
+{
+  "name": "solarized",
+  "type": "registry:theme",
+  "description": "A precision colors scheme for machines and people",
+  "homepage": "https://deltacomponents.dev",
+  "files": [
+    {
+      "path": "themes/solarized.css",
+      "content": "/* Solarized Theme - Light Mode */\nhtml[data-theme=\"solarized\"] {\n  --background: #fdf6e3;\n  --foreground: #657b83;\n  --card: #fdf6e3;\n  --card-foreground: #657b83;\n  --popover: #fdf6e3;\n  --popover-foreground: #657b83;\n  --primary: #cb4b15;\n  --primary-foreground: #fdf6e3;\n  --secondary: #eee8d5;\n  --secondary-foreground: #586e75;\n  --muted: #eee8d5;\n  --muted-foreground: #586e75;\n  --accent: #f8e4d0;\n  --accent-foreground: #657b83;\n  --destructive: #dc322f;\n  --destructive-foreground: #fdf6e3;\n  --border: #cb4b15;\n  --surface: #f2ecda;\n  --input: #eee8d5;\n  --ring: #268bd2;\n  --chart-1: #268bd2;\n  --chart-2: #859900;\n  --chart-3: #b58900;\n  --chart-4: #cb4b16;\n  --chart-5: #dc322f;\n  --sidebar: #eee8d5;\n  --sidebar-foreground: #657b83;\n  --sidebar-primary: #cb4b15;\n  --sidebar-primary-foreground: #fdf6e3;\n  --sidebar-accent: #ece6d4;\n  --sidebar-accent-foreground: #657b83;\n  --sidebar-border: #93a1a1;\n  --sidebar-ring: #268bd2;\n\n  h1, h2, h3, h4, h5, h6 {\n    color: #2aa198;\n  }\n}\n\n/* Solarized Theme - Dark Mode */\nhtml[data-theme=\"solarized\"].dark {\n  /* Dark mode mappings */\n  --background: #002b36;\n  --foreground: #839496;\n  --card: #073642;\n  --card-foreground: #839496;\n  --popover: #073642;\n  --popover-foreground: #839496;\n  --primary: #268bd2;\n  --primary-foreground: #002b36;\n  --secondary: #073642;\n  --secondary-foreground: #93a1a1;\n  --muted: #073642;\n  --muted-foreground: #586e75;\n  --accent: #2aa198;\n  --accent-foreground: #002b36;\n  --destructive: #dc322f;\n  --destructive-foreground: #fdf6e3;\n  --border: #586e75;\n  --input: #073642;\n  --ring: #268bd2;\n  --chart-1: #268bd2;\n  --chart-2: #859900;\n  --chart-3: #b58900;\n  --chart-4: #cb4b16;\n  --chart-5: #dc322f;\n  --sidebar: #073642;\n  --sidebar-foreground: #839496;\n  --sidebar-primary: #268bd2;\n  --sidebar-primary-foreground: #002b36;\n  --sidebar-accent: #2aa198;\n  --sidebar-accent-foreground: #002b36;\n  --sidebar-border: #586e75;\n  --sidebar-ring: #268bd2;\n\n  h1, h2, h3, h4, h5, h6 {\n    color: #2aa198;\n  }\n}\n",
+      "type": "registry:theme"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "colors": {
+            "background": "hsl(var(--background))",
+            "foreground": "hsl(var(--foreground))",
+            "card": {
+              "DEFAULT": "hsl(var(--card))",
+              "foreground": "hsl(var(--card-foreground))"
+            },
+            "popover": {
+              "DEFAULT": "hsl(var(--popover))",
+              "foreground": "hsl(var(--popover-foreground))"
+            },
+            "primary": {
+              "DEFAULT": "hsl(var(--primary))",
+              "foreground": "hsl(var(--primary-foreground))"
+            },
+            "secondary": {
+              "DEFAULT": "hsl(var(--secondary))",
+              "foreground": "hsl(var(--secondary-foreground))"
+            },
+            "muted": {
+              "DEFAULT": "hsl(var(--muted))",
+              "foreground": "hsl(var(--muted-foreground))"
+            },
+            "accent": {
+              "DEFAULT": "hsl(var(--accent))",
+              "foreground": "hsl(var(--accent-foreground))"
+            },
+            "destructive": {
+              "DEFAULT": "hsl(var(--destructive))",
+              "foreground": "hsl(var(--destructive-foreground))"
+            },
+            "border": "hsl(var(--border))",
+            "input": "hsl(var(--input))",
+            "ring": "hsl(var(--ring))",
+            "chart": {
+              "1": "hsl(var(--chart-1))",
+              "2": "hsl(var(--chart-2))",
+              "3": "hsl(var(--chart-3))",
+              "4": "hsl(var(--chart-4))",
+              "5": "hsl(var(--chart-5))"
+            }
+          }
+        }
+      }
+    }
+  }
+}

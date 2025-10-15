@@ -42,6 +42,7 @@ export const siteConfig = {
     {
       href: "/themes",
       label: "Themes",
+      badge: "new",
     },
     {
       href: "/learning",
