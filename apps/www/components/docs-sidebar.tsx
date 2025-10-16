@@ -34,6 +34,7 @@ const BLOCKS_SECTIONS = [
     name: "Blocks",
     items: [
       { name: "Testimonials", href: "/blocks/landing-page#testimonials" },
+      { name: "Video Card Grid", href: "/blocks/landing-page#interactive-feature-showcase" },
     ],
   },
 ]

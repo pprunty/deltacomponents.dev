@@ -24,7 +24,6 @@ import { trackEvent } from "@/lib/events"
 import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
@@ -134,14 +133,14 @@ function BlockViewerToolbar() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
-    <div className="hidden w-full items-center gap-2 pl-2 md:pr-6 lg:flex">
+    <div className="hidden w-full items-center gap-2 pl-2 md:pr-6 lg:flex overflow-x-hidden">
       <Tabs
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
       >
-        <TabsList size="md" variant="default" className="h-auto grid-cols-2">
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
+        <TabsList size="sm" variant="default" className="h-auto grid-cols-2">
+          <TabsTrigger value="preview" className="min-w-[70px] justify-center text-center">Preview</TabsTrigger>
+          <TabsTrigger value="code" className="min-w-[70px] justify-center text-center">Code</TabsTrigger>
         </TabsList>
       </Tabs>
       <Separator orientation="vertical" className="mx-2 !h-4" />
@@ -335,7 +334,7 @@ function BlockViewerCode() {
           className="text-code-foreground [&_svg]:text-code-foreground flex h-12 shrink-0 items-center gap-2 border-b px-4 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
           data-language={language}
         >
-          {getIconForLanguageExtension(language)}
+          <File className="size-4" />
           {file.target}
           <div className="ml-auto flex items-center gap-2">
             <BlockCopyCodeButton />

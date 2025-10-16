@@ -21,9 +21,14 @@ export default async function BlocksPage({
   const blocks = await getAllBlockIds(["registry:block"], categories)
 
   return (
-    <div className="flex flex-col gap-12 md:gap-24">
+    <div>
       {blocks.map((name) => (
-        <BlockDisplay name={name} key={name} />
+        <div
+          key={name}
+          className="container py-8 first:pt-6 md:py-12"
+        >
+          <BlockDisplay name={name} />
+        </div>
       ))}
     </div>
   )

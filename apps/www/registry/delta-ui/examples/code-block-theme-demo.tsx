@@ -155,7 +155,7 @@ export default function CodeBlockThemeDemo() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex flex-wrap items-center gap-2">
         <Button
           variant={showLineNumbers ? "default" : "outline"}
           size="sm"
@@ -188,7 +188,7 @@ export default function CodeBlockThemeDemo() {
           dark: cppTheme,
           light: cppLightTheme,
         }}
-        className={customStyling ? "border-0 rounded-none text-lg" : undefined}
+        className={customStyling ? "rounded-none border-0 text-lg" : undefined}
       />
     </div>
   )

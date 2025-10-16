@@ -6,16 +6,10 @@ import { TerminalIcon } from "lucide-react"
 import { Highlight, PrismTheme } from "prism-react-renderer"
 
 import { cn } from "@/lib/utils"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyButton } from "@/registry/delta-ui/ui/copy-button"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
-
 
 // Inline theme definitions
 const defaultTheme: PrismTheme = {
@@ -234,7 +228,13 @@ export function CodeBlock({
   // If we have package manager commands, show the tabbed interface
   if (availableCommands.length > 0) {
     return (
-      <div className={cn("rounded-lg border bg-card text-card-foreground overflow-x-auto", className)} data-slot="tabs">
+      <div
+        className={cn(
+          "bg-card text-card-foreground overflow-x-auto rounded-lg border",
+          className
+        )}
+        data-slot="tabs"
+      >
         <Tabs
           value={packageManager}
           className="gap-0"
@@ -278,10 +278,14 @@ export function CodeBlock({
                       getTokenProps,
                     }) => (
                       <pre
-                        className={`${highlightClassName} w-full overflow-x-auto font-mono text-sm font-medium leading-relaxed px-4`}
+                        className={`${highlightClassName} w-full overflow-x-auto px-4 font-mono text-sm leading-relaxed font-medium`}
                         style={{
                           ...style,
-                          fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined
+                          fontSize: className?.includes("text-lg")
+                            ? "1.125rem"
+                            : className?.includes("text-base")
+                              ? "1rem"
+                              : undefined,
                         }}
                       >
                         {tokens.map((line, i) => (
@@ -354,10 +358,14 @@ export function CodeBlock({
               getTokenProps,
             }) => (
               <pre
-                className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm font-medium leading-relaxed`}
+                className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm leading-relaxed font-medium`}
                 style={{
                   ...style,
-                  fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined,
+                  fontSize: className?.includes("text-lg")
+                    ? "1.125rem"
+                    : className?.includes("text-base")
+                      ? "1rem"
+                      : undefined,
                   scrollbarWidth: "thin",
                   scrollbarColor:
                     selectedTheme.plain?.backgroundColor?.toLowerCase() ===
@@ -384,7 +392,11 @@ export function CodeBlock({
                               ? "#999999"
                               : "#757575",
                           minWidth: "1.5rem",
-                          fontSize: className?.includes('text-lg') ? '1.125rem' : className?.includes('text-base') ? '1rem' : undefined,
+                          fontSize: className?.includes("text-lg")
+                            ? "1.125rem"
+                            : className?.includes("text-base")
+                              ? "1rem"
+                              : undefined,
                         }}
                       >
                         {i + 1}

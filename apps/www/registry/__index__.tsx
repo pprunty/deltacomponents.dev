@@ -192,6 +192,28 @@ export const Index: Record<string, any> = {
     categories: ["landing-page"],
     meta: {"iframeHeight":"800px","container":"w-full bg-background min-h-svh flex items-center justify-center","mobile":"component"},
   },
+  "interactive-feature-showcase": {
+    name: "interactive-feature-showcase",
+    description: "InteractiveFeatureShowcase block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [{
+      path: "registry/delta-ui/blocks/interactive-feature-showcase/page.tsx",
+      type: "registry:page",
+      target: "app/interactive-feature-showcase/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/interactive-feature-showcase/components/interactive-feature-showcase.tsx",
+      type: "registry:component",
+      target: "components/interactive-feature-showcase.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/interactive-feature-showcase/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["landing-page"],
+    meta: {"iframeHeight":"800px","container":"w-full","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

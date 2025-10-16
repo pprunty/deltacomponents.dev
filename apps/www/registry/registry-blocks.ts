@@ -26,4 +26,28 @@ export const blocks: Registry["items"] = [
     },
     categories: ["landing-page"],
   },
+  {
+    name: "interactive-feature-showcase",
+    description: "InteractiveFeatureShowcase block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/interactive-feature-showcase/page.tsx",
+        type: "registry:page",
+        target: "app/interactive-feature-showcase/page.tsx",
+      },
+      {
+        path: "blocks/interactive-feature-showcase/components/interactive-feature-showcase.tsx",
+        type: "registry:component",
+        target: "components/interactive-feature-showcase.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container: "w-full",
+      mobile: "component",
+    },
+    categories: ["landing-page"],
+  },
 ]

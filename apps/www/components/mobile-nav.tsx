@@ -135,6 +135,13 @@ export function MobileNav({
                             Testimonials
                             <StatusBadge label="beta" />
                           </MobileLink>
+                          <MobileLink
+                            href="/blocks/landing-page#interactive-feature-showcase"
+                            onOpenChange={setOpen}
+                          >
+                            Video Card Grid
+                            <StatusBadge label="beta" />
+                          </MobileLink>
                         </div>
                       </div>
                     </React.Fragment>

@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
-import { BlocksSkeleton } from "@/components/blocks-nav"
-
 export function BlocksContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(false)
@@ -25,7 +23,7 @@ export function BlocksContent({ children }: { children: React.ReactNode }) {
   }, [pathname, prevPathname])
 
   if (isLoading) {
-    return <BlocksSkeleton />
+    return <div>Loading...</div>
   }
 
   return <>{children}</>

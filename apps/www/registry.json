@@ -24,7 +24,7 @@
       "name": "code-block",
       "type": "registry:ui",
       "dependencies": ["lucide-react", "prism-react-renderer"],
-      "registryDependencies": ["copy-button", "tabs"],
+      "registryDependencies": ["copy-button"],
       "files": [
         {
           "path": "registry/delta-ui/ui/code-block.tsx",
@@ -134,6 +134,30 @@
       "categories": ["landing-page"]
     },
     {
+      "name": "interactive-feature-showcase",
+      "type": "registry:block",
+      "description": "InteractiveFeatureShowcase block",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/interactive-feature-showcase/page.tsx",
+          "type": "registry:page",
+          "target": "app/interactive-feature-showcase/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/interactive-feature-showcase/components/interactive-feature-showcase.tsx",
+          "type": "registry:component",
+          "target": "components/interactive-feature-showcase.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full",
+        "mobile": "component"
+      },
+      "categories": ["landing-page"]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
@@ -175,6 +199,17 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/code-block-theme-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "code-block-interactive-demo",
+      "type": "registry:example",
+      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/code-block-interactive-demo.tsx",
           "type": "registry:example"
         }
       ]

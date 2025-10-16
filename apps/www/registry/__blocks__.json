@@ -2,8 +2,11 @@
   {
     "name": "testimonials",
     "description": "Customer testimonials grid",
-    "categories": [
-      "landing-page"
-    ]
+    "categories": ["landing-page"]
+  },
+  {
+    "name": "interactive-feature-showcase",
+    "description": "InteractiveFeatureShowcase block",
+    "categories": ["landing-page"]
   }
 ]

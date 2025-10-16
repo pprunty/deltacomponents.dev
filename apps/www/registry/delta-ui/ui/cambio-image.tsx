@@ -48,7 +48,6 @@ export function CambioImage({
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
-
   useEffect(() => {
     if (!enableInitialAnimation) {
       setIsVisible(true)
@@ -70,8 +69,8 @@ export function CambioImage({
     return () => io.disconnect()
   }, [enableInitialAnimation])
 
-  /* Massive z-index only while the item is zooming/closing */
-  const zIndex = open ? 999 : 10 + index
+  /* Lower z-index when open to stay behind the popup */
+  const zIndex = open ? 50 : 10 + index
 
   return (
     <span
@@ -98,8 +97,11 @@ export function CambioImage({
         onOpenChange={setOpen}
       >
         {/* @ts-ignore */}
-        <Cambio.Trigger 
-          className="relative w-full cursor-zoom-in overflow-hidden"
+        <Cambio.Trigger
+          className={cn(
+            "relative w-full overflow-hidden",
+            !open && "cursor-zoom-in"
+          )}
           style={{ pointerEvents: open ? "none" : "auto" }}
         >
           <img
@@ -117,7 +119,10 @@ export function CambioImage({
         {/* @ts-ignore */}
         <Cambio.Portal>
           {/* @ts-ignore */}
-          <Cambio.Backdrop motion="reduced" className="fixed inset-0 z-[100] bg-black/40" />
+          <Cambio.Backdrop
+            motion="reduced"
+            className="fixed inset-0 z-[100] bg-black/40"
+          />
           {/* @ts-ignore */}
           <Cambio.Popup className="z-[101] w-full overflow-hidden md:w-[70%]">
             <img

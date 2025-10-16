@@ -1,7 +1,6 @@
 import { Metadata } from "next"
-import Link from "next/link"
 
-import { BlocksContent } from "@/components/blocks-content"
+import { Announcement } from "@/components/announcement"
 import { BlocksNav } from "@/components/blocks-nav"
 import {
   PageActions,
@@ -9,12 +8,12 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { PageNav } from "@/components/page-nav"
 import { Button } from "@/registry/delta-ui/ui/button"
+import Link from "next/link"
 
-const title = "Examples"
+const title = "Building Blocks for the Web"
 const description =
-  "A collection of building blocks for agents and audio that you can customize and extend."
+  "Clean, modern building blocks. Copy and paste into your apps. Works with all React frameworks. Open Source. Free forever."
 
 export const metadata: Metadata = {
   title,
@@ -48,25 +47,26 @@ export default function BlocksLayout({
   return (
     <>
       <PageHeader>
+        <Announcement />
         <PageHeaderHeading>{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <a href="#blocks">Browse Examples</a>
+            <a href="#blocks">Browse Blocks</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <Link href="https://github.com/elevenlabs/ui">Add a block</Link>
+            <Link href="/docs/blocks">Add a block</Link>
           </Button>
         </PageActions>
       </PageHeader>
-      <PageNav id="blocks">
-        <BlocksNav />
-      </PageNav>
-      <div className="container-wrapper section-soft flex-1 md:py-12">
-        <div className="container">
-          <BlocksContent>{children}</BlocksContent>
+      <div id="blocks" className="border-grid scroll-mt-24">
+        <div className="container-wrapper">
+          <div className="container flex items-center py-4">
+            <BlocksNav />
+          </div>
         </div>
       </div>
+      <div className="container-wrapper flex-1">{children}</div>
     </>
   )
 }

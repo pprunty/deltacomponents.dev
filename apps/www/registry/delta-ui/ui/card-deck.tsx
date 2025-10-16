@@ -56,10 +56,14 @@ export function CardDeckContainer({
     <motion.div
       initial={enableInitialAnimation ? { opacity: 0, translateY: 20 } : false}
       animate={enableInitialAnimation ? { opacity: 1, translateY: 0 } : false}
-      transition={enableInitialAnimation ? {
-        duration: 0.3,
-        delay: 0.5,
-      } : undefined}
+      transition={
+        enableInitialAnimation
+          ? {
+              duration: 0.3,
+              delay: 0.5,
+            }
+          : undefined
+      }
       className={cn("relative w-full max-w-3xl overflow-visible", className)}
     >
       <style>{css}</style>
@@ -99,21 +103,22 @@ export function CardDeckContainer({
         className="card-deck h-[360px] w-[240px] sm:h-[420px] sm:w-[280px]"
         modules={[EffectCards, Autoplay, Pagination, Navigation]}
       >
-        {children && React.Children.map(children, (child, index) => {
-          if (React.isValidElement(child)) {
-            const slideClass = child.props.className || "rounded-3xl"
+        {children &&
+          React.Children.map(children, (child, index) => {
+            if (React.isValidElement(child)) {
+              const slideClass = child.props.className || "rounded-3xl"
 
-            return (
-              <SwiperSlide
-                key={index}
-                className={cn(slideClass, "overflow-hidden")}
-              >
-                {child.props.children}
-              </SwiperSlide>
-            )
-          }
-          return null
-        })}
+              return (
+                <SwiperSlide
+                  key={index}
+                  className={cn(slideClass, "overflow-hidden")}
+                >
+                  {child.props.children}
+                </SwiperSlide>
+              )
+            }
+            return null
+          })}
         {showNavigation && (
           <div>
             <div className="swiper-button-next after:hidden">
@@ -166,15 +171,16 @@ export function CardDeck({
       className={className}
       enableInitialAnimation={enableInitialAnimation}
     >
-      {images && images.map((image, index) => (
-        <CardDeckItem key={index} className="rounded-3xl">
-          <img
-            className="h-full w-full rounded-3xl object-cover"
-            src={image.src}
-            alt={image.alt}
-          />
-        </CardDeckItem>
-      ))}
+      {images &&
+        images.map((image, index) => (
+          <CardDeckItem key={index} className="rounded-3xl">
+            <img
+              className="h-full w-full rounded-3xl object-cover"
+              src={image.src}
+              alt={image.alt}
+            />
+          </CardDeckItem>
+        ))}
     </CardDeckContainer>
   )
 }
