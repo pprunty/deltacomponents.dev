@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-table"
 import { MoreHorizontalIcon } from "lucide-react"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardAction,
@@ -23,8 +23,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
-import { Checkbox } from "@/registry/delta-ui/ui/checkbox"
+} from "@/registry/shadcn/card"
+import { Checkbox } from "@/registry/shadcn/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +32,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/delta-ui/ui/dropdown-menu"
+} from "@/registry/shadcn/dropdown-menu"
 import {
   Table,
   TableBody,
@@ -40,7 +40,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/delta-ui/ui/table"
+} from "@/registry/shadcn/table"
 
 const data: Payment[] = [
   {

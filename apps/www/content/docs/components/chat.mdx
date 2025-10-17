@@ -1,0 +1,293 @@
+---
+title: LLM Chat
+description: A complete chat component with streaming responses, file uploads, and model selection for building AI-powered applications.
+component: true
+links:
+  source: https://github.com/deltacomponents/delta-ui/blob/main/registry/delta-ui/components/chat.tsx
+  docs: https://ui.shadcn.com/docs/components/chat
+---
+
+<ComponentPreview name="chat" height="700px" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/chat
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react streamdown motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="chat" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Chat } from "@/components/chat"
+```
+
+```tsx
+<Chat onMessage={handleMessage} allowFileUpload={true} />
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="chat" height="500px" />
+
+### Advanced Demo with Token Streaming
+
+
+## API Reference
+
+### Chat
+
+| Prop              | Type                                                    | Default                                                                                                | Description                         |
+| ----------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------- |
+| `allowFileUpload` | `boolean`                                               | `false`                                                                                                | Enable file upload functionality    |
+| `userAvatar`      | `string`                                                | -                                                                                                      | Custom user avatar URL              |
+| `models`          | `Model[]`                                               | `[{id: 'gpt-4', name: 'GPT-4', model: 'GPT-4o'}, {id: 'claude', name: 'Claude', model: 'Claude 3.5'}]` | Available AI models                 |
+| `onMessage`       | `(message: string, modelId: string) => Promise<string>` | -                                                                                                      | Message handler function            |
+| `children`        | `ReactNode`                                             | -                                                                                                      | Custom content in chat options area |
+| `className`       | `string`                                                | -                                                                                                      | Additional CSS classes              |
+
+### Individual Components
+
+The chat component is composed of several modular components that can be used independently:
+
+- `ChatMessages` - Message display container
+- `ChatUserMessage` - User message bubble
+- `ChatAssistantMessage` - AI response message bubble
+- `ChatPromptInput` - Input area with model selection
+- `ChatResponse` - Streamdown markdown renderer
+- `ChatStreamingResponse` - Streaming text effect
+- `ChatReasoning` - "Thinking..." shimmer animation
+- `ChatSendButton` - Standalone send button component
+- `ChatModelSelector` - Model selection dropdown
+- `ChatOptions` - Container for custom content before input
+
+### ChatSendButton
+
+| Prop         | Type      | Default | Description                    |
+| ------------ | --------- | ------- | ------------------------------ |
+| `isDisabled` | `boolean` | -       | Whether the button is disabled |
+| `isLoading`  | `boolean` | -       | Loading state indicator        |
+| `className`  | `string`  | -       | Custom CSS classes             |
+
+### ChatModelSelector
+
+| Prop              | Type                           | Default | Description                    |
+| ----------------- | ------------------------------ | ------- | ------------------------------ |
+| `selectedModel`   | `string`                       | -       | Currently selected model ID    |
+| `onModelChange`   | `(modelId: string) => void`    | -       | Model selection callback       |
+| `models`          | `Model[]`                      | -       | Available models array         |
+| `className`       | `string`                       | -       | Custom CSS classes             |
+
+### ChatOptions
+
+| Prop        | Type        | Default | Description                           |
+| ----------- | ----------- | ------- | ------------------------------------- |
+| `children`  | `ReactNode` | -       | Content to display in options area    |
+| `className` | `string`    | -       | Custom CSS classes                    |
+
+## Styling with Data Attributes
+
+The chat component uses data attributes for easy CSS targeting without prop drilling:
+
+| Data Attribute           | Target Element                    | Description                       |
+| ------------------------ | --------------------------------- | --------------------------------- |
+| `[data-chat="send-button"]`     | Send button                       | Style the submit button           |
+| `[data-chat="model-selector"]`  | Model selector dropdown           | Style the model selection button  |
+| `[data-chat="options"]`         | Options container                 | Style the options area            |
+| `[data-chat="prompt-input"]`    | Prompt input container            | Style the entire input area       |
+| `[data-chat="textarea"]`        | Textarea element                  | Style the text input field        |
+
+### Example CSS
+
+```css
+/* Custom send button styling */
+[data-chat="send-button"] {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  border-radius: 50%;
+}
+
+/* Custom textarea styling */
+[data-chat="textarea"] {
+  background-color: #f8f9fa;
+  border: 2px solid #e9ecef;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom model selector styling */
+[data-chat="model-selector"] {
+  background-color: #495057;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Custom options area */
+[data-chat="options"] {
+  padding: 16px;
+  background-color: #f1f3f4;
+  border-radius: 12px;
+}
+```
+
+## Features
+
+- **Streaming Responses**: Real-time text streaming with typewriter effect
+- **File Upload**: Drag & drop or click to upload files with preview
+- **Model Selection**: Dropdown to choose between different AI models
+- **Rich Markdown**: Full support for code blocks, tables, math, and more
+- **Responsive Design**: Works on desktop and mobile devices
+- **Customizable**: Modular components for flexible integration
+- **TypeScript**: Full type safety and IntelliSense support
+
+## Examples
+
+### Custom Message Handler
+
+```tsx
+const handleMessage = async (message: string, modelId: string) => {
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, modelId }),
+  })
+
+  return response.text()
+}
+
+;<Chat onMessage={handleMessage} />
+```
+
+### With Custom Models
+
+```tsx
+const customModels = [
+  { id: 'gpt-4', name: 'GPT-4', model: 'GPT-4o' },
+  { id: 'claude', name: 'Claude', model: 'Claude 3.5 Sonnet' },
+  { id: 'gemini', name: 'Gemini', model: 'Gemini Pro' }
+]
+
+<Chat models={customModels} />
+```
+
+### With File Upload
+
+```tsx
+<Chat allowFileUpload={true} onMessage={handleMessage} />
+```
+
+### Custom Styling with CSS
+
+```tsx
+// Add custom styles in your CSS file
+<Chat className="my-custom-chat">
+  <div className="flex items-center gap-2">
+    <span>Custom controls here</span>
+  </div>
+</Chat>
+```
+
+```css
+/* Custom styling using data attributes */
+.my-custom-chat [data-chat="send-button"] {
+  background-color: #ef4444;
+  transition: background-color 0.2s;
+}
+
+.my-custom-chat [data-chat="send-button"]:hover {
+  background-color: #dc2626;
+}
+
+.my-custom-chat [data-chat="textarea"] {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.my-custom-chat [data-chat="model-selector"] {
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+```
+
+### Using ChatOptions
+
+```tsx
+<Chat>
+  <div className="flex items-center justify-between p-2 bg-muted rounded-md">
+    <span className="text-sm text-muted-foreground">AI Assistant</span>
+    <button className="text-xs text-primary">Clear Chat</button>
+  </div>
+</Chat>
+```
+
+### Individual Components
+
+```tsx
+import {
+  ChatAssistantMessage,
+  ChatMessages,
+  ChatPromptInput,
+  ChatSendButton,
+  ChatModelSelector,
+  ChatOptions,
+  ChatUserMessage,
+} from "@/components/chat"
+
+// Use components independently
+;<div className="flex h-full flex-col">
+  <ChatMessages messages={messages} isLoading={loading} />
+  <ChatPromptInput
+    input={input}
+    onInputChange={setInput}
+    onSubmit={handleSubmit}
+    // ... other props
+  />
+</div>
+
+// Or use individual components for custom layouts
+;<div className="flex items-center gap-2">
+  <ChatModelSelector
+    selectedModel={model}
+    onModelChange={setModel}
+    models={models}
+    className="border rounded-md"
+  />
+  <ChatSendButton
+    isDisabled={!input.trim()}
+    isLoading={loading}
+    className="bg-green-500"
+  />
+</div>
+```

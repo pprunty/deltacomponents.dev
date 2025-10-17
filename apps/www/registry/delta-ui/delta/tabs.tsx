@@ -10,7 +10,7 @@ import React, {
 } from "react"
 
 import { cn } from "@/lib/utils"
-import { XScrollable } from "@/registry/delta-ui/ui/x-scrollable"
+import { XScrollable } from "@/registry/delta-ui/delta/x-scrollable"
 
 // Base Tabs component (Root)
 const Tabs = forwardRef<

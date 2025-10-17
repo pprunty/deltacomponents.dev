@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 
-import { Card, CardContent } from "@/registry/delta-ui/ui/card"
-import { ScrollingWaveform } from "@/registry/delta-ui/ui/waveform"
+import { ScrollingWaveform } from "@/registry/delta-ui/delta/waveform"
+import { Card, CardContent } from "@/registry/shadcn/card"
 
 export function CardsLiveRecording() {
   const [remountKey, setRemountKey] = useState(0)

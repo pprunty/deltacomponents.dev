@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/registry/delta-ui/ui/code-block"
+import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 
 export default function CodeBlockExample() {
   return (

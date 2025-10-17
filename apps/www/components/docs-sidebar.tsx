@@ -15,7 +15,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/delta-ui/ui/sidebar"
+} from "@/registry/shadcn/sidebar"
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
@@ -34,7 +34,10 @@ const BLOCKS_SECTIONS = [
     name: "Blocks",
     items: [
       { name: "Testimonials", href: "/blocks/landing-page#testimonials" },
-      { name: "Video Card Grid", href: "/blocks/landing-page#interactive-feature-showcase" },
+      {
+        name: "Video Card Grid",
+        href: "/blocks/landing-page#interactive-feature-showcase",
+      },
     ],
   },
 ]

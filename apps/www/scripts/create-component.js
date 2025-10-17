@@ -118,7 +118,7 @@ const exampleFile = path.join(examplesDir, `${kebabCase}.tsx`)
 // Generate appropriate example based on component type
 let exampleTemplate
 if (componentType === 'ui') {
-  exampleTemplate = `import { ${pascalCase} } from "@/registry/delta-ui/ui/${kebabCase}"
+  exampleTemplate = `import { ${pascalCase} } from "@/registry/delta-ui/delta/${kebabCase}"
 
 export default function ${pascalCase}Example() {
   return (
@@ -179,7 +179,7 @@ if (componentType === 'ui') {
   demoTemplate = `"use client"
 
 import { useState } from "react"
-import { ${pascalCase} } from "@/registry/delta-ui/ui/${kebabCase}"
+import { ${pascalCase} } from "@/registry/delta-ui/delta/${kebabCase}"
 
 export default function ${pascalCase}Demo() {
   const [state, setState] = useState(false)

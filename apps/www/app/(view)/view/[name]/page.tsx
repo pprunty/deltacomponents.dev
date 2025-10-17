@@ -96,7 +96,12 @@ export default async function BlockPage({
 
   return (
     <>
-      <div className={cn("bg-background min-h-screen flex items-center justify-center p-4", item.meta?.container)}>
+      <div
+        className={cn(
+          "bg-background flex min-h-screen items-center justify-center p-4",
+          item.meta?.container
+        )}
+      >
         <Component />
       </div>
     </>

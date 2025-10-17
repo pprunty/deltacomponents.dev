@@ -23,6 +23,7 @@ Add the following CSS to your `globals.css` for proper z-index management in gri
   z-index: 999 !important;
 }
 ```
+
 </Admonition>
 
 ## Usage
@@ -66,28 +67,28 @@ Perfect for image galleries and portfolios:
 
 ### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| src | string | - | **Required.** Image source URL |
-| alt | string | - | **Required.** Image alt text for accessibility |
-| width | number | - | **Required.** Image width in pixels |
-| height | number | - | **Required.** Image height in pixels |
-| loading | "lazy" \| "eager" | "lazy" | Image loading strategy |
-| index | number | 0 | Z-index offset for stacking multiple images |
-| motion | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration |
-| dismissible | boolean | true | Whether the zoom overlay can be dismissed |
-| className | string | - | Additional CSS classes for styling |
-| draggable | boolean | false | Whether the image can be dragged |
-| enableInitialAnimation | boolean | true | Enable blur-to-focus animation when image enters viewport |
-| dismissOnImageClick | boolean | false | Allow dismissing the zoomed image by clicking on it |
+| Prop                   | Type                         | Default  | Description                                               |
+| ---------------------- | ---------------------------- | -------- | --------------------------------------------------------- |
+| src                    | string                       | -        | **Required.** Image source URL                            |
+| alt                    | string                       | -        | **Required.** Image alt text for accessibility            |
+| width                  | number                       | -        | **Required.** Image width in pixels                       |
+| height                 | number                       | -        | **Required.** Image height in pixels                      |
+| loading                | "lazy" \| "eager"            | "lazy"   | Image loading strategy                                    |
+| index                  | number                       | 0        | Z-index offset for stacking multiple images               |
+| motion                 | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration                  |
+| dismissible            | boolean                      | true     | Whether the zoom overlay can be dismissed                 |
+| className              | string                       | -        | Additional CSS classes for styling                        |
+| draggable              | boolean                      | false    | Whether the image can be dragged                          |
+| enableInitialAnimation | boolean                      | true     | Enable blur-to-focus animation when image enters viewport |
+| dismissOnImageClick    | boolean                      | false    | Allow dismissing the zoomed image by clicking on it       |
 
 ### Motion Presets
 
-| Preset | Description |
-| --- | --- |
-| "smooth" | Default smooth animation |
-| "snappy" | Quick, snappy transitions |
-| "bouncy" | Bouncy spring animation |
+| Preset    | Description                      |
+| --------- | -------------------------------- |
+| "smooth"  | Default smooth animation         |
+| "snappy"  | Quick, snappy transitions        |
+| "bouncy"  | Bouncy spring animation          |
 | "reduced" | Reduced motion for accessibility |
 
 ### Motion Configuration
@@ -98,8 +99,8 @@ For advanced users, you can provide a custom motion configuration:
 <CambioImage
   motion={{
     trigger: "smooth",
-    popup: "bouncy", 
-    backdrop: "reduced"
+    popup: "bouncy",
+    backdrop: "reduced",
   }}
   // ... other props
 />

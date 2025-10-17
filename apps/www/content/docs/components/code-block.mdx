@@ -7,7 +7,10 @@ description: A versatile code block component supporting package manager command
 
 ## Installation
 
-<Installation name="code-block" dependencies={["lucide-react", "prism-react-renderer"]} />
+<Installation
+  name="code-block"
+  dependencies={["lucide-react", "prism-react-renderer"]}
+/>
 
 ## Usage
 
@@ -48,28 +51,27 @@ export default function Example() {
 
 <ComponentPreview name="code-block-theme-demo" />
 
-
 ## API Reference
 
 ### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| **Package Manager Props** | | | |
-| npm | string | - | npm command to display |
-| yarn | string | - | yarn command to display |
-| pnpm | string | - | pnpm command to display |
-| bun | string | - | bun command to display |
-| defaultPackageManager | PackageManager | "npm" | Default selected package manager |
-| **Code Highlighting Props** | | | |
-| code | string | - | Code content to highlight |
-| language | string | "typescript" | Programming language for syntax highlighting |
-| filename | string | - | Filename to display in header |
-| showLineNumbers | boolean | true | Whether to show line numbers |
-| theme | PrismTheme | - | Custom Prism theme object |
-| adaptiveTheme | object | - | Object with `light` and `dark` theme variants |
-| **General Props** | | | |
-| className | string | - | Additional CSS classes for styling |
+| Prop                        | Type           | Default      | Description                                   |
+| --------------------------- | -------------- | ------------ | --------------------------------------------- |
+| **Package Manager Props**   |                |              |                                               |
+| npm                         | string         | -            | npm command to display                        |
+| yarn                        | string         | -            | yarn command to display                       |
+| pnpm                        | string         | -            | pnpm command to display                       |
+| bun                         | string         | -            | bun command to display                        |
+| defaultPackageManager       | PackageManager | "npm"        | Default selected package manager              |
+| **Code Highlighting Props** |                |              |                                               |
+| code                        | string         | -            | Code content to highlight                     |
+| language                    | string         | "typescript" | Programming language for syntax highlighting  |
+| filename                    | string         | -            | Filename to display in header                 |
+| showLineNumbers             | boolean        | true         | Whether to show line numbers                  |
+| theme                       | PrismTheme     | -            | Custom Prism theme object                     |
+| adaptiveTheme               | object         | -            | Object with `light` and `dark` theme variants |
+| **General Props**           |                |              |                                               |
+| className                   | string         | -            | Additional CSS classes for styling            |
 
 ### Types
 

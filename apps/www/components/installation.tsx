@@ -19,7 +19,6 @@ export function Installation({
 }: InstallationProps) {
   return (
     <div className="installation-section">
-
       <InstallationTabs
         name={name}
         dependencies={dependencies}

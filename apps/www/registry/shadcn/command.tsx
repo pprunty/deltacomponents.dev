@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/registry/delta-ui/ui/dialog"
+} from "@/registry/shadcn/dialog"
 
 function Command({
   className,

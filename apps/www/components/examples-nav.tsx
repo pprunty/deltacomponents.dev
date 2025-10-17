@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/registry/shadcn/scroll-area"
 
 export function ExamplesNav({
   className,

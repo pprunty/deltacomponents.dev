@@ -1,6 +1,6 @@
 "use client"
 
-import { ConversationBar } from "@/registry/delta-ui/ui/conversation-bar"
+import { ConversationBar } from "@/registry/delta-ui/delta/conversation-bar"
 
 const DEFAULT_AGENT = {
   agentId: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID!,

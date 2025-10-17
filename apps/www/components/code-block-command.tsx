@@ -6,12 +6,12 @@ import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 import { useConfig } from "@/hooks/use-config"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
+} from "@/registry/shadcn/tooltip"
 
 export function CodeBlockCommand({
   __npm__,
@@ -83,7 +83,7 @@ export function CodeBlockCommand({
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-primary h-7 border-0 pt-0.5 data-[state=active]:shadow-none rounded-none"
+                  className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                 >
                   {key}
                 </TabsTrigger>

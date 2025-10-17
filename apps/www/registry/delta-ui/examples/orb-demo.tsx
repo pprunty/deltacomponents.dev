@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 
-import { Button } from "@/registry/delta-ui/ui/button"
-import { AgentState, Orb } from "@/registry/delta-ui/ui/orb"
+import { AgentState, Orb } from "@/registry/delta-ui/delta/orb"
+import { Button } from "@/registry/shadcn/button"
 
 let ORBS: [string, string][] = [
   ["#CADCFC", "#A0B9D1"],

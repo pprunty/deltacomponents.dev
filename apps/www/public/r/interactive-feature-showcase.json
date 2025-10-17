@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "blocks/interactive-feature-showcase/page.tsx",
-      "content": "\"use client\"\n\nimport {\n  InteractiveFeatureShowcase,\n  sampleVideoFeatures,\n} from \"@/components/interactive-feature-showcase\"\n\nexport default function InteractiveFeatureShowcasePage() {\n  return (\n    <div className=\"min-h-screen w-full flex items-center justify-center p-4\">\n      <div className=\"mx-auto max-w-5xl w-full\">\n        <InteractiveFeatureShowcase features={sampleVideoFeatures} variant=\"inner-card\" />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport {\n  InteractiveFeatureShowcase,\n  sampleVideoFeatures,\n} from \"@/components/interactive-feature-showcase\"\n\nexport default function InteractiveFeatureShowcasePage() {\n  return (\n    <div className=\"flex min-h-screen w-full items-center justify-center p-4\">\n      <div className=\"mx-auto w-full max-w-5xl\">\n        <InteractiveFeatureShowcase\n          features={sampleVideoFeatures}\n          variant=\"inner-card\"\n        />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/interactive-feature-showcase/page.tsx"
     },

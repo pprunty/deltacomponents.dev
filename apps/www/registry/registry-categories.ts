@@ -9,4 +9,9 @@ export const registryCategories = [
     slug: "landing-page",
     hidden: false,
   },
+  {
+    name: "AI Elements",
+    slug: "ai-elements",
+    hidden: false,
+  },
 ]

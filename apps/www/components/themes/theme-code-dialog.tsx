@@ -3,7 +3,9 @@
 import { useState } from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { Button } from "@/registry/shadcn/button"
 import {
   Dialog,
   DialogContent,
@@ -11,14 +13,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/delta-ui/ui/dialog"
+} from "@/registry/shadcn/dialog"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
-import { getIconForLanguageExtension } from "@/components/icons"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
+} from "@/registry/shadcn/tooltip"
 
 interface ThemeCodeDialogProps {
   themeName: string
@@ -50,19 +50,20 @@ export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
         <DialogHeader>
           <DialogTitle>{themeName} Theme Code</DialogTitle>
           <DialogDescription>
-            Copy and paste this CSS into your project to use the {themeName} theme.
+            Copy and paste this CSS into your project to use the {themeName}{" "}
+            theme.
           </DialogDescription>
         </DialogHeader>
         <div className="relative overflow-x-auto">
           <figcaption
             data-rehype-pretty-code-title=""
-            className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 border-b px-3 py-2 bg-muted rounded-t-md [&_svg]:size-4 [&_svg]:opacity-70"
+            className="text-code-foreground [&_svg]:text-code-foreground bg-muted flex items-center gap-2 rounded-t-md border-b px-3 py-2 [&_svg]:size-4 [&_svg]:opacity-70"
             data-language="css"
           >
             {getIconForLanguageExtension("css")}
             globals.css
           </figcaption>
-          <pre className="max-h-[400px] overflow-auto rounded-t-none rounded-md bg-muted p-4 text-sm">
+          <pre className="bg-muted max-h-[400px] overflow-auto rounded-md rounded-t-none p-4 text-sm">
             <code>{themeCSS}</code>
           </pre>
           <Tooltip>

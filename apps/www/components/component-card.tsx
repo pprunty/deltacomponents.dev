@@ -1,10 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 
-import { Card } from "@/registry/delta-ui/ui/card"
+import { Card } from "@/registry/shadcn/card"
 
 interface ComponentCardProps {
   component: {
@@ -17,7 +17,8 @@ interface ComponentCardProps {
 export function ComponentCard({ component }: ComponentCardProps) {
   const [useVideo, setUseVideo] = useState(true)
   // Extract just the filename without path and extension
-  const componentName = component.$id.split('/').pop()?.replace('.mdx', '') || component.$id
+  const componentName =
+    component.$id.split("/").pop()?.replace(".mdx", "") || component.$id
   const videoSrc = `/videos/${componentName}-demo.mp4`
 
   const handleVideoError = () => {
@@ -26,7 +27,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
 
   return (
     <Link href={component.url} className="group">
-      <Card className="hover:hover:bg-accent/50 relative h-48 overflow-hidden border border-border shadow-none p-0 transition-colors md:h-40">
+      <Card className="hover:hover:bg-accent/50 border-border relative h-48 overflow-hidden border p-0 shadow-none transition-colors md:h-40">
         {useVideo ? (
           <video
             src={videoSrc}

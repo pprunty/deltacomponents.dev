@@ -9,11 +9,7 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/delta-ui/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/shadcn/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,13 +18,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/delta-ui/ui/dropdown-menu"
+} from "@/registry/shadcn/dropdown-menu"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/registry/delta-ui/ui/sidebar"
+} from "@/registry/shadcn/sidebar"
 
 export function NavUser({
   user,

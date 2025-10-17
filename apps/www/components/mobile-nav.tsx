@@ -2,17 +2,17 @@
 
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/delta-ui/ui/popover"
+} from "@/registry/shadcn/popover"
 
 export function MobileNav({
   tree,
@@ -73,12 +73,18 @@ export function MobileNav({
               <MobileLink href="/" onOpenChange={setOpen}>
                 Home
               </MobileLink>
-              {items.filter(item => !item.hide).map((item, index) => (
-                <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
-                  {item.label}
-                  {item.badge && <StatusBadge label={item.badge} />}
-                </MobileLink>
-              ))}
+              {items
+                .filter((item) => !item.hide)
+                .map((item, index) => (
+                  <MobileLink
+                    key={index}
+                    href={item.href}
+                    onOpenChange={setOpen}
+                  >
+                    {item.label}
+                    {item.badge && <StatusBadge label={item.badge} />}
+                  </MobileLink>
+                ))}
             </div>
           </div>
 
@@ -172,7 +178,7 @@ function MobileLink({
   const router = useRouter()
   const pathname = usePathname()
   const isActive = pathname === href
-  
+
   return (
     <Link
       href={href}
@@ -183,8 +189,8 @@ function MobileLink({
       }}
       className={cn(
         "flex items-center text-2xl font-medium transition-colors",
-        isActive 
-          ? "text-primary font-semibold" 
+        isActive
+          ? "text-primary font-semibold"
           : "text-muted-foreground hover:text-foreground",
         className
       )}

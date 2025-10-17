@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
 import { BlocksNav } from "@/components/blocks-nav"
@@ -8,8 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/delta-ui/ui/button"
-import Link from "next/link"
+import { Button } from "@/registry/shadcn/button"
 
 const title = "Building Blocks for the Web"
 const description =

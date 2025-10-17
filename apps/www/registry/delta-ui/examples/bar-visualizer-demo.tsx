@@ -5,15 +5,15 @@ import { useState } from "react"
 import {
   BarVisualizer,
   type AgentState,
-} from "@/registry/delta-ui/ui/bar-visualizer"
-import { Button } from "@/registry/delta-ui/ui/button"
+} from "@/registry/delta-ui/delta/bar-visualizer"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
+} from "@/registry/shadcn/card"
 
 export default function BarVisualizerDemo() {
   const [state, setState] = useState<AgentState>("listening")

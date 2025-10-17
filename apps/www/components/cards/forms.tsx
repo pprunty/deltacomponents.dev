@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardContent,
@@ -8,12 +8,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
-import { Checkbox } from "@/registry/delta-ui/ui/checkbox"
-import { Input } from "@/registry/delta-ui/ui/input"
-import { Label } from "@/registry/delta-ui/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/registry/delta-ui/ui/radio-group"
-import { Textarea } from "@/registry/delta-ui/ui/textarea"
+} from "@/registry/shadcn/card"
+import { Checkbox } from "@/registry/shadcn/checkbox"
+import { Input } from "@/registry/shadcn/input"
+import { Label } from "@/registry/shadcn/label"
+import { RadioGroup, RadioGroupItem } from "@/registry/shadcn/radio-group"
+import { Textarea } from "@/registry/shadcn/textarea"
 
 const plans = [
   {

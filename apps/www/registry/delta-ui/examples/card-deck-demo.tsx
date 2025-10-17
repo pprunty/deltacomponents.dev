@@ -1,7 +1,7 @@
 import {
   CardDeckContainer,
   CardDeckItem,
-} from "@/registry/delta-ui/ui/card-deck"
+} from "@/registry/delta-ui/delta/card-deck"
 
 export default function CardDeckDemo() {
   const images = [

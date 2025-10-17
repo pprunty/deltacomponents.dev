@@ -4,13 +4,13 @@ import * as React from "react"
 import { IconMenu3 } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/delta-ui/ui/dropdown-menu"
+} from "@/registry/shadcn/dropdown-menu"
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = React.useState<string | null>(null)

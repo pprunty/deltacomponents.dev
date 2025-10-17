@@ -2,8 +2,8 @@
 
 import { addDays } from "date-fns"
 
-import { Calendar } from "@/registry/delta-ui/ui/calendar"
-import { Card, CardContent } from "@/registry/delta-ui/ui/card"
+import { Calendar } from "@/registry/shadcn/calendar"
+import { Card, CardContent } from "@/registry/shadcn/card"
 
 const start = new Date(2025, 5, 5)
 

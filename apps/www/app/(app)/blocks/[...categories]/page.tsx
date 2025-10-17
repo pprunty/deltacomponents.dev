@@ -23,10 +23,7 @@ export default async function BlocksPage({
   return (
     <div>
       {blocks.map((name) => (
-        <div
-          key={name}
-          className="container py-8 first:pt-6 md:py-12"
-        >
+        <div key={name} className="container py-8 first:pt-6 md:py-12">
           <BlockDisplay name={name} />
         </div>
       ))}

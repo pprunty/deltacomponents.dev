@@ -1,28 +1,24 @@
 "use client"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/delta-ui/ui/avatar"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/shadcn/avatar"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
-import { Input } from "@/registry/delta-ui/ui/input"
-import { Label } from "@/registry/delta-ui/ui/label"
+} from "@/registry/shadcn/card"
+import { Input } from "@/registry/shadcn/input"
+import { Label } from "@/registry/shadcn/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/delta-ui/ui/select"
-import { Separator } from "@/registry/delta-ui/ui/separator"
+} from "@/registry/shadcn/select"
+import { Separator } from "@/registry/shadcn/separator"
 
 const people = [
   {

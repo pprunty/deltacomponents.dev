@@ -2,7 +2,6 @@
 
 import { PauseIcon, PlayIcon } from "lucide-react"
 
-import { cn } from "@/registry/delta-ui/lib/utils"
 import {
   AudioPlayerButton,
   AudioPlayerDuration,
@@ -11,10 +10,11 @@ import {
   AudioPlayerTime,
   exampleTracks,
   useAudioPlayer,
-} from "@/registry/delta-ui/ui/audio-player"
-import { Button } from "@/registry/delta-ui/ui/button"
-import { Card } from "@/registry/delta-ui/ui/card"
-import { ScrollArea } from "@/registry/delta-ui/ui/scroll-area"
+} from "@/registry/delta-ui/delta/audio-player"
+import { cn } from "@/registry/delta-ui/lib/utils"
+import { Button } from "@/registry/shadcn/button"
+import { Card } from "@/registry/shadcn/card"
+import { ScrollArea } from "@/registry/shadcn/scroll-area"
 
 interface Track {
   id: string

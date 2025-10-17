@@ -6,9 +6,9 @@ import { AnimatePresence, motion } from "motion/react"
 import {
   BarVisualizer,
   type AgentState,
-} from "@/registry/delta-ui/ui/bar-visualizer"
-import { Card, CardContent } from "@/registry/delta-ui/ui/card"
-import { ShimmeringText } from "@/registry/delta-ui/ui/shimmering-text"
+} from "@/registry/delta-ui/delta/bar-visualizer"
+import { ShimmeringText } from "@/registry/delta-ui/delta/shimmering-text"
+import { Card, CardContent } from "@/registry/shadcn/card"
 
 const states: AgentState[] = [
   "connecting",

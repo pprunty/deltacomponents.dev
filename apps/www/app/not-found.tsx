@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 
 export default function NotFound() {
   return (

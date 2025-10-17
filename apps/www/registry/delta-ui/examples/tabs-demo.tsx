@@ -7,7 +7,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
+} from "@/registry/delta-ui/delta/tabs"
 
 export default function TabsDemo() {
   const [activeTab, setActiveTab] = useState("overview")

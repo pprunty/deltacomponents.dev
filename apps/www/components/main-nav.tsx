@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 
 export function MainNav({
   items,
@@ -16,7 +16,7 @@ export function MainNav({
 }) {
   const pathname = usePathname()
 
-  const visibleItems = items.filter(item => !item.hide)
+  const visibleItems = items.filter((item) => !item.hide)
 
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>

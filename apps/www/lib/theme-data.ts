@@ -9,7 +9,8 @@ export interface ThemeData {
 export const claymorphismTheme: ThemeData = {
   name: "Claymorphism",
   value: "claymorphism",
-  description: "A modern design approach with soft, clay-like elements and subtle shadows.",
+  description:
+    "A modern design approach with soft, clay-like elements and subtle shadows.",
   previewImage: "/images/themes/claymorphism.png",
   css: `:root {
   --background: oklch(0.9735 0.0261 90.0953);
@@ -170,13 +171,14 @@ export const claymorphismTheme: ThemeData = {
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-}`
+}`,
 }
 
 export const solarizedTheme: ThemeData = {
   name: "Solarized",
-  value: "solarized", 
-  description: "A precision color scheme with careful balance of warm and cool colors.",
+  value: "solarized",
+  description:
+    "A precision color scheme with careful balance of warm and cool colors.",
   previewImage: "/images/themes/solarized.png",
   css: `:root {
   --background: oklch(0.9735 0.0261 90.0953);
@@ -337,13 +339,14 @@ export const solarizedTheme: ThemeData = {
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-}`
+}`,
 }
 
 export const neobrutalismTheme: ThemeData = {
   name: "Neobrutalism",
   value: "neobrutalism",
-  description: "Bold, high-contrast design with thick borders and vibrant colors inspired by brutalist architecture.",
+  description:
+    "Bold, high-contrast design with thick borders and vibrant colors inspired by brutalist architecture.",
   previewImage: "/images/themes/neobrutalism.png",
   css: `:root {
   --background: #ffffff;
@@ -494,11 +497,11 @@ export const neobrutalismTheme: ThemeData = {
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-}`
+}`,
 }
 
 export const THEME_DATA = [claymorphismTheme, solarizedTheme, neobrutalismTheme]
 
 export function getThemeData(value: string): ThemeData | undefined {
-  return THEME_DATA.find(theme => theme.value === value)
+  return THEME_DATA.find((theme) => theme.value === value)
 }

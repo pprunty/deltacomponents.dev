@@ -8,7 +8,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["copy-button"],
     files: [
       {
-        path: "ui/code-block.tsx",
+        path: "delta/code-block.tsx",
         type: "registry:ui",
       },
     ],
@@ -20,7 +20,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["button", "tooltip"],
     files: [
       {
-        path: "ui/copy-button.tsx",
+        path: "delta/copy-button.tsx",
         type: "registry:ui",
       },
     ],
@@ -31,7 +31,7 @@ export const ui: Registry["items"] = [
     dependencies: ["lucide-react", "cambio"],
     files: [
       {
-        path: "ui/cambio-image.tsx",
+        path: "delta/cambio-image.tsx",
         type: "registry:ui",
       },
     ],
@@ -42,7 +42,7 @@ export const ui: Registry["items"] = [
     dependencies: ["lucide-react", "framer-motion", "swiper"],
     files: [
       {
-        path: "ui/card-deck.tsx",
+        path: "delta/card-deck.tsx",
         type: "registry:ui",
       },
     ],
@@ -53,7 +53,7 @@ export const ui: Registry["items"] = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "ui/admonition.tsx",
+        path: "delta/admonition.tsx",
         type: "registry:ui",
       },
     ],
@@ -63,7 +63,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     files: [
       {
-        path: "ui/x-scrollable.tsx",
+        path: "delta/x-scrollable.tsx",
         type: "registry:ui",
       },
     ],
@@ -74,7 +74,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["x-scrollable"],
     files: [
       {
-        path: "ui/tabs.tsx",
+        path: "delta/tabs.tsx",
         type: "registry:ui",
       },
     ],
@@ -85,7 +85,19 @@ export const ui: Registry["items"] = [
     dependencies: ["qr-code-styling"],
     files: [
       {
-        path: "components/qrcode.tsx",
+        path: "delta/qrcode.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "chat",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "streamdown", "motion"],
+    registryDependencies: ["button", "avatar", "textarea", "dropdown-menu"],
+    files: [
+      {
+        path: "delta/chat.tsx",
         type: "registry:ui",
       },
     ],

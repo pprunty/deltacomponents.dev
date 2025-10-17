@@ -14,20 +14,31 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/delta-ui/ui/sidebar"
+} from "@/registry/shadcn/sidebar"
 
 const LEARNING_SECTIONS = [
   { name: "Getting Started", href: "/learning" },
   { name: "Introduction to Next.js", href: "/learning/introduction-to-nextjs" },
   { name: "What is shadcn?", href: "/learning/what-is-shadcn" },
-  { name: "Integrating shadcn with Next.js", href: "/learning/integrating-shadcn-with-nextjs" },
-  { name: "Creating a custom shadcn registry", href: "/learning/creating-custom-shadcn-registry" },
-  { name: "Using custom shadcn registries", href: "/learning/using-custom-shadcn-registries" },
+  {
+    name: "Integrating shadcn with Next.js",
+    href: "/learning/integrating-shadcn-with-nextjs",
+  },
+  {
+    name: "Creating a custom shadcn registry",
+    href: "/learning/creating-custom-shadcn-registry",
+  },
+  {
+    name: "Using custom shadcn registries",
+    href: "/learning/using-custom-shadcn-registries",
+  },
 ]
 
 export function LearningSidebar({
   ...props
-}: React.ComponentProps<typeof Sidebar> & { tree: typeof learningSource.pageTree }) {
+}: React.ComponentProps<typeof Sidebar> & {
+  tree: typeof learningSource.pageTree
+}) {
   const pathname = usePathname()
 
   return (

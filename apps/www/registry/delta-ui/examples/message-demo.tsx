@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-import { Message, MessageContent } from "@/registry/delta-ui/ui/message"
-import { Orb } from "@/registry/delta-ui/ui/orb"
-import { Response } from "@/registry/delta-ui/ui/response"
+import { Message, MessageContent } from "@/registry/delta-ui/delta/message"
+import { Orb } from "@/registry/delta-ui/delta/orb"
+import { Response } from "@/registry/delta-ui/delta/response"
 
 const assistantMessageTokens = [
   "To",

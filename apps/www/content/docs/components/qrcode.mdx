@@ -15,12 +15,7 @@ description: A customizable QR code component with styling options for Delta app
 import QRCode from "@/components/ui/qrcode"
 
 export default function Example() {
-  return (
-    <QRCode 
-      value="https://example.com" 
-      size={200} 
-    />
-  )
+  return <QRCode value="https://example.com" size={200} />
 }
 ```
 
@@ -28,34 +23,53 @@ export default function Example() {
 
 ### Purple Dots Style
 
-<ComponentPreview name="qrcode-purple-dots-demo" dependencies={["qr-code-styling"]} />
+<ComponentPreview
+  name="qrcode-purple-dots-demo"
+  dependencies={["qr-code-styling"]}
+/>
+
+### With Logo
+
+Add a logo to the center of your QR code using the `logoImage` prop:
+
+<ComponentPreview name="qrcode-logo-demo" dependencies={["qr-code-styling"]} />
+
+```tsx
+<QRCode
+  value="https://example.com"
+  logoImage="https://example.com/logo.png"
+  logoSize={0.25}
+  logoMargin={4}
+  level="H"
+  size={200}
+/>
+```
 
 ### Clickable Navigation
 
 When `enableNavigation` is set to `true`, the QR code becomes clickable and will open the encoded URL in a new tab:
 
 ```tsx
-<QRCode 
-  value="https://example.com" 
-  enableNavigation={true}
-  size={200} 
-/>
+<QRCode value="https://example.com" enableNavigation={true} size={200} />
 ```
 
 ## API Reference
 
 ### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | string | - | The data to encode in the QR code (required) |
-| size | number | 200 | Width and height of the QR code in pixels |
-| bgColor | string | "--color-background" | Background color (CSS variable or color value) |
-| fgColor | string | "--color-foreground" | Foreground color (CSS variable or color value) |
-| level | "L" \| "M" \| "Q" \| "H" | "M" | Error correction level |
-| marginSize | number | 0 | Margin size around the QR code |
-| className | string | - | Additional CSS classes |
-| enableNavigation | boolean | false | Enable click navigation to open the QR code URL in a new tab |
-| dotStyle | "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded" | "square" | Style of the QR code dots |
-| cornerSquareStyle | "dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" | "square" | Style of the corner squares |
-| cornerDotStyle | "dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded" | "square" | Style of the corner dots |
+| Prop              | Type                                                                                        | Default              | Description                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------ |
+| value             | string                                                                                      | -                    | The data to encode in the QR code (required)                 |
+| size              | number                                                                                      | 200                  | Width and height of the QR code in pixels                    |
+| bgColor           | string                                                                                      | "--color-background" | Background color (CSS variable or color value)               |
+| fgColor           | string                                                                                      | "--color-foreground" | Foreground color (CSS variable or color value)               |
+| level             | "L" \| "M" \| "Q" \| "H"                                                                    | "M"                  | Error correction level                                       |
+| marginSize        | number                                                                                      | 0                    | Margin size around the QR code                               |
+| className         | string                                                                                      | -                    | Additional CSS classes                                       |
+| enableNavigation  | boolean                                                                                     | false                | Enable click navigation to open the QR code URL in a new tab |
+| dotStyle          | "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded"          | "square"             | Style of the QR code dots                                    |
+| cornerSquareStyle | "dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" | "square"             | Style of the corner squares                                  |
+| cornerDotStyle    | "dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded" | "square"             | Style of the corner dots                                     |
+| logoImage         | string                                                                                      | -                    | URL or data URI for the logo image to display in the center  |
+| logoSize          | number                                                                                      | 0.2                  | Size of the logo as a percentage of the QR code size (0-1)   |
+| logoMargin        | number                                                                                      | 0                    | Margin around the logo in pixels                             |

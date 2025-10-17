@@ -4,7 +4,7 @@ import * as React from "react"
 import { MinusIcon, PlusIcon } from "lucide-react"
 import { Bar, BarChart } from "recharts"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardContent,
@@ -12,8 +12,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
-import { ChartConfig, ChartContainer } from "@/registry/delta-ui/ui/chart"
+} from "@/registry/shadcn/card"
+import { ChartConfig, ChartContainer } from "@/registry/shadcn/chart"
 
 const data = [
   {

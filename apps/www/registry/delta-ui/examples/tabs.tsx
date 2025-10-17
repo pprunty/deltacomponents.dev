@@ -1,9 +1,11 @@
+"use client"
+
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
+} from "@/registry/delta-ui/delta/tabs"
 
 export default function TabsExample() {
   return (

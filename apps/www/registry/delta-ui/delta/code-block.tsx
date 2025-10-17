@@ -6,8 +6,13 @@ import { TerminalIcon } from "lucide-react"
 import { Highlight, PrismTheme } from "prism-react-renderer"
 
 import { cn } from "@/lib/utils"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CopyButton } from "@/registry/delta-ui/ui/copy-button"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/shadcn/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 

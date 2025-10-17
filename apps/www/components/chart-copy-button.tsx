@@ -5,12 +5,12 @@ import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
+} from "@/registry/shadcn/tooltip"
 
 export function ChartCopyButton({
   event,

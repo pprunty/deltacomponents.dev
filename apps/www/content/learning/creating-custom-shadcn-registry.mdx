@@ -54,7 +54,7 @@ Create a `registry.json` file:
     },
     {
       "name": "card",
-      "type": "registry:ui", 
+      "type": "registry:ui",
       "files": ["components/ui/card.tsx"]
     }
   ]
@@ -91,18 +91,18 @@ Create build scripts to generate registry files:
 
 ```javascript
 // scripts/build-registry.js
-const fs = require('fs')
-const path = require('path')
+const fs = require("fs")
+const path = require("path")
 
 function buildRegistry() {
   const components = []
-  
+
   // Scan components directory
   // Generate registry entries
   // Write registry files
-  
+
   fs.writeFileSync(
-    'public/registry.json',
+    "public/registry.json",
     JSON.stringify({ components }, null, 2)
   )
 }
@@ -113,16 +113,19 @@ buildRegistry()
 ## Component Guidelines
 
 ### 1. Consistent API
+
 - Use consistent prop naming across components
 - Follow React best practices
 - Implement proper TypeScript types
 
 ### 2. Documentation
+
 - Include JSDoc comments
 - Provide usage examples
 - Document all props and variants
 
 ### 3. Testing
+
 - Write comprehensive tests
 - Test accessibility features
 - Verify component behavior
@@ -130,6 +133,7 @@ buildRegistry()
 ## Publishing Your Registry
 
 ### 1. Static Hosting
+
 Host your registry files on a CDN or static site:
 
 ```
@@ -140,6 +144,7 @@ https://my-registry.com/
 ```
 
 ### 2. NPM Package
+
 Alternatively, publish as an NPM package:
 
 ```json
@@ -167,16 +172,19 @@ Configure projects to use your custom registry:
 ## Maintenance and Updates
 
 ### 1. Version Management
+
 - Use semantic versioning
 - Maintain changelog
 - Test breaking changes
 
 ### 2. Documentation
+
 - Keep component docs updated
 - Provide migration guides
 - Share best practices
 
 ### 3. Community
+
 - Accept contributions
 - Review pull requests
 - Maintain issue tracking

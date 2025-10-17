@@ -12,7 +12,7 @@ import { useConfig } from "@/hooks/use-config"
 import { useIsMac } from "@/hooks/use-is-mac"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Command,
   CommandEmpty,
@@ -20,7 +20,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/delta-ui/ui/command"
+} from "@/registry/shadcn/command"
 import {
   Dialog,
   DialogContent,
@@ -28,8 +28,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/delta-ui/ui/dialog"
-import { Separator } from "@/registry/delta-ui/ui/separator"
+} from "@/registry/shadcn/dialog"
+import { Separator } from "@/registry/shadcn/separator"
 
 export function CommandMenu({
   tree,

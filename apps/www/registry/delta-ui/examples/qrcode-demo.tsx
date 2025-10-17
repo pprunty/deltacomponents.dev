@@ -1,6 +1,6 @@
 "use client"
 
-import QRCode from "@/registry/delta-ui/components/qrcode"
+import QRCode from "@/registry/delta-ui/delta/qrcode"
 
 export default function QrcodeDemo() {
   return (

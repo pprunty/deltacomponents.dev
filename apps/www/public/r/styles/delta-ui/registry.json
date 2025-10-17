@@ -46,7 +46,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/code-block.tsx",
+          "path": "registry/delta-ui/delta/code-block.tsx",
           "type": "registry:ui"
         }
       ]
@@ -63,7 +63,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/copy-button.tsx",
+          "path": "registry/delta-ui/delta/copy-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -77,7 +77,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/cambio-image.tsx",
+          "path": "registry/delta-ui/delta/cambio-image.tsx",
           "type": "registry:ui"
         }
       ]
@@ -92,7 +92,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/card-deck.tsx",
+          "path": "registry/delta-ui/delta/card-deck.tsx",
           "type": "registry:ui"
         }
       ]
@@ -105,7 +105,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/admonition.tsx",
+          "path": "registry/delta-ui/delta/admonition.tsx",
           "type": "registry:ui"
         }
       ]
@@ -115,7 +115,7 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/delta-ui/ui/x-scrollable.tsx",
+          "path": "registry/delta-ui/delta/x-scrollable.tsx",
           "type": "registry:ui"
         }
       ]
@@ -128,7 +128,7 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/tabs.tsx",
+          "path": "registry/delta-ui/delta/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -141,7 +141,28 @@
       ],
       "files": [
         {
-          "path": "registry/delta-ui/components/qrcode.tsx",
+          "path": "registry/delta-ui/delta/qrcode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "streamdown",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "textarea",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/chat.tsx",
           "type": "registry:ui"
         }
       ]
@@ -199,12 +220,60 @@
       ]
     },
     {
+      "name": "chatbot-window",
+      "type": "registry:block",
+      "description": "Resizable AI chatbot interface with collapsible sidebar",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "select",
+        "textarea",
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/chatbot-window/page.tsx",
+          "type": "registry:page",
+          "target": "app/chatbot-window/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/chatbot-window/components/chatbot-window.tsx",
+          "type": "registry:component",
+          "target": "components/chatbot-window.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full h-screen",
+        "mobile": "component"
+      },
+      "categories": [
+        "ai-elements"
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "chat-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/chat.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/chat-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },
@@ -322,6 +391,19 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/qrcode-demo-interactive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "qrcode-logo-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/qrcode-logo-demo.tsx",
           "type": "registry:example"
         }
       ]

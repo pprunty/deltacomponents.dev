@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from "react"
 
-import { Card } from "@/registry/delta-ui/ui/card"
 import {
   Conversation,
   ConversationContent,
   ConversationEmptyState,
   ConversationScrollButton,
-} from "@/registry/delta-ui/ui/conversation"
-import { Message, MessageContent } from "@/registry/delta-ui/ui/message"
-import { Orb } from "@/registry/delta-ui/ui/orb"
-import { Response } from "@/registry/delta-ui/ui/response"
-import { ShimmeringText } from "@/registry/delta-ui/ui/shimmering-text"
+} from "@/registry/delta-ui/delta/conversation"
+import { Message, MessageContent } from "@/registry/delta-ui/delta/message"
+import { Orb } from "@/registry/delta-ui/delta/orb"
+import { Response } from "@/registry/delta-ui/delta/response"
+import { ShimmeringText } from "@/registry/delta-ui/delta/shimmering-text"
+import { Card } from "@/registry/shadcn/card"
 
 const allMessages = [
   {

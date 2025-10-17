@@ -50,4 +50,35 @@ export const blocks: Registry["items"] = [
     },
     categories: ["landing-page"],
   },
+  {
+    name: "chatbot-window",
+    description: "Resizable AI chatbot interface with collapsible sidebar",
+    type: "registry:block",
+    registryDependencies: [
+      "button",
+      "avatar",
+      "select",
+      "textarea",
+      "resizable",
+    ],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/chatbot-window/page.tsx",
+        type: "registry:page",
+        target: "app/chatbot-window/page.tsx",
+      },
+      {
+        path: "blocks/chatbot-window/components/chatbot-window.tsx",
+        type: "registry:component",
+        target: "components/chatbot-window.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container: "w-full h-screen",
+      mobile: "component",
+    },
+    categories: ["ai-elements"],
+  },
 ]

@@ -5,29 +5,48 @@
     {
       "name": "index",
       "type": "registry:style",
-      "dependencies": ["class-variance-authority", "lucide-react"],
-      "devDependencies": ["tw-animate-css"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {}
     },
     {
       "name": "style",
       "type": "registry:style",
-      "dependencies": ["class-variance-authority", "lucide-react"],
-      "devDependencies": ["tw-animate-css"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {}
     },
     {
       "name": "code-block",
       "type": "registry:ui",
-      "dependencies": ["lucide-react", "prism-react-renderer"],
-      "registryDependencies": ["copy-button"],
+      "dependencies": [
+        "lucide-react",
+        "prism-react-renderer"
+      ],
+      "registryDependencies": [
+        "copy-button"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/code-block.tsx",
+          "path": "registry/delta-ui/delta/code-block.tsx",
           "type": "registry:ui"
         }
       ]
@@ -35,11 +54,16 @@
     {
       "name": "copy-button",
       "type": "registry:ui",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["button", "tooltip"],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/copy-button.tsx",
+          "path": "registry/delta-ui/delta/copy-button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -47,10 +71,13 @@
     {
       "name": "cambio-image",
       "type": "registry:ui",
-      "dependencies": ["lucide-react", "cambio"],
+      "dependencies": [
+        "lucide-react",
+        "cambio"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/cambio-image.tsx",
+          "path": "registry/delta-ui/delta/cambio-image.tsx",
           "type": "registry:ui"
         }
       ]
@@ -58,10 +85,14 @@
     {
       "name": "card-deck",
       "type": "registry:ui",
-      "dependencies": ["lucide-react", "framer-motion", "swiper"],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion",
+        "swiper"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/card-deck.tsx",
+          "path": "registry/delta-ui/delta/card-deck.tsx",
           "type": "registry:ui"
         }
       ]
@@ -69,10 +100,12 @@
     {
       "name": "admonition",
       "type": "registry:ui",
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/admonition.tsx",
+          "path": "registry/delta-ui/delta/admonition.tsx",
           "type": "registry:ui"
         }
       ]
@@ -82,7 +115,7 @@
       "type": "registry:ui",
       "files": [
         {
-          "path": "registry/delta-ui/ui/x-scrollable.tsx",
+          "path": "registry/delta-ui/delta/x-scrollable.tsx",
           "type": "registry:ui"
         }
       ]
@@ -90,10 +123,12 @@
     {
       "name": "tabs",
       "type": "registry:ui",
-      "registryDependencies": ["x-scrollable"],
+      "registryDependencies": [
+        "x-scrollable"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/ui/tabs.tsx",
+          "path": "registry/delta-ui/delta/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -101,10 +136,33 @@
     {
       "name": "qrcode",
       "type": "registry:ui",
-      "dependencies": ["qr-code-styling"],
+      "dependencies": [
+        "qr-code-styling"
+      ],
       "files": [
         {
-          "path": "registry/delta-ui/components/qrcode.tsx",
+          "path": "registry/delta-ui/delta/qrcode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "streamdown",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "textarea",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/chat.tsx",
           "type": "registry:ui"
         }
       ]
@@ -131,7 +189,9 @@
         "container": "w-full bg-background min-h-svh flex items-center justify-center",
         "mobile": "component"
       },
-      "categories": ["landing-page"]
+      "categories": [
+        "landing-page"
+      ]
     },
     {
       "name": "interactive-feature-showcase",
@@ -155,7 +215,44 @@
         "container": "w-full",
         "mobile": "component"
       },
-      "categories": ["landing-page"]
+      "categories": [
+        "landing-page"
+      ]
+    },
+    {
+      "name": "chatbot-window",
+      "type": "registry:block",
+      "description": "Resizable AI chatbot interface with collapsible sidebar",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "select",
+        "textarea",
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/chatbot-window/page.tsx",
+          "type": "registry:page",
+          "target": "app/chatbot-window/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/chatbot-window/components/chatbot-window.tsx",
+          "type": "registry:component",
+          "target": "components/chatbot-window.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full h-screen",
+        "mobile": "component"
+      },
+      "categories": [
+        "ai-elements"
+      ]
     },
     {
       "name": "use-mobile",
@@ -168,9 +265,24 @@
       ]
     },
     {
+      "name": "chat-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/chat.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/chat-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "code-block-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/code-block.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/code-block-demo.tsx",
@@ -181,7 +293,9 @@
     {
       "name": "code-block-package-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/code-block.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/code-block-package-demo.tsx",
@@ -206,7 +320,9 @@
     {
       "name": "code-block-interactive-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/code-block.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/code-block.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/code-block-interactive-demo.tsx",
@@ -243,7 +359,9 @@
     {
       "name": "qrcode-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/qrcode.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/qrcode-demo.tsx",
@@ -254,7 +372,9 @@
     {
       "name": "qrcode-purple-dots-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/qrcode.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/qrcode-purple-dots-demo.tsx",
@@ -265,7 +385,9 @@
     {
       "name": "qrcode-demo-interactive",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/qrcode.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/qrcode-demo-interactive.tsx",
@@ -274,9 +396,24 @@
       ]
     },
     {
+      "name": "qrcode-logo-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/qrcode.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/qrcode-logo-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "card-deck-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/card-deck.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/card-deck-demo.tsx",
@@ -287,7 +424,9 @@
     {
       "name": "card-deck-demo-interactive",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/card-deck.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/card-deck-demo-interactive.tsx",
@@ -298,7 +437,9 @@
     {
       "name": "admonition-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/admonition.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/admonition-demo.tsx",
@@ -309,7 +450,9 @@
     {
       "name": "admonition-demo-interactive",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/admonition.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/admonition.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/admonition-demo-interactive.tsx",
@@ -320,7 +463,9 @@
     {
       "name": "tabs-demo",
       "type": "registry:example",
-      "registryDependencies": ["tabs"],
+      "registryDependencies": [
+        "tabs"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/tabs-demo.tsx",
@@ -331,7 +476,9 @@
     {
       "name": "card-deck-yugioh-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/card-deck.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/card-deck-yugioh-demo.tsx",
@@ -342,7 +489,9 @@
     {
       "name": "card-deck-balatro-demo",
       "type": "registry:example",
-      "registryDependencies": ["https://deltacomponents.dev/r/card-deck.json"],
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/card-deck.json"
+      ],
       "files": [
         {
           "path": "registry/delta-ui/examples/card-deck-balatro-demo.tsx",

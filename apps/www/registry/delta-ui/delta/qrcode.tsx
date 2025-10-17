@@ -37,6 +37,9 @@ interface QRCodeProps {
     | "classy"
     | "classy-rounded"
     | "extra-rounded"
+  logoImage?: string // URL or data URI for the logo image
+  logoSize?: number // Size of the logo as a percentage of the QR code size (0-1)
+  logoMargin?: number // Margin around the logo in pixels
 }
 
 // Helper to resolve CSS variable or direct color
@@ -67,6 +70,9 @@ export default function QRCode({
   dotStyle = "square",
   cornerSquareStyle = "square",
   cornerDotStyle = "square",
+  logoImage,
+  logoSize = 0.2,
+  logoMargin = 0,
 }: QRCodeProps) {
   const ref = useRef<HTMLDivElement>(null)
   const qrCodeRef = useRef<QRCodeStyling | null>(null)
@@ -84,6 +90,7 @@ export default function QRCode({
       type: "svg",
       data: value,
       margin: marginSize,
+      image: logoImage,
       qrOptions: {
         typeNumber: 0,
         mode: "Byte",
@@ -91,8 +98,8 @@ export default function QRCode({
       },
       imageOptions: {
         hideBackgroundDots: true,
-        imageSize: 0.4,
-        margin: 0,
+        imageSize: logoSize,
+        margin: logoMargin,
         crossOrigin: "anonymous",
       },
       dotsOptions: {
@@ -129,6 +136,9 @@ export default function QRCode({
     dotStyle,
     cornerSquareStyle,
     cornerDotStyle,
+    logoImage,
+    logoSize,
+    logoMargin,
   ])
 
   // Re-render when theme changes by listening to color changes

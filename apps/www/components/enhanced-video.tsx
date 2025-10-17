@@ -4,9 +4,9 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export function EnhancedVideo({ 
-  className, 
-  ...props 
+export function EnhancedVideo({
+  className,
+  ...props
 }: React.ComponentProps<"video">) {
   const [isLoading, setIsLoading] = React.useState(true)
   const [hasError, setHasError] = React.useState(false)
@@ -32,24 +32,24 @@ export function EnhancedVideo({
 
   return (
     <div className="my-6">
-      <div 
-        className="relative w-full overflow-hidden rounded-md bg-muted"
+      <div
+        className="bg-muted relative w-full overflow-hidden rounded-md"
         style={{
-          aspectRatio: aspectRatio ? `${aspectRatio}` : '16/9'
+          aspectRatio: aspectRatio ? `${aspectRatio}` : "16/9",
         }}
       >
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-2">
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
               <span className="text-sm">Loading video...</span>
             </div>
           </div>
         )}
-        
+
         {hasError && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-muted-foreground">
+            <div className="text-muted-foreground text-center">
               <div className="mb-2 text-lg">⚠️</div>
               <p className="text-sm">Failed to load video</p>
             </div>
@@ -75,9 +75,9 @@ export function EnhancedVideo({
   )
 }
 
-export function EnhancedVideoLarge({ 
-  className, 
-  ...props 
+export function EnhancedVideoLarge({
+  className,
+  ...props
 }: React.ComponentProps<"video">) {
   const [isLoading, setIsLoading] = React.useState(true)
   const [hasError, setHasError] = React.useState(false)
@@ -103,27 +103,29 @@ export function EnhancedVideoLarge({
 
   return (
     <div className="my-6">
-      <div 
-        className="relative w-full overflow-hidden rounded-md bg-muted"
+      <div
+        className="bg-muted relative w-full overflow-hidden rounded-md"
         style={{
-          aspectRatio: aspectRatio ? `${aspectRatio}` : '16/9'
+          aspectRatio: aspectRatio ? `${aspectRatio}` : "16/9",
         }}
       >
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-2">
               <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
               <span className="text-sm font-medium">Loading video...</span>
             </div>
           </div>
         )}
-        
+
         {hasError && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-muted-foreground">
+            <div className="text-muted-foreground text-center">
               <div className="mb-2 text-2xl">⚠️</div>
               <p className="text-sm font-medium">Failed to load video</p>
-              <p className="text-xs opacity-75">Please check the video source</p>
+              <p className="text-xs opacity-75">
+                Please check the video source
+              </p>
             </div>
           </div>
         )}

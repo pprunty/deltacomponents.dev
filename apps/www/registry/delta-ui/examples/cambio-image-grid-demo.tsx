@@ -1,6 +1,6 @@
 "use client"
 
-import { CambioImage } from "@/registry/delta-ui/ui/cambio-image"
+import { CambioImage } from "@/registry/delta-ui/delta/cambio-image"
 
 const images = [
   {

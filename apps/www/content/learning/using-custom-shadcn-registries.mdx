@@ -101,11 +101,11 @@ interface CustomButtonProps extends ButtonProps {
   loading?: boolean
 }
 
-export function CustomButton({ 
-  icon, 
-  loading, 
-  children, 
-  ...props 
+export function CustomButton({
+  icon,
+  loading,
+  children,
+  ...props
 }: CustomButtonProps) {
   return (
     <Button {...props}>
@@ -121,8 +121,8 @@ export function CustomButton({
 Combine multiple registry components:
 
 ```tsx
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 
 export function LoginCard() {

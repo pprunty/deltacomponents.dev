@@ -2,6 +2,17 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "chat-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [
+      {
+        path: "examples/chat-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "code-block-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
@@ -99,6 +110,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/qrcode-demo-interactive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "qrcode-logo-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    files: [
+      {
+        path: "examples/qrcode-logo-demo.tsx",
         type: "registry:example",
       },
     ],

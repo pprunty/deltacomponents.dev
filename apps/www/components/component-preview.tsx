@@ -11,6 +11,7 @@ export function ComponentPreview({
   align = "center",
   hideCode = false,
   marginOff = false,
+  height,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -19,6 +20,7 @@ export function ComponentPreview({
   hideCode?: boolean
   type?: "block" | "component" | "example"
   marginOff?: boolean
+  height?: string | number
 }) {
   const Component = Index[name]?.component
 
@@ -66,6 +68,7 @@ export function ComponentPreview({
       component={<Component />}
       source={<ComponentSource name={name} collapsible={false} />}
       marginOff={marginOff}
+      height={height}
       {...props}
     />
   )

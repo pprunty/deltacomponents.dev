@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import QRCode from "@/registry/delta-ui/components/qrcode"
+import QRCode from "@/registry/delta-ui/delta/qrcode"
 
 const qrCodeConfigs = [
   {

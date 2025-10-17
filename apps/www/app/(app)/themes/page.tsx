@@ -1,13 +1,13 @@
 "use client"
 
+import { useThemeConfig } from "@/components/active-theme"
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/delta-ui/ui/button"
-import { useThemeConfig } from "@/components/active-theme"
 import { ThemeGrid } from "@/components/themes/theme-grid"
+import { Button } from "@/registry/shadcn/button"
 
 export default function ThemesPage() {
   const { setActiveTheme } = useThemeConfig()

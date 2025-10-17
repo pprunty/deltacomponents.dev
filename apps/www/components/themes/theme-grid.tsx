@@ -1,6 +1,7 @@
 "use client"
 
 import { THEME_DATA } from "@/lib/theme-data"
+
 import { ThemeCard } from "./theme-card"
 
 export function ThemeGrid() {

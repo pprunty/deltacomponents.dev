@@ -1,20 +1,15 @@
 import Link from "next/link"
 
 import { BlockDisplay } from "@/components/block-display"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 
-const FEATURED_BLOCKS = [
-  "testimonials",
-]
+const FEATURED_BLOCKS = ["testimonials"]
 
 export default async function BlocksPage() {
   return (
     <div>
       {FEATURED_BLOCKS.map((block) => (
-        <div
-          key={block}
-          className="container py-8 first:pt-6 md:py-12"
-        >
+        <div key={block} className="container py-8 first:pt-6 md:py-12">
           <BlockDisplay name={block} />
         </div>
       ))}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { Admonition } from "@/registry/delta-ui/ui/admonition"
+import { Admonition } from "@/registry/delta-ui/delta/admonition"
 
 const admonitionTypes = [
   {

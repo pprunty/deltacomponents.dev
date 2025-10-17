@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 
-import { Button } from "@/registry/delta-ui/ui/button"
-import { ScrollingWaveform, Waveform } from "@/registry/delta-ui/ui/waveform"
+import { ScrollingWaveform, Waveform } from "@/registry/delta-ui/delta/waveform"
+import { Button } from "@/registry/shadcn/button"
 
 export default function WaveformDemo() {
   const [isScrolling, setIsScrolling] = useState(true)

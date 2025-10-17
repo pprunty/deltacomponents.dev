@@ -4,7 +4,6 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
-import { EnhancedVideo, EnhancedVideoLarge } from "@/components/enhanced-video"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
@@ -12,31 +11,28 @@ import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsNavGrid } from "@/components/components-nav-grid"
-import { LearningNavGrid } from "@/components/learning-nav-grid"
 import { CopyButton } from "@/components/copy-button"
+import { EnhancedVideo, EnhancedVideoLarge } from "@/components/enhanced-video"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { Installation } from "@/components/installation"
-import { Steps, Step } from "@/components/steps"
+import { LearningNavGrid } from "@/components/learning-nav-grid"
+import { Step, Steps } from "@/components/steps"
+import { Admonition } from "@/registry/delta-ui/delta/admonition"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/delta-ui/ui/accordion"
-import { Admonition } from "@/registry/delta-ui/ui/admonition"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/delta-ui/ui/alert"
-import { AspectRatio } from "@/registry/delta-ui/ui/aspect-ratio"
-import { Button } from "@/registry/delta-ui/ui/button"
+} from "@/registry/shadcn/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/registry/shadcn/alert"
+import { AspectRatio } from "@/registry/shadcn/aspect-ratio"
+import { Button } from "@/registry/shadcn/button"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
+} from "@/registry/shadcn/tabs"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -324,7 +320,10 @@ export const mdxComponents = {
   ),
   Button,
   Callout,
-  Admonition: ({ className, ...props }: React.ComponentProps<typeof Admonition>) => (
+  Admonition: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof Admonition>) => (
     <Admonition className={cn("my-6", className)} {...props} />
   ),
   Accordion,
@@ -358,5 +357,7 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Video: (props: React.ComponentProps<"video">) => <EnhancedVideoLarge {...props} />,
+  Video: (props: React.ComponentProps<"video">) => (
+    <EnhancedVideoLarge {...props} />
+  ),
 }

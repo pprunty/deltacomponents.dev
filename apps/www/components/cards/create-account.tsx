@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/delta-ui/ui/card"
-import { Input } from "@/registry/delta-ui/ui/input"
-import { Label } from "@/registry/delta-ui/ui/label"
+} from "@/registry/shadcn/card"
+import { Input } from "@/registry/shadcn/input"
+import { Label } from "@/registry/shadcn/label"
 
 export function CardsCreateAccount() {
   return (

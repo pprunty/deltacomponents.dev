@@ -1,4 +1,4 @@
-import { Admonition } from "@/registry/delta-ui/ui/admonition"
+import { Admonition } from "@/registry/delta-ui/delta/admonition"
 
 export default function AdmonitionDemo() {
   return (

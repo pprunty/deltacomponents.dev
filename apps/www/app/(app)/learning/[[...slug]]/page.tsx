@@ -2,19 +2,15 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
-import {
-  IconArrowLeft,
-  IconArrowRight,
-} from "@tabler/icons-react"
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
 
 import { learningSource } from "@/lib/learning-source"
 import { absoluteUrl } from "@/lib/utils"
-import { DocsTableOfContents } from "@/components/docs-toc"
-import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
 import { DocsCopyPage } from "@/components/docs-copy-page"
-import { Button } from "@/registry/delta-ui/ui/button"
-
+import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
+import { DocsTableOfContents } from "@/components/docs-toc"
+import { Button } from "@/registry/shadcn/button"
 
 export default async function Page({
   params,
@@ -22,7 +18,7 @@ export default async function Page({
   params: Promise<{ slug?: string[] }>
 }) {
   const { slug } = await params
-  
+
   // If no slug, try to get the index page
   if (!slug || slug.length === 0) {
     const indexPage = learningSource.getPage([])
@@ -30,7 +26,10 @@ export default async function Page({
       const doc = indexPage.data
       // @ts-expect-error - revisit fumadocs types.
       const MDX = doc.body
-      const neighbours = await findNeighbour(learningSource.pageTree, indexPage.url)
+      const neighbours = await findNeighbour(
+        learningSource.pageTree,
+        indexPage.url
+      )
 
       return (
         <div
@@ -78,7 +77,7 @@ export default async function Page({
                   </div>
                 </div>
               </div>
-              <div className="prose prose-neutral max-w-none dark:prose-invert">
+              <div className="prose prose-neutral dark:prose-invert max-w-none">
                 <MDX components={mdxComponents} />
               </div>
             </div>

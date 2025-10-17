@@ -25,18 +25,18 @@ import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/delta-ui/ui/collapsible"
+} from "@/registry/shadcn/collapsible"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/delta-ui/ui/resizable"
-import { Separator } from "@/registry/delta-ui/ui/separator"
+} from "@/registry/shadcn/resizable"
+import { Separator } from "@/registry/shadcn/separator"
 import {
   Sidebar,
   SidebarGroup,
@@ -47,12 +47,9 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarProvider,
-} from "@/registry/delta-ui/ui/sidebar"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/delta-ui/ui/toggle-group"
+} from "@/registry/shadcn/sidebar"
+import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/shadcn/toggle-group"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
@@ -133,14 +130,24 @@ function BlockViewerToolbar() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
-    <div className="hidden w-full items-center gap-2 pl-2 md:pr-6 lg:flex overflow-x-hidden">
+    <div className="hidden w-full items-center gap-2 overflow-x-hidden pl-2 md:pr-6 lg:flex">
       <Tabs
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
       >
         <TabsList size="sm" variant="default" className="h-auto grid-cols-2">
-          <TabsTrigger value="preview" className="min-w-[70px] justify-center text-center">Preview</TabsTrigger>
-          <TabsTrigger value="code" className="min-w-[70px] justify-center text-center">Code</TabsTrigger>
+          <TabsTrigger
+            value="preview"
+            className="min-w-[70px] justify-center text-center"
+          >
+            Preview
+          </TabsTrigger>
+          <TabsTrigger
+            value="code"
+            className="min-w-[70px] justify-center text-center"
+          >
+            Code
+          </TabsTrigger>
         </TabsList>
       </Tabs>
       <Separator orientation="vertical" className="mx-2 !h-4" />

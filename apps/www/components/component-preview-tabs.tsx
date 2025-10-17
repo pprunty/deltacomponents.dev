@@ -8,7 +8,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
+} from "@/registry/delta-ui/delta/tabs"
 
 export function ComponentPreviewTabs({
   className,
@@ -17,6 +17,7 @@ export function ComponentPreviewTabs({
   component,
   source,
   marginOff = false,
+  height = "450px",
   ...props
 }: React.ComponentProps<"div"> & {
   align?: "center" | "start" | "end"
@@ -24,6 +25,7 @@ export function ComponentPreviewTabs({
   component: React.ReactNode
   source: React.ReactNode
   marginOff?: boolean
+  height?: string | number
 }) {
   const [tab, setTab] = React.useState("preview")
 
@@ -61,9 +63,12 @@ export function ComponentPreviewTabs({
           <div
             data-align={align}
             className={cn(
-              "preview flex h-[450px] w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+              "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start [height:var(--preview-height)]",
               marginOff ? "p-0" : "p-4 sm:p-6 md:p-10"
             )}
+            style={{ 
+              "--preview-height": typeof height === "number" ? `${height}px` : height
+            } as React.CSSProperties & { "--preview-height": string }}
           >
             {component}
           </div>
@@ -72,7 +77,12 @@ export function ComponentPreviewTabs({
           value="code"
           className="relative overflow-hidden rounded-lg border"
         >
-          <div className="h-[450px] overflow-hidden **:[figure]:!m-0 **:[pre]:h-[450px] **:[pre]:relative **:[pre]:z-0 **:button:!z-[5]">
+          <div 
+            className="**:button:!z-[5] overflow-hidden **:[figure]:!m-0 **:[pre]:relative **:[pre]:z-0 **:[pre]:[height:var(--code-height)] [height:var(--code-height)]"
+            style={{ 
+              "--code-height": typeof height === "number" ? `${height}px` : height
+            } as React.CSSProperties & { "--code-height": string }}
+          >
             {source}
           </div>
         </TabsContent>

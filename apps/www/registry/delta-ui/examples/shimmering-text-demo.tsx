@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 
-import { ShimmeringText } from "@/registry/delta-ui/ui/shimmering-text"
+import { ShimmeringText } from "@/registry/delta-ui/delta/shimmering-text"
 
 const phrases = [
   "Agent is thinking...",

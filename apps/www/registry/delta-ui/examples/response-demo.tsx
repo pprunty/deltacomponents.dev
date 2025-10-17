@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { Response } from "@/registry/delta-ui/ui/response"
+import { Response } from "@/registry/delta-ui/delta/response"
 
 const tokens = [
   "### Welcome",

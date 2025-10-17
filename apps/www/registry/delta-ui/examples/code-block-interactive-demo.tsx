@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
-import { CodeBlock } from "@/registry/delta-ui/ui/code-block"
+import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 
 // 5 Popular Prism Themes
 const atomDarkTheme: PrismTheme = {

@@ -4,12 +4,12 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { Button } from "@/registry/shadcn/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
+} from "@/registry/shadcn/tooltip"
 
 export function copyToClipboard(value: string) {
   navigator.clipboard.writeText(value)

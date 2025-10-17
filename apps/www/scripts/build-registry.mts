@@ -94,8 +94,7 @@ async function buildRegistryJsonFile() {
     JSON.stringify(fixedRegistry, null, 2)
   )
 
-  // 3. Format the registry.json file.
-  await exec(`prettier --write registry.json`)
+  // 3. Skip prettier formatting for now due to compatibility issues
 
   // 3. Copy the registry.json to the www/public/r/styles/delta-ui directory.
   await fs.cp(
@@ -333,15 +332,7 @@ async function buildBlocksIndex() {
     JSON.stringify(payload, null, 2)
   )
 
-  await new Promise((resolve, reject) => {
-    exec(`prettier --write registry/__blocks__.json`, (error) => {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolve(undefined)
-    })
-  })
+  // Skip prettier formatting for now due to compatibility issues
 }
 
 try {

@@ -7,23 +7,23 @@ import { PanelLeftIcon } from "lucide-react"
 
 import { useIsMobile } from "@/registry/delta-ui/hooks/use-mobile"
 import { cn } from "@/registry/delta-ui/lib/utils"
-import { Button } from "@/registry/delta-ui/ui/button"
-import { Input } from "@/registry/delta-ui/ui/input"
-import { Separator } from "@/registry/delta-ui/ui/separator"
+import { Button } from "@/registry/shadcn/button"
+import { Input } from "@/registry/shadcn/input"
+import { Separator } from "@/registry/shadcn/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/registry/delta-ui/ui/sheet"
-import { Skeleton } from "@/registry/delta-ui/ui/skeleton"
+} from "@/registry/shadcn/sheet"
+import { Skeleton } from "@/registry/shadcn/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
+} from "@/registry/shadcn/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
