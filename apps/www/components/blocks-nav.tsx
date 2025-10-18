@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { registryCategories } from "@/registry/registry-categories"
-import { ScrollArea, ScrollBar } from "@/registry/shadcn/scroll-area"
+import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
 
 export function BlocksNav() {
   const pathname = usePathname()

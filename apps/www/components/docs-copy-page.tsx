@@ -3,20 +3,20 @@
 import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/shadcn/dropdown-menu"
+} from "@/registry/delta-ui/ui/dropdown-menu"
 import {
   Popover,
   PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/shadcn/popover"
-import { Separator } from "@/registry/shadcn/separator"
+} from "@/registry/delta-ui/ui/popover"
+import { Separator } from "@/registry/delta-ui/ui/separator"
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(

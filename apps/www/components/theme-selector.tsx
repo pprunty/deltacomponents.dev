@@ -5,8 +5,8 @@ import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
-import { Button } from "@/registry/shadcn/button"
-import { Label } from "@/registry/shadcn/label"
+import { Button } from "@/registry/delta-ui/ui/button"
+import { Label } from "@/registry/delta-ui/ui/label"
 import {
   Select,
   SelectContent,
@@ -16,7 +16,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/shadcn/select"
+} from "@/registry/delta-ui/ui/select"
 
 const DEFAULT_THEMES = [
   {

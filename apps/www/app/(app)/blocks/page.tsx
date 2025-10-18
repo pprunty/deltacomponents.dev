@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { BlockDisplay } from "@/components/block-display"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 const FEATURED_BLOCKS = ["testimonials"]
 

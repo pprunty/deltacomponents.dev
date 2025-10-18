@@ -7,12 +7,12 @@ import { usePathname, useRouter } from "next/navigation"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/shadcn/popover"
+} from "@/registry/delta-ui/ui/popover"
 
 export function MobileNav({
   tree,

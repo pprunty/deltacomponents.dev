@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 import { LiveWaveform } from "@/registry/delta-ui/delta/live-waveform"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export default function LiveWaveformDemo() {
   const [active, setActive] = useState(false)

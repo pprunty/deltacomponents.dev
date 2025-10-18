@@ -13,7 +13,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/shadcn/breadcrumb"
+} from "@/registry/delta-ui/ui/breadcrumb"
 
 export function DocsBreadcrumb({
   tree,

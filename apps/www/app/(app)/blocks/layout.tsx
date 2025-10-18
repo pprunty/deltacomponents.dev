@@ -9,7 +9,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Building Blocks for the Web"
 const description =

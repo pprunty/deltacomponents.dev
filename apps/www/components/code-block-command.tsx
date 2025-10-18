@@ -4,14 +4,14 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/shadcn/tooltip"
+} from "@/registry/delta-ui/ui/tooltip"
 
 export function CodeBlockCommand({
   __npm__,

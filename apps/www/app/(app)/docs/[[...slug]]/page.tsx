@@ -13,8 +13,8 @@ import { absoluteUrl } from "@/lib/utils"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
 import { DocsTableOfContents } from "@/components/docs-toc"
-import { Badge } from "@/registry/shadcn/badge"
-import { Button } from "@/registry/shadcn/button"
+import { Badge } from "@/registry/delta-ui/ui/badge"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export const revalidate = false
 export const dynamic = "force-static"

@@ -12,7 +12,7 @@ import { Message, MessageContent } from "@/registry/delta-ui/delta/message"
 import { Orb } from "@/registry/delta-ui/delta/orb"
 import { Response } from "@/registry/delta-ui/delta/response"
 import { ShimmeringText } from "@/registry/delta-ui/delta/shimmering-text"
-import { Card } from "@/registry/shadcn/card"
+import { Card } from "@/registry/delta-ui/ui/card"
 
 const allMessages = [
   {

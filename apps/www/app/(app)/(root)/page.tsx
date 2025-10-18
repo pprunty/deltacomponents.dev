@@ -12,7 +12,7 @@ import {
 } from "@/components/page-header"
 import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Delta Components UI"
 const description =

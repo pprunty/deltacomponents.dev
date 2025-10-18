@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/shadcn/card"
-import { Label } from "@/registry/shadcn/label"
-import { Switch } from "@/registry/shadcn/switch"
+} from "@/registry/delta-ui/ui/card"
+import { Label } from "@/registry/delta-ui/ui/label"
+import { Switch } from "@/registry/delta-ui/ui/switch"
 
 export function CardsCookieSettings() {
   return (

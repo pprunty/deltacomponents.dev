@@ -6,7 +6,7 @@ import { ChartCopyButton } from "@/components/chart-copy-button"
 import { Chart } from "@/components/chart-display"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Drawer,
   DrawerContent,
@@ -14,7 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/shadcn/drawer"
+} from "@/registry/delta-ui/ui/drawer"
 import {
   Sheet,
   SheetContent,
@@ -22,7 +22,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/shadcn/sheet"
+} from "@/registry/delta-ui/ui/sheet"
 
 export function ChartCodeViewer({
   chart,

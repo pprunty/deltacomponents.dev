@@ -8,7 +8,7 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/registry/shadcn/sonner"
+import { Toaster } from "@/registry/delta-ui/ui/sonner"
 
 import "@/styles/globals.css"
 

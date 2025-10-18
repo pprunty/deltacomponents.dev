@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils"
 import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { ChartCopyButton } from "@/components/chart-copy-button"
 import { Chart } from "@/components/chart-display"
-import { Separator } from "@/registry/shadcn/separator"
+import { Separator } from "@/registry/delta-ui/ui/separator"
 
 export function ChartToolbar({
   chart,

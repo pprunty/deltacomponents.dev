@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mapbox-pointer-style-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/mapbox-pointer.json"
+  ],
+  "files": [
+    {
+      "path": "examples/mapbox-pointer-style-demo.tsx",
+      "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/registry/delta-ui/delta/mapbox-pointer\"\n\nexport default function MapboxPointerStyleDemo() {\n  // Dublin, Ireland coordinates\n  const latitude = 53.3498\n  const longitude = -6.2603\n\n  return (\n    <div className=\"w-full\">\n      <MapboxPointer\n        latitude={latitude}\n        longitude={longitude}\n        zoom={12.8}\n        style=\"navigation-night-v1\"\n        interactive={true}\n        label=\"Dublin, Ireland\"\n        labelHref=\"https://en.wikipedia.org/wiki/Dublin\"\n        className=\"h-96\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

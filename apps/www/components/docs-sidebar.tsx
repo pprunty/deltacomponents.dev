@@ -15,7 +15,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/shadcn/sidebar"
+} from "@/registry/delta-ui/ui/sidebar"
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
@@ -36,7 +36,11 @@ const BLOCKS_SECTIONS = [
       { name: "Testimonials", href: "/blocks/landing-page#testimonials" },
       {
         name: "Video Card Grid",
-        href: "/blocks/landing-page#interactive-feature-showcase",
+        href: "/blocks/ai-elements#interactive-feature-showcase",
+      },
+      {
+        name: "LLM Chat Window",
+        href: "/blocks/ai-elements#chatbot-window",
       },
     ],
   },

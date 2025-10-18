@@ -1,6 +1,6 @@
 import { learningSource } from "@/lib/learning-source"
 import { LearningSidebar } from "@/components/learning-sidebar"
-import { SidebarProvider } from "@/registry/shadcn/sidebar"
+import { SidebarProvider } from "@/registry/delta-ui/ui/sidebar"
 
 export default function LearningLayout({
   children,

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 
-import { Switch } from "@/registry/shadcn/switch"
+import { Switch } from "@/registry/delta-ui/ui/switch"
 
 interface BlurVignetteProps {
   children: React.ReactNode

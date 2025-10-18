@@ -12,7 +12,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/shadcn/tabs"
+} from "@/registry/delta-ui/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 

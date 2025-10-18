@@ -3,13 +3,13 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/shadcn/collapsible"
-import { Separator } from "@/registry/shadcn/separator"
+} from "@/registry/delta-ui/ui/collapsible"
+import { Separator } from "@/registry/delta-ui/ui/separator"
 
 export function CodeCollapsibleWrapper({
   className,

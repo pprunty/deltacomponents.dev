@@ -94,10 +94,20 @@ export const ui: Registry["items"] = [
     name: "chat",
     type: "registry:ui",
     dependencies: ["lucide-react", "streamdown", "motion"],
-    registryDependencies: ["button", "avatar", "textarea", "dropdown-menu"],
+    registryDependencies: ["button", "avatar", "textarea", "select"],
     files: [
       {
-        path: "delta/chat.tsx",
+        path: "examples/chat-demo.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "mapbox-pointer",
+    type: "registry:ui",
+    files: [
+      {
+        path: "delta/mapbox-pointer.tsx",
         type: "registry:ui",
       },
     ],

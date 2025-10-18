@@ -14,7 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/registry/shadcn/sidebar"
+} from "@/registry/delta-ui/ui/sidebar"
 
 const LEARNING_SECTIONS = [
   { name: "Getting Started", href: "/learning" },

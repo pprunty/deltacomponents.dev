@@ -174,14 +174,32 @@ export const Index: Record<string, any> = {
     name: "chat",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button","avatar","textarea","dropdown-menu"],
+    registryDependencies: ["button","avatar","textarea","select"],
     files: [{
-      path: "registry/delta-ui/delta/chat.tsx",
+      path: "registry/delta-ui/examples/chat-demo.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/delta-ui/delta/chat.tsx")
+      const mod = await import("@/registry/delta-ui/examples/chat-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "mapbox-pointer": {
+    name: "mapbox-pointer",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/mapbox-pointer.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/mapbox-pointer.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -272,6 +290,42 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "mapbox-pointer-demo": {
+    name: "mapbox-pointer-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [{
+      path: "registry/delta-ui/examples/mapbox-pointer-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/mapbox-pointer-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "mapbox-pointer-style-demo": {
+    name: "mapbox-pointer-style-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [{
+      path: "registry/delta-ui/examples/mapbox-pointer-style-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/mapbox-pointer-style-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "chat-demo": {
     name: "chat-demo",
     description: "",
@@ -284,6 +338,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/chat-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "chat-previous-messages-demo": {
+    name: "chat-previous-messages-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [{
+      path: "registry/delta-ui/examples/chat-previous-messages-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/chat-previous-messages-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

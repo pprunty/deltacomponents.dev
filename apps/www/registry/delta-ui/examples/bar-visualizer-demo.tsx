@@ -6,14 +6,14 @@ import {
   BarVisualizer,
   type AgentState,
 } from "@/registry/delta-ui/delta/bar-visualizer"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/shadcn/card"
+} from "@/registry/delta-ui/ui/card"
 
 export default function BarVisualizerDemo() {
   const [state, setState] = useState<AgentState>("listening")

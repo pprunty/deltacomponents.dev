@@ -1,6 +1,6 @@
 import { source } from "@/lib/source"
 import { DocsSidebar } from "@/components/docs-sidebar"
-import { SidebarProvider } from "@/registry/shadcn/sidebar"
+import { SidebarProvider } from "@/registry/delta-ui/ui/sidebar"
 
 export default function DocsLayout({
   children,

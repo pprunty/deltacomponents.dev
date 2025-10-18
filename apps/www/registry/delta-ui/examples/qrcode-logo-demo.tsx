@@ -13,6 +13,7 @@ export default function QRCodeLogoDemo() {
         dotStyle="rounded"
         cornerSquareStyle="rounded"
         cornerDotStyle="rounded"
+        fgColor="#ff6600"
         enableNavigation={true}
       />
     </div>

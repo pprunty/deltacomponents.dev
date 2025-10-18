@@ -2,7 +2,7 @@
 
 import type { ThemeData } from "@/lib/theme-data"
 import { useThemeConfig } from "@/components/active-theme"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 import { ThemeCodeDialog } from "./theme-code-dialog"
 

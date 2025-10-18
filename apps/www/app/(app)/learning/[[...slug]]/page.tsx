@@ -10,7 +10,7 @@ import { absoluteUrl } from "@/lib/utils"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
 import { DocsTableOfContents } from "@/components/docs-toc"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export default async function Page({
   params,

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 // Custom C++ theme - Dark variant
 const cppTheme: PrismTheme = {

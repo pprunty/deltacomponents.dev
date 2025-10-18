@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { Card } from "@/registry/shadcn/card"
+import { Card } from "@/registry/delta-ui/ui/card"
 
 interface ComponentCardProps {
   component: {

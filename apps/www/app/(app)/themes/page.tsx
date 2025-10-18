@@ -7,7 +7,7 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { ThemeGrid } from "@/components/themes/theme-grid"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export default function ThemesPage() {
   const { setActiveTheme } = useThemeConfig()

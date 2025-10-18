@@ -6,16 +6,16 @@ import { Globe, MessageSquare, PanelRightOpen, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   ChatMessage,
-  ChatMessages,
-  ChatPromptInput,
-  ChatModelSelector,
-} from "@/registry/delta-ui/delta/chat"
-import { Button } from "@/registry/shadcn/button"
+  Conversation,
+  ModelSelector,
+  PromptInput,
+} from "@/registry/delta-ui/delta/ai-elements"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/shadcn/resizable"
+} from "@/registry/delta-ui/ui/resizable"
 
 // Mock data for demonstration
 const mockModels = [
@@ -105,14 +105,14 @@ function Chatbot({}: ChatbotProps) {
 
   return (
     <div className="flex h-full flex-col">
-      <ChatMessages
+      <Conversation
         messages={messages}
         isLoading={isLoading}
         className="flex-1"
         userAvatar="https://patrickprunty.com/icon.webp"
       />
 
-      <ChatPromptInput
+      <PromptInput
         input={input}
         onInputChange={setInput}
         onSubmit={handleSubmit}

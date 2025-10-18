@@ -7,46 +7,14 @@ links:
   docs: https://ui.shadcn.com/docs/components/chat
 ---
 
-<ComponentPreview name="chat" height="700px" />
+<ComponentPreview name="chat-demo" height="700px" />
 
 ## Installation
 
-<Tabs defaultValue="cli">
-
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
-
-<TabsContent value="cli">
-
-```bash
-npx shadcn@latest add https://deltacomponents.dev/r/chat
-```
-
-</TabsContent>
-
-<TabsContent value="manual">
-
-<Steps>
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install lucide-react streamdown motion
-```
-
-<Step>Copy and paste the following code into your project.</Step>
-
-<ComponentSource name="chat" />
-
-<Step>Update the import paths to match your project setup.</Step>
-
-</Steps>
-
-</TabsContent>
-
-</Tabs>
+<Installation
+  name="chat"
+  dependencies={["lucide-react", "streamdown"]}
+/>
 
 ## Usage
 
@@ -60,11 +28,9 @@ import { Chat } from "@/components/chat"
 
 ## Examples
 
-### Basic Usage
+### Chat with Previous Messages
 
-<ComponentPreview name="chat" height="500px" />
-
-### Advanced Demo with Token Streaming
+<ComponentPreview name="chat-previous-messages-demo" height="600px" />
 
 
 ## API Reference

@@ -23,16 +23,16 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/shadcn/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/registry/shadcn/alert"
-import { AspectRatio } from "@/registry/shadcn/aspect-ratio"
-import { Button } from "@/registry/shadcn/button"
+} from "@/registry/delta-ui/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/registry/delta-ui/ui/alert"
+import { AspectRatio } from "@/registry/delta-ui/ui/aspect-ratio"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/shadcn/tabs"
+} from "@/registry/delta-ui/ui/tabs"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (

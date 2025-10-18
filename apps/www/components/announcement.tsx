@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
-import { Badge } from "@/registry/shadcn/badge"
+import { Badge } from "@/registry/delta-ui/ui/badge"
 
 export function Announcement() {
   return (

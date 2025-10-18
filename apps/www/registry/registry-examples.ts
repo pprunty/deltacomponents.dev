@@ -2,12 +2,45 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "mapbox-pointer-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [
+      {
+        path: "examples/mapbox-pointer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "mapbox-pointer-style-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [
+      {
+        path: "examples/mapbox-pointer-style-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "chat-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
     files: [
       {
         path: "examples/chat-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "chat-previous-messages-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [
+      {
+        path: "examples/chat-previous-messages-demo.tsx",
         type: "registry:example",
       },
     ],

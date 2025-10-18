@@ -9,8 +9,8 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import blocks from "@/registry/__blocks__.json"
-import { Button } from "@/registry/shadcn/button"
-import { Separator } from "@/registry/shadcn/separator"
+import { Button } from "@/registry/delta-ui/ui/button"
+import { Separator } from "@/registry/delta-ui/ui/separator"
 
 export function SiteHeader() {
   const pageTree = source.pageTree

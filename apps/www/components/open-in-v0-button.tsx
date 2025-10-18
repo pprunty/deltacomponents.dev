@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export function OpenInV0Button({
   name,

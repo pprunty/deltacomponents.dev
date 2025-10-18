@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Card,
   CardContent,
@@ -10,17 +10,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/shadcn/card"
-import { Input } from "@/registry/shadcn/input"
-import { Label } from "@/registry/shadcn/label"
+} from "@/registry/delta-ui/ui/card"
+import { Input } from "@/registry/delta-ui/ui/input"
+import { Label } from "@/registry/delta-ui/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/shadcn/select"
-import { Textarea } from "@/registry/shadcn/textarea"
+} from "@/registry/delta-ui/ui/select"
+import { Textarea } from "@/registry/delta-ui/ui/textarea"
 
 export function CardsReportIssue() {
   const id = React.useId()

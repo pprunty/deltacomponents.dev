@@ -4,7 +4,7 @@ import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()

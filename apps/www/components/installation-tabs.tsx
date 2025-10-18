@@ -9,7 +9,7 @@ import {
   TabsContent as PackageManagerTabsContent,
   TabsList as PackageManagerTabsList,
   TabsTrigger as PackageManagerTabsTrigger,
-} from "@/components/ui/tabs"
+} from "@/registry/delta-ui/ui/tabs"
 import { Step, Steps } from "@/components/steps"
 import {
   Tabs,

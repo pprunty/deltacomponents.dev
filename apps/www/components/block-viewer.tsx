@@ -25,18 +25,18 @@ import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/shadcn/collapsible"
+} from "@/registry/delta-ui/ui/collapsible"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/shadcn/resizable"
-import { Separator } from "@/registry/shadcn/separator"
+} from "@/registry/delta-ui/ui/resizable"
+import { Separator } from "@/registry/delta-ui/ui/separator"
 import {
   Sidebar,
   SidebarGroup,
@@ -47,9 +47,9 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarProvider,
-} from "@/registry/shadcn/sidebar"
+} from "@/registry/delta-ui/ui/sidebar"
 import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
-import { ToggleGroup, ToggleGroupItem } from "@/registry/shadcn/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle-group"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
@@ -114,7 +114,7 @@ function BlockViewerProvider({
         className="group/block-view-wrapper flex min-w-0 scroll-mt-24 flex-col-reverse items-stretch gap-4 overflow-hidden md:flex-col"
         style={
           {
-            "--height": item.meta?.iframeHeight ?? "930px",
+            "--height": item.meta?.iframeHeight ?? "1200px",
           } as React.CSSProperties
         }
       >
@@ -239,7 +239,7 @@ function BlockViewerIframe({ className }: { className?: string }) {
     <iframe
       key={iframeKey}
       src={`/view/${item.name}`}
-      height={item.meta?.iframeHeight ?? 930}
+      height={item.meta?.iframeHeight ?? 1200}
       loading="lazy"
       className={cn(
         "bg-background no-scrollbar relative z-20 w-full",

@@ -5,7 +5,7 @@ import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
-import { Button } from "@/registry/shadcn/button"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -13,12 +13,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/shadcn/dialog"
+} from "@/registry/delta-ui/ui/dialog"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/shadcn/tooltip"
+} from "@/registry/delta-ui/ui/tooltip"
 
 interface ThemeCodeDialogProps {
   themeName: string
