@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+import { CheckIcon, ClipboardIcon } from "lucide-react";
 import { Button } from "@/registry/delta-ui/ui/button";
 import {
   Tooltip,
@@ -13,7 +15,7 @@ import type { ComponentProps } from "react";
 export type ActionsProps = ComponentProps<"div">;
 
 export const Actions = ({ className, children, ...props }: ActionsProps) => (
-  <div className={cn("flex items-center gap-0 px-1", className)} {...props}>
+  <div className={cn("flex items-center gap-0 px-1 active:opacity-100 focus-within:opacity-100", className)} {...props}>
     {children}
   </div>
 );
@@ -62,4 +64,47 @@ export const Action = ({
   }
 
   return button;
+};
+
+export type CopyActionProps = Omit<ActionProps, 'onClick'> & {
+  value: string;
+};
+
+export const CopyAction = ({
+  value,
+  tooltip = "Copy message",
+  children,
+  className,
+  ...props
+}: CopyActionProps) => {
+  const [hasCopied, setHasCopied] = React.useState(false);
+
+  React.useEffect(() => {
+    if (hasCopied) {
+      const timer = setTimeout(() => {
+        setHasCopied(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [hasCopied]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    setHasCopied(true);
+  };
+
+  return (
+    <Action
+      tooltip={hasCopied ? "Copied" : tooltip}
+      onClick={handleCopy}
+      className={className}
+      {...props}
+    >
+      {children || (hasCopied ? (
+        <CheckIcon className="h-4 w-4" />
+      ) : (
+        <ClipboardIcon className="h-4 w-4" />
+      ))}
+    </Action>
+  );
 };

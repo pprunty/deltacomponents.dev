@@ -48,6 +48,7 @@ import {
 import {
   Actions,
   Action,
+  CopyAction,
 } from '@/registry/delta-ui/delta/ai-elements/actions';
 import { Loader } from '@/registry/delta-ui/delta/ai-elements/loader';
 import { Response } from '@/registry/delta-ui/delta/ai-elements/response';
@@ -57,7 +58,7 @@ import {
   SourcesContent,
   SourcesTrigger,
 } from '@/registry/delta-ui/delta/ai-elements/sources';
-import { GlobeIcon, CopyIcon, ThumbsUpIcon, ThumbsDownIcon } from 'lucide-react';
+import { GlobeIcon, ThumbsUpIcon, ThumbsDownIcon } from 'lucide-react';
 import { useState, useCallback, useRef } from 'react';
 import { toast } from 'sonner';
 import type { ToolUIPart } from 'ai';
@@ -516,17 +517,12 @@ const Example = () => {
                           {status !== 'streaming' && streamingMessageId !== version.id && (
                             <Actions className={cn(
                               "justify-end",
-                              isLastAssistantMessage ? "opacity-100" : "opacity-0 group-hover/message:opacity-100"
+                              isLastAssistantMessage ? "opacity-100" : "opacity-0 group-hover/message:opacity-100 [@media(hover:none)]:opacity-100"
                             )}>
-                              <Action
+                              <CopyAction
+                                value={version.content}
                                 tooltip="Copy message"
-                                onClick={() => {
-                                  navigator.clipboard.writeText(version.content);
-                                  toast.success('Copied to clipboard');
-                                }}
-                              >
-                                <CopyIcon className="h-4 w-4" />
-                              </Action>
+                              />
                               <Action
                                 tooltip="Good response"
                                 onClick={() => toast.success('Feedback recorded')}
