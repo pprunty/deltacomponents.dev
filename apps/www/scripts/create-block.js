@@ -131,7 +131,7 @@ if (fs.existsSync(registryBlocksPath)) {
     ],
     meta: {
       iframeHeight: "600px",
-      container: "w-full p-6",
+      container: "",
       mobile: "component",
     },
     categories: ["${category}"],

@@ -9,16 +9,16 @@ Make sure your project is configured correctly for shadcn/ui in Tailwind 4 - thi
 
 ---
 
-## I ran the Delta Components UI CLI but nothing was added to my project
+## I ran the shadcn CLI but nothing was added to my project
 
 Double-check that:
 
 - Your current working directory is the root of your project (where package.json lives).
 - Your components.json file (if using shadcn-style config) is set up correctly.
-- You're using the latest version of the Delta Components UI CLI:
+- You're using the correct CLI command with our registry URL:
 
 ```bash
-npx @delta/agents-cli@latest components add orb
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/orb.json
 ```
 
 ## Theme switching doesn’t work — my app stays in light mode

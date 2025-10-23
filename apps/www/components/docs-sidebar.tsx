@@ -36,11 +36,15 @@ const BLOCKS_SECTIONS = [
       { name: "Testimonials", href: "/blocks/landing-page#testimonials" },
       {
         name: "Video Card Grid",
-        href: "/blocks/ai-elements#interactive-feature-showcase",
+        href: "/blocks/landing-page#interactive-feature-showcase",
       },
       {
         name: "LLM Chat Window",
         href: "/blocks/ai-elements#chatbot-window",
+      },
+      {
+        name: "Perspective Carousel",
+        href: "/blocks/featured#perspective-carousel",
       },
     ],
   },
@@ -123,16 +127,7 @@ export function DocsSidebar({
                               >
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
-                                {typeof item.name === "string" &&
-                                  (item.name
-                                    .toLowerCase()
-                                    .includes("admonition") ||
-                                    item.name.toLowerCase().includes("tabs") ||
-                                    item.name
-                                      .toLowerCase()
-                                      .includes("card deck")) && (
-                                    <StatusBadge label="beta" />
-                                  )}
+                                <StatusBadge label="beta" />
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
@@ -171,9 +166,7 @@ export function DocsSidebar({
                               >
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
-                                {item.name === "Testimonials" && (
-                                  <StatusBadge label="beta" />
-                                )}
+                                <StatusBadge label="beta" />
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>

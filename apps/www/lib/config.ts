@@ -47,14 +47,14 @@ export const siteConfig = {
     {
       href: "/learning",
       label: "Learn",
-      badge: "new",
-      hide: process.env.NODE_ENV === "production",
+      badge: "coming soon",
+      disabled: false, // Set to true when ready to disable in production
     },
     {
       href: "/templates",
       label: "Templates",
-      badge: "new",
-      hide: process.env.NODE_ENV === "production",
+      badge: "coming soon",
+      disabled: false, // Set to true when ready to disable in production
     },
   ],
   utm: {

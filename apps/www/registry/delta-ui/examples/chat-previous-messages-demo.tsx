@@ -312,6 +312,7 @@ const Example = () => {
   const [streamingMessageId, setStreamingMessageId] = useState<string | null>(
     null,
   );
+  const [touchedMessages, setTouchedMessages] = useState<Set<string>>(new Set());
   const shouldCancelRef = useRef<boolean>(false);
   const addMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -375,6 +376,10 @@ const Example = () => {
     },
     [],
   );
+
+  const handleMessageTouch = useCallback((messageKey: string) => {
+    setTouchedMessages(prev => new Set(prev).add(messageKey));
+  }, []);
 
   const addUserMessage = useCallback(
     (content: string) => {
@@ -473,6 +478,7 @@ const Example = () => {
                       message.from === 'user' ? 'justify-end items-end' : undefined,
                       "group/message"
                     )}
+                    onTouchStart={() => handleMessageTouch(message.key)}
                   >
                     <div>
                       {message.sources?.length && (
@@ -517,7 +523,9 @@ const Example = () => {
                           {status !== 'streaming' && streamingMessageId !== version.id && (
                             <Actions className={cn(
                               "justify-end",
-                              isLastAssistantMessage ? "opacity-100" : "opacity-0 group-hover/message:opacity-100 [@media(hover:none)]:opacity-100"
+                              isLastAssistantMessage || touchedMessages.has(message.key)
+                                ? "opacity-100" 
+                                : "opacity-0 group-hover/message:opacity-100"
                             )}>
                               <CopyAction
                                 value={version.content}

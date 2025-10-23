@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/mapbox-pointer-demo.tsx",
-      "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/registry/delta-ui/delta/mapbox-pointer\"\n\nexport default function MapboxPointerDemo() {\n  return (\n    <div className=\"w-full\">\n        <MapboxPointer\n        latitude={53.342825}\n        longitude={-6.257311}\n        zoom={11.5}\n        clickForDirections={false}\n        label=\"Dublin, Ireland\"\n        interactive={false}\n        labelHref=\"https://en.wikipedia.org/wiki/Dublin\"\n        className=\"h-64 sm:h-96\"\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/registry/delta-ui/delta/mapbox-pointer\"\n\nexport default function MapboxPointerDemo() {\n  return (\n    <div className=\"w-full\">\n        <MapboxPointer\n        latitude={53.342825}\n        longitude={-6.257311}\n        zoom={13}\n        clickForDirections={false}\n        label=\"Dublin, Ireland\"\n        interactive={false}\n        labelHref=\"https://en.wikipedia.org/wiki/Dublin\"\n        className=\"h-64 sm:h-96\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

@@ -45,21 +45,21 @@ const navigationItems = [
     variant: "muted" as const,
   },
   {
-    href: "/docs/components/voice-button",
-    title: "Voice Components",
-    description: "Voice interaction components for audio interfaces",
+    href: "/docs/components/chat",
+    title: "AI Components",
+    description: "AI-powered components for chat, conversation, and agent interfaces",
     variant: "muted" as const,
   },
   {
-    href: "/docs/components/audio-player",
-    title: "Audio Components",
-    description: "Audio playback and visualization components",
+    href: "/blocks/landing-page",
+    title: "Landing Page",
+    description: "Pre-built landing page sections and complete layouts",
     variant: "muted" as const,
   },
   {
     href: "/blocks",
     title: "Blocks",
-    description: "Pre-built page sections and complete layouts",
+    description: "All pre-built page sections and complete layouts",
     variant: "muted" as const,
   },
 ]

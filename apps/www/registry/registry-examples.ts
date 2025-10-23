@@ -46,6 +46,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "chat-simple-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [
+      {
+        path: "examples/chat-simple-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "code-block-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],

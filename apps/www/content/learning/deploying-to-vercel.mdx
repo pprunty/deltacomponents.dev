@@ -1,0 +1,161 @@
+---
+title: Deploying to Vercel
+description: Learn how to deploy your Delta Components UI application to Vercel for production
+---
+
+Deploying your Delta Components UI application to Vercel is straightforward and provides excellent performance for React applications. This guide covers the complete deployment process from setup to production.
+
+## Prerequisites
+
+Before deploying to Vercel, ensure you have:
+
+- A Next.js project with Delta Components UI set up
+- Your code in a Git repository (GitHub, GitLab, or Bitbucket)
+- A [Vercel account](https://vercel.com)
+
+## Quick Deployment
+
+The fastest way to deploy is using Vercel's Git integration:
+
+### 1. Connect Your Repository
+
+1. Go to [vercel.com](https://vercel.com) and sign in
+2. Click "New Project"
+3. Import your Git repository
+4. Vercel will automatically detect it's a Next.js project
+
+### 2. Configure Build Settings
+
+Vercel automatically configures most settings for Next.js projects, but you may need to adjust:
+
+- **Framework Preset**: Next.js (auto-detected)
+- **Build Command**: `npm run build` or `pnpm build`
+- **Output Directory**: `.next` (default)
+- **Install Command**: `npm install` or `pnpm install`
+
+### 3. Environment Variables
+
+If your application uses environment variables, add them in the Vercel dashboard:
+
+1. Go to your project settings
+2. Navigate to "Environment Variables"
+3. Add your variables for Production, Preview, and Development as needed
+
+Common environment variables for Delta Components UI apps:
+```bash
+NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
+```
+
+### 4. Deploy
+
+Click "Deploy" and Vercel will:
+- Install dependencies
+- Build your application
+- Deploy to a production URL
+- Provide a live URL for your application
+
+## Advanced Configuration
+
+### Custom Domain
+
+To use a custom domain:
+
+1. Go to your project dashboard
+2. Navigate to "Settings" → "Domains"
+3. Add your custom domain
+4. Configure DNS settings as instructed
+
+### Build Optimization
+
+For better performance with Delta Components UI:
+
+```javascript
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+  // Enable if using audio components
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(mp3|wav|ogg)$/,
+      type: 'asset/resource',
+    })
+    return config
+  },
+}
+
+module.exports = nextConfig
+```
+
+### Preview Deployments
+
+Vercel automatically creates preview deployments for:
+- Pull requests
+- Pushes to non-production branches
+
+This is perfect for testing Delta Components UI changes before going live.
+
+## Troubleshooting
+
+### Build Failures
+
+If your build fails:
+
+1. **Check the build logs** in the Vercel dashboard
+2. **Verify all dependencies** are in package.json
+3. **Test locally** with `npm run build`
+4. **Check for TypeScript errors** if using TypeScript
+
+### Audio Component Issues
+
+If using Delta Components UI audio components:
+
+1. Ensure audio files are in the `public` directory
+2. Add proper MIME types in `next.config.js`
+3. Consider using a CDN for large audio files
+
+### Performance Issues
+
+For optimal performance:
+
+1. **Enable Next.js Image Optimization**
+2. **Use dynamic imports** for heavy components
+3. **Implement proper caching** strategies
+4. **Monitor Core Web Vitals** in Vercel Analytics
+
+## Continuous Deployment
+
+Once connected, Vercel provides automatic deployments:
+
+- **Production**: Deploys from your main branch
+- **Preview**: Deploys from feature branches and PRs
+- **Rollback**: Easy rollback to previous deployments
+
+## Monitoring
+
+Vercel provides built-in monitoring:
+
+- **Analytics**: Page views and performance metrics
+- **Functions**: Serverless function monitoring
+- **Real User Monitoring**: Core Web Vitals tracking
+
+## Best Practices
+
+1. **Test locally** before pushing to production
+2. **Use environment variables** for configuration
+3. **Enable preview deployments** for team collaboration
+4. **Monitor performance** regularly
+5. **Set up proper error boundaries** for Delta Components UI components
+
+## Next Steps
+
+After deploying successfully:
+
+- Set up [Vercel Analytics](https://vercel.com/analytics) for performance insights
+- Configure [speed insights](https://vercel.com/docs/speed-insights) 
+- Consider [edge functions](https://vercel.com/docs/functions/edge-functions) for global performance
+- Explore [Vercel KV](https://vercel.com/docs/storage/vercel-kv) for data storage needs
+
+Your Delta Components UI application is now live and ready for users to experience your multimodal agentic interfaces!

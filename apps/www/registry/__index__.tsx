@@ -269,8 +269,30 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["ai-elements"],
+    categories: ["ai-elements","featured"],
     meta: {"iframeHeight":"800px","container":"w-full h-screen","mobile":"component"},
+  },
+  "perspective-carousel": {
+    name: "perspective-carousel",
+    description: "PerspectiveCarousel block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [{
+      path: "registry/delta-ui/blocks/perspective-carousel/page.tsx",
+      type: "registry:page",
+      target: "app/perspective-carousel/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/perspective-carousel/components/perspective-carousel.tsx",
+      type: "registry:component",
+      target: "components/perspective-carousel.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/perspective-carousel/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["featured"],
+    meta: {"iframeHeight":"600px","container":"w-full","mobile":"component"},
   },
   "use-mobile": {
     name: "use-mobile",
@@ -356,6 +378,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/chat-previous-messages-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "chat-simple-demo": {
+    name: "chat-simple-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [{
+      path: "registry/delta-ui/examples/chat-simple-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/chat-simple-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

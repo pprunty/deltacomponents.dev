@@ -11,16 +11,16 @@ description: Welcome to Delta Components
 
 Delta Components UI is a component library and custom registry built on top of [shadcn/ui](https://ui.shadcn.com/) to help you build multimodal agentic experiences faster. It provides pre-built components for agents, transcription, audio & more.
 
-Components are available via the `@delta/agents-cli` command.
+Components are available via the `shadcn` CLI with our registry URL.
 
 ```bash
-npx exec @delta/agents-cli@latest components add <component>
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json
 ```
 
 For example, to install the [Orb](/docs/components/orb) component, you can run:
 
 ```bash
-npx exec @delta/agents-cli@latest components add orb
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/orb.json
 ```
 
 Here are some basic examples of what you can achieve using components from Delta Components UI.

@@ -1,218 +1,554 @@
 "use client"
 
-import { useState } from "react"
-import { Globe, MessageSquare, PanelRightOpen, X } from "lucide-react"
+import { useState, useCallback, useRef } from "react"
+import { GlobeIcon, PanelRightOpen, PanelRightClose, ThumbsUpIcon, ThumbsDownIcon } from "lucide-react"
+import { toast } from "sonner"
+import type { ToolUIPart } from "ai"
 
 import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
 import {
-  ChatMessage,
+  Branch,
+  BranchMessages,
+  BranchNext,
+  BranchPage,
+  BranchPrevious,
+  BranchSelector,
+} from "@/registry/delta-ui/delta/ai-elements/branch"
+import {
   Conversation,
-  ModelSelector,
+  ConversationContent,
+  ConversationScrollButton,
+} from "@/registry/delta-ui/delta/ai-elements/conversation"
+import {
   PromptInput,
-} from "@/registry/delta-ui/delta/ai-elements"
-import { Button } from "@/registry/delta-ui/ui/button"
+  PromptInputActionAddAttachments,
+  PromptInputActionMenu,
+  PromptInputActionMenuContent,
+  PromptInputActionMenuTrigger,
+  PromptInputAttachment,
+  PromptInputAttachments,
+  PromptInputBody,
+  PromptInputButton,
+  type PromptInputMessage,
+  PromptInputModelSelect,
+  PromptInputModelSelectContent,
+  PromptInputModelSelectItem,
+  PromptInputModelSelectTrigger,
+  PromptInputModelSelectValue,
+  PromptInputSpeechButton,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputFooter,
+  PromptInputTools,
+} from "@/registry/delta-ui/delta/ai-elements/prompt-input"
+import {
+  Message,
+  MessageContent,
+} from "@/registry/delta-ui/delta/ai-elements/message"
+import {
+  Reasoning,
+  ReasoningContent,
+  ReasoningTrigger,
+} from "@/registry/delta-ui/delta/ai-elements/reasoning"
+import {
+  Actions,
+  Action,
+  CopyAction,
+} from "@/registry/delta-ui/delta/ai-elements/actions"
+import { Loader } from "@/registry/delta-ui/delta/ai-elements/loader"
+import { Response } from "@/registry/delta-ui/delta/ai-elements/response"
+import {
+  Source,
+  Sources,
+  SourcesContent,
+  SourcesTrigger,
+} from "@/registry/delta-ui/delta/ai-elements/sources"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/delta-ui/ui/resizable"
 
-// Mock data for demonstration
-const mockModels = [
-  {
-    id: "gpt-4",
-    name: "GPT-4",
-    model: "GPT-4o",
-  },
-  {
-    id: "claude",
-    name: "Claude",
-    model: "Claude 3.5",
-  },
-]
+type MessageType = {
+  key: string;
+  from: 'user' | 'assistant';
+  sources?: { href: string; title: string }[];
+  versions: {
+    id: string;
+    content: string;
+  }[];
+  reasoning?: {
+    content: string;
+    duration: number;
+  };
+  tools?: {
+    name: string;
+    description: string;
+    status: ToolUIPart['state'];
+    parameters: Record<string, unknown>;
+    result: string | undefined;
+    error: string | undefined;
+  }[];
+  avatar: string;
+  name: string;
+};
 
-// Mock streaming response with streamdown content
-const mockStreamingResponses = [
-  "I'd be happy to help you with that! Let me break this down:\n\n## Key Points\n\n1. **First Point**: This is an important consideration when working with React components.\n\n2. **Second Point**: Here's some `code` example:\n\n```javascript\nconst example = () => {\n  return 'Hello World';\n};\n```\n\n3. **Third Point**: You can also use **bold text** and *italic text* for emphasis.\n\n### Additional Resources\n\n- [React Documentation](https://react.dev)\n- [TypeScript Guide](https://typescriptlang.org)\n\nLet me know if you need any clarification on these concepts!",
+const initialMessages: MessageType[] = [];
 
-  "Great question! Here's a comprehensive answer:\n\n## Understanding the Concept\n\nThis is a fundamental concept in modern development. Let me explain:\n\n### Code Example\n\n```typescript\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n}\n\nconst createUser = (data: User): Promise<User> => {\n  return fetch('/api/users', {\n    method: 'POST',\n    body: JSON.stringify(data)\n  }).then(res => res.json());\n};\n```\n\n### Best Practices\n\n1. Always validate your inputs\n2. Handle errors gracefully\n3. Use TypeScript for better type safety\n\n> **Note**: Remember to always sanitize user input before processing!\n\nIs there anything specific you'd like me to elaborate on?",
+const models = [
+  { id: 'gpt-4', name: 'GPT-4' },
+  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
+  { id: 'claude-2', name: 'Claude 2' },
+  { id: 'claude-instant', name: 'Claude Instant' },
+  { id: 'palm-2', name: 'PaLM 2' },
+  { id: 'llama-2-70b', name: 'Llama 2 70B' },
+  { id: 'llama-2-13b', name: 'Llama 2 13B' },
+  { id: 'cohere-command', name: 'Command' },
+  { id: 'mistral-7b', name: 'Mistral 7B' },
+];
 
-  "Here's a detailed explanation:\n\n## Overview\n\nThis topic involves several important concepts:\n\n### Implementation Steps\n\n1. **Setup**: First, initialize your project\n2. **Configuration**: Configure your settings\n3. **Implementation**: Write the actual code\n\n```bash\nnpm install your-package\nnpm run build\nnpm start\n```\n\n### Common Patterns\n\n- Use **hooks** for state management\n- Implement `error boundaries` for better UX\n- Consider *performance optimization*\n\n| Feature | Benefit | Usage |\n|---------|---------|-------|\n| Hooks | State management | `useState`, `useEffect` |\n| Context | Global state | `createContext` |\n| Suspense | Loading states | `<Suspense>` |\n\nLet me know if you need more specific examples!",
-]
-
-// Mock API call that simulates streaming
-async function mockStreamingAPI(
-  message: string,
-  modelId: string
-): Promise<string> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 500))
-
-  // Return a random mock response
-  const randomIndex = Math.floor(Math.random() * mockStreamingResponses.length)
-  return mockStreamingResponses[randomIndex]
-}
+const mockResponses = [
+  "Hello! I'm an AI assistant built with Delta Components. I can help you with coding questions, explain concepts, or just have a conversation. What would you like to talk about?",
+  "That's a great question! Let me help you understand this concept better. The key thing to remember is that proper implementation requires careful consideration of the underlying principles and best practices in the field.",
+  "I'd be happy to explain this topic in detail. From my understanding, there are several important factors to consider when approaching this problem. Let me break it down step by step for you.",
+  "This is an interesting topic that comes up frequently. The solution typically involves understanding the core concepts and applying them in the right context. Here's what I recommend...",
+  "Great choice of topic! This is something that many developers encounter. The approach I'd suggest is to start with the fundamentals and then build up to more complex scenarios.",
+];
 
 interface ChatbotProps {
   onClose?: () => void
 }
 
 function Chatbot({}: ChatbotProps) {
-  const [input, setInput] = useState("")
-  const [selectedModel, setSelectedModel] = useState<string>("gpt-4")
-  const [messages, setMessages] = useState<ChatMessage[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [model, setModel] = useState<string>(models[0].id);
+  const [text, setText] = useState<string>('');
+  const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
+  const [status, setStatus] = useState<
+    'submitted' | 'streaming' | 'ready' | 'error'
+  >('ready');
+  const [messages, setMessages] = useState<MessageType[]>(initialMessages);
+  const [streamingMessageId, setStreamingMessageId] = useState<string | null>(
+    null,
+  );
+  const [touchedMessages, setTouchedMessages] = useState<Set<string>>(new Set());
+  const shouldCancelRef = useRef<boolean>(false);
+  const addMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!input.trim() || isLoading) return
+  const stop = useCallback(() => {
+    console.log('Stopping generation...');
 
-    const userMessage: ChatMessage = {
-      id: Date.now().toString(),
-      role: "user",
-      content: input,
+    // Set cancellation flag
+    shouldCancelRef.current = true;
+
+    // Clear timeout for adding assistant message
+    if (addMessageTimeoutRef.current) {
+      clearTimeout(addMessageTimeoutRef.current);
+      addMessageTimeoutRef.current = null;
     }
 
-    setMessages((prev) => [...prev, userMessage])
-    const currentInput = input
-    setInput("")
-    setIsLoading(true)
+    setStatus('ready');
+    setStreamingMessageId(null);
+  }, []);
 
-    try {
-      // Call mock streaming API
-      const response = await mockStreamingAPI(currentInput, selectedModel)
+  const streamResponse = useCallback(
+    async (messageId: string, content: string) => {
+      setStatus('streaming');
+      setStreamingMessageId(messageId);
+      shouldCancelRef.current = false;
 
-      const assistantMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: response,
+      const words = content.split(' ');
+      let currentContent = '';
+
+      for (let i = 0; i < words.length; i++) {
+        // Check if streaming should be cancelled
+        if (shouldCancelRef.current) {
+          setStatus('ready');
+          setStreamingMessageId(null);
+          return;
+        }
+
+        currentContent += (i > 0 ? ' ' : '') + words[i];
+
+        setMessages((prev) =>
+          prev.map((msg) => {
+            if (msg.versions.some((v) => v.id === messageId)) {
+              return {
+                ...msg,
+                versions: msg.versions.map((v) =>
+                  v.id === messageId ? { ...v, content: currentContent } : v,
+                ),
+              };
+            }
+            return msg;
+          }),
+        );
+
+        await new Promise((resolve) =>
+          setTimeout(resolve, Math.random() * 100 + 50),
+        );
       }
 
-      setMessages((prev) => [...prev, assistantMessage])
-      setIsLoading(false)
-    } catch (error) {
-      console.error("Error getting response:", error)
-      const errorMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content:
-          "Sorry, I encountered an error while processing your request. Please try again.",
-      }
-      setMessages((prev) => [...prev, errorMessage])
-      setIsLoading(false)
+      setStatus('ready');
+      setStreamingMessageId(null);
+    },
+    [],
+  );
+
+  const handleMessageTouch = useCallback((messageKey: string) => {
+    setTouchedMessages(prev => new Set(prev).add(messageKey));
+  }, []);
+
+  const addUserMessage = useCallback(
+    (content: string) => {
+      const userMessage: MessageType = {
+        key: `user-${Date.now()}`,
+        from: 'user',
+        versions: [
+          {
+            id: `user-${Date.now()}`,
+            content,
+          },
+        ],
+        avatar: 'https://patrickprunty.com/icon.webp',
+        name: 'User',
+      };
+
+      setMessages((prev) => [...prev, userMessage]);
+
+      addMessageTimeoutRef.current = setTimeout(() => {
+        const assistantMessageId = `assistant-${Date.now()}`;
+        const randomResponse =
+          mockResponses[Math.floor(Math.random() * mockResponses.length)];
+
+        const assistantMessage: MessageType = {
+          key: `assistant-${Date.now()}`,
+          from: 'assistant',
+          versions: [
+            {
+              id: assistantMessageId,
+              content: '',
+            },
+          ],
+          avatar: 'https://github.com/openai.png',
+          name: 'Assistant',
+        };
+
+        setMessages((prev) => [...prev, assistantMessage]);
+        streamResponse(assistantMessageId, randomResponse);
+        addMessageTimeoutRef.current = null;
+      }, 500);
+    },
+    [streamResponse],
+  );
+
+  const handleSubmit = (message: PromptInputMessage) => {
+    // If currently streaming or submitted, stop instead of submitting
+    if (status === 'streaming' || status === 'submitted') {
+      stop();
+      return;
     }
-  }
+
+    const hasText = Boolean(message.text);
+    const hasAttachments = Boolean(message.files?.length);
+
+    if (!(hasText || hasAttachments)) {
+      return;
+    }
+
+    setStatus('submitted');
+
+    if (message.files?.length) {
+      toast.success('Files attached', {
+        description: `${message.files.length} file(s) attached to message`,
+      });
+    }
+
+    addUserMessage(message.text || 'Sent with attachments');
+    setText('');
+  };
 
   return (
     <div className="flex h-full flex-col">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          div[style*="height: 100%; width: 100%; overflow: auto"] {
+            scrollbar-width: thin;
+            scrollbar-color: #b6b6b6 transparent;
+          }
+          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar {
+            width: 4px;
+          }
+          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb {
+            background: #b6b6b6;
+            border-radius: 9999px;
+          }
+          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb:hover {
+            background: rgba(182, 182, 182, 0.8);
+          }
+        `
+      }} />
       <Conversation
-        messages={messages}
-        isLoading={isLoading}
         className="flex-1"
-        userAvatar="https://patrickprunty.com/icon.webp"
-      />
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'hsl(var(--border)) transparent',
+        } as React.CSSProperties}
+      >
+        <ConversationContent>
+          {messages.map(({ versions, ...message }) => {
+            const assistantMessages = messages.filter(m => m.from === 'assistant');
+            const isLastAssistantMessage = message.from === 'assistant' && 
+              assistantMessages.length > 0 && 
+              assistantMessages[assistantMessages.length - 1].key === message.key;
 
-      <PromptInput
-        input={input}
-        onInputChange={setInput}
-        onSubmit={handleSubmit}
-        isLoading={isLoading}
-        selectedModel={selectedModel}
-        onModelChange={setSelectedModel}
-        models={mockModels}
-        allowFileUpload={false}
-      />
+            return (
+            <Branch defaultBranch={0} key={message.key}>
+              <BranchMessages>
+                {versions.map((version) => (
+                  <Message
+                    from={message.from}
+                    key={`${message.key}-${version.id}`}
+                    className={cn(
+                      message.from === 'user' ? 'justify-end items-end' : undefined,
+                      "group/message"
+                    )}
+                    onTouchStart={() => handleMessageTouch(message.key)}
+                  >
+                    <div>
+                      {message.sources?.length && (
+                        <Sources>
+                          <SourcesTrigger count={message.sources.length} />
+                          <SourcesContent>
+                            {message.sources.map((source) => (
+                              <Source
+                                href={source.href}
+                                key={source.href}
+                                title={source.title}
+                              />
+                            ))}
+                          </SourcesContent>
+                        </Sources>
+                      )}
+                      {message.reasoning && (
+                        <Reasoning duration={message.reasoning.duration}>
+                          <ReasoningTrigger />
+                          <ReasoningContent>
+                            {message.reasoning.content}
+                          </ReasoningContent>
+                        </Reasoning>
+                      )}
+                      <MessageContent 
+                        className={cn(
+                          message.from === 'assistant' ? 'max-w-full' : '',
+                          message.from === 'user' && 'w-fit ml-auto'
+                        )}
+                      >
+                        <div className="leading-[1.65rem] text-base">
+                          <Response>{version.content}</Response>
+                        </div>
+                      </MessageContent>
+                      {message.from === 'assistant' && (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            {status === 'streaming' && streamingMessageId === version.id && (
+                              <Loader size={16} className="text-muted-foreground ml-1" />
+                            )}
+                          </div>
+                          {status !== 'streaming' && streamingMessageId !== version.id && (
+                            <Actions className={cn(
+                              "justify-end",
+                              isLastAssistantMessage || touchedMessages.has(message.key)
+                                ? "opacity-100" 
+                                : "opacity-0 group-hover/message:opacity-100"
+                            )}>
+                              <CopyAction
+                                value={version.content}
+                                tooltip="Copy message"
+                              />
+                              <Action
+                                tooltip="Good response"
+                                onClick={() => toast.success('Feedback recorded')}
+                              >
+                                <ThumbsUpIcon className="h-4 w-4" />
+                              </Action>
+                              <Action
+                                tooltip="Poor response"
+                                onClick={() => toast.success('Feedback recorded')}
+                              >
+                                <ThumbsDownIcon className="h-4 w-4" />
+                              </Action>
+                              <Action
+                                tooltip="Regenerate response"
+                                onClick={() => toast.info('Regenerating response...')}
+                                className="relative size-9 p-1.5 text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors duration-200 text-sm font-medium px-2 min-w-0 h-9 w-auto"
+                              >
+                                Retry
+                              </Action>
+                            </Actions>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </Message>
+                ))}
+              </BranchMessages>
+              {versions.length > 1 && (
+                <BranchSelector from={message.from}>
+                  <BranchPrevious />
+                  <BranchPage />
+                  <BranchNext />
+                </BranchSelector>
+              )}
+            </Branch>
+            );
+          })}
+        </ConversationContent>
+        <ConversationScrollButton />
+      </Conversation>
+      <div className="grid shrink-0 gap-4">
+        <div className="w-full px-4 pb-4">
+          <PromptInput globalDrop multiple onSubmit={handleSubmit}>
+            <PromptInputBody>
+              <PromptInputAttachments>
+                {(attachment: any) => <PromptInputAttachment data={attachment} />}
+              </PromptInputAttachments>
+              <PromptInputTextarea
+                onChange={(event: any) => setText(event.target.value)}
+                ref={textareaRef}
+                value={text}
+                className="leading-[1.65rem] text-base"
+              />
+            </PromptInputBody>
+            <PromptInputFooter>
+              <PromptInputTools>
+                <PromptInputActionMenu>
+                  <PromptInputActionMenuTrigger />
+                  <PromptInputActionMenuContent>
+                    <PromptInputActionAddAttachments />
+                  </PromptInputActionMenuContent>
+                </PromptInputActionMenu>
+                <PromptInputSpeechButton
+                  onTranscriptionChange={setText}
+                  textareaRef={textareaRef}
+                />
+                <PromptInputButton
+                  onClick={() => setUseWebSearch(!useWebSearch)}
+                  variant={useWebSearch ? 'default' : 'ghost'}
+                >
+                  <GlobeIcon size={16} />
+                  <span className="hidden sm:inline">Search</span>
+                </PromptInputButton>
+              </PromptInputTools>
+              <PromptInputTools>
+                <PromptInputModelSelect onValueChange={setModel} value={model}>
+                  <PromptInputModelSelectTrigger>
+                    <PromptInputModelSelectValue />
+                  </PromptInputModelSelectTrigger>
+                  <PromptInputModelSelectContent>
+                    {models.map((model: any) => (
+                        <PromptInputModelSelectItem
+                        key={model.id || model.name}
+                        value={model.id || model.name}
+                      >
+                        {model.name || model.id}
+                      </PromptInputModelSelectItem>
+                    ))}
+                  </PromptInputModelSelectContent>
+                </PromptInputModelSelect>
+                <PromptInputSubmit
+                  disabled={(!text.trim() && !status) || status === 'streaming'}
+                  status={status}
+                />
+              </PromptInputTools>
+            </PromptInputFooter>
+          </PromptInput>
+        </div>
+      </div>
     </div>
   )
 }
 
 interface ChatbotWindowProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultOpen?: boolean
+  children?: React.ReactNode
 }
 
 export function ChatbotWindow({
   className,
   defaultOpen = false,
+  children,
   ...props
 }: ChatbotWindowProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <div className={cn("h-screen w-full", className)} {...props}>
-      <ResizablePanelGroup direction="horizontal" className="h-full">
-        {/* Main content area */}
-        <ResizablePanel defaultSize={isOpen ? 70 : 100} minSize={30}>
-          <div className="flex h-full flex-col">
-            <div className="border-b p-4">
-              <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Your Application</h1>
-                {!isOpen && (
-                  <Button
-                    onClick={() => setIsOpen(true)}
-                    variant="outline"
-                    size="sm"
+    <div className={cn("h-screen w-full flex flex-col", className)} {...props}>
+      {/* Header */}
+      <div className="border-b p-4 shrink-0">
+        <div className="flex items-center">
+          <Icons.logo className="size-5" />
+        </div>
+      </div>
+
+      {/* Content area with sidebar */}
+      <div className="flex-1 flex min-h-0">
+        <ResizablePanelGroup direction="horizontal" className="h-full">
+          {/* Main content area */}
+          <ResizablePanel defaultSize={isOpen ? 70 : 100} minSize={30}>
+            <div className="h-full overflow-auto">
+              <div className="p-8 pt-16 pb-16">
+                {children}
+              </div>
+            </div>
+          </ResizablePanel>
+
+          {isOpen && (
+            <>
+              <ResizableHandle
+                className="group bg-border hover:bg-muted-foreground/20 relative transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button
+                    className="inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:text-accent-foreground dark:hover:bg-accent/50 gap-1 rounded-md has-[>svg]:px-1.5 bg-background border-border hover:bg-muted size-8 border p-0 shadow-sm"
+                    data-slot="button"
+                    type="button"
+                    title="Toggle Chat Sidebar"
+                    onClick={() => setIsOpen(false)}
                   >
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Open Chat
-                  </Button>
-                )}
-              </div>
-            </div>
+                    <PanelRightClose className="h-3 w-3" aria-hidden="true" />
+                  </button>
+                </div>
+              </ResizableHandle>
+              <ResizablePanel defaultSize={30} minSize={25} maxSize={60}>
+                <aside className="bg-muted h-full border-l min-w-[350px]">
+                  <Chatbot onClose={() => setIsOpen(false)} />
+                </aside>
+              </ResizablePanel>
+            </>
+          )}
 
-            <div className="flex flex-1 items-center justify-center p-8">
-              <div className="space-y-4 text-center">
-                <h2 className="text-muted-foreground text-xl font-semibold">
-                  Welcome to your app
-                </h2>
-                <p className="text-muted-foreground">
-                  {isOpen
-                    ? "Chat with the AI assistant on the right"
-                    : "Click 'Open Chat' to start a conversation with the AI assistant"}
-                </p>
-              </div>
-            </div>
-          </div>
-        </ResizablePanel>
-
-        {isOpen && (
-          <>
-            <ResizableHandle
-              className="group bg-border hover:bg-muted-foreground/20 relative transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              <div className="absolute inset-0 z-10 flex items-center justify-center">
-                <X className="text-foreground hover:text-primary h-3 w-3 cursor-pointer transition-colors" />
-              </div>
-            </ResizableHandle>
-            <ResizablePanel defaultSize={30} minSize={25} maxSize={60}>
-              <div className="bg-muted h-full border-l">
-                <Chatbot onClose={() => setIsOpen(false)} />
-              </div>
-            </ResizablePanel>
-          </>
-        )}
-
-        {/* Collapsed sidebar toggle */}
-        {!isOpen && (
-          <div
-            className="border-border relative h-full border-l transition-all duration-200 ease-in-out"
-            style={{ width: "40px" }}
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              <Button
+          {/* Collapsed sidebar toggle */}
+          {!isOpen && (
+            <div className="w-10 shrink-0 border-l border-border relative flex items-center justify-center">
+              <button
                 onClick={() => setIsOpen(true)}
-                variant="ghost"
-                size="icon"
-                className="bg-background hover:bg-muted text-foreground h-8 w-8 border"
+                className="inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 hover:text-accent-foreground dark:hover:bg-accent/50 gap-1 rounded-md has-[>svg]:px-1.5 bg-background hover:bg-muted h-8 w-8 p-0"
+                data-slot="button"
                 type="button"
                 title="Expand Chat Sidebar"
               >
                 <PanelRightOpen className="h-4 w-4" aria-hidden="true" />
-              </Button>
+              </button>
             </div>
-          </div>
-        )}
-      </ResizablePanelGroup>
+          )}
+        </ResizablePanelGroup>
+      </div>
     </div>
   )
 }

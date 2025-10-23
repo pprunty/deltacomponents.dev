@@ -142,43 +142,36 @@ const Example = () => {
     setStreamingMessageId(null);
   }, []);
 
-  const streamResponse = useCallback(
+  const addResponse = useCallback(
     async (messageId: string, content: string) => {
       setStatus('streaming');
       setStreamingMessageId(messageId);
       shouldCancelRef.current = false;
 
-      const words = content.split(' ');
-      let currentContent = '';
+      // Simulate API delay
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      for (let i = 0; i < words.length; i++) {
-        // Check if streaming should be cancelled
-        if (shouldCancelRef.current) {
-          setStatus('ready');
-          setStreamingMessageId(null);
-          return;
-        }
-
-        currentContent += (i > 0 ? ' ' : '') + words[i];
-
-        setMessages((prev) =>
-          prev.map((msg) => {
-            if (msg.versions.some((v) => v.id === messageId)) {
-              return {
-                ...msg,
-                versions: msg.versions.map((v) =>
-                  v.id === messageId ? { ...v, content: currentContent } : v,
-                ),
-              };
-            }
-            return msg;
-          }),
-        );
-
-        await new Promise((resolve) =>
-          setTimeout(resolve, Math.random() * 100 + 50),
-        );
+      // Check if cancelled during delay
+      if (shouldCancelRef.current) {
+        setStatus('ready');
+        setStreamingMessageId(null);
+        return;
       }
+
+      // Add complete response at once
+      setMessages((prev) =>
+        prev.map((msg) => {
+          if (msg.versions.some((v) => v.id === messageId)) {
+            return {
+              ...msg,
+              versions: msg.versions.map((v) =>
+                v.id === messageId ? { ...v, content } : v,
+              ),
+            };
+          }
+          return msg;
+        }),
+      );
 
       setStatus('ready');
       setStreamingMessageId(null);
@@ -226,11 +219,11 @@ const Example = () => {
         };
 
         setMessages((prev) => [...prev, assistantMessage]);
-        streamResponse(assistantMessageId, randomResponse);
+        addResponse(assistantMessageId, randomResponse);
         addMessageTimeoutRef.current = null;
       }, 500);
     },
-    [streamResponse],
+    [addResponse],
   );
 
   const handleSubmit = (message: PromptInputMessage) => {

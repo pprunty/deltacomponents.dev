@@ -2,6 +2,7 @@
 @import './themes/claymorphism.css';
 @import './themes/solarized.css';
 @import './themes/neobrutalism.css';
+@import './themes/lime-green.css';
 
 .theme-default .theme-container {
   --chart-1: var(--color-blue-300);

@@ -98,7 +98,7 @@ export default async function BlockPage({
     <>
       <div
         className={cn(
-          "bg-background flex min-h-screen items-center justify-center p-4",
+          "bg-background flex min-h-screen items-center justify-center",
           item.meta?.container
         )}
       >

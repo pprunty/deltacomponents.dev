@@ -149,7 +149,9 @@ interface CodeBlockProps {
 
   // Code highlighting props
   code?: string
+  css?: string
   language?: string
+  defaultLanguage?: string
   filename?: string
   showLineNumbers?: boolean
   theme?: PrismTheme
@@ -168,7 +170,9 @@ export function CodeBlock({
   bun,
   defaultPackageManager = "npm",
   code,
+  css,
   language = "typescript",
+  defaultLanguage,
   filename,
   showLineNumbers = true,
   theme,
@@ -230,6 +234,10 @@ export function CodeBlock({
   // Use the theme's text foreground color for the copy button
   const iconColor = selectedTheme.plain?.color || "#000000"
 
+  // Handle CSS prop - treat as code with CSS language
+  const actualCode = css || code
+  const actualLanguage = css ? "css" : (defaultLanguage || language)
+
   // If we have package manager commands, show the tabbed interface
   if (availableCommands.length > 0) {
     return (
@@ -245,21 +253,28 @@ export function CodeBlock({
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
-          <div className="bg-secondary flex items-center gap-2 border-b px-3 py-1">
-            <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-              <TerminalIcon className="text-code size-3" />
+          <div className="bg-secondary flex items-center justify-between border-b px-3 py-1">
+            <div className="flex items-center gap-2">
+              <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
+                <TerminalIcon className="text-code size-3" />
+              </div>
+              <TabsList className="rounded-none bg-transparent p-0">
+                {availableCommands.map(([key]) => (
+                  <TabsTrigger
+                    key={key}
+                    value={key}
+                    className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                  >
+                    {key}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
             </div>
-            <TabsList className="rounded-none bg-transparent p-0">
-              {availableCommands.map(([key]) => (
-                <TabsTrigger
-                  key={key}
-                  value={key}
-                  className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
-                >
-                  {key}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            <CopyButton
+              value={commands[packageManager] || ""}
+              className="size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+              iconColor={iconColor}
+            />
           </div>
           <div className="no-scrollbar overflow-x-auto">
             {availableCommands.map(([key, command]) => (
@@ -308,17 +323,12 @@ export function CodeBlock({
             ))}
           </div>
         </Tabs>
-        <CopyButton
-          value={commands[packageManager] || ""}
-          className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-          iconColor={iconColor}
-        />
       </div>
     )
   }
 
   // If we have code to highlight, show the syntax highlighted version
-  if (code) {
+  if (actualCode) {
     return (
       <div
         className={cn(
@@ -329,12 +339,9 @@ export function CodeBlock({
         {filename && (
           <div className="bg-secondary flex items-center justify-between border-b">
             <div className="flex items-center gap-2 px-3 py-1">
-              <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-                <TerminalIcon className="text-code size-3" />
-              </div>
               <span className="text-sm font-medium">{filename}</span>
             </div>
-            <CopyButton value={code} className="mr-3" iconColor={iconColor} />
+            <CopyButton value={actualCode} className="mr-3" iconColor={iconColor} />
           </div>
         )}
 
@@ -346,14 +353,14 @@ export function CodeBlock({
         >
           {!filename && (
             <div className="absolute top-4 right-3">
-              <CopyButton value={code} iconColor={iconColor} />
+              <CopyButton value={actualCode} iconColor={iconColor} />
             </div>
           )}
 
           <Highlight
             theme={selectedTheme}
-            code={code.trim()}
-            language={language}
+            code={actualCode.trim()}
+            language={actualLanguage}
           >
             {({
               className: highlightClassName,

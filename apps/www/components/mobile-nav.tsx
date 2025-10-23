@@ -20,7 +20,7 @@ export function MobileNav({
   className,
 }: {
   tree: typeof source.pageTree
-  items: { href: string; label: string; badge?: string; hide?: boolean }[]
+  items: { href: string; label: string; badge?: string; hide?: boolean; disabled?: boolean }[]
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
@@ -80,6 +80,7 @@ export function MobileNav({
                     key={index}
                     href={item.href}
                     onOpenChange={setOpen}
+                    disabled={item.disabled}
                   >
                     {item.label}
                     {item.badge && <StatusBadge label={item.badge} />}
@@ -106,16 +107,7 @@ export function MobileNav({
                               onOpenChange={setOpen}
                             >
                               {item.name}
-                              {typeof item.name === "string" &&
-                                (item.name
-                                  .toLowerCase()
-                                  .includes("admonition") ||
-                                  item.name.toLowerCase().includes("tabs") ||
-                                  item.name
-                                    .toLowerCase()
-                                    .includes("card deck")) && (
-                                  <StatusBadge label="beta" />
-                                )}
+                              <StatusBadge label="beta" />
                             </MobileLink>
                           )
                         }
@@ -142,10 +134,24 @@ export function MobileNav({
                             <StatusBadge label="beta" />
                           </MobileLink>
                           <MobileLink
-                            href="/blocks/landing-page#interactive-feature-showcase"
+                            href="/blocks/ai-elements#interactive-feature-showcase"
                             onOpenChange={setOpen}
                           >
                             Video Card Grid
+                            <StatusBadge label="beta" />
+                          </MobileLink>
+                          <MobileLink
+                            href="/blocks/ai-elements#chatbot-window"
+                            onOpenChange={setOpen}
+                          >
+                            LLM Chat Window
+                            <StatusBadge label="beta" />
+                          </MobileLink>
+                          <MobileLink
+                            href="/blocks/featured#perspective-carousel"
+                            onOpenChange={setOpen}
+                          >
+                            Perspective Carousel
                             <StatusBadge label="beta" />
                           </MobileLink>
                         </div>
@@ -169,15 +175,31 @@ function MobileLink({
   onOpenChange,
   className,
   children,
+  disabled,
   ...props
 }: LinkProps & {
   onOpenChange?: (open: boolean) => void
   children: React.ReactNode
   className?: string
+  disabled?: boolean
 }) {
   const router = useRouter()
   const pathname = usePathname()
   const isActive = pathname === href
+
+  if (disabled) {
+    return (
+      <div
+        className={cn(
+          "flex items-center text-2xl font-medium cursor-not-allowed",
+          "text-muted-foreground opacity-60",
+          className
+        )}
+      >
+        {children}
+      </div>
+    )
+  }
 
   return (
     <Link

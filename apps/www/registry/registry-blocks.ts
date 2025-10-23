@@ -79,6 +79,30 @@ export const blocks: Registry["items"] = [
       container: "w-full h-screen",
       mobile: "component",
     },
-    categories: ["ai-elements"],
+    categories: ["ai-elements", "featured"],
+  },
+  {
+    name: "perspective-carousel",
+    description: "PerspectiveCarousel block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/perspective-carousel/page.tsx",
+        type: "registry:page",
+        target: "app/perspective-carousel/page.tsx",
+      },
+      {
+        path: "blocks/perspective-carousel/components/perspective-carousel.tsx",
+        type: "registry:component",
+        target: "components/perspective-carousel.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "600px",
+      container: " ",
+      mobile: "component",
+    },
+    categories: ["featured"],
   },
 ]

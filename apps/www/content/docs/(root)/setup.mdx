@@ -3,33 +3,18 @@ title: Setup
 description: Getting started with Delta Components UI
 ---
 
-Installing Delta Components UI components is straightforward and can be done in a couple of ways. You can use the dedicated CLI command for the fastest setup, or integrate via the standard shadcn/ui CLI if you've already adopted shadcn's workflow.
+Installing Delta Components UI components is straightforward using the standard shadcn CLI with our custom registry URL.
 If you prefer, you can follow the [video tutorial](/docs/setup#video-tutorial)
 
-<Tabs defaultValue="delta">
-
-<TabsList>
-  <TabsTrigger value="delta">Agents CLI</TabsTrigger>
-  <TabsTrigger value="shadcn">shadcn</TabsTrigger>
-</TabsList>
-
-<TabsContent value="delta">
-
 ```bash
-npx @delta/agents-cli@latest add orb
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json
 ```
 
-</TabsContent>
-
-<TabsContent value="shadcn">
+For example, to install the orb component:
 
 ```bash
-npx shadcn@latest add https://deltacomponents.dev/r/orb.json
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/orb.json
 ```
-
-</TabsContent>
-
-</Tabs>
 
 ## Prerequisites
 
@@ -41,9 +26,9 @@ Before installing Delta Components UI, make sure your environment meets the foll
 
 ## Installing components
 
-You can install Delta Components UI components using either the `@delta/agents-cli` CLI or the `shadcn/ui` CLI. Both achieve the same result: adding the selected component's code and any needed dependencies to your project.
+You can install Delta Components UI components using the `shadcn/ui` CLI with our registry URL. This will add the selected component's code and any needed dependencies to your project.
 
-The CLI will download the component's code and integrate it into your project's directory (usually under your components folder)..
+The CLI will download the component's code and integrate it into your project's directory (usually under your components folder).
 
 After running the command, you should see a confirmation in your terminal that the files were added. You can then proceed to use the component in your code.
 

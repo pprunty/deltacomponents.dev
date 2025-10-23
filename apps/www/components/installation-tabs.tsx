@@ -91,7 +91,7 @@ export function InstallationTabs({
                 {["pnpm", "npm", "yarn", "bun"].map((pm) => (
                   <PackageManagerTabsContent key={pm} value={pm}>
                     <pre className="no-scrollbar min-w-0 overflow-x-auto px-4 py-3 outline-none">
-                      <code>{`${pm} dlx @delta/agents-cli@latest components add ${name}`}</code>
+                      <code>{`${pm} dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`}</code>
                     </pre>
                   </PackageManagerTabsContent>
                 ))}

@@ -17,7 +17,15 @@
     "name": "chatbot-window",
     "description": "Resizable AI chatbot interface with collapsible sidebar",
     "categories": [
-      "ai-elements"
+      "ai-elements",
+      "featured"
+    ]
+  },
+  {
+    "name": "perspective-carousel",
+    "description": "PerspectiveCarousel block",
+    "categories": [
+      "featured"
     ]
   }
 ]

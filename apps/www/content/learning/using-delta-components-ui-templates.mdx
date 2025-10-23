@@ -1,0 +1,323 @@
+---
+title: Using Delta Components UI Templates
+description: Learn how to leverage pre-built templates to accelerate your development with Delta Components UI
+---
+
+Delta Components UI templates provide pre-configured starting points for common use cases. These templates combine multiple components into complete, functional interfaces that you can customize for your specific needs.
+
+## Available Templates
+
+### Voice Chat Interface Template
+
+A complete voice-enabled chat interface with:
+- Voice recording and playback
+- Real-time audio visualization
+- Text-to-speech capabilities
+- Conversation history
+- Multi-modal input support
+
+```bash
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/voice-chat-template.json
+```
+
+### Audio Dashboard Template
+
+Perfect for podcast platforms or audio management tools:
+- Audio player with playlist
+- Waveform visualization
+- Volume controls and seek functionality
+- Track metadata display
+- Responsive layout
+
+```bash
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/audio-dashboard-template.json
+```
+
+### Agent Conversation Template
+
+Streamlined AI agent interface featuring:
+- Message threading
+- Typing indicators
+- Response streaming
+- Source citations
+- Action buttons
+
+```bash
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/agent-conversation-template.json
+```
+
+## Getting Started with Templates
+
+### 1. Choose Your Template
+
+Identify which template best fits your use case:
+- **Voice-heavy applications**: Voice Chat Interface
+- **Audio content platforms**: Audio Dashboard
+- **AI assistant interfaces**: Agent Conversation
+- **Multi-modal experiences**: Combination of templates
+
+### 2. Install the Template
+
+Use the shadcn CLI to install your chosen template:
+
+```bash
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/[template-name].json
+```
+
+This will install:
+- The main template component
+- All required dependencies
+- Supporting utility components
+- Example configuration files
+
+### 3. Basic Integration
+
+Add the template to your page:
+
+```tsx
+import { VoiceChatTemplate } from "@/components/templates/voice-chat-template"
+
+export default function ChatPage() {
+  return (
+    <div className="min-h-screen">
+      <VoiceChatTemplate />
+    </div>
+  )
+}
+```
+
+## Customizing Templates
+
+### Configuration Options
+
+Most templates accept configuration props:
+
+```tsx
+<VoiceChatTemplate
+  config={{
+    enableVoiceInput: true,
+    showWaveform: true,
+    autoPlayResponses: false,
+    theme: "dark",
+    apiEndpoint: "/api/chat"
+  }}
+/>
+```
+
+### Styling Customization
+
+Templates use CSS variables for easy theming:
+
+```css
+/* globals.css */
+.voice-chat-template {
+  --chat-bg: hsl(var(--background));
+  --message-bg: hsl(var(--card));
+  --accent-color: hsl(var(--primary));
+  --waveform-color: hsl(var(--primary));
+}
+```
+
+### Component Replacement
+
+Replace specific components within templates:
+
+```tsx
+<VoiceChatTemplate
+  components={{
+    VoiceButton: CustomVoiceButton,
+    MessageList: CustomMessageList,
+    AudioPlayer: CustomAudioPlayer
+  }}
+/>
+```
+
+## Template Architecture
+
+### Composition Pattern
+
+Templates are built using a composition pattern:
+
+```tsx
+// Template structure
+<TemplateProvider config={config}>
+  <TemplateHeader />
+  <TemplateMain>
+    <TemplateContent />
+    <TemplateSidebar />
+  </TemplateMain>
+  <TemplateFooter />
+</TemplateProvider>
+```
+
+### Context and State Management
+
+Templates provide context for shared state:
+
+```tsx
+import { useTemplateContext } from "@/components/templates/voice-chat-template"
+
+function CustomComponent() {
+  const { messages, isRecording, sendMessage } = useTemplateContext()
+  
+  return (
+    <div>
+      {/* Your custom implementation */}
+    </div>
+  )
+}
+```
+
+## Advanced Customization
+
+### Adding Custom Features
+
+Extend templates with additional functionality:
+
+```tsx
+// Custom hook for template enhancement
+function useEnhancedVoiceChat() {
+  const baseTemplate = useTemplateContext()
+  
+  const [customFeature, setCustomFeature] = useState(false)
+  
+  return {
+    ...baseTemplate,
+    customFeature,
+    enableCustomFeature: () => setCustomFeature(true)
+  }
+}
+```
+
+### API Integration
+
+Templates provide hooks for API integration:
+
+```tsx
+<VoiceChatTemplate
+  onMessageSend={async (message) => {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message })
+    })
+    return response.json()
+  }}
+  onVoiceData={async (audioBlob) => {
+    const formData = new FormData()
+    formData.append('audio', audioBlob)
+    
+    const response = await fetch('/api/transcribe', {
+      method: 'POST',
+      body: formData
+    })
+    return response.json()
+  }}
+/>
+```
+
+### Performance Optimization
+
+Templates include performance optimizations:
+
+- **Lazy loading** for heavy components
+- **Virtual scrolling** for long conversation lists
+- **Debounced updates** for real-time features
+- **Memory management** for audio components
+
+## Template Combinations
+
+### Multi-Template Applications
+
+Combine templates for complex applications:
+
+```tsx
+import { VoiceChatTemplate } from "@/components/templates/voice-chat"
+import { AudioDashboardTemplate } from "@/components/templates/audio-dashboard"
+
+export default function MultiModalApp() {
+  const [activeView, setActiveView] = useState("chat")
+  
+  return (
+    <div className="h-screen">
+      <Navigation onViewChange={setActiveView} />
+      
+      {activeView === "chat" && <VoiceChatTemplate />}
+      {activeView === "dashboard" && <AudioDashboardTemplate />}
+    </div>
+  )
+}
+```
+
+### Shared State Between Templates
+
+Use context providers for shared state:
+
+```tsx
+<AppStateProvider>
+  <AudioProvider>
+    <VoiceChatTemplate />
+    <AudioDashboardTemplate />
+  </AudioProvider>
+</AppStateProvider>
+```
+
+## Best Practices
+
+### Template Selection
+
+1. **Start simple**: Begin with the closest template to your needs
+2. **Customize incrementally**: Make small changes and test
+3. **Document changes**: Keep track of customizations for team collaboration
+4. **Performance test**: Verify performance with real data
+
+### Development Workflow
+
+1. **Install template** in a development branch
+2. **Configure basic settings** first
+3. **Test core functionality** before customizing
+4. **Add custom features** incrementally
+5. **Test across devices** and browsers
+
+### Maintenance
+
+- **Update templates** when new versions are available
+- **Monitor performance** metrics regularly
+- **Keep dependencies** up to date
+- **Document customizations** for future reference
+
+## Troubleshooting
+
+### Common Issues
+
+**Template not rendering properly:**
+- Check that all dependencies are installed
+- Verify Next.js and React versions are compatible
+- Ensure proper CSS imports
+
+**Audio features not working:**
+- Verify browser permissions for microphone access
+- Check audio file formats and MIME types
+- Test on different browsers
+
+**Performance issues:**
+- Enable React DevTools profiler
+- Check for memory leaks in audio components
+- Optimize re-renders with proper memoization
+
+### Getting Help
+
+- Check the [component documentation](/docs) for individual components
+- Review template examples in the [blocks section](/blocks)
+- Open issues on [GitHub](https://github.com/pprunty/deltacomponents.dev/issues)
+
+## Next Steps
+
+After successfully implementing a template:
+
+1. **Explore customization options** to match your brand
+2. **Add analytics** to track user interactions
+3. **Implement error boundaries** for production reliability
+4. **Consider accessibility** improvements
+5. **Share your customizations** with the community
+
+Templates provide a solid foundation for building sophisticated multimodal applications with Delta Components UI. Start with a template that matches your use case and customize it to create unique user experiences!

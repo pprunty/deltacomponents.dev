@@ -7,7 +7,7 @@ links:
   docs: https://ui.shadcn.com/docs/components/chat
 ---
 
-<ComponentPreview name="chat-demo" height="700px" />
+<ComponentPreview name="chat-demo" height="600px"/>
 
 ## Installation
 
@@ -31,6 +31,12 @@ import { Chat } from "@/components/chat"
 ### Chat with Previous Messages
 
 <ComponentPreview name="chat-previous-messages-demo" height="600px" />
+
+### Non-Streaming Chat
+
+For use cases where LLM streaming doesn't happen and you receive the whole message in one go. Shows a loader until the message is received and then displays the complete message.
+
+<ComponentPreview name="chat-simple-demo" height="600px" />
 
 
 ## API Reference

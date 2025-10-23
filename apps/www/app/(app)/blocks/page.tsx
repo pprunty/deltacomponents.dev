@@ -3,7 +3,7 @@ import Link from "next/link"
 import { BlockDisplay } from "@/components/block-display"
 import { Button } from "@/registry/delta-ui/ui/button"
 
-const FEATURED_BLOCKS = ["testimonials"]
+const FEATURED_BLOCKS = ["testimonials", "perspective-carousel"]
 
 export default async function BlocksPage() {
   return (

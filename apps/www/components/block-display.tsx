@@ -28,8 +28,8 @@ export async function BlockDisplay({ name }: { name: string }) {
       <ComponentPreview
         name={item.name}
         hideCode
+        marginOff={true}
         className={cn(
-          "my-0 **:[.preview]:h-auto **:[.preview]:p-4 **:[.preview>.p-6]:p-0",
           item.meta?.containerClassName
         )}
       />

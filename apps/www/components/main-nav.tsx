@@ -12,7 +12,7 @@ export function MainNav({
   className,
   ...props
 }: React.ComponentProps<"nav"> & {
-  items: { href: string; label: string; badge?: string; hide?: boolean }[]
+  items: { href: string; label: string; badge?: string; hide?: boolean; disabled?: boolean }[]
 }) {
   const pathname = usePathname()
 
@@ -20,17 +20,34 @@ export function MainNav({
 
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>
-      {visibleItems.map((item) => (
-        <Button key={item.href} variant="ghost" asChild size="sm">
-          <Link
-            href={item.href}
-            className={cn(pathname === item.href && "text-primary")}
-          >
-            {item.label}
-            {item.badge && <StatusBadge label={item.badge} />}
-          </Link>
-        </Button>
-      ))}
+      {visibleItems.map((item) => {
+        if (item.disabled) {
+          return (
+            <Button
+              key={item.href}
+              variant="ghost"
+              size="sm"
+              className="cursor-not-allowed opacity-60 text-muted-foreground"
+              disabled
+            >
+              {item.label}
+              {item.badge && <StatusBadge label={item.badge} />}
+            </Button>
+          )
+        }
+
+        return (
+          <Button key={item.href} variant="ghost" asChild size="sm">
+            <Link
+              href={item.href}
+              className={cn(pathname === item.href && "text-primary")}
+            >
+              {item.label}
+              {item.badge && <StatusBadge label={item.badge} />}
+            </Link>
+          </Button>
+        )
+      })}
     </nav>
   )
 }

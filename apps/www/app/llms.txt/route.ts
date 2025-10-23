@@ -15,10 +15,10 @@ Delta Components UI helps developers build modern voice-enabled and AI-powered a
 
 ## Installation
 
-Components can be installed via the Delta Components CLI:
+Components can be installed via the shadcn CLI with our registry URL:
 
 \`\`\`bash
-npx @delta/agents-cli@latest components add <component-name>
+pnpm dlx shadcn@latest add https://deltacomponents.dev/r/<component-name>.json
 \`\`\`
 
 Or manually by copying component code and installing dependencies.
