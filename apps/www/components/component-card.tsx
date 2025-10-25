@@ -41,7 +41,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
           />
         ) : (
           <Image
-            src="/placeholder.jpeg"
+            src="/placeholder.svg"
             alt={String(component.name) || "Component"}
             fill
             className="object-cover"

@@ -18,7 +18,7 @@ export function ThemeCard({ theme }: ThemeCardProps) {
   }
 
   return (
-    <div className="group relative rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
+    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
       <div className="flex flex-col space-y-4">
         <img
           src={theme.previewImage}

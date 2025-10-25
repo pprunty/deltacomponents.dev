@@ -14,7 +14,7 @@ export default function ChatbotWindowPage() {
                 Use the chat window on the right to interact with our AI assistant. Click the expand button to open the chat interface.
               </p>
             </div>
-            {Array.from({ length: 10 }).map((_, index) => (
+            {Array.from({ length: 2 }).map((_, index) => (
               <div key={index}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Obcaecati, reiciendis eum vitae nostrum, temporibus repudiandae

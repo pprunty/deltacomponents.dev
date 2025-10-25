@@ -1,5 +1,5 @@
-/* Lime Green Theme */
-html[data-theme="lime-green"] {
+/* Kerry Theme */
+html[data-theme="kerry"] {
   --background: oklch(0.9851 0 0);
   --foreground: oklch(0.2731 0.0716 132.2683);
   --card: oklch(0.9896 0.0110 123.4516);
@@ -36,30 +36,25 @@ html[data-theme="lime-green"] {
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0px;
-  --shadow-x: 4px;
-  --shadow-y: 4px;
-  --shadow-blur: 0px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 1;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);
-  --shadow-xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);
-  --shadow-sm: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);
-  --shadow: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);
-  --shadow-md: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00);
-  --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);
-  --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);
-  --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
-html[data-theme="lime-green"] body,
-html[data-theme="lime-green"] .font-sans {
+html[data-theme="kerry"] body,
+html[data-theme="kerry"] .font-sans {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
 
-html[data-theme="lime-green"].dark {
+
+html[data-theme="kerry"].dark {
   --background: oklch(0.1200 0.0300 132.0000);
   --foreground: oklch(0.9600 0.0200 130.0000);
   --card: oklch(0.1600 0.0400 132.0000);
@@ -96,20 +91,14 @@ html[data-theme="lime-green"].dark {
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0px;
-  --shadow-x: 4px;
-  --shadow-y: 4px;
-  --shadow-blur: 0px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 1;
-  --shadow-color: hsl(132 100% 80%);
-  --shadow-2xs: 4px 4px 0px 0px hsl(132 100% 80% / 0.50);
-  --shadow-xs: 4px 4px 0px 0px hsl(132 100% 80% / 0.50);
-  --shadow-sm: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 1px 2px -1px hsl(132 100% 80% / 1.00);
-  --shadow: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 1px 2px -1px hsl(132 100% 80% / 1.00);
-  --shadow-md: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 2px 4px -1px hsl(132 100% 80% / 1.00);
-  --shadow-lg: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 4px 6px -1px hsl(132 100% 80% / 1.00);
-  --shadow-xl: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 8px 10px -1px hsl(132 100% 80% / 1.00);
-  --shadow-2xl: 4px 4px 0px 0px hsl(132 100% 80% / 2.50);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }

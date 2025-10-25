@@ -1,59 +1,65 @@
-/* Claymorphism Theme */
-html[data-theme="claymorphism"] {
-  --background: oklch(0.9721 0.0158 110.5501);
-  --foreground: oklch(0.5066 0.2501 271.8903);
-  --card: oklch(0.9721 0.0158 110.5501);
-  --card-foreground: oklch(0.5066 0.2501 271.8903);
-  --popover: oklch(0.9721 0.0158 110.5501);
-  --popover-foreground: oklch(0.5066 0.2501 271.8903);
-  --primary: oklch(0.5066 0.2501 271.8903);
-  --primary-foreground: oklch(1.0000 0 0);
-  --secondary: oklch(1.0000 0 0);
-  --secondary-foreground: oklch(0.5066 0.2501 271.8903);
-  --muted: oklch(0.9189 0.0147 106.6853);
-  --muted-foreground: oklch(0.5309 0.2319 271.8903);
-  --accent: oklch(0.9168 0.0214 109.7161);
-  --accent-foreground: oklch(0.5066 0.2501 271.8903);
-  --destructive: oklch(0.7273 0.1891 27.3339);
+/* Cork Theme */
+html[data-theme="cork"] {
+  --background: oklch(0.9257 0.0118 196.9532);
+  --foreground: oklch(0.2021 0.0316 288.9686);
+  --card: oklch(0.9257 0.0118 196.9532);
+  --card-foreground: oklch(0.2021 0.0316 288.9686);
+  --popover: oklch(0.9707 0.0050 228.8180);
+  --popover-foreground: oklch(0.2021 0.0316 288.9686);
+  --primary: oklch(0.7169 0.1791 38.3276);
+  --primary-foreground: oklch(0.2021 0.0316 288.9686);
+  --secondary: oklch(0.4643 0.2627 289.7495);
+  --secondary-foreground: oklch(0.9257 0.0118 196.9532);
+  --muted: oklch(0.4470 0.0569 290.4469);
+  --muted-foreground: oklch(0.4227 0.0528 289.6679);
+  --accent: oklch(0.5827 0.2216 290.8689);
+  --accent-foreground: oklch(1.0000 0 0);
+  --destructive: oklch(0.6384 0.2142 28.6104);
   --destructive-foreground: oklch(1.0000 0 0);
-  --border: oklch(0.5066 0.2501 271.8903);
-  --input: oklch(0.9189 0.0147 106.6853);
-  --ring: oklch(0.5066 0.2501 271.8903);
-  --chart-1: oklch(0.6149 0.1394 244.9273);
-  --chart-2: oklch(0.6444 0.1508 118.5967);
-  --chart-3: oklch(0.6545 0.1340 85.7186);
-  --chart-4: oklch(0.5808 0.1732 39.5003);
-  --chart-5: oklch(0.5863 0.2064 27.1172);
-  --sidebar: oklch(0.9189 0.0147 106.6853);
-  --sidebar-foreground: oklch(0.5066 0.2501 271.8903);
-  --sidebar-primary: oklch(0.5066 0.2501 271.8903);
-  --sidebar-primary-foreground: oklch(1.0000 0 0);
-  --sidebar-accent: oklch(0.9168 0.0214 109.7161);
-  --sidebar-accent-foreground: oklch(0.5066 0.2501 271.8903);
-  --sidebar-border: oklch(0.8710 0.0128 105.2570);
-  --sidebar-ring: oklch(0.5066 0.2501 271.8903);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --border: oklch(0 0 0);
+  --input: oklch(0.7871 0.0228 239.5181);
+  --ring: oklch(0.5441 0.2420 288.4909);
+  --chart-1: oklch(0.8100 0.1000 252);
+  --chart-2: oklch(0.6200 0.1900 260);
+  --chart-3: oklch(0.5500 0.2200 263);
+  --chart-4: oklch(0.4900 0.2200 264);
+  --chart-5: oklch(0.4200 0.1800 266);
+  --sidebar: oklch(0.9257 0.0118 196.9532);
+  --sidebar-foreground: oklch(0.1450 0 0);
+  --sidebar-primary: oklch(0.2050 0 0);
+  --sidebar-primary-foreground: oklch(0.9850 0 0);
+  --sidebar-accent: oklch(0.9700 0 0);
+  --sidebar-accent-foreground: oklch(0.2050 0 0);
+  --sidebar-border: oklch(0.9220 0 0);
+  --sidebar-ring: oklch(0.7080 0 0);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --shadow-x: 0.5px;
+  --shadow-y: 1px;
+  --shadow-blur: 0px;
+  --shadow-spread: 0.5px;
+  --shadow-opacity: 0.49;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.24);
+  --shadow-xs: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.24);
+  --shadow-sm: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 1px 2px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 1px 2px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-md: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 2px 4px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-lg: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 4px 6px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-xl: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 8px 10px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-2xl: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 1.23);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
-html[data-theme="claymorphism"] body,
-html[data-theme="claymorphism"] .font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+html[data-theme="cork"] body,
+html[data-theme="cork"] .font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-html[data-theme="claymorphism"].dark {
+html[data-theme="cork"].dark {
   --background: oklch(0.12 0.015 240);
   --foreground: oklch(0.92 0.01 120);
   --card: oklch(0.18 0.02 230);
@@ -108,9 +114,4 @@ html[data-theme="claymorphism"].dark {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
-}
-
-html[data-theme="claymorphism"] body,
-html[data-theme="claymorphism"] .font-sans {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }

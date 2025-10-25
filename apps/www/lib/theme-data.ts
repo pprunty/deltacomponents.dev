@@ -6,9 +6,9 @@ export interface ThemeData {
   css: string
 }
 
-export const claymorphismTheme: ThemeData = {
-  name: "Claymorphism",
-  value: "claymorphism",
+export const dublinTheme: ThemeData = {
+  name: "Dublin",
+  value: "dublin",
   description:
     "A modern design approach with soft, clay-like elements and subtle shadows.",
   previewImage: "/images/themes/claymorphism.png",
@@ -174,9 +174,9 @@ export const claymorphismTheme: ThemeData = {
 }`,
 }
 
-export const solarizedTheme: ThemeData = {
-  name: "Solarized",
-  value: "solarized",
+export const clareTheme: ThemeData = {
+  name: "Clare (Solarized)",
+  value: "clare",
   description:
     "A precision color scheme with careful balance of warm and cool colors.",
   previewImage: "/images/themes/solarized.png",
@@ -500,13 +500,13 @@ export const neobrutalismTheme: ThemeData = {
 }`,
 }
 
-export const limeGreenTheme: ThemeData = {
-  name: "Lime Green",
-  value: "lime-green",
+export const kerryTheme: ThemeData = {
+  name: "Kerry",
+  value: "kerry",
   description:
-    "A vibrant lime green theme with bright accents and bold contrasts.",
-  previewImage: "/images/themes/lime-green.png",
-  css: `:root {
+    "A vibrant lime green theme with neobrutalist borders and bold shadows.",
+  previewImage: "/images/themes/kerry.png",
+  css: `html[data-theme="kerry"] {
   --background: oklch(0.9851 0 0);
   --foreground: oklch(0.2731 0.0716 132.2683);
   --card: oklch(0.9896 0.0110 123.4516);
@@ -539,26 +539,25 @@ export const limeGreenTheme: ThemeData = {
   --sidebar-accent-foreground: oklch(0.2046 0 0);
   --sidebar-border: oklch(0.9219 0 0);
   --sidebar-ring: oklch(0.7090 0 0);
-  --font-sans: Host Grotesk;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: Space Mono, monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0px;
-  --shadow-x: 4px;
-  --shadow-y: 4px;
-  --shadow-blur: 0px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 1;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);
-  --shadow-xs: 4px 4px 0px 0px hsl(0 0% 0% / 0.50);
-  --shadow-sm: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);
-  --shadow: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 1px 2px -1px hsl(0 0% 0% / 1.00);
-  --shadow-md: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00);
-  --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);
-  --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);
-  --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+}
+
+html[data-theme="kerry"] body,
+html[data-theme="kerry"] .font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
 
 .dark {
@@ -598,20 +597,14 @@ export const limeGreenTheme: ThemeData = {
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: Space Mono, monospace;
   --radius: 0px;
-  --shadow-x: 4px;
-  --shadow-y: 4px;
-  --shadow-blur: 0px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 1;
-  --shadow-color: hsl(132 100% 80%);
-  --shadow-2xs: 4px 4px 0px 0px hsl(132 100% 80% / 0.50);
-  --shadow-xs: 4px 4px 0px 0px hsl(132 100% 80% / 0.50);
-  --shadow-sm: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 1px 2px -1px hsl(132 100% 80% / 1.00);
-  --shadow: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 1px 2px -1px hsl(132 100% 80% / 1.00);
-  --shadow-md: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 2px 4px -1px hsl(132 100% 80% / 1.00);
-  --shadow-lg: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 4px 6px -1px hsl(132 100% 80% / 1.00);
-  --shadow-xl: 4px 4px 0px 0px hsl(132 100% 80% / 1.00), 4px 8px 10px -1px hsl(132 100% 80% / 1.00);
-  --shadow-2xl: 4px 4px 0px 0px hsl(132 100% 80% / 2.50);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -670,7 +663,131 @@ export const limeGreenTheme: ThemeData = {
 }`,
 }
 
-export const THEME_DATA = [claymorphismTheme, solarizedTheme, neobrutalismTheme, limeGreenTheme]
+export const corkTheme: ThemeData = {
+  name: "Cork",
+  value: "cork",
+  description:
+    "A warm, earthy theme with rich purple accents and subtle shadows.",
+  previewImage: "/images/themes/cork.png",
+  css: `html[data-theme="cork"] {
+  --background: oklch(0.9257 0.0118 196.9532);
+  --foreground: oklch(0.2021 0.0316 288.9686);
+  --card: oklch(0.9257 0.0118 196.9532);
+  --card-foreground: oklch(0.2021 0.0316 288.9686);
+  --popover: oklch(0.9707 0.0050 228.8180);
+  --popover-foreground: oklch(0.2021 0.0316 288.9686);
+  --primary: oklch(0.7169 0.1791 38.3276);
+  --primary-foreground: oklch(0.2021 0.0316 288.9686);
+  --secondary: oklch(0.4643 0.2627 289.7495);
+  --secondary-foreground: oklch(0.9257 0.0118 196.9532);
+  --muted: oklch(0.4470 0.0569 290.4469);
+  --muted-foreground: oklch(0.4227 0.0528 289.6679);
+  --accent: oklch(0.5827 0.2216 290.8689);
+  --accent-foreground: oklch(1.0000 0 0);
+  --destructive: oklch(0.6384 0.2142 28.6104);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0 0 0);
+  --input: oklch(0.7871 0.0228 239.5181);
+  --ring: oklch(0.5441 0.2420 288.4909);
+  --chart-1: oklch(0.8100 0.1000 252);
+  --chart-2: oklch(0.6200 0.1900 260);
+  --chart-3: oklch(0.5500 0.2200 263);
+  --chart-4: oklch(0.4900 0.2200 264);
+  --chart-5: oklch(0.4200 0.1800 266);
+  --sidebar: oklch(0.9257 0.0118 196.9532);
+  --sidebar-foreground: oklch(0.1450 0 0);
+  --sidebar-primary: oklch(0.2050 0 0);
+  --sidebar-primary-foreground: oklch(0.9850 0 0);
+  --sidebar-accent: oklch(0.9700 0 0);
+  --sidebar-accent-foreground: oklch(0.2050 0 0);
+  --sidebar-border: oklch(0.9220 0 0);
+  --sidebar-ring: oklch(0.7080 0 0);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0rem;
+  --shadow-x: 0.5px;
+  --shadow-y: 1px;
+  --shadow-blur: 0px;
+  --shadow-spread: 0.5px;
+  --shadow-opacity: 0.49;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.24);
+  --shadow-xs: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.24);
+  --shadow-sm: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 1px 2px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 1px 2px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-md: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 2px 4px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-lg: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 4px 6px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-xl: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 0.49), 0.5px 8px 10px -0.5px hsl(0 0% 0% / 0.49);
+  --shadow-2xl: 0.5px 1px 0px 0.5px hsl(0 0% 0% / 1.23);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+html[data-theme="cork"] body,
+html[data-theme="cork"] .font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+html[data-theme="cork"].dark {
+  --background: oklch(0.12 0.015 240);
+  --foreground: oklch(0.92 0.01 120);
+  --card: oklch(0.18 0.02 230);
+  --card-foreground: oklch(0.88 0.015 110);
+  --popover: oklch(0.22 0.025 225);
+  --popover-foreground: oklch(0.9 0.012 105);
+  --primary: oklch(0.75 0.12 85);
+  --primary-foreground: oklch(0.1 0.02 240);
+  --secondary: oklch(0.25 0.03 220);
+  --secondary-foreground: oklch(0.85 0.02 100);
+  --muted: oklch(0.2 0.025 235);
+  --muted-foreground: oklch(0.65 0.025 140);
+  --accent: oklch(0.35 0.04 210);
+  --accent-foreground: oklch(0.82 0.025 95);
+  --destructive: oklch(0.65 0.18 25);
+  --destructive-foreground: oklch(0.95 0.01 20);
+  --border: oklch(0.68 0.09 80);
+  --input: oklch(0.32 0.035 220);
+  --ring: oklch(0.68 0.09 80);
+  --chart-1: oklch(0.7 0.11 75);
+  --chart-2: oklch(0.66 0.09 85);
+  --chart-3: oklch(0.62 0.07 95);
+  --chart-4: oklch(0.58 0.05 105);
+  --chart-5: oklch(0.54 0.03 115);
+  --sidebar: oklch(0.16 0.02 235);
+  --sidebar-foreground: oklch(0.86 0.018 108);
+  --sidebar-primary: oklch(0.72 0.1 82);
+  --sidebar-primary-foreground: oklch(0.12 0.015 238);
+  --sidebar-accent: oklch(0.28 0.035 215);
+  --sidebar-accent-foreground: oklch(0.8 0.03 100);
+  --sidebar-border: oklch(0.26 0.03 228);
+  --sidebar-ring: oklch(0.65 0.08 77);
+  --surface: oklch(0.14 0.018 242);
+  --surface-foreground: oklch(0.75 0.03 130);
+  --code: oklch(0.16 0.02 238);
+  --code-foreground: oklch(0.72 0.025 125);
+  --code-highlight: oklch(0.2 0.025 232);
+  --code-number: oklch(0.68 0.04 135);
+  --selection: oklch(0.7 0.09 80);
+  --selection-foreground: oklch(0.08 0.01 245);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}`,
+}
+
+export const THEME_DATA = [dublinTheme, clareTheme, neobrutalismTheme, kerryTheme, corkTheme]
 
 export function getThemeData(value: string): ThemeData | undefined {
   return THEME_DATA.find((theme) => theme.value === value)

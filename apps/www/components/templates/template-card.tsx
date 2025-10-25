@@ -12,7 +12,7 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   return (
-    <div className="group relative rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
+    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
       <div className="flex flex-col space-y-4">
         <div className="relative overflow-hidden rounded-md">
           <div className="bg-muted aspect-video w-full rounded-md flex items-center justify-center">

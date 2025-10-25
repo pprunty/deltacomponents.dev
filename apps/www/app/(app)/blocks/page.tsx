@@ -3,12 +3,16 @@ import Link from "next/link"
 import { BlockDisplay } from "@/components/block-display"
 import { Button } from "@/registry/delta-ui/ui/button"
 
-const FEATURED_BLOCKS = ["testimonials", "perspective-carousel"]
+// Import all available blocks
+import blocksData from "@/registry/__blocks__.json"
 
 export default async function BlocksPage() {
+  // Get all block names from the registry
+  const allBlocks = blocksData.map((block) => block.name)
+
   return (
     <div>
-      {FEATURED_BLOCKS.map((block) => (
+      {allBlocks.map((block) => (
         <div key={block} className="container py-8 first:pt-6 md:py-12">
           <BlockDisplay name={block} />
         </div>

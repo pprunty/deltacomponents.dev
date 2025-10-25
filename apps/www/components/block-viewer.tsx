@@ -7,6 +7,7 @@ import {
   Check,
   ChevronRight,
   Clipboard,
+  ExternalLink,
   File,
   Folder,
   Fullscreen,
@@ -278,9 +279,104 @@ function BlockViewerView() {
 
 function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   const { item } = useBlockViewer()
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
+  const [videoError, setVideoError] = React.useState(false)
+  const [imageError, setImageError] = React.useState(false)
+
+  const handlePreviewClick = () => {
+    window.open(`/view/${item.name}`, '_blank')
+  }
+
+  const renderPreview = () => {
+    // Always try to render video first, then images, then placeholder
+    if (!videoError) {
+      return (
+        <div className="relative overflow-hidden rounded-xl border cursor-pointer" onClick={handlePreviewClick}>
+          <video
+            src={`/${item.name}-preview.mp4`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+            onError={() => setVideoError(true)}
+          />
+          <div className="absolute top-2 right-2">
+            <Button
+              size="icon"
+              variant="ghost"
+              className="size-8 bg-black/20 hover:bg-black/30 text-white backdrop-blur-sm"
+              onClick={(e) => {
+                e.stopPropagation()
+                handlePreviewClick()
+              }}
+            >
+              <ExternalLink className="size-4" />
+            </Button>
+          </div>
+        </div>
+      )
+    }
+
+    // If video failed, show placeholder image directly to avoid 404s
+    return (
+      <div className="relative overflow-hidden rounded-xl border cursor-pointer" onClick={handlePreviewClick}>
+        <Image
+          src="/placeholder.svg"
+          alt={`${item.name} preview`}
+          width={1440}
+          height={900}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute top-2 right-2">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="size-8 bg-black/20 hover:bg-black/30 text-white backdrop-blur-sm"
+            onClick={(e) => {
+              e.stopPropagation()
+              handlePreviewClick()
+            }}
+          >
+            <ExternalLink className="size-4" />
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="flex flex-col gap-2 lg:hidden">
+    <div className="flex flex-col gap-4 lg:hidden">
+      {/* Install command with copy button on left */}
+      <div className="flex items-center gap-2 px-2">
+        <Button
+          variant="default"
+          className="flex-1 gap-2 justify-start text-left h-10"
+          size="sm"
+          onClick={() => {
+            copyToClipboard(
+              `npx @elevenlabs/agents-cli@latest components add ${item.name}`
+            )
+          }}
+        >
+          {isCopied ? <Check className="size-4" /> : <Terminal className="size-4" />}
+          <span className="truncate">
+            npx @elevenlabs/agents-cli@latest components add {item.name}
+          </span>
+        </Button>
+        
+        {/* Up-right arrow button */}
+        <Button
+          size="icon"
+          variant="outline"
+          className="size-10 shrink-0"
+          onClick={handlePreviewClick}
+        >
+          <ExternalLink className="size-4" />
+        </Button>
+      </div>
+
+      {/* Block description */}
       <div className="flex items-center gap-2 px-2">
         <div className="line-clamp-1 text-sm font-medium">
           {item.description}
@@ -289,28 +385,9 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
           {item.name}
         </div>
       </div>
-      {item.meta?.mobile === "component" ? (
-        children
-      ) : (
-        <div className="overflow-hidden rounded-xl border">
-          <Image
-            src={`/r/${item.name}-light.png`}
-            alt={item.name}
-            data-block={item.name}
-            width={1440}
-            height={900}
-            className="object-cover dark:hidden"
-          />
-          <Image
-            src={`/r/${item.name}-dark.png`}
-            alt={item.name}
-            data-block={item.name}
-            width={1440}
-            height={900}
-            className="hidden object-cover dark:block"
-          />
-        </div>
-      )}
+
+      {/* Preview content */}
+      {renderPreview()}
     </div>
   )
 }

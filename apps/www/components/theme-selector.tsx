@@ -35,16 +35,24 @@ const DEFAULT_THEMES = [
 
 const SPECIAL_THEMES = [
   {
-    name: "Claymorphism",
-    value: "claymorphism",
+    name: "Dublin",
+    value: "dublin",
   },
   {
-    name: "Solarized",
-    value: "solarized",
+    name: "Clare (Solarized)",
+    value: "clare",
   },
   {
     name: "Neobrutalism",
     value: "neobrutalism",
+  },
+  {
+    name: "Kerry",
+    value: "kerry",
+  },
+  {
+    name: "Cork",
+    value: "cork",
   },
 ]
 

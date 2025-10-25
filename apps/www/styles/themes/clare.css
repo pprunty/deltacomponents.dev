@@ -1,5 +1,5 @@
-/* Solarized Theme - Light Mode */
-html[data-theme="solarized"] {
+/* Clare Theme - Light Mode */
+html[data-theme="clare"] {
   --background: #fdf6e3;
   --foreground: #657b83;
   --card: #fdf6e3;
@@ -39,8 +39,8 @@ html[data-theme="solarized"] {
   }
 }
 
-/* Solarized Theme - Dark Mode */
-html[data-theme="solarized"].dark {
+/* Clare Theme - Dark Mode */
+html[data-theme="clare"].dark {
   /* Dark mode mappings */
   --background: #002b36;
   --foreground: #839496;

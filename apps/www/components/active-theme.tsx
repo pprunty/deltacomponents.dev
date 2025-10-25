@@ -7,8 +7,10 @@ import {
   useEffect,
   useState,
 } from "react"
+import { useTheme } from "next-themes"
+import { THEME_META_COLORS } from "@/lib/config"
 
-const DEFAULT_THEME = "default"
+const DEFAULT_THEME = "kerry"
 const THEME_STORAGE_KEY = "active-theme"
 
 type ThemeContextType = {
@@ -25,6 +27,7 @@ export function ActiveThemeProvider({
   children: ReactNode
   initialTheme?: string
 }) {
+  const { resolvedTheme } = useTheme()
   const [activeTheme, setActiveTheme] = useState<string>(() => {
     if (typeof window !== "undefined") {
       try {
@@ -38,57 +41,31 @@ export function ActiveThemeProvider({
   })
 
   useEffect(() => {
-    // Set data-theme attribute on html element instead of classes on body
+    // Set data-theme attribute on html element
     document.documentElement.setAttribute("data-theme", activeTheme)
 
-    // Update meta theme-color for mobile browsers
+    // Update meta theme-color using pre-calculated hex values
     const updateMetaThemeColor = () => {
-      const backgroundColor = getComputedStyle(document.documentElement)
-        .getPropertyValue("--background")
-        .trim()
-
-      let themeColor = backgroundColor
-      if (backgroundColor.startsWith("oklch(")) {
-        // For oklch colors, create a temporary element to get computed color
-        const testDiv = document.createElement("div")
-        testDiv.style.backgroundColor = backgroundColor
-        testDiv.style.visibility = "hidden"
-        testDiv.style.position = "absolute"
-        document.body.appendChild(testDiv)
-        const computedColor = getComputedStyle(testDiv).backgroundColor
-        document.body.removeChild(testDiv)
-
-        // Convert rgb to hex
-        if (computedColor.startsWith("rgb")) {
-          const rgbValues = computedColor.match(/\d+/g)
-          if (rgbValues && rgbValues.length >= 3) {
-            themeColor =
-              "#" +
-              rgbValues
-                .slice(0, 3)
-                .map((x) => {
-                  const hex = parseInt(x).toString(16)
-                  return hex.length === 1 ? "0" + hex : hex
-                })
-                .join("")
-          }
+      const themeColors = THEME_META_COLORS[activeTheme as keyof typeof THEME_META_COLORS]
+      
+      if (themeColors) {
+        const isDark = resolvedTheme === "dark"
+        const themeColor = isDark ? themeColors.dark : themeColors.light
+        
+        // Update or create meta theme-color tag
+        let metaThemeColor = document.querySelector('meta[name="theme-color"]')
+        if (!metaThemeColor) {
+          metaThemeColor = document.createElement("meta")
+          metaThemeColor.setAttribute("name", "theme-color")
+          document.head.appendChild(metaThemeColor)
         }
+        metaThemeColor.setAttribute("content", themeColor)
       }
-
-      // Update or create meta theme-color tag
-      let metaThemeColor = document.querySelector('meta[name="theme-color"]')
-      if (!metaThemeColor) {
-        metaThemeColor = document.createElement("meta")
-        metaThemeColor.setAttribute("name", "theme-color")
-        document.head.appendChild(metaThemeColor)
-      }
-      metaThemeColor.setAttribute("content", themeColor)
     }
 
-    // Update meta theme color after a brief delay to allow CSS to apply
-    const timeoutId = setTimeout(updateMetaThemeColor, 100)
-    return () => clearTimeout(timeoutId)
-  }, [activeTheme])
+    // Update immediately and on theme change
+    updateMetaThemeColor()
+  }, [activeTheme, resolvedTheme])
 
   const handleSetActiveTheme = (theme: string) => {
     setActiveTheme(theme)
