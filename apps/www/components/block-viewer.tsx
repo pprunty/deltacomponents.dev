@@ -27,6 +27,7 @@ import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { Button } from "@/registry/delta-ui/ui/button"
+import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 import {
   Collapsible,
   CollapsibleContent,
@@ -279,9 +280,16 @@ function BlockViewerView() {
 
 function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   const { item } = useBlockViewer()
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
   const [videoError, setVideoError] = React.useState(false)
   const [imageError, setImageError] = React.useState(false)
+
+  // Format component name from kebab-case to Title Case
+  const formatComponentName = (name: string) => {
+    return name
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
 
   const handlePreviewClick = () => {
     window.open(`/view/${item.name}`, '_blank')
@@ -347,47 +355,20 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex flex-col gap-4 lg:hidden">
-      {/* Install command with copy button on left */}
-      <div className="flex items-center gap-2 px-2">
-        <Button
-          variant="default"
-          className="flex-1 gap-2 justify-start text-left h-10 min-w-0"
-          size="sm"
-          onClick={() => {
-            copyToClipboard(
-              `npx @elevenlabs/agents-cli@latest components add ${item.name}`
-            )
-          }}
-        >
-          {isCopied ? <Check className="size-4 shrink-0" /> : <Terminal className="size-4 shrink-0" />}
-          <span className="hidden sm:inline truncate">
-            npx @elevenlabs/agents-cli@latest components add {item.name}
-          </span>
-          <span className="sm:hidden truncate">
-            Add {item.name}
-          </span>
-        </Button>
-        
-        {/* Up-right arrow button */}
-        <Button
-          size="icon"
-          variant="outline"
-          className="size-10 shrink-0"
-          onClick={handlePreviewClick}
-        >
-          <ExternalLink className="size-4" />
-        </Button>
-      </div>
+      {/* Component title (mobile only) */}
+      <h2 className="font-heading text-2xl font-bold">
+        {formatComponentName(item.name)}
+      </h2>
 
-      {/* Block description */}
-      <div className="flex items-center gap-2 px-2">
-        <div className="line-clamp-1 text-sm font-medium">
-          {item.description}
-        </div>
-        <div className="text-muted-foreground ml-auto shrink-0 font-mono text-xs">
-          {item.name}
-        </div>
-      </div>
+      {/* Install command with package manager tabs (mobile only) */}
+      <CodeBlock
+        npm={`npx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
+        pnpm={`pnpm dlx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
+        yarn={`npx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
+        bun={`bunx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
+        defaultPackageManager="npm"
+        className="text-sm"
+      />
 
       {/* Preview content */}
       {renderPreview()}
