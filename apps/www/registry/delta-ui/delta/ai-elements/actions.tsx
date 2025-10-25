@@ -15,7 +15,7 @@ import type { ComponentProps } from "react";
 export type ActionsProps = ComponentProps<"div">;
 
 export const Actions = ({ className, children, ...props }: ActionsProps) => (
-  <div className={cn("flex items-center gap-0 px-1 active:opacity-100 focus-within:opacity-100", className)} {...props}>
+  <div className={cn("flex items-center gap-0 px-1 opacity-100", className)} {...props}>
     {children}
   </div>
 );

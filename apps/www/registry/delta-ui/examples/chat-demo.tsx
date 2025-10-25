@@ -61,7 +61,7 @@ import {
 import { GlobeIcon, ThumbsUpIcon, ThumbsDownIcon } from 'lucide-react';
 import { useState, useCallback, useRef } from 'react';
 import { toast } from 'sonner';
-import type { ToolUIPart } from 'ai';
+import type { ToolUIPart, FileUIPart } from 'ai';
 
 type MessageType = {
   key: string;
@@ -83,6 +83,7 @@ type MessageType = {
     result: string | undefined;
     error: string | undefined;
   }[];
+  files?: { name: string; url: string; type: string }[];
   avatar: string;
   name: string;
 };
@@ -191,7 +192,7 @@ const Example = () => {
   }, []);
 
   const addUserMessage = useCallback(
-    (content: string) => {
+    (content: string, files?: { name: string; url: string; type: string }[]) => {
       const userMessage: MessageType = {
         key: `user-${Date.now()}`,
         from: 'user',
@@ -201,6 +202,7 @@ const Example = () => {
             content,
           },
         ],
+        files,
         avatar: 'https://patrickprunty.com/icon.webp',
         name: 'User',
       };
@@ -249,46 +251,28 @@ const Example = () => {
 
     setStatus('submitted');
 
+    let processedFiles: { name: string; url: string; type: string }[] | undefined;
+    
     if (message.files?.length) {
+      processedFiles = message.files.map(file => ({
+        name: 'name' in file ? (file as any).name : 'Unknown file',
+        url: 'url' in file ? (file as any).url : '',
+        type: 'type' in file ? (file as any).type : 'application/octet-stream'
+      }));
+      
       toast.success('Files attached', {
         description: `${message.files.length} file(s) attached to message`,
       });
     }
 
-    addUserMessage(message.text || 'Sent with attachments');
+    addUserMessage(message.text || '', processedFiles);
     setText('');
   };
 
 
   return (
     <div className="relative flex size-full flex-col overflow-hidden">
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          div[style*="height: 100%; width: 100%; overflow: auto"] {
-            scrollbar-width: thin;
-            scrollbar-color: #b6b6b6 transparent;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar {
-            width: 4px;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-track {
-            background: transparent;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb {
-            background: #b6b6b6;
-            border-radius: 9999px;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb:hover {
-            background: rgba(182, 182, 182, 0.8);
-          }
-        `
-      }} />
-      <Conversation
-        style={{
-          scrollbarWidth: 'thin',
-          scrollbarColor: 'hsl(var(--border)) transparent',
-        } as React.CSSProperties}
-      >
+      <Conversation>
         <ConversationContent>
           {messages.map(({ versions, ...message }) => {
             const assistantMessages = messages.filter(m => m.from === 'assistant');
@@ -338,9 +322,42 @@ const Example = () => {
                           message.from === 'user' && 'w-fit ml-auto'
                         )}
                       >
-                        <div className="leading-[1.65rem] text-base">
-                          <Response>{version.content}</Response>
-                        </div>
+                        {message.files?.length && (
+                          <div className="mb-3 space-y-2">
+                            {message.files.map((file, index) => (
+                              <div key={index} className="max-w-sm">
+                                {file.type.startsWith('image/') ? (
+                                  <div className="relative">
+                                    <img
+                                      src={file.url}
+                                      alt={file.name}
+                                      className="rounded-lg max-w-full h-auto"
+                                      style={{ maxHeight: '300px' }}
+                                    />
+                                    <div className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                      {file.name}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+                                    <div className="w-8 h-8 bg-primary/10 rounded flex items-center justify-center">
+                                      📄
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="text-sm font-medium truncate">{file.name}</div>
+                                      <div className="text-xs text-muted-foreground">{file.type}</div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {version.content && (
+                          <div className="leading-[1.65rem] text-base">
+                            <Response>{version.content}</Response>
+                          </div>
+                        )}
                       </MessageContent>
                       {message.from === 'assistant' && (
                         <div className="flex items-center justify-between">
@@ -431,7 +448,7 @@ const Example = () => {
                   variant={useWebSearch ? 'default' : 'ghost'}
                 >
                   <GlobeIcon size={16} />
-                  <span className="hidden sm:inline">Search</span>
+                  <span>Search</span>
                 </PromptInputButton>
               </PromptInputTools>
               <PromptInputTools>

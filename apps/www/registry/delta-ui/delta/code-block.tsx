@@ -253,7 +253,7 @@ export function CodeBlock({
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
-          <div className="bg-secondary flex items-center justify-between border-b px-3 py-1">
+          <div className="bg-muted flex items-center justify-between border-b px-3 py-1">
             <div className="flex items-center gap-2">
               <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
                 <TerminalIcon className="text-code size-3" />
@@ -337,7 +337,7 @@ export function CodeBlock({
         )}
       >
         {filename && (
-          <div className="bg-secondary flex items-center justify-between border-b">
+          <div className="bg-muted flex items-center justify-between border-b">
             <div className="flex items-center gap-2 px-3 py-1">
               <span className="text-sm font-medium">{filename}</span>
             </div>

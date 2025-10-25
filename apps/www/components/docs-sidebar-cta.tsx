@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/delta-ui/ui/button"
 
@@ -15,22 +14,19 @@ export function DocsSidebarCta({ className }: React.ComponentProps<"div">) {
       <div className="bg-surface/80 absolute inset-0" />
 
       <div className="relative z-10 text-base leading-tight font-semibold text-balance group-hover:underline">
-        Deploy and Scale Agents with ElevenLabs
+        Build Better User Experiences
       </div>
       <div className="text-muted-foreground relative z-10">
-        ElevenLabs delivers the infrastructure and developer experience you need
-        to ship reliable audio & agent applications at scale.
+        Discover open source components that make the difference in your applications. Copy, paste, and customize to create exceptional user interfaces.
       </div>
       <Button size="sm" className="relative z-10 mt-2 w-fit">
-        Deploy Now
+        Browse Components
       </Button>
       <Link
-        href={siteConfig.utm.agents}
-        target="_blank"
-        rel="noreferrer"
+        href="/docs/components"
         className="absolute inset-0 z-20"
       >
-        <span className="sr-only">Talk to an expert</span>
+        <span className="sr-only">Browse components</span>
       </Link>
     </div>
   )

@@ -12,6 +12,7 @@ export type ConversationProps = ComponentProps<typeof StickToBottom> & {
   isLoading?: boolean;
   userAvatar?: string;
   onScrollStateChange?: (state: { isAtBottom: boolean }) => void;
+  style?: React.CSSProperties;
 };
 
 export const Conversation = ({ 
@@ -20,10 +21,26 @@ export const Conversation = ({
   isLoading,
   userAvatar,
   onScrollStateChange,
+  style,
   ...props 
 }: ConversationProps) => (
   <StickToBottom
-    className={cn("relative flex-1 overflow-y-auto", className)}
+    className={cn(
+      "relative flex-1 overflow-y-auto",
+      "[scrollbar-width:thin]",
+      "[scrollbar-color:#b6b6b6_transparent]", 
+      "[&::-webkit-scrollbar]:w-[2px]",
+      "[&::-webkit-scrollbar-track]:bg-transparent",
+      "[&::-webkit-scrollbar-thumb]:bg-muted",
+      "[&::-webkit-scrollbar-thumb]:rounded-full",
+      "[&::-webkit-scrollbar-thumb:hover]:bg-muted/80",
+      className
+    )}
+    style={{
+      scrollbarWidth: 'thin',
+      scrollbarColor: 'hsl(var(--border)) transparent',
+      ...style,
+    }}
     initial="smooth"
     resize="smooth"
     role="log"

@@ -246,4 +246,26 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "chat-shimmer-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [
+      {
+        path: "examples/chat-shimmer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "chat-reasoning-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    files: [
+      {
+        path: "examples/chat-reasoning-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

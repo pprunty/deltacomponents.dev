@@ -255,33 +255,7 @@ const Example = () => {
 
   return (
     <div className="relative flex size-full flex-col overflow-hidden">
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          div[style*="height: 100%; width: 100%; overflow: auto"] {
-            scrollbar-width: thin;
-            scrollbar-color: #b6b6b6 transparent;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar {
-            width: 4px;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-track {
-            background: transparent;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb {
-            background: #b6b6b6;
-            border-radius: 9999px;
-          }
-          div[style*="height: 100%; width: 100%; overflow: auto"]::-webkit-scrollbar-thumb:hover {
-            background: rgba(182, 182, 182, 0.8);
-          }
-        `
-      }} />
-      <Conversation
-        style={{
-          scrollbarWidth: 'thin',
-          scrollbarColor: 'hsl(var(--border)) transparent',
-        } as React.CSSProperties}
-      >
+      <Conversation>
         <ConversationContent>
           {messages.map(({ versions, ...message }) => {
             const assistantMessages = messages.filter(m => m.from === 'assistant');

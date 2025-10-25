@@ -16,7 +16,7 @@ import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Delta Components UI"
 const description =
-  "A collection of Open Source agent and audio components that you can customize and extend."
+  "A collection of Open Source components that make the difference in your user experience."
 
 export const dynamic = "force-static"
 export const revalidate = false

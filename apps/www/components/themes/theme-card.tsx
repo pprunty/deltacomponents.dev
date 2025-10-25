@@ -18,18 +18,18 @@ export function ThemeCard({ theme }: ThemeCardProps) {
   }
 
   return (
-    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
-      <div className="flex flex-col space-y-4">
+    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md h-full">
+      <div className="flex flex-col space-y-4 h-full">
         <img
           src={theme.previewImage}
           alt={`${theme.name} theme preview`}
           className="aspect-video w-full object-cover"
         />
-        <div className="space-y-2">
+        <div className="space-y-2 flex-grow">
           <h3 className="font-semibold">{theme.name}</h3>
           <p className="text-muted-foreground text-sm">{theme.description}</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <Button size="sm" className="flex-1" onClick={handleTryTheme}>
             Try it out
           </Button>

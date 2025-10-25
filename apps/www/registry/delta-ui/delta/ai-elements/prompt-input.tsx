@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { Button } from "@/registry/delta-ui/ui/button";
 import {
   Command,
@@ -936,7 +937,7 @@ export const PromptInputTools = ({
   className,
   ...props
 }: PromptInputToolsProps) => (
-  <div className={cn("flex items-center gap-0 sm:gap-1", className)} {...props} />
+  <div className={cn("flex items-center gap-1", className)} {...props} />
 );
 
 export type PromptInputButtonProps = ComponentProps<typeof InputGroupButton>;
@@ -945,10 +946,16 @@ export const PromptInputButton = ({
   variant = "ghost",
   className,
   size,
+  children,
   ...props
 }: PromptInputButtonProps) => {
   const newSize =
-    size ?? (Children.count(props.children) > 1 ? "sm" : "icon-sm");
+    size ?? (Children.count(children) > 1 ? "sm" : "icon-sm");
+
+  // Check if this is a Search button by looking at children content
+  const hasSearchText = React.Children.toArray(children).some(
+    child => typeof child === 'object' && 'props' in child && child.props?.children === 'Search'
+  );
 
   return (
     <InputGroupButton
@@ -957,7 +964,18 @@ export const PromptInputButton = ({
       type="button"
       variant={variant}
       {...props}
-    />
+    >
+      {hasSearchText ? (
+        <>
+          {React.Children.toArray(children).find(child => 
+            typeof child === 'object' && 'type' in child
+          )}
+          <span className="hidden sm:inline">Search</span>
+        </>
+      ) : (
+        children
+      )}
+    </InputGroupButton>
   );
 };
 

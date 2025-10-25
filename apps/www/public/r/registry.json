@@ -284,7 +284,7 @@
       ],
       "meta": {
         "iframeHeight": "600px",
-        "container": "",
+        "container": " ",
         "mobile": "component"
       },
       "categories": [
@@ -584,6 +584,32 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/card-deck-balatro-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chat-shimmer-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/chat.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/chat-shimmer-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "chat-reasoning-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/chat.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/chat-reasoning-demo.tsx",
           "type": "registry:example"
         }
       ]

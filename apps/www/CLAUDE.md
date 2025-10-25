@@ -130,6 +130,83 @@ These scripts should:
 3. Update registry index if needed
 4. Follow naming conventions and directory structure
 
+## Theme System
+
+### Creating New Themes
+
+To create a new theme (e.g., a Claude-inspired theme named after an Irish county):
+
+1. **Create CSS Theme File**: Create `styles/themes/[county-name].css`
+   ```css
+   /* [County Name] (Claude) Theme */
+   html[data-theme="[county-name]"] {
+     --background: oklch(0.9800 0.0050 45.0000);
+     --foreground: oklch(0.2500 0.0800 280.0000);
+     --card: oklch(0.9850 0.0030 50.0000);
+     /* ... all required CSS variables ... */
+   }
+   
+   html[data-theme="[county-name]"].dark {
+     --background: oklch(0.1100 0.0200 280.0000);
+     --foreground: oklch(0.9300 0.0300 45.0000);
+     /* ... all dark mode variables ... */
+   }
+   ```
+
+2. **Import Theme**: Add to `styles/themes.css`
+   ```css
+   @import './themes/[county-name].css';
+   ```
+
+3. **Add Theme Data**: Update `lib/theme-data.ts`
+   ```typescript
+   export const [countyName]Theme: ThemeData = {
+     name: "[County Name] (Claude)",
+     value: "[county-name]",
+     description: "A Claude-inspired theme with...",
+     previewImage: "/images/themes/[county-name].png",
+     css: `/* CSS string from the theme file */`
+   }
+   
+   // Add to THEME_DATA array
+   export const THEME_DATA = [...existingThemes, [countyName]Theme]
+   ```
+
+4. **Update Theme Selector**: Add to `components/theme-selector.tsx`
+   ```typescript
+   const SPECIAL_THEMES = [
+     // ... existing themes
+     {
+       name: "[County Name] (Claude)",
+       value: "[county-name]",
+     },
+   ]
+   ```
+
+5. **Add Meta Theme Colors**: Generate hex values and update `lib/config.ts`
+   - Update `scripts/oklch_to_hex.py` with new theme OKLCH values
+   - Run: `python3 scripts/oklch_to_hex.py`
+   - Add hex values to `THEME_META_COLORS`:
+   ```typescript
+   export const THEME_META_COLORS = {
+     // ... existing themes
+     [countyName]: { light: "#fbf7f5", dark: "#03030a" }
+   }
+   ```
+
+6. **Test Theme**: 
+   - Start dev server: `pnpm dev`
+   - Navigate to themes page
+   - Verify theme appears in selector and applies correctly
+
+### Theme Architecture
+
+- **Data-theme attributes**: Themes use `html[data-theme="theme-name"]` selectors
+- **OKLCH color space**: Use OKLCH for better color representation
+- **Meta theme-color**: Automatically updates mobile browser theme color
+- **Light/Dark modes**: Each theme supports both modes
+- **Component inheritance**: All shadcn/ui components automatically inherit theme variables
+
 ## Adding New Component Demos
 
 When adding new demos for existing components:

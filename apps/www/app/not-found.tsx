@@ -20,7 +20,7 @@ export default function NotFound() {
           />
           <h1 className="z-30 text-3xl md:text-6xl font-heading">page not found or moved</h1>
         </div>
-        <Button asChild variant="outline" size="lg" className="mt-4">
+        <Button asChild size="lg" className="mt-4">
           <Link href="/">Return Home</Link>
         </Button>
       </div>

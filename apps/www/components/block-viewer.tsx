@@ -351,7 +351,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
       <div className="flex items-center gap-2 px-2">
         <Button
           variant="default"
-          className="flex-1 gap-2 justify-start text-left h-10"
+          className="flex-1 gap-2 justify-start text-left h-10 min-w-0"
           size="sm"
           onClick={() => {
             copyToClipboard(
@@ -359,9 +359,12 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
             )
           }}
         >
-          {isCopied ? <Check className="size-4" /> : <Terminal className="size-4" />}
-          <span className="truncate">
+          {isCopied ? <Check className="size-4 shrink-0" /> : <Terminal className="size-4 shrink-0" />}
+          <span className="hidden sm:inline truncate">
             npx @elevenlabs/agents-cli@latest components add {item.name}
+          </span>
+          <span className="sm:hidden truncate">
+            Add {item.name}
           </span>
         </Button>
         

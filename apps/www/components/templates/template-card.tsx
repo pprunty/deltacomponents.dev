@@ -12,8 +12,8 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   return (
-    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
-      <div className="flex flex-col space-y-4">
+    <div className="group relative rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md h-full">
+      <div className="flex flex-col space-y-4 h-full">
         <div className="relative overflow-hidden rounded-md">
           <div className="bg-muted aspect-video w-full rounded-md flex items-center justify-center">
             <span className="text-muted-foreground text-sm">Preview Image</span>
@@ -26,12 +26,12 @@ export function TemplateCard({ template }: TemplateCardProps) {
           </Badge>
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-2 flex-grow">
           <h3 className="font-semibold">{template.name}</h3>
           <p className="text-muted-foreground text-sm">{template.description}</p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 mt-auto">
           <div className="flex flex-wrap gap-1">
             {template.features.slice(0, 3).map((feature) => (
               <Badge key={feature} variant="outline" className="text-xs">

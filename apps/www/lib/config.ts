@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://deltacomponents.dev",
   ogImage: "https://deltacomponents.dev/og.jpg",
   description:
-    "A collection of Open Source agent and audio components that you can customize, extend, and build on.",
+    "A collection of Open Source components that make the difference in your user experience.",
   keywords: [
     "Next.js",
     "React",
@@ -23,7 +23,7 @@ export const siteConfig = {
   creator: "pprunty",
   links: {
     twitter: "https://x.com/pprunty_",
-    x: "https://x.com/pprunty_",
+    x: "https://patrickprunty.com",
     github: "https://github.com/pprunty/deltacomponents.dev",
   },
   navItems: [
@@ -76,5 +76,6 @@ export const THEME_META_COLORS = {
   clare: { light: "#fdf6e3", dark: "#002b36" },
   neobrutalism: { light: "#fefefe", dark: "#000000" },
   kerry: { light: "#f9f9f9", dark: "#020700" },
-  cork: { light: "#dde8e8", dark: "#02060a" }
+  cork: { light: "#dde8e8", dark: "#02060a" },
+  galway: { light: "#fbf7f5", dark: "#03030a" }
 }

@@ -4,7 +4,7 @@ export default function ChatbotWindowLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="h-screen w-full">
+    <div className="h-screen w-full no-scrollbar">
       {children}
     </div>
   )
