@@ -10,8 +10,8 @@ def main():
 if __name__ == "__main__":
     main()`}
       language="python"
-      filename="hello.py"
-      showLineNumbers={true}
+      showLineNumbers={false}
+      className="border-0 rounded-xl"
     />
   )
 }

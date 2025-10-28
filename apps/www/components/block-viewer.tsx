@@ -356,7 +356,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-4 lg:hidden">
       {/* Component title (mobile only) */}
-      <h2 className="font-heading text-2xl font-bold">
+      <h2 className="font-heading text-2xl font-medium">
         {formatComponentName(item.name)}
       </h2>
 
