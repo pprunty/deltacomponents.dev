@@ -3,7 +3,20 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { TerminalIcon } from "lucide-react"
-import { Highlight, PrismTheme } from "prism-react-renderer"
+import { Highlight, Prism } from "prism-react-renderer"
+import type { PrismTheme } from "prism-react-renderer"
+
+// Import additional language definitions
+;(typeof global !== "undefined" ? global : window).Prism = Prism
+require("prismjs/components/prism-cpp")
+require("prismjs/components/prism-python")
+require("prismjs/components/prism-bash")
+require("prismjs/components/prism-typescript")
+require("prismjs/components/prism-javascript")
+require("prismjs/components/prism-jsx")
+require("prismjs/components/prism-tsx")
+require("prismjs/components/prism-go")
+require("prismjs/components/prism-rust")
 
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/delta-ui/delta/copy-button"

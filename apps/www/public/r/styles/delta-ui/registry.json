@@ -292,6 +292,32 @@
       ]
     },
     {
+      "name": "bottom-mobile-nav",
+      "type": "registry:block",
+      "description": "BottomMobileNav block",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/bottom-mobile-nav/page.tsx",
+          "type": "registry:page",
+          "target": "app/bottom-mobile-nav/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
+          "type": "registry:component",
+          "target": "components/bottom-mobile-nav.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "",
+        "mobile": "component"
+      },
+      "categories": [
+        "layout"
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
@@ -558,6 +584,19 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/tabs-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tabs-background-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/tabs-background-demo.tsx",
           "type": "registry:example"
         }
       ]

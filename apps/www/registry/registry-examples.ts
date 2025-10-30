@@ -225,6 +225,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "tabs-background-demo",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [
+      {
+        path: "examples/tabs-background-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "card-deck-yugioh-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],

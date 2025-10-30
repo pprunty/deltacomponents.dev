@@ -1,14 +1,12 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ChevronLeftIcon } from "lucide-react"
 import { registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { BackButton } from "./back-button"
 
 
 export const revalidate = false
@@ -98,18 +96,13 @@ export default async function BlockPage({
   }
 
   return (
-    <>
-      <div
-        className={cn(
-          "bg-background flex min-h-screen items-center justify-center",
-          item.meta?.container
-        )}
-      >
-        <Component />
-      </div>
-      
-      {/* Floating back button */}
-      <BackButton />
-    </>
+    <div
+      className={cn(
+        "bg-background flex min-h-screen items-center justify-center",
+        item.meta?.container
+      )}
+    >
+      <Component />
+    </div>
   )
 }

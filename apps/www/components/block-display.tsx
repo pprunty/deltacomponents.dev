@@ -11,7 +11,13 @@ import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
 
-export async function BlockDisplay({ name }: { name: string }) {
+export async function BlockDisplay({ 
+  name, 
+  defaultViewSize 
+}: { 
+  name: string
+  defaultViewSize?: "100" | "60" | "30"
+}) {
   const item = await getCachedRegistryItem(name)
 
   if (!item?.files) {
@@ -24,7 +30,12 @@ export async function BlockDisplay({ name }: { name: string }) {
   ])
 
   return (
-    <BlockViewer item={item} tree={tree} highlightedFiles={highlightedFiles}>
+    <BlockViewer 
+      item={item} 
+      tree={tree} 
+      highlightedFiles={highlightedFiles}
+      defaultViewSize={defaultViewSize}
+    >
       <ComponentPreview
         name={item.name}
         hideCode

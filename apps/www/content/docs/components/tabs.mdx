@@ -1,5 +1,5 @@
 ---
-title: Tabs
+title: Animated Tabs
 description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 status: beta
 ---
@@ -31,6 +31,13 @@ export default function Example() {
 }
 ```
 
+## Examples
+
+### Background Variants
+
+<ComponentPreview name="tabs-background-demo" />
+
+
 ## API Reference
 
 **Tabs**
@@ -45,9 +52,15 @@ export default function Example() {
 
 **TabsList**
 
-| Prop      | Type   | Default | Description            |
-| --------- | ------ | ------- | ---------------------- |
-| className | string | -       | Additional CSS classes |
+| Prop                    | Type                        | Default      | Description                                                    |
+| ----------------------- | --------------------------- | ------------ | -------------------------------------------------------------- |
+| className               | string                      | -            | Additional CSS classes                                         |
+| showHoverEffect         | boolean                     | true         | Whether to show hover effect on tabs                          |
+| showActiveIndicator     | boolean                     | true         | Whether to show active indicator (underline)                  |
+| activeIndicatorPosition | "top" \| "bottom"          | "bottom"     | Position of the active indicator                               |
+| size                    | "sm" \| "md" \| "lg"       | "sm"         | Size of the tabs                                              |
+| variant                 | "default" \| "underlined"  | "default"    | Visual variant of the tabs                                     |
+| showBottomBorder        | boolean                     | false        | Whether to show bottom border                                  |
 
 **TabsTrigger**
 

@@ -105,4 +105,28 @@ export const blocks: Registry["items"] = [
     },
     categories: ["featured"],
   },
+  {
+    name: "bottom-mobile-nav",
+    description: "BottomMobileNav block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/bottom-mobile-nav/page.tsx",
+        type: "registry:page",
+        target: "app/bottom-mobile-nav/page.tsx",
+      },
+      {
+        path: "blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
+        type: "registry:component",
+        target: "components/bottom-mobile-nav.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "600px",
+      container: "",
+      mobile: "component",
+    },
+    categories: ["layout"],
+  },
 ]

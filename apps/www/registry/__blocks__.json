@@ -27,5 +27,12 @@
     "categories": [
       "featured"
     ]
+  },
+  {
+    "name": "bottom-mobile-nav",
+    "description": "BottomMobileNav block",
+    "categories": [
+      "layout"
+    ]
   }
 ]

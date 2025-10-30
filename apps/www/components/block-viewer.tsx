@@ -68,6 +68,9 @@ type BlockViewerContext = {
     | null
   iframeKey?: number
   setIframeKey?: React.Dispatch<React.SetStateAction<number>>
+  defaultViewSize: "100" | "60" | "30"
+  currentViewSize: "100" | "60" | "30"
+  setCurrentViewSize: (size: "100" | "60" | "30") => void
 }
 
 const BlockViewerContext = React.createContext<BlockViewerContext | null>(null)
@@ -85,8 +88,10 @@ function BlockViewerProvider({
   tree,
   highlightedFiles,
   children,
+  defaultViewSize = "100",
 }: Pick<BlockViewerContext, "item" | "tree" | "highlightedFiles"> & {
   children: React.ReactNode
+  defaultViewSize?: "100" | "60" | "30"
 }) {
   const [view, setView] = React.useState<BlockViewerContext["view"]>("preview")
   const [activeFile, setActiveFile] = React.useState<
@@ -94,6 +99,22 @@ function BlockViewerProvider({
   >(highlightedFiles?.[0].target ?? null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
   const [iframeKey, setIframeKey] = React.useState(0)
+  const [currentViewSize, setCurrentViewSize] = React.useState<"100" | "60" | "30">(defaultViewSize)
+  
+  console.log('BlockViewerProvider initialized with defaultViewSize:', defaultViewSize, 'currentViewSize:', currentViewSize)
+
+  // Initialize ResizablePanel with the correct default size after mount
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('Attempting to resize to:', currentViewSize, 'ref available:', !!resizablePanelRef.current)
+      if (resizablePanelRef.current) {
+        resizablePanelRef.current.resize(parseInt(currentViewSize))
+        console.log('Resized to:', currentViewSize)
+      }
+    }, 100) // Small delay to ensure ref is ready
+
+    return () => clearTimeout(timer)
+  }, [currentViewSize])
 
   return (
     <BlockViewerContext.Provider
@@ -108,6 +129,9 @@ function BlockViewerProvider({
         highlightedFiles,
         iframeKey,
         setIframeKey,
+        defaultViewSize,
+        currentViewSize,
+        setCurrentViewSize,
       }}
     >
       <div
@@ -127,7 +151,7 @@ function BlockViewerProvider({
 }
 
 function BlockViewerToolbar() {
-  const { setView, view, item, resizablePanelRef, setIframeKey } =
+  const { setView, view, item, resizablePanelRef, setIframeKey, currentViewSize, setCurrentViewSize } =
     useBlockViewer()
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
@@ -163,11 +187,17 @@ function BlockViewerToolbar() {
         <div className="h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
           <ToggleGroup
             type="single"
-            defaultValue="100"
+            value={currentViewSize}
             onValueChange={(value) => {
-              setView("preview")
-              if (resizablePanelRef?.current) {
-                resizablePanelRef.current.resize(parseInt(value))
+              if (value) {
+                console.log('ToggleGroup value changed to:', value)
+                setCurrentViewSize(value as "100" | "60" | "30")
+                setView("preview")
+                if (resizablePanelRef?.current) {
+                  resizablePanelRef.current.resize(parseInt(value))
+                } else {
+                  console.log('resizablePanelRef is not available')
+                }
               }
             }}
             className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
@@ -252,7 +282,7 @@ function BlockViewerIframe({ className }: { className?: string }) {
 }
 
 function BlockViewerView() {
-  const { resizablePanelRef } = useBlockViewer()
+  const { resizablePanelRef, currentViewSize } = useBlockViewer()
 
   return (
     <div className="hidden group-data-[view=code]/block-view-wrapper:hidden md:h-(--height) lg:flex">
@@ -261,11 +291,12 @@ function BlockViewerView() {
         <ResizablePanelGroup
           direction="horizontal"
           className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
+          key={currentViewSize} // Force re-mount when size changes
         >
           <ResizablePanel
             ref={resizablePanelRef}
             className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
-            defaultSize={100}
+            defaultSize={parseInt(currentViewSize)}
             minSize={30}
           >
             <BlockViewerIframe />
@@ -542,15 +573,18 @@ function BlockViewer({
   tree,
   highlightedFiles,
   children,
+  defaultViewSize,
   ...props
 }: Pick<BlockViewerContext, "item" | "tree" | "highlightedFiles"> & {
   children: React.ReactNode
+  defaultViewSize?: "100" | "60" | "30"
 }) {
   return (
     <BlockViewerProvider
       item={item}
       tree={tree}
       highlightedFiles={highlightedFiles}
+      defaultViewSize={defaultViewSize}
       {...props}
     >
       <BlockViewerToolbar />

@@ -98,7 +98,7 @@ const TabsList = forwardRef<
     activeIndicatorPosition?: "top" | "bottom"
     activeIndicatorOffset?: number
     size?: "sm" | "md" | "lg"
-    variant?: "default" | "pills" | "underlined"
+    variant?: "default" | "underlined"
     stretch?: boolean
     ariaLabel?: string
     showBottomBorder?: boolean
@@ -215,21 +215,18 @@ const TabsList = forwardRef<
     // Variant classes
     const variantClasses = {
       default: "",
-      pills: "rounded-full",
       underlined: "",
     }
 
     // Active indicator classes
     const activeIndicatorClasses = {
       default: "h-[4px] bg-primary dark:bg-primary",
-      pills: "hidden",
       underlined: "h-[4px] bg-primary dark:bg-primary",
     }
 
     // Hover indicator classes
     const hoverIndicatorClasses = {
       default: "bg-muted dark:bg-muted rounded-[6px]",
-      pills: "bg-muted dark:bg-muted rounded-full",
       underlined: "bg-muted dark:bg-muted rounded-[6px]",
     }
 
@@ -338,9 +335,6 @@ const TabsList = forwardRef<
                     className={cn(
                       "mb-2 cursor-pointer px-3 py-2 transition-colors duration-300 sm:mb-1.5",
                       sizeClasses[size],
-                      variant === "pills" && isActive
-                        ? "rounded-full bg-[#0e0f1114] dark:bg-[#ffffff1a]"
-                        : "",
                       disabled ? "cursor-not-allowed opacity-50" : "",
                       stretch ? "flex-1 text-center" : "",
                       isActive
@@ -376,7 +370,7 @@ const TabsList = forwardRef<
             </div>
 
             {/* Active Indicator */}
-            {showActiveIndicator && variant !== "pills" && activeIndex >= 0 && (
+            {showActiveIndicator && activeIndex >= 0 && (
               <div
                 className={cn(
                   "absolute z-10 transition-all duration-300 ease-out",

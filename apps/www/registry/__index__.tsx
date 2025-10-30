@@ -294,6 +294,28 @@ export const Index: Record<string, any> = {
     categories: ["featured"],
     meta: {"iframeHeight":"600px","container":" ","mobile":"component"},
   },
+  "bottom-mobile-nav": {
+    name: "bottom-mobile-nav",
+    description: "BottomMobileNav block",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [{
+      path: "registry/delta-ui/blocks/bottom-mobile-nav/page.tsx",
+      type: "registry:page",
+      target: "app/bottom-mobile-nav/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
+      type: "registry:component",
+      target: "components/bottom-mobile-nav.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/bottom-mobile-nav/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["layout"],
+    meta: {"iframeHeight":"600px","container":"","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -666,6 +688,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/tabs-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-background-demo": {
+    name: "tabs-background-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [{
+      path: "registry/delta-ui/examples/tabs-background-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/tabs-background-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
