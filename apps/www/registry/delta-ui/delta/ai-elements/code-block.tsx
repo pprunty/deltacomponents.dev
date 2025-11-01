@@ -1,30 +1,31 @@
-"use client";
+"use client"
 
-import { Button } from "@/registry/delta-ui/ui/button";
-import { cn } from "@/lib/utils";
-import { CheckIcon, CopyIcon } from "lucide-react";
-import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
-import { createContext, useContext, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react"
+import { createContext, useContext, useState } from "react"
+import { CheckIcon, CopyIcon } from "lucide-react"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import {
   oneDark,
   oneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+} from "react-syntax-highlighter/dist/esm/styles/prism"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 type CodeBlockContextType = {
-  code: string;
-};
+  code: string
+}
 
 const CodeBlockContext = createContext<CodeBlockContextType>({
   code: "",
-});
+})
 
 export type CodeBlockProps = HTMLAttributes<HTMLDivElement> & {
-  code: string;
-  language: string;
-  showLineNumbers?: boolean;
-  children?: ReactNode;
-};
+  code: string
+  language: string
+  showLineNumbers?: boolean
+  children?: ReactNode
+}
 
 export const CodeBlock = ({
   code,
@@ -37,7 +38,7 @@ export const CodeBlock = ({
   <CodeBlockContext.Provider value={{ code }}>
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-md border bg-background text-foreground",
+        "bg-background text-foreground relative w-full overflow-hidden rounded-md border",
         className
       )}
       {...props}
@@ -97,13 +98,13 @@ export const CodeBlock = ({
       </div>
     </div>
   </CodeBlockContext.Provider>
-);
+)
 
 export type CodeBlockCopyButtonProps = ComponentProps<typeof Button> & {
-  onCopy?: () => void;
-  onError?: (error: Error) => void;
-  timeout?: number;
-};
+  onCopy?: () => void
+  onError?: (error: Error) => void
+  timeout?: number
+}
 
 export const CodeBlockCopyButton = ({
   onCopy,
@@ -113,26 +114,26 @@ export const CodeBlockCopyButton = ({
   className,
   ...props
 }: CodeBlockCopyButtonProps) => {
-  const [isCopied, setIsCopied] = useState(false);
-  const { code } = useContext(CodeBlockContext);
+  const [isCopied, setIsCopied] = useState(false)
+  const { code } = useContext(CodeBlockContext)
 
   const copyToClipboard = async () => {
     if (typeof window === "undefined" || !navigator.clipboard.writeText) {
-      onError?.(new Error("Clipboard API not available"));
-      return;
+      onError?.(new Error("Clipboard API not available"))
+      return
     }
 
     try {
-      await navigator.clipboard.writeText(code);
-      setIsCopied(true);
-      onCopy?.();
-      setTimeout(() => setIsCopied(false), timeout);
+      await navigator.clipboard.writeText(code)
+      setIsCopied(true)
+      onCopy?.()
+      setTimeout(() => setIsCopied(false), timeout)
     } catch (error) {
-      onError?.(error as Error);
+      onError?.(error as Error)
     }
-  };
+  }
 
-  const Icon = isCopied ? CheckIcon : CopyIcon;
+  const Icon = isCopied ? CheckIcon : CopyIcon
 
   return (
     <Button
@@ -144,5 +145,5 @@ export const CodeBlockCopyButton = ({
     >
       {children ?? <Icon size={14} />}
     </Button>
-  );
-};
+  )
+}

@@ -4,7 +4,7 @@ import { PerspectiveCarousel } from "@/registry/delta-ui/blocks/perspective-caro
 
 export default function PerspectiveCarouselPage() {
   return (
-    <div className="min-h-screen w-full bg-background py-6">
+    <div className="bg-background min-h-screen w-full py-6">
       <div className="mx-auto max-w-7xl">
         <PerspectiveCarousel />
       </div>

@@ -1,29 +1,33 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { CheckIcon, ClipboardIcon } from "lucide-react";
-import { Button } from "@/registry/delta-ui/ui/button";
+import * as React from "react"
+import type { ComponentProps } from "react"
+import { CheckIcon, ClipboardIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip";
-import { cn } from "@/lib/utils";
-import type { ComponentProps } from "react";
+} from "@/registry/delta-ui/ui/tooltip"
 
-export type ActionsProps = ComponentProps<"div">;
+export type ActionsProps = ComponentProps<"div">
 
 export const Actions = ({ className, children, ...props }: ActionsProps) => (
-  <div className={cn("flex items-center gap-0 px-1 opacity-100", className)} {...props}>
+  <div
+    className={cn("flex items-center gap-0 px-1 opacity-100", className)}
+    {...props}
+  >
     {children}
   </div>
-);
+)
 
 export type ActionProps = ComponentProps<typeof Button> & {
-  tooltip?: string;
-  label?: string;
-};
+  tooltip?: string
+  label?: string
+}
 
 export const Action = ({
   tooltip,
@@ -37,7 +41,7 @@ export const Action = ({
   const button = (
     <Button
       className={cn(
-        "relative size-9 p-1.5 text-muted-foreground hover:text-foreground",
+        "text-muted-foreground hover:text-foreground relative size-9 p-1.5",
         className
       )}
       size={size}
@@ -48,7 +52,7 @@ export const Action = ({
       {children}
       <span className="sr-only">{label || tooltip}</span>
     </Button>
-  );
+  )
 
   if (tooltip) {
     return (
@@ -60,15 +64,15 @@ export const Action = ({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    );
+    )
   }
 
-  return button;
-};
+  return button
+}
 
-export type CopyActionProps = Omit<ActionProps, 'onClick'> & {
-  value: string;
-};
+export type CopyActionProps = Omit<ActionProps, "onClick"> & {
+  value: string
+}
 
 export const CopyAction = ({
   value,
@@ -77,21 +81,21 @@ export const CopyAction = ({
   className,
   ...props
 }: CopyActionProps) => {
-  const [hasCopied, setHasCopied] = React.useState(false);
+  const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
     if (hasCopied) {
       const timer = setTimeout(() => {
-        setHasCopied(false);
-      }, 2000);
-      return () => clearTimeout(timer);
+        setHasCopied(false)
+      }, 2000)
+      return () => clearTimeout(timer)
     }
-  }, [hasCopied]);
+  }, [hasCopied])
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(value);
-    setHasCopied(true);
-  };
+    navigator.clipboard.writeText(value)
+    setHasCopied(true)
+  }
 
   return (
     <Action
@@ -100,11 +104,12 @@ export const CopyAction = ({
       className={className}
       {...props}
     >
-      {children || (hasCopied ? (
-        <CheckIcon className="h-4 w-4" />
-      ) : (
-        <ClipboardIcon className="h-4 w-4" />
-      ))}
+      {children ||
+        (hasCopied ? (
+          <CheckIcon className="h-4 w-4" />
+        ) : (
+          <ClipboardIcon className="h-4 w-4" />
+        ))}
     </Action>
-  );
-};
+  )
+}

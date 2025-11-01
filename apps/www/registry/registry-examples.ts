@@ -2,6 +2,63 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "navigation-menu-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/navigation-menu.json",
+    ],
+    files: [
+      {
+        path: "examples/navigation-menu-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "x-card-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    files: [
+      {
+        path: "examples/x-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "x-card-basic-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    files: [
+      {
+        path: "examples/x-card-basic-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "marquee-stacked-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    files: [
+      {
+        path: "examples/marquee-stacked-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "marquee-cards-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    files: [
+      {
+        path: "examples/marquee-cards-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "mapbox-pointer-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],

@@ -8,7 +8,6 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 
-
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false

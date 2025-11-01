@@ -97,6 +97,18 @@ Uses Fumadocs for documentation with MDX files:
 - Navigation controlled by `meta.json` files
 - Filter function excludes certain pages from pagination
 
+### Component MDX Documentation
+
+When creating component documentation MDX files, include a `dependencies` prop in the Installation section to specify required dependencies:
+
+```mdx
+## Installation
+
+<Installation dependencies={["@radix-ui/react-navigation-menu"]} />
+```
+
+This automatically generates installation instructions with the required dependencies for users copying the component.
+
 ## Key Configuration Files
 
 - `components.json` - Registry configuration and import aliases

@@ -26,8 +26,9 @@ import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { Button } from "@/registry/delta-ui/ui/button"
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
+import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
+import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
@@ -50,8 +51,10 @@ import {
   SidebarMenuSub,
   SidebarProvider,
 } from "@/registry/delta-ui/ui/sidebar"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
-import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle-group"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/delta-ui/ui/toggle-group"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
@@ -99,17 +102,29 @@ function BlockViewerProvider({
   >(highlightedFiles?.[0].target ?? null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
   const [iframeKey, setIframeKey] = React.useState(0)
-  const [currentViewSize, setCurrentViewSize] = React.useState<"100" | "60" | "30">(defaultViewSize)
-  
-  console.log('BlockViewerProvider initialized with defaultViewSize:', defaultViewSize, 'currentViewSize:', currentViewSize)
+  const [currentViewSize, setCurrentViewSize] = React.useState<
+    "100" | "60" | "30"
+  >(defaultViewSize)
+
+  console.log(
+    "BlockViewerProvider initialized with defaultViewSize:",
+    defaultViewSize,
+    "currentViewSize:",
+    currentViewSize
+  )
 
   // Initialize ResizablePanel with the correct default size after mount
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('Attempting to resize to:', currentViewSize, 'ref available:', !!resizablePanelRef.current)
+      console.log(
+        "Attempting to resize to:",
+        currentViewSize,
+        "ref available:",
+        !!resizablePanelRef.current
+      )
       if (resizablePanelRef.current) {
         resizablePanelRef.current.resize(parseInt(currentViewSize))
-        console.log('Resized to:', currentViewSize)
+        console.log("Resized to:", currentViewSize)
       }
     }, 100) // Small delay to ensure ref is ready
 
@@ -151,8 +166,15 @@ function BlockViewerProvider({
 }
 
 function BlockViewerToolbar() {
-  const { setView, view, item, resizablePanelRef, setIframeKey, currentViewSize, setCurrentViewSize } =
-    useBlockViewer()
+  const {
+    setView,
+    view,
+    item,
+    resizablePanelRef,
+    setIframeKey,
+    currentViewSize,
+    setCurrentViewSize,
+  } = useBlockViewer()
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
@@ -190,13 +212,13 @@ function BlockViewerToolbar() {
             value={currentViewSize}
             onValueChange={(value) => {
               if (value) {
-                console.log('ToggleGroup value changed to:', value)
+                console.log("ToggleGroup value changed to:", value)
                 setCurrentViewSize(value as "100" | "60" | "30")
                 setView("preview")
                 if (resizablePanelRef?.current) {
                   resizablePanelRef.current.resize(parseInt(value))
                 } else {
-                  console.log('resizablePanelRef is not available')
+                  console.log("resizablePanelRef is not available")
                 }
               }
             }}
@@ -317,34 +339,37 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   // Format component name from kebab-case to Title Case
   const formatComponentName = (name: string) => {
     return name
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
   }
 
   const handlePreviewClick = () => {
-    window.open(`/view/${item.name}`, '_blank')
+    window.open(`/view/${item.name}`, "_blank")
   }
 
   const renderPreview = () => {
     // Always try to render video first, then images, then placeholder
     if (!videoError) {
       return (
-        <div className="relative overflow-hidden rounded-xl border cursor-pointer" onClick={handlePreviewClick}>
+        <div
+          className="relative cursor-pointer overflow-hidden rounded-xl border"
+          onClick={handlePreviewClick}
+        >
           <video
             src={`/${item.name}-preview.mp4`}
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             onError={() => setVideoError(true)}
           />
           <div className="absolute top-2 right-2">
             <Button
               size="icon"
               variant="ghost"
-              className="size-8 bg-black/20 hover:bg-black/30 text-white backdrop-blur-sm"
+              className="size-8 bg-black/20 text-white backdrop-blur-sm hover:bg-black/30"
               onClick={(e) => {
                 e.stopPropagation()
                 handlePreviewClick()
@@ -359,19 +384,22 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
 
     // If video failed, show placeholder image directly to avoid 404s
     return (
-      <div className="relative overflow-hidden rounded-xl border cursor-pointer" onClick={handlePreviewClick}>
+      <div
+        className="relative cursor-pointer overflow-hidden rounded-xl border"
+        onClick={handlePreviewClick}
+      >
         <Image
           src="/placeholder.svg"
           alt={`${item.name} preview`}
           width={1440}
           height={900}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
         <div className="absolute top-2 right-2">
           <Button
             size="icon"
             variant="ghost"
-            className="size-8 bg-black/20 hover:bg-black/30 text-white backdrop-blur-sm"
+            className="size-8 bg-black/20 text-white backdrop-blur-sm hover:bg-black/30"
             onClick={(e) => {
               e.stopPropagation()
               handlePreviewClick()

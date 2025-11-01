@@ -35,6 +35,19 @@
       "cssVars": {}
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "code-block",
       "type": "registry:ui",
       "dependencies": [
@@ -173,6 +186,19 @@
       "files": [
         {
           "path": "registry/delta-ui/delta/mapbox-pointer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "x-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-tweet"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/x-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -318,12 +344,98 @@
       ]
     },
     {
+      "name": "marquee",
+      "type": "registry:block",
+      "description": "Animated marquee component for showcasing content with smooth scrolling",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/marquee.tsx",
+          "type": "registry:component",
+          "target": "components/marquee.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "400px",
+        "container": "w-full",
+        "mobile": "component"
+      },
+      "categories": [
+        "landing-page"
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/navigation-menu.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/navigation-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "x-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/x-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/x-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "x-card-basic-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/x-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/x-card-basic-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "marquee-stacked-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/marquee.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/marquee-stacked-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "marquee-cards-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/marquee.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/marquee-cards-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

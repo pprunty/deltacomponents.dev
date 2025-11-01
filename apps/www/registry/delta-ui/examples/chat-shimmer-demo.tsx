@@ -1,11 +1,18 @@
-'use client';
+"use client"
 
-import { cn } from '@/lib/utils';
+import { useCallback, useRef, useState } from "react"
+
+import { cn } from "@/lib/utils"
+import { ChatContainer } from "@/registry/delta-ui/delta/ai-elements/chat-container"
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from '@/registry/delta-ui/delta/ai-elements/conversation';
+} from "@/registry/delta-ui/delta/ai-elements/conversation"
+import {
+  Message,
+  MessageContent,
+} from "@/registry/delta-ui/delta/ai-elements/message"
 import {
   PromptInput,
   PromptInputActionAddAttachments,
@@ -15,7 +22,7 @@ import {
   PromptInputAttachment,
   PromptInputAttachments,
   PromptInputBody,
-  type PromptInputMessage,
+  PromptInputFooter,
   PromptInputModelSelect,
   PromptInputModelSelectContent,
   PromptInputModelSelectItem,
@@ -23,118 +30,110 @@ import {
   PromptInputModelSelectValue,
   PromptInputSubmit,
   PromptInputTextarea,
-  PromptInputFooter,
   PromptInputTools,
-} from '@/registry/delta-ui/delta/ai-elements/prompt-input';
-import {
-  Message,
-  MessageContent,
-} from '@/registry/delta-ui/delta/ai-elements/message';
-import { Shimmer } from '@/registry/delta-ui/delta/ai-elements/shimmer';
-import { Response } from '@/registry/delta-ui/delta/ai-elements/response';
-import { useState, useCallback, useRef } from 'react';
+  type PromptInputMessage,
+} from "@/registry/delta-ui/delta/ai-elements/prompt-input"
+import { Response } from "@/registry/delta-ui/delta/ai-elements/response"
+import { Shimmer } from "@/registry/delta-ui/delta/ai-elements/shimmer"
 
 type MessageType = {
-  key: string;
-  from: 'user' | 'assistant';
-  content: string;
-  isShimmering?: boolean;
-  avatar: string;
-  name: string;
-};
+  key: string
+  from: "user" | "assistant"
+  content: string
+  isShimmering?: boolean
+  avatar: string
+  name: string
+}
 
-const initialMessages: MessageType[] = [];
+const initialMessages: MessageType[] = []
 
 const models = [
-  { id: 'gpt-4', name: 'GPT-4' },
-  { id: 'claude-2', name: 'Claude 2' },
-  { id: 'palm-2', name: 'PaLM 2' },
-];
+  { id: "gpt-4", name: "GPT-4" },
+  { id: "claude-2", name: "Claude 2" },
+  { id: "palm-2", name: "PaLM 2" },
+]
 
 const Example = () => {
-  const [model, setModel] = useState<string>(models[0].id);
-  const [text, setText] = useState<string>('');
+  const [model, setModel] = useState<string>(models[0].id)
+  const [text, setText] = useState<string>("")
   const [status, setStatus] = useState<
-    'submitted' | 'streaming' | 'ready' | 'error'
-  >('ready');
-  const [messages, setMessages] = useState<MessageType[]>(initialMessages);
-  const shouldCancelRef = useRef<boolean>(false);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+    "submitted" | "streaming" | "ready" | "error"
+  >("ready")
+  const [messages, setMessages] = useState<MessageType[]>(initialMessages)
+  const shouldCancelRef = useRef<boolean>(false)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const stop = useCallback(() => {
-    shouldCancelRef.current = true;
-    setStatus('ready');
-  }, []);
+    shouldCancelRef.current = true
+    setStatus("ready")
+  }, [])
 
-  const addUserMessage = useCallback(
-    (content: string) => {
-      const userMessage: MessageType = {
-        key: `user-${Date.now()}`,
-        from: 'user',
-        content,
-        avatar: 'https://patrickprunty.com/icon.webp',
-        name: 'User',
-      };
+  const addUserMessage = useCallback((content: string) => {
+    const userMessage: MessageType = {
+      key: `user-${Date.now()}`,
+      from: "user",
+      content,
+      avatar: "https://patrickprunty.com/icon.webp",
+      name: "User",
+    }
 
-      setMessages((prev) => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage])
 
-      // Add shimmer message immediately
-      const shimmerMessage: MessageType = {
-        key: `assistant-${Date.now()}`,
-        from: 'assistant',
-        content: 'Processing your request...',
-        isShimmering: true,
-        avatar: 'https://github.com/openai.png',
-        name: 'Assistant',
-      };
+    // Add shimmer message immediately
+    const shimmerMessage: MessageType = {
+      key: `assistant-${Date.now()}`,
+      from: "assistant",
+      content: "Processing your request...",
+      isShimmering: true,
+      avatar: "https://github.com/openai.png",
+      name: "Assistant",
+    }
 
-      setMessages((prev) => [...prev, shimmerMessage]);
-      setStatus('streaming');
+    setMessages((prev) => [...prev, shimmerMessage])
+    setStatus("streaming")
 
-      // Simulate processing time then replace with actual response
-      setTimeout(() => {
-        if (!shouldCancelRef.current) {
-          const responseMessage: MessageType = {
-            key: shimmerMessage.key,
-            from: 'assistant',
-            content: `I received your message: "${content}". This demonstrates the shimmer effect which is useful for showing loading states while AI processes requests.`,
-            isShimmering: false,
-            avatar: 'https://github.com/openai.png',
-            name: 'Assistant',
-          };
-
-          setMessages((prev) =>
-            prev.map((msg) =>
-              msg.key === shimmerMessage.key ? responseMessage : msg
-            )
-          );
-          setStatus('ready');
+    // Simulate processing time then replace with actual response
+    setTimeout(() => {
+      if (!shouldCancelRef.current) {
+        const responseMessage: MessageType = {
+          key: shimmerMessage.key,
+          from: "assistant",
+          content: `I received your message: "${content}". This demonstrates the shimmer effect which is useful for showing loading states while AI processes requests.`,
+          isShimmering: false,
+          avatar: "https://github.com/openai.png",
+          name: "Assistant",
         }
-      }, 3000);
-    },
-    []
-  );
+
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.key === shimmerMessage.key ? responseMessage : msg
+          )
+        )
+        setStatus("ready")
+      }
+    }, 3000)
+  }, [])
 
   const handleSubmit = (message: PromptInputMessage) => {
-    if (status === 'streaming') {
-      stop();
-      return;
+    if (status === "streaming") {
+      stop()
+      return
     }
 
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
+    const hasText = Boolean(message.text)
+    const hasAttachments = Boolean(message.files?.length)
 
     if (!(hasText || hasAttachments)) {
-      return;
+      return
     }
 
-    setStatus('submitted');
-    addUserMessage(message.text || 'Sent with attachments');
-    setText('');
-  };
+    setStatus("submitted")
+    addUserMessage(message.text || "Sent with attachments")
+    setText("")
+  }
 
   return (
-    <div className="relative flex size-full flex-col overflow-hidden">
+    <ChatContainer>
       <Conversation>
         <ConversationContent>
           {messages.map((message) => (
@@ -142,18 +141,18 @@ const Example = () => {
               from={message.from}
               key={message.key}
               className={cn(
-                message.from === 'user' ? 'justify-end items-end' : undefined,
+                message.from === "user" ? "items-end justify-end" : undefined,
                 "group/message"
               )}
             >
               <div>
-                <MessageContent 
+                <MessageContent
                   className={cn(
-                    message.from === 'assistant' ? 'max-w-full' : '',
-                    message.from === 'user' && 'w-fit ml-auto'
+                    message.from === "assistant" ? "max-w-full" : "",
+                    message.from === "user" && "ml-auto w-fit"
                   )}
                 >
-                  <div className="leading-[1.65rem] text-base">
+                  <div className="text-base leading-[1.65rem]">
                     {message.isShimmering ? (
                       <Shimmer duration={2} spread={3}>
                         {message.content}
@@ -174,13 +173,15 @@ const Example = () => {
           <PromptInput globalDrop multiple onSubmit={handleSubmit}>
             <PromptInputBody>
               <PromptInputAttachments>
-                {(attachment: any) => <PromptInputAttachment data={attachment} />}
+                {(attachment: any) => (
+                  <PromptInputAttachment data={attachment} />
+                )}
               </PromptInputAttachments>
               <PromptInputTextarea
                 onChange={(event: any) => setText(event.target.value)}
                 ref={textareaRef}
                 value={text}
-                className="leading-[1.65rem] text-base"
+                className="text-base leading-[1.65rem]"
                 placeholder="Ask anything..."
               />
             </PromptInputBody>
@@ -200,7 +201,7 @@ const Example = () => {
                   </PromptInputModelSelectTrigger>
                   <PromptInputModelSelectContent>
                     {models.map((model: any) => (
-                        <PromptInputModelSelectItem
+                      <PromptInputModelSelectItem
                         key={model.id || model.name}
                         value={model.id || model.name}
                       >
@@ -210,7 +211,7 @@ const Example = () => {
                   </PromptInputModelSelectContent>
                 </PromptInputModelSelect>
                 <PromptInputSubmit
-                  disabled={(!text.trim() && !status) || status === 'streaming'}
+                  disabled={(!text.trim() && !status) || status === "streaming"}
                   status={status}
                 />
               </PromptInputTools>
@@ -218,8 +219,8 @@ const Example = () => {
           </PromptInput>
         </div>
       </div>
-    </div>
-  );
-};
+    </ChatContainer>
+  )
+}
 
-export default Example;
+export default Example

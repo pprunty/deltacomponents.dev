@@ -20,7 +20,13 @@ export function MobileNav({
   className,
 }: {
   tree: typeof source.pageTree
-  items: { href: string; label: string; badge?: string; hide?: boolean; disabled?: boolean }[]
+  items: {
+    href: string
+    label: string
+    badge?: string
+    hide?: boolean
+    disabled?: boolean
+  }[]
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
@@ -191,7 +197,7 @@ function MobileLink({
     return (
       <div
         className={cn(
-          "flex items-center text-2xl font-medium cursor-not-allowed",
+          "flex cursor-not-allowed items-center text-2xl font-medium",
           "text-muted-foreground opacity-60",
           className
         )}

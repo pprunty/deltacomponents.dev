@@ -26,6 +26,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "navigation-menu": {
+    name: "navigation-menu",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/navigation-menu.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/navigation-menu.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "code-block": {
     name: "code-block",
     description: "",
@@ -206,6 +224,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "x-card": {
+    name: "x-card",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/x-card.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/x-card.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "testimonials": {
     name: "testimonials",
     description: "Customer testimonials grid",
@@ -316,6 +352,24 @@ export const Index: Record<string, any> = {
     categories: ["layout"],
     meta: {"iframeHeight":"600px","container":"","mobile":"component"},
   },
+  "marquee": {
+    name: "marquee",
+    description: "Animated marquee component for showcasing content with smooth scrolling",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [{
+      path: "registry/delta-ui/blocks/marquee.tsx",
+      type: "registry:component",
+      target: "components/marquee.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/marquee.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["landing-page"],
+    meta: {"iframeHeight":"400px","container":"w-full","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -328,6 +382,96 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/hooks/use-mobile.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "navigation-menu-demo": {
+    name: "navigation-menu-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/navigation-menu.json"],
+    files: [{
+      path: "registry/delta-ui/examples/navigation-menu-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/navigation-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "x-card-demo": {
+    name: "x-card-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    files: [{
+      path: "registry/delta-ui/examples/x-card-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/x-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "x-card-basic-demo": {
+    name: "x-card-basic-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    files: [{
+      path: "registry/delta-ui/examples/x-card-basic-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/x-card-basic-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "marquee-stacked-demo": {
+    name: "marquee-stacked-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    files: [{
+      path: "registry/delta-ui/examples/marquee-stacked-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/marquee-stacked-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "marquee-cards-demo": {
+    name: "marquee-cards-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    files: [{
+      path: "registry/delta-ui/examples/marquee-cards-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/marquee-cards-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

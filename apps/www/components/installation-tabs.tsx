@@ -4,12 +4,6 @@ import * as React from "react"
 import { TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
-import {
-  Tabs as PackageManagerTabs,
-  TabsContent as PackageManagerTabsContent,
-  TabsList as PackageManagerTabsList,
-  TabsTrigger as PackageManagerTabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
 import { Step, Steps } from "@/components/steps"
 import {
   Tabs,
@@ -17,6 +11,12 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/delta-ui/delta/tabs"
+import {
+  Tabs as PackageManagerTabs,
+  TabsContent as PackageManagerTabsContent,
+  TabsList as PackageManagerTabsList,
+  TabsTrigger as PackageManagerTabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 interface InstallationTabsProps {
   name: string

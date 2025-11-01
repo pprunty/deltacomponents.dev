@@ -1,10 +1,11 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { type ComponentProps, memo } from "react";
-import { Streamdown } from "streamdown";
+import { memo, type ComponentProps } from "react"
+import { Streamdown } from "streamdown"
 
-type ResponseProps = ComponentProps<typeof Streamdown>;
+import { cn } from "@/lib/utils"
+
+type ResponseProps = ComponentProps<typeof Streamdown>
 
 export const Response = memo(
   ({ className, ...props }: ResponseProps) => (
@@ -17,6 +18,6 @@ export const Response = memo(
     />
   ),
   (prevProps, nextProps) => prevProps.children === nextProps.children
-);
+)
 
-Response.displayName = "Response";
+Response.displayName = "Response"

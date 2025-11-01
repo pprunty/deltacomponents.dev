@@ -1,0 +1,64 @@
+---
+title: Navigation Menu
+description: A collection of links for navigating websites.
+status: beta
+---
+
+<ComponentPreview name="navigation-menu-demo" />
+
+## Installation
+
+<Installation name="navigation-menu" />
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuContentGrid,
+  NavigationMenuContentItem,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/registry/delta-ui/delta/navigation-menu"
+
+export default function Example() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem value="getting-started">
+          <NavigationMenuTrigger data-value="getting-started">
+            Getting Started
+          </NavigationMenuTrigger>
+          <NavigationMenuContent value="getting-started">
+            <NavigationMenuContentGrid>
+              <NavigationMenuLink href="/docs">
+                <NavigationMenuContentItem 
+                  title="Documentation" 
+                  description="Learn how to get started" 
+                />
+              </NavigationMenuLink>
+            </NavigationMenuContentGrid>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  )
+}
+```
+
+## Examples
+
+### With Isometric Icons
+
+A navigation menu enhanced with beautiful isometric icons for better visual hierarchy.
+
+## API Reference
+
+### Props
+
+| Prop      | Type   | Default | Description            |
+| --------- | ------ | ------- | ---------------------- |
+| className | string | -       | Additional CSS classes |

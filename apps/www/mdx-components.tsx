@@ -24,7 +24,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/delta-ui/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/registry/delta-ui/ui/alert"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/delta-ui/ui/alert"
 import { AspectRatio } from "@/registry/delta-ui/ui/aspect-ratio"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {

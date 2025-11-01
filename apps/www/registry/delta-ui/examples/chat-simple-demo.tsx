@@ -1,6 +1,16 @@
-'use client';
+"use client"
 
-import { cn } from '@/lib/utils';
+import { useCallback, useRef, useState } from "react"
+import type { ToolUIPart } from "ai"
+import { GlobeIcon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react"
+import { toast } from "sonner"
+
+import { cn } from "@/lib/utils"
+import {
+  Action,
+  Actions,
+  CopyAction,
+} from "@/registry/delta-ui/delta/ai-elements/actions"
 import {
   Branch,
   BranchMessages,
@@ -8,12 +18,18 @@ import {
   BranchPage,
   BranchPrevious,
   BranchSelector,
-} from '@/registry/delta-ui/delta/ai-elements/branch';
+} from "@/registry/delta-ui/delta/ai-elements/branch"
+import { ChatContainer } from "@/registry/delta-ui/delta/ai-elements/chat-container"
 import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from '@/registry/delta-ui/delta/ai-elements/conversation';
+} from "@/registry/delta-ui/delta/ai-elements/conversation"
+import { Loader } from "@/registry/delta-ui/delta/ai-elements/loader"
+import {
+  Message,
+  MessageContent,
+} from "@/registry/delta-ui/delta/ai-elements/message"
 import {
   PromptInput,
   PromptInputActionAddAttachments,
@@ -24,7 +40,7 @@ import {
   PromptInputAttachments,
   PromptInputBody,
   PromptInputButton,
-  type PromptInputMessage,
+  PromptInputFooter,
   PromptInputModelSelect,
   PromptInputModelSelectContent,
   PromptInputModelSelectItem,
@@ -33,74 +49,59 @@ import {
   PromptInputSpeechButton,
   PromptInputSubmit,
   PromptInputTextarea,
-  PromptInputFooter,
   PromptInputTools,
-} from '@/registry/delta-ui/delta/ai-elements/prompt-input';
-import {
-  Message,
-  MessageContent,
-} from '@/registry/delta-ui/delta/ai-elements/message';
+  type PromptInputMessage,
+} from "@/registry/delta-ui/delta/ai-elements/prompt-input"
 import {
   Reasoning,
   ReasoningContent,
   ReasoningTrigger,
-} from '@/registry/delta-ui/delta/ai-elements/reasoning';
-import {
-  Actions,
-  Action,
-  CopyAction,
-} from '@/registry/delta-ui/delta/ai-elements/actions';
-import { Loader } from '@/registry/delta-ui/delta/ai-elements/loader';
-import { Response } from '@/registry/delta-ui/delta/ai-elements/response';
+} from "@/registry/delta-ui/delta/ai-elements/reasoning"
+import { Response } from "@/registry/delta-ui/delta/ai-elements/response"
 import {
   Source,
   Sources,
   SourcesContent,
   SourcesTrigger,
-} from '@/registry/delta-ui/delta/ai-elements/sources';
-import { GlobeIcon, ThumbsUpIcon, ThumbsDownIcon } from 'lucide-react';
-import { useState, useCallback, useRef } from 'react';
-import { toast } from 'sonner';
-import type { ToolUIPart } from 'ai';
+} from "@/registry/delta-ui/delta/ai-elements/sources"
 
 type MessageType = {
-  key: string;
-  from: 'user' | 'assistant';
-  sources?: { href: string; title: string }[];
+  key: string
+  from: "user" | "assistant"
+  sources?: { href: string; title: string }[]
   versions: {
-    id: string;
-    content: string;
-  }[];
+    id: string
+    content: string
+  }[]
   reasoning?: {
-    content: string;
-    duration: number;
-  };
+    content: string
+    duration: number
+  }
   tools?: {
-    name: string;
-    description: string;
-    status: ToolUIPart['state'];
-    parameters: Record<string, unknown>;
-    result: string | undefined;
-    error: string | undefined;
-  }[];
-  avatar: string;
-  name: string;
-};
+    name: string
+    description: string
+    status: ToolUIPart["state"]
+    parameters: Record<string, unknown>
+    result: string | undefined
+    error: string | undefined
+  }[]
+  avatar: string
+  name: string
+}
 
-const initialMessages: MessageType[] = [];
+const initialMessages: MessageType[] = []
 
 const models = [
-  { id: 'gpt-4', name: 'GPT-4' },
-  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
-  { id: 'claude-2', name: 'Claude 2' },
-  { id: 'claude-instant', name: 'Claude Instant' },
-  { id: 'palm-2', name: 'PaLM 2' },
-  { id: 'llama-2-70b', name: 'Llama 2 70B' },
-  { id: 'llama-2-13b', name: 'Llama 2 13B' },
-  { id: 'cohere-command', name: 'Command' },
-  { id: 'mistral-7b', name: 'Mistral 7B' },
-];
-
+  { id: "gpt-4", name: "GPT-4" },
+  { id: "gpt-3.5-turbo", name: "GPT-3.5 Turbo" },
+  { id: "claude-2", name: "Claude 2" },
+  { id: "claude-instant", name: "Claude Instant" },
+  { id: "palm-2", name: "PaLM 2" },
+  { id: "llama-2-70b", name: "Llama 2 70B" },
+  { id: "llama-2-13b", name: "Llama 2 13B" },
+  { id: "cohere-command", name: "Command" },
+  { id: "mistral-7b", name: "Mistral 7B" },
+]
 
 const mockResponses = [
   "Hello! I'm an AI assistant built with Delta Components. I can help you with coding questions, explain concepts, or just have a conversation. What would you like to talk about?",
@@ -108,54 +109,54 @@ const mockResponses = [
   "I'd be happy to explain this topic in detail. From my understanding, there are several important factors to consider when approaching this problem. Let me break it down step by step for you.",
   "This is an interesting topic that comes up frequently. The solution typically involves understanding the core concepts and applying them in the right context. Here's what I recommend...",
   "Great choice of topic! This is something that many developers encounter. The approach I'd suggest is to start with the fundamentals and then build up to more complex scenarios.",
-];
+]
 
 const Example = () => {
-  const [model, setModel] = useState<string>(models[0].id);
-  const [text, setText] = useState<string>('');
-  const [useWebSearch, setUseWebSearch] = useState<boolean>(false);
+  const [model, setModel] = useState<string>(models[0].id)
+  const [text, setText] = useState<string>("")
+  const [useWebSearch, setUseWebSearch] = useState<boolean>(false)
   const [status, setStatus] = useState<
-    'submitted' | 'streaming' | 'ready' | 'error'
-  >('ready');
-  const [messages, setMessages] = useState<MessageType[]>(initialMessages);
+    "submitted" | "streaming" | "ready" | "error"
+  >("ready")
+  const [messages, setMessages] = useState<MessageType[]>(initialMessages)
   const [streamingMessageId, setStreamingMessageId] = useState<string | null>(
-    null,
-  );
-  const [touchedMessages, setTouchedMessages] = useState<Set<string>>(new Set());
-  const shouldCancelRef = useRef<boolean>(false);
-  const addMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+    null
+  )
+  const [touchedMessages, setTouchedMessages] = useState<Set<string>>(new Set())
+  const shouldCancelRef = useRef<boolean>(false)
+  const addMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const stop = useCallback(() => {
-    console.log('Stopping generation...');
+    console.log("Stopping generation...")
 
     // Set cancellation flag
-    shouldCancelRef.current = true;
+    shouldCancelRef.current = true
 
     // Clear timeout for adding assistant message
     if (addMessageTimeoutRef.current) {
-      clearTimeout(addMessageTimeoutRef.current);
-      addMessageTimeoutRef.current = null;
+      clearTimeout(addMessageTimeoutRef.current)
+      addMessageTimeoutRef.current = null
     }
 
-    setStatus('ready');
-    setStreamingMessageId(null);
-  }, []);
+    setStatus("ready")
+    setStreamingMessageId(null)
+  }, [])
 
   const addResponse = useCallback(
     async (messageId: string, content: string) => {
-      setStatus('streaming');
-      setStreamingMessageId(messageId);
-      shouldCancelRef.current = false;
+      setStatus("streaming")
+      setStreamingMessageId(messageId)
+      shouldCancelRef.current = false
 
       // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1500))
 
       // Check if cancelled during delay
       if (shouldCancelRef.current) {
-        setStatus('ready');
-        setStreamingMessageId(null);
-        return;
+        setStatus("ready")
+        setStreamingMessageId(null)
+        return
       }
 
       // Add complete response at once
@@ -165,204 +166,223 @@ const Example = () => {
             return {
               ...msg,
               versions: msg.versions.map((v) =>
-                v.id === messageId ? { ...v, content } : v,
+                v.id === messageId ? { ...v, content } : v
               ),
-            };
+            }
           }
-          return msg;
-        }),
-      );
+          return msg
+        })
+      )
 
-      setStatus('ready');
-      setStreamingMessageId(null);
+      setStatus("ready")
+      setStreamingMessageId(null)
     },
-    [],
-  );
+    []
+  )
 
   const handleMessageTouch = useCallback((messageKey: string) => {
-    setTouchedMessages(prev => new Set(prev).add(messageKey));
-  }, []);
+    setTouchedMessages((prev) => new Set(prev).add(messageKey))
+  }, [])
 
   const addUserMessage = useCallback(
     (content: string) => {
       const userMessage: MessageType = {
         key: `user-${Date.now()}`,
-        from: 'user',
+        from: "user",
         versions: [
           {
             id: `user-${Date.now()}`,
             content,
           },
         ],
-        avatar: 'https://patrickprunty.com/icon.webp',
-        name: 'User',
-      };
+        avatar: "https://patrickprunty.com/icon.webp",
+        name: "User",
+      }
 
-      setMessages((prev) => [...prev, userMessage]);
+      setMessages((prev) => [...prev, userMessage])
 
       addMessageTimeoutRef.current = setTimeout(() => {
-        const assistantMessageId = `assistant-${Date.now()}`;
+        const assistantMessageId = `assistant-${Date.now()}`
         const randomResponse =
-          mockResponses[Math.floor(Math.random() * mockResponses.length)];
+          mockResponses[Math.floor(Math.random() * mockResponses.length)]
 
         const assistantMessage: MessageType = {
           key: `assistant-${Date.now()}`,
-          from: 'assistant',
+          from: "assistant",
           versions: [
             {
               id: assistantMessageId,
-              content: '',
+              content: "",
             },
           ],
-          avatar: 'https://github.com/openai.png',
-          name: 'Assistant',
-        };
+          avatar: "https://github.com/openai.png",
+          name: "Assistant",
+        }
 
-        setMessages((prev) => [...prev, assistantMessage]);
-        addResponse(assistantMessageId, randomResponse);
-        addMessageTimeoutRef.current = null;
-      }, 500);
+        setMessages((prev) => [...prev, assistantMessage])
+        addResponse(assistantMessageId, randomResponse)
+        addMessageTimeoutRef.current = null
+      }, 500)
     },
-    [addResponse],
-  );
+    [addResponse]
+  )
 
   const handleSubmit = (message: PromptInputMessage) => {
     // If currently streaming or submitted, stop instead of submitting
-    if (status === 'streaming' || status === 'submitted') {
-      stop();
-      return;
+    if (status === "streaming" || status === "submitted") {
+      stop()
+      return
     }
 
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
+    const hasText = Boolean(message.text)
+    const hasAttachments = Boolean(message.files?.length)
 
     if (!(hasText || hasAttachments)) {
-      return;
+      return
     }
 
-    setStatus('submitted');
+    setStatus("submitted")
 
     if (message.files?.length) {
-      toast.success('Files attached', {
+      toast.success("Files attached", {
         description: `${message.files.length} file(s) attached to message`,
-      });
+      })
     }
 
-    addUserMessage(message.text || 'Sent with attachments');
-    setText('');
-  };
-
+    addUserMessage(message.text || "Sent with attachments")
+    setText("")
+  }
 
   return (
-    <div className="relative flex size-full flex-col overflow-hidden">
+    <ChatContainer>
       <Conversation>
         <ConversationContent>
           {messages.map(({ versions, ...message }) => {
-            const assistantMessages = messages.filter(m => m.from === 'assistant');
-            const isLastAssistantMessage = message.from === 'assistant' && 
-              assistantMessages.length > 0 && 
-              assistantMessages[assistantMessages.length - 1].key === message.key;
+            const assistantMessages = messages.filter(
+              (m) => m.from === "assistant"
+            )
+            const isLastAssistantMessage =
+              message.from === "assistant" &&
+              assistantMessages.length > 0 &&
+              assistantMessages[assistantMessages.length - 1].key ===
+                message.key
 
             return (
-            <Branch defaultBranch={0} key={message.key}>
-              <BranchMessages>
-                {versions.map((version) => (
-                  <Message
-                    from={message.from}
-                    key={`${message.key}-${version.id}`}
-                    className={cn(
-                      message.from === 'user' ? 'justify-end items-end' : undefined,
-                      "group/message"
-                    )}
-                    onTouchStart={() => handleMessageTouch(message.key)}
-                  >
-                    <div>
-                      {message.sources?.length && (
-                        <Sources>
-                          <SourcesTrigger count={message.sources.length} />
-                          <SourcesContent>
-                            {message.sources.map((source) => (
-                              <Source
-                                href={source.href}
-                                key={source.href}
-                                title={source.title}
-                              />
-                            ))}
-                          </SourcesContent>
-                        </Sources>
+              <Branch defaultBranch={0} key={message.key}>
+                <BranchMessages>
+                  {versions.map((version) => (
+                    <Message
+                      from={message.from}
+                      key={`${message.key}-${version.id}`}
+                      className={cn(
+                        message.from === "user"
+                          ? "items-end justify-end"
+                          : undefined,
+                        "group/message"
                       )}
-                      {message.reasoning && (
-                        <Reasoning duration={message.reasoning.duration}>
-                          <ReasoningTrigger />
-                          <ReasoningContent>
-                            {message.reasoning.content}
-                          </ReasoningContent>
-                        </Reasoning>
-                      )}
-                      <MessageContent 
-                        className={cn(
-                          message.from === 'assistant' ? 'max-w-full' : '',
-                          message.from === 'user' && 'w-fit ml-auto'
+                      onTouchStart={() => handleMessageTouch(message.key)}
+                    >
+                      <div>
+                        {message.sources?.length && (
+                          <Sources>
+                            <SourcesTrigger count={message.sources.length} />
+                            <SourcesContent>
+                              {message.sources.map((source) => (
+                                <Source
+                                  href={source.href}
+                                  key={source.href}
+                                  title={source.title}
+                                />
+                              ))}
+                            </SourcesContent>
+                          </Sources>
                         )}
-                      >
-                        <div className="leading-[1.65rem] text-base">
-                          <Response>{version.content}</Response>
-                        </div>
-                      </MessageContent>
-                      {message.from === 'assistant' && (
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            {status === 'streaming' && streamingMessageId === version.id && (
-                              <Loader size={16} className="text-muted-foreground ml-1" />
-                            )}
-                          </div>
-                          {status !== 'streaming' && streamingMessageId !== version.id && (
-                            <Actions className={cn(
-                              "justify-end",
-                              isLastAssistantMessage || touchedMessages.has(message.key)
-                                ? "opacity-100" 
-                                : "opacity-0 group-hover/message:opacity-100"
-                            )}>
-                              <CopyAction
-                                value={version.content}
-                                tooltip="Copy message"
-                              />
-                              <Action
-                                tooltip="Good response"
-                                onClick={() => toast.success('Feedback recorded')}
-                              >
-                                <ThumbsUpIcon className="h-4 w-4" />
-                              </Action>
-                              <Action
-                                tooltip="Poor response"
-                                onClick={() => toast.success('Feedback recorded')}
-                              >
-                                <ThumbsDownIcon className="h-4 w-4" />
-                              </Action>
-                              <Action
-                                tooltip="Regenerate response"
-                                onClick={() => toast.info('Regenerating response...')}
-                                className="relative size-9 p-1.5 text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors duration-200 text-sm font-medium px-2 min-w-0 h-9 w-auto"
-                              >
-                                Retry
-                              </Action>
-                            </Actions>
+                        {message.reasoning && (
+                          <Reasoning duration={message.reasoning.duration}>
+                            <ReasoningTrigger />
+                            <ReasoningContent>
+                              {message.reasoning.content}
+                            </ReasoningContent>
+                          </Reasoning>
+                        )}
+                        <MessageContent
+                          className={cn(
+                            message.from === "assistant" ? "max-w-full" : "",
+                            message.from === "user" && "ml-auto w-fit"
                           )}
-                        </div>
-                      )}
-                    </div>
-                  </Message>
-                ))}
-              </BranchMessages>
-              {versions.length > 1 && (
-                <BranchSelector from={message.from}>
-                  <BranchPrevious />
-                  <BranchPage />
-                  <BranchNext />
-                </BranchSelector>
-              )}
-            </Branch>
-            );
+                        >
+                          <div className="text-base leading-[1.65rem]">
+                            <Response>{version.content}</Response>
+                          </div>
+                        </MessageContent>
+                        {message.from === "assistant" && (
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              {status === "streaming" &&
+                                streamingMessageId === version.id && (
+                                  <Loader
+                                    size={16}
+                                    className="text-muted-foreground ml-1"
+                                  />
+                                )}
+                            </div>
+                            {status !== "streaming" &&
+                              streamingMessageId !== version.id && (
+                                <Actions
+                                  className={cn(
+                                    "justify-end",
+                                    isLastAssistantMessage ||
+                                      touchedMessages.has(message.key)
+                                      ? "opacity-100"
+                                      : "opacity-0 group-hover/message:opacity-100"
+                                  )}
+                                >
+                                  <CopyAction
+                                    value={version.content}
+                                    tooltip="Copy message"
+                                  />
+                                  <Action
+                                    tooltip="Good response"
+                                    onClick={() =>
+                                      toast.success("Feedback recorded")
+                                    }
+                                  >
+                                    <ThumbsUpIcon className="h-4 w-4" />
+                                  </Action>
+                                  <Action
+                                    tooltip="Poor response"
+                                    onClick={() =>
+                                      toast.success("Feedback recorded")
+                                    }
+                                  >
+                                    <ThumbsDownIcon className="h-4 w-4" />
+                                  </Action>
+                                  <Action
+                                    tooltip="Regenerate response"
+                                    onClick={() =>
+                                      toast.info("Regenerating response...")
+                                    }
+                                    className="text-muted-foreground hover:text-foreground hover:bg-accent relative size-9 h-9 w-auto min-w-0 rounded-md p-1.5 px-2 text-sm font-medium transition-colors duration-200"
+                                  >
+                                    Retry
+                                  </Action>
+                                </Actions>
+                              )}
+                          </div>
+                        )}
+                      </div>
+                    </Message>
+                  ))}
+                </BranchMessages>
+                {versions.length > 1 && (
+                  <BranchSelector from={message.from}>
+                    <BranchPrevious />
+                    <BranchPage />
+                    <BranchNext />
+                  </BranchSelector>
+                )}
+              </Branch>
+            )
           })}
         </ConversationContent>
         <ConversationScrollButton />
@@ -372,13 +392,15 @@ const Example = () => {
           <PromptInput globalDrop multiple onSubmit={handleSubmit}>
             <PromptInputBody>
               <PromptInputAttachments>
-                {(attachment: any) => <PromptInputAttachment data={attachment} />}
+                {(attachment: any) => (
+                  <PromptInputAttachment data={attachment} />
+                )}
               </PromptInputAttachments>
               <PromptInputTextarea
                 onChange={(event: any) => setText(event.target.value)}
                 ref={textareaRef}
                 value={text}
-                className="leading-[1.65rem] text-base"
+                className="text-base leading-[1.65rem]"
               />
             </PromptInputBody>
             <PromptInputFooter>
@@ -395,7 +417,7 @@ const Example = () => {
                 />
                 <PromptInputButton
                   onClick={() => setUseWebSearch(!useWebSearch)}
-                  variant={useWebSearch ? 'default' : 'ghost'}
+                  variant={useWebSearch ? "default" : "ghost"}
                 >
                   <GlobeIcon size={16} />
                   <span className="hidden sm:inline">Search</span>
@@ -408,7 +430,7 @@ const Example = () => {
                   </PromptInputModelSelectTrigger>
                   <PromptInputModelSelectContent>
                     {models.map((model: any) => (
-                        <PromptInputModelSelectItem
+                      <PromptInputModelSelectItem
                         key={model.id || model.name}
                         value={model.id || model.name}
                       >
@@ -418,7 +440,7 @@ const Example = () => {
                   </PromptInputModelSelectContent>
                 </PromptInputModelSelect>
                 <PromptInputSubmit
-                  disabled={(!text.trim() && !status) || status === 'streaming'}
+                  disabled={(!text.trim() && !status) || status === "streaming"}
                   status={status}
                 />
               </PromptInputTools>
@@ -426,8 +448,8 @@ const Example = () => {
           </PromptInput>
         </div>
       </div>
-    </div>
-  );
-};
+    </ChatContainer>
+  )
+}
 
-export default Example;
+export default Example

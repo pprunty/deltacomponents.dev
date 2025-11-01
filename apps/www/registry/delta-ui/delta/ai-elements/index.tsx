@@ -120,11 +120,11 @@ export {
   type PromptInputActionAddAttachmentsProps,
 } from "./prompt-input"
 
-// Aliases for simpler imports  
+// Aliases for simpler imports
 export { PromptInputModelSelect as ModelSelector } from "./prompt-input"
 export { PromptInputSubmit as SendButton } from "./prompt-input"
 export { Message as UserMessage } from "./message"
-export { Message as AssistantMessage } from "./message" 
+export { Message as AssistantMessage } from "./message"
 export { Message as FileMessage } from "./message"
 export { ConversationScrollButton as ScrollToBottomButton } from "./conversation"
 

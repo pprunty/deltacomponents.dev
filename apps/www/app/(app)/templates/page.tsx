@@ -19,7 +19,9 @@ export default function TemplatesPage() {
       <PageHeader>
         <PageHeaderHeading>Templates</PageHeaderHeading>
         <PageHeaderDescription>
-          Ready-to-use templates built with Delta Components UI components. Choose from Blog, AI Chat Interface, Dashboard, and Landing Page templates. Copy the install command and customize for your needs.
+          Ready-to-use templates built with Delta Components UI components.
+          Choose from Blog, AI Chat Interface, Dashboard, and Landing Page
+          templates. Copy the install command and customize for your needs.
         </PageHeaderDescription>
       </PageHeader>
       <div className="container-wrapper section-soft flex-1 md:py-12">

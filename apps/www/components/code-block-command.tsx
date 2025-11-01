@@ -4,9 +4,14 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/delta-ui/ui/button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 import {
   Tooltip,
   TooltipContent,

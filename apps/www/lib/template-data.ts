@@ -14,7 +14,8 @@ export const TEMPLATE_DATA: TemplateData[] = [
   {
     name: "Modern Blog",
     value: "modern-blog",
-    description: "A clean, responsive blog template with markdown support and SEO optimization.",
+    description:
+      "A clean, responsive blog template with markdown support and SEO optimization.",
     previewImage: "/templates/blog-preview.jpg",
     category: "blog",
     features: [
@@ -22,16 +23,18 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Markdown support",
       "SEO optimized",
       "Dark mode",
-      "Reading time estimation"
+      "Reading time estimation",
     ],
     components: ["card", "button", "typography", "navigation"],
     demoUrl: "/templates/blog-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fmodern-blog"
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fmodern-blog",
   },
   {
     name: "AI Chat Interface",
     value: "ai-chat-interface",
-    description: "Complete AI chat interface with voice input, audio playback, and conversation management.",
+    description:
+      "Complete AI chat interface with voice input, audio playback, and conversation management.",
     previewImage: "/templates/ai-chat-preview.jpg",
     category: "ai-chat",
     features: [
@@ -39,16 +42,24 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Real-time streaming",
       "Conversation history",
       "Multi-modal support",
-      "Custom avatars"
+      "Custom avatars",
     ],
-    components: ["chat", "voice-button", "audio-player", "conversation", "message"],
+    components: [
+      "chat",
+      "voice-button",
+      "audio-player",
+      "conversation",
+      "message",
+    ],
     demoUrl: "/templates/ai-chat-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fai-chat-interface"
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fai-chat-interface",
   },
   {
     name: "SaaS Dashboard",
     value: "saas-dashboard",
-    description: "Comprehensive SaaS dashboard template with analytics, user management, and subscription metrics.",
+    description:
+      "Comprehensive SaaS dashboard template with analytics, user management, and subscription metrics.",
     previewImage: "/templates/saas-dashboard-preview.jpg",
     category: "dashboard",
     features: [
@@ -56,16 +67,18 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Subscription metrics",
       "Revenue tracking",
       "Team management",
-      "API monitoring"
+      "API monitoring",
     ],
     components: ["charts", "tables", "cards", "navigation", "sidebar"],
     demoUrl: "/templates/saas-dashboard-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fsaas-dashboard"
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fsaas-dashboard",
   },
   {
     name: "SaaS Landing Page",
     value: "saas-landing",
-    description: "High-converting landing page template for SaaS products with pricing and testimonials.",
+    description:
+      "High-converting landing page template for SaaS products with pricing and testimonials.",
     previewImage: "/templates/landing-preview.jpg",
     category: "landing",
     features: [
@@ -73,16 +86,18 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Pricing tables",
       "Testimonials",
       "CTA sections",
-      "Mobile optimized"
+      "Mobile optimized",
     ],
     components: ["hero", "pricing", "testimonials", "cta", "navigation"],
     demoUrl: "/templates/landing-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fsaas-landing"
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fsaas-landing",
   },
   {
     name: "Documentation Blog",
     value: "docs-blog",
-    description: "Technical blog template with code highlighting, table of contents, and search functionality.",
+    description:
+      "Technical blog template with code highlighting, table of contents, and search functionality.",
     previewImage: "/templates/docs-blog-preview.jpg",
     category: "blog",
     features: [
@@ -90,16 +105,18 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Table of contents",
       "Search functionality",
       "Categories & tags",
-      "Author profiles"
+      "Author profiles",
     ],
     components: ["code-block", "search", "navigation", "toc", "author-card"],
     demoUrl: "/templates/docs-blog-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fdocs-blog"
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fdocs-blog",
   },
   {
     name: "Agency Landing",
     value: "agency-landing",
-    description: "Professional agency landing page with portfolio showcase and contact forms.",
+    description:
+      "Professional agency landing page with portfolio showcase and contact forms.",
     previewImage: "/templates/agency-landing-preview.jpg",
     category: "landing",
     features: [
@@ -107,12 +124,19 @@ export const TEMPLATE_DATA: TemplateData[] = [
       "Team profiles",
       "Contact forms",
       "Service sections",
-      "Case studies"
+      "Case studies",
     ],
-    components: ["portfolio", "team-cards", "contact-form", "hero", "testimonials"],
+    components: [
+      "portfolio",
+      "team-cards",
+      "contact-form",
+      "hero",
+      "testimonials",
+    ],
     demoUrl: "/templates/agency-landing-demo",
-    vercelDeployUrl: "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fagency-landing"
-  }
+    vercelDeployUrl:
+      "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpprunty%2Fdeltacomponents.dev%2Ftree%2Fmain%2Ftemplates%2Fagency-landing",
+  },
 ]
 
 export const TEMPLATE_CATEGORIES = [
@@ -120,7 +144,7 @@ export const TEMPLATE_CATEGORIES = [
   { value: "blog", label: "Blog" },
   { value: "ai-chat", label: "AI Chat Interface" },
   { value: "dashboard", label: "Dashboard" },
-  { value: "landing", label: "Landing Page" }
+  { value: "landing", label: "Landing Page" },
 ] as const
 
-export type TemplateCategory = typeof TEMPLATE_CATEGORIES[number]["value"]
+export type TemplateCategory = (typeof TEMPLATE_CATEGORIES)[number]["value"]

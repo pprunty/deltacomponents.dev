@@ -3,32 +3,25 @@
 import { promises as fs } from "fs"
 import path from "path"
 
+import { THEME_DATA } from "../lib/theme-data"
+
 interface ThemeConfig {
+  slug: string
   name: string
   description: string
   cssPath: string
 }
 
-const THEMES: ThemeConfig[] = [
-  {
-    name: "solarized",
-    description: "A precision colors scheme for machines and people",
-    cssPath: "styles/themes/solarized.css"
-  },
-  {
-    name: "neobrutalism", 
-    description: "Bold, high-contrast design with thick borders and vibrant colors inspired by brutalist architecture",
-    cssPath: "styles/themes/neobrutalism.css"
-  },
-  {
-    name: "claymorphism",
-    description: "A soft, organic design aesthetic with subtle gradients and clay-like textures", 
-    cssPath: "styles/themes/claymorphism.css"
-  }
-]
+const THEMES: ThemeConfig[] = THEME_DATA.map((theme) => ({
+  slug: theme.value,
+  name: theme.name,
+  description: theme.description,
+  cssPath: path.join("styles", "themes", `${theme.value}.css`)
+}))
 
 async function buildThemeRegistry() {
   const themesDir = path.join(process.cwd(), "public/r/themes")
+  const generated: string[] = []
   
   // Ensure themes directory exists
   await fs.mkdir(themesDir, { recursive: true })
@@ -41,13 +34,16 @@ async function buildThemeRegistry() {
       
       // Create theme registry JSON
       const themeRegistry = {
-        name: theme.name,
+        name: theme.slug,
         type: "registry:theme",
         description: theme.description,
         homepage: "https://deltacomponents.dev",
+        meta: {
+          displayName: theme.name
+        },
         files: [
           {
-            path: `themes/${theme.name}.css`,
+            path: `themes/${theme.slug}.css`,
             content: cssContent,
             type: "registry:theme"
           }
@@ -103,40 +99,27 @@ async function buildThemeRegistry() {
           }
         }
       }
-      
-      // Add neobrutalism-specific shadow config
-      if (theme.name === "neobrutalism") {
-        themeRegistry.tailwind.config.theme.extend.borderRadius = {
-          lg: "var(--radius)",
-          md: "calc(var(--radius) - 2px)",
-          sm: "calc(var(--radius) - 4px)"
-        }
-        themeRegistry.tailwind.config.theme.extend.boxShadow = {
-          xs: "var(--shadow-xs)",
-          sm: "var(--shadow-sm)",
-          DEFAULT: "var(--shadow)",
-          md: "var(--shadow-md)",
-          lg: "var(--shadow-lg)",
-          xl: "var(--shadow-xl)",
-          "2xl": "var(--shadow-2xl)"
-        }
-      }
-      
+
       // Write theme registry file
-      const outputPath = path.join(themesDir, `${theme.name}.json`)
+      const outputPath = path.join(themesDir, `${theme.slug}.json`)
       await fs.writeFile(outputPath, JSON.stringify(themeRegistry, null, 2), "utf-8")
       
-      console.log(`✓ Generated ${theme.name}.json`)
+      generated.push(theme.slug)
+      console.log(`✓ Generated ${theme.slug}.json`)
       
     } catch (error) {
-      console.error(`✗ Failed to generate ${theme.name}.json:`, error)
+      console.error(`✗ Failed to generate ${theme.slug}.json:`, error)
     }
   }
   
-  console.log(`\n✓ Theme registry generated in public/r/themes/`)
-  console.log(`\nUsers can now install themes with:`)
-  for (const theme of THEMES) {
-    console.log(`  pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${theme.name}.json`)
+  if (generated.length) {
+    console.log(`\n✓ Theme registry generated in public/r/themes/`)
+    console.log(`\nUsers can now install themes with:`)
+    for (const slug of generated) {
+      console.log(`  pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${slug}.json`)
+    }
+  } else {
+    console.warn("\n⚠️  No themes were generated. Ensure stylesheets exist in styles/themes/")
   }
 }
 

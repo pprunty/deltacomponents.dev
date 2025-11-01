@@ -1,5 +1,9 @@
 import { cn } from "@/lib/utils"
-import { Alert, AlertDescription, AlertTitle } from "@/registry/delta-ui/ui/alert"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/delta-ui/ui/alert"
 
 export function Callout({
   title,

@@ -23,10 +23,18 @@ apps
     ├── app
     ├── components
     ├── content
-    └── registry
-        └── delta-ui
-            ├── example
-            └── ui
+    ├── hooks
+    ├── lib
+    ├── public
+    ├── registry
+    │   └── delta-ui
+    │       ├── blocks # delta blocks
+    |       ├── delta # delta components
+    |       ├── examples # demo components
+    │       └── ui # shadcn components
+
+    ├── scripts
+    └── styles
 ```
 
 | Path                  | Description                              |
@@ -34,7 +42,12 @@ apps
 | `apps/www/app`        | The Next.js application for the website. |
 | `apps/www/components` | The React components for the website.    |
 | `apps/www/content`    | The content for the website.             |
+| `apps/www/hooks`      | Custom React hooks.                      |
+| `apps/www/lib`        | Utility libraries and helper functions.  |
+| `apps/www/public`     | Static assets and public files.          |
 | `apps/www/registry`   | The registry for the components.         |
+| `apps/www/scripts`    | Build and utility scripts.               |
+| `apps/www/styles`     | Global styles and CSS files.             |
 
 ## Development
 
@@ -45,13 +58,13 @@ You can fork this repo by clicking the fork button in the top right corner of th
 ### Clone on your local machine
 
 ```bash
-git clone https://github.com/elevenlabs/ui.git
+git clone https://github.com/pprunty/deltacomponents.dev.git
 ```
 
 ### Navigate to project directory
 
 ```bash
-cd ui
+cd deltacomponents.dev
 ```
 
 ### Create a new Branch
@@ -95,9 +108,20 @@ We use a registry system for developing components. You can find the source code
 apps
 └── www
     └── registry
-        └── delta-ui
-            ├── example
-            └── ui
+        ├── __blocks__.json
+        ├── __index__.tsx
+        ├── delta-ui
+        │   ├── blocks # delta blocks
+        │   ├── delta # delta components
+        │   ├── examples # demo components
+        │   └── ui # shadcn components
+        ├── index.ts
+        ├── registry-blocks.ts
+        ├── registry-categories.ts
+        ├── registry-examples.ts
+        ├── registry-hooks.ts
+        ├── registry-lib.ts
+        └── registry-ui.ts
 ```
 
 When adding or modifying components, please ensure that:

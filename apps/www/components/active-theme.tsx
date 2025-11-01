@@ -8,6 +8,7 @@ import {
   useState,
 } from "react"
 import { useTheme } from "next-themes"
+
 import { THEME_META_COLORS } from "@/lib/config"
 
 const DEFAULT_THEME = "kerry"
@@ -46,12 +47,13 @@ export function ActiveThemeProvider({
 
     // Update meta theme-color using pre-calculated hex values
     const updateMetaThemeColor = () => {
-      const themeColors = THEME_META_COLORS[activeTheme as keyof typeof THEME_META_COLORS]
-      
+      const themeColors =
+        THEME_META_COLORS[activeTheme as keyof typeof THEME_META_COLORS]
+
       if (themeColors) {
         const isDark = resolvedTheme === "dark"
         const themeColor = isDark ? themeColors.dark : themeColors.light
-        
+
         // Update or create meta theme-color tag
         let metaThemeColor = document.querySelector('meta[name="theme-color"]')
         if (!metaThemeColor) {

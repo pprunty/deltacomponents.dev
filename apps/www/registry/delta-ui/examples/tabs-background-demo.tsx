@@ -11,23 +11,20 @@ export default function TabsBackgroundDemo() {
   return (
     <div className="relative flex size-full flex-col overflow-hidden">
       <Tabs defaultValue="overview" className="w-full overflow-hidden">
-        <TabsList 
-          variant="active-animated"
-          className="w-full h-12"
-        >
-          <TabsTrigger 
+        <TabsList variant="active-animated" className="h-12 w-full">
+          <TabsTrigger
             value="overview"
             className="data-[state=active]:bg-transparent data-[state=active]:shadow-none"
           >
             Overview
           </TabsTrigger>
-          <TabsTrigger 
+          <TabsTrigger
             value="analytics"
             className="data-[state=active]:bg-transparent data-[state=active]:shadow-none"
           >
             Analytics
           </TabsTrigger>
-          <TabsTrigger 
+          <TabsTrigger
             value="reports"
             className="data-[state=active]:bg-transparent data-[state=active]:shadow-none"
           >
@@ -38,7 +35,8 @@ export default function TabsBackgroundDemo() {
           <div className="space-y-2 rounded-lg border p-6">
             <h3 className="text-lg font-medium">Overview</h3>
             <p className="text-muted-foreground text-sm">
-              Get a comprehensive view of your application's performance and key metrics.
+              Get a comprehensive view of your application's performance and key
+              metrics.
             </p>
           </div>
         </TabsContent>
@@ -46,7 +44,8 @@ export default function TabsBackgroundDemo() {
           <div className="space-y-2 rounded-lg border p-6">
             <h3 className="text-lg font-medium">Analytics</h3>
             <p className="text-muted-foreground text-sm">
-              Dive deep into user behavior, traffic patterns, and conversion rates.
+              Dive deep into user behavior, traffic patterns, and conversion
+              rates.
             </p>
           </div>
         </TabsContent>

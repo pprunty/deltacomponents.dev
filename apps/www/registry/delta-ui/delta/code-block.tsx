@@ -7,6 +7,16 @@ import { Highlight, Prism } from "prism-react-renderer"
 import type { PrismTheme } from "prism-react-renderer"
 
 // Import additional language definitions
+
+import { cn } from "@/lib/utils"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
+
 ;(typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-cpp")
 require("prismjs/components/prism-python")
@@ -17,15 +27,6 @@ require("prismjs/components/prism-jsx")
 require("prismjs/components/prism-tsx")
 require("prismjs/components/prism-go")
 require("prismjs/components/prism-rust")
-
-import { cn } from "@/lib/utils"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 
@@ -249,7 +250,7 @@ export function CodeBlock({
 
   // Handle CSS prop - treat as code with CSS language
   const actualCode = css || code
-  const actualLanguage = css ? "css" : (defaultLanguage || language)
+  const actualLanguage = css ? "css" : defaultLanguage || language
 
   // If we have package manager commands, show the tabbed interface
   if (availableCommands.length > 0) {
@@ -354,7 +355,11 @@ export function CodeBlock({
             <div className="flex items-center gap-2 px-3 py-1">
               <span className="text-sm font-medium">{filename}</span>
             </div>
-            <CopyButton value={actualCode} className="mr-3" iconColor={iconColor} />
+            <CopyButton
+              value={actualCode}
+              className="mr-3"
+              iconColor={iconColor}
+            />
           </div>
         )}
 

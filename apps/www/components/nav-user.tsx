@@ -9,7 +9,11 @@ import {
   Sparkles,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/delta-ui/ui/avatar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/delta-ui/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,

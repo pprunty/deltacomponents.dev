@@ -47,7 +47,8 @@ const navigationItems = [
   {
     href: "/docs/components/chat",
     title: "AI Components",
-    description: "AI-powered components for chat, conversation, and agent interfaces",
+    description:
+      "AI-powered components for chat, conversation, and agent interfaces",
     variant: "muted" as const,
   },
   {

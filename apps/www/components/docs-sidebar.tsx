@@ -66,7 +66,7 @@ export function DocsSidebar({
       {...props}
     >
       <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
-        <div className="h-(--top-spacing) shrink-0" />
+        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-8 shrink-0 bg-gradient-to-b blur-xs" />
         <SidebarGroup>
           <SidebarGroupLabel className="text-muted-foreground font-medium">
             Getting Started
@@ -101,7 +101,7 @@ export function DocsSidebar({
             return null
           }
 
-          const sidebarGroup = (
+          return (
             <SidebarGroup key={item.$id}>
               <SidebarGroupLabel className="text-muted-foreground font-medium">
                 {item.name}
@@ -140,47 +140,37 @@ export function DocsSidebar({
               </SidebarGroupContent>
             </SidebarGroup>
           )
-
-          // If this is the Components section, add Blocks section after it
-          if (item.name === "Components") {
-            return (
-              <React.Fragment key={item.$id}>
-                {sidebarGroup}
-                {BLOCKS_SECTIONS.map((section) => (
-                  <SidebarGroup key={section.name}>
-                    <SidebarGroupLabel className="text-muted-foreground font-medium">
-                      {section.name}
-                    </SidebarGroupLabel>
-                    <SidebarGroupContent>
-                      <SidebarMenu className="gap-0.5">
-                        {section.items.map((item) => (
-                          <SidebarMenuItem key={item.href}>
-                            <SidebarMenuButton
-                              asChild
-                              isActive={item.href === pathname}
-                              className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
-                            >
-                              <Link
-                                href={item.href}
-                                className="flex items-center gap-2"
-                              >
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {item.name}
-                                <StatusBadge label="beta" />
-                              </Link>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        ))}
-                      </SidebarMenu>
-                    </SidebarGroupContent>
-                  </SidebarGroup>
-                ))}
-              </React.Fragment>
-            )
-          }
-
-          return sidebarGroup
         })}
+        {BLOCKS_SECTIONS.map((section) => (
+          <SidebarGroup key={section.name}>
+            <SidebarGroupLabel className="text-muted-foreground font-medium">
+              {section.name}
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="gap-0.5">
+                {section.items.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={item.href === pathname}
+                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                    >
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-2"
+                      >
+                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                        {item.name}
+                        <StatusBadge label="beta" />
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
+        <div className="from-background via-background/80 to-background/50 relative sticky -bottom-13 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
       </SidebarContent>
     </Sidebar>
   )

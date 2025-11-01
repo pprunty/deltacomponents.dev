@@ -30,12 +30,12 @@ function TabsList({
     width: "0px",
   })
   const tabRefs = React.useRef<(HTMLButtonElement | null)[]>([])
-  
+
   // Update active indicator position
   const updateActiveIndicator = React.useCallback(() => {
     if (variant === "active-animated") {
       const activeElement = tabRefs.current.find(
-        el => el?.getAttribute('data-state') === 'active'
+        (el) => el?.getAttribute("data-state") === "active"
       )
       if (activeElement) {
         const { offsetLeft, offsetWidth } = activeElement
@@ -53,16 +53,19 @@ function TabsList({
       const observer = new MutationObserver(() => {
         updateActiveIndicator()
       })
-      
-      tabRefs.current.forEach(ref => {
+
+      tabRefs.current.forEach((ref) => {
         if (ref) {
-          observer.observe(ref, { attributes: true, attributeFilter: ['data-state'] })
+          observer.observe(ref, {
+            attributes: true,
+            attributeFilter: ["data-state"],
+          })
         }
       })
-      
+
       // Initial position
       updateActiveIndicator()
-      
+
       return () => observer.disconnect()
     }
   }, [variant, updateActiveIndicator])
@@ -79,11 +82,11 @@ function TabsList({
     >
       {variant === "active-animated" && (
         <div
-          className="absolute bg-background rounded-[calc(var(--radius)-2px)] transition-all duration-300 ease-out z-0"
+          className="bg-background absolute z-0 rounded-[calc(var(--radius)-2px)] transition-all duration-300 ease-out"
           style={{
             ...activeStyle,
-            height: 'calc(100% - 6px)',
-            top: '3px',
+            height: "calc(100% - 6px)",
+            top: "3px",
           }}
         />
       )}
@@ -93,10 +96,7 @@ function TabsList({
             ref: (el: HTMLButtonElement | null) => {
               tabRefs.current[index] = el
             },
-            className: cn(
-              child.props.className,
-              "relative z-10"
-            )
+            className: cn(child.props.className, "relative z-10"),
           })
         }
         return child

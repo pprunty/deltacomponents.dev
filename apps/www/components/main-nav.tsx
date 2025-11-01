@@ -12,7 +12,13 @@ export function MainNav({
   className,
   ...props
 }: React.ComponentProps<"nav"> & {
-  items: { href: string; label: string; badge?: string; hide?: boolean; disabled?: boolean }[]
+  items: {
+    href: string
+    label: string
+    badge?: string
+    hide?: boolean
+    disabled?: boolean
+  }[]
 }) {
   const pathname = usePathname()
 
@@ -27,7 +33,7 @@ export function MainNav({
               key={item.href}
               variant="ghost"
               size="sm"
-              className="cursor-not-allowed opacity-60 text-muted-foreground"
+              className="text-muted-foreground cursor-not-allowed opacity-60"
               disabled
             >
               {item.label}

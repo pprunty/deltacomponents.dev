@@ -1,6 +1,10 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/delta-ui/ui/avatar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/delta-ui/ui/avatar"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Card,

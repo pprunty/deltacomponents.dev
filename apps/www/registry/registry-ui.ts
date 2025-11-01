@@ -2,6 +2,17 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "navigation-menu",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "delta/navigation-menu.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "code-block",
     type: "registry:ui",
     dependencies: ["lucide-react", "prism-react-renderer"],
@@ -108,6 +119,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "delta/mapbox-pointer.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "x-card",
+    type: "registry:ui",
+    dependencies: ["react-tweet"],
+    files: [
+      {
+        path: "delta/x-card.tsx",
         type: "registry:ui",
       },
     ],

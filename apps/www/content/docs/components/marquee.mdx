@@ -1,0 +1,118 @@
+---
+title: Marquee
+description: An animated marquee component for showcasing any content with smooth scrolling and customizable styling. Perfect for logos, testimonials, cards, and more.
+component: true
+---
+
+<ComponentPreview name="brandmarquee-demo" />
+
+## Installation
+
+<Installation name="marquee" />
+
+## Usage
+
+```tsx
+import { Marquee } from "@/components/ui/marquee"
+
+export default function Example() {
+  return (
+    <Marquee speed={25} gap={60}>
+      <img src="/logo1.svg" alt="Logo 1" className="h-12 w-auto" />
+      <img src="/logo2.svg" alt="Logo 2" className="h-12 w-auto" />
+      <img src="/logo3.svg" alt="Logo 3" className="h-12 w-auto" />
+      {/* Add any content as children */}
+    </Marquee>
+  )
+}
+```
+
+## Examples
+
+### Basic Brand Marquee
+
+<ComponentPreview name="brandmarquee-demo" />
+
+### Testimonial Cards
+
+<ComponentPreview name="marquee-cards-demo" />
+
+### Right-to-Left Direction
+
+```tsx
+<Marquee direction="right" speed={30} gap={100}>
+  <div className="bg-card w-64 rounded-lg p-4">Card 1</div>
+  <div className="bg-card w-64 rounded-lg p-4">Card 2</div>
+  <div className="bg-card w-64 rounded-lg p-4">Card 3</div>
+</Marquee>
+```
+
+### Without Fade Effect
+
+```tsx
+<Marquee showFade={false} pauseOnHover={false} speed={15}>
+  {/* Your content here */}
+</Marquee>
+```
+
+### Stacked Marquees
+
+<ComponentPreview name="marquee-stacked-demo" />
+
+Showcase multiple marquees with different directions for dynamic layouts.
+
+## API Reference
+
+### Marquee
+
+| Prop          | Type                | Default  | Description                                                 |
+| ------------- | ------------------- | -------- | ----------------------------------------------------------- |
+| children      | `React.ReactNode`   | -        | Content to display in the marquee                           |
+| speed         | `number`            | `30`     | Animation speed in seconds for one complete loop            |
+| direction     | `"left" \| "right"` | `"left"` | Direction of the carousel animation                         |
+| pauseOnHover  | `boolean`           | `true`   | Whether to pause animation on hover                         |
+| gap           | `number`            | `70`     | Gap between items in pixels                                 |
+| showFade      | `boolean`           | `true`   | Whether to show fade effect on edges                        |
+| fadeIntensity | `number`            | `12.5`   | Fade intensity (0-100)                                      |
+| duplicates    | `number`            | `2`      | Number of times to duplicate the children for seamless loop |
+| itemClassName | `string`            | -        | Custom class for each item container                        |
+| className     | `string`            | -        | Additional CSS classes for the container                    |
+
+## Features
+
+- **Flexible Content**: Accept any React children - logos, cards, text, or custom components
+- **Smooth Animation**: Seamless infinite scrolling with configurable speed
+- **Direction Control**: Support for left-to-right or right-to-left scrolling
+- **Hover Interactions**: Pause animation on hover for better user experience
+- **Fade Effects**: Configurable edge fading for a polished look
+- **Responsive Design**: Automatic scaling and responsive behavior
+- **Performance Optimized**: Efficient rendering with proper duplication handling
+- **Accessible**: Keyboard navigation friendly and semantic HTML structure
+- **Customizable**: Extensive styling options and CSS customization
+
+## Use Cases
+
+The Marquee component is versatile and can be used for:
+
+- **Brand Logos**: Showcase partner companies and trusted brands
+- **Testimonials**: Display customer reviews and feedback
+- **Product Highlights**: Feature key products or services
+- **Social Proof**: Show client testimonials or user-generated content
+- **Announcements**: Display rotating promotional messages
+- **Portfolio Items**: Showcase work samples or case studies
+
+## Styling
+
+The component uses CSS-in-JS for animations and supports custom styling through:
+
+- `className` prop for container styling
+- `itemClassName` prop for individual item styling
+- CSS custom properties for advanced customization
+- Tailwind CSS classes for responsive design
+
+## Accessibility
+
+- Reduced motion support (respects `prefers-reduced-motion`)
+- Keyboard navigation friendly
+- Semantic HTML structure
+- Proper focus management for interactive content

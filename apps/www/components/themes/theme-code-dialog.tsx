@@ -17,7 +17,6 @@ interface ThemeCodeDialogProps {
 }
 
 export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,16 +24,16 @@ export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
           &#123; &#125; Code
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[calc(100vw-2rem)] max-w-4xl max-h-[calc(100vh-4rem)] overflow-y-auto">
+      <DialogContent className="max-h-[calc(100vh-4rem)] w-[calc(100vw-2rem)] max-w-4xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{themeName} Theme</DialogTitle>
           <DialogDescription>
             Install and configure the {themeName} theme in your project.
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-6 min-w-0">
+        <div className="min-w-0 space-y-6">
           <div>
-            <h4 className="text-sm font-medium mb-2">Install using CLI</h4>
+            <h4 className="mb-2 text-sm font-medium">Install using CLI</h4>
             <CodeBlock
               npm={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
               yarn={`yarn dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
@@ -44,11 +43,14 @@ export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
             />
           </div>
           <div>
-            <h4 className="text-sm font-medium mb-2">Copy and paste this CSS into your project to use the {themeName} theme.</h4>
+            <h4 className="mb-2 text-sm font-medium">
+              Copy and paste this CSS into your project to use the {themeName}{" "}
+              theme.
+            </h4>
             <CodeBlock
               code={themeCSS}
               language="css"
-              className="min-w-0 max-h-[300px]"
+              className="max-h-[300px] min-w-0"
               filename="globals.css"
               showLineNumbers={false}
             />

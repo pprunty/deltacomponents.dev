@@ -10,6 +10,7 @@ Delta Components UI templates provide pre-configured starting points for common 
 ### Voice Chat Interface Template
 
 A complete voice-enabled chat interface with:
+
 - Voice recording and playback
 - Real-time audio visualization
 - Text-to-speech capabilities
@@ -23,6 +24,7 @@ pnpm dlx shadcn@latest add https://deltacomponents.dev/r/voice-chat-template.jso
 ### Audio Dashboard Template
 
 Perfect for podcast platforms or audio management tools:
+
 - Audio player with playlist
 - Waveform visualization
 - Volume controls and seek functionality
@@ -36,6 +38,7 @@ pnpm dlx shadcn@latest add https://deltacomponents.dev/r/audio-dashboard-templat
 ### Agent Conversation Template
 
 Streamlined AI agent interface featuring:
+
 - Message threading
 - Typing indicators
 - Response streaming
@@ -51,6 +54,7 @@ pnpm dlx shadcn@latest add https://deltacomponents.dev/r/agent-conversation-temp
 ### 1. Choose Your Template
 
 Identify which template best fits your use case:
+
 - **Voice-heavy applications**: Voice Chat Interface
 - **Audio content platforms**: Audio Dashboard
 - **AI assistant interfaces**: Agent Conversation
@@ -65,6 +69,7 @@ pnpm dlx shadcn@latest add https://deltacomponents.dev/r/[template-name].json
 ```
 
 This will install:
+
 - The main template component
 - All required dependencies
 - Supporting utility components
@@ -99,7 +104,7 @@ Most templates accept configuration props:
     showWaveform: true,
     autoPlayResponses: false,
     theme: "dark",
-    apiEndpoint: "/api/chat"
+    apiEndpoint: "/api/chat",
   }}
 />
 ```
@@ -127,7 +132,7 @@ Replace specific components within templates:
   components={{
     VoiceButton: CustomVoiceButton,
     MessageList: CustomMessageList,
-    AudioPlayer: CustomAudioPlayer
+    AudioPlayer: CustomAudioPlayer,
   }}
 />
 ```
@@ -159,12 +164,8 @@ import { useTemplateContext } from "@/components/templates/voice-chat-template"
 
 function CustomComponent() {
   const { messages, isRecording, sendMessage } = useTemplateContext()
-  
-  return (
-    <div>
-      {/* Your custom implementation */}
-    </div>
-  )
+
+  return <div>{/* Your custom implementation */}</div>
 }
 ```
 
@@ -178,13 +179,13 @@ Extend templates with additional functionality:
 // Custom hook for template enhancement
 function useEnhancedVoiceChat() {
   const baseTemplate = useTemplateContext()
-  
+
   const [customFeature, setCustomFeature] = useState(false)
-  
+
   return {
     ...baseTemplate,
     customFeature,
-    enableCustomFeature: () => setCustomFeature(true)
+    enableCustomFeature: () => setCustomFeature(true),
   }
 }
 ```
@@ -196,19 +197,19 @@ Templates provide hooks for API integration:
 ```tsx
 <VoiceChatTemplate
   onMessageSend={async (message) => {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      body: JSON.stringify({ message })
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      body: JSON.stringify({ message }),
     })
     return response.json()
   }}
   onVoiceData={async (audioBlob) => {
     const formData = new FormData()
-    formData.append('audio', audioBlob)
-    
-    const response = await fetch('/api/transcribe', {
-      method: 'POST',
-      body: formData
+    formData.append("audio", audioBlob)
+
+    const response = await fetch("/api/transcribe", {
+      method: "POST",
+      body: formData,
     })
     return response.json()
   }}
@@ -231,16 +232,16 @@ Templates include performance optimizations:
 Combine templates for complex applications:
 
 ```tsx
-import { VoiceChatTemplate } from "@/components/templates/voice-chat"
 import { AudioDashboardTemplate } from "@/components/templates/audio-dashboard"
+import { VoiceChatTemplate } from "@/components/templates/voice-chat"
 
 export default function MultiModalApp() {
   const [activeView, setActiveView] = useState("chat")
-  
+
   return (
     <div className="h-screen">
       <Navigation onViewChange={setActiveView} />
-      
+
       {activeView === "chat" && <VoiceChatTemplate />}
       {activeView === "dashboard" && <AudioDashboardTemplate />}
     </div>
@@ -290,16 +291,19 @@ Use context providers for shared state:
 ### Common Issues
 
 **Template not rendering properly:**
+
 - Check that all dependencies are installed
 - Verify Next.js and React versions are compatible
 - Ensure proper CSS imports
 
 **Audio features not working:**
+
 - Verify browser permissions for microphone access
 - Check audio file formats and MIME types
 - Test on different browsers
 
 **Performance issues:**
+
 - Enable React DevTools profiler
 - Check for memory leaks in audio components
 - Optimize re-renders with proper memoization

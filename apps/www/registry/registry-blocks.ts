@@ -129,4 +129,24 @@ export const blocks: Registry["items"] = [
     },
     categories: ["layout"],
   },
+  {
+    name: "marquee",
+    description:
+      "Animated marquee component for showcasing content with smooth scrolling",
+    type: "registry:block",
+    registryDependencies: [],
+    files: [
+      {
+        path: "blocks/marquee.tsx",
+        type: "registry:component",
+        target: "components/marquee.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "400px",
+      container: "w-full",
+      mobile: "component",
+    },
+    categories: ["landing-page"],
+  },
 ]

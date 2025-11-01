@@ -77,5 +77,5 @@ export const THEME_META_COLORS = {
   neobrutalism: { light: "#fefefe", dark: "#000000" },
   kerry: { light: "#f9f9f9", dark: "#020700" },
   cork: { light: "#dde8e8", dark: "#02060a" },
-  galway: { light: "#fbf7f5", dark: "#03030a" }
+  galway: { light: "#fbf7f5", dark: "#03030a" },
 }

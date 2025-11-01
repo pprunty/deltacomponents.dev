@@ -63,12 +63,15 @@ export function ComponentPreviewTabs({
           <div
             data-align={align}
             className={cn(
-              "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start [height:var(--preview-height)]",
+              "preview flex [height:var(--preview-height)] w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
               marginOff ? "p-0" : "p-4 sm:p-6 md:p-10"
             )}
-            style={{ 
-              "--preview-height": typeof height === "number" ? `${height}px` : height
-            } as React.CSSProperties & { "--preview-height": string }}
+            style={
+              {
+                "--preview-height":
+                  typeof height === "number" ? `${height}px` : height,
+              } as React.CSSProperties & { "--preview-height": string }
+            }
           >
             {component}
           </div>
@@ -77,11 +80,14 @@ export function ComponentPreviewTabs({
           value="code"
           className="relative overflow-hidden rounded-lg border"
         >
-          <div 
-            className="**:button:!z-[5] overflow-hidden **:[figure]:!m-0 **:[pre]:relative **:[pre]:z-0 **:[pre]:[height:var(--code-height)] [height:var(--code-height)]"
-            style={{ 
-              "--code-height": typeof height === "number" ? `${height}px` : height
-            } as React.CSSProperties & { "--code-height": string }}
+          <div
+            className="**:button:!z-[5] [height:var(--code-height)] overflow-hidden **:[figure]:!m-0 **:[pre]:relative **:[pre]:z-0 **:[pre]:[height:var(--code-height)]"
+            style={
+              {
+                "--code-height":
+                  typeof height === "number" ? `${height}px` : height,
+              } as React.CSSProperties & { "--code-height": string }
+            }
           >
             {source}
           </div>

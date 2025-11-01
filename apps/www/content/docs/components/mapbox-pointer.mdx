@@ -55,7 +55,8 @@ This example shows the navigation night theme - perfect for modern interfaces. *
 <ComponentPreview name="mapbox-pointer-style-demo" />
 
 You can easily customize the style by changing the `style` prop. Try different values like:
-- `"streets-v12"` - Default street map  
+
+- `"streets-v12"` - Default street map
 - `"satellite-v9"` - Satellite imagery
 - `"navigation-night-v1"` - Night navigation
 - `"light-v11"` - Minimal light theme
@@ -65,7 +66,7 @@ You can easily customize the style by changing the `style` prop. Try different v
 ```tsx
 <MapboxPointer
   latitude={40.7128}
-  longitude={-74.0060}
+  longitude={-74.006}
   mapboxToken={token}
   className="h-64 w-full"
 />
@@ -81,25 +82,29 @@ You can easily customize the style by changing the `style` prop. Try different v
   style="dark-v11"
   markerColor="#ef4444"
   label="London, UK"
-  className="h-96 shadow-lg rounded-xl"
+  className="h-96 rounded-xl shadow-lg"
 />
 ```
 
 ### Different Map Styles
 
 ```tsx
-{/* Satellite view */}
-<MapboxPointer
+{
+  /* Satellite view */
+}
+;<MapboxPointer
   latitude={40.7128}
-  longitude={-74.0060}
+  longitude={-74.006}
   mapboxToken={token}
   style="satellite-v9"
   label="New York City"
   className="h-64"
 />
 
-{/* Dark theme */}
-<MapboxPointer
+{
+  /* Dark theme */
+}
+;<MapboxPointer
   latitude={48.8566}
   longitude={2.3522}
   mapboxToken={token}
@@ -108,8 +113,10 @@ You can easily customize the style by changing the `style` prop. Try different v
   className="h-64"
 />
 
-{/* Light minimal theme */}
-<MapboxPointer
+{
+  /* Light minimal theme */
+}
+;<MapboxPointer
   latitude={37.7749}
   longitude={-122.4194}
   mapboxToken={token}
@@ -153,18 +160,22 @@ For display-only maps where user interaction should be disabled:
 Use dark-themed map styles for better contrast:
 
 ```tsx
-{/* Dark theme for modern interfaces */}
-<MapboxPointer
+{
+  /* Dark theme for modern interfaces */
+}
+;<MapboxPointer
   latitude={40.7128}
-  longitude={-74.0060}
+  longitude={-74.006}
   style="dark-v11"
   className="h-64"
 />
 
-{/* Navigation optimized for night use */}
-<MapboxPointer
+{
+  /* Navigation optimized for night use */
+}
+;<MapboxPointer
   latitude={40.7128}
-  longitude={-74.0060}
+  longitude={-74.006}
   style="navigation-night-v1"
   className="h-64"
 />
@@ -175,39 +186,47 @@ Use dark-themed map styles for better contrast:
 The component has no default shadow, allowing full customization:
 
 ```tsx
-{/* No shadow (default) */}
-<MapboxPointer className="h-96" />
+{
+  /* No shadow (default) */
+}
+;<MapboxPointer className="h-96" />
 
-{/* Simple shadow */}
-<MapboxPointer className="h-96 shadow-lg" />
+{
+  /* Simple shadow */
+}
+;<MapboxPointer className="h-96 shadow-lg" />
 
-{/* Shadow with hover effect */}
-<MapboxPointer className="h-96 shadow-lg hover:shadow-xl transition-shadow" />
+{
+  /* Shadow with hover effect */
+}
+;<MapboxPointer className="h-96 shadow-lg transition-shadow hover:shadow-xl" />
 
-{/* Custom colored shadow */}
-<MapboxPointer className="h-96 shadow-2xl shadow-blue-500/20" />
+{
+  /* Custom colored shadow */
+}
+;<MapboxPointer className="h-96 shadow-2xl shadow-blue-500/20" />
 ```
 
 ## API Reference
 
 ### Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| **Required Props** | | | |
-| latitude | number | - | Latitude coordinate for the map center |
-| longitude | number | - | Longitude coordinate for the map center |
-| **Optional Props** | | | |
-| zoom | number | 13 | Initial zoom level of the map |
-| googleMapsUrl | string | - | Custom Google Maps URL for navigation |
-| markerColor | string | "#679BFF" | Color of the map marker |
-| className | string | "" | Additional CSS classes for styling |
-| interactive | boolean | true | Whether the map allows user interactions (pan, zoom, rotate) |
-| style | MapboxStyle | "streets-v12" | Mapbox map style theme |
-| mapboxToken | string | - | Mapbox access token (falls back to NEXT_PUBLIC_MAPBOX_TOKEN) |
-| label | string | - | Text label to display on the map |
-| labelHref | string | - | URL to link the label to |
-| clickForDirections | boolean | false | Enable click-to-directions functionality |
+| Prop               | Type        | Default       | Description                                                  |
+| ------------------ | ----------- | ------------- | ------------------------------------------------------------ |
+| **Required Props** |             |               |                                                              |
+| latitude           | number      | -             | Latitude coordinate for the map center                       |
+| longitude          | number      | -             | Longitude coordinate for the map center                      |
+| **Optional Props** |             |               |                                                              |
+| zoom               | number      | 13            | Initial zoom level of the map                                |
+| googleMapsUrl      | string      | -             | Custom Google Maps URL for navigation                        |
+| markerColor        | string      | "#679BFF"     | Color of the map marker                                      |
+| className          | string      | ""            | Additional CSS classes for styling                           |
+| interactive        | boolean     | true          | Whether the map allows user interactions (pan, zoom, rotate) |
+| style              | MapboxStyle | "streets-v12" | Mapbox map style theme                                       |
+| mapboxToken        | string      | -             | Mapbox access token (falls back to NEXT_PUBLIC_MAPBOX_TOKEN) |
+| label              | string      | -             | Text label to display on the map                             |
+| labelHref          | string      | -             | URL to link the label to                                     |
+| clickForDirections | boolean     | false         | Enable click-to-directions functionality                     |
 
 ### Styling
 
@@ -216,12 +235,12 @@ The component uses a minimal base styling approach:
 ```css
 /* Base classes applied */
 .mapbox-container {
-  @apply relative overflow-hidden rounded-lg border bg-card;
+  @apply bg-card relative overflow-hidden rounded-lg border;
 }
 
 /* No default shadow - add via className */
 .with-shadow {
-  @apply shadow-lg hover:shadow-xl transition-shadow;
+  @apply shadow-lg transition-shadow hover:shadow-xl;
 }
 
 /* Labels use less rounded corners */
@@ -241,9 +260,9 @@ The marker includes a built-in pulse animation:
 
 ### Environment Variables
 
-| Variable | Description | Required |
-| --- | --- | --- |
-| NEXT_PUBLIC_MAPBOX_TOKEN | Your Mapbox access token | Yes |
+| Variable                 | Description              | Required |
+| ------------------------ | ------------------------ | -------- |
+| NEXT_PUBLIC_MAPBOX_TOKEN | Your Mapbox access token | Yes      |
 
 Get your token from [Mapbox Account](https://account.mapbox.com/access-tokens/).
 
@@ -251,13 +270,13 @@ Get your token from [Mapbox Account](https://account.mapbox.com/access-tokens/).
 
 Available Mapbox style options:
 
-| Style | Description | Best For |
-| --- | --- | --- |
-| `streets-v12` | Default street map | General purpose, navigation |
-| `outdoors-v12` | Outdoor/hiking focused | Recreation, trails, topography |
-| `light-v11` | Minimal light theme | Clean interfaces, overlays |
-| `dark-v11` | Dark theme | Dark mode apps, night use |
-| `satellite-v9` | Satellite imagery | Aerial views, real estate |
-| `satellite-streets-v12` | Satellite with street labels | Hybrid satellite + navigation |
-| `navigation-day-v1` | Optimized for daytime navigation | Turn-by-turn directions |
-| `navigation-night-v1` | Optimized for nighttime navigation | Dark navigation interfaces |
+| Style                   | Description                        | Best For                       |
+| ----------------------- | ---------------------------------- | ------------------------------ |
+| `streets-v12`           | Default street map                 | General purpose, navigation    |
+| `outdoors-v12`          | Outdoor/hiking focused             | Recreation, trails, topography |
+| `light-v11`             | Minimal light theme                | Clean interfaces, overlays     |
+| `dark-v11`              | Dark theme                         | Dark mode apps, night use      |
+| `satellite-v9`          | Satellite imagery                  | Aerial views, real estate      |
+| `satellite-streets-v12` | Satellite with street labels       | Hybrid satellite + navigation  |
+| `navigation-day-v1`     | Optimized for daytime navigation   | Turn-by-turn directions        |
+| `navigation-night-v1`   | Optimized for nighttime navigation | Dark navigation interfaces     |

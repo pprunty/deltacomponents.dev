@@ -1,9 +1,10 @@
-import { cn } from "@/lib/utils";
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react"
+
+import { cn } from "@/lib/utils"
 
 type LoaderIconProps = {
-  size?: number;
-};
+  size?: number
+}
 
 const LoaderIcon = ({ size = 16 }: LoaderIconProps) => (
   <svg
@@ -77,11 +78,11 @@ const LoaderIcon = ({ size = 16 }: LoaderIconProps) => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 export type LoaderProps = HTMLAttributes<HTMLDivElement> & {
-  size?: number;
-};
+  size?: number
+}
 
 export const Loader = ({ className, size = 16, ...props }: LoaderProps) => (
   <div
@@ -93,4 +94,4 @@ export const Loader = ({ className, size = 16, ...props }: LoaderProps) => (
   >
     <LoaderIcon size={size} />
   </div>
-);
+)

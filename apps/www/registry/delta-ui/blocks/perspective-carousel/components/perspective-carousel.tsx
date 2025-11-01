@@ -1,18 +1,17 @@
-"use client";
+"use client"
 
-import Autoplay from "embla-carousel-autoplay";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
+import Autoplay from "embla-carousel-autoplay"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react"
 
-import { cn } from "@/lib/utils";
-
+import { cn } from "@/lib/utils"
 import {
   Carousel,
   CarouselApi,
   CarouselContent,
   CarouselItem,
-} from "@/registry/delta-ui/ui/carousel";
+} from "@/registry/delta-ui/ui/carousel"
 
 const Skiper54 = () => {
   const images = [
@@ -51,7 +50,7 @@ const Skiper54 = () => {
       alt: "Furry Circuits Newsletter",
       title: "Furry Circuits Newsletter",
     },
-  ];
+  ]
   return (
     <div className="flex h-full w-full items-center justify-center">
       <Carousel_006
@@ -63,17 +62,17 @@ const Skiper54 = () => {
         showControlsToggle={true}
       />
     </div>
-  );
-};
+  )
+}
 
 interface Carousel_006Props {
-  images: { src: string; alt: string; title: string }[];
-  className?: string;
-  autoplay?: boolean;
-  loop?: boolean;
-  showNavigation?: boolean;
-  showPagination?: boolean;
-  showControlsToggle?: boolean;
+  images: { src: string; alt: string; title: string }[]
+  className?: string
+  autoplay?: boolean
+  loop?: boolean
+  showNavigation?: boolean
+  showPagination?: boolean
+  showControlsToggle?: boolean
 }
 
 const Carousel_006 = ({
@@ -85,17 +84,17 @@ const Carousel_006 = ({
   showPagination = true,
   showControlsToggle = false,
 }: Carousel_006Props) => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [controlsVisible, setControlsVisible] = useState(true);
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [controlsVisible, setControlsVisible] = useState(true)
 
   useEffect(() => {
-    if (!api) return;
+    if (!api) return
 
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
 
   return (
     <Carousel
@@ -158,7 +157,7 @@ const Carousel_006 = ({
       </CarouselContent>
 
       {showNavigation && controlsVisible && (
-        <div className="absolute bottom-4 right-0 flex w-full items-center justify-between gap-2 px-4">
+        <div className="absolute right-0 bottom-4 flex w-full items-center justify-between gap-2 px-4">
           <button
             aria-label="Previous slide"
             onClick={() => api?.scrollPrev()}
@@ -177,7 +176,7 @@ const Carousel_006 = ({
       )}
 
       {showPagination && controlsVisible && (
-        <div className="flex w-full items-center justify-center mt-4">
+        <div className="mt-4 flex w-full items-center justify-center">
           <div className="flex items-center justify-center gap-2">
             {Array.from({ length: images.length }).map((_, index) => (
               <button
@@ -185,7 +184,7 @@ const Carousel_006 = ({
                 onClick={() => api?.scrollTo(index)}
                 className={cn(
                   "h-2 w-2 cursor-pointer rounded-full transition-all",
-                  current === index ? "bg-black" : "bg-[#D9D9D9]",
+                  current === index ? "bg-black" : "bg-[#D9D9D9]"
                 )}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -208,14 +207,14 @@ const Carousel_006 = ({
         </button>
       )}
     </Carousel>
-  );
-};
-
-export function PerspectiveCarousel() {
-  return <Skiper54 />;
+  )
 }
 
-export { Skiper54 };
+export function PerspectiveCarousel() {
+  return <Skiper54 />
+}
+
+export { Skiper54 }
 
 /**
  * Skiper 54 Carousel_006 — React + Framer Motion

@@ -1,16 +1,17 @@
+import type { ComponentProps, HTMLAttributes } from "react"
+import type { UIMessage } from "ai"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/delta-ui/ui/avatar";
-import { cn } from "@/lib/utils";
-import type { UIMessage } from "ai";
-import { cva, type VariantProps } from "class-variance-authority";
-import type { ComponentProps, HTMLAttributes } from "react";
+} from "@/registry/delta-ui/ui/avatar"
 
 export type MessageProps = HTMLAttributes<HTMLDivElement> & {
-  from: UIMessage["role"];
-};
+  from: UIMessage["role"]
+}
 
 export const Message = ({ className, from, ...props }: MessageProps) => (
   <div
@@ -21,7 +22,7 @@ export const Message = ({ className, from, ...props }: MessageProps) => (
     )}
     {...props}
   />
-);
+)
 
 const messageContentVariants = cva(
   "is-user:dark rounded-lg text-sm [&_pre]:overflow-x-auto [&_table]:overflow-x-auto [&_table]:block [&_table]:w-full",
@@ -42,10 +43,10 @@ const messageContentVariants = cva(
       variant: "contained",
     },
   }
-);
+)
 
 export type MessageContentProps = HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof messageContentVariants>;
+  VariantProps<typeof messageContentVariants>
 
 export const MessageContent = ({
   children,
@@ -59,12 +60,12 @@ export const MessageContent = ({
   >
     {children}
   </div>
-);
+)
 
 export type MessageAvatarProps = ComponentProps<typeof Avatar> & {
-  src: string;
-  name?: string;
-};
+  src: string
+  name?: string
+}
 
 export const MessageAvatar = ({
   src,
@@ -72,8 +73,8 @@ export const MessageAvatar = ({
   className,
   ...props
 }: MessageAvatarProps) => (
-  <Avatar className={cn("size-8 ring-1 ring-border", className)} {...props}>
+  <Avatar className={cn("ring-border size-8 ring-1", className)} {...props}>
     <AvatarImage alt="" className="mt-0 mb-0" src={src} />
     <AvatarFallback>{name?.slice(0, 2) || "ME"}</AvatarFallback>
   </Avatar>
-);
+)

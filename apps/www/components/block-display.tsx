@@ -11,10 +11,10 @@ import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
 
-export async function BlockDisplay({ 
-  name, 
-  defaultViewSize 
-}: { 
+export async function BlockDisplay({
+  name,
+  defaultViewSize,
+}: {
   name: string
   defaultViewSize?: "100" | "60" | "30"
 }) {
@@ -30,9 +30,9 @@ export async function BlockDisplay({
   ])
 
   return (
-    <BlockViewer 
-      item={item} 
-      tree={tree} 
+    <BlockViewer
+      item={item}
+      tree={tree}
       highlightedFiles={highlightedFiles}
       defaultViewSize={defaultViewSize}
     >
@@ -40,9 +40,7 @@ export async function BlockDisplay({
         name={item.name}
         hideCode
         marginOff={true}
-        className={cn(
-          item.meta?.containerClassName
-        )}
+        className={cn(item.meta?.containerClassName)}
       />
     </BlockViewer>
   )

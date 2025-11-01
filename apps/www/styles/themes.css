@@ -1,9 +1,7 @@
 /* Import individual theme files */
 @import './themes/dublin.css';
 @import './themes/clare.css';
-@import './themes/neobrutalism.css';
 @import './themes/kerry.css';
-@import './themes/cork.css';
 @import './themes/galway.css';
 
 .theme-default .theme-container {

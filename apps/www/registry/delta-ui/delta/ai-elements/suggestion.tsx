@@ -1,14 +1,12 @@
-"use client";
+"use client"
 
-import { Button } from "@/registry/delta-ui/ui/button";
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@/registry/delta-ui/ui/scroll-area";
-import { cn } from "@/lib/utils";
-import type { ComponentProps } from "react";
+import type { ComponentProps } from "react"
 
-export type SuggestionsProps = ComponentProps<typeof ScrollArea>;
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/delta-ui/ui/button"
+import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
+
+export type SuggestionsProps = ComponentProps<typeof ScrollArea>
 
 export const Suggestions = ({
   className,
@@ -21,12 +19,12 @@ export const Suggestions = ({
     </div>
     <ScrollBar className="hidden" orientation="horizontal" />
   </ScrollArea>
-);
+)
 
 export type SuggestionProps = Omit<ComponentProps<typeof Button>, "onClick"> & {
-  suggestion: string;
-  onClick?: (suggestion: string) => void;
-};
+  suggestion: string
+  onClick?: (suggestion: string) => void
+}
 
 export const Suggestion = ({
   suggestion,
@@ -38,8 +36,8 @@ export const Suggestion = ({
   ...props
 }: SuggestionProps) => {
   const handleClick = () => {
-    onClick?.(suggestion);
-  };
+    onClick?.(suggestion)
+  }
 
   return (
     <Button
@@ -52,5 +50,5 @@ export const Suggestion = ({
     >
       {children || suggestion}
     </Button>
-  );
-};
+  )
+}

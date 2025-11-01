@@ -34,5 +34,12 @@
     "categories": [
       "layout"
     ]
+  },
+  {
+    "name": "marquee",
+    "description": "Animated marquee component for showcasing content with smooth scrolling",
+    "categories": [
+      "landing-page"
+    ]
   }
 ]

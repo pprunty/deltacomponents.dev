@@ -42,6 +42,7 @@ If your application uses environment variables, add them in the Vercel dashboard
 3. Add your variables for Production, Preview, and Development as needed
 
 Common environment variables for Delta Components UI apps:
+
 ```bash
 NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
 ```
@@ -49,6 +50,7 @@ NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
 ### 4. Deploy
 
 Click "Deploy" and Vercel will:
+
 - Install dependencies
 - Build your application
 - Deploy to a production URL
@@ -74,13 +76,13 @@ For better performance with Delta Components UI:
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ["lucide-react"],
   },
   // Enable if using audio components
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp3|wav|ogg)$/,
-      type: 'asset/resource',
+      type: "asset/resource",
     })
     return config
   },
@@ -92,6 +94,7 @@ module.exports = nextConfig
 ### Preview Deployments
 
 Vercel automatically creates preview deployments for:
+
 - Pull requests
 - Pushes to non-production branches
 
@@ -154,7 +157,7 @@ Vercel provides built-in monitoring:
 After deploying successfully:
 
 - Set up [Vercel Analytics](https://vercel.com/analytics) for performance insights
-- Configure [speed insights](https://vercel.com/docs/speed-insights) 
+- Configure [speed insights](https://vercel.com/docs/speed-insights)
 - Consider [edge functions](https://vercel.com/docs/functions/edge-functions) for global performance
 - Explore [Vercel KV](https://vercel.com/docs/storage/vercel-kv) for data storage needs
 

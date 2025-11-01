@@ -5,7 +5,7 @@ import { MapboxPointer } from "@/registry/delta-ui/delta/mapbox-pointer"
 export default function MapboxPointerDemo() {
   return (
     <div className="w-full">
-        <MapboxPointer
+      <MapboxPointer
         latitude={53.342825}
         longitude={-6.257311}
         zoom={13}

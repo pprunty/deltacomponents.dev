@@ -17,15 +17,14 @@ export function DocsSidebarCta({ className }: React.ComponentProps<"div">) {
         Build Better User Experiences
       </div>
       <div className="text-muted-foreground relative z-10">
-        Discover open source components that make the difference in your applications. Copy, paste, and customize to create exceptional user interfaces.
+        Discover open source components that make the difference in your
+        applications. Copy, paste, and customize to create exceptional user
+        interfaces.
       </div>
       <Button size="sm" className="relative z-10 mt-2 w-fit">
         Browse Components
       </Button>
-      <Link
-        href="/docs/components"
-        className="absolute inset-0 z-20"
-      >
+      <Link href="/docs/components" className="absolute inset-0 z-20">
         <span className="sr-only">Browse components</span>
       </Link>
     </div>
