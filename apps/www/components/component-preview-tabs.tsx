@@ -18,6 +18,7 @@ export function ComponentPreviewTabs({
   source,
   marginOff = false,
   height = "450px",
+  previewOverflow = "hidden",
   ...props
 }: React.ComponentProps<"div"> & {
   align?: "center" | "start" | "end"
@@ -26,6 +27,7 @@ export function ComponentPreviewTabs({
   source: React.ReactNode
   marginOff?: boolean
   height?: string | number
+  previewOverflow?: "hidden" | "visible"
 }) {
   const [tab, setTab] = React.useState("preview")
 
@@ -58,7 +60,10 @@ export function ComponentPreviewTabs({
         )}
         <TabsContent
           value="preview"
-          className="relative overflow-hidden rounded-lg border"
+          className={cn(
+            "relative rounded-lg border",
+            previewOverflow === "visible" ? "overflow-visible" : "overflow-hidden"
+          )}
         >
           <div
             data-align={align}

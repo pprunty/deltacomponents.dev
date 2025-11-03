@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "marquee"
+  ],
+  "files": [
+    {
+      "path": "examples/marquee-demo.tsx",
+      "content": "\"use client\"\n\nimport { Marquee } from \"@/registry/delta-ui/delta/marquee\"\n\nconst artisticTexts = [\n  \"DIGITAL RENAISSANCE\",\n  \"CREATIVE INNOVATION\",\n  \"FUTURE AESTHETICS\",\n  \"VISUAL STORYTELLING\",\n  \"DESIGN REVOLUTION\",\n  \"ARTISTIC EXPRESSION\",\n  \"MODERN CRAFTSMANSHIP\",\n  \"AESTHETIC EVOLUTION\",\n]\n\nexport default function MarqueeDemo() {\n  return (\n    <div className=\"bg-black dark:bg-white w-full py-1\">\n      <Marquee \n        direction=\"left\" \n        speed={100} \n        gap={120} \n        showFade={false}\n        pauseOnHover={false}\n        className=\"py-0\"\n      >\n        {artisticTexts.map((text, index) => (\n          <div\n            key={index}\n            className=\"text-white dark:text-black text-2xl md:text-4xl font-bold tracking-widest whitespace-nowrap select-none\"\n          >\n            {text}\n          </div>\n        ))}\n      </Marquee>\n    </div>\n  )\n}",
+      "type": "registry:example"
+    }
+  ]
+}

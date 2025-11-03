@@ -134,4 +134,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "marquee",
+    type: "registry:ui",
+    files: [
+      {
+        path: "delta/marquee.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

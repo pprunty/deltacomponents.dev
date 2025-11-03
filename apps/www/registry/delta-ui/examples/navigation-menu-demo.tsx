@@ -72,7 +72,7 @@ export default function NavigationMenuDemo() {
   return (
     <div className="bg-background flex min-h-[400px] items-center justify-center px-4">
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="gap-0.5">
           <NavigationMenuItem>
             <NavigationMenuTrigger>Overview</NavigationMenuTrigger>
             <NavigationMenuContent>

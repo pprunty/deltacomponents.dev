@@ -1,6 +1,6 @@
 "use client"
 
-import { Marquee } from "@/registry/delta-ui/blocks/marquee"
+import { Marquee } from "@/registry/delta-ui/delta/marquee"
 
 const brands = [
   {

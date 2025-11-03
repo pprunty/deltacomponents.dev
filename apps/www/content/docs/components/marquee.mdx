@@ -4,7 +4,7 @@ description: An animated marquee component for showcasing any content with smoot
 component: true
 ---
 
-<ComponentPreview name="brandmarquee-demo" />
+<ComponentPreview name="marquee-demo" />
 
 ## Installation
 
@@ -13,7 +13,7 @@ component: true
 ## Usage
 
 ```tsx
-import { Marquee } from "@/components/ui/marquee"
+import { Marquee } from "@/registry/delta-ui/delta/marquee"
 
 export default function Example() {
   return (
@@ -47,13 +47,15 @@ export default function Example() {
 </Marquee>
 ```
 
-### Without Fade Effect
+### Without Fade Effect and Hover Pause
 
 ```tsx
 <Marquee showFade={false} pauseOnHover={false} speed={15}>
   {/* Your content here */}
 </Marquee>
 ```
+
+Disable the edge fade effect and continuous movement without pausing on hover for a clean, uninterrupted scrolling experience.
 
 ### Stacked Marquees
 

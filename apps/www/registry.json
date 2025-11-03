@@ -204,6 +204,16 @@
       ]
     },
     {
+      "name": "marquee",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "testimonials",
       "type": "registry:block",
       "description": "Customer testimonials grid",
@@ -344,27 +354,6 @@
       ]
     },
     {
-      "name": "marquee",
-      "type": "registry:block",
-      "description": "Animated marquee component for showcasing content with smooth scrolling",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/delta-ui/blocks/marquee.tsx",
-          "type": "registry:component",
-          "target": "components/marquee.tsx"
-        }
-      ],
-      "meta": {
-        "iframeHeight": "400px",
-        "container": "w-full",
-        "mobile": "component"
-      },
-      "categories": [
-        "landing-page"
-      ]
-    },
-    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
@@ -414,10 +403,23 @@
       ]
     },
     {
+      "name": "x-card-interactive-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/x-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/x-card-interactive-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "marquee-stacked-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/marquee.json"
+        "marquee"
       ],
       "files": [
         {
@@ -430,11 +432,24 @@
       "name": "marquee-cards-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/marquee.json"
+        "marquee"
       ],
       "files": [
         {
           "path": "registry/delta-ui/examples/marquee-cards-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "marquee-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/marquee-demo.tsx",
           "type": "registry:example"
         }
       ]

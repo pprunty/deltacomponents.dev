@@ -37,9 +37,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "x-card-interactive-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    files: [
+      {
+        path: "examples/x-card-interactive-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "marquee-stacked-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    registryDependencies: ["marquee"],
     files: [
       {
         path: "examples/marquee-stacked-demo.tsx",
@@ -50,10 +61,21 @@ export const examples: Registry["items"] = [
   {
     name: "marquee-cards-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/marquee.json"],
+    registryDependencies: ["marquee"],
     files: [
       {
         path: "examples/marquee-cards-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "marquee-demo",
+    type: "registry:example",
+    registryDependencies: ["marquee"],
+    files: [
+      {
+        path: "examples/marquee-demo.tsx",
         type: "registry:example",
       },
     ],

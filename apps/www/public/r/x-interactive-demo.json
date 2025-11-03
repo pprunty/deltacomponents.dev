@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "x-interactive-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/x-card.json"
+  ],
+  "files": [
+    {
+      "path": "examples/x-interactive-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { XCard } from \"@/registry/delta-ui/delta/x-card\"\n\nconst tweetIds = [\n  \"793680385403957295\",\n  \"1791582398471028851\", \n  \"1593417987687473152\",\n  \"1793680385403957295\"\n]\n\nexport default function XInteractiveDemo() {\n  const [currentIndex, setCurrentIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    const interval = setInterval(() => {\n      setCurrentIndex((prevIndex) => (prevIndex + 1) % tweetIds.length)\n    }, 1000) // Change every second\n\n    return () => clearInterval(interval)\n  }, [])\n\n  return (\n    <div className=\"flex items-center justify-center w-full py-8\">\n      <XCard tweetId={tweetIds[currentIndex]} />\n    </div>\n  )\n}",
+      "type": "registry:example"
+    }
+  ]
+}
