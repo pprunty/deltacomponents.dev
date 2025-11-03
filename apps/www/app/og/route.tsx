@@ -55,7 +55,7 @@ export async function GET(request: Request) {
         <div tw="flex border absolute border-dashed inset-y-0 right-16 w-[1px]" style={{ borderColor: "oklch(0.5066 0.2501 271.8903)" }} />
         <div tw="flex border absolute inset-x-0 h-[1px] top-16" style={{ borderColor: "oklch(0.5066 0.2501 271.8903)" }} />
         <div tw="flex border absolute inset-x-0 h-[1px] bottom-16" style={{ borderColor: "oklch(0.5066 0.2501 271.8903)" }} />
-        <div tw="flex absolute flex-row bottom-24 right-24" style={{ color: "var(--primary)" }}>
+        <div tw="flex absolute flex-row bottom-24 right-24" style={{ color: "oklch(0.5066 0.2501 271.8903)" }}>
           <svg
             viewBox="0 0 282 308"
             fill="none"
@@ -77,7 +77,7 @@ export async function GET(request: Request) {
               fontWeight: 600,
               fontSize: title && title.length > 20 ? 64 : 80,
               letterSpacing: "-0.04em",
-              color: "var(--primary)"
+              color: "oklch(0.5066 0.2501 271.8903)"
             }}
           >
             {title}
@@ -87,7 +87,7 @@ export async function GET(request: Request) {
             style={{
               fontWeight: 500,
               textWrap: "balance",
-              color: "var(--muted-foreground)"
+              color: "oklch(0.5309 0.2319 271.8903)"
             }}
           >
             {description}
