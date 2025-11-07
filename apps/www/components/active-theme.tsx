@@ -33,7 +33,9 @@ export function ActiveThemeProvider({
     if (typeof window !== "undefined") {
       try {
         const stored = localStorage.getItem(THEME_STORAGE_KEY)
-        return stored || initialTheme || DEFAULT_THEME
+        // Also check if data-theme is already set on HTML element
+        const currentDataTheme = document.documentElement.getAttribute("data-theme")
+        return stored || currentDataTheme || initialTheme || DEFAULT_THEME
       } catch {
         return initialTheme || DEFAULT_THEME
       }
@@ -42,8 +44,11 @@ export function ActiveThemeProvider({
   })
 
   useEffect(() => {
-    // Set data-theme attribute on html element
-    document.documentElement.setAttribute("data-theme", activeTheme)
+    // Only update data-theme attribute if it's different from current
+    const currentTheme = document.documentElement.getAttribute("data-theme")
+    if (currentTheme !== activeTheme) {
+      document.documentElement.setAttribute("data-theme", activeTheme)
+    }
 
     // Update meta theme-color using pre-calculated hex values
     const updateMetaThemeColor = () => {

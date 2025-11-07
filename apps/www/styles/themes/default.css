@@ -1,5 +1,5 @@
 /* Default Theme - Uses standard shadcn/ui colors */
-html[data-theme="default"], :root {
+:root, html[data-theme="default"], html:not([data-theme]) {
   --background: oklch(100% 0 0);
   --foreground: oklch(9.09% 0 0);
   --card: oklch(100% 0 0);
@@ -35,7 +35,7 @@ html[data-theme="default"], :root {
   --radius: 0.5rem;
 }
 
-html[data-theme="default"].dark, .dark {
+html[data-theme="default"].dark, html:not([data-theme]).dark, .dark {
   --background: oklch(7.26% 0.017 294.7);
   --foreground: oklch(100% 0 0);
   --card: oklch(7.26% 0.017 294.7);

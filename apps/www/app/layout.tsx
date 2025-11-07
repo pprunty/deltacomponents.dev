@@ -112,6 +112,8 @@ export default function RootLayout({
                 }
                 if (localStorage['active-theme']) {
                   document.documentElement.setAttribute('data-theme', localStorage['active-theme'])
+                } else {
+                  document.documentElement.setAttribute('data-theme', 'default')
                 }
               } catch (_) {}
             `,
