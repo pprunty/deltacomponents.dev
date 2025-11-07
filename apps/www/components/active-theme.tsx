@@ -68,6 +68,15 @@ export function ActiveThemeProvider({
           console.log(`[ActiveTheme] Updated meta theme-color: ${themeColor} (theme: ${activeTheme}, mode: ${resolvedTheme})`)
         }
       } else {
+        // Fallback to default theme if current theme not found
+        if (!themeColors && activeTheme !== DEFAULT_THEME) {
+          if (process.env.NODE_ENV === "development") {
+            console.warn(`[ActiveTheme] No colors found for theme: ${activeTheme}, falling back to ${DEFAULT_THEME}`)
+          }
+          setActiveTheme(DEFAULT_THEME)
+          return
+        }
+        
         if (process.env.NODE_ENV === "development") {
           console.warn(`[ActiveTheme] No colors found for theme: ${activeTheme} or resolvedTheme not ready: ${resolvedTheme}`)
         }
