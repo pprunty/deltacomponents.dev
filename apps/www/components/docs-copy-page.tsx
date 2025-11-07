@@ -3,6 +3,7 @@
 import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { siteConfig } from "@/lib/config"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   DropdownMenu,
@@ -19,8 +20,9 @@ import {
 import { Separator } from "@/registry/delta-ui/ui/separator"
 
 function getPromptUrl(baseURL: string, url: string) {
+  const fullUrl = url || `${siteConfig.url}/docs`
   return `${baseURL}?q=${encodeURIComponent(
-    `I’m looking at this shadcn/ui documentation: ${url}.
+    `I'm looking at this Delta Components UI documentation and custom shadcn/ui registry: ${fullUrl}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
   `
   )}`
