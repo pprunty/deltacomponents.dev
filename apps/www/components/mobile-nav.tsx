@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import Link, { LinkProps } from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
@@ -13,6 +13,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/delta-ui/ui/popover"
+
+const normalizePath = (path: string | null) => {
+  if (!path) return "/"
+  if (path === "/") return "/"
+  return path.endsWith("/") ? path.slice(0, -1) || "/" : path
+}
 
 export function MobileNav({
   tree,
@@ -30,6 +36,20 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const [pendingHref, setPendingHref] = React.useState<string | null>(null)
+  
+  const pathname = normalizePath(usePathname())
+
+  React.useEffect(() => {
+    setOpen(false)
+    setPendingHref(null)
+  }, [pathname])
+
+  React.useEffect(() => {
+    if (!open) {
+      setPendingHref(null)
+    }
+  }, [open])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -76,25 +96,64 @@ export function MobileNav({
               Menu
             </div>
             <div className="flex flex-col gap-3">
-              <MobileLink href="/" onOpenChange={setOpen}>
+              <Link
+                href="/"
+                onClick={() => {
+                  const targetHref = normalizePath("/")
+                  if (targetHref === pathname) {
+                    setOpen(false)
+                    return
+                  }
+                  setPendingHref("/")
+                }}
+                className={cn(
+                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
+                  normalizePath("/") === pathname ? "text-foreground font-semibold" : "text-muted-foreground"
+                )}
+              >
                 Home
-              </MobileLink>
+              </Link>
               {items
                 .filter((item) => !item.hide || (item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")))
-                .map((item, index) => (
-                  <MobileLink
-                    key={index}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                    disabled={item.disabled}
-                  >
-                    {item.label}
-                    {item.badge && <StatusBadge label={item.badge} />}
-                    {item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (
-                      <StatusBadge label="hidden" />
-                    )}
-                  </MobileLink>
-                ))}
+                .map((item, index) => {
+                  const normalizedItemHref = normalizePath(item.href)
+                  const isActive = normalizedItemHref === pathname
+                  
+                  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+                    if (item.disabled) {
+                      event.preventDefault()
+                      return
+                    }
+
+                    const targetHref = normalizePath(item.href)
+                    if (targetHref === pathname) {
+                      setOpen(false)
+                      return
+                    }
+
+                    setPendingHref(item.href)
+                  }
+
+                  return (
+                    <Link
+                      key={index}
+                      href={item.disabled ? "#" : item.href}
+                      onClick={handleClick}
+                      aria-disabled={item.disabled ? "true" : "false"}
+                      className={cn(
+                        "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
+                        isActive ? "text-foreground font-semibold" : "text-muted-foreground",
+                        item.disabled && "cursor-not-allowed opacity-60"
+                      )}
+                    >
+                      {item.label}
+                      {item.badge && <StatusBadge label={item.badge} />}
+                      {item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (
+                        <StatusBadge label="hidden" />
+                      )}
+                    </Link>
+                  )
+                })}
             </div>
           </div>
 
@@ -109,18 +168,33 @@ export function MobileNav({
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
                         if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
+                          const isActive = normalizePath(item.url) === pathname
+                          
+                          const handleClick = () => {
+                            const targetHref = normalizePath(item.url)
+                            if (targetHref === pathname) {
+                              setOpen(false)
+                              return
+                            }
+                            setPendingHref(item.url)
+                          }
+
                           return (
-                            <MobileLink
+                            <Link
                               key={`${item.url}-${index}`}
                               href={item.url}
-                              onOpenChange={setOpen}
+                              onClick={handleClick}
+                              className={cn(
+                                "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
+                                isActive ? "text-foreground font-semibold" : "text-muted-foreground"
+                              )}
                             >
                               {item.name}
                               <StatusBadge label="beta" />
                               {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                 <StatusBadge label="hidden" />
                               )}
-                            </MobileLink>
+                            </Link>
                           )
                         }
                       })}
@@ -138,34 +212,38 @@ export function MobileNav({
                           Blocks
                         </div>
                         <div className="flex flex-col gap-3">
-                          <MobileLink
-                            href="/blocks/landing-page#testimonials"
-                            onOpenChange={setOpen}
-                          >
-                            Testimonials
-                            <StatusBadge label="beta" />
-                          </MobileLink>
-                          <MobileLink
-                            href="/blocks/ai-elements#interactive-feature-showcase"
-                            onOpenChange={setOpen}
-                          >
-                            Video Card Grid
-                            <StatusBadge label="beta" />
-                          </MobileLink>
-                          <MobileLink
-                            href="/blocks/ai-elements#chatbot-window"
-                            onOpenChange={setOpen}
-                          >
-                            LLM Chat Window
-                            <StatusBadge label="beta" />
-                          </MobileLink>
-                          <MobileLink
-                            href="/blocks/featured#perspective-carousel"
-                            onOpenChange={setOpen}
-                          >
-                            Perspective Carousel
-                            <StatusBadge label="beta" />
-                          </MobileLink>
+                          {[
+                            { href: "/blocks/landing-page#testimonials", name: "Testimonials" },
+                            { href: "/blocks/ai-elements#interactive-feature-showcase", name: "Video Card Grid" },
+                            { href: "/blocks/ai-elements#chatbot-window", name: "LLM Chat Window" },
+                            { href: "/blocks/featured#perspective-carousel", name: "Perspective Carousel" }
+                          ].map((blockItem) => {
+                            const isActive = normalizePath(blockItem.href) === pathname
+                            
+                            const handleClick = () => {
+                              const targetHref = normalizePath(blockItem.href)
+                              if (targetHref === pathname) {
+                                setOpen(false)
+                                return
+                              }
+                              setPendingHref(blockItem.href)
+                            }
+
+                            return (
+                              <Link
+                                key={blockItem.href}
+                                href={blockItem.href}
+                                onClick={handleClick}
+                                className={cn(
+                                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
+                                  isActive ? "text-foreground font-semibold" : "text-muted-foreground"
+                                )}
+                              >
+                                {blockItem.name}
+                                <StatusBadge label="beta" />
+                              </Link>
+                            )
+                          })}
                         </div>
                       </div>
                     </React.Fragment>
@@ -182,55 +260,3 @@ export function MobileNav({
   )
 }
 
-function MobileLink({
-  href,
-  onOpenChange,
-  className,
-  children,
-  disabled,
-  ...props
-}: LinkProps & {
-  onOpenChange?: (open: boolean) => void
-  children: React.ReactNode
-  className?: string
-  disabled?: boolean
-}) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const isActive = pathname === href
-
-  if (disabled) {
-    return (
-      <div
-        className={cn(
-          "flex cursor-not-allowed items-center text-2xl font-medium",
-          "text-muted-foreground opacity-60",
-          className
-        )}
-      >
-        {children}
-      </div>
-    )
-  }
-
-  return (
-    <Link
-      href={href}
-      data-href={href}
-      onClick={() => {
-        router.push(href.toString())
-        onOpenChange?.(false)
-      }}
-      className={cn(
-        "flex items-center text-2xl font-medium transition-colors",
-        isActive
-          ? "text-primary font-semibold"
-          : "text-muted-foreground hover:text-foreground",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </Link>
-  )
-}
