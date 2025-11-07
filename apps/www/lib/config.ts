@@ -69,10 +69,11 @@ export const siteConfig = {
 }
 
 export const THEME_META_COLORS = {
+  default: { light: "#ffffff", dark: "#13120a" },
   dublin: { light: "#f5f6eb", dark: "#02060a" },
   clare: { light: "#fdf6e3", dark: "#002b36" },
   neobrutalism: { light: "#fefefe", dark: "#000000" },
-  kerry: { light: "#f9f9f9", dark: "#020700" },
+  kerry: { light: "#ffffff", dark: "#13120a" },
   cork: { light: "#dde8e8", dark: "#02060a" },
   galway: { light: "#fbf7f5", dark: "#03030a" },
 }

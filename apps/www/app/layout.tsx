@@ -99,7 +99,7 @@ export default function RootLayout({
             __html: `
               try {
                 const themeColors = ${JSON.stringify(THEME_META_COLORS)};
-                const activeTheme = localStorage['active-theme'] || 'kerry';
+                const activeTheme = localStorage['active-theme'] || 'default';
                 const isDark = localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
                 
                 if (themeColors[activeTheme]) {
@@ -117,7 +117,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <meta name="theme-color" content={THEME_META_COLORS.kerry.light} />
+        <meta name="theme-color" content={THEME_META_COLORS.default.light} />
       </head>
       <body
         className={cn(

@@ -13,7 +13,7 @@ export default function ThemesPage() {
   const { setActiveTheme } = useThemeConfig()
 
   const handleResetToDefault = () => {
-    setActiveTheme("kerry")
+    setActiveTheme("default")
   }
 
   return (

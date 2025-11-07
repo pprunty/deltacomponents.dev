@@ -11,7 +11,7 @@ import { useTheme } from "next-themes"
 
 import { THEME_META_COLORS } from "@/lib/config"
 
-const DEFAULT_THEME = "kerry"
+const DEFAULT_THEME = "default"
 const THEME_STORAGE_KEY = "active-theme"
 
 type ThemeContextType = {
