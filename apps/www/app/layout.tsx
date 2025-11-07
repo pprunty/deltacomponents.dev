@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { THEME_META_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { LayoutProvider } from "@/hooks/use-layout"
@@ -98,9 +98,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                const themeColors = ${JSON.stringify(THEME_META_COLORS)};
+                const activeTheme = localStorage['active-theme'] || 'kerry';
+                const isDark = localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                
+                if (themeColors[activeTheme]) {
+                  const themeColor = isDark ? themeColors[activeTheme].dark : themeColors[activeTheme].light;
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
                 }
+                
                 if (localStorage.layout) {
                   document.documentElement.classList.add('layout-' + localStorage.layout)
                 }
@@ -111,7 +117,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <meta name="theme-color" content={META_THEME_COLORS.light} />
+        <meta name="theme-color" content={THEME_META_COLORS.kerry.light} />
       </head>
       <body
         className={cn(

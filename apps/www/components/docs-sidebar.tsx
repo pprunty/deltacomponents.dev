@@ -112,7 +112,8 @@ export function DocsSidebar({
                     {item.children.map((item) => {
                       if (
                         item.type === "page" &&
-                        !EXCLUDED_PAGES.includes(item.url)
+                        !EXCLUDED_PAGES.includes(item.url) &&
+                        (!((item as any).hide && process.env.VERCEL_ENV === "production"))
                       ) {
                         return (
                           <SidebarMenuItem key={item.url}>
@@ -128,6 +129,9 @@ export function DocsSidebar({
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
                                 <StatusBadge label="beta" />
+                                {(item as any).hide && process.env.VERCEL_ENV !== "production" && (
+                                  <StatusBadge label="hidden" />
+                                )}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>

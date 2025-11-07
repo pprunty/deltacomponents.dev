@@ -43,8 +43,16 @@ const SPECIAL_THEMES = [
     value: "clare",
   },
   {
+    name: "Neobrutalism",
+    value: "neobrutalism",
+  },
+  {
     name: "Kerry",
     value: "kerry",
+  },
+  {
+    name: "Cork",
+    value: "cork",
   },
   {
     name: "Galway (Claude)",

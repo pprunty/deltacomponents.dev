@@ -50,7 +50,7 @@ export function ActiveThemeProvider({
       const themeColors =
         THEME_META_COLORS[activeTheme as keyof typeof THEME_META_COLORS]
 
-      if (themeColors) {
+      if (themeColors && resolvedTheme) {
         const isDark = resolvedTheme === "dark"
         const themeColor = isDark ? themeColors.dark : themeColors.light
 
@@ -62,6 +62,15 @@ export function ActiveThemeProvider({
           document.head.appendChild(metaThemeColor)
         }
         metaThemeColor.setAttribute("content", themeColor)
+        
+        // Debug logging in development
+        if (process.env.NODE_ENV === "development") {
+          console.log(`[ActiveTheme] Updated meta theme-color: ${themeColor} (theme: ${activeTheme}, mode: ${resolvedTheme})`)
+        }
+      } else {
+        if (process.env.NODE_ENV === "development") {
+          console.warn(`[ActiveTheme] No colors found for theme: ${activeTheme} or resolvedTheme not ready: ${resolvedTheme}`)
+        }
       }
     }
 

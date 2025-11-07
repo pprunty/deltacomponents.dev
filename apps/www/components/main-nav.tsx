@@ -22,7 +22,8 @@ export function MainNav({
 }) {
   const pathname = usePathname()
 
-  const visibleItems = items.filter((item) => !item.hide)
+  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+  const visibleItems = items.filter((item) => !item.hide || (item.hide && !isProduction))
 
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>
@@ -38,6 +39,9 @@ export function MainNav({
             >
               {item.label}
               {item.badge && <StatusBadge label={item.badge} />}
+              {item.hide && !isProduction && (
+                <StatusBadge label="hidden" />
+              )}
             </Button>
           )
         }
@@ -50,6 +54,9 @@ export function MainNav({
             >
               {item.label}
               {item.badge && <StatusBadge label={item.badge} />}
+              {item.hide && !isProduction && (
+                <StatusBadge label="hidden" />
+              )}
             </Link>
           </Button>
         )

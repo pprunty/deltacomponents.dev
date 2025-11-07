@@ -25,6 +25,8 @@ export function StatusBadge({ label, className }: StatusBadgeProps) {
         return "bg-[#f44336] text-white" // Red for "Deprecated"
       case "coming soon":
         return "bg-muted text-muted-foreground" // Muted colors for "Coming Soon"
+      case "hidden":
+        return "bg-[#6b7280] text-white" // Gray for "Hidden"
       default:
         return "bg-[#adfa1d] text-[#000000]" // Default is green
     }
@@ -48,9 +50,11 @@ export function StatusBadge({ label, className }: StatusBadgeProps) {
                 ? "#9c27b0"
                 : getLabelStyle(label).includes("bg-[#f44336]")
                   ? "#f44336"
-                  : getLabelStyle(label).includes("bg-muted")
-                    ? undefined // Let CSS handle muted colors
-                    : "#adfa1d",
+                  : getLabelStyle(label).includes("bg-[#6b7280]")
+                    ? "#6b7280"
+                    : getLabelStyle(label).includes("bg-muted")
+                      ? undefined // Let CSS handle muted colors
+                      : "#adfa1d",
       }}
     >
       {label}

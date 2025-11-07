@@ -80,7 +80,7 @@ export function MobileNav({
                 Home
               </MobileLink>
               {items
-                .filter((item) => !item.hide)
+                .filter((item) => !item.hide || (item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")))
                 .map((item, index) => (
                   <MobileLink
                     key={index}
@@ -90,6 +90,9 @@ export function MobileNav({
                   >
                     {item.label}
                     {item.badge && <StatusBadge label={item.badge} />}
+                    {item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (
+                      <StatusBadge label="hidden" />
+                    )}
                   </MobileLink>
                 ))}
             </div>
@@ -105,7 +108,7 @@ export function MobileNav({
                     </div>
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
-                        if (item.type === "page") {
+                        if (item.type === "page" && (!((item as any).hide && process.env.VERCEL_ENV === "production"))) {
                           return (
                             <MobileLink
                               key={`${item.url}-${index}`}
@@ -114,6 +117,9 @@ export function MobileNav({
                             >
                               {item.name}
                               <StatusBadge label="beta" />
+                              {(item as any).hide && process.env.VERCEL_ENV !== "production" && (
+                                <StatusBadge label="hidden" />
+                              )}
                             </MobileLink>
                           )
                         }
