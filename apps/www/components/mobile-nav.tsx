@@ -108,7 +108,7 @@ export function MobileNav({
                     </div>
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
-                        if (item.type === "page" && (!((item as any).hide && process.env.VERCEL_ENV === "production"))) {
+                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
                           return (
                             <MobileLink
                               key={`${item.url}-${index}`}
@@ -117,7 +117,7 @@ export function MobileNav({
                             >
                               {item.name}
                               <StatusBadge label="beta" />
-                              {(item as any).hide && process.env.VERCEL_ENV !== "production" && (
+                              {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                 <StatusBadge label="hidden" />
                               )}
                             </MobileLink>
