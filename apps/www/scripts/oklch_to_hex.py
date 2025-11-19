@@ -51,35 +51,30 @@ def oklch_to_hex(l, c, h):
 
 # Theme background colors from the CSS files
 themes = {
+    # Default (light/dark)
+    "default": {
+        "light": (1, 0, 0),  # Pure white
+        "dark": (0.145, 0, 0)  # Very dark gray
+    },
     # Dublin (light/dark)
     "dublin": {
         "light": (0.9721, 0.0158, 110.5501),
-        "dark": (0.12, 0.015, 240)
+        "dark": "#292929"  # Already hex in dublin.css
     },
     # Clare (using clare.css)
     "clare": {
-        "light": "#fdf6e3",  # Already hex in clare.css
-        "dark": "#002b36"    # Already hex in clare.css
-    },
-    # Neobrutalism (light/dark)
-    "neobrutalism": {
-        "light": (1.0000, 0, 0),  # Pure white
-        "dark": (0, 0, 0)         # Pure black
+        "light": "#faf4ed",  # Already hex in clare.css
+        "dark": "#303446"    # Already hex in clare.css
     },
     # Kerry (light/dark)
     "kerry": {
         "light": (0.9851, 0, 0),
-        "dark": (0.1200, 0.0300, 132.0000)
+        "dark": (0.18, 0.03, 132)
     },
-    # Cork (light/dark)
-    "cork": {
-        "light": (0.9257, 0.0118, 196.9532),
-        "dark": (0.12, 0.015, 240)
-    },
-    # Galway (Claude) (light/dark)
+    # Galway (light/dark)
     "galway": {
-        "light": (0.9800, 0.0050, 45.0000),
-        "dark": (0.1100, 0.0200, 280.0000)
+        "light": (0.9818, 0.0054, 95.0986),
+        "dark": (0.2679, 0.0036, 106.6427)
     }
 }
 

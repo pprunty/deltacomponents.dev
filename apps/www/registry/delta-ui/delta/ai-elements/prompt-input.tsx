@@ -782,11 +782,12 @@ export const PromptInput = ({
         type="file"
       />
       <form
-        className={cn("w-full", className)}
+        className={cn("relative w-full", className)}
         onSubmit={handleSubmit}
         {...props}
       >
-        <InputGroup>{children}</InputGroup>
+        <div className="from-background via-background/70 to-transparent absolute top-0 left-0 right-3 z-10 h-12 bg-gradient-to-b pointer-events-none" />
+        <InputGroup className="relative z-20">{children}</InputGroup>
       </form>
     </>
   )

@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react"
 import type { FileUIPart, ToolUIPart } from "ai"
-import { GlobeIcon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react"
+import { GlobeIcon, RotateCcwIcon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
@@ -375,21 +375,19 @@ const Example = () => {
                           )}
                         </MessageContent>
                         {message.from === "assistant" && (
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              {status === "streaming" &&
-                                streamingMessageId === version.id && (
-                                  <Loader
-                                    size={16}
-                                    className="text-muted-foreground ml-1"
-                                  />
-                                )}
-                            </div>
+                          <div className="flex items-center">
+                            {status === "streaming" &&
+                              streamingMessageId === version.id && (
+                                <Loader
+                                  size={16}
+                                  className="text-muted-foreground ml-1"
+                                />
+                              )}
                             {status !== "streaming" &&
                               streamingMessageId !== version.id && (
                                 <Actions
                                   className={cn(
-                                    "justify-end",
+                                    "justify-start",
                                     isLastAssistantMessage ||
                                       touchedMessages.has(message.key)
                                       ? "opacity-100"
@@ -400,6 +398,14 @@ const Example = () => {
                                     value={version.content}
                                     tooltip="Copy message"
                                   />
+                                  <Action
+                                    tooltip="Regenerate response"
+                                    onClick={() =>
+                                      toast.info("Regenerating response...")
+                                    }
+                                  >
+                                    <RotateCcwIcon className="h-4 w-4" />
+                                  </Action>
                                   <Action
                                     tooltip="Good response"
                                     onClick={() =>
@@ -415,15 +421,6 @@ const Example = () => {
                                     }
                                   >
                                     <ThumbsDownIcon className="h-4 w-4" />
-                                  </Action>
-                                  <Action
-                                    tooltip="Regenerate response"
-                                    onClick={() =>
-                                      toast.info("Regenerating response...")
-                                    }
-                                    className="text-muted-foreground hover:text-foreground hover:bg-accent relative size-9 h-9 w-auto min-w-0 rounded-md p-1.5 px-2 text-sm font-medium transition-colors duration-200"
-                                  >
-                                    Retry
                                   </Action>
                                 </Actions>
                               )}

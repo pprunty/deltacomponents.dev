@@ -31,7 +31,10 @@ export const Conversation = ({
     resize="smooth"
     role="log"
     {...props}
-  />
+  >
+    {props.children}
+    <div className="from-background via-background/70 to-transparent absolute bottom-0 left-0 right-3 z-10 h-12 bg-gradient-to-t pointer-events-none" />
+  </StickToBottom>
 )
 
 export type ConversationContentProps = ComponentProps<
@@ -111,7 +114,7 @@ export const ConversationScrollButton = ({
     !isAtBottom && (
       <Button
         className={cn(
-          "bg-background border-border hover:bg-accent absolute bottom-4 left-[50%] translate-x-[-50%] rounded-full shadow-md transition-all duration-200 hover:shadow-lg",
+          "bg-background border-border hover:bg-accent absolute bottom-4 left-[50%] translate-x-[-50%] rounded-full shadow-md transition-all duration-200 hover:shadow-lg z-20",
           className
         )}
         onClick={handleScrollToBottom}
@@ -120,7 +123,7 @@ export const ConversationScrollButton = ({
         variant="outline"
         {...props}
       >
-        <ArrowDownIcon className="size-4" />
+        <ArrowDownIcon className="h-4 w-4" />
       </Button>
     )
   )

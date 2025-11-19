@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import type { ComponentProps } from "react"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/delta-ui/ui/button"
@@ -17,7 +17,7 @@ export type ActionsProps = ComponentProps<"div">
 
 export const Actions = ({ className, children, ...props }: ActionsProps) => (
   <div
-    className={cn("flex items-center gap-0 px-1 opacity-100", className)}
+    className={cn("flex items-center gap-0 opacity-100 pb-4", className)}
     {...props}
   >
     {children}
@@ -108,7 +108,7 @@ export const CopyAction = ({
         (hasCopied ? (
           <CheckIcon className="h-4 w-4" />
         ) : (
-          <ClipboardIcon className="h-4 w-4" />
+          <CopyIcon className="h-4 w-4" />
         ))}
     </Action>
   )
