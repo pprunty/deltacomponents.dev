@@ -70,7 +70,7 @@ export const siteConfig = {
 
 export const THEME_META_COLORS = {
   default: { light: "#fefefe", dark: "#0a0a0a" },
-  dublin: { light: "#f5f6eb", dark: "#292929" },
+  dublin: { light: "#f5f6eb", dark: "#0b0d6a" },
   clare: { light: "#faf4ed", dark: "#303446" },
   kerry: { light: "#f9f9f9", dark: "#0c1406" },
   galway: { light: "#faf9f5", dark: "#262624" },
