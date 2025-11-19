@@ -56,17 +56,17 @@ html[data-theme="dublin"] .font-sans {
 html[data-theme="dublin"].dark {
   /* Updated to match the dark charcoal theme from screenshot */
   --background: #0b0d6a;
-  --foreground: #f6f7eb;
+  --foreground: #ffffff;
   --card: #0b0d6a;
-  --card-foreground: #f6f7eb;
+  --card-foreground: #ffffff;
   --popover: #3e43f0;
-  --popover-foreground: #f6f7eb;
+  --popover-foreground: #ffffff;
   --primary: #f6f7eb;
   --primary-foreground: #181a4e;
   --secondary: #ffffff;
   --secondary-foreground: #0b0d6a;
   --muted: #0a0c56;
-  --muted-foreground: #b8b9ad;
+  --muted-foreground: #c8c9bd;
   --accent: #2e32b7;
   --accent-foreground: #f6f7eb;
   --destructive: #f87171;
