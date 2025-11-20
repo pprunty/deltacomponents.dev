@@ -171,10 +171,29 @@ export function MobileNav({
                         // Check for component-specific metadata
                         const componentName = item.url?.split('/').pop()
                         const componentMeta = componentName ? Index[componentName]?.meta : null
-                        const isDisabledInProd = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
                         
-                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production") && !isDisabledInProd) {
+                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
                           const isActive = normalizePath(item.url) === pathname
+                          
+                          // Check if component should be disabled in production
+                          const isComponentDisabled = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                          
+                          if (isComponentDisabled) {
+                            return (
+                              <div
+                                key={`${item.url}-${index}`}
+                                className="flex items-center gap-2 text-2xl font-medium text-muted-foreground cursor-not-allowed opacity-60"
+                              >
+                                {item.name}
+                                {componentMeta?.badge && (
+                                  <StatusBadge label={componentMeta.badge} />
+                                )}
+                                {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
+                                  <StatusBadge label="hidden" />
+                                )}
+                              </div>
+                            )
+                          }
                           
                           const handleClick = () => {
                             const targetHref = normalizePath(item.url)

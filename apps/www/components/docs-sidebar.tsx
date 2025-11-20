@@ -114,14 +114,35 @@ export function DocsSidebar({
                       // Extract component name and get metadata
                       const componentName = (item as { url?: string }).url?.split('/').pop()
                       const componentMeta = componentName ? Index[componentName]?.meta : null
-                      const isDisabledInProd = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
                       
                       if (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) &&
-                        (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production") &&
-                        !isDisabledInProd
+                        (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
                       ) {
+                        // Check if component should be disabled in production
+                        const isComponentDisabled = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                        
+                        if (isComponentDisabled) {
+                          return (
+                            <SidebarMenuItem key={item.url}>
+                              <SidebarMenuButton
+                                disabled
+                                className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md text-muted-foreground cursor-not-allowed opacity-60"
+                              >
+                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                                {item.name}
+                                {componentMeta?.badge && (
+                                  <StatusBadge label={componentMeta.badge} />
+                                )}
+                                {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
+                                  <StatusBadge label="hidden" />
+                                )}
+                              </SidebarMenuButton>
+                            </SidebarMenuItem>
+                          )
+                        }
+                        
                         return (
                           <SidebarMenuItem key={item.url}>
                             <SidebarMenuButton
