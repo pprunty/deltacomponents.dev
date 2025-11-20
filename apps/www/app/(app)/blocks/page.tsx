@@ -15,7 +15,7 @@ export default async function BlocksPage() {
         <div key={block} className="container py-8 first:pt-6 md:py-12">
           <BlockDisplay
             name={block}
-            defaultViewSize={block === "bottom-mobile-nav" ? "30" : undefined}
+            defaultViewSize={undefined}
           />
         </div>
       ))}

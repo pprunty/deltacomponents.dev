@@ -51,12 +51,23 @@ const sampleVideoFeatures: VideoFeature[] = [
 
 export default function InteractiveFeatureShowcasePage() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center p-4">
-      <div className="mx-auto w-full max-w-5xl">
-        <InteractiveFeatureShowcase
-          features={sampleVideoFeatures}
-          variant="inner-card"
-        />
+    <div className="bg-background min-h-screen w-full">
+      <div className="mx-auto max-w-7xl p-6">
+        <div className="space-y-8">
+          <div className="space-y-4 text-center">
+            <h1 className="text-4xl font-bold tracking-tight">
+              Interactive Features
+            </h1>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
+              Discover powerful tools and integrations that enhance your workflow with cutting-edge AI capabilities.
+            </p>
+          </div>
+
+          <InteractiveFeatureShowcase
+            features={sampleVideoFeatures}
+            variant="inner-card"
+          />
+        </div>
       </div>
     </div>
   )

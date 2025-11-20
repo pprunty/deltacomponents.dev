@@ -99,7 +99,7 @@ export const blocks: Registry["items"] = [
       },
     ],
     meta: {
-      iframeHeight: "600px",
+      iframeHeight: "800px",
       container: " ",
       mobile: "component",
     },
@@ -123,7 +123,7 @@ export const blocks: Registry["items"] = [
       },
     ],
     meta: {
-      iframeHeight: "600px",
+      iframeHeight: "800px",
       container: "",
       mobile: "component",
     },

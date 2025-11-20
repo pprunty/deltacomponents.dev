@@ -254,7 +254,8 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/delta/marquee.tsx")
-      return { default: mod.Marquee }
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
     meta: undefined,
@@ -345,7 +346,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["featured"],
-    meta: {"iframeHeight":"600px","container":" ","mobile":"component"},
+    meta: {"iframeHeight":"800px","container":" ","mobile":"component"},
   },
   "bottom-mobile-nav": {
     name: "bottom-mobile-nav",
@@ -367,7 +368,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["layout"],
-    meta: {"iframeHeight":"600px","container":"","mobile":"component"},
+    meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
   "use-mobile": {
     name: "use-mobile",
