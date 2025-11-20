@@ -55,10 +55,10 @@ export default function InteractiveFeatureShowcasePage() {
       <div className="mx-auto max-w-7xl p-6">
         <div className="space-y-8">
           <div className="space-y-4 text-center">
-            <h1 className="text-4xl font-bold tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
               Interactive Features
-            </h1>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg">
               Discover powerful tools and integrations that enhance your workflow with cutting-edge AI capabilities.
             </p>
           </div>

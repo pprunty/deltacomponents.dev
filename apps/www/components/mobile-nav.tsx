@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
+import { Index } from "@/registry/__index__"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Popover,
@@ -167,7 +168,12 @@ export function MobileNav({
                     </div>
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
-                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
+                        // Check for component-specific metadata
+                        const componentName = item.url?.split('/').pop()
+                        const componentMeta = componentName ? Index[componentName]?.meta : null
+                        const isDisabledInProd = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                        
+                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production") && !isDisabledInProd) {
                           const isActive = normalizePath(item.url) === pathname
                           
                           const handleClick = () => {
@@ -190,7 +196,11 @@ export function MobileNav({
                               )}
                             >
                               {item.name}
-                              <StatusBadge label="beta" />
+                              {componentMeta?.badge ? (
+                                <StatusBadge label={componentMeta.badge} />
+                              ) : (
+                                <StatusBadge label="beta" />
+                              )}
                               {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                 <StatusBadge label="hidden" />
                               )}

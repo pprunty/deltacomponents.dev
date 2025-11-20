@@ -1,5 +1,6 @@
 import { source } from "@/lib/source"
 import { ComponentCard } from "@/components/component-card"
+import { Index } from "@/registry/__index__"
 
 export function ComponentGrid() {
   const components = source.pageTree.children.find(
@@ -11,7 +12,21 @@ export function ComponentGrid() {
   }
 
   const list = components.children.filter(
-    (component) => component.type === "page"
+    (component) => {
+      if (component.type !== "page") return false
+      
+      // Extract component name from URL or $id
+      const componentName = component.url?.split('/').pop() || component.$id?.replace('.mdx', '')
+      const componentMeta = componentName ? Index[componentName]?.meta : null
+      
+      // Hide components that are disabled in production
+      const isDisabledInProd = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+      
+      // Also check for hide flag from MDX frontmatter
+      const isHiddenInProd = (component as { hide?: boolean }).hide && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+      
+      return !isDisabledInProd && !isHiddenInProd
+    }
   )
 
   return (

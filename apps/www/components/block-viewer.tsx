@@ -7,7 +7,7 @@ import {
   Check,
   ChevronRight,
   Clipboard,
-  ExternalLink,
+  Expand,
   File,
   Folder,
   Fullscreen,
@@ -375,7 +375,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
                 handlePreviewClick()
               }}
             >
-              <ExternalLink className="size-4" />
+              <Expand className="size-4" />
             </Button>
           </div>
         </div>
@@ -405,7 +405,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
               handlePreviewClick()
             }}
           >
-            <ExternalLink className="size-4" />
+            <Expand className="size-4" />
           </Button>
         </div>
       </div>

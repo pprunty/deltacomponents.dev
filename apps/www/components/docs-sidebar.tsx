@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 
 import type { source } from "@/lib/source"
 import { StatusBadge } from "@/components/status-badge"
+import { Index } from "@/registry/__index__"
 import {
   Sidebar,
   SidebarContent,
@@ -110,10 +111,16 @@ export function DocsSidebar({
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
                     {item.children.map((item) => {
+                      // Extract component name and get metadata
+                      const componentName = (item as { url?: string }).url?.split('/').pop()
+                      const componentMeta = componentName ? Index[componentName]?.meta : null
+                      const isDisabledInProd = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                      
                       if (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) &&
-                        (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
+                        (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production") &&
+                        !isDisabledInProd
                       ) {
                         return (
                           <SidebarMenuItem key={item.url}>
@@ -128,7 +135,11 @@ export function DocsSidebar({
                               >
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
-                                <StatusBadge label="beta" />
+                                {componentMeta?.badge ? (
+                                  <StatusBadge label={componentMeta.badge} />
+                                ) : (
+                                  <StatusBadge label="beta" />
+                                )}
                                 {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                   <StatusBadge label="hidden" />
                                 )}

@@ -45,7 +45,12 @@
           "path": "registry/delta-ui/delta/navigation-menu.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "badge": "coming soon",
+        "disabled": false,
+        "hide": false
+      }
     },
     {
       "name": "code-block",
@@ -188,7 +193,12 @@
           "path": "registry/delta-ui/delta/mapbox-pointer.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "badge": "coming soon",
+        "disabled": false,
+        "hide": false
+      }
     },
     {
       "name": "x-card",
@@ -211,7 +221,12 @@
           "path": "registry/delta-ui/delta/marquee.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "badge": "coming soon",
+        "disabled": false,
+        "hide": false
+      }
     },
     {
       "name": "testimonials",

@@ -11,6 +11,11 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      badge: "coming soon",
+      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
+      hide: false,
+    },
   },
   {
     name: "code-block",
@@ -122,6 +127,11 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      badge: "coming soon",
+      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
+      hide: false,
+    },
   },
   {
     name: "x-card",
@@ -143,5 +153,10 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      badge: "coming soon",
+      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
+      hide: false,
+    },
   },
 ]

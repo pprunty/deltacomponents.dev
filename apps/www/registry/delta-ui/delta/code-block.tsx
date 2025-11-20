@@ -9,7 +9,7 @@ import type { PrismTheme } from "prism-react-renderer"
 // Import additional language definitions
 
 import { cn } from "@/lib/utils"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import { CopyAction } from "@/registry/delta-ui/delta/ai-elements/actions"
 import {
   Tabs,
   TabsContent,
@@ -284,10 +284,10 @@ export function CodeBlock({
                 ))}
               </TabsList>
             </div>
-            <CopyButton
+            <CopyAction
               value={commands[packageManager] || ""}
               className="size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-              iconColor={iconColor}
+              tooltip="Copy command"
             />
           </div>
           <div className="no-scrollbar overflow-x-auto">
@@ -355,10 +355,10 @@ export function CodeBlock({
             <div className="flex items-center gap-2 px-3 py-1">
               <span className="text-sm font-medium">{filename}</span>
             </div>
-            <CopyButton
+            <CopyAction
               value={actualCode}
               className="mr-3"
-              iconColor={iconColor}
+              tooltip="Copy code"
             />
           </div>
         )}
@@ -371,7 +371,7 @@ export function CodeBlock({
         >
           {!filename && (
             <div className="absolute top-4 right-3">
-              <CopyButton value={actualCode} iconColor={iconColor} />
+              <CopyAction value={actualCode} tooltip="Copy code" />
             </div>
           )}
 
