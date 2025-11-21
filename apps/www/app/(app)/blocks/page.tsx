@@ -1,15 +1,14 @@
 import Link from "next/link"
 import type { Metadata } from "next"
+import { BlockDisplay } from "@/components/block-display"
+// Import all available blocks
+import blocksData from "@/registry/__blocks__.json"
+import { Button } from "@/registry/delta-ui/ui/button"
 
 export const metadata: Metadata = {
   title: "Blocks",
   description: "Pre-built page sections and layouts using Delta Components.",
 }
-
-import { BlockDisplay } from "@/components/block-display"
-// Import all available blocks
-import blocksData from "@/registry/__blocks__.json"
-import { Button } from "@/registry/delta-ui/ui/button"
 
 export default async function BlocksPage() {
   // Get all block names from the registry
