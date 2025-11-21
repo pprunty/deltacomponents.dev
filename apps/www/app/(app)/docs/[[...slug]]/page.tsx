@@ -41,7 +41,7 @@ export async function generateMetadata(props: {
   }
 
   return {
-    title: doc.title,
+    title: `${doc.title} - Delta Components`,
     description: doc.description,
     openGraph: {
       title: doc.title,

@@ -8,7 +8,7 @@ import {
 import { TemplateGrid } from "@/components/templates/template-grid"
 
 export const metadata: Metadata = {
-  title: "Templates",
+  title: "Templates - Delta Components",
   description:
     "Ready-to-use templates built with Delta Components UI components.",
 }

@@ -6,7 +6,7 @@ import blocksData from "@/registry/__blocks__.json"
 import { Button } from "@/registry/delta-ui/ui/button"
 
 export const metadata: Metadata = {
-  title: "Blocks",
+  title: "Blocks - Delta Components",
   description: "Pre-built page sections and layouts using Delta Components.",
 }
 
