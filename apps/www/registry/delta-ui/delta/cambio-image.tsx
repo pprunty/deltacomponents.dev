@@ -36,7 +36,7 @@ export function CambioImage({
   loading = "lazy",
   index = 0,
   motion = "snappy",
-  dismissible = false,
+  dismissible = true,
   className,
   draggable = false,
   enableInitialAnimation = true,
