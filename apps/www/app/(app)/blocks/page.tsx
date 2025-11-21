@@ -1,4 +1,10 @@
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Blocks",
+  description: "Pre-built page sections and layouts using Delta Components.",
+}
 
 import { BlockDisplay } from "@/components/block-display"
 // Import all available blocks
