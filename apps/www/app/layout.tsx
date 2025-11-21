@@ -8,7 +8,6 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { NavigationHandler } from "@/components/navigation-handler"
 import { Toaster } from "@/registry/delta-ui/ui/sonner"
 
 import "@/styles/globals.css"
@@ -131,7 +130,6 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
-              <NavigationHandler />
               {children}
               <TailwindIndicator />
               <Toaster position="top-center" />
