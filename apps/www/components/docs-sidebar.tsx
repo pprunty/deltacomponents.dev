@@ -120,8 +120,8 @@ export function DocsSidebar({
                         !EXCLUDED_PAGES.includes(item.url) &&
                         (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
                       ) {
-                        // Check if component should be disabled in production
-                        const isComponentDisabled = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                        // Check if component should be disabled in production (runtime evaluation)
+                        const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
                         
                         if (isComponentDisabled) {
                           return (

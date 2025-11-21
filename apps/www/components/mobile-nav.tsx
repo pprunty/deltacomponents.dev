@@ -175,8 +175,8 @@ export function MobileNav({
                         if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
                           const isActive = normalizePath(item.url) === pathname
                           
-                          // Check if component should be disabled in production
-                          const isComponentDisabled = componentMeta?.disabled && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                          // Check if component should be disabled in production (runtime evaluation)
+                          const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
                           
                           if (isComponentDisabled) {
                             return (

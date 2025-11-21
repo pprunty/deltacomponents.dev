@@ -13,7 +13,6 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
       hide: false,
     },
   },
@@ -129,7 +128,6 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
       hide: false,
     },
   },
@@ -155,7 +153,6 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
       hide: false,
     },
   },
