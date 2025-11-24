@@ -1,9 +1,19 @@
 {
-  "buildCommand": "pnpm run build --filter=www",
-  "devCommand": "pnpm run dev --filter=www",
-  "installCommand": "pnpm install",
-  "outputDirectory": "apps/www/.next",
-  "framework": "nextjs",
-  "rootDirectory": "apps/www",
-  "crons": []
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/www/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "apps/www/$1"
+    }
+  ],
+  "installCommand": "bun install",
+  "buildCommand": "cd apps/www && bun run build",
+  "devCommand": "cd apps/www && bun run dev",
+  "outputDirectory": "apps/www/.next"
 }
