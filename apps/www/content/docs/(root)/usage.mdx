@@ -14,14 +14,16 @@ After installing Delta Components UI components, you can use them in your applic
 ```tsx
 "use client"
 
-import { Card } from "@/components/ui/card"
-import { Orb } from "@/components/ui/orb"
+import { Admonition } from "@/components/ui/admonition"
+
 
 export default function Page() {
   return (
-    <Card className="flex items-center justify-center p-8">
-      <Orb />
-    </Card>
+    <div className="flex items-center justify-center p-8">
+      <Admonition type="warning" title="Important Notice">
+        This is a warning message that users should pay attention to.
+      </Admonition>
+    </div>
   )
 }
 ```

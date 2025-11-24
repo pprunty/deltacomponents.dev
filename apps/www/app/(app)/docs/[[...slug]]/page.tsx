@@ -6,13 +6,14 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import { findNeighbour } from "fumadocs-core/server"
+import { findNeighbour } from "fumadocs-core/page-tree"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
 import { DocsTableOfContents } from "@/components/docs-toc"
+import { Contribute } from "@/components/contribute"
 import { Badge } from "@/registry/delta-ui/ui/badge"
 import { Button } from "@/registry/delta-ui/ui/button"
 
@@ -204,6 +205,7 @@ export default async function Page(props: {
           </div>
         ) : null}
         <div className="flex flex-1 flex-col gap-12 px-6">
+          <Contribute slug={page.url} />
           <DocsSidebarCta />
         </div>
       </div>

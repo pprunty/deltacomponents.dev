@@ -59,7 +59,8 @@ export default function InteractiveFeatureShowcasePage() {
               Interactive Features
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg">
-              Discover powerful tools and integrations that enhance your workflow with cutting-edge AI capabilities.
+              Discover powerful tools and integrations that enhance your
+              workflow with cutting-edge AI capabilities.
             </p>
           </div>
 

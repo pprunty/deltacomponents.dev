@@ -15,11 +15,11 @@ const artisticTexts = [
 
 export default function MarqueeDemo() {
   return (
-    <div className="bg-black dark:bg-white w-full py-1">
-      <Marquee 
-        direction="left" 
-        speed={100} 
-        gap={120} 
+    <div className="w-full bg-black py-1 dark:bg-white">
+      <Marquee
+        direction="left"
+        speed={100}
+        gap={120}
         showFade={false}
         pauseOnHover={false}
         className="py-0"
@@ -27,7 +27,7 @@ export default function MarqueeDemo() {
         {artisticTexts.map((text, index) => (
           <div
             key={index}
-            className="text-white dark:text-black text-2xl md:text-4xl font-bold tracking-widest whitespace-nowrap select-none"
+            className="text-2xl font-bold tracking-widest whitespace-nowrap text-white select-none md:text-4xl dark:text-black"
           >
             {text}
           </div>

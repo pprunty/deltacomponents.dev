@@ -786,7 +786,7 @@ export const PromptInput = ({
         onSubmit={handleSubmit}
         {...props}
       >
-        <div className="from-background via-background/70 to-transparent absolute top-0 left-0 right-3 z-10 h-12 bg-gradient-to-b pointer-events-none" />
+        <div className="from-background via-background/70 pointer-events-none absolute top-0 right-3 left-0 z-10 h-12 bg-gradient-to-b to-transparent" />
         <InputGroup className="relative z-20">{children}</InputGroup>
       </form>
     </>

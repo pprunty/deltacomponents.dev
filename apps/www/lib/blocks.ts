@@ -1,6 +1,6 @@
 "use server"
 
-import { registryItemSchema } from "shadcn/schema"
+import { registryItemSchema } from "@/lib/schema"
 import { z } from "zod"
 
 export async function getAllBlockIds(
@@ -23,7 +23,7 @@ export async function getAllBlocks(
   categories: string[] = []
 ) {
   const { Index } = await import("@/registry/__index__")
-  const index = z.record(registryItemSchema).parse(Index)
+  const index = z.record(z.string(), registryItemSchema).parse(Index)
 
   return Object.values(index).filter(
     (block) =>

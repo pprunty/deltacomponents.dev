@@ -1,12 +1,13 @@
 import * as React from "react"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
+import { registryItemSchema } from "@/lib/schema"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
+import { BlockDisplay } from "@/components/block-display"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -24,23 +25,25 @@ export async function generateMetadata({
   }>
 }): Promise<Metadata> {
   const { name } = await params
-  const item = await getCachedRegistryItem(name)
+  const { Index } = await import("@/registry/__index__")
+  const index = z.record(z.string(), registryItemSchema).parse(Index)
+  const block = index[name]
 
-  if (!item) {
+  if (!block) {
     return {}
   }
 
-  const title = item.name
-  const description = item.description
+  const title = block.name
+  const description = block.description
 
   return {
-    title: item.description,
+    title,
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/view/${item.name}`),
+      url: absoluteUrl(`/view/${block.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -55,14 +58,14 @@ export async function generateMetadata({
       title,
       description,
       images: [siteConfig.ogImage],
-      creator: "@elevenlabsio",
+      creator: "@pprunty",
     },
   }
 }
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
-  const index = z.record(registryItemSchema).parse(Index)
+  const index = z.record(z.string(), registryItemSchema).parse(Index)
 
   return Object.values(index)
     .filter((block) =>
@@ -78,6 +81,7 @@ export async function generateStaticParams() {
       name: block.name,
     }))
 }
+
 
 export default async function BlockPage({
   params,

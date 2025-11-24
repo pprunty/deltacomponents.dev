@@ -1,13 +1,17 @@
 "use client"
 
 import React, { memo } from "react"
-import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Home, Search, Settings, User } from "lucide-react"
 
 import { Icons } from "@/components/icons"
 import { BottomMobileNav } from "@/registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/delta-ui/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/delta-ui/ui/tooltip"
 
 // Routes configuration - shared between mobile and desktop nav
 const routes = [
@@ -38,35 +42,35 @@ const Sidebar = memo(function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <nav className="hidden md:flex flex-col items-center h-screen w-16 fixed top-0 left-0 z-50 bg-background/80 backdrop-blur-lg border-r py-3">
+    <nav className="bg-background/80 fixed top-0 left-0 z-50 hidden h-screen w-16 flex-col items-center border-r py-3 backdrop-blur-lg md:flex">
       {/* Top: Logo section */}
       <div className="mb-8">
         <Icons.logo className="size-5" />
       </div>
 
       {/* Middle: main nav icons (centered vertically) */}
-      <div className="flex flex-col flex-1 justify-center items-center space-y-8">
+      <div className="flex flex-1 flex-col items-center justify-center space-y-8">
         {routes.map(({ href, icon: Icon, label }) => {
-          const isActive = pathname === href || (href === "#" && pathname === "/")
+          const isActive =
+            pathname === href || (href === "#" && pathname === "/")
           return (
             <Tooltip key={href}>
               <TooltipTrigger asChild>
                 <Link
                   href={href}
-                  className={`
-                    p-2 rounded-xl
-                    transition-colors duration-300
-                    ${
-                      isActive
-                        ? "bg-accent text-accent-foreground"
-                        : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                    }
-                  `}
+                  className={`rounded-xl p-2 transition-colors duration-300 ${
+                    isActive
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  } `}
                 >
-                  {Icon && <Icon className="w-5 h-5" />}
+                  {Icon && <Icon className="h-5 w-5" />}
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right" className="[&_.bg-foreground.fill-foreground]:hidden">
+              <TooltipContent
+                side="right"
+                className="[&_.bg-foreground.fill-foreground]:hidden"
+              >
                 {label}
               </TooltipContent>
             </Tooltip>
@@ -97,8 +101,10 @@ export default function BottomMobileNavPage() {
           <div className="max-w-2xl space-y-6 px-6 text-center">
             <h1 className="font-heading text-4xl font-bold">BottomMobileNav</h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              This responsive layout shows a desktop sidebar (on md+ screens) and mobile bottom navigation (on smaller screens).
-              The sidebar displays navigation icons vertically, while the mobile navigation appears at the bottom with smooth transitions.
+              This responsive layout shows a desktop sidebar (on md+ screens)
+              and mobile bottom navigation (on smaller screens). The sidebar
+              displays navigation icons vertically, while the mobile navigation
+              appears at the bottom with smooth transitions.
             </p>
           </div>
         </div>
@@ -108,7 +114,7 @@ export default function BottomMobileNavPage() {
       <BottomMobileNav
         routes={routes}
         labels={false}
-        className="bg-background/80 backdrop-blur-lg border-t"
+        className="bg-background/80 border-t backdrop-blur-lg"
       />
     </div>
   )

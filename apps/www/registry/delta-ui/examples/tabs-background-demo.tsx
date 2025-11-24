@@ -14,7 +14,10 @@ export default function TabsBackgroundDemo() {
         defaultValue="overview"
         className="mx-auto flex w-full max-w-2xl flex-col items-center"
       >
-        <TabsList variant="active-animated" className="h-12 w-full justify-center">
+        <TabsList
+          variant="active-animated"
+          className="h-12 w-full justify-center"
+        >
           <TabsTrigger
             value="overview"
             className="data-[state=active]:bg-transparent data-[state=active]:shadow-none"

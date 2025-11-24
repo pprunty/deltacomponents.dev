@@ -1,6 +1,6 @@
-import { registryItemSchema, type Registry } from "shadcn/schema"
 import { z } from "zod"
 
+import { registryItemSchema, type Registry } from "@/lib/schema"
 import { blocks } from "@/registry/registry-blocks"
 import { examples } from "@/registry/registry-examples"
 import { hooks } from "@/registry/registry-hooks"

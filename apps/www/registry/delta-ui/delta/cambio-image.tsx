@@ -79,20 +79,20 @@ export function CambioImage({
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       const scrollDelta = Math.abs(currentScrollY - lastScrollY)
-      
+
       // Only dismiss if there's meaningful scroll movement (more than 20px)
       if (scrollDelta > 20) {
         setOpen(false)
       }
-      
+
       lastScrollY = currentScrollY
     }
 
     // Add scroll listener
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener("scroll", handleScroll)
       if (scrollTimeout) {
         clearTimeout(scrollTimeout)
       }

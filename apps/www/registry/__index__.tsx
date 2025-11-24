@@ -42,7 +42,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"badge":"coming soon","disabled":false,"hide":false},
+    meta: {"badge":"coming soon","hide":false},
   },
   "code-block": {
     name: "code-block",
@@ -222,7 +222,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"badge":"coming soon","disabled":false,"hide":false},
+    meta: {"badge":"coming soon","hide":false},
   },
   "x-card": {
     name: "x-card",
@@ -258,7 +258,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"badge":"coming soon","disabled":false,"hide":false},
+    meta: {"badge":"coming soon","hide":false},
   },
   "testimonials": {
     name: "testimonials",

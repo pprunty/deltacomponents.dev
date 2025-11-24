@@ -18,7 +18,7 @@ import {
   Terminal,
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
+import { registryItemFileSchema, registryItemSchema } from "@/lib/schema"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
@@ -65,10 +65,10 @@ type BlockViewerContext = {
   resizablePanelRef: React.RefObject<ImperativePanelHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
-    | (z.infer<typeof registryItemFileSchema> & {
-        highlightedContent: string
-      })[]
-    | null
+  | (z.infer<typeof registryItemFileSchema> & {
+    highlightedContent: string
+  })[]
+  | null
   iframeKey?: number
   setIframeKey?: React.Dispatch<React.SetStateAction<number>>
   defaultViewSize: "100" | "60" | "30"
@@ -106,25 +106,12 @@ function BlockViewerProvider({
     "100" | "60" | "30"
   >(defaultViewSize)
 
-  console.log(
-    "BlockViewerProvider initialized with defaultViewSize:",
-    defaultViewSize,
-    "currentViewSize:",
-    currentViewSize
-  )
 
   // Initialize ResizablePanel with the correct default size after mount
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      console.log(
-        "Attempting to resize to:",
-        currentViewSize,
-        "ref available:",
-        !!resizablePanelRef.current
-      )
       if (resizablePanelRef.current) {
         resizablePanelRef.current.resize(parseInt(currentViewSize))
-        console.log("Resized to:", currentViewSize)
       }
     }, 100) // Small delay to ensure ref is ready
 
@@ -212,13 +199,10 @@ function BlockViewerToolbar() {
             value={currentViewSize}
             onValueChange={(value) => {
               if (value) {
-                console.log("ToggleGroup value changed to:", value)
                 setCurrentViewSize(value as "100" | "60" | "30")
                 setView("preview")
                 if (resizablePanelRef?.current) {
                   resizablePanelRef.current.resize(parseInt(value))
-                } else {
-                  console.log("resizablePanelRef is not available")
                 }
               }
             }}

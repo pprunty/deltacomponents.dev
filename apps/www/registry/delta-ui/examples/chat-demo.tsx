@@ -2,7 +2,12 @@
 
 import { useCallback, useRef, useState } from "react"
 import type { FileUIPart, ToolUIPart } from "ai"
-import { GlobeIcon, RotateCcwIcon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react"
+import {
+  GlobeIcon,
+  RotateCcwIcon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
+} from "lucide-react"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"

@@ -17,7 +17,7 @@ export type ActionsProps = ComponentProps<"div">
 
 export const Actions = ({ className, children, ...props }: ActionsProps) => (
   <div
-    className={cn("flex items-center gap-0 opacity-100 pb-4", className)}
+    className={cn("flex items-center gap-0 pb-4 opacity-100", className)}
     {...props}
   >
     {children}
