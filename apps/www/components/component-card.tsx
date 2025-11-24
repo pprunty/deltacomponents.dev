@@ -45,6 +45,14 @@ export function ComponentCard({ component }: ComponentCardProps) {
             alt={String(component.name) || "Component"}
             fill
             className="object-cover"
+            unoptimized
+            onError={(e) => {
+              // Ensure we always show the placeholder
+              const img = e.target as HTMLImageElement
+              if (img.src !== "/placeholder.svg") {
+                img.src = "/placeholder.svg"
+              }
+            }}
           />
         )}
         <div className="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1">

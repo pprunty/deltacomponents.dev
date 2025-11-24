@@ -51,7 +51,7 @@ const BLOCKS_SECTIONS = [
   },
 ]
 
-const EXCLUDED_SECTIONS = ["dark-mode", "(root)"]
+const EXCLUDED_SECTIONS = ["dark-mode", "(root)", "Get Started", "root:(root)"]
 const EXCLUDED_PAGES: string[] = []
 
 export function DocsSidebar({
@@ -97,7 +97,7 @@ export function DocsSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
         {tree.children.map((item) => {
-          if (EXCLUDED_SECTIONS.includes(item.$id ?? "")) {
+          if (EXCLUDED_SECTIONS.includes(item.$id ?? "") || EXCLUDED_SECTIONS.includes(String(item.name ?? ""))) {
             return null
           }
 
@@ -113,7 +113,7 @@ export function DocsSidebar({
                       // Extract component name and get metadata
                       const componentName = (item as { url?: string }).url?.split('/').pop()
                       const componentMeta = componentName ? Index[componentName]?.meta : null
-                      
+
                       if (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) &&
@@ -121,7 +121,7 @@ export function DocsSidebar({
                       ) {
                         // Check if component should be disabled in production (runtime evaluation)
                         const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
-                        
+
                         if (isComponentDisabled) {
                           return (
                             <SidebarMenuItem key={item.url}>
@@ -140,7 +140,7 @@ export function DocsSidebar({
                             </SidebarMenuItem>
                           )
                         }
-                        
+
                         return (
                           <SidebarMenuItem key={item.url}>
                             <SidebarMenuButton
