@@ -1,19 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "apps/www/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "apps/www/$1"
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm run build --filter=www",
+  "devCommand": "pnpm run dev --filter=www",
   "installCommand": "pnpm install",
-  "buildCommand": "cd apps/www && pnpm build",
-  "devCommand": "cd apps/www && pnpm dev",
-  "outputDirectory": "apps/www/.next"
+  "outputDirectory": "apps/www/.next",
+  "framework": "nextjs",
+  "crons": []
 }
