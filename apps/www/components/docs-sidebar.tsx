@@ -87,7 +87,6 @@ export function DocsSidebar({
                       className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                     >
                       <Link href={href}>
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                         {name}
                       </Link>
                     </SidebarMenuButton>
@@ -130,7 +129,6 @@ export function DocsSidebar({
                                 disabled
                                 className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md text-muted-foreground cursor-not-allowed opacity-60"
                               >
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
                                 {componentMeta?.badge && (
                                   <StatusBadge label={componentMeta.badge} />
@@ -154,7 +152,6 @@ export function DocsSidebar({
                                 href={item.url}
                                 className="flex items-center gap-2"
                               >
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
                                 {componentMeta?.badge ? (
                                   <StatusBadge label={componentMeta.badge} />
@@ -195,7 +192,6 @@ export function DocsSidebar({
                         href={item.href}
                         className="flex items-center gap-2"
                       >
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                         {item.name}
                         <StatusBadge label="beta" />
                       </Link>

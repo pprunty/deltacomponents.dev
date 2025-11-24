@@ -86,6 +86,9 @@ export default async function Page(props: {
   // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
   const neighbours = await findNeighbour(source.pageTree, page.url)
+  
+  // Get raw content for copy functionality
+  const rawContent = await page.data.getText("raw")
 
   // @ts-expect-error - revisit fumadocs types.
   const links = doc.links
@@ -106,8 +109,7 @@ export default async function Page(props: {
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                   <DocsCopyPage
-                    // @ts-expect-error - revisit fumadocs types.
-                    page={doc.content}
+                    page={rawContent}
                     url={absoluteUrl(page.url)}
                   />
                   {neighbours.previous && (
