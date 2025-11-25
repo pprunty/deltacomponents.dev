@@ -40,13 +40,6 @@ export async function GET(request: Request) {
   const title = searchParams.get("title")
   const description = searchParams.get("description")
 
-  // If no title or description provided (e.g., for root URL), redirect to default OG image
-  if (!title && !description) {
-    const siteConfig = (await import("@/lib/config")).siteConfig
-    const defaultOgUrl = `${siteConfig.url}/og/og.webp`
-    return Response.redirect(defaultOgUrl, 302)
-  }
-
   const [fonts] = await Promise.all([loadAssets()])
 
   return new ImageResponse(
