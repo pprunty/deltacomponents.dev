@@ -13,11 +13,17 @@ import {
   TooltipTrigger,
 } from "@/registry/delta-ui/ui/tooltip"
 
-export type ActionsProps = ComponentProps<"div">
+export type ActionsProps = ComponentProps<"div"> & {
+  position?: "left" | "right"
+}
 
-export const Actions = ({ className, children, ...props }: ActionsProps) => (
+export const Actions = ({ className, children, position = "right", ...props }: ActionsProps) => (
   <div
-    className={cn("flex items-center gap-0 pb-4 opacity-100", className)}
+    className={cn(
+      "flex items-center gap-0 pb-4 opacity-100",
+      position === "left" ? "justify-start" : "justify-end",
+      className
+    )}
     {...props}
   >
     {children}

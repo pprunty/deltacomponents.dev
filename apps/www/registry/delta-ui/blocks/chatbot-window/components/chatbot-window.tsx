@@ -292,7 +292,7 @@ function Chatbot({}: ChatbotProps) {
 
   return (
     <div className="flex h-full flex-col">
-      <Conversation className="flex-1">
+      <Conversation className="flex-1" showGradient={false}>
         <ConversationContent>
           {messages.map(({ versions, ...message }) => {
             const assistantMessages = messages.filter(

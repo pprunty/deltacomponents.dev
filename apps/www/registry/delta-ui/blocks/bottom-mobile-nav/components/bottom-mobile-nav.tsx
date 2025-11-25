@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Plus } from "lucide-react"
+import { Plus } from "phosphor-react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -11,13 +11,13 @@ import { cn } from "@/lib/utils"
 interface Route {
   href: string
   label: string
-  icon: React.ComponentType<{ className?: string }>
+  icon: React.ComponentType<{ className?: string; weight?: string }>
 }
 
 interface BarItemProps {
   href: string
   label: string
-  Icon?: React.ComponentType<{ className?: string }>
+  Icon?: React.ComponentType<{ className?: string; weight?: string }>
   isActive: boolean
   labels: boolean
   onItemClick: (href: string) => void
@@ -31,18 +31,19 @@ const BarItem = React.memo<BarItemProps>(
           href={href}
           className={cn(
             "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
-            labels ? "py-2" : "py-4"
+            labels ? "py-2" : "py-3"
           )}
           onClick={() => onItemClick(href)}
         >
           <div className="flex flex-col items-center">
             {Icon && (
-              <div className="transform transition-transform duration-150 active:scale-95">
+              <div className="transform transition-all duration-200 active:scale-90 hover:scale-105">
                 <Icon
                   className={cn(
                     "h-7 w-7 transition-colors duration-150",
                     isActive ? "text-primary" : "text-muted-foreground"
                   )}
+                  weight={isActive ? "fill" : "regular"}
                 />
               </div>
             )}
@@ -79,18 +80,21 @@ interface CenterButtonProps {
 const CenterButton = React.memo<CenterButtonProps>(
   ({ onClick, label, labels }) => {
     return (
-      <li className="z-10 -mt-5 flex-none">
+      <li className="flex-1">
         <button
           onClick={onClick}
-          className="flex flex-col items-center justify-center"
+          className="flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150 py-1"
           aria-label={label || "Add"}
         >
           <div className="flex flex-col items-center">
-            <div className="bg-primary rounded-full p-3.5 shadow-lg transition-all duration-150 hover:scale-105 hover:shadow-xl active:scale-95">
-              <Plus className="text-primary-foreground h-6 w-6" />
+            <div className="transform transition-all duration-200 active:scale-90 hover:scale-105 bg-muted rounded-lg px-6 py-2">
+              <Plus
+                className="h-7 w-7 transition-colors duration-150 text-muted-foreground"
+                weight="regular"
+              />
             </div>
             {labels && label && (
-              <span className="text-primary mt-1.5 text-center text-[10px] leading-tight">
+              <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">
                 {label}
               </span>
             )}

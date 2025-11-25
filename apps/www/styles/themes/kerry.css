@@ -57,9 +57,9 @@ html[data-theme="kerry"] .font-sans {
 
 
 html[data-theme="kerry"].dark {
-  --background: oklch(0.18 0.03 132);
+  --background: oklch(0.15 0.03 132);
   --foreground: oklch(0.9600 0.0200 130.0000);
-  --card: oklch(0.2000 0.0400 132.0000);
+  --card: oklch(0.2800 0.0500 132.0000);
   --card-foreground: oklch(0.9600 0.0200 130.0000);
   --popover: oklch(0.2000 0.0400 132.0000);
   --popover-foreground: oklch(0.9600 0.0200 130.0000);
@@ -74,7 +74,7 @@ html[data-theme="kerry"].dark {
   --destructive: oklch(0.6200 0.2000 25.0000);
   --destructive-foreground: oklch(0.9600 0.0200 130.0000);
   --border: oklch(0.88 0.02 130);
-  --input: oklch(0.2300 0.0500 132.0000);
+  --input: oklch(0.6000 0.0600 130.0000);
   --ring: oklch(0.6500 0.1800 132.0000);
   --chart-1: oklch(0.6500 0.1800 132.0000);
   --chart-2: oklch(0.7200 0.1600 128.0000);
@@ -89,8 +89,8 @@ html[data-theme="kerry"].dark {
   --sidebar-accent-foreground: oklch(0.9600 0.0200 130.0000);
   --sidebar-border: oklch(0.3000 0.0600 132.0000);
   --sidebar-ring: oklch(0.6500 0.1800 132.0000);
-  --surface: oklch(0.2000 0.0400 130.0000);
-  --surface-foreground: oklch(0.7000 0.0400 128.0000);
+  --surface: oklch(0.2800 0.0600 130.0000);
+  --surface-foreground: oklch(0.8500 0.0300 128.0000);
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;

@@ -14,6 +14,7 @@ export type ConversationProps = ComponentProps<typeof StickToBottom> & {
   userAvatar?: string
   onScrollStateChange?: (state: { isAtBottom: boolean }) => void
   style?: React.CSSProperties
+  showGradient?: boolean
 }
 
 export const Conversation = ({
@@ -23,6 +24,7 @@ export const Conversation = ({
   userAvatar,
   onScrollStateChange,
   style,
+  showGradient = true,
   ...props
 }: ConversationProps) => (
   <StickToBottom
@@ -33,7 +35,9 @@ export const Conversation = ({
     {...props}
   >
     {props.children}
-    <div className="from-background via-background/70 pointer-events-none absolute right-3 bottom-0 left-0 z-10 h-12 bg-gradient-to-t to-transparent" />
+    {showGradient && (
+      <div className="from-background via-background/70 pointer-events-none absolute right-3 bottom-0 left-0 z-10 h-12 bg-gradient-to-t to-transparent" />
+    )}
   </StickToBottom>
 )
 

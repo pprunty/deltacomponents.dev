@@ -3,7 +3,7 @@
 import React, { memo, useMemo } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, Search, Settings, User } from "lucide-react"
+import { House, MagnifyingGlass, Heart, User } from "phosphor-react"
 
 import { Icons } from "@/components/icons"
 import { BottomMobileNav } from "@/registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav"
@@ -13,17 +13,17 @@ const routes = [
   {
     href: "#",
     label: "Home",
-    icon: Home,
+    icon: House,
   },
   {
     href: "#search",
     label: "Search",
-    icon: Search,
+    icon: MagnifyingGlass,
   },
   {
-    href: "#settings",
-    label: "Settings",
-    icon: Settings,
+    href: "#love",
+    label: "Love",
+    icon: Heart,
   },
   {
     href: "#profile",
@@ -33,33 +33,36 @@ const routes = [
 ]
 
 // Desktop Sidebar Component
-const Sidebar = memo(function Sidebar() {
+interface SidebarProps {
+  className?: string
+}
+
+const Sidebar = memo(function Sidebar({ className }: SidebarProps = {}) {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-background/80 fixed top-0 left-0 z-50 hidden h-screen w-20 flex-col items-center border-r py-4 backdrop-blur-lg md:flex">
+    <nav className={`bg-background/80 fixed top-0 left-0 z-50 hidden h-screen w-20 flex-col items-center border-r py-4 backdrop-blur-lg md:flex ${className || ""}`}>
       {/* Top: Logo section */}
       <div className="mb-8">
-        <Icons.logo className="size-5" />
+        <Icons.logo className="size-6" />
       </div>
 
       {/* Middle: main nav icons (centered vertically) */}
-      <div className="flex flex-1 flex-col items-center justify-center space-y-6">
-        {routes.map(({ href, icon: Icon, label }) => {
-          const isActive =
-            pathname === href || (href === "#" && pathname === "/")
+      <div className="flex flex-1 flex-col items-center justify-center space-y-4">
+        {routes.map(({ href, icon: Icon, label }, index) => {
+          const isActive = index === 0 // Make first item (Home) active by default
           return (
             <Link
               key={href}
               href={href}
-              className={`rounded-xl p-3 transition-colors duration-300 ${
+              className={`rounded-lg px-4 py-3 transition-colors duration-300 ${
                 isActive
-                  ? "bg-accent text-accent-foreground"
+                  ? "text-accent-foreground"
                   : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               } `}
               title={label}
             >
-              {Icon && <Icon className="h-6 w-6" />}
+              {Icon && <Icon className="h-6 w-6" weight={isActive ? "fill" : "regular"} />}
             </Link>
           )
         })}
@@ -78,13 +81,15 @@ Sidebar.displayName = "Sidebar"
 // Layout Component
 interface LayoutProps {
   children: React.ReactNode
+  sidebarClassName?: string
+  bottomNavClassName?: string
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, sidebarClassName, bottomNavClassName }: LayoutProps) {
   return (
     <div className="min-h-screen">
       {/* Desktop Sidebar */}
-      <Sidebar />
+      <Sidebar className={sidebarClassName} />
 
       {/* Main Content */}
       <main className="md:ml-20">{children}</main>
@@ -93,7 +98,7 @@ export default function Layout({ children }: LayoutProps) {
       <BottomMobileNav
         routes={routes}
         labels={false}
-        className="bg-background/80 border-t backdrop-blur-lg"
+        className={`bg-background/80 backdrop-blur-lg ${bottomNavClassName || ""}`}
       />
     </div>
   )

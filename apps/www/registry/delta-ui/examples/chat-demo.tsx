@@ -391,8 +391,8 @@ const Example = () => {
                             {status !== "streaming" &&
                               streamingMessageId !== version.id && (
                                 <Actions
+                                  position="left"
                                   className={cn(
-                                    "justify-start",
                                     isLastAssistantMessage ||
                                       touchedMessages.has(message.key)
                                       ? "opacity-100"

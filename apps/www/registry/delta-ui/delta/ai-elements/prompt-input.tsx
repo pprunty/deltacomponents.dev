@@ -444,6 +444,7 @@ export type PromptInputProps = Omit<
   // Minimal constraints
   maxFiles?: number
   maxFileSize?: number // bytes
+  showGradient?: boolean
   onError?: (err: {
     code: "max_files" | "max_file_size" | "accept"
     message: string
@@ -786,7 +787,6 @@ export const PromptInput = ({
         onSubmit={handleSubmit}
         {...props}
       >
-        <div className="from-background via-background/70 pointer-events-none absolute top-0 right-3 left-0 z-10 h-12 bg-gradient-to-b to-transparent" />
         <InputGroup className="relative z-20">{children}</InputGroup>
       </form>
     </>
