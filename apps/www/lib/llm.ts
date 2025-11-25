@@ -14,7 +14,7 @@ export function processMdxForLLMs(content: string, style: Style["name"] = "defau
   return content.replace(componentPreviewRegex, (match, name) => {
     // Find the component in the registry, with safe access
     if (!registry?.items) {
-      console.warn("Registry items not available, skipping component replacement")
+      // Silently skip during build time when registry isn't loaded
       return match
     }
     
