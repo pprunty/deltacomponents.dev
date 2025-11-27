@@ -525,6 +525,7 @@ func main() {
 
 export default function CodeBlockInteractiveDemo() {
   const [currentThemeIndex, setCurrentThemeIndex] = useState(0)
+  const [useThemeBackground, setUseThemeBackground] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -537,16 +538,34 @@ export default function CodeBlockInteractiveDemo() {
   const currentTheme = themes[currentThemeIndex]
 
   return (
-    <div className="w-full max-w-md">
-      <CodeBlock
-        code={goCode}
-        language="go"
-        showLineNumbers={true}
-        adaptiveTheme={{
-          dark: currentTheme.theme,
-          light: currentTheme.theme,
-        }}
-      />
+    <div className="w-full space-y-4">
+      <div className="flex items-center space-x-2">
+        <label htmlFor="theme-background" className="text-sm font-medium">
+          Use Theme Background:
+        </label>
+        <input
+          id="theme-background"
+          type="checkbox"
+          checked={useThemeBackground}
+          onChange={(e) => setUseThemeBackground(e.target.checked)}
+          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+        />
+      </div>
+      <div className="text-xs text-muted-foreground">
+        Current theme: <span className="font-medium">{currentTheme.name}</span>
+      </div>
+      <div className="w-full max-w-md">
+        <CodeBlock
+          code={goCode}
+          language="go"
+          showLineNumbers={true}
+          useThemeBackground={useThemeBackground}
+          adaptiveTheme={{
+            dark: currentTheme.theme,
+            light: currentTheme.theme,
+          }}
+        />
+      </div>
     </div>
   )
 }

@@ -74,4 +74,5 @@ export const THEME_META_COLORS = {
   clare: { light: "#faf4ed", dark: "#303446" },
   kerry: { light: "#f9f9f9", dark: "#0c1406" },
   galway: { light: "#faf9f5", dark: "#262624" },
+  kilkenny: { light: "#ffffff", dark: "#101010" },
 }

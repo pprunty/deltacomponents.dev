@@ -1,5 +1,10 @@
 [
   {
+    "name": "ai-chat-sidebar",
+    "description": "A collapsible sidebar component for AI chat applications",
+    "categories": ["ai-elements"]
+  },
+  {
     "name": "testimonials",
     "description": "Customer testimonials grid",
     "categories": ["landing-page"]

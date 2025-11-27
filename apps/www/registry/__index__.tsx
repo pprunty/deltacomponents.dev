@@ -260,6 +260,28 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: {"badge":"coming soon","hide":false},
   },
+  "ai-chat-sidebar": {
+    name: "ai-chat-sidebar",
+    description: "A collapsible sidebar component for AI chat applications",
+    type: "registry:block",
+    registryDependencies: ["sidebar","breadcrumb","separator"],
+    files: [{
+      path: "registry/delta-ui/blocks/ai-chat-sidebar/components/app-sidebar.tsx",
+      type: "registry:component",
+      target: "components/app-sidebar.tsx"
+    },{
+      path: "registry/delta-ui/blocks/ai-chat-sidebar/page.tsx",
+      type: "registry:page",
+      target: "app/page.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/ai-chat-sidebar/components/app-sidebar.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["ai-elements"],
+    meta: {"iframeHeight":"800px","container":"w-full h-screen","mobile":"component"},
+  },
   "testimonials": {
     name: "testimonials",
     description: "Customer testimonials grid",
@@ -361,6 +383,10 @@ export const Index: Record<string, any> = {
       path: "registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
       type: "registry:component",
       target: "components/bottom-mobile-nav.tsx"
+    },{
+      path: "registry/delta-ui/blocks/bottom-mobile-nav/components/sidebar.tsx",
+      type: "registry:component",
+      target: "components/sidebar.tsx"
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/blocks/bottom-mobile-nav/page.tsx")

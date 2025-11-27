@@ -17,7 +17,12 @@ export type ActionsProps = ComponentProps<"div"> & {
   position?: "left" | "right"
 }
 
-export const Actions = ({ className, children, position = "right", ...props }: ActionsProps) => (
+export const Actions = ({
+  className,
+  children,
+  position = "right",
+  ...props
+}: ActionsProps) => (
   <div
     className={cn(
       "flex items-center gap-0 pb-4 opacity-100",

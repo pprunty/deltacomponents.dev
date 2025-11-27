@@ -4,20 +4,19 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Plus } from "phosphor-react"
-import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
 interface Route {
   href: string
   label: string
-  icon: React.ComponentType<{ className?: string; weight?: string }>
+  icon: React.ComponentType<any>
 }
 
 interface BarItemProps {
   href: string
   label: string
-  Icon?: React.ComponentType<{ className?: string; weight?: string }>
+  Icon?: React.ComponentType<any>
   isActive: boolean
   labels: boolean
   onItemClick: (href: string) => void
@@ -37,7 +36,7 @@ const BarItem = React.memo<BarItemProps>(
         >
           <div className="flex flex-col items-center">
             {Icon && (
-              <div className="transform transition-all duration-200 active:scale-90 hover:scale-105">
+              <div className="transform transition-all duration-200 hover:scale-105 active:scale-90">
                 <Icon
                   className={cn(
                     "h-7 w-7 transition-colors duration-150",
@@ -83,13 +82,13 @@ const CenterButton = React.memo<CenterButtonProps>(
       <li className="flex-1">
         <button
           onClick={onClick}
-          className="flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150 py-1"
+          className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
           aria-label={label || "Add"}
         >
           <div className="flex flex-col items-center">
-            <div className="transform transition-all duration-200 active:scale-90 hover:scale-105 bg-muted rounded-lg px-6 py-2">
+            <div className="supports-[backdrop-filter]:bg-muted/90 transform rounded-lg px-6 py-2 backdrop-blur-lg transition-all duration-200 hover:scale-105 active:scale-90">
               <Plus
-                className="h-7 w-7 transition-colors duration-150 text-muted-foreground"
+                className="text-muted-foreground h-7 w-7 transition-colors duration-150"
                 weight="regular"
               />
             </div>
@@ -111,7 +110,6 @@ interface BottomMobileNavProps {
   routes?: Route[]
   labels?: boolean
   centerButton?: CenterButtonConfig
-  enableEntranceAnimation?: boolean
   className?: string
 }
 
@@ -119,7 +117,6 @@ export function BottomMobileNav({
   routes = [],
   labels = false,
   centerButton,
-  enableEntranceAnimation = false,
   className,
 }: BottomMobileNavProps) {
   const pathname = usePathname()
@@ -207,23 +204,13 @@ export function BottomMobileNav({
     }
   }, [routes])
 
-  // Conditional motion props to avoid unnecessary animations
-  const motionProps = enableEntranceAnimation
-    ? {
-        initial: { y: 100, opacity: 0 },
-        animate: { y: 0, opacity: 1 },
-        transition: { duration: 0.3 },
-      }
-    : undefined
-
   return (
-    <motion.nav
+    <nav
       className={cn(
         "fixed right-0 bottom-0 left-0 z-50 block py-1 md:hidden",
         "supports-[backdrop-filter]:bg-background/85 backdrop-blur-lg",
         className
       )}
-      {...motionProps}
     >
       <ul className="relative flex items-center justify-around">
         {centerButton ? (
@@ -272,6 +259,6 @@ export function BottomMobileNav({
           ))
         )}
       </ul>
-    </motion.nav>
+    </nav>
   )
 }

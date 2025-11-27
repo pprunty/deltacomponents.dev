@@ -173,6 +173,9 @@ interface CodeBlockProps {
     light: PrismTheme
     dark: PrismTheme
   }
+  
+  // Background options
+  useThemeBackground?: boolean // When true, uses the JSON theme background; when false, uses bg-surface
 
   className?: string
 }
@@ -191,6 +194,7 @@ export function CodeBlock({
   showLineNumbers = true,
   theme,
   adaptiveTheme,
+  useThemeBackground = false,
   className,
 }: CodeBlockProps) {
   const [packageManager, setPackageManager] = React.useState<PackageManager>(
@@ -267,7 +271,19 @@ export function CodeBlock({
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
-          <div className="bg-muted flex items-center justify-between border-b px-3 py-1">
+          <div 
+            className={cn(
+              "flex items-center justify-between border-b px-3 py-1",
+              !useThemeBackground && "bg-surface"
+            )}
+            style={
+              useThemeBackground
+                ? {
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                  }
+                : undefined
+            }
+          >
             <div className="flex items-center gap-2">
               <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
                 <TerminalIcon className="text-code size-3" />
@@ -294,10 +310,17 @@ export function CodeBlock({
             {availableCommands.map(([key, command]) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className="relative py-4"
-                  style={{
-                    backgroundColor: selectedTheme.plain?.backgroundColor,
-                  }}
+                  className={cn(
+                    "relative py-4",
+                    !useThemeBackground && "bg-surface"
+                  )}
+                  style={
+                    useThemeBackground
+                      ? {
+                          backgroundColor: selectedTheme.plain?.backgroundColor,
+                        }
+                      : undefined
+                  }
                 >
                   <Highlight
                     theme={selectedTheme}
@@ -315,6 +338,9 @@ export function CodeBlock({
                         className={`${highlightClassName} w-full overflow-x-auto px-4 font-mono text-sm leading-relaxed font-medium`}
                         style={{
                           ...style,
+                          backgroundColor: useThemeBackground 
+                            ? selectedTheme.plain?.backgroundColor 
+                            : 'transparent',
                           fontSize: className?.includes("text-lg")
                             ? "1.125rem"
                             : className?.includes("text-base")
@@ -351,7 +377,19 @@ export function CodeBlock({
         )}
       >
         {filename && (
-          <div className="bg-muted flex items-center justify-between border-b">
+          <div 
+            className={cn(
+              "flex items-center justify-between border-b",
+              !useThemeBackground && "bg-surface"
+            )}
+            style={
+              useThemeBackground
+                ? {
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                  }
+                : undefined
+            }
+          >
             <div className="flex items-center gap-2 px-3 py-1">
               <span className="text-sm font-medium">{filename}</span>
             </div>
@@ -364,10 +402,17 @@ export function CodeBlock({
         )}
 
         <div
-          className="relative max-h-[calc(530px-44px)] w-full py-4"
-          style={{
-            backgroundColor: selectedTheme.plain?.backgroundColor,
-          }}
+          className={cn(
+            "relative max-h-[calc(530px-44px)] w-full py-4",
+            !useThemeBackground && "bg-surface"
+          )}
+          style={
+            useThemeBackground
+              ? {
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                }
+              : undefined
+          }
         >
           {!filename && (
             <div className="absolute top-4 right-3">
@@ -391,6 +436,9 @@ export function CodeBlock({
                 className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm leading-relaxed font-medium`}
                 style={{
                   ...style,
+                  backgroundColor: useThemeBackground 
+                    ? selectedTheme.plain?.backgroundColor 
+                    : 'transparent',
                   fontSize: className?.includes("text-lg")
                     ? "1.125rem"
                     : className?.includes("text-base")

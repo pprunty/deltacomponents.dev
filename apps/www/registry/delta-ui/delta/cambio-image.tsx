@@ -36,7 +36,7 @@ export function CambioImage({
   loading = "lazy",
   index = 0,
   motion = "snappy",
-  dismissible = false,
+  dismissible = true,
   className,
   draggable = false,
   enableInitialAnimation = true,
@@ -68,36 +68,6 @@ export function CambioImage({
     }
     return () => io.disconnect()
   }, [enableInitialAnimation])
-
-  // Handle scroll detection to dismiss modal
-  useEffect(() => {
-    if (!open) return
-
-    let scrollTimeout: NodeJS.Timeout
-    let lastScrollY = window.scrollY
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      const scrollDelta = Math.abs(currentScrollY - lastScrollY)
-
-      // Only dismiss if there's meaningful scroll movement (more than 20px)
-      if (scrollDelta > 20) {
-        setOpen(false)
-      }
-
-      lastScrollY = currentScrollY
-    }
-
-    // Add scroll listener
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-      }
-    }
-  }, [open])
 
   /* Lower z-index when open to stay behind the popup */
   const zIndex = open ? 50 : 10 + index

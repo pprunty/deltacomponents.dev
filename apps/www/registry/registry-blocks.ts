@@ -2,6 +2,31 @@ import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
+    name: "ai-chat-sidebar",
+    description: "A collapsible sidebar component for AI chat applications",
+    type: "registry:block",
+    registryDependencies: ["sidebar", "breadcrumb", "separator"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/ai-chat-sidebar/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: "components/app-sidebar.tsx",
+      },
+      {
+        path: "blocks/ai-chat-sidebar/page.tsx",
+        type: "registry:page",
+        target: "app/page.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container: "w-full h-screen",
+      mobile: "component",
+    },
+    categories: ["ai-elements"],
+  },
+  {
     name: "testimonials",
     description: "Customer testimonials grid",
     type: "registry:block",
@@ -110,6 +135,7 @@ export const blocks: Registry["items"] = [
     description: "BottomMobileNav block",
     type: "registry:block",
     registryDependencies: [],
+    dependencies: ["phosphor-react"],
     files: [
       {
         path: "blocks/bottom-mobile-nav/page.tsx",
@@ -120,6 +146,11 @@ export const blocks: Registry["items"] = [
         path: "blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
         type: "registry:component",
         target: "components/bottom-mobile-nav.tsx",
+      },
+      {
+        path: "blocks/bottom-mobile-nav/components/sidebar.tsx",
+        type: "registry:component",
+        target: "components/sidebar.tsx",
       },
     ],
     meta: {

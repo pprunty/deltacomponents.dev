@@ -37,6 +37,7 @@ export default function Example() {
 - **Copy to Clipboard**: One-click copy functionality with visual feedback
 - **Line Numbers**: Optional line numbering for code blocks
 - **Custom Themes**: Light/dark adaptive themes with hover effects
+- **Background Options**: Choose between surface background or JSON theme background
 - **Terminal Styling**: Command-line interface appearance
 - **Responsive**: Horizontal scrolling for long content
 - **Flexible**: Shows only provided package managers or code content
@@ -50,6 +51,27 @@ export default function Example() {
 ### Interactive Theme Demo
 
 <ComponentPreview name="code-block-theme-demo" />
+
+This demo cycles through different popular Prism themes and includes a toggle to demonstrate the `useThemeBackground` prop. When enabled, you can see how each theme's custom background colors are applied.
+
+### Background Options
+
+By default, the component uses `bg-surface` for the background. You can enable the JSON theme background by setting `useThemeBackground={true}`:
+
+```tsx
+// Default surface background
+<CodeBlock
+  code={`console.log("Hello, World!")`}
+  language="javascript"
+/>
+
+// JSON theme background
+<CodeBlock
+  code={`console.log("Hello, World!")`}
+  language="javascript"
+  useThemeBackground={true}
+/>
+```
 
 ## API Reference
 
@@ -70,6 +92,7 @@ export default function Example() {
 | showLineNumbers             | boolean        | true         | Whether to show line numbers                  |
 | theme                       | PrismTheme     | -            | Custom Prism theme object                     |
 | adaptiveTheme               | object         | -            | Object with `light` and `dark` theme variants |
+| useThemeBackground          | boolean        | false        | Use JSON theme background instead of bg-surface |
 | **General Props**           |                |              |                                               |
 | className                   | string         | -            | Additional CSS classes for styling            |
 

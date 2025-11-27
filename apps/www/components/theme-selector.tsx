@@ -58,6 +58,10 @@ const SPECIAL_THEMES = [
     name: "Galway (Claude)",
     value: "galway",
   },
+  {
+    name: "Kilkenny",
+    value: "kilkenny",
+  },
 ]
 
 function ModeToggle() {

@@ -63,6 +63,7 @@
     "@xyflow/react": "^12.8.6",
     "ai": "^5.0.59",
     "cambio": "^1.1.5",
+    "canvas-confetti": "^1.9.4",
     "change-case": "^5.4.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

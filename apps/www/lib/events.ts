@@ -1,4 +1,3 @@
-import va from "@vercel/analytics"
 import { z } from "zod"
 
 const eventSchema = z.object({
@@ -26,8 +25,23 @@ const eventSchema = z.object({
 export type Event = z.infer<typeof eventSchema>
 
 export function trackEvent(input: Event): void {
-  const event = eventSchema.parse(input)
-  if (event) {
-    va.track(event.name, event.properties)
+  try {
+    // Only track in browser environment
+    if (typeof window === "undefined") {
+      return
+    }
+    
+    const event = eventSchema.parse(input)
+    if (event) {
+      // Dynamically import Vercel Analytics to avoid SSR issues
+      import("@vercel/analytics").then(({ track }) => {
+        track(event.name, event.properties)
+      }).catch(() => {
+        // Silently fail if analytics is not available
+      })
+    }
+  } catch (error) {
+    // Silently fail if tracking doesn't work
+    console.warn("Failed to track event:", error)
   }
 }

@@ -8,9 +8,11 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
+import { StatusBadge } from "@/components/status-badge"
 import blocks from "@/registry/__blocks__.json"
 import { Button } from "@/registry/delta-ui/ui/button"
 import { Separator } from "@/registry/delta-ui/ui/separator"
+import { SiteConfig } from "@/components/site-config"
 
 export function SiteHeader() {
   const pageTree = source.pageTree
@@ -27,11 +29,11 @@ export function SiteHeader() {
           <Button
             asChild
             variant="ghost"
-            size="icon"
-            className="hidden size-8 lg:flex"
+            className="hidden size-auto gap-2 px-2 lg:flex"
           >
-            <Link href="/">
+            <Link href="/" className="flex items-center gap-2">
               <Icons.logo className="size-5" />
+              <StatusBadge label="beta" />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
@@ -41,7 +43,6 @@ export function SiteHeader() {
               <CommandMenu
                 tree={pageTree}
                 navItems={siteConfig.navItems}
-                blocks={blocks}
               />
             </div>
             <Separator
@@ -49,7 +50,9 @@ export function SiteHeader() {
               className="ml-2 hidden lg:block"
             />
             <GitHubLink />
-
+            <Separator orientation="vertical" className="3xl:flex hidden" />
+            <SiteConfig className="3xl:flex hidden" />
+            <Separator orientation="vertical" />
             <ModeSwitcher />
           </div>
         </div>

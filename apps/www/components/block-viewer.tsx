@@ -260,7 +260,7 @@ function BlockViewerToolbar() {
         >
           {isCopied ? <Check /> : <Terminal />}
           <span>
-            npx @elevenlabs/agents-cli@latest components add {item.name}
+            npx shadcn@latest add https://deltacomponents.dev/r/{item.name}.json
           </span>
         </Button>
         <Separator orientation="vertical" className="mx-1 !h-4" />

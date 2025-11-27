@@ -184,6 +184,7 @@ export default function CodeBlockThemeDemo() {
         language="go"
         filename={showHeader ? "hello.go" : undefined}
         showLineNumbers={showLineNumbers}
+        useThemeBackground={true}
         adaptiveTheme={{
           dark: cppTheme,
           light: cppLightTheme,

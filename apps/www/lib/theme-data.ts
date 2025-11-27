@@ -668,7 +668,137 @@ html[data-theme="galway"].dark {
 }`,
 }
 
-export const THEME_DATA = [dublinTheme, clareTheme, kerryTheme, galwayTheme]
+export const kilkennyTheme: ThemeData = {
+  name: "Kilkenny",
+  value: "kilkenny",
+  description: "A clean, minimal theme with pure black and white contrast.",
+  previewImage: "/images/themes/kilkenny.png",
+  css: `html[data-theme="kilkenny"] {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #f4f4f4;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f5f7;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f3f5f7;
+  --muted-foreground: #888888;
+  --accent: #ffffff;
+  --accent-foreground: #1a1a1a;
+  --destructive: #e53935;
+  --destructive-foreground: #e53935;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #000000;
+  --chart-1: #ff6b35;
+  --chart-2: #4ecdc4;
+  --chart-3: #45b7d1;
+  --chart-4: #f7dc6f;
+  --chart-5: #e74c3c;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f5f7;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #000000;
+  --surface: #ffffff;
+  --surface-foreground: #000000;
+  --code: #f4f4f4;
+  --code-foreground: #000000;
+  --code-highlight: #f0f0f0;
+  --code-number: #666666;
+  --selection: #000000;
+  --selection-foreground: #ffffff;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0.55rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+html[data-theme="kilkenny"].dark {
+  --background: #101010;
+  --foreground: #f3f5f7;
+  --card: #101010;
+  --card-foreground: #f3f5f7;
+  --popover: #1f1f1f;
+  --popover-foreground: #f3f5f7;
+  --primary: #f3f5f7;
+  --primary-foreground: #101010;
+  --secondary: #202020;
+  --secondary-foreground: #f3f5f7;
+  --muted: #1f1f1f;
+  --muted-foreground: #777777;
+  --accent: #2a2a2a;
+  --accent-foreground: #f3f5f7;
+  --destructive: #e53935;
+  --destructive-foreground: #e53935;
+  --border: #323232;
+  --input: #323232;
+  --ring: #f3f5f7;
+  --chart-1: #6366f1;
+  --chart-2: #22d3ee;
+  --chart-3: #f7dc6f;
+  --chart-4: #a78bfa;
+  --chart-5: #fb7185;
+  --sidebar: #101010;
+  --sidebar-foreground: #f3f5f7;
+  --sidebar-primary: #f3f5f7;
+  --sidebar-primary-foreground: #101010;
+  --sidebar-accent: #202020;
+  --sidebar-accent-foreground: #f3f5f7;
+  --sidebar-border: #323232;
+  --sidebar-ring: #f3f5f7;
+  --surface: #101010;
+  --surface-foreground: #f3f5f7;
+  --code: #1f1f1f;
+  --code-foreground: #f3f5f7;
+  --code-highlight: #2a2a2a;
+  --code-number: #888888;
+  --selection: #f3f5f7;
+  --selection-foreground: #101010;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0.55rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}`,
+}
+
+export const THEME_DATA = [dublinTheme, clareTheme, kerryTheme, galwayTheme, kilkennyTheme]
 
 export function getThemeData(value: string): ThemeData | undefined {
   return THEME_DATA.find((theme) => theme.value === value)

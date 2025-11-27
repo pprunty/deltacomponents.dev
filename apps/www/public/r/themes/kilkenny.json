@@ -1,0 +1,66 @@
+{
+  "name": "kilkenny",
+  "type": "registry:theme",
+  "description": "A clean, minimal theme with pure black and white contrast.",
+  "homepage": "https://deltacomponents.dev",
+  "meta": {
+    "displayName": "Kilkenny"
+  },
+  "files": [
+    {
+      "path": "themes/kilkenny.css",
+      "content": "/* Kilkenny Theme */\nhtml[data-theme=\"kilkenny\"] {\n  --background: #ffffff;\n  --foreground: #000000;\n  --card: #ffffff;\n  --card-foreground: #000000;\n  --popover: #f4f4f4;\n  --popover-foreground: #000000;\n  --primary: #000000;\n  --primary-foreground: #ffffff;\n  --secondary: #f3f5f7;\n  --secondary-foreground: #1a1a1a;\n  --muted: #f3f5f7;\n  --muted-foreground: #888888;\n  --accent: #ffffff;\n  --accent-foreground: #1a1a1a;\n  --destructive: #e53935;\n  --destructive-foreground: #e53935;\n  --border: #e5e5e5;\n  --input: #e5e5e5;\n  --ring: #000000;\n  --chart-1: #ff6b35;\n  --chart-2: #4ecdc4;\n  --chart-3: #45b7d1;\n  --chart-4: #f7dc6f;\n  --chart-5: #e74c3c;\n  --sidebar: #ffffff;\n  --sidebar-foreground: #000000;\n  --sidebar-primary: #000000;\n  --sidebar-primary-foreground: #ffffff;\n  --sidebar-accent: #f3f5f7;\n  --sidebar-accent-foreground: #1a1a1a;\n  --sidebar-border: #e5e5e5;\n  --sidebar-ring: #000000;\n  --surface: #f8f8f8;\n  --surface-foreground: #000000;\n  --code: #f8f8f8;\n  --code-foreground: #000000;\n  --code-highlight: #f0f0f0;\n  --code-number: #666666;\n  --selection: #000000;\n  --selection-foreground: #ffffff;\n  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\n  --font-serif: ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif;\n  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n  --radius: 0.55rem;\n  --shadow-x: 0;\n  --shadow-y: 1px;\n  --shadow-blur: 3px;\n  --shadow-spread: 0px;\n  --shadow-opacity: 0.1;\n  --shadow-color: oklch(0 0 0);\n  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);\n  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);\n  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);\n  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);\n  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);\n  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);\n  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);\n  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);\n  --tracking-normal: 0em;\n  --spacing: 0.25rem;\n}\n\nhtml[data-theme=\"kilkenny\"].dark {\n  --background: #101010;\n  --foreground: #f3f5f7;\n  --card: #101010;\n  --card-foreground: #f3f5f7;\n  --popover: #1f1f1f;\n  --popover-foreground: #f3f5f7;\n  --primary: #f3f5f7;\n  --primary-foreground: #101010;\n  --secondary: #202020;\n  --secondary-foreground: #f3f5f7;\n  --muted: #1f1f1f;\n  --muted-foreground: #777777;\n  --accent: #2a2a2a;\n  --accent-foreground: #f3f5f7;\n  --destructive: #e53935;\n  --destructive-foreground: #e53935;\n  --border: #323232;\n  --input: #323232;\n  --ring: #f3f5f7;\n  --chart-1: #6366f1;\n  --chart-2: #22d3ee;\n  --chart-3: #f7dc6f;\n  --chart-4: #a78bfa;\n  --chart-5: #fb7185;\n  --sidebar: #101010;\n  --sidebar-foreground: #f3f5f7;\n  --sidebar-primary: #f3f5f7;\n  --sidebar-primary-foreground: #101010;\n  --sidebar-accent: #202020;\n  --sidebar-accent-foreground: #f3f5f7;\n  --sidebar-border: #323232;\n  --sidebar-ring: #f3f5f7;\n  --surface: #181818;\n  --surface-foreground: #cccccc;\n  --code: #181818;\n  --code-foreground: #cccccc;\n  --code-highlight: #2a2a2a;\n  --code-number: #999999;\n  --selection: #f3f5f7;\n  --selection-foreground: #101010;\n  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\n  --font-serif: ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif;\n  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n  --radius: 0.55rem;\n  --shadow-x: 0;\n  --shadow-y: 1px;\n  --shadow-blur: 3px;\n  --shadow-spread: 0px;\n  --shadow-opacity: 0.1;\n  --shadow-color: oklch(0 0 0);\n  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);\n  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);\n  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);\n  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);\n  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);\n  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);\n  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);\n  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);\n}\n\nhtml[data-theme=\"kilkenny\"] body,\nhtml[data-theme=\"kilkenny\"] .font-sans {\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;\n}",
+      "type": "registry:theme"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "colors": {
+            "background": "hsl(var(--background))",
+            "foreground": "hsl(var(--foreground))",
+            "card": {
+              "DEFAULT": "hsl(var(--card))",
+              "foreground": "hsl(var(--card-foreground))"
+            },
+            "popover": {
+              "DEFAULT": "hsl(var(--popover))",
+              "foreground": "hsl(var(--popover-foreground))"
+            },
+            "primary": {
+              "DEFAULT": "hsl(var(--primary))",
+              "foreground": "hsl(var(--primary-foreground))"
+            },
+            "secondary": {
+              "DEFAULT": "hsl(var(--secondary))",
+              "foreground": "hsl(var(--secondary-foreground))"
+            },
+            "muted": {
+              "DEFAULT": "hsl(var(--muted))",
+              "foreground": "hsl(var(--muted-foreground))"
+            },
+            "accent": {
+              "DEFAULT": "hsl(var(--accent))",
+              "foreground": "hsl(var(--accent-foreground))"
+            },
+            "destructive": {
+              "DEFAULT": "hsl(var(--destructive))",
+              "foreground": "hsl(var(--destructive-foreground))"
+            },
+            "border": "hsl(var(--border))",
+            "input": "hsl(var(--input))",
+            "ring": "hsl(var(--ring))",
+            "chart": {
+              "1": "hsl(var(--chart-1))",
+              "2": "hsl(var(--chart-2))",
+              "3": "hsl(var(--chart-3))",
+              "4": "hsl(var(--chart-4))",
+              "5": "hsl(var(--chart-5))"
+            }
+          }
+        }
+      }
+    }
+  }
+}

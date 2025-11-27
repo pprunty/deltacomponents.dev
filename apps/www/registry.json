@@ -226,6 +226,39 @@
       }
     },
     {
+      "name": "ai-chat-sidebar",
+      "type": "registry:block",
+      "description": "A collapsible sidebar component for AI chat applications",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/ai-chat-sidebar/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": "components/app-sidebar.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/ai-chat-sidebar/page.tsx",
+          "type": "registry:page",
+          "target": "app/page.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full h-screen",
+        "mobile": "component"
+      },
+      "categories": [
+        "ai-elements"
+      ]
+    },
+    {
       "name": "testimonials",
       "type": "registry:block",
       "description": "Customer testimonials grid",
@@ -343,6 +376,9 @@
       "name": "bottom-mobile-nav",
       "type": "registry:block",
       "description": "BottomMobileNav block",
+      "dependencies": [
+        "phosphor-react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -354,6 +390,11 @@
           "path": "registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav.tsx",
           "type": "registry:component",
           "target": "components/bottom-mobile-nav.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/bottom-mobile-nav/components/sidebar.tsx",
+          "type": "registry:component",
+          "target": "components/sidebar.tsx"
         }
       ],
       "meta": {

@@ -71,7 +71,7 @@ export function CommandMenu({
     (block: { name: string; description: string; categories: string[] }) => {
       setSelectedType("block")
       setCopyPayload(
-        `${packageManager} dlx @elevenlabs/agents-cli@latest add ${block.name}`
+        `${packageManager} dlx shadcn@latest add https://deltacomponents.dev/r/${block.name}.json`
       )
     },
     [setSelectedType, setCopyPayload, packageManager]

@@ -27,7 +27,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Setup", href: "/docs/setup" },
   { name: "Usage", href: "/docs/usage" },
   { name: "Troubleshooting", href: "/docs/troubleshooting" },
-  { name: "llms.txt", href: "/llms.txt" },
+  { name: "llms.txt", href: "/llms.txt", badge: "new" },
 ]
 
 const BLOCKS_SECTIONS = [
@@ -42,6 +42,10 @@ const BLOCKS_SECTIONS = [
       {
         name: "LLM Chat Window",
         href: "/blocks/ai-elements#chatbot-window",
+      },
+      {
+        name: "AI Chat Sidebar",
+        href: "/blocks/ai-elements#ai-chat-sidebar",
       },
       {
         name: "Perspective Carousel",
@@ -74,7 +78,7 @@ export function DocsSidebar({
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+              {TOP_LEVEL_SECTIONS.map(({ name, href, badge }) => {
                 return (
                   <SidebarMenuItem key={name}>
                     <SidebarMenuButton
@@ -86,8 +90,9 @@ export function DocsSidebar({
                       }
                       className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                     >
-                      <Link href={href}>
+                      <Link href={href} className="flex items-center gap-2">
                         {name}
+                        {badge && <StatusBadge label={badge} />}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
