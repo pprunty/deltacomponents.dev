@@ -85,15 +85,16 @@ export const Sidebar = memo(function Sidebar({
             <Link
               href={href}
               onClick={() => handleItemClick(href)}
-              className={`rounded-lg px-4 py-3 transition-colors duration-300 ${
+              className={`group relative rounded-lg px-4 py-3 transition-colors duration-300 ${
                 isActive
-                  ? "text-accent-foreground hover:bg-accent hover:text-accent-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-              } `}
+                  ? "text-accent-foreground"
+                  : "text-muted-foreground"
+              }`}
             >
+              <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
               {Icon && (
                 <Icon
-                  className="h-6.5 w-6.5"
+                  className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground"
                   weight={isActive ? "fill" : "regular"}
                 />
               )}
@@ -105,7 +106,8 @@ export const Sidebar = memo(function Sidebar({
               <TooltipTrigger asChild>{linkElement}</TooltipTrigger>
               <TooltipContent
                 side="right"
-                className="[&_.bg-foreground.fill-foreground]:hidden"
+                sideOffset={2}
+                className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
               >
                 {label}
               </TooltipContent>
@@ -121,9 +123,10 @@ export const Sidebar = memo(function Sidebar({
             const buttonElement = (
               <button
                 onClick={onCTAClick}
-                className="bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-lg px-4 py-3 transition-colors duration-300"
+                className="group relative bg-muted text-muted-foreground rounded-lg px-4 py-3 transition-colors duration-300"
               >
-                <Plus className="h-6.5 w-6.5" weight="regular" />
+                <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
+                <Plus className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground" weight="regular" />
               </button>
             )
 
@@ -132,7 +135,8 @@ export const Sidebar = memo(function Sidebar({
                 <TooltipTrigger asChild>{buttonElement}</TooltipTrigger>
                 <TooltipContent
                   side="right"
-                  className="[&_.bg-foreground.fill-foreground]:hidden"
+                  sideOffset={2}
+                  className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
                 >
                   Add
                 </TooltipContent>
@@ -148,15 +152,16 @@ export const Sidebar = memo(function Sidebar({
             <Link
               href={href}
               onClick={() => handleItemClick(href)}
-              className={`rounded-lg px-4 py-3 transition-colors duration-300 ${
+              className={`group relative rounded-lg px-4 py-3 transition-colors duration-300 ${
                 isActive
-                  ? "text-accent-foreground hover:bg-accent hover:text-accent-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-              } `}
+                  ? "text-accent-foreground"
+                  : "text-muted-foreground"
+              }`}
             >
+              <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
               {Icon && (
                 <Icon
-                  className="h-6.5 w-6.5"
+                  className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground"
                   weight={isActive ? "fill" : "regular"}
                 />
               )}
@@ -168,7 +173,8 @@ export const Sidebar = memo(function Sidebar({
               <TooltipTrigger asChild>{linkElement}</TooltipTrigger>
               <TooltipContent
                 side="right"
-                className="[&_.bg-foreground.fill-foreground]:hidden"
+                sideOffset={2}
+                className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
               >
                 {label}
               </TooltipContent>

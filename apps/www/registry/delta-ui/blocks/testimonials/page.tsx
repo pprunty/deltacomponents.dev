@@ -8,7 +8,7 @@ export default function TestimonialsPage() {
       <div className="mx-auto max-w-7xl p-6">
         <div className="space-y-8">
           <div className="space-y-4 text-center">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               What our customers are saying
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg">

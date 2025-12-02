@@ -17,7 +17,7 @@ import {
   TabsTrigger,
 } from "@/registry/delta-ui/ui/tabs"
 
-;(typeof global !== "undefined" ? global : window).Prism = Prism
+  ; (typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-cpp")
 require("prismjs/components/prism-python")
 require("prismjs/components/prism-bash")
@@ -173,7 +173,7 @@ interface CodeBlockProps {
     light: PrismTheme
     dark: PrismTheme
   }
-  
+
   // Background options
   useThemeBackground?: boolean // When true, uses the JSON theme background; when false, uses bg-surface
 
@@ -271,7 +271,7 @@ export function CodeBlock({
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
-          <div 
+          <div
             className={cn(
               "flex items-center justify-between border-b px-3 py-1",
               !useThemeBackground && "bg-surface"
@@ -279,8 +279,8 @@ export function CodeBlock({
             style={
               useThemeBackground
                 ? {
-                    backgroundColor: selectedTheme.plain?.backgroundColor,
-                  }
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                }
                 : undefined
             }
           >
@@ -293,7 +293,7 @@ export function CodeBlock({
                   <TabsTrigger
                     key={key}
                     value={key}
-                    className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                    className="h-7 border border-transparent rounded-sm pt-0.5 data-[state=active]:border-border data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                   >
                     {key}
                   </TabsTrigger>
@@ -317,8 +317,8 @@ export function CodeBlock({
                   style={
                     useThemeBackground
                       ? {
-                          backgroundColor: selectedTheme.plain?.backgroundColor,
-                        }
+                        backgroundColor: selectedTheme.plain?.backgroundColor,
+                      }
                       : undefined
                   }
                 >
@@ -338,8 +338,8 @@ export function CodeBlock({
                         className={`${highlightClassName} w-full overflow-x-auto px-4 font-mono text-sm leading-relaxed font-medium`}
                         style={{
                           ...style,
-                          backgroundColor: useThemeBackground 
-                            ? selectedTheme.plain?.backgroundColor 
+                          backgroundColor: useThemeBackground
+                            ? selectedTheme.plain?.backgroundColor
                             : 'transparent',
                           fontSize: className?.includes("text-lg")
                             ? "1.125rem"
@@ -377,7 +377,7 @@ export function CodeBlock({
         )}
       >
         {filename && (
-          <div 
+          <div
             className={cn(
               "flex items-center justify-between border-b",
               !useThemeBackground && "bg-surface"
@@ -385,8 +385,8 @@ export function CodeBlock({
             style={
               useThemeBackground
                 ? {
-                    backgroundColor: selectedTheme.plain?.backgroundColor,
-                  }
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                }
                 : undefined
             }
           >
@@ -409,13 +409,13 @@ export function CodeBlock({
           style={
             useThemeBackground
               ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                }
+                backgroundColor: selectedTheme.plain?.backgroundColor,
+              }
               : undefined
           }
         >
           {!filename && (
-            <div className="absolute top-4 right-3">
+            <div className="absolute top-1 right-1">
               <CopyAction value={actualCode} tooltip="Copy code" />
             </div>
           )}
@@ -436,8 +436,8 @@ export function CodeBlock({
                 className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm leading-relaxed font-medium`}
                 style={{
                   ...style,
-                  backgroundColor: useThemeBackground 
-                    ? selectedTheme.plain?.backgroundColor 
+                  backgroundColor: useThemeBackground
+                    ? selectedTheme.plain?.backgroundColor
                     : 'transparent',
                   fontSize: className?.includes("text-lg")
                     ? "1.125rem"
@@ -448,7 +448,7 @@ export function CodeBlock({
                   scrollbarColor:
                     selectedTheme.plain?.backgroundColor?.toLowerCase() ===
                       "#ffffff" ||
-                    selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                      selectedTheme.plain?.backgroundColor === "#FAFAFA"
                       ? "#d1d5db transparent"
                       : "#4b5563 transparent",
                 }}
@@ -466,7 +466,7 @@ export function CodeBlock({
                           color:
                             selectedTheme.plain?.backgroundColor ===
                               "#FFFFFF" ||
-                            selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                              selectedTheme.plain?.backgroundColor === "#FAFAFA"
                               ? "#999999"
                               : "#757575",
                           minWidth: "1.5rem",

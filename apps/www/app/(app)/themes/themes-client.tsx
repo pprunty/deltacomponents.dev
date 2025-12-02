@@ -32,7 +32,7 @@ export function ThemesPageClient() {
           . Customize your app&apos;s appearance.
         </PageHeaderDescription>
       </PageHeader>
-      <div className="container-wrapper section-soft flex-1 md:py-12">
+      <div className="container-wrapper flex-1 md:py-12">
         <div className="container">
           <div className="mb-6">
             <Button onClick={handleResetToDefault} variant="outline">

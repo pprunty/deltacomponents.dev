@@ -1,10 +1,10 @@
 /* Import individual theme files */
 @import './themes/default.css';
 @import './themes/dublin.css';
-@import './themes/clare.css';
 @import './themes/kerry.css';
 @import './themes/galway.css';
 @import './themes/kilkenny.css';
+@import './themes/wexford.css';
 
 .theme-default .theme-container {
   --chart-1: var(--color-blue-300);

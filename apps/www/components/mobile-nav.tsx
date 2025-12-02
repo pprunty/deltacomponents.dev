@@ -38,7 +38,7 @@ export function MobileNav({
 }) {
   const [open, setOpen] = React.useState(false)
   const [pendingHref, setPendingHref] = React.useState<string | null>(null)
-  
+
   const pathname = normalizePath(usePathname())
 
   React.useEffect(() => {
@@ -58,10 +58,13 @@ export function MobileNav({
         <Button
           variant="ghost"
           className={cn(
-            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "group relative h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent transition-all duration-150 ease-out active:scale-95 active:opacity-70",
             className
           )}
         >
+          {/* Extended invisible touch zone */}
+          <div className="absolute -inset-3 md:-inset-2" />
+          
           <div className="relative flex h-8 w-4 items-center justify-center">
             <div className="relative size-4">
               <span
@@ -119,7 +122,7 @@ export function MobileNav({
                 .map((item, index) => {
                   const normalizedItemHref = normalizePath(item.href)
                   const isActive = normalizedItemHref === pathname
-                  
+
                   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
                     if (item.disabled) {
                       event.preventDefault()
@@ -171,13 +174,13 @@ export function MobileNav({
                         // Check for component-specific metadata
                         const componentName = item.url?.split('/').pop()
                         const componentMeta = componentName ? Index[componentName]?.meta : null
-                        
+
                         if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
                           const isActive = normalizePath(item.url) === pathname
-                          
+
                           // Check if component should be disabled in production (runtime evaluation)
                           const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
-                          
+
                           if (isComponentDisabled) {
                             return (
                               <div
@@ -194,7 +197,7 @@ export function MobileNav({
                               </div>
                             )
                           }
-                          
+
                           const handleClick = () => {
                             const targetHref = normalizePath(item.url)
                             if (targetHref === pathname) {
@@ -248,7 +251,7 @@ export function MobileNav({
                             { href: "/blocks/featured#perspective-carousel", name: "Perspective Carousel" }
                           ].map((blockItem) => {
                             const isActive = normalizePath(blockItem.href) === pathname
-                            
+
                             const handleClick = () => {
                               const targetHref = normalizePath(blockItem.href)
                               if (targetHref === pathname) {

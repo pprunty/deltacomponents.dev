@@ -103,31 +103,31 @@ export const mdxComponents = {
   ),
   a: ({ className, ...props }: React.ComponentProps<"a">) => (
     <a
-      className={cn("font-medium underline underline-offset-4", className)}
+      className={cn("font-medium underline text-foreground underline-offset-4", className)}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-relaxed [&:not(:first-child)]:mt-6 text-foreground", className)}
       {...props}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium", className)} {...props} />
+    <strong className={cn("font-medium text-foreground", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc text-foreground", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal text-foreground", className)} {...props} />
   ),
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      className={cn("mt-6 border-l-2 pl-6 italic text-foreground", className)}
       {...props}
     />
   ),
@@ -141,7 +141,7 @@ export const mdxComponents = {
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <div className="border-border my-6 w-full overflow-y-auto rounded-sm border">
-      <table className={cn("relative w-full text-sm", className)} {...props} />
+      <table className={cn("relative w-full text-sm text-foreground", className)} {...props} />
     </div>
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (

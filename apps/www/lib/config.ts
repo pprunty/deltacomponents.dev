@@ -69,10 +69,10 @@ export const siteConfig = {
 }
 
 export const THEME_META_COLORS = {
-  default: { light: "#fefefe", dark: "#0a0a0a" },
+  default: { light: "#ffffff", dark: "#252525" },
   dublin: { light: "#f5f6eb", dark: "#0b0d6a" },
-  clare: { light: "#faf4ed", dark: "#303446" },
-  kerry: { light: "#f9f9f9", dark: "#0c1406" },
-  galway: { light: "#faf9f5", dark: "#262624" },
-  kilkenny: { light: "#ffffff", dark: "#101010" },
+  kerry: { light: "#fcfcfc", dark: "#1f311f" },
+  galway: { light: "#faf9f5", dark: "#444240" },
+  kilkenny: { light: "#ffffff", dark: "#161616" },
+  wexford: { light: "#f8eec9", dark: "#282828" },
 }

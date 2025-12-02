@@ -33,7 +33,7 @@ export function ThemeCard({ theme }: ThemeCardProps) {
           <Button size="sm" className="flex-1" onClick={handleTryTheme}>
             Try it out
           </Button>
-          <ThemeCodeDialog themeName={theme.name} themeCSS={theme.css} />
+          <ThemeCodeDialog themeName={theme.name} themeValue={theme.value} />
         </div>
       </div>
     </div>

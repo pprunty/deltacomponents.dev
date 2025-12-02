@@ -63,8 +63,8 @@ html[data-theme="dublin"].dark {
   --popover-foreground: #ffffff;
   --primary: #f6f7eb;
   --primary-foreground: #181a4e;
-  --secondary: #ffffff;
-  --secondary-foreground: #0b0d6a;
+  --secondary: #2e32b7;
+  --secondary-foreground: #f6f7eb;
   --muted: #0a0c56;
   --muted-foreground: #c8c9bd;
   --accent: #2e32b7;

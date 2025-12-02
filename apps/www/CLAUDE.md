@@ -195,21 +195,21 @@ To create a new theme (e.g., a Claude-inspired theme named after an Irish county
    ]
    ```
 
-5. **Add Meta Theme Colors**: Generate hex values and update `lib/config.ts`
-   - Update `scripts/oklch_to_hex.py` with new theme OKLCH values
-   - Run: `python3 scripts/oklch_to_hex.py`
-   - Add hex values to `THEME_META_COLORS`:
+5. **Add Meta Theme Colors**: Update `lib/config.ts`
+   - Add hex values to `THEME_META_COLORS` (extracted from your theme's background colors):
    ```typescript
    export const THEME_META_COLORS = {
      // ... existing themes
-     [countyName]: { light: "#fbf7f5", dark: "#03030a" }
+     [countyName]: { light: "#background-color-hex", dark: "#dark-background-color-hex" }
    }
    ```
+   **IMPORTANT**: This step is required to prevent theme flickering on page load. The meta theme colors must match your theme's background colors.
 
 6. **Test Theme**: 
    - Start dev server: `pnpm dev`
    - Navigate to themes page
    - Verify theme appears in selector and applies correctly
+   - Test "Try it out" button works without flickering
 
 ### Theme Architecture
 
@@ -218,6 +218,18 @@ To create a new theme (e.g., a Claude-inspired theme named after an Irish county
 - **Meta theme-color**: Automatically updates mobile browser theme color
 - **Light/Dark modes**: Each theme supports both modes
 - **Component inheritance**: All shadcn/ui components automatically inherit theme variables
+
+### Critical Requirements for Theme Integration
+
+1. **Theme Selector Registration**: Always add new themes to `SPECIAL_THEMES` array in `components/theme-selector.tsx`
+2. **Meta Theme Colors**: Must add theme to `THEME_META_COLORS` in `lib/config.ts` to prevent flickering
+3. **CSS Import**: Ensure theme CSS file is imported in `styles/themes.css`
+4. **Theme Data**: Add theme object to `THEME_DATA` array in `lib/theme-data.ts` for theme grid display
+
+**Common Issues:**
+- **Flickering**: Usually caused by missing meta theme colors in `lib/config.ts`
+- **Theme not switching**: Theme not added to theme selector's `SPECIAL_THEMES` array
+- **Theme not appearing in grid**: Theme not added to `THEME_DATA` array
 
 ## Adding New Component Demos
 

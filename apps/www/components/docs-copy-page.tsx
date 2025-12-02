@@ -4,6 +4,7 @@ import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { siteConfig } from "@/lib/config"
+import { cn } from "@/lib/utils"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   DropdownMenu,
@@ -238,10 +239,31 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         <Button
           variant="secondary"
           size="sm"
-          className="h-8 shadow-none md:h-7 md:text-[0.8rem]"
+          className="group h-8 shadow-none transition-colors duration-300 ease-out active:scale-[0.97] will-change-transform md:h-7 md:text-[0.8rem]"
           onClick={() => copyToClipboard(page)}
         >
-          {isCopied ? <IconCheck /> : <IconCopy />}
+          <div className="relative">
+            <div
+              className={cn(
+                "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform, opacity, filter]",
+                isCopied
+                  ? "scale-100 opacity-100 blur-0"
+                  : "blur-xs scale-[0.25] opacity-0"
+              )}
+            >
+              <IconCheck />
+            </div>
+            <div
+              className={cn(
+                "transition-[transform, opacity, filter] duration-300 ease-in-out will-change-[transform, opacity, filter]",
+                isCopied
+                  ? "blur-xs scale-[0.25] opacity-0"
+                  : "scale-100 opacity-100 blur-0"
+              )}
+            >
+              <IconCopy />
+            </div>
+          </div>
           Copy Page
         </Button>
         <DropdownMenu>

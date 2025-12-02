@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
@@ -13,12 +14,38 @@ import {
 
 interface ThemeCodeDialogProps {
   themeName: string
-  themeCSS: string
+  themeValue: string
 }
 
-export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
+export function ThemeCodeDialog({ themeName, themeValue }: ThemeCodeDialogProps) {
+  const [themeCSS, setThemeCSS] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  
+  const fetchThemeCSS = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch(`/api/themes/${themeValue}`)
+      if (response.ok) {
+        const data = await response.json()
+        setThemeCSS(data.css)
+      } else {
+        setThemeCSS('/* Theme CSS could not be loaded */')
+      }
+    } catch (error) {
+      console.error('Failed to fetch theme CSS:', error)
+      setThemeCSS('/* Theme CSS could not be loaded */')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  
+  const handleOpenChange = (open: boolean) => {
+    if (open && !themeCSS) {
+      fetchThemeCSS()
+    }
+  }
   return (
-    <Dialog>
+    <Dialog onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button size="sm" variant="outline" className="flex-1">
           &#123; &#125; Code
@@ -35,10 +62,10 @@ export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
           <div>
             <h4 className="mb-2 text-sm font-medium">Install using CLI</h4>
             <CodeBlock
-              npm={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
-              yarn={`yarn dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
-              pnpm={`pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
-              bun={`bunx shadcn@latest add https://deltacomponents.dev/r/themes/${themeName.toLowerCase()}.json`}
+              npm={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
+              yarn={`yarn dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
+              pnpm={`pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
+              bun={`bunx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               defaultPackageManager="npm"
             />
           </div>
@@ -48,7 +75,7 @@ export function ThemeCodeDialog({ themeName, themeCSS }: ThemeCodeDialogProps) {
               theme.
             </h4>
             <CodeBlock
-              code={themeCSS}
+              code={isLoading ? '/* Loading theme CSS... */' : themeCSS}
               language="css"
               className="max-h-[300px] min-w-0"
               filename="globals.css"
