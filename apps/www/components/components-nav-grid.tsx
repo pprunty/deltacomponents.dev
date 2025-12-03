@@ -18,7 +18,7 @@ function NavCard({
   className,
 }: NavCardProps) {
   const baseClasses =
-    "flex w-full flex-col items-start rounded-lg transition-colors p-4 text-sm"
+    "flex w-full flex-col items-start rounded-lg transition-colors p-4"
   const variantClasses = {
     default: "bg-muted text-foreground hover:hover:bg-muted/80",
     muted: "bg-muted text-foreground hover:hover:bg-muted/80",
@@ -29,8 +29,8 @@ function NavCard({
       href={href}
       className={cn(baseClasses, variantClasses[variant], className)}
     >
-      <div className="font-medium">{title}</div>
-      <div className="text-muted-foreground">
+      <div className="font-medium text-base">{title}</div>
+      <div className="text-muted-foreground text-base">
         <span className="leading-relaxed">{description}</span>
       </div>
     </Link>
