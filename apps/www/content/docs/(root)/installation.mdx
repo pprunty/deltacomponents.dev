@@ -1,0 +1,34 @@
+---
+title: Installation
+description: Getting started with Delta Components UI
+---
+
+<Video comingSoon={true} title="Installation Tutorial" />
+
+## Prerequisites
+
+Before installing Delta Components UI, make sure your environment meets the following requirements:
+
+- [Node.js](https://nodejs.org/) version 18 or later
+- A [Next.js](https://nextjs.org/) project
+- [shadcn/ui](https://ui.shadcn.com/) setup in your project. If you don't have it setup, running any install command will set it up for you.
+
+## Installation
+
+Installing Delta Components UI components is straightforward using the standard shadcn CLI with our custom registry URL.
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/<component>.json
+```
+
+For example, to install the admonition component:
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/admonition.json
+```
+
+The CLI will download the component's code and integrate it into your project's directory (usually under your components folder).
+
+After running the command, you should see a confirmation in your terminal that the files were added. You can then proceed to use the component in your code.
+
+If you prefer, you can follow the [video tutorial](/docs/installation#video-tutorial) to get setup.

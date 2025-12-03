@@ -1,4 +1,9 @@
 {
   "title": "Get Started",
-  "pages": ["index", "setup", "usage", "troubleshooting"]
+  "pages": [
+    "index",
+    "components",
+    "installation",
+    "usage"
+  ]
 }

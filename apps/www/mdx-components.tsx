@@ -11,7 +11,7 @@ import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsNavGrid } from "@/components/components-nav-grid"
-import { CopyButton } from "@/components/copy-button"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { EnhancedVideo, EnhancedVideoLarge } from "@/components/enhanced-video"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { Installation } from "@/components/installation"
@@ -109,25 +109,25 @@ export const mdxComponents = {
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6 text-foreground", className)}
+      className={cn("leading-relaxed [&:not(:first-child)]:mt-6 text-foreground text-[17px]", className)}
       {...props}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium text-foreground", className)} {...props} />
+    <strong className={cn("font-medium text-foreground text-[17px]", className)} {...props} />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc text-foreground", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc text-foreground text-[17px]", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal text-foreground", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal text-foreground text-[17px]", className)} {...props} />
   ),
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
-    <li className={cn("mt-2", className)} {...props} />
+    <li className={cn("mt-2 text-[17px]", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic text-foreground", className)}
+      className={cn("mt-6 border-l-2 pl-6 italic text-foreground text-[17px]", className)}
       {...props}
     />
   ),
@@ -256,7 +256,7 @@ export const mdxComponents = {
     // Default codeblock.
     return (
       <>
-        {__raw__ && <CopyButton value={__raw__} src={__src__} />}
+        {__raw__ && <CopyButton value={__raw__} src={__src__} className="absolute top-2 right-2 z-10" />}
         <code {...props} />
       </>
     )
@@ -361,7 +361,7 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Video: (props: React.ComponentProps<"video">) => (
+  Video: (props: React.ComponentProps<"video"> & { comingSoon?: boolean; title?: string }) => (
     <EnhancedVideoLarge {...props} />
   ),
 }

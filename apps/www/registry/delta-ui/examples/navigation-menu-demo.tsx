@@ -57,9 +57,9 @@ const overviewLinks = [
     href: "/docs",
   },
   {
-    title: "Setup",
+    title: "Installation",
     description: "Learn how to set up Delta Components in your project.",
-    href: "/docs/setup",
+    href: "/docs/installation",
   },
   {
     title: "Usage",

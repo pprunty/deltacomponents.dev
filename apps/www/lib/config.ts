@@ -4,6 +4,7 @@ export const siteConfig = {
   ogImage: "https://deltacomponents.dev/og.jpg",
   description:
     "A collection of Open Source components that make the difference in your user experience.",
+  showComponentBetaBadges: true,
   keywords: [
     "Next.js",
     "React",

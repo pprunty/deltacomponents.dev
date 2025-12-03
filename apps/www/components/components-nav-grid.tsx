@@ -41,7 +41,7 @@ const navigationItems = [
   {
     href: "/docs/components",
     title: "UI Components",
-    description: "Basic UI components like buttons, inputs, and cards",
+    description: "Discover UI components like focusable images, animated tabs, marquees, and more ",
     variant: "muted" as const,
   },
   {
@@ -53,21 +53,21 @@ const navigationItems = [
   },
   {
     href: "/blocks/landing-page",
-    title: "Landing Page",
-    description: "Pre-built landing page sections and complete layouts",
+    title: "Landing Page Components",
+    description: "Pre-built components for landing pages",
     variant: "muted" as const,
   },
   {
     href: "/blocks",
     title: "Blocks",
-    description: "All pre-built page sections and complete layouts",
+    description: "Pre-built blocks for different page and layout types",
     variant: "muted" as const,
   },
 ]
 
 export function ComponentsNavGrid() {
   return (
-    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+    <div className="pt-8 grid gap-4 sm:grid-cols-2">
       {navigationItems.map((item) => (
         <NavCard
           key={item.href}

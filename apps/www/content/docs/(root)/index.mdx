@@ -1,30 +1,50 @@
 ---
-title: Delta Components UI
+title: Introduction
 description: Welcome to Delta Components
 ---
 
 <Video
-  src="https://github.com/mediaelement/mediaelement-files/raw/master/big_buck_bunny.mp4"
-  autoPlay
-  playsInline
+  comingSoon={true}
+  title="Launch"
 />
 
-Delta Components UI is a component library and custom registry built on top of [shadcn/ui](https://ui.shadcn.com/) to help you build multimodal agentic experiences faster. It provides pre-built components for agents, transcription, audio & more.
+Delta Components is a collection of high-performance, thoughtfully designed, and ready-to-use components built on top of [shadcn/ui](https://ui.shadcn.com/). 
 
-Components are available via the `shadcn` CLI with our registry URL.
 
-```bash __pnpm__="pnpm dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json" __npm__="npm dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json" __yarn__="yarn dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json" __bun__="bun dlx shadcn@latest add https://deltacomponents.dev/r/<component>.json"
-npx shadcn@latest add https://deltacomponents.dev/r/<component>.json
-```
+## Why?
 
-For example, to install the [Admonition](/docs/components/admonition) component, you can run:
+Since the release of [shadcn/ui](https://ui.shadcn.com/), I've been blown away by the quality of the foundational components and what's possible to build with it. 
 
-```bash __pnpm__="pnpm dlx shadcn@latest add https://deltacomponents.dev/r/admonition.json" __npm__="npm dlx shadcn@latest add https://deltacomponents.dev/r/admonition.json" __yarn__="yarn dlx shadcn@latest add https://deltacomponents.dev/r/admonition.json" __bun__="bun dlx shadcn@latest add https://deltacomponents.dev/r/admonition.json"
-npx shadcn@latest add https://deltacomponents.dev/r/admonition.json
-```
+However, sometimes I've wanted *more* from my user interfaces and found myself returning to certain components I build in past projects that were not part of the foundational registry. 
 
-Here are some basic examples of what you can achieve using components from Delta Components UI.
+That's where Delta Components comes in. Since shadcn/ui is not only a component library, it is [how you build your component library](https://ui.shadcn.com/docs), it made sense for me to create a registry of components I've found useful over the years using the same copy/pate shadcn framework. 
 
-You can explore more examples [here](/blocks) or view the [source code](https://github.com/pprunty/deltacomponents.dev) for all components on GitHub.
+Like shadcn/ui, Delta Components hands you the actual component code. Meaning, you have full control to customize and extend the components to your needs. This means:
+
+- Full Transparency: You see exactly how each component is built.
+- Easy Customization: Modify any part of a component to fit your design and functionality requirements.
+- AI Integration: Access to the code makes it straightforward for LLMs to read, understand, and even improve your components.
+
+Whilst curating components in the registry, I'll endeavour to only include components that I believe are of high quality and capable of making a difference in your product. These can be big or small, ranging from a tidy 
+[admonition](/docs/components/admonition) to a full-featured LLM
+[chat](/docs/components/chat) interface. 
+
+If you need a button, dialog, or dropdown, you can use the [shadcn/ui](https://ui.shadcn.com/) registry. I will only include such components if they are a significant upgrade from the shadcn/ui version, or provide a UX that is not possible with the shadcn/ui version.
+
+## How Should I Use Delta Components?
+
+You should use shadcn/ui for foundational components, and Delta Components for when you need something extra. Both are built on top of the same framework, so you can use them together.
+
+## Getting Started
+
+To start using the components in your project, check out the [Installation](/docs/installation) guide.
+
+## Open Source and Free
+
+Delta Components is open source and free to use. You can use it for personal or commercial projects.
+
+Contributions are welcome! If you have any ideas or suggestions, please feel free to [open an issue](https://github.com/pprunty/deltacomponents.dev/issues/new/choose) or [submit a pull request](https://github.com/pprunty/deltacomponents.dev/pulls). Please see the [contribution guide](https://github.com/pprunty/deltacomponents.dev/blob/main/CONTRIBUTING.md) for more information.
+
+## Discover What's Possible 
 
 <ComponentsNavGrid />

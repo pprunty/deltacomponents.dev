@@ -16,13 +16,13 @@ import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Delta Components UI"
 const description =
-  "A high-performance library of UX-driven components designed to be customized, extended, and built upon. Delta Components is a curated collection crafted to make a meaningful difference in your product."
+  "A curated collection of components build on top of shadcn/ui and crafted to make a difference in your product."
 
 export const dynamic = "force-static"
 export const revalidate = false
 
 export const metadata: Metadata = {
-  title,
+  title: "The Difference in your User Experience",
   description,
   openGraph: {
     images: [

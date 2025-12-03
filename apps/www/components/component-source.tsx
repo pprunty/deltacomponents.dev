@@ -6,7 +6,7 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { CopyButton } from "@/components/copy-button"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 
 export async function ComponentSource({
@@ -94,7 +94,7 @@ function ComponentCode({
           {title}
         </figcaption>
       )}
-      <CopyButton value={code} />
+      <CopyButton value={code} className="absolute top-2 right-2 z-10" />
       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </figure>
   )

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { source } from "@/lib/source"
+import { siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
@@ -221,7 +222,7 @@ export function MobileNav({
                               {componentMeta?.badge ? (
                                 <StatusBadge label={componentMeta.badge} />
                               ) : (
-                                <StatusBadge label="beta" />
+                                siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
                               )}
                               {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                 <StatusBadge label="hidden" />
@@ -272,7 +273,7 @@ export function MobileNav({
                                 )}
                               >
                                 {blockItem.name}
-                                <StatusBadge label="beta" />
+                                {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
                               </Link>
                             )
                           })}

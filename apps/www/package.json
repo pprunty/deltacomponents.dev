@@ -16,6 +16,7 @@
     "themes:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-themes.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
+    "pwa:generate": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-pwa-icons.ts",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {

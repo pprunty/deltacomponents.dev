@@ -1,61 +1,93 @@
 "use client"
 
-import { useState } from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
-import { CopyButton } from "./copy-button"
+import * as React from "react"
+import { IconTerminal } from "@tabler/icons-react"
 
-interface CodeBlockCommandProps {
-  __npm__: string
-  __yarn__: string
-  __pnpm__: string
-  __bun__: string
-}
+import { useConfig } from "@/hooks/use-config"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 export function CodeBlockCommand({
   __npm__,
   __yarn__,
   __pnpm__,
   __bun__,
-}: CodeBlockCommandProps) {
-  const [activeTab, setActiveTab] = useState("bun") // Default to bun since this project uses bun
+}: React.ComponentProps<"pre"> & {
+  __npm__?: string
+  __yarn__?: string
+  __pnpm__?: string
+  __bun__?: string
+}) {
+  const [config, setConfig] = useConfig()
 
-  const commands = {
-    npm: __npm__,
-    yarn: __yarn__,
-    pnpm: __pnpm__,
-    bun: __bun__,
-  }
+  const packageManager = config.packageManager || "pnpm"
+  const tabs = React.useMemo(() => {
+    return {
+      pnpm: __pnpm__,
+      npm: __npm__,
+      yarn: __yarn__,
+      bun: __bun__,
+    }
+  }, [__npm__, __pnpm__, __yarn__, __bun__])
+
+  const currentCommand = tabs[packageManager] || ""
 
   return (
-    <div className="relative border border-border rounded-lg overflow-hidden w-full max-w-full">
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <div className="flex items-center justify-between px-4 py-2 bg-muted/40 border-b border-border">
-          <TabsList className="h-8 bg-background/50">
-            <TabsTrigger value="bun" className="text-sm font-medium">
-              bun
-            </TabsTrigger>
-            <TabsTrigger value="npm" className="text-sm font-medium">
-              npm
-            </TabsTrigger>
-            <TabsTrigger value="yarn" className="text-sm font-medium">
-              yarn
-            </TabsTrigger>
-            <TabsTrigger value="pnpm" className="text-sm font-medium">
-              pnpm
-            </TabsTrigger>
+    <div className="overflow-x-auto">
+      <Tabs
+        value={packageManager}
+        className="gap-0"
+        onValueChange={(value) => {
+          setConfig({
+            ...config,
+            packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
+          })
+        }}
+      >
+        <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
+          <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
+            <IconTerminal className="text-code size-3" />
+          </div>
+          <TabsList className="rounded-none bg-transparent p-0">
+            {Object.entries(tabs).map(([key]) => {
+              return (
+                <TabsTrigger
+                  key={key}
+                  value={key}
+                  className="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
+                >
+                  {key}
+                </TabsTrigger>
+              )
+            })}
           </TabsList>
-          <CopyButton value={commands[activeTab as keyof typeof commands]} className="relative right-0 top-0 text-muted-foreground hover:text-foreground" />
         </div>
-        {Object.entries(commands).map(([key, command]) => (
-          <TabsContent key={key} value={key} className="mt-0">
-            <pre className="overflow-x-auto p-4 bg-card text-card-foreground border-0 rounded-none min-w-0 w-full max-w-full">
-              <code className="font-mono text-sm">{command}</code>
-            </pre>
-          </TabsContent>
-        ))}
+        <div className="no-scrollbar overflow-x-auto">
+          {Object.entries(tabs).map(([key, value]) => {
+            return (
+              <TabsContent key={key} value={key} className="mt-0 px-4 py-3.5">
+                <pre>
+                  <code
+                    className="relative font-mono text-sm leading-none"
+                    data-language="bash"
+                  >
+                    {value}
+                  </code>
+                </pre>
+              </TabsContent>
+            )
+          })}
+        </div>
       </Tabs>
+      <CopyButton 
+        value={currentCommand}
+        className="absolute top-2 right-2 z-10 opacity-70"
+      />
     </div>
   )
 }
-
-CodeBlockCommand.displayName = "CodeBlockCommand"

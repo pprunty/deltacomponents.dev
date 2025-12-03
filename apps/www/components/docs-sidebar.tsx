@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { source } from "@/lib/source"
+import { siteConfig } from "@/lib/config"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
 import {
@@ -20,13 +21,9 @@ import {
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
-  {
-    name: "Components",
-    href: "/docs/components",
-  },
-  { name: "Setup", href: "/docs/setup" },
+  { name: "Components", href: "/docs/components" },
+  { name: "Installation", href: "/docs/installation" },
   { name: "Usage", href: "/docs/usage" },
-  { name: "Troubleshooting", href: "/docs/troubleshooting" },
   { name: "llms.txt", href: "/llms.txt", badge: "new" },
 ]
 
@@ -161,7 +158,7 @@ export function DocsSidebar({
                                 {componentMeta?.badge ? (
                                   <StatusBadge label={componentMeta.badge} />
                                 ) : (
-                                  <StatusBadge label="beta" />
+                                  siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
                                 )}
                                 {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                   <StatusBadge label="hidden" />
@@ -198,7 +195,7 @@ export function DocsSidebar({
                         className="flex items-center gap-2"
                       >
                         {item.name}
-                        <StatusBadge label="beta" />
+                        {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
