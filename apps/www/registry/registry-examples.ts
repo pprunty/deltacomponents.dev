@@ -315,6 +315,40 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "tabs-no-background-demo",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [
+      {
+        path: "examples/tabs-no-background-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tabs-sizes-demo",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [
+      {
+        path: "examples/tabs-sizes-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tabs-with-icons-demo",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/tabs-with-icons-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "card-deck-yugioh-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],

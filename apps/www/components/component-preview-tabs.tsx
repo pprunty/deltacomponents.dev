@@ -41,9 +41,11 @@ export function ComponentPreviewTabs({
         value={tab}
         onValueChange={setTab}
         className="w-full"
+        variant="underline"
+        size="lg"
       >
         {!hideCode && (
-          <TabsList variant="underline" className="mb-4 w-full" size="lg">
+          <TabsList className="mb-4 w-full">
             <TabsTrigger value="preview" className="font-medium">
               Preview
             </TabsTrigger>

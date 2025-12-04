@@ -918,6 +918,60 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "tabs-no-background-demo": {
+    name: "tabs-no-background-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [{
+      path: "registry/delta-ui/examples/tabs-no-background-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/tabs-no-background-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-sizes-demo": {
+    name: "tabs-sizes-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [{
+      path: "registry/delta-ui/examples/tabs-sizes-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/tabs-sizes-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-with-icons-demo": {
+    name: "tabs-with-icons-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs"],
+    files: [{
+      path: "registry/delta-ui/examples/tabs-with-icons-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/tabs-with-icons-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "card-deck-yugioh-demo": {
     name: "card-deck-yugioh-demo",
     description: "",

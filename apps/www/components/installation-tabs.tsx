@@ -11,12 +11,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/delta-ui/delta/tabs"
-import {
-  Tabs as PackageManagerTabs,
-  TabsContent as PackageManagerTabsContent,
-  TabsList as PackageManagerTabsList,
-  TabsTrigger as PackageManagerTabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
 
 interface InstallationTabsProps {
   name: string
@@ -40,8 +34,10 @@ export function InstallationTabs({
         value={tab}
         onValueChange={setTab}
         className="w-full"
+        variant="underline"
+        size="lg"
       >
-        <TabsList variant="underline" className="mb-4 w-full" size="lg">
+        <TabsList className="mb-4 w-full">
           <TabsTrigger value="cli" className="font-medium">
             CLI
           </TabsTrigger>
@@ -55,7 +51,7 @@ export function InstallationTabs({
             data-rehype-pretty-code-figure=""
             className="[&>pre]:max-h-96"
           >
-            <PackageManagerTabs
+            <Tabs
               value={packageManager}
               className="gap-0"
               onValueChange={(value) => {
@@ -69,28 +65,28 @@ export function InstallationTabs({
                 <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
                   <TerminalIcon className="text-code size-3" />
                 </div>
-                <PackageManagerTabsList className="rounded-none bg-transparent p-0">
+                <TabsList className="rounded-none bg-transparent p-0">
                   {["pnpm", "npm", "yarn", "bun"].map((pm) => (
-                    <PackageManagerTabsTrigger
+                    <TabsTrigger
                       key={pm}
                       value={pm}
                       className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                     >
                       {pm}
-                    </PackageManagerTabsTrigger>
+                    </TabsTrigger>
                   ))}
-                </PackageManagerTabsList>
+                </TabsList>
               </div>
               <div className="no-scrollbar overflow-x-auto">
                 {["pnpm", "npm", "yarn", "bun"].map((pm) => (
-                  <PackageManagerTabsContent key={pm} value={pm}>
+                  <TabsContent key={pm} value={pm}>
                     <pre className="no-scrollbar min-w-0 overflow-x-auto px-4 py-3 outline-none">
                       <code>{`${pm} dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`}</code>
                     </pre>
-                  </PackageManagerTabsContent>
+                  </TabsContent>
                 ))}
               </div>
-            </PackageManagerTabs>
+            </Tabs>
           </figure>
         </TabsContent>
 
@@ -103,7 +99,7 @@ export function InstallationTabs({
                   data-rehype-pretty-code-figure=""
                   className="mb-6 [&>pre]:max-h-96"
                 >
-                  <PackageManagerTabs
+                  <Tabs
                     value={packageManager}
                     className="gap-0"
                     onValueChange={(value) => {
@@ -121,28 +117,28 @@ export function InstallationTabs({
                       <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
                         <TerminalIcon className="text-code size-3" />
                       </div>
-                      <PackageManagerTabsList className="rounded-none bg-transparent p-0">
+                      <TabsList className="rounded-none bg-transparent p-0">
                         {["pnpm", "npm", "yarn", "bun"].map((pm) => (
-                          <PackageManagerTabsTrigger
+                          <TabsTrigger
                             key={pm}
                             value={pm}
                             className="data-[state=active]:border-primary h-7 rounded-none border-0 pt-0.5 data-[state=active]:border-b-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                           >
                             {pm}
-                          </PackageManagerTabsTrigger>
+                          </TabsTrigger>
                         ))}
-                      </PackageManagerTabsList>
+                      </TabsList>
                     </div>
                     <div className="no-scrollbar overflow-x-auto">
                       {["pnpm", "npm", "yarn", "bun"].map((pm) => (
-                        <PackageManagerTabsContent key={pm} value={pm}>
+                        <TabsContent key={pm} value={pm}>
                           <pre className="no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none">
                             <code>{`${pm} install ${dependencies.join(" ")}`}</code>
                           </pre>
-                        </PackageManagerTabsContent>
+                        </TabsContent>
                       ))}
                     </div>
-                  </PackageManagerTabs>
+                  </Tabs>
                 </figure>
               </>
             )}

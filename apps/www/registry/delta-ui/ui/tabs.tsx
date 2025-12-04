@@ -90,7 +90,9 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "relative inline-flex w-fit items-center justify-center",
+        "relative inline-flex w-fit items-center",
+        parentVariant === "default" && "justify-center",
+        parentVariant === "underline" && "justify-start",
         parentVariant === "default" &&
           "bg-muted text-muted-foreground rounded-[--radius] p-[3px]",
         parentVariant === "underline" && "border-b",

@@ -784,6 +784,48 @@
       ]
     },
     {
+      "name": "tabs-no-background-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/tabs-no-background-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tabs-sizes-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/tabs-sizes-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tabs-with-icons-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/tabs-with-icons-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "card-deck-yugioh-demo",
       "type": "registry:example",
       "registryDependencies": [

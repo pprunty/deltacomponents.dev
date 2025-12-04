@@ -1,5 +1,5 @@
 ---
-title: Animated Tabs
+title: Tabs
 description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
 status: beta
 ---
@@ -33,35 +33,64 @@ export default function Example() {
 
 ## Examples
 
-### Background Variants
+### Default Variant
+
+The default variant features a background container with an animated indicator that slides between tabs.
 
 <ComponentPreview name="tabs-background-demo" />
 
+### Underline Variant
+
+The underline variant displays tabs with an animated underline indicator, perfect for navigation and section switching.
+
+<ComponentPreview name="tabs-demo" />
+
+### No Background
+
+Remove the background from the default variant tabs for a cleaner, more minimal appearance.
+
+<ComponentPreview name="tabs-no-background-demo" />
+
+### Size Variants
+
+Tabs come in three sizes: `sm`, `default`, and `lg`. Choose the size that best fits your layout.
+
+<ComponentPreview name="tabs-sizes-demo" />
+
+### With Icons
+
+Enhance your tabs with icons for better visual communication and user experience.
+
+<ComponentPreview name="tabs-with-icons-demo" />
+
 ## API Reference
 
-**Tabs**
+### Tabs
 
-| Prop          | Type                       | Default      | Description                                                        |
-| ------------- | -------------------------- | ------------ | ------------------------------------------------------------------ |
-| defaultValue  | string                     | -            | The value of the tab that should be active when initially rendered |
-| value         | string                     | -            | The controlled value of the tab to activate                        |
-| onValueChange | function                   | -            | Event handler called when the value changes                        |
-| orientation   | "horizontal" \| "vertical" | "horizontal" | The orientation of the component                                   |
-| className     | string                     | -            | Additional CSS classes                                             |
+The root tabs component that provides context for all child components.
 
-**TabsList**
+| Prop          | Type                       | Default     | Description                                                        |
+| ------------- | -------------------------- | ----------- | ------------------------------------------------------------------ |
+| defaultValue  | string                     | -           | The value of the tab that should be active when initially rendered |
+| value         | string                     | -           | The controlled value of the tab to activate                        |
+| onValueChange | function                   | -           | Event handler called when the value changes                        |
+| variant       | "default" \| "underline"   | "default"   | Visual style variant of the tabs                                   |
+| size          | "sm" \| "default" \| "lg"  | "default"   | Size of the tabs                                                   |
+| className     | string                     | -           | Additional CSS classes                                             |
 
-| Prop                    | Type                      | Default   | Description                                  |
-| ----------------------- | ------------------------- | --------- | -------------------------------------------- |
-| className               | string                    | -         | Additional CSS classes                       |
-| showHoverEffect         | boolean                   | true      | Whether to show hover effect on tabs         |
-| showActiveIndicator     | boolean                   | true      | Whether to show active indicator (underline) |
-| activeIndicatorPosition | "top" \| "bottom"         | "bottom"  | Position of the active indicator             |
-| size                    | "sm" \| "md" \| "lg"      | "sm"      | Size of the tabs                             |
-| variant                 | "default" \| "underlined" | "default" | Visual variant of the tabs                   |
-| showBottomBorder        | boolean                   | false     | Whether to show bottom border                |
+### TabsList
 
-**TabsTrigger**
+Container for the tab triggers with animated indicator support.
+
+| Prop      | Type   | Default | Description            |
+| --------- | ------ | ------- | ---------------------- |
+| className | string | -       | Additional CSS classes |
+
+The `TabsList` component automatically inherits the `variant` and `size` from the parent `Tabs` component and positions tab triggers accordingly. For the underline variant, tabs align to the start; for the default variant, they're centered.
+
+### TabsTrigger
+
+Individual tab trigger button that activates a tab panel when clicked.
 
 | Prop      | Type    | Default | Description                                                |
 | --------- | ------- | ------- | ---------------------------------------------------------- |
@@ -69,9 +98,68 @@ export default function Example() {
 | disabled  | boolean | false   | When true, prevents the user from interacting with the tab |
 | className | string  | -       | Additional CSS classes                                     |
 
-**TabsContent**
+The trigger automatically displays the animated indicator when active. For the underline variant, the indicator appears as an animated underline; for the default variant, it appears as a background highlight.
 
-| Prop      | Type   | Default | Description                                               |
-| --------- | ------ | ------- | --------------------------------------------------------- |
-| value     | string | -       | A unique value that associates the content with a trigger |
-| className | string | -       | Additional CSS classes                                    |
+### TabsContent
+
+Content panel associated with a tab trigger.
+
+| Prop       | Type    | Default | Description                                               |
+| ---------- | ------- | ------- | --------------------------------------------------------- |
+| value      | string  | -       | A unique value that associates the content with a trigger |
+| forceMount | boolean | false   | Forces the content to always be mounted in the DOM        |
+| className  | string  | -       | Additional CSS classes                                    |
+
+Content panels use Framer Motion for smooth entrance animations. By default, content fades in with a subtle y-axis translation when activated.
+
+### TabsFromArray
+
+Utility component for rendering tabs from an array of tab items, useful when working with dynamic data.
+
+| Prop             | Type               | Default | Description                                     |
+| ---------------- | ------------------ | ------- | ----------------------------------------------- |
+| tabs             | TabItem[]          | -       | Array of tab items to render                    |
+| defaultValue     | string             | tabs[0] | Initial active tab value                        |
+| value            | string             | -       | Controlled active tab value                     |
+| onValueChange    | function           | -       | Event handler called when the value changes     |
+| className        | string             | -       | Additional CSS classes for Tabs                 |
+| listClassName    | string             | -       | Additional CSS classes for TabsList             |
+| triggerClassName | string             | -       | Additional CSS classes for each TabsTrigger     |
+| contentClassName | string             | -       | Additional CSS classes for each TabsContent     |
+| children         | (tab) => ReactNode | -       | Render function for tab content                 |
+
+**TabItem Type:**
+
+```ts
+interface TabItem {
+  id: string
+  label: React.ReactNode
+  icon?: React.ReactNode
+  disabled?: boolean
+}
+```
+
+## Features
+
+- **Animated Indicators**: Smooth spring animations powered by Framer Motion
+- **Two Variants**: Choose between default (background) and underline styles
+- **Three Sizes**: Small, default, and large options for different layouts
+- **Icon Support**: Add icons to your tabs for enhanced visual communication
+- **Keyboard Navigation**: Full keyboard support for accessibility
+- **Disabled State**: Disable individual tabs when needed
+- **Responsive**: Works seamlessly across all screen sizes
+- **Dark Mode**: Automatically adapts to your theme
+
+## Accessibility
+
+- Uses Radix UI Tabs primitive for full accessibility compliance
+- Supports keyboard navigation (Arrow keys, Home, End)
+- Proper ARIA attributes for screen readers
+- Focus management and visual indicators
+
+## Notes
+
+- The animated indicator uses Framer Motion's `layoutId` feature for smooth transitions
+- Tab content supports controlled and uncontrolled state management
+- The underline variant tabs align to the start by default for better UX
+- The default variant centers tabs within their container

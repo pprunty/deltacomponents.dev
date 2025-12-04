@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-with-icons-demo",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "examples/tabs-with-icons-demo.tsx",
+      "content": "\"use client\"\n\nimport { Lock, Settings, User } from \"lucide-react\"\n\nimport {\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n} from \"@/components/ui/tabs\"\n\nexport default function TabsWithIconsDemo() {\n  return (\n    <div className=\"flex w-full max-w-lg flex-col gap-8\">\n      {/* Default variant with icons */}\n      <div className=\"space-y-2\">\n        <p className=\"text-muted-foreground text-xs\">\n          Default variant with icons\n        </p>\n        <Tabs defaultValue=\"account\" variant=\"default\">\n          <TabsList>\n            <TabsTrigger value=\"account\">\n              <User />\n              Account\n            </TabsTrigger>\n            <TabsTrigger value=\"password\">\n              <Lock />\n              Password\n            </TabsTrigger>\n            <TabsTrigger value=\"settings\">\n              <Settings />\n              Settings\n            </TabsTrigger>\n          </TabsList>\n          <div className=\"relative min-h-[60px]\">\n            <TabsContent value=\"account\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Manage your account settings and preferences.\n              </p>\n            </TabsContent>\n            <TabsContent value=\"password\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Change your password here.\n              </p>\n            </TabsContent>\n            <TabsContent value=\"settings\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Configure your application settings.\n              </p>\n            </TabsContent>\n          </div>\n        </Tabs>\n      </div>\n\n      {/* Underline variant with icons */}\n      <div className=\"space-y-2\">\n        <p className=\"text-muted-foreground text-xs\">\n          Underline variant with icons (large size)\n        </p>\n        <Tabs defaultValue=\"account\" variant=\"underline\" size=\"lg\">\n          <TabsList className=\"w-fit\">\n            <TabsTrigger value=\"account\">\n              <User />\n              Account\n            </TabsTrigger>\n            <TabsTrigger value=\"password\">\n              <Lock />\n              Password\n            </TabsTrigger>\n            <TabsTrigger value=\"settings\">\n              <Settings />\n              Settings\n            </TabsTrigger>\n          </TabsList>\n          <div className=\"relative min-h-[60px]\">\n            <TabsContent value=\"account\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Manage your account settings and preferences.\n              </p>\n            </TabsContent>\n            <TabsContent value=\"password\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Change your password here.\n              </p>\n            </TabsContent>\n            <TabsContent value=\"settings\" className=\"absolute inset-x-0 top-0\">\n              <p className=\"text-muted-foreground text-sm\">\n                Configure your application settings.\n              </p>\n            </TabsContent>\n          </div>\n        </Tabs>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
