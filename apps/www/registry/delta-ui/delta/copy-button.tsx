@@ -25,6 +25,7 @@ interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   | "destructive"
   | "link"
   iconColor?: string
+  tooltip?: string
 }
 
 export function CopyButton({
@@ -32,6 +33,7 @@ export function CopyButton({
   className,
   variant = "ghost",
   iconColor,
+  tooltip = "Copy to Clipboard",
   ...props
 }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
@@ -88,7 +90,7 @@ export function CopyButton({
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        {hasCopied ? "Copied" : "Copy to Clipboard"}
+        {hasCopied ? "Copied" : tooltip}
       </TooltipContent>
     </Tooltip>
   )

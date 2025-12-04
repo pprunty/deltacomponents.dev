@@ -56,10 +56,12 @@
       "type": "registry:ui",
       "dependencies": [
         "lucide-react",
-        "prism-react-renderer"
+        "prism-react-renderer",
+        "prismjs"
       ],
       "registryDependencies": [
-        "copy-button"
+        "copy-button",
+        "tabs"
       ],
       "files": [
         {

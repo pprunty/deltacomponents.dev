@@ -48,7 +48,7 @@ export const Index: Record<string, any> = {
     name: "code-block",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["copy-button"],
+    registryDependencies: ["copy-button","tabs"],
     files: [{
       path: "registry/delta-ui/delta/code-block.tsx",
       type: "registry:ui",
