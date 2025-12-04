@@ -43,13 +43,7 @@ export function ComponentPreviewTabs({
         className="w-full"
       >
         {!hideCode && (
-          <TabsList
-            variant="underlined"
-            showBottomBorder
-            showActiveIndicator
-            className="mb-4 w-full"
-            size="md"
-          >
+          <TabsList variant="underline" className="mb-4 w-full" size="lg">
             <TabsTrigger value="preview" className="font-medium">
               Preview
             </TabsTrigger>

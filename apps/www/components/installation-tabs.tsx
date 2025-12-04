@@ -41,13 +41,7 @@ export function InstallationTabs({
         onValueChange={setTab}
         className="w-full"
       >
-        <TabsList
-          variant="underlined"
-          showBottomBorder
-          showActiveIndicator
-          className="mb-4 w-full"
-          size="md"
-        >
+        <TabsList variant="underline" className="mb-4 w-full" size="lg">
           <TabsTrigger value="cli" className="font-medium">
             CLI
           </TabsTrigger>
