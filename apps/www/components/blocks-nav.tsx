@@ -1,58 +1,55 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 
-import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/delta/tabs"
 import { registryCategories } from "@/registry/registry-categories"
 
 export function BlocksNav() {
+  const router = useRouter()
   const pathname = usePathname()
+
+  // Determine current value based on pathname
+  const currentValue =
+    pathname === "/blocks"
+      ? "featured"
+      : pathname.startsWith("/blocks/")
+        ? pathname.split("/blocks/")[1]
+        : "featured"
+
+  const handleValueChange = (value: string) => {
+    const href = value === "featured" ? "/blocks" : `/blocks/${value}`
+    router.push(href)
+  }
+
+  const visibleCategories = registryCategories.filter(
+    (category) => !category.hidden
+  )
 
   return (
     <div className="w-full">
-      <ScrollArea className="w-full overflow-x-auto">
-        <div className="flex w-max items-center">
-          {registryCategories.map((category) => (
-            <BlocksNavLink
+      <Tabs
+        value={currentValue}
+        onValueChange={handleValueChange}
+        variant="default"
+        size="lg"
+      >
+        <TabsList className="gap-1 bg-transparent p-0">
+          {visibleCategories.map((category) => (
+            <TabsTrigger
               key={category.slug}
-              category={category}
-              isActive={
-                category.slug === "featured"
-                  ? pathname === "/blocks"
-                  : pathname === `/blocks/${category.slug}`
-              }
-            />
+              value={category.slug}
+              className="data-[state=active]:[&>div]:bg-muted"
+            >
+              {category.name}
+            </TabsTrigger>
           ))}
-        </div>
-        <ScrollBar orientation="horizontal" className="invisible" />
-      </ScrollArea>
+        </TabsList>
+      </Tabs>
     </div>
-  )
-}
-
-function BlocksNavLink({
-  category,
-  isActive,
-}: {
-  category: (typeof registryCategories)[number]
-  isActive: boolean
-}) {
-  if (category.hidden) {
-    return null
-  }
-
-  const href =
-    category.slug === "featured" ? "/blocks" : `/blocks/${category.slug}`
-
-  return (
-    <Link
-      href={href}
-      key={category.slug}
-      className="text-muted-foreground hover:text-foreground data-[active=true]:text-primary flex h-7 shrink-0 items-center justify-center px-4 text-center text-sm font-medium whitespace-nowrap transition-colors"
-      data-active={isActive}
-    >
-      {category.name}
-    </Link>
   )
 }
