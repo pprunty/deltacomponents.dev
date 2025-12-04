@@ -7,22 +7,22 @@ import {
   TabsTrigger,
 } from "@/registry/delta-ui/delta/tabs"
 
-export default function TabsSizesDemo() {
+export default function TabsEntranceAnimationDemo() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-8">
-      {/* Small size */}
+      {/* Default animation (opacity only) */}
       <div className="space-y-2">
-        <p className="text-muted-foreground text-xs">Small (sm)</p>
-        <Tabs defaultValue="account" variant="underline" size="sm">
+        <p className="text-muted-foreground text-xs">Default (opacity only)</p>
+        <Tabs defaultValue="account" variant="underline">
           <TabsList className="w-fit">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-          <div className="relative min-h-[60px]">
+          <div className="relative min-h-[80px]">
             <TabsContent value="account" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Small size tabs for compact layouts.
+                Manage your account settings and preferences.
               </p>
             </TabsContent>
             <TabsContent value="password" className="absolute inset-x-0 top-0">
@@ -32,26 +32,28 @@ export default function TabsSizesDemo() {
             </TabsContent>
             <TabsContent value="settings" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Configure your settings.
+                Configure your application settings.
               </p>
             </TabsContent>
           </div>
         </Tabs>
       </div>
 
-      {/* Default size */}
+      {/* Y transform animation */}
       <div className="space-y-2">
-        <p className="text-muted-foreground text-xs">Default</p>
-        <Tabs defaultValue="account" variant="underline" size="default">
+        <p className="text-muted-foreground text-xs">
+          With Y transform animation
+        </p>
+        <Tabs defaultValue="account" variant="underline">
           <TabsList className="w-fit">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-          <div className="relative min-h-[60px]">
+          <div className="relative min-h-[80px]">
             <TabsContent value="account" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Default size tabs for standard layouts.
+                Manage your account settings and preferences.
               </p>
             </TabsContent>
             <TabsContent value="password" className="absolute inset-x-0 top-0">
@@ -61,26 +63,26 @@ export default function TabsSizesDemo() {
             </TabsContent>
             <TabsContent value="settings" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Configure your settings.
+                Configure your application settings.
               </p>
             </TabsContent>
           </div>
         </Tabs>
       </div>
 
-      {/* Large size */}
+      {/* Slower animation */}
       <div className="space-y-2">
-        <p className="text-muted-foreground text-xs">Large (lg)</p>
-        <Tabs defaultValue="account" variant="underline" size="lg">
+        <p className="text-muted-foreground text-xs">Slower animation</p>
+        <Tabs defaultValue="account" variant="underline">
           <TabsList className="w-fit">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-          <div className="relative min-h-[60px]">
+          <div className="relative min-h-[80px]">
             <TabsContent value="account" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Large size tabs for prominent navigation.
+                Manage your account settings and preferences.
               </p>
             </TabsContent>
             <TabsContent value="password" className="absolute inset-x-0 top-0">
@@ -90,7 +92,7 @@ export default function TabsSizesDemo() {
             </TabsContent>
             <TabsContent value="settings" className="absolute inset-x-0 top-0">
               <p className="text-muted-foreground text-sm">
-                Configure your settings.
+                Configure your application settings.
               </p>
             </TabsContent>
           </div>
