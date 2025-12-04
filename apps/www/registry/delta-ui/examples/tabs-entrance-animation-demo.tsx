@@ -20,17 +20,17 @@ export function TabsEntranceVariantDemo() {
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
           <div className="relative min-h-[80px]">
-            <TabsContent value="account" className="absolute inset-x-0 top-0">
+            <TabsContent value="account" className="absolute inset-x-0 top-0" animate>
               <p className="text-muted-foreground text-sm">
                 Manage your account settings and preferences.
               </p>
             </TabsContent>
-            <TabsContent value="password" className="absolute inset-x-0 top-0">
+            <TabsContent value="password" className="absolute inset-x-0 top-0" animate>
               <p className="text-muted-foreground text-sm">
                 Change your password here.
               </p>
             </TabsContent>
-            <TabsContent value="settings" className="absolute inset-x-0 top-0">
+            <TabsContent value="settings" className="absolute inset-x-0 top-0" animate>
               <p className="text-muted-foreground text-sm">
                 Configure your application settings.
               </p>
@@ -54,6 +54,7 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="account"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={8}
             >
               <p className="text-muted-foreground text-sm">
@@ -63,6 +64,7 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="password"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={8}
             >
               <p className="text-muted-foreground text-sm">
@@ -72,6 +74,7 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="settings"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={8}
             >
               <p className="text-muted-foreground text-sm">
@@ -97,6 +100,7 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="account"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={12}
               animationDuration={0.4}
             >
@@ -107,6 +111,7 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="password"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={12}
               animationDuration={0.4}
             >
@@ -117,12 +122,36 @@ export function TabsEntranceVariantDemo() {
             <TabsContent
               value="settings"
               className="absolute inset-x-0 top-0"
+              animate
               animateY={12}
               animationDuration={0.4}
             >
               <p className="text-muted-foreground text-sm">
                 Configure your application settings.
               </p>
+            </TabsContent>
+          </div>
+        </Tabs>
+      </div>
+
+      {/* Using Tabs-level animate prop */}
+      <div className="space-y-2">
+        <p className="text-sm text-muted-foreground">Enable animations at Tabs level (cleaner API)</p>
+        <Tabs defaultValue="account" variant="underline" animate>
+          <TabsList className="w-fit">
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
+          </TabsList>
+          <div className="relative min-h-[80px]">
+            <TabsContent value="account" className="absolute inset-x-0 top-0" animateY={8}>
+              <p className="text-sm text-muted-foreground">Manage your account settings and preferences.</p>
+            </TabsContent>
+            <TabsContent value="password" className="absolute inset-x-0 top-0" animateY={8}>
+              <p className="text-sm text-muted-foreground">Change your password here.</p>
+            </TabsContent>
+            <TabsContent value="settings" className="absolute inset-x-0 top-0" animateY={8}>
+              <p className="text-sm text-muted-foreground">Configure your application settings.</p>
             </TabsContent>
           </div>
         </Tabs>

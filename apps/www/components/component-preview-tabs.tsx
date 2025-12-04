@@ -43,6 +43,7 @@ export function ComponentPreviewTabs({
         className="w-full"
         variant="underline"
         size="lg"
+        animate={true}
       >
         {!hideCode && (
           <TabsList className="mb-4 w-full">

@@ -121,6 +121,7 @@ export function DocsTableOfContents({
           {item.title}
         </a>
       ))}
+      <div className="from-background via-background/80 to-background/50 relative sticky -bottom-13 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
     </div>
   )
 }

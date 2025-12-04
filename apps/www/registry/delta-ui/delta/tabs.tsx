@@ -26,6 +26,7 @@ interface TabsContextValue {
   setHoveredIndex: (index: number | null) => void
   tabRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>
   hoverStyle: { left: string; width: string }
+  animate?: boolean
 }
 
 const TabsContext = React.createContext<TabsContextValue | null>(null)
@@ -48,6 +49,8 @@ interface TabsProps {
   size?: TabSize
   /** Override the underline indicator thickness (e.g. "2px", "4px") */
   indicatorThickness?: string
+  /** Enable animations for all tab content. Disabled by default for better performance. */
+  animate?: boolean
 }
 
 function Tabs({
@@ -59,6 +62,7 @@ function Tabs({
   variant = "default",
   size = "default",
   indicatorThickness,
+  animate,
 }: TabsProps) {
   const [internalValue, setInternalValue] = React.useState(defaultValue ?? "")
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
@@ -106,6 +110,7 @@ function Tabs({
         setHoveredIndex,
         tabRefs,
         hoverStyle,
+        animate,
       }}
     >
       <LayoutGroup>
@@ -173,7 +178,8 @@ function TabsList({ children, className }: TabsListProps) {
             ...hoverStyle,
             opacity: hoveredIndex !== null ? 1 : 0,
             top: `calc(50% + ${hoverOffsetMap[normalizedSize]})`,
-            transform: "translateY(-50%)",
+            transform: "translate3d(0, -50%, 0)",
+            willChange: 'transform, opacity, left, width',
           }}
           aria-hidden="true"
         />
@@ -290,6 +296,10 @@ function TabsTrigger({
           layoutId={`${layoutId}-tab-indicator`}
           initial={false}
           className="bg-background absolute inset-0 rounded-md"
+          style={{
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)',
+          }}
           transition={{
             type: "spring",
             duration: 0.4,
@@ -305,9 +315,11 @@ function TabsTrigger({
             "bg-foreground absolute inset-x-0 bottom-0",
             !indicatorThickness && underlineThicknessClasses[normalizedSize]
           )}
-          style={
-            indicatorThickness ? { height: indicatorThickness } : undefined
-          }
+          style={{
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)',
+            ...(indicatorThickness ? { height: indicatorThickness } : {}),
+          }}
           transition={{
             type: "spring",
             duration: 0.4,
@@ -334,6 +346,8 @@ interface TabsContentProps {
   forceMount?: boolean
   animateY?: number
   animationDuration?: number
+  /** Enable animations for smooth tab transitions. Disabled by default for better performance with heavy content. */
+  animate?: boolean
 }
 
 function TabsContent({
@@ -343,20 +357,42 @@ function TabsContent({
   forceMount = false,
   animateY,
   animationDuration = 0.25,
+  animate,
 }: TabsContentProps) {
-  const { activeTab } = useTabs()
+  const { activeTab, animate: contextAnimate } = useTabs()
   const isActive = activeTab === value
 
-  if (!forceMount && !isActive) {
-    return null
+  // Use prop value if provided, otherwise fall back to context value, default to false
+  const shouldAnimate = animate !== undefined ? animate : contextAnimate ?? false
+
+  // When animations are disabled (default), use a regular div for better performance
+  if (!shouldAnimate) {
+    return (
+      <div
+        role="tabpanel"
+        data-state={isActive ? "active" : "inactive"}
+        data-slot="animated-tabs-content"
+        style={{
+          display: !isActive ? 'none' : 'block',
+        }}
+        className={cn(
+          "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          className,
+        )}
+        tabIndex={isActive ? 0 : -1}
+      >
+        {children}
+      </div>
+    )
   }
 
+  // When animations are enabled, use motion.div with GPU acceleration
   return (
     <motion.div
       role="tabpanel"
       data-state={isActive ? "active" : "inactive"}
       data-slot="animated-tabs-content"
-      initial={{ opacity: 0, ...(animateY !== undefined && { y: animateY }) }}
+      initial={false}
       animate={{
         opacity: isActive ? 1 : 0,
         ...(animateY !== undefined && { y: isActive ? 0 : animateY }),
@@ -365,12 +401,16 @@ function TabsContent({
         duration: animationDuration,
         ease: "easeInOut",
       }}
+      style={{
+        willChange: animateY !== undefined ? 'transform, opacity' : 'opacity',
+        ...(animateY !== undefined && { transform: 'translate3d(0, 0, 0)' }),
+        display: !isActive ? 'none' : 'block',
+      }}
       className={cn(
         "ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
-        !isActive && forceMount && "hidden",
-        className
+        className,
       )}
-      tabIndex={0}
+      tabIndex={isActive ? 0 : -1}
     >
       {children}
     </motion.div>
