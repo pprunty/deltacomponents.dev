@@ -142,8 +142,8 @@
     {
       "name": "tabs",
       "type": "registry:ui",
-      "registryDependencies": [
-        "x-scrollable"
+      "dependencies": [
+        "@radix-ui/react-tabs"
       ],
       "files": [
         {

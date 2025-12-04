@@ -1,36 +1,40 @@
-"use client"
+import { DotGothic16 } from "next/font/google"
 
 import { Marquee } from "@/registry/delta-ui/delta/marquee"
 
-const artisticTexts = [
-  "DIGITAL RENAISSANCE",
-  "CREATIVE INNOVATION",
-  "FUTURE AESTHETICS",
-  "VISUAL STORYTELLING",
-  "DESIGN REVOLUTION",
-  "ARTISTIC EXPRESSION",
-  "MODERN CRAFTSMANSHIP",
-  "AESTHETIC EVOLUTION",
+const dotGothic = DotGothic16({
+  weight: "400",
+  subsets: ["latin", "latin-ext"],
+})
+
+const koreanPhrases = [
+  "안녕하세요",
+  "환영합니다",
+  "사랑해요",
+  "감사합니다",
+  "행복하세요",
+  "좋은 하루",
+  "화이팅",
+  "멋있어요",
 ]
 
-export default function MarqueeDemo() {
+export function MarqueeDemo() {
   return (
-    <div className="w-full bg-black py-1 dark:bg-white">
-      <Marquee
-        direction="left"
-        speed={100}
-        gap={120}
-        showFade={false}
-        pauseOnHover={false}
-        className="py-0"
-      >
-        {artisticTexts.map((text, index) => (
-          <div
+    <div className="flex min-h-screen items-center justify-center">
+      <Marquee speed={40} gap={60} className="bg-black py-8" fadeIntensity={10}>
+        {koreanPhrases.map((phrase, index) => (
+          <span
             key={index}
-            className="text-2xl font-bold tracking-widest whitespace-nowrap text-white select-none md:text-4xl dark:text-black"
+            className={`${dotGothic.className} text-red-500`}
+            style={{
+              fontSize: "64px", // 4rem - multiple of 16px for crisp pixels
+              WebkitFontSmoothing: "none",
+              MozOsxFontSmoothing: "unset",
+              imageRendering: "pixelated",
+            }}
           >
-            {text}
-          </div>
+            {phrase}
+          </span>
         ))}
       </Marquee>
     </div>

@@ -156,7 +156,7 @@ export const Index: Record<string, any> = {
     name: "tabs",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["x-scrollable"],
+    registryDependencies: undefined,
     files: [{
       path: "registry/delta-ui/delta/tabs.tsx",
       type: "registry:ui",

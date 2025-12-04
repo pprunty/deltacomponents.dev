@@ -104,70 +104,69 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <SidebarProvider>
       <Sidebar collapsible="icon" className="bg-muted" {...props}>
-      <SidebarHeader>
-        <div className="flex items-center justify-between px-2 py-4 group-data-[collapsible=icon]:justify-center">
-          <Logo className="size-6 group-data-[collapsible=icon]:hidden" />
-          <SidebarTrigger
-            title="Cmd + / Toggle"
-            className="[&>svg]:stroke-foreground/80 hover:[&>svg]:stroke-foreground group-data-[collapsible=icon]:mx-auto"
-          />
-        </div>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              tooltip="New Chat"
-              size="lg"
-              className="group-data-[collapsible=icon]:mx-auto group-data-[collapsible=icon]:justify-center"
-            >
-              <Plus className="stroke-foreground/80 hover:stroke-foreground h-7 w-7" />
-              <span className="group-data-[collapsible=icon]:hidden">
-                New Chat
-              </span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+        <SidebarHeader>
+          <div className="flex items-center justify-between px-2 py-4 group-data-[collapsible=icon]:justify-center">
+            <Logo className="size-6 group-data-[collapsible=icon]:hidden" />
+            <SidebarTrigger
+              title="Cmd + / Toggle"
+              className="[&>svg]:stroke-foreground/80 hover:[&>svg]:stroke-foreground group-data-[collapsible=icon]:mx-auto"
+            />
+          </div>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                tooltip="New Chat"
+                size="lg"
+                className="group-data-[collapsible=icon]:mx-auto group-data-[collapsible=icon]:justify-center"
+              >
+                <Plus className="stroke-foreground/80 hover:stroke-foreground h-7 w-7" />
+                <span className="group-data-[collapsible=icon]:hidden">
+                  New Chat
+                </span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarHeader>
 
-      <SidebarContent className="no-scrollbar overflow-x-hidden pb-12 group-data-[collapsible=icon]:hidden">
-        <div className="from-muted/70 via-muted/50 to-transparent sticky -top-1 z-10 h-6 shrink-0 bg-gradient-to-b blur-xs" />
-        <SidebarGroup>
-          <SidebarGroupLabel>Recent Chats</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {recentChats.map((chat) => (
-                <SidebarMenuItem key={chat.id}>
-                  <SidebarMenuButton asChild>
-                    <a href={`#${chat.id}`} className="w-full">
-                      <span className="truncate text-sm">{chat.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <div className="from-muted/70 via-muted/50 to-transparent relative sticky -bottom-13 z-10 h-10 shrink-0 bg-gradient-to-t blur-xs" />
-      </SidebarContent>
+        <SidebarContent className="no-scrollbar overflow-x-hidden pb-12 group-data-[collapsible=icon]:hidden">
+          <div className="from-muted/70 via-muted/50 sticky -top-1 z-10 h-6 shrink-0 bg-gradient-to-b to-transparent blur-xs" />
+          <SidebarGroup>
+            <SidebarGroupLabel>Recent Chats</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {recentChats.map((chat) => (
+                  <SidebarMenuItem key={chat.id}>
+                    <SidebarMenuButton asChild>
+                      <a href={`#${chat.id}`} className="w-full">
+                        <span className="truncate text-sm">{chat.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+          <div className="from-muted/70 via-muted/50 relative sticky -bottom-13 z-10 h-10 shrink-0 bg-gradient-to-t to-transparent blur-xs" />
+        </SidebarContent>
 
-      <SidebarFooter className="group-data-[collapsible=icon]:absolute group-data-[collapsible=icon]:right-0 group-data-[collapsible=icon]:bottom-2 group-data-[collapsible=icon]:left-0">
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              tooltip="Settings"
-              className="group-data-[collapsible=icon]:mx-auto group-data-[collapsible=icon]:justify-center"
-            >
-              <Settings className="stroke-foreground/80 hover:stroke-foreground h-7 w-7" />
-              <span className="group-data-[collapsible=icon]:hidden">
-                Settings
-              </span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+        <SidebarFooter className="group-data-[collapsible=icon]:absolute group-data-[collapsible=icon]:right-0 group-data-[collapsible=icon]:bottom-2 group-data-[collapsible=icon]:left-0">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                tooltip="Settings"
+                className="group-data-[collapsible=icon]:mx-auto group-data-[collapsible=icon]:justify-center"
+              >
+                <Settings className="stroke-foreground/80 hover:stroke-foreground h-7 w-7" />
+                <span className="group-data-[collapsible=icon]:hidden">
+                  Settings
+                </span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
 
-      <SidebarRail />
+        <SidebarRail />
       </Sidebar>
     </SidebarProvider>
   )
 }
-

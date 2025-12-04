@@ -18,12 +18,12 @@ export function copyToClipboard(value: string) {
 interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
   variant?:
-  | "ghost"
-  | "outline"
-  | "secondary"
-  | "default"
-  | "destructive"
-  | "link"
+    | "ghost"
+    | "outline"
+    | "secondary"
+    | "default"
+    | "destructive"
+    | "link"
   iconColor?: string
   tooltip?: string
 }
@@ -70,28 +70,32 @@ export function CopyButton({
               className={cn(
                 "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
                 hasCopied
-                  ? "scale-100 opacity-100 blur-0"
-                  : "blur-xs scale-[0.25] opacity-0"
+                  ? "blur-0 scale-100 opacity-100"
+                  : "scale-[0.25] opacity-0 blur-xs"
               )}
             >
-              <CheckIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+              <CheckIcon
+                className="h-3.5 w-3.5"
+                style={iconColor ? { color: iconColor } : {}}
+              />
             </div>
             <div
               className={cn(
                 "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
                 hasCopied
-                  ? "blur-xs scale-[0.25] opacity-0"
-                  : "scale-100 opacity-100 blur-0"
+                  ? "scale-[0.25] opacity-0 blur-xs"
+                  : "blur-0 scale-100 opacity-100"
               )}
             >
-              <CopyIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+              <CopyIcon
+                className="h-3.5 w-3.5"
+                style={iconColor ? { color: iconColor } : {}}
+              />
             </div>
           </div>
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
-        {hasCopied ? "Copied" : tooltip}
-      </TooltipContent>
+      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
     </Tooltip>
   )
 }

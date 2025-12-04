@@ -86,7 +86,7 @@ export const ui: Registry["items"] = [
   {
     name: "tabs",
     type: "registry:ui",
-    registryDependencies: ["x-scrollable"],
+    dependencies: ["@radix-ui/react-tabs"],
     files: [
       {
         path: "delta/tabs.tsx",

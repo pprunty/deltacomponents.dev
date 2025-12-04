@@ -15,9 +15,9 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/ui/tabs"
+} from "@/registry/delta-ui/delta/tabs"
 
-  ; (typeof global !== "undefined" ? global : window).Prism = Prism
+;(typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-cpp")
 require("prismjs/components/prism-python")
 require("prismjs/components/prism-bash")
@@ -279,8 +279,8 @@ export function CodeBlock({
             style={
               useThemeBackground
                 ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                }
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                  }
                 : undefined
             }
           >
@@ -293,7 +293,7 @@ export function CodeBlock({
                   <TabsTrigger
                     key={key}
                     value={key}
-                    className="h-7 border border-transparent rounded-sm pt-0.5 data-[state=active]:border-border data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                    className="data-[state=active]:border-border h-7 rounded-sm border border-transparent pt-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                   >
                     {key}
                   </TabsTrigger>
@@ -317,8 +317,8 @@ export function CodeBlock({
                   style={
                     useThemeBackground
                       ? {
-                        backgroundColor: selectedTheme.plain?.backgroundColor,
-                      }
+                          backgroundColor: selectedTheme.plain?.backgroundColor,
+                        }
                       : undefined
                   }
                 >
@@ -340,7 +340,7 @@ export function CodeBlock({
                           ...style,
                           backgroundColor: useThemeBackground
                             ? selectedTheme.plain?.backgroundColor
-                            : 'transparent',
+                            : "transparent",
                           fontSize: className?.includes("text-lg")
                             ? "1.125rem"
                             : className?.includes("text-base")
@@ -385,8 +385,8 @@ export function CodeBlock({
             style={
               useThemeBackground
                 ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                }
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                  }
                 : undefined
             }
           >
@@ -409,8 +409,8 @@ export function CodeBlock({
           style={
             useThemeBackground
               ? {
-                backgroundColor: selectedTheme.plain?.backgroundColor,
-              }
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                }
               : undefined
           }
         >
@@ -438,7 +438,7 @@ export function CodeBlock({
                   ...style,
                   backgroundColor: useThemeBackground
                     ? selectedTheme.plain?.backgroundColor
-                    : 'transparent',
+                    : "transparent",
                   fontSize: className?.includes("text-lg")
                     ? "1.125rem"
                     : className?.includes("text-base")
@@ -448,7 +448,7 @@ export function CodeBlock({
                   scrollbarColor:
                     selectedTheme.plain?.backgroundColor?.toLowerCase() ===
                       "#ffffff" ||
-                      selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                    selectedTheme.plain?.backgroundColor === "#FAFAFA"
                       ? "#d1d5db transparent"
                       : "#4b5563 transparent",
                 }}
@@ -466,7 +466,7 @@ export function CodeBlock({
                           color:
                             selectedTheme.plain?.backgroundColor ===
                               "#FFFFFF" ||
-                              selectedTheme.plain?.backgroundColor === "#FAFAFA"
+                            selectedTheme.plain?.backgroundColor === "#FAFAFA"
                               ? "#999999"
                               : "#757575",
                           minWidth: "1.5rem",

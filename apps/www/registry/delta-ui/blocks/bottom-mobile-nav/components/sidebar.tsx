@@ -86,15 +86,13 @@ export const Sidebar = memo(function Sidebar({
               href={href}
               onClick={() => handleItemClick(href)}
               className={`group relative rounded-lg px-4 py-3 transition-colors duration-300 ${
-                isActive
-                  ? "text-accent-foreground"
-                  : "text-muted-foreground"
+                isActive ? "text-accent-foreground" : "text-muted-foreground"
               }`}
             >
-              <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
+              <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
               {Icon && (
                 <Icon
-                  className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground"
+                  className="group-hover:text-accent-foreground relative z-10 h-6.5 w-6.5 transition-colors duration-300"
                   weight={isActive ? "fill" : "regular"}
                 />
               )}
@@ -107,7 +105,7 @@ export const Sidebar = memo(function Sidebar({
               <TooltipContent
                 side="right"
                 sideOffset={2}
-                className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
+                className="animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95 [&_.bg-foreground.fill-foreground]:hidden [&>*[data-radix-tooltip-arrow]]:hidden [&>svg]:hidden"
               >
                 {label}
               </TooltipContent>
@@ -123,10 +121,13 @@ export const Sidebar = memo(function Sidebar({
             const buttonElement = (
               <button
                 onClick={onCTAClick}
-                className="group relative bg-muted text-muted-foreground rounded-lg px-4 py-3 transition-colors duration-300"
+                className="group bg-muted text-muted-foreground relative rounded-lg px-4 py-3 transition-colors duration-300"
               >
-                <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
-                <Plus className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground" weight="regular" />
+                <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
+                <Plus
+                  className="group-hover:text-accent-foreground relative z-10 h-6.5 w-6.5 transition-colors duration-300"
+                  weight="regular"
+                />
               </button>
             )
 
@@ -136,7 +137,7 @@ export const Sidebar = memo(function Sidebar({
                 <TooltipContent
                   side="right"
                   sideOffset={2}
-                  className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
+                  className="animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95 [&_.bg-foreground.fill-foreground]:hidden [&>*[data-radix-tooltip-arrow]]:hidden [&>svg]:hidden"
                 >
                   Add
                 </TooltipContent>
@@ -153,15 +154,13 @@ export const Sidebar = memo(function Sidebar({
               href={href}
               onClick={() => handleItemClick(href)}
               className={`group relative rounded-lg px-4 py-3 transition-colors duration-300 ${
-                isActive
-                  ? "text-accent-foreground"
-                  : "text-muted-foreground"
+                isActive ? "text-accent-foreground" : "text-muted-foreground"
               }`}
             >
-              <div className="absolute inset-0 scale-75 rounded-lg bg-accent opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
+              <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
               {Icon && (
                 <Icon
-                  className="relative z-10 h-6.5 w-6.5 transition-colors duration-300 group-hover:text-accent-foreground"
+                  className="group-hover:text-accent-foreground relative z-10 h-6.5 w-6.5 transition-colors duration-300"
                   weight={isActive ? "fill" : "regular"}
                 />
               )}
@@ -174,7 +173,7 @@ export const Sidebar = memo(function Sidebar({
               <TooltipContent
                 side="right"
                 sideOffset={2}
-                className="[&_.bg-foreground.fill-foreground]:hidden [&>svg]:hidden [&>*[data-radix-tooltip-arrow]]:hidden animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95"
+                className="animate-in fade-in-0 slide-in-from-left-1 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-left-1 data-[state=closed]:zoom-out-95 [&_.bg-foreground.fill-foreground]:hidden [&>*[data-radix-tooltip-arrow]]:hidden [&>svg]:hidden"
               >
                 {label}
               </TooltipContent>
