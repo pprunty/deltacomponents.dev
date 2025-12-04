@@ -152,6 +152,7 @@ export default function CodeBlockThemeDemo() {
   const [showLineNumbers, setShowLineNumbers] = useState(true)
   const [showHeader, setShowHeader] = useState(true)
   const [customStyling, setCustomStyling] = useState(false)
+  const [useThemeBackground, setUseThemeBackground] = useState(true)
 
   return (
     <div className="space-y-4">
@@ -171,6 +172,13 @@ export default function CodeBlockThemeDemo() {
           {showHeader ? "Hide" : "Show"} Header
         </Button>
         <Button
+          variant={useThemeBackground ? "default" : "outline"}
+          size="sm"
+          onClick={() => setUseThemeBackground(!useThemeBackground)}
+        >
+          Theme Background
+        </Button>
+        <Button
           variant={customStyling ? "default" : "outline"}
           size="sm"
           onClick={() => setCustomStyling(!customStyling)}
@@ -184,7 +192,7 @@ export default function CodeBlockThemeDemo() {
         language="go"
         filename={showHeader ? "hello.go" : undefined}
         showLineNumbers={showLineNumbers}
-        useThemeBackground={true}
+        useThemeBackground={useThemeBackground}
         adaptiveTheme={{
           dark: cppTheme,
           light: cppLightTheme,
