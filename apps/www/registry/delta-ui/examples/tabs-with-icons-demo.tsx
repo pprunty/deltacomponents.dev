@@ -20,15 +20,15 @@ export default function TabsWithIconsDemo() {
         <Tabs defaultValue="account" variant="default">
           <TabsList>
             <TabsTrigger value="account">
-              <User />
+              <User className="h-4 w-4" />
               Account
             </TabsTrigger>
             <TabsTrigger value="password">
-              <Lock />
+              <Lock className="h-4 w-4" />
               Password
             </TabsTrigger>
             <TabsTrigger value="settings">
-              <Settings />
+              <Settings className="h-4 w-4" />
               Settings
             </TabsTrigger>
           </TabsList>
@@ -60,15 +60,15 @@ export default function TabsWithIconsDemo() {
         <Tabs defaultValue="account" variant="underline" size="lg">
           <TabsList className="w-fit">
             <TabsTrigger value="account">
-              <User />
+              <User className="h-5 w-5" />
               Account
             </TabsTrigger>
             <TabsTrigger value="password">
-              <Lock />
+              <Lock className="h-5 w-5" />
               Password
             </TabsTrigger>
             <TabsTrigger value="settings">
-              <Settings />
+              <Settings className="h-5 w-5" />
               Settings
             </TabsTrigger>
           </TabsList>

@@ -24,6 +24,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Components", href: "/docs/components" },
   { name: "Installation", href: "/docs/installation" },
   { name: "Usage", href: "/docs/usage" },
+  { name: "Theming & Customization", href: "/docs/theming" },
   { name: "llms.txt", href: "/llms.txt", badge: "new" },
 ]
 

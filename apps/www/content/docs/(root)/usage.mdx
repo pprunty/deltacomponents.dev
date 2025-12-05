@@ -7,37 +7,32 @@ Once a Delta Components UI component is installed, you can import it and use it 
 
 ---
 
-## Example
+## Standard Usage
 
-After installing Delta Components UI components, you can use them in your application like any other React component. For example:
+Once installed, Delta Components live in your codebase. Import them directly:
 
 ```tsx
-"use client"
-
 import { Admonition } from "@/components/ui/admonition"
-
 
 export default function Page() {
   return (
-    <div className="flex items-center justify-center p-8">
-      <Admonition type="warning" title="Important Notice">
-        This is a warning message that users should pay attention to.
-      </Admonition>
-    </div>
+    <Admonition type="warning" title="Note">
+       Your custom warning message here.
+    </Admonition>
   )
 }
 ```
 
-## Complex Example 
+## Composite Components
 
-Some components are more complex and require a bit more setup. For example, the [chat](/docs/components/chat) component requires multiple imports compared to the [admonition](/docs/components/admonition) component.
+Some components, like [LLM Chat](/docs/components/chat), are composed of multiple sub-components or require specific hooks.
 
-To use the [chat](/docs/components/chat) component, should start by installing the component using the shadcn CLI:
+When installing these larger patterns via CLI:
 
-```bash
-npx shadcn@latest add https://deltacomponents.dev/r/chat.json
-```
+* **Check the Output**: The CLI may install multiple files (e.g., hooks, types, and UI sub-components).
+* **Review the Docs**: Specific implementation details (like API routes for Chat) will be on the component's specific documentation page, or detailed as a comment in the code.
+* **Use Example Code**: Copy the example code from the component's docs page and paste it into your application to get started.
 
-Then identify the code for the preview demo that you want to use from the [chat](/docs/components/chat) component page's documentation and copy and paste the code into your application. 
+## AI-Assisted Implementation
 
-You can also use the "Copy Page" button and dropdown to interact with an LLM of your choice to help customize the code for your needs before pasting it into your application.
+Since you own the code, you can use the "Copy Page" button on any component page to feed the context to an LLM (Claude, ChatGPT, etc.) to help you refactor or style the component before or after installation.

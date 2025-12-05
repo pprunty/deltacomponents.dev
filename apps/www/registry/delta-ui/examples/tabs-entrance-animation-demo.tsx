@@ -10,34 +10,6 @@ import {
 export function TabsEntranceVariantDemo() {
   return (
     <div className="space-y-8">
-      {/* Default animation (opacity only) */}
-      <div className="space-y-2">
-        <p className="text-muted-foreground text-sm">Default (opacity only)</p>
-        <Tabs defaultValue="account" variant="underline">
-          <TabsList className="w-fit">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <div className="relative min-h-[80px]">
-            <TabsContent value="account" className="absolute inset-x-0 top-0" animate>
-              <p className="text-muted-foreground text-sm">
-                Manage your account settings and preferences.
-              </p>
-            </TabsContent>
-            <TabsContent value="password" className="absolute inset-x-0 top-0" animate>
-              <p className="text-muted-foreground text-sm">
-                Change your password here.
-              </p>
-            </TabsContent>
-            <TabsContent value="settings" className="absolute inset-x-0 top-0" animate>
-              <p className="text-muted-foreground text-sm">
-                Configure your application settings.
-              </p>
-            </TabsContent>
-          </div>
-        </Tabs>
-      </div>
 
       {/* Y transform animation override */}
       <div className="space-y-2">
@@ -76,55 +48,6 @@ export function TabsEntranceVariantDemo() {
               className="absolute inset-x-0 top-0"
               animate
               animateY={8}
-            >
-              <p className="text-muted-foreground text-sm">
-                Configure your application settings.
-              </p>
-            </TabsContent>
-          </div>
-        </Tabs>
-      </div>
-
-      {/* Slower animation with Y transform */}
-      <div className="space-y-2">
-        <p className="text-muted-foreground text-sm">
-          Slower animation (animateY=12, duration=0.4)
-        </p>
-        <Tabs defaultValue="account" variant="underline">
-          <TabsList className="w-fit">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <div className="relative min-h-[80px]">
-            <TabsContent
-              value="account"
-              className="absolute inset-x-0 top-0"
-              animate
-              animateY={12}
-              animationDuration={0.4}
-            >
-              <p className="text-muted-foreground text-sm">
-                Manage your account settings and preferences.
-              </p>
-            </TabsContent>
-            <TabsContent
-              value="password"
-              className="absolute inset-x-0 top-0"
-              animate
-              animateY={12}
-              animationDuration={0.4}
-            >
-              <p className="text-muted-foreground text-sm">
-                Change your password here.
-              </p>
-            </TabsContent>
-            <TabsContent
-              value="settings"
-              className="absolute inset-x-0 top-0"
-              animate
-              animateY={12}
-              animationDuration={0.4}
             >
               <p className="text-muted-foreground text-sm">
                 Configure your application settings.

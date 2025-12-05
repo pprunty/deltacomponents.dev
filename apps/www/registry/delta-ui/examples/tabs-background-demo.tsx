@@ -15,9 +15,6 @@ export default function TabsBackgroundDemo() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-8">
       <div className="space-y-2">
-        <p className="text-muted-foreground text-sm">
-          Default variant (default size)
-        </p>
         <Tabs value={activeTab} onValueChange={setActiveTab} variant="default">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="account">Account</TabsTrigger>
@@ -56,6 +53,8 @@ export default function TabsBackgroundDemo() {
         </Tabs>
       </div>
 
+      {/*
+
       <div className="space-y-4">
         <p className="text-muted-foreground text-xs">Size variants</p>
 
@@ -92,6 +91,7 @@ export default function TabsBackgroundDemo() {
           </Tabs>
         </div>
       </div>
+    */}
     </div>
   )
 }

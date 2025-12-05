@@ -1,0 +1,35 @@
+---
+title: Theming & Customization
+description: Managing styles, themes, and dependencies in Delta Components.
+---
+
+## Theme Inheritance
+
+Delta Components are designed to be "theme-agnostic." They do not ship with their own colors or fonts. Instead, they inherit the CSS variables defined in your project's `globals.css` (e.g., `--primary`, `--muted-foreground`, `--radius`).
+
+If your project is already set up with [shadcn/ui](https://ui.shadcn.com/), Delta Components will automatically match your existing brand immediately upon installation.
+
+## Customizing Themes
+
+You can preview how Delta Components look across different artistic directions using the [Themes](/themes) page.
+
+To apply a specific theme to your project:
+
+1.  Browse the style tiles on the **[Themes](/themes)** page.
+2.  Click the **`{ } Code`** button on your desired theme card.
+3.  Copy the CSS variables provided.
+4.  Paste them into your `globals.css` file, replacing the existing values in your `:root` and `.dark` blocks.
+
+## Styling Components
+
+Since you own the code, customization is done directly via Tailwind utility classes.
+
+```tsx
+// Example: Changing the background color of an Admonition
+<Admonition 
+  className="bg-blue-50 border-blue-200" // Overrides default generic styles
+  type="info" 
+>
+  ...
+</Admonition>
+```

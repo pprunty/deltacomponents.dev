@@ -29,10 +29,10 @@ function NavCard({
       href={href}
       className={cn(baseClasses, variantClasses[variant], className)}
     >
-      <div className="font-medium text-base">{title}</div>
-      <div className="text-muted-foreground text-base">
-        <span className="leading-relaxed">{description}</span>
-      </div>
+      <p className="font-medium text-base">{title}</p>
+      <p className="text-muted-foreground leading-5 pt-1 text-base">
+        {description}
+      </p>
     </Link>
   )
 }
@@ -41,7 +41,7 @@ const navigationItems = [
   {
     href: "/docs/components",
     title: "UI Components",
-    description: "Discover UI components like focusable images, animated tabs, marquees, and more ",
+    description: "Discover UI components such as focusable images, animated tabs, marquees, and more ",
     variant: "muted" as const,
   },
   {
