@@ -328,7 +328,7 @@ export const mdxComponents = {
     className,
     ...props
   }: React.ComponentProps<typeof Admonition>) => (
-    <Admonition className={cn("my-6", className)} {...props} />
+    <Admonition className={cn("my-6 text-[17px]", className)} {...props} />
   ),
   Accordion,
   AccordionContent,

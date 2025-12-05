@@ -22,46 +22,44 @@ interface BarItemProps {
   onItemClick: (href: string) => void
 }
 
-const BarItem = React.memo<BarItemProps>(
-  ({ href, label, Icon, isActive, labels, onItemClick }) => {
-    return (
-      <li className="flex-1">
-        <Link
-          href={href}
-          className={cn(
-            "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
-            labels ? "py-2" : "py-3"
-          )}
-          onClick={() => onItemClick(href)}
-        >
-          <div className="flex flex-col items-center">
-            {Icon && (
-              <div className="transform transition-all duration-200 hover:scale-105 active:scale-90">
-                <Icon
-                  className={cn(
-                    "h-7 w-7 transition-colors duration-150",
-                    isActive ? "text-primary" : "text-muted-foreground"
-                  )}
-                  weight={isActive ? "fill" : "regular"}
-                />
-              </div>
-            )}
-            {labels && (
-              <span
+const BarItem = React.memo<BarItemProps>(({ href, label, Icon, isActive, labels, onItemClick }) => {
+  return (
+    <li className="flex-1">
+      <Link
+        href={href}
+        className={cn(
+          "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
+          labels ? "py-2" : "py-3",
+        )}
+        onClick={() => onItemClick(href)}
+      >
+        <div className="flex flex-col items-center">
+          {Icon && (
+            <div className="transform transition-all duration-200 hover:scale-105 active:scale-90">
+              <Icon
                 className={cn(
-                  "mt-1.5 text-center text-[10px] leading-tight transition-colors duration-150",
-                  isActive ? "text-primary" : "text-muted-foreground"
+                  "h-7 w-7 transition-colors duration-150",
+                  isActive ? "text-primary" : "text-muted-foreground",
                 )}
-              >
-                {label}
-              </span>
-            )}
-          </div>
-        </Link>
-      </li>
-    )
-  }
-)
+                weight={isActive ? "fill" : "regular"}
+              />
+            </div>
+          )}
+          {labels && (
+            <span
+              className={cn(
+                "mt-1.5 text-center text-[10px] leading-tight transition-colors duration-150",
+                isActive ? "text-primary" : "text-muted-foreground",
+              )}
+            >
+              {label}
+            </span>
+          )}
+        </div>
+      </Link>
+    </li>
+  )
+})
 
 BarItem.displayName = "BarItem"
 
@@ -76,33 +74,26 @@ interface CenterButtonProps {
   labels: boolean
 }
 
-const CenterButton = React.memo<CenterButtonProps>(
-  ({ onClick, label, labels }) => {
-    return (
-      <li className="flex-1">
-        <button
-          onClick={onClick}
-          className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
-          aria-label={label || "Add"}
-        >
-          <div className="flex flex-col items-center">
-            <div className="supports-[backdrop-filter]:bg-muted/90 transform rounded-lg px-6 py-2 backdrop-blur-lg transition-all duration-200 hover:scale-105 active:scale-90">
-              <Plus
-                className="text-muted-foreground h-7 w-7 transition-colors duration-150"
-                weight="regular"
-              />
-            </div>
-            {labels && label && (
-              <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">
-                {label}
-              </span>
-            )}
+const CenterButton = React.memo<CenterButtonProps>(({ onClick, label, labels }) => {
+  return (
+    <li className="flex-1">
+      <button
+        onClick={onClick}
+        className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
+        aria-label={label || "Add"}
+      >
+        <div className="flex flex-col items-center">
+          <div className="supports-[backdrop-filter]:bg-muted/90 transform rounded-lg px-6 py-2 backdrop-blur-lg transition-all duration-200 hover:scale-105 active:scale-90">
+            <Plus className="text-muted-foreground h-7 w-7 transition-colors duration-150" weight="regular" />
           </div>
-        </button>
-      </li>
-    )
-  }
-)
+          {labels && label && (
+            <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">{label}</span>
+          )}
+        </div>
+      </button>
+    </li>
+  )
+})
 
 CenterButton.displayName = "CenterButton"
 
@@ -113,16 +104,9 @@ interface BottomMobileNavProps {
   className?: string
 }
 
-export function BottomMobileNav({
-  routes = [],
-  labels = false,
-  centerButton,
-  className,
-}: BottomMobileNavProps) {
+export function BottomMobileNav({ routes = [], labels = false, centerButton, className }: BottomMobileNavProps) {
   const pathname = usePathname()
-  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(
-    null
-  )
+  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(null)
   const [activeRoute, setActiveRoute] = React.useState<string>("")
 
   // Optimized route detection with minimal DOM queries
@@ -162,10 +146,7 @@ export function BottomMobileNav({
 
   // Additional effect to handle initial hash on client-side hydration
   React.useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      routes.some((route) => route.href.startsWith("#"))
-    ) {
+    if (typeof window !== "undefined" && routes.some((route) => route.href.startsWith("#"))) {
       const initialHash = window.location.hash
       if (initialHash) {
         setActiveRoute(initialHash)
@@ -188,7 +169,7 @@ export function BottomMobileNav({
       }
       setLastClickedItem(href)
     },
-    [lastClickedItem, activeRoute]
+    [lastClickedItem, activeRoute],
   )
 
   const handleCenterButtonClick = React.useCallback(() => {
@@ -208,8 +189,9 @@ export function BottomMobileNav({
     <nav
       className={cn(
         "fixed right-0 bottom-0 left-0 z-50 block py-1 md:hidden",
+        "pb-[env(safe-area-inset-bottom,4px)] pt-1",
         "supports-[backdrop-filter]:bg-background/85 backdrop-blur-lg",
-        className
+        className,
       )}
     >
       <ul className="relative flex items-center justify-around">
@@ -227,11 +209,7 @@ export function BottomMobileNav({
               />
             ))}
 
-            <CenterButton
-              onClick={handleCenterButtonClick}
-              label={centerButton.label}
-              labels={labels}
-            />
+            <CenterButton onClick={handleCenterButtonClick} label={centerButton.label} labels={labels} />
 
             {secondHalf.map(({ href, label, icon: Icon }, index) => (
               <BarItem

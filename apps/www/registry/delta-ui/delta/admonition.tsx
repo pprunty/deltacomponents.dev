@@ -8,6 +8,8 @@ import {
   XCircle,
 } from "lucide-react"
 
+import { cn } from "@/lib/utils"
+
 const admonitionConfig = {
   note: {
     bgColor: "bg-blue-50 dark:bg-blue-950/30",
@@ -80,7 +82,12 @@ export function Admonition({
 
   return (
     <div
-      className={` ${config.bgColor} ${config.borderColor} rounded-lg border p-4 ${className} `.trim()}
+      className={cn(
+        "rounded-lg border p-4 text-base",
+        config.bgColor,
+        config.borderColor,
+        className
+      )}
     >
       <div className="flex gap-3">
         <div className={`${config.iconColor} mt-0.5 flex-shrink-0`}>
@@ -88,11 +95,11 @@ export function Admonition({
         </div>
         <div className="min-w-0 flex-1">
           {title && (
-            <div className={`${config.textColor} mb-1 text-base font-semibold`}>
+            <div className={cn(config.textColor, "mb-1 font-semibold")}>
               {title}
             </div>
           )}
-          <div className={`${config.textColor} text-base leading-relaxed`}>
+          <div className={cn(config.textColor, "leading-relaxed")}>
             {children}
           </div>
         </div>

@@ -162,16 +162,16 @@ function TabsList({ children, className }: TabsListProps) {
         "text-muted-foreground relative inline-flex items-center",
         listHeightClasses[normalizedSize],
         variant === "default" &&
-          "bg-muted w-fit justify-center rounded-[10px] p-1",
+        "bg-muted w-fit justify-center rounded-[10px] p-1",
         variant === "underline" &&
-          "border-border w-full justify-start gap-0 border-b",
+        "border-border w-full justify-start gap-0 border-b",
         className
       )}
     >
       {variant === "underline" && (
         <div
           className={cn(
-            "bg-muted absolute z-0 rounded-sm transition-all duration-300 ease-out",
+            "bg-muted absolute z-0 rounded-md transition-all duration-300 ease-out",
             hoverHeightClasses[normalizedSize]
           )}
           style={{
