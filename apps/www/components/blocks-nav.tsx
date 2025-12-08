@@ -7,6 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/delta-ui/delta/tabs"
+import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
 import { registryCategories } from "@/registry/registry-categories"
 
 export function BlocksNav() {
@@ -38,17 +39,20 @@ export function BlocksNav() {
         variant="default"
         size="lg"
       >
-        <TabsList className="gap-1 bg-transparent p-0">
-          {visibleCategories.map((category) => (
-            <TabsTrigger
-              key={category.slug}
-              value={category.slug}
-              className="data-[state=active]:[&>div]:bg-muted"
-            >
-              {category.name}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <ScrollArea className="w-full">
+          <TabsList className="gap-1 bg-transparent p-0">
+            {visibleCategories.map((category) => (
+              <TabsTrigger
+                key={category.slug}
+                value={category.slug}
+                className="data-[state=active]:[&>div]:bg-muted"
+              >
+                {category.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          <ScrollBar orientation="horizontal" className="invisible" />
+        </ScrollArea>
       </Tabs>
     </div>
   )
