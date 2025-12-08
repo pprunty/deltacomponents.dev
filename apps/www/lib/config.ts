@@ -74,6 +74,7 @@ export const THEME_META_COLORS = {
   dublin: { light: "#f5f6eb", dark: "#0b0d6a" },
   kerry: { light: "#fcfcfc", dark: "#010600" },
   galway: { light: "#faf9f5", dark: "#262624" },
-  kilkenny: { light: "#F7F7F7", dark: "#161616" },
-  wexford: { light: "#f8eec9", dark: "#282828" },
+  kilkenny: { light: "#d6d3ce", dark: "#1a1918" },
+  wexford: { light: "#ede3c0", dark: "#32302f" },
+  limerick: { light: "#f9f7f1", dark: "#201a13" },
 }

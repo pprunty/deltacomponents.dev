@@ -164,7 +164,7 @@ function TabsList({ children, className }: TabsListProps) {
         variant === "default" &&
         "bg-muted w-fit justify-center rounded-[10px] p-1",
         variant === "underline" &&
-        "border-border w-full justify-start gap-0 border-b",
+        "border-primary w-full justify-start gap-0 border-b",
         className
       )}
     >
@@ -312,7 +312,7 @@ function TabsTrigger({
           layoutId={`${layoutId}-tab-indicator`}
           initial={false}
           className={cn(
-            "bg-foreground absolute inset-x-0 bottom-0",
+            "bg-primary absolute inset-x-0 bottom-0",
             !indicatorThickness && underlineThicknessClasses[normalizedSize]
           )}
           style={{

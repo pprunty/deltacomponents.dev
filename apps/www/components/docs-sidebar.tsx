@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 
 import type { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
+import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
 import {
@@ -31,25 +32,7 @@ const TOP_LEVEL_SECTIONS = [
 const BLOCKS_SECTIONS = [
   {
     name: "Blocks",
-    items: [
-      { name: "Testimonials", href: "/blocks/landing-page#testimonials" },
-      {
-        name: "Video Card Grid",
-        href: "/blocks/landing-page#interactive-feature-showcase",
-      },
-      {
-        name: "LLM Chat Window",
-        href: "/blocks/ai-elements#chatbot-window",
-      },
-      {
-        name: "AI Chat Sidebar",
-        href: "/blocks/ai-elements#ai-chat-sidebar",
-      },
-      {
-        name: "Perspective Carousel",
-        href: "/blocks/featured#perspective-carousel",
-      },
-    ],
+    items: BLOCKS_NAV_ITEMS,
   },
 ]
 

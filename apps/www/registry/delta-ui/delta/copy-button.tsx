@@ -18,12 +18,12 @@ export function copyToClipboard(value: string) {
 interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
   variant?:
-    | "ghost"
-    | "outline"
-    | "secondary"
-    | "default"
-    | "destructive"
-    | "link"
+  | "ghost"
+  | "outline"
+  | "secondary"
+  | "default"
+  | "destructive"
+  | "link"
   iconColor?: string
   tooltip?: string
 }
@@ -31,7 +31,7 @@ interface CopyButtonProps extends React.ComponentProps<typeof Button> {
 export function CopyButton({
   value,
   className,
-  variant = "ghost",
+  variant = "secondary",
   iconColor,
   tooltip = "Copy to Clipboard",
   ...props

@@ -82,6 +82,7 @@ export function Admonition({
 
   return (
     <div
+      data-slot="admonition"
       className={cn(
         "rounded-lg border p-4 text-base",
         config.bgColor,
@@ -95,7 +96,7 @@ export function Admonition({
         </div>
         <div className="min-w-0 flex-1">
           {title && (
-            <div className={cn(config.textColor, "mb-1 font-semibold")}>
+            <div className={cn(config.textColor, "mb-1 font-semibold text-base")}>
               {title}
             </div>
           )}

@@ -22,7 +22,42 @@ interface BarItemProps {
   onItemClick: (href: string) => void
 }
 
+function usePressAnimation(duration = 100) {
+  const [isPressed, setIsPressed] = React.useState(false)
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+
+  const triggerPress = React.useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
+    setIsPressed(true)
+
+    // Immediately start returning to original size after duration
+    timeoutRef.current = setTimeout(() => {
+      setIsPressed(false)
+    }, duration)
+  }, [duration])
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  return { isPressed, triggerPress }
+}
+
 const BarItem = React.memo<BarItemProps>(({ href, label, Icon, isActive, labels, onItemClick }) => {
+  const { isPressed, triggerPress } = usePressAnimation(100)
+
+  const handleClick = () => {
+    triggerPress()
+    onItemClick(href)
+  }
+
   return (
     <li className="flex-1">
       <Link
@@ -31,11 +66,17 @@ const BarItem = React.memo<BarItemProps>(({ href, label, Icon, isActive, labels,
           "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
           labels ? "py-2" : "py-3",
         )}
-        onClick={() => onItemClick(href)}
+        onClick={handleClick}
       >
         <div className="flex flex-col items-center">
           {Icon && (
-            <div className="transform transition-all duration-200 hover:scale-105 active:scale-90">
+            <div
+              className="transform transition-transform duration-100"
+              style={{
+                transform: isPressed ? "scale(0.9)" : "scale(1)",
+                transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
+              }}
+            >
               <Icon
                 className={cn(
                   "h-7 w-7 transition-colors duration-150",
@@ -75,15 +116,28 @@ interface CenterButtonProps {
 }
 
 const CenterButton = React.memo<CenterButtonProps>(({ onClick, label, labels }) => {
+  const { isPressed, triggerPress } = usePressAnimation(100)
+
+  const handleClick = () => {
+    triggerPress()
+    onClick()
+  }
+
   return (
     <li className="flex-1">
       <button
-        onClick={onClick}
+        onClick={handleClick}
         className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
         aria-label={label || "Add"}
       >
         <div className="flex flex-col items-center">
-          <div className="supports-[backdrop-filter]:bg-muted/90 transform rounded-lg px-6 py-2 backdrop-blur-lg transition-all duration-200 hover:scale-105 active:scale-90">
+          <div
+            className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg transition-transform duration-100"
+            style={{
+              transform: isPressed ? "scale(0.92)" : "scale(1)",
+              transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
+            }}
+          >
             <Plus className="text-muted-foreground h-7 w-7 transition-colors duration-150" weight="regular" />
           </div>
           {labels && label && (

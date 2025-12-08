@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
+import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
@@ -245,12 +246,7 @@ export function MobileNav({
                           Blocks
                         </div>
                         <div className="flex flex-col gap-3">
-                          {[
-                            { href: "/blocks/landing-page#testimonials", name: "Testimonials" },
-                            { href: "/blocks/ai-elements#interactive-feature-showcase", name: "Video Card Grid" },
-                            { href: "/blocks/ai-elements#chatbot-window", name: "LLM Chat Window" },
-                            { href: "/blocks/featured#perspective-carousel", name: "Perspective Carousel" }
-                          ].map((blockItem) => {
+                          {BLOCKS_NAV_ITEMS.map((blockItem) => {
                             const isActive = normalizePath(blockItem.href) === pathname
 
                             const handleClick = () => {

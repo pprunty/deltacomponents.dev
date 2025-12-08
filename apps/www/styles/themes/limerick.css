@@ -1,0 +1,106 @@
+/*
+ * Limerick Theme - Honey Gold
+ * A warm, inviting palette with soft cream backgrounds and rich amber accents
+ */
+
+html[data-theme="limerick"] {
+  --background: #f9f7f1;
+  --foreground: #2e261f;
+  --card: #fcfbf8;
+  --card-foreground: #2e261f;
+  --popover: #fcfbf8;
+  --popover-foreground: #2e261f;
+  --primary: #f29e0d;
+  --primary-foreground: #1f1a14;
+  --secondary: #e9e7e2;
+  --secondary-foreground: #3d3329;
+  --muted: #efece7;
+  --muted-foreground: #70665c;
+  --accent: #fbefda;
+  --accent-foreground: #915f08;
+  --destructive: #dc2828;
+  --destructive-foreground: #ffffff;
+  --border: #f29e0d;
+  --input: #e0dbd1;
+  --ring: #f29e0d;
+  --chart-1: #f29e0d;
+  --chart-2: #ee7c2b;
+  --chart-3: #e6bf4c;
+  --chart-4: #d95326;
+  --chart-5: #b8a12e;
+  --sidebar: #f4f2eb;
+  --sidebar-foreground: #2e261f;
+  --sidebar-primary: #f29e0d;
+  --sidebar-primary-foreground: #1f1a14;
+  --sidebar-accent: #fbefda;
+  --sidebar-accent-foreground: #915f08;
+  --sidebar-border: #e0dbd1;
+  --sidebar-ring: #f29e0d;
+  --surface: #f2ede5;
+  --surface-foreground: #4a4035;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+html[data-theme="limerick"].dark {
+  --background: #201a13;
+  --foreground: #ebe8e0;
+  --card: #251f18;
+  --card-foreground: #ebe8e0;
+  --popover: #251f18;
+  --popover-foreground: #ebe8e0;
+  --primary: #f4a825;
+  --primary-foreground: #201a13;
+  --secondary: #352e27;
+  --secondary-foreground: #d4d0c4;
+  --muted: #352e27;
+  --muted-foreground: #989081;
+  --accent: #453417;
+  --accent-foreground: #f0c375;
+  --destructive: #cf3030;
+  --destructive-foreground: #ffffff;
+  --border: #413830;
+  --input: #413830;
+  --ring: #f4a825;
+  --chart-1: #f4a825;
+  --chart-2: #f08b42;
+  --chart-3: #e9c763;
+  --chart-4: #dd643c;
+  --chart-5: #ccb333;
+  --sidebar: #1a140f;
+  --sidebar-foreground: #ebe8e0;
+  --sidebar-primary: #f4a825;
+  --sidebar-primary-foreground: #201a13;
+  --sidebar-accent: #453417;
+  --sidebar-accent-foreground: #f0c375;
+  --sidebar-border: #413830;
+  --sidebar-ring: #f4a825;
+  --surface: #2a231c;
+  --surface-foreground: #d9d4cc;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0rem;
+  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.20), 0 1px 2px -1px hsl(0 0% 0% / 0.20);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.20), 0 1px 2px -1px hsl(0 0% 0% / 0.20);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.20), 0 2px 4px -1px hsl(0 0% 0% / 0.20);
+  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.20), 0 4px 6px -1px hsl(0 0% 0% / 0.20);
+  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.20), 0 8px 10px -1px hsl(0 0% 0% / 0.20);
+  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.35);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}

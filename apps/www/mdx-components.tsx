@@ -109,7 +109,11 @@ export const mdxComponents = {
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6 text-foreground text-[17px]", className)}
+      className={cn(
+        "leading-relaxed [&:not(:first-child)]:mt-6 text-foreground text-[17px]",
+        "[div[data-slot='admonition']_&]:text-base",
+        className
+      )}
       {...props}
     />
   ),
@@ -328,7 +332,7 @@ export const mdxComponents = {
     className,
     ...props
   }: React.ComponentProps<typeof Admonition>) => (
-    <Admonition className={cn("my-6 text-[17px]", className)} {...props} />
+    <Admonition className={cn("my-6 text-base", className)} {...props} />
   ),
   Accordion,
   AccordionContent,

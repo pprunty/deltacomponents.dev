@@ -42,7 +42,7 @@ function VideoFeatureCard({
 }) {
   if (variant === "inner-card") {
     return (
-      <div className="bg-card text-card-foreground border-border flex flex-col rounded-xl border p-6">
+      <div className="border-border bg-card flex flex-col overflow-hidden rounded-sm border p-6">
         <div className="mb-6">
           <h3 className="mb-4 text-lg leading-tight font-medium md:text-xl">
             {feature.title}

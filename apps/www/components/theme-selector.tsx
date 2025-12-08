@@ -46,6 +46,10 @@ const SPECIAL_THEMES = [
     name: "Wexford (Gruvbox)",
     value: "wexford",
   },
+  {
+    name: "Limerick (Honey Gold)",
+    value: "limerick",
+  },
 ]
 
 function ModeToggle() {

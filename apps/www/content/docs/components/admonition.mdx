@@ -1,6 +1,6 @@
 ---
 title: Admonition
-description: A callout component for displaying important information with different severity levels and visual styling.
+description: Highlight side content and alerts with semantic colors and icons.
 status: beta
 ---
 
@@ -26,7 +26,13 @@ export default function Example() {
 
 ## Examples
 
-### Interactive Demo
+### Custom Icon
+
+Override the default semantic icon by passing a Lucide React component (or any SVG component) to the `icon` prop.
+
+<ComponentPreview name="admonition-custom-icon" />
+
+### Adomition Types
 
 Use different types of admonitions to guide users through important information and improve documentation clarity:
 
@@ -39,8 +45,8 @@ Use different types of admonitions to guide users through important information 
 
 | Prop      | Type                                                                         | Default | Description                                             |
 | --------- | ---------------------------------------------------------------------------- | ------- | ------------------------------------------------------- |
-| type      | "note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution" | "note"  | The type of admonition determining color and icon       |
-| title     | string                                                                       | -       | Optional title text displayed above the content         |
-| children  | ReactNode                                                                    | -       | The content to display inside the admonition            |
-| icon      | React.ComponentType                                                          | -       | Custom icon component to override the default type icon |
-| className | string                                                                       | -       | Additional CSS classes                                  |
+| `type`      | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`  | The type of admonition determining color and icon       |
+| `title`     | `string`                                                                       | -       | Optional title text displayed above the content         |
+| `children`  | `ReactNode`                                                                    | -       | The content to display inside the admonition            |
+| `icon`      | `React.ComponentType `                                                         | -       | Custom icon component to override the default type icon |
+| `className` | `string`                                                                       | -       | Additional CSS classes                                  |

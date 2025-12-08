@@ -44,7 +44,14 @@ export const wexfordTheme: ThemeData = {
   previewImage: "/images/themes/wexford.png",
 }
 
-export const THEME_DATA = [dublinTheme, kerryTheme, galwayTheme, kilkennyTheme, wexfordTheme]
+export const limerickTheme: ThemeData = {
+  name: "Limerick (Honey Gold)",
+  value: "limerick",
+  description: "A warm, inviting palette with soft cream backgrounds and rich honey gold accents.",
+  previewImage: "/images/themes/limerick.png",
+}
+
+export const THEME_DATA = [dublinTheme, kerryTheme, galwayTheme, kilkennyTheme, wexfordTheme, limerickTheme]
 
 export function getThemeData(value: string): ThemeData | undefined {
   return THEME_DATA.find((theme) => theme.value === value)

@@ -11,7 +11,7 @@ if __name__ == "__main__":
     main()`}
       language="python"
       showLineNumbers={false}
-      className="border-border rounded-xl"
+      className="border-border"
     />
   )
 }

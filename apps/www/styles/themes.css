@@ -5,6 +5,7 @@
 @import './themes/galway.css';
 @import './themes/kilkenny.css';
 @import './themes/wexford.css';
+@import './themes/limerick.css';
 
 .theme-default .theme-container {
   --chart-1: var(--color-blue-300);
