@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-package-manager-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/code-block.json"
+  ],
+  "files": [
+    {
+      "path": "examples/code-block-package-manager-demo.tsx",
+      "content": "import { CodeBlock } from \"@/registry/delta-ui/delta/code-block\"\n\nexport default function CodeBlockPackageManagerDemo() {\n  return (\n    <CodeBlock\n      npm=\"npx shadcn@latest add button\"\n      yarn=\"npx shadcn@latest add button\"\n      pnpm=\"pnpm dlx shadcn@latest add button\"\n      bun=\"bunx --bun shadcn@latest add button\"\n      defaultPackageManager=\"npm\"\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

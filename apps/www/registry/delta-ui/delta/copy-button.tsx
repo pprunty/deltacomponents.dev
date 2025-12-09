@@ -5,11 +5,6 @@ import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/delta-ui/ui/button"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/delta-ui/ui/tooltip"
 
 export function copyToClipboard(value: string) {
   navigator.clipboard.writeText(value)
@@ -17,25 +12,11 @@ export function copyToClipboard(value: string) {
 
 interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
-  variant?:
-    | "ghost"
-    | "outline"
-    | "secondary"
-    | "default"
-    | "destructive"
-    | "link"
+  variant?: "ghost" | "outline" | "secondary" | "default" | "destructive" | "link"
   iconColor?: string
-  tooltip?: string
 }
 
-export function CopyButton({
-  value,
-  className,
-  variant = "secondary",
-  iconColor,
-  tooltip = "Copy to Clipboard",
-  ...props
-}: CopyButtonProps) {
+export function CopyButton({ value, className, variant = "secondary", iconColor, ...props }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -48,54 +29,36 @@ export function CopyButton({
   }, [hasCopied])
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          data-slot="copy-button"
-          size="icon"
-          variant={variant}
+    <Button
+      data-slot="copy-button"
+      size="icon"
+      variant={variant}
+      className={cn("size-7 bg-transparent hover:bg-muted active:bg-muted border-none shadow-none", className)}
+      onClick={() => {
+        copyToClipboard(value)
+        setHasCopied(true)
+      }}
+      {...props}
+    >
+      <span className="sr-only">Copy</span>
+      <div className="relative">
+        <div
           className={cn(
-            "size-7 hover:opacity-100 focus-visible:opacity-100",
-            className
+            "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
+            hasCopied ? "blur-0 scale-100 opacity-100" : "scale-[0.25] opacity-0 blur-xs",
           )}
-          onClick={() => {
-            copyToClipboard(value)
-            setHasCopied(true)
-          }}
-          {...props}
         >
-          <span className="sr-only">Copy</span>
-          <div className="relative">
-            <div
-              className={cn(
-                "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
-                hasCopied
-                  ? "blur-0 scale-100 opacity-100"
-                  : "scale-[0.25] opacity-0 blur-xs"
-              )}
-            >
-              <CheckIcon
-                className="h-3.5 w-3.5"
-                style={iconColor ? { color: iconColor } : {}}
-              />
-            </div>
-            <div
-              className={cn(
-                "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
-                hasCopied
-                  ? "scale-[0.25] opacity-0 blur-xs"
-                  : "blur-0 scale-100 opacity-100"
-              )}
-            >
-              <CopyIcon
-                className="h-3.5 w-3.5"
-                style={iconColor ? { color: iconColor } : {}}
-              />
-            </div>
-          </div>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
-    </Tooltip>
+          <CheckIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+        </div>
+        <div
+          className={cn(
+            "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
+            hasCopied ? "scale-[0.25] opacity-0 blur-xs" : "blur-0 scale-100 opacity-100",
+          )}
+        >
+          <CopyIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+        </div>
+      </div>
+    </Button>
   )
 }

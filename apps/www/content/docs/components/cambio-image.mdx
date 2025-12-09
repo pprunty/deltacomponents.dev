@@ -53,6 +53,16 @@ When using images in a grid, pass the `index` prop to ensure correct layering du
 
 <ComponentPreview name="cambio-image-grid-demo" />
 
+### Dismiss on Scroll
+
+Automatically dismiss the zoomed image when the user scrolls. This is useful for maintaining a smooth browsing experience.
+
+<ComponentPreview name="cambio-image-dismiss-on-scroll-demo" />
+
+<Admonition type="note" title="Scroll Behavior in Constrained Containers">
+The `dismissOnScroll` behavior may not function as expected when the component is rendered within constrained scroll containers such as demo previews or tab panels. For the best experience testing this functionality, view the [full-screen demo](/view/cambio-image-dismiss-on-scroll-demo) where scroll events propagate correctly.
+</Admonition>
+
 ## Features
 
 - **Click to zoom**: Images can be clicked to open in a full-screen overlay
@@ -77,6 +87,7 @@ When using images in a grid, pass the `index` prop to ensure correct layering du
 | index                  | number                       | 0        | Z-index offset for stacking multiple images               |
 | motion                 | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration                  |
 | dismissible            | boolean                      | true     | Whether the zoom overlay can be dismissed                 |
+| dismissOnScroll        | boolean                      | false    | Automatically dismiss the overlay when scrolling          |
 | className              | string                       | -        | Additional CSS classes for styling                        |
 | draggable              | boolean                      | false    | Whether the image can be dragged                          |
 | enableInitialAnimation | boolean                      | true     | Enable blur-to-focus animation when image enters viewport |

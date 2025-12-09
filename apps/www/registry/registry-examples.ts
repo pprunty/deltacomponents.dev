@@ -227,6 +227,61 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "code-block-markdown-string-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-markdown-string-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-npx-markdown-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-npx-markdown-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-package-manager-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-package-manager-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-python-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-python-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "code-block-json-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    files: [
+      {
+        path: "examples/code-block-json-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "cambio-image-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
@@ -244,6 +299,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/cambio-image-grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "cambio-image-dismiss-on-scroll-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    files: [
+      {
+        path: "examples/cambio-image-dismiss-on-scroll-demo.tsx",
         type: "registry:example",
       },
     ],

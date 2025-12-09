@@ -1,6 +1,6 @@
 ---
 title: Code Block
-description: A versatile code block component supporting package manager commands and syntax highlighting with themes.
+description: A versatile code block component supporting package manager commands, syntax highlighting with themes, and markdown-wrapped code strings.
 ---
 
 <ComponentPreview name="code-block-demo" />
@@ -12,7 +12,34 @@ description: A versatile code block component supporting package manager command
   dependencies={["lucide-react", "prism-react-renderer", "prismjs"]}
 />
 
+<Admonition type="warning" title="Required CSS">
+Define `--surface` and `.no-scrollbar` in your `globals.css`:
+
+```css
+:root {
+  --surface: #fafafa; /* Light mode */
+}
+
+.dark {
+  --surface: #171717; /* Dark mode */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+```
+
+The `--surface` variable enables `bg-surface` styling. The `.no-scrollbar` class hides scrollbars when `scrollbar={false}` (default).
+</Admonition>
+
 ## Usage
+
+### Standard Code String
 
 ```tsx
 import { CodeBlock } from "@/components/ui/code-block"
@@ -26,6 +53,20 @@ export default function Example() {
       showLineNumbers={true}
     />
   )
+}
+```
+
+### Markdown-Wrapped Code String
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block"
+
+const markdownCode = `\`\`\`python
+print("Hello, World!")
+\`\`\``
+
+export default function Example() {
+  return <CodeBlock code={markdownCode} filename="hello.py" />
 }
 ```
 
@@ -44,57 +85,73 @@ export default function Example() {
 
 ## Examples
 
-### Package Manager Commands
+### Custom Themes with Background
 
-<ComponentPreview name="code-block-package-demo" />
+Apply adaptive themes with `useThemeBackground` to use theme-defined backgrounds instead of `bg-surface`:
+
+<ComponentPreview name="code-block-python-demo" height="700px" />
+
+### JSON Syntax Highlighting
+
+Display formatted JSON data with syntax highlighting:
+
+<ComponentPreview name="code-block-json-demo" height="700px" />
 
 ### Interactive Theme Demo
 
 <ComponentPreview name="code-block-theme-demo" />
 
-This demo cycles through different popular Prism themes and includes a toggle to demonstrate the `useThemeBackground` prop. When enabled, you can see how each theme's custom background colors are applied.
+Cycle through Prism themes with background toggle to compare `bg-surface` vs. `useThemeBackground` behavior.
 
-### Background Options
+### Markdown Code Strings
 
-By default, the component uses `bg-surface` for the background. You can enable the JSON theme background by setting `useThemeBackground={true}`:
+Parse and render markdown-formatted code blocks:
 
-```tsx
-// Default surface background
-<CodeBlock
-  code={`console.log("Hello, World!")`}
-  language="javascript"
-/>
+<ComponentPreview name="code-block-markdown-string-demo" />
 
-// JSON theme background
-<CodeBlock
-  code={`console.log("Hello, World!")`}
-  language="javascript"
-  useThemeBackground={true}
-/>
-```
+### NPX Commands
+
+Handle package manager commands in markdown:
+
+<ComponentPreview name="code-block-npx-markdown-demo" />
+
+### Package Manager Commands
+
+<ComponentPreview name="code-block-package-demo" />
+
+Alternatively, use individual props for package managers:
+
+<ComponentPreview name="code-block-package-manager-demo" />
 
 ## API Reference
 
 ### Props
 
-| Prop                        | Type           | Default      | Description                                   |
-| --------------------------- | -------------- | ------------ | --------------------------------------------- |
-| **Package Manager Props**   |                |              |                                               |
-| npm                         | string         | -            | npm command to display                        |
-| yarn                        | string         | -            | yarn command to display                       |
-| pnpm                        | string         | -            | pnpm command to display                       |
-| bun                         | string         | -            | bun command to display                        |
-| defaultPackageManager       | PackageManager | "npm"        | Default selected package manager              |
-| **Code Highlighting Props** |                |              |                                               |
-| code                        | string         | -            | Code content to highlight                     |
-| language                    | string         | "typescript" | Programming language for syntax highlighting  |
-| filename                    | string         | -            | Filename to display in header                 |
-| showLineNumbers             | boolean        | true         | Whether to show line numbers                  |
-| theme                       | PrismTheme     | -            | Custom Prism theme object                     |
-| adaptiveTheme               | object         | -            | Object with `light` and `dark` theme variants |
-| useThemeBackground          | boolean        | false        | Use JSON theme background instead of bg-surface |
-| **General Props**           |                |              |                                               |
-| className                   | string         | -            | Additional CSS classes for styling            |
+| Prop                        | Type           | Default      | Description                                                    |
+| --------------------------- | -------------- | ------------ | -------------------------------------------------------------- |
+| **Package Manager Props**   |                |              |                                                                |
+| npm                         | string         | -            | npm command                                                    |
+| yarn                        | string         | -            | yarn command                                                   |
+| pnpm                        | string         | -            | pnpm command                                                   |
+| bun                         | string         | -            | bun command                                                    |
+| defaultPackageManager       | PackageManager | "npm"        | Default tab selection                                          |
+| **Code Highlighting Props** |                |              |                                                                |
+| code                        | string         | -            | Code content (supports markdown-wrapped code blocks)           |
+| language                    | string         | "typescript" | Language for syntax highlighting                               |
+| filename                    | string         | -            | Optional filename display                                      |
+| showLineNumbers             | boolean        | true         | Toggle line numbers                                            |
+| theme                       | PrismTheme     | -            | Prism theme object                                             |
+| adaptiveTheme               | object         | -            | `{ light: PrismTheme, dark: PrismTheme }` for theme switching  |
+| useThemeBackground          | boolean        | false        | Apply theme's `backgroundColor` instead of `bg-surface`        |
+| scrollbar                   | boolean        | false        | Show scrollbars (applies `.no-scrollbar` class when false)     |
+| **General Props**           |                |              |                                                                |
+| className                   | string         | -            | Additional CSS classes                                         |
+
+### Background Behavior
+
+- **Default (`useThemeBackground={false}`)**: Uses `bg-surface` CSS variable
+- **Theme Background (`useThemeBackground={true}`)**: Uses `theme.plain.backgroundColor` from Prism theme
+- Requires `--surface` CSS variable definition for default mode
 
 ### Types
 

@@ -3,34 +3,16 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { TerminalIcon } from "lucide-react"
-import { Highlight, Prism } from "prism-react-renderer"
+import { Highlight } from "prism-react-renderer"
 import type { PrismTheme } from "prism-react-renderer"
-
-// Import additional language definitions
 
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/delta-ui/delta/tabs"
-
-;(typeof global !== "undefined" ? global : window).Prism = Prism
-require("prismjs/components/prism-cpp")
-require("prismjs/components/prism-python")
-require("prismjs/components/prism-bash")
-require("prismjs/components/prism-typescript")
-require("prismjs/components/prism-javascript")
-require("prismjs/components/prism-jsx")
-require("prismjs/components/prism-tsx")
-require("prismjs/components/prism-go")
-require("prismjs/components/prism-rust")
+import { getIconForFile } from "@/registry/delta-ui/delta/code-block-icons"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 
-// Inline theme definitions
 const defaultTheme: PrismTheme = {
   plain: {
     color: "#FFFFFF",
@@ -86,7 +68,7 @@ const defaultTheme: PrismTheme = {
 const lightTheme: PrismTheme = {
   plain: {
     color: "#24292e",
-    backgroundColor: "#F9F9F9",
+    backgroundColor: "#ffffff",
   },
   styles: [
     {
@@ -154,14 +136,11 @@ const lightTheme: PrismTheme = {
 }
 
 interface CodeBlockProps {
-  // Package manager commands
   npm?: string
   yarn?: string
   pnpm?: string
   bun?: string
   defaultPackageManager?: PackageManager
-
-  // Code highlighting props
   code?: string
   css?: string
   language?: string
@@ -173,11 +152,98 @@ interface CodeBlockProps {
     light: PrismTheme
     dark: PrismTheme
   }
-
-  // Background options
-  useThemeBackground?: boolean // When true, uses the JSON theme background; when false, uses bg-surface
-
+  useThemeBackground?: boolean
   className?: string
+  textClassName?: string
+  scrollbar?: boolean
+}
+
+const monoFontFamily =
+  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+
+function parseMarkdownCodeBlock(input: string): { code: string; language: string | null } {
+  const markdownRegex = /^```(\w+)?\n?([\s\S]*?)```$/
+  const match = input.trim().match(markdownRegex)
+
+  if (match) {
+    return {
+      language: match[1] || null,
+      code: match[2]?.trim() || "",
+    }
+  }
+
+  return { code: input, language: null }
+}
+
+const languageAliases: Record<string, string> = {
+  py: "python",
+  js: "javascript",
+  ts: "typescript",
+  tsx: "tsx",
+  jsx: "jsx",
+  rb: "ruby",
+  rs: "rust",
+  sh: "bash",
+  shell: "bash",
+  yml: "yaml",
+  md: "markdown",
+}
+
+const packageManagerCommands: Record<string, PackageManager> = {
+  npx: "npm",
+  npm: "npm",
+  yarn: "yarn",
+  pnpm: "pnpm",
+  bunx: "bun",
+  bun: "bun",
+}
+
+function resolveLanguage(lang: string): string {
+  return languageAliases[lang.toLowerCase()] || lang.toLowerCase()
+}
+
+function detectPackageManagerFromMarkdown(input: string): {
+  isPackageManager: boolean
+  command: string
+  manager: PackageManager
+} | null {
+  const parsed = parseMarkdownCodeBlock(input)
+  if (!parsed.language) return null
+
+  const lang = parsed.language.toLowerCase()
+  const manager = packageManagerCommands[lang]
+
+  if (manager) {
+    return {
+      isPackageManager: true,
+      command: parsed.code,
+      manager,
+    }
+  }
+
+  return null
+}
+
+function convertNpxToPackageManagers(npxCommand: string): {
+  npm: string
+  yarn: string
+  pnpm: string
+  bun: string
+} {
+  // Handle patterns like "npx shadcn@latest add button" or just "shadcn@latest add button"
+  let command = npxCommand.trim()
+
+  // Remove leading "npx " if present
+  if (command.startsWith("npx ")) {
+    command = command.slice(4)
+  }
+
+  return {
+    npm: `npx ${command}`,
+    yarn: `yarn dlx ${command}`,
+    pnpm: `pnpm dlx ${command}`,
+    bun: `bunx ${command}`,
+  }
 }
 
 export function CodeBlock({
@@ -196,13 +262,12 @@ export function CodeBlock({
   adaptiveTheme,
   useThemeBackground = false,
   className,
+  textClassName = "text-[14px]",
+  scrollbar = true,
 }: CodeBlockProps) {
-  const [packageManager, setPackageManager] = React.useState<PackageManager>(
-    defaultPackageManager
-  )
+  const [packageManager, setPackageManager] = React.useState<PackageManager>(defaultPackageManager)
   const [isDark, setIsDark] = useState(false)
 
-  // Hook to detect dark mode
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDark(document.documentElement.classList.contains("dark"))
@@ -212,10 +277,7 @@ export function CodeBlock({
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class"
-        ) {
+        if (mutation.type === "attributes" && mutation.attributeName === "class") {
           checkDarkMode()
         }
       })
@@ -238,62 +300,70 @@ export function CodeBlock({
     }
   }, [npm, yarn, pnpm, bun])
 
-  const availableCommands = Object.entries(commands).filter(
-    ([, command]) => command
-  )
+  const availableCommands = Object.entries(commands).filter(([, command]) => command)
 
-  // Select theme based on adaptiveTheme prop or auto-detect light/dark mode
   const selectedTheme = adaptiveTheme
     ? isDark
       ? adaptiveTheme.dark
       : adaptiveTheme.light
     : theme || (isDark ? defaultTheme : lightTheme)
 
-  // Use the theme's text foreground color for the copy button
-  const iconColor = selectedTheme.plain?.color || "#000000"
+  const packageManagerFromMarkdown = code ? detectPackageManagerFromMarkdown(code) : null
 
-  // Handle CSS prop - treat as code with CSS language
-  const actualCode = css || code
-  const actualLanguage = css ? "css" : defaultLanguage || language
+  const parsedMarkdown = code ? parseMarkdownCodeBlock(code) : null
+  const actualCode = css || (parsedMarkdown?.code ?? code)
+  const actualLanguage = css
+    ? "css"
+    : parsedMarkdown?.language
+      ? resolveLanguage(parsedMarkdown.language)
+      : defaultLanguage || language
 
-  // If we have package manager commands, show the tabbed interface
-  if (availableCommands.length > 0) {
+  if (packageManagerFromMarkdown) {
+    const { command, manager } = packageManagerFromMarkdown
+    const allCommands = convertNpxToPackageManagers(command)
+
     return (
-      <div
-        className={cn(
-          "bg-card text-card-foreground overflow-x-auto rounded-lg border",
-          className
-        )}
-        data-slot="tabs"
-      >
+      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
         <Tabs
           value={packageManager}
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
+          defaultValue={manager}
         >
           <div
-            className={cn(
-              "flex items-center justify-between border-b px-3 py-1",
-              !useThemeBackground && "bg-surface"
-            )}
+            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
             style={
               useThemeBackground
                 ? {
-                    backgroundColor: selectedTheme.plain?.backgroundColor,
-                  }
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                  color: selectedTheme.plain?.color,
+                }
                 : undefined
             }
           >
-            <div className="flex items-center gap-2">
-              <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-                <TerminalIcon className="text-code size-3" />
-              </div>
-              <TabsList className="rounded-none bg-transparent p-0">
-                {availableCommands.map(([key]) => (
+            <div className="flex items-center gap-2.5">
+              <TerminalIcon
+                className="size-4 text-muted-foreground"
+                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+              />
+              <TabsList className="h-auto rounded-none bg-transparent p-0">
+                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
                   <TabsTrigger
                     key={key}
                     value={key}
-                    className="data-[state=active]:border-border h-7 rounded-sm border border-transparent pt-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                    className={cn(
+                      "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+                      textClassName,
+                    )}
+                    style={{
+                      fontFamily: monoFontFamily,
+                      ...(useThemeBackground
+                        ? {
+                          color: selectedTheme.plain?.color,
+                          opacity: 0.7,
+                        }
+                        : {}),
+                    }}
                   >
                     {key}
                   </TabsTrigger>
@@ -301,51 +371,39 @@ export function CodeBlock({
               </TabsList>
             </div>
             <CopyButton
-              value={commands[packageManager] || ""}
-              className="size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-              tooltip="Copy command"
+              value={allCommands[packageManager] || allCommands[manager]}
+              className="size-7"
+              variant="secondary"
+              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
             />
           </div>
-          <div className="no-scrollbar overflow-x-auto">
-            {availableCommands.map(([key, command]) => (
+          <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
+            {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className={cn(
-                    "relative py-4",
-                    !useThemeBackground && "bg-surface"
-                  )}
+                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
                   style={
                     useThemeBackground
                       ? {
-                          backgroundColor: selectedTheme.plain?.backgroundColor,
-                        }
+                        backgroundColor: selectedTheme.plain?.backgroundColor,
+                      }
                       : undefined
                   }
                 >
-                  <Highlight
-                    theme={selectedTheme}
-                    code={command || ""}
-                    language="bash"
-                  >
-                    {({
-                      className: highlightClassName,
-                      style,
-                      tokens,
-                      getLineProps,
-                      getTokenProps,
-                    }) => (
+                  <Highlight theme={selectedTheme} code={allCommands[key]} language="bash">
+                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
                       <pre
-                        className={`${highlightClassName} w-full overflow-x-auto px-4 font-mono text-sm leading-relaxed font-medium`}
+                        className={cn(
+                          highlightClassName,
+                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
+                          textClassName,
+                        )}
                         style={{
                           ...style,
-                          backgroundColor: useThemeBackground
-                            ? selectedTheme.plain?.backgroundColor
-                            : "transparent",
-                          fontSize: className?.includes("text-lg")
-                            ? "1.125rem"
-                            : className?.includes("text-base")
-                              ? "1rem"
-                              : undefined,
+                          fontFamily: monoFontFamily,
+                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          WebkitFontSmoothing: "antialiased",
+                          MozOsxFontSmoothing: "grayscale",
                         }}
                       >
                         {tokens.map((line, i) => (
@@ -367,134 +425,217 @@ export function CodeBlock({
     )
   }
 
-  // If we have code to highlight, show the syntax highlighted version
+  if (availableCommands.length > 0) {
+    return (
+      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
+        <Tabs
+          value={packageManager}
+          className="gap-0"
+          onValueChange={(value) => setPackageManager(value as PackageManager)}
+        >
+          <div
+            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
+            style={
+              useThemeBackground
+                ? {
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                  color: selectedTheme.plain?.color,
+                }
+                : undefined
+            }
+          >
+            <div className="flex items-center gap-2.5">
+              <TerminalIcon
+                className="size-4 text-muted-foreground"
+                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+              />
+              <TabsList className="h-auto rounded-none bg-transparent p-0">
+                {availableCommands.map(([key]) => (
+                  <TabsTrigger
+                    key={key}
+                    value={key}
+                    className={cn(
+                      "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+                      textClassName,
+                    )}
+                    style={{
+                      fontFamily: monoFontFamily,
+                      ...(useThemeBackground
+                        ? {
+                          color: selectedTheme.plain?.color,
+                          opacity: 0.7,
+                        }
+                        : {}),
+                    }}
+                  >
+                    {key}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+            <CopyButton
+              value={commands[packageManager] || ""}
+              className="size-7"
+              variant="secondary"
+              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+            />
+          </div>
+          <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
+            {availableCommands.map(([key, command]) => (
+              <TabsContent key={key} value={key} className="mt-0">
+                <div
+                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
+                  style={
+                    useThemeBackground
+                      ? {
+                        backgroundColor: selectedTheme.plain?.backgroundColor,
+                      }
+                      : undefined
+                  }
+                >
+                  <Highlight theme={selectedTheme} code={command || ""} language="bash">
+                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                      <pre
+                        className={cn(
+                          highlightClassName,
+                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
+                          textClassName,
+                        )}
+                        style={{
+                          ...style,
+                          fontFamily: monoFontFamily,
+                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          WebkitFontSmoothing: "antialiased",
+                          MozOsxFontSmoothing: "grayscale",
+                        }}
+                      >
+                        {tokens.map((line, i) => (
+                          <div key={i} {...getLineProps({ line })}>
+                            {line.map((token, key) => (
+                              <span key={key} {...getTokenProps({ token })} />
+                            ))}
+                          </div>
+                        ))}
+                      </pre>
+                    )}
+                  </Highlight>
+                </div>
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
+      </div>
+    )
+  }
+
   if (actualCode) {
     return (
       <div
         className={cn(
-          "border-border pointer-events-auto w-full max-w-full overflow-x-auto overflow-y-hidden rounded-sm border",
-          className
+          "border-border pointer-events-auto w-full max-w-full overflow-hidden rounded-lg border",
+          className,
         )}
       >
         {filename && (
+          <figcaption
+            className={cn(
+              "flex items-center justify-between border-b px-4 py-2.5 [&_svg]:size-4",
+              !useThemeBackground && "bg-surface",
+            )}
+            style={{
+              fontFamily: monoFontFamily,
+              ...(useThemeBackground
+                ? {
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                  color: selectedTheme.plain?.color,
+                }
+                : {}),
+            }}
+          >
+            <div className={cn("flex items-center gap-2 text-muted-foreground", textClassName)}>
+              {getIconForFile(filename)}
+              <span className="font-medium tracking-tight">{filename}</span>
+            </div>
+            <CopyButton value={actualCode} iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined} />
+          </figcaption>
+        )}
+
+        <div className="relative">
+          {!filename && (
+            <div className="pointer-events-none sticky top-0 right-0 z-10 flex h-0 justify-end">
+              <div className="pointer-events-auto p-2">
+                <CopyButton
+                  value={actualCode}
+                  iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+                />
+              </div>
+            </div>
+          )}
+
           <div
             className={cn(
-              "flex items-center justify-between border-b",
-              !useThemeBackground && "bg-surface"
+              "relative max-h-[450px] w-full",
+              !useThemeBackground && "bg-surface",
+              scrollbar ? "overflow-y-auto" : "overflow-y-auto no-scrollbar",
             )}
             style={
               useThemeBackground
                 ? {
-                    backgroundColor: selectedTheme.plain?.backgroundColor,
-                  }
+                  backgroundColor: selectedTheme.plain?.backgroundColor,
+                }
                 : undefined
             }
           >
-            <div className="flex items-center gap-2 px-3 py-1">
-              <span className="text-sm font-medium">{filename}</span>
-            </div>
-            <CopyButton
-              value={actualCode}
-              className="mr-3"
-              tooltip="Copy code"
-            />
-          </div>
-        )}
-
-        <div
-          className={cn(
-            "relative max-h-[calc(530px-44px)] w-full py-4",
-            !useThemeBackground && "bg-surface"
-          )}
-          style={
-            useThemeBackground
-              ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                }
-              : undefined
-          }
-        >
-          {!filename && (
-            <div className="absolute top-1 right-1">
-              <CopyButton value={actualCode} tooltip="Copy code" />
-            </div>
-          )}
-
-          <Highlight
-            theme={selectedTheme}
-            code={actualCode.trim()}
-            language={actualLanguage}
-          >
-            {({
-              className: highlightClassName,
-              style,
-              tokens,
-              getLineProps,
-              getTokenProps,
-            }) => (
-              <pre
-                className={`${highlightClassName} thin-scrollbar max-h-[calc(530px-88px)] w-full overflow-x-auto overflow-y-auto font-mono text-sm leading-relaxed font-medium`}
-                style={{
-                  ...style,
-                  backgroundColor: useThemeBackground
-                    ? selectedTheme.plain?.backgroundColor
-                    : "transparent",
-                  fontSize: className?.includes("text-lg")
-                    ? "1.125rem"
-                    : className?.includes("text-base")
-                      ? "1rem"
-                      : undefined,
-                  scrollbarWidth: "thin",
-                  scrollbarColor:
-                    selectedTheme.plain?.backgroundColor?.toLowerCase() ===
-                      "#ffffff" ||
-                    selectedTheme.plain?.backgroundColor === "#FAFAFA"
-                      ? "#d1d5db transparent"
-                      : "#4b5563 transparent",
-                }}
-              >
-                {tokens.map((line, i) => (
-                  <div
-                    key={i}
-                    {...getLineProps({ line })}
-                    className="flex items-center px-4 py-px"
-                  >
-                    {showLineNumbers && (
-                      <span
-                        className="mr-4 flex items-center text-right text-sm select-none"
-                        style={{
-                          color:
-                            selectedTheme.plain?.backgroundColor ===
-                              "#FFFFFF" ||
-                            selectedTheme.plain?.backgroundColor === "#FAFAFA"
-                              ? "#999999"
-                              : "#757575",
-                          minWidth: "1.5rem",
-                          fontSize: className?.includes("text-lg")
-                            ? "1.125rem"
-                            : className?.includes("text-base")
-                              ? "1rem"
-                              : undefined,
-                        }}
-                      >
-                        {i + 1}
+            <Highlight theme={selectedTheme} code={actualCode.trim()} language={actualLanguage}>
+              {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                <pre
+                  className={cn(
+                    highlightClassName,
+                    "min-w-0 py-3.5 outline-none",
+                    "font-medium leading-6 antialiased",
+                    scrollbar ? "overflow-x-auto" : "overflow-x-auto no-scrollbar",
+                    textClassName,
+                  )}
+                  style={{
+                    ...style,
+                    fontFamily: monoFontFamily,
+                    backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                    WebkitFontSmoothing: "antialiased",
+                    MozOsxFontSmoothing: "grayscale",
+                  }}
+                >
+                  {tokens.map((line, i) => (
+                    <div key={i} {...getLineProps({ line })} className="flex min-h-[24px] items-center">
+                      {showLineNumbers && (
+                        <span
+                          className={cn(
+                            "mr-8 inline-block w-6 flex-shrink-0 pl-6 text-right font-medium tabular-nums select-none",
+                            textClassName,
+                          )}
+                          style={{
+                            fontFamily: monoFontFamily,
+                            color: selectedTheme.plain?.color,
+                            opacity: 0.35,
+                          }}
+                        >
+                          {i + 1}
+                        </span>
+                      )}
+                      <span className={cn("flex-1 whitespace-pre pr-6", !showLineNumbers && "pl-6")}>
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token })} />
+                        ))}
                       </span>
-                    )}
-                    <span className={!showLineNumbers ? "ml-0" : ""}>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token })} />
-                      ))}
-                    </span>
-                  </div>
-                ))}
-              </pre>
-            )}
-          </Highlight>
+                    </div>
+                  ))}
+                </pre>
+              )}
+            </Highlight>
+          </div>
         </div>
       </div>
     )
   }
 
-  // Return null if no content
   return null
 }

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-npx-markdown-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/code-block.json"
+  ],
+  "files": [
+    {
+      "path": "examples/code-block-npx-markdown-demo.tsx",
+      "content": "import { CodeBlock } from \"@/registry/delta-ui/delta/code-block\"\n\nconst npxMarkdownCode = `\\`\\`\\`npx\nshadcn@latest add button\n\\`\\`\\``\n\nexport default function CodeBlockNpxMarkdownDemo() {\n  return <CodeBlock code={npxMarkdownCode} />\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

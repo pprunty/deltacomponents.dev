@@ -342,7 +342,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
           onClick={handlePreviewClick}
         >
           <video
-            src={`/${item.name}-preview.mp4`}
+            src={`/videos/${item.name}-demo.mp4`}
             autoPlay
             muted
             loop

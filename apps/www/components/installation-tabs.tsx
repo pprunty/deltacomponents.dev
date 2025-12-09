@@ -6,11 +6,17 @@ import { TerminalIcon } from "lucide-react"
 import { useConfig } from "@/hooks/use-config"
 import { Step, Steps } from "@/components/steps"
 import {
+  Tabs as DeltaTabs,
+  TabsContent as DeltaTabsContent,
+  TabsList as DeltaTabsList,
+  TabsTrigger as DeltaTabsTrigger,
+} from "@/registry/delta-ui/delta/tabs"
+import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/delta-ui/delta/tabs"
+} from "@/registry/delta-ui/ui/tabs"
 
 interface InstallationTabsProps {
   name: string
@@ -29,7 +35,7 @@ export function InstallationTabs({
 
   return (
     <div className="group relative mt-4 mb-12 flex flex-col gap-2">
-      <Tabs
+      <DeltaTabs
         defaultValue="cli"
         value={tab}
         onValueChange={setTab}
@@ -37,16 +43,16 @@ export function InstallationTabs({
         variant="underline"
         size="lg"
       >
-        <TabsList className="mb-4 w-full">
-          <TabsTrigger value="cli" className="font-medium">
+        <DeltaTabsList className="mb-4 w-full">
+          <DeltaTabsTrigger value="cli" className="font-medium">
             CLI
-          </TabsTrigger>
-          <TabsTrigger value="manual" className="font-medium">
+          </DeltaTabsTrigger>
+          <DeltaTabsTrigger value="manual" className="font-medium">
             Manual
-          </TabsTrigger>
-        </TabsList>
+          </DeltaTabsTrigger>
+        </DeltaTabsList>
 
-        <TabsContent value="cli" className="relative">
+        <DeltaTabsContent value="cli" className="relative">
           <figure
             data-rehype-pretty-code-figure=""
             className="[&>pre]:max-h-96"
@@ -88,9 +94,9 @@ export function InstallationTabs({
               </div>
             </Tabs>
           </figure>
-        </TabsContent>
+        </DeltaTabsContent>
 
-        <TabsContent value="manual" className="relative">
+        <DeltaTabsContent value="manual" className="relative">
           <Steps>
             {dependencies && dependencies.length > 0 && (
               <>
@@ -149,8 +155,8 @@ export function InstallationTabs({
 
             <Step>Update the import paths to match your project setup.</Step>
           </Steps>
-        </TabsContent>
-      </Tabs>
+        </DeltaTabsContent>
+      </DeltaTabs>
     </div>
   )
 }
