@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 
 import type { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
-import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
+import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
 import {
@@ -100,12 +100,8 @@ export function DocsSidebar({
                       const componentName = (item as { url?: string }).url?.split('/').pop()
                       const componentMeta = componentName ? Index[componentName]?.meta : null
 
-                      // Check if component should be hidden in production
-                      const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
-                      const shouldHide = componentMeta?.hide && isProduction
-
-                      // Skip rendering hidden components
-                      if (shouldHide) {
+                      // Skip hidden components in production
+                      if (shouldHideComponent((item as { url?: string }).url)) {
                         return null
                       }
 
@@ -115,6 +111,7 @@ export function DocsSidebar({
                         (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
                       ) {
                         // Check if component should be disabled in production (runtime evaluation)
+                        const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
                         const isComponentDisabled = componentMeta?.badge === "coming soon" && isProduction
 
                         if (isComponentDisabled) {

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
-import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
+import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
@@ -176,6 +176,11 @@ export function MobileNav({
                         // Check for component-specific metadata
                         const componentName = item.url?.split('/').pop()
                         const componentMeta = componentName ? Index[componentName]?.meta : null
+
+                        // Skip hidden components in production
+                        if (shouldHideComponent(item.url)) {
+                          return null
+                        }
 
                         if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
                           const isActive = normalizePath(item.url) === pathname
