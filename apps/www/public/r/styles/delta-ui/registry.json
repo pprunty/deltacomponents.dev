@@ -48,7 +48,7 @@
       ],
       "meta": {
         "badge": "coming soon",
-        "hide": false
+        "hide": true
       }
     },
     {
@@ -197,7 +197,7 @@
       ],
       "meta": {
         "badge": "coming soon",
-        "hide": false
+        "hide": true
       }
     },
     {
@@ -224,8 +224,18 @@
       ],
       "meta": {
         "badge": "coming soon",
-        "hide": false
+        "hide": true
       }
+    },
+    {
+      "name": "product-card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/product-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "ai-chat-sidebar",
@@ -415,6 +425,58 @@
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "product-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/product-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/product-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "product-card-inner-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/product-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/product-card-inner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "product-card-custom-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/product-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/product-card-custom-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "product-card-size-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/product-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/product-card-size-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

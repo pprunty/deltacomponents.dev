@@ -2,6 +2,50 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "product-card-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [
+      {
+        path: "examples/product-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "product-card-inner-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [
+      {
+        path: "examples/product-card-inner-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "product-card-custom-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [
+      {
+        path: "examples/product-card-custom-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "product-card-size-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [
+      {
+        path: "examples/product-card-size-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "navigation-menu-demo",
     type: "registry:example",
     registryDependencies: [

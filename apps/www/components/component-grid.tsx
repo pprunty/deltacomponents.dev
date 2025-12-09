@@ -1,5 +1,6 @@
 import { source } from "@/lib/source"
 import { ComponentCard } from "@/components/component-card"
+import { Index } from "@/registry/__index__"
 
 export function ComponentGrid() {
   const components = source.pageTree.children.find(
@@ -7,11 +8,23 @@ export function ComponentGrid() {
   )
 
   if (components?.type !== "folder") {
-    return
+    return null
   }
 
+  // Check if in production
+  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+
   const list = components.children.filter(
-    (component) => component.type === "page"
+    (component) => {
+      if (component.type !== "page") return false
+
+      // Check if component should be hidden
+      const componentName = component.url.split('/').pop()
+      const componentMeta = componentName ? Index[componentName]?.meta : null
+      const shouldHide = componentMeta?.hide && isProduction
+
+      return !shouldHide
+    }
   )
 
   return (

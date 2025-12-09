@@ -1,0 +1,158 @@
+---
+title: Product Card
+description: A flexible compound component for displaying product information with images, badges, and metadata.
+---
+
+<ComponentPreview name="product-card-demo" />
+
+## Installation
+
+<Installation name="product-card" />
+
+## Usage
+
+```tsx
+import {
+  ProductCard,
+  ProductCardImage,
+  ProductCardBadge,
+  ProductCardContent,
+  ProductCardHeader,
+  ProductCardTitle,
+  ProductCardSubtitle,
+  ProductCardMetric,
+} from "@/registry/delta-ui/delta/product-card"
+
+export default function Example() {
+  const [isWishlisted, setIsWishlisted] = React.useState(false)
+
+  return (
+    <ProductCard>
+      <ProductCardImage src="/product.jpg" alt="Product">
+        <ProductCardBadge
+          isActive={isWishlisted}
+          onClick={() => setIsWishlisted(!isWishlisted)}
+        >
+          Wishlist
+        </ProductCardBadge>
+      </ProductCardImage>
+
+      <ProductCardContent>
+        <ProductCardHeader>
+          <ProductCardTitle>Product Name</ProductCardTitle>
+          <ProductCardSubtitle>Category</ProductCardSubtitle>
+        </ProductCardHeader>
+        <ProductCardMetric>$99</ProductCardMetric>
+      </ProductCardContent>
+    </ProductCard>
+  )
+}
+```
+
+## Examples
+
+### Inner Variant
+
+Display content inside the image area with the `variant="inner"` prop.
+
+<ComponentPreview name="product-card-inner-demo" />
+
+### Custom Content
+
+Customize the card with badges, icons, and additional content.
+
+<ComponentPreview name="product-card-custom-demo" />
+
+### Sizes
+
+The component supports three sizes: `sm`, `default`, and `lg`.
+
+<ComponentPreview name="product-card-size-demo" height="700px" />
+
+## API Reference
+
+### ProductCard
+
+The root container component.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| variant | `"default" \| "inner"` | `"default"` | Card layout variant - "default" shows content below image, "inner" overlays content on image |
+| size | `"sm" \| "small" \| "default" \| "lg" \| "large"` | `"default"` | Card size affecting padding and text sizes |
+| onCardClick | `() => void` | - | Callback when the card is clicked |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardImage
+
+Image container with Next.js Image optimization.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| src | `string` | - | Image source URL (required) |
+| alt | `string` | - | Image alt text for accessibility (required) |
+| priority | `boolean` | `false` | Priority loading for LCP optimization |
+| unoptimized | `boolean` | `false` | Skip Next.js image optimization (allows external URLs without config) |
+| imageClassName | `string` | - | Additional CSS classes for the image element |
+| className | `string` | - | Additional CSS classes for the container |
+
+### ProductCardBadge
+
+Interactive badge overlay for the image.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| isActive | `boolean` | `false` | Whether the badge is in active/selected state |
+| icon | `React.ReactNode` | - | Icon to display before label |
+| onClick | `(e: React.MouseEvent) => void` | - | Click handler (stops propagation automatically) |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardContent
+
+Container for the card's text content.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardHeader
+
+Wrapper for title and subtitle.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardTitle
+
+Product title heading.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardSubtitle
+
+Product subtitle or category.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | `string` | - | Additional CSS classes |
+
+### ProductCardMetric
+
+Metric display (price, rating, etc).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | `string` | - | Additional CSS classes |
+
+## Features
+
+- **Compound Component Pattern**: Compose cards with flexible sub-components
+- **Two Variants**: Default (content below) and Inner (content overlay)
+- **Three Sizes**: Small, default, and large with responsive scaling
+- **Interactive Badge**: Built-in wishlist/favorite badge with state
+- **Image Optimization**: Next.js Image component with automatic optimization
+- **Accessibility**: Proper ARIA labels and semantic HTML
+- **Hover Effects**: Smooth image lift animation on hover
+- **TypeScript**: Full type safety with exported prop types

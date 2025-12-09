@@ -50,57 +50,59 @@ function usePressAnimation(duration = 100) {
   return { isPressed, triggerPress }
 }
 
-const BarItem = React.memo<BarItemProps>(({ href, label, Icon, isActive, labels, onItemClick }) => {
-  const { isPressed, triggerPress } = usePressAnimation(100)
+const BarItem = React.memo<BarItemProps>(
+  ({ href, label, Icon, isActive, labels, onItemClick }) => {
+    const { isPressed, triggerPress } = usePressAnimation(100)
 
-  const handleClick = () => {
-    triggerPress()
-    onItemClick(href)
-  }
+    const handleClick = () => {
+      triggerPress()
+      onItemClick(href)
+    }
 
-  return (
-    <li className="flex-1">
-      <Link
-        href={href}
-        className={cn(
-          "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
-          labels ? "py-2" : "py-3",
-        )}
-        onClick={handleClick}
-      >
-        <div className="flex flex-col items-center">
-          {Icon && (
-            <div
-              className="transform transition-transform duration-100"
-              style={{
-                transform: isPressed ? "scale(0.9)" : "scale(1)",
-                transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
-              }}
-            >
-              <Icon
+    return (
+      <li className="flex-1">
+        <Link
+          href={href}
+          className={cn(
+            "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
+            labels ? "py-2" : "py-3"
+          )}
+          onClick={handleClick}
+        >
+          <div className="flex flex-col items-center">
+            {Icon && (
+              <div
+                className="transform transition-transform duration-100"
+                style={{
+                  transform: isPressed ? "scale(0.9)" : "scale(1)",
+                  transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
+                }}
+              >
+                <Icon
+                  className={cn(
+                    "h-7 w-7 transition-colors duration-150",
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  )}
+                  weight={isActive ? "fill" : "regular"}
+                />
+              </div>
+            )}
+            {labels && (
+              <span
                 className={cn(
-                  "h-7 w-7 transition-colors duration-150",
-                  isActive ? "text-primary" : "text-muted-foreground",
+                  "mt-1.5 text-center text-[10px] leading-tight transition-colors duration-150",
+                  isActive ? "text-primary" : "text-muted-foreground"
                 )}
-                weight={isActive ? "fill" : "regular"}
-              />
-            </div>
-          )}
-          {labels && (
-            <span
-              className={cn(
-                "mt-1.5 text-center text-[10px] leading-tight transition-colors duration-150",
-                isActive ? "text-primary" : "text-muted-foreground",
-              )}
-            >
-              {label}
-            </span>
-          )}
-        </div>
-      </Link>
-    </li>
-  )
-})
+              >
+                {label}
+              </span>
+            )}
+          </div>
+        </Link>
+      </li>
+    )
+  }
+)
 
 BarItem.displayName = "BarItem"
 
@@ -115,39 +117,46 @@ interface CenterButtonProps {
   labels: boolean
 }
 
-const CenterButton = React.memo<CenterButtonProps>(({ onClick, label, labels }) => {
-  const { isPressed, triggerPress } = usePressAnimation(100)
+const CenterButton = React.memo<CenterButtonProps>(
+  ({ onClick, label, labels }) => {
+    const { isPressed, triggerPress } = usePressAnimation(100)
 
-  const handleClick = () => {
-    triggerPress()
-    onClick()
-  }
+    const handleClick = () => {
+      triggerPress()
+      onClick()
+    }
 
-  return (
-    <li className="flex-1">
-      <button
-        onClick={handleClick}
-        className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
-        aria-label={label || "Add"}
-      >
-        <div className="flex flex-col items-center">
-          <div
-            className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg transition-transform duration-100"
-            style={{
-              transform: isPressed ? "scale(0.92)" : "scale(1)",
-              transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
-            }}
-          >
-            <Plus className="text-muted-foreground h-7 w-7 transition-colors duration-150" weight="regular" />
+    return (
+      <li className="flex-1">
+        <button
+          onClick={handleClick}
+          className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
+          aria-label={label || "Add"}
+        >
+          <div className="flex flex-col items-center">
+            <div
+              className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg transition-transform duration-100"
+              style={{
+                transform: isPressed ? "scale(0.92)" : "scale(1)",
+                transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
+              }}
+            >
+              <Plus
+                className="text-muted-foreground h-7 w-7 transition-colors duration-150"
+                weight="regular"
+              />
+            </div>
+            {labels && label && (
+              <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">
+                {label}
+              </span>
+            )}
           </div>
-          {labels && label && (
-            <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">{label}</span>
-          )}
-        </div>
-      </button>
-    </li>
-  )
-})
+        </button>
+      </li>
+    )
+  }
+)
 
 CenterButton.displayName = "CenterButton"
 
@@ -158,9 +167,16 @@ interface BottomMobileNavProps {
   className?: string
 }
 
-export function BottomMobileNav({ routes = [], labels = false, centerButton, className }: BottomMobileNavProps) {
+export function BottomMobileNav({
+  routes = [],
+  labels = false,
+  centerButton,
+  className,
+}: BottomMobileNavProps) {
   const pathname = usePathname()
-  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(null)
+  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(
+    null
+  )
   const [activeRoute, setActiveRoute] = React.useState<string>("")
 
   // Optimized route detection with minimal DOM queries
@@ -200,7 +216,10 @@ export function BottomMobileNav({ routes = [], labels = false, centerButton, cla
 
   // Additional effect to handle initial hash on client-side hydration
   React.useEffect(() => {
-    if (typeof window !== "undefined" && routes.some((route) => route.href.startsWith("#"))) {
+    if (
+      typeof window !== "undefined" &&
+      routes.some((route) => route.href.startsWith("#"))
+    ) {
       const initialHash = window.location.hash
       if (initialHash) {
         setActiveRoute(initialHash)
@@ -223,7 +242,7 @@ export function BottomMobileNav({ routes = [], labels = false, centerButton, cla
       }
       setLastClickedItem(href)
     },
-    [lastClickedItem, activeRoute],
+    [lastClickedItem, activeRoute]
   )
 
   const handleCenterButtonClick = React.useCallback(() => {
@@ -243,9 +262,9 @@ export function BottomMobileNav({ routes = [], labels = false, centerButton, cla
     <nav
       className={cn(
         "fixed right-0 bottom-0 left-0 z-50 block py-1 md:hidden",
-        "pb-[env(safe-area-inset-bottom,4px)] pt-1",
+        "pt-1 pb-[env(safe-area-inset-bottom,4px)]",
         "supports-[backdrop-filter]:bg-background/85 backdrop-blur-lg",
-        className,
+        className
       )}
     >
       <ul className="relative flex items-center justify-around">
@@ -263,7 +282,11 @@ export function BottomMobileNav({ routes = [], labels = false, centerButton, cla
               />
             ))}
 
-            <CenterButton onClick={handleCenterButtonClick} label={centerButton.label} labels={labels} />
+            <CenterButton
+              onClick={handleCenterButtonClick}
+              label={centerButton.label}
+              labels={labels}
+            />
 
             {secondHalf.map(({ href, label, icon: Icon }, index) => (
               <BarItem

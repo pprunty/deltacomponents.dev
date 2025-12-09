@@ -36,7 +36,6 @@ export function InstallationTabs({
         className="w-full"
         variant="underline"
         size="lg"
-        animate={true}
       >
         <TabsList className="mb-4 w-full">
           <TabsTrigger value="cli" className="font-medium">

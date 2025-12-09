@@ -13,7 +13,7 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      hide: false,
+      hide: true,
     },
   },
   {
@@ -128,7 +128,7 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      hide: false,
+      hide: true,
     },
   },
   {
@@ -153,7 +153,17 @@ export const ui: Registry["items"] = [
     ],
     meta: {
       badge: "coming soon",
-      hide: false,
+      hide: true,
     },
+  },
+  {
+    name: "product-card",
+    type: "registry:ui",
+    files: [
+      {
+        path: "delta/product-card.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
 ]

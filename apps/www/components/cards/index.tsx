@@ -4,7 +4,7 @@ import ChatDemo from "@/registry/delta-ui/examples/chat-demo"
 import CodeBlockInteractiveDemo from "@/registry/delta-ui/examples/code-block-interactive-demo"
 import MapboxPointerDemo from "@/registry/delta-ui/examples/mapbox-pointer-demo"
 import QrcodeDemoInteractive from "@/registry/delta-ui/examples/qrcode-demo-interactive"
-import TabsDemo from "@/registry/delta-ui/examples/tabs-demo"
+import { TabsDemo } from "@/registry/delta-ui/examples/tabs-demo"
 
 export function CardsDemo() {
   return (

@@ -85,7 +85,55 @@ export default async function Page(props: {
   const doc = page.data
   // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
-  const neighbours = await findNeighbour(source.pageTree, page.url)
+  let neighbours = await findNeighbour(source.pageTree, page.url)
+
+  // Filter out hidden components in production
+  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+
+  if (isProduction) {
+    const { Index } = await import("@/registry/__index__")
+
+    // Helper to check if a page is hidden
+    const isPageHidden = (pageUrl: string) => {
+      const componentName = pageUrl.split('/').pop()
+      const componentMeta = componentName ? Index[componentName]?.meta : null
+      return componentMeta?.hide === true
+    }
+
+    // Skip hidden previous pages
+    if (neighbours.previous && isPageHidden(neighbours.previous.url)) {
+      let current = neighbours.previous
+      while (current) {
+        const prevNeighbour = await findNeighbour(source.pageTree, current.url)
+        if (!prevNeighbour.previous) {
+          neighbours.previous = undefined
+          break
+        }
+        if (!isPageHidden(prevNeighbour.previous.url)) {
+          neighbours.previous = prevNeighbour.previous
+          break
+        }
+        current = prevNeighbour.previous
+      }
+    }
+
+    // Skip hidden next pages
+    if (neighbours.next && isPageHidden(neighbours.next.url)) {
+      let current = neighbours.next
+      while (current) {
+        const nextNeighbour = await findNeighbour(source.pageTree, current.url)
+        if (!nextNeighbour.next) {
+          neighbours.next = undefined
+          break
+        }
+        if (!isPageHidden(nextNeighbour.next.url)) {
+          neighbours.next = nextNeighbour.next
+          break
+        }
+        current = nextNeighbour.next
+      }
+    }
+  }
 
   // Get raw content for copy functionality
   const rawContent = await page.data.getText("raw")

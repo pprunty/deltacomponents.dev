@@ -100,13 +100,22 @@ export function DocsSidebar({
                       const componentName = (item as { url?: string }).url?.split('/').pop()
                       const componentMeta = componentName ? Index[componentName]?.meta : null
 
+                      // Check if component should be hidden in production
+                      const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+                      const shouldHide = componentMeta?.hide && isProduction
+
+                      // Skip rendering hidden components
+                      if (shouldHide) {
+                        return null
+                      }
+
                       if (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) &&
                         (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
                       ) {
                         // Check if component should be disabled in production (runtime evaluation)
-                        const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                        const isComponentDisabled = componentMeta?.badge === "coming soon" && isProduction
 
                         if (isComponentDisabled) {
                           return (

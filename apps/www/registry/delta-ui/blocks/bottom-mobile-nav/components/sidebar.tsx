@@ -1,12 +1,17 @@
 "use client"
 
-import React, { memo, useState, useCallback, useRef } from "react"
+import React, { memo, useCallback, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Plus } from "phosphor-react"
-import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "@/registry/delta-ui/ui/tooltip"
 
 import { cn } from "@/lib/utils"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/registry/delta-ui/ui/tooltip"
 
 interface Route {
   href: string
@@ -49,14 +54,18 @@ export const Sidebar = memo(function Sidebar({
   tooltips = true,
 }: SidebarProps) {
   const pathname = usePathname()
-  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(null)
+  const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(
+    null
+  )
   const [activeRoute, setActiveRoute] = React.useState<string>("")
   const [clickedItem, setClickedItem] = React.useState<string | null>(null)
 
-  const pressAnimations = useRef<Record<string, ReturnType<typeof usePressAnimation>>>({})
+  const pressAnimations = useRef<
+    Record<string, ReturnType<typeof usePressAnimation>>
+  >({})
   const getAnimation = (key: string) => {
     if (!pressAnimations.current[key]) {
-      pressAnimations.current[key] = { isPressed: false, trigger: () => { } }
+      pressAnimations.current[key] = { isPressed: false, trigger: () => {} }
     }
     return pressAnimations.current[key]
   }
@@ -97,11 +106,16 @@ export const Sidebar = memo(function Sidebar({
       }
       setLastClickedItem(href)
     },
-    [lastClickedItem, activeRoute],
+    [lastClickedItem, activeRoute]
   )
 
   const Logo = () => (
-    <svg className="size-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="size-6"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M12 2L2 7L12 12L22 7L12 2Z"
         stroke="currentColor"
@@ -109,8 +123,20 @@ export const Sidebar = memo(function Sidebar({
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 17L12 22L22 17"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2 12L12 17L22 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 
@@ -119,7 +145,7 @@ export const Sidebar = memo(function Sidebar({
       <nav
         className={cn(
           "bg-background/80 fixed top-0 left-0 z-50 hidden h-screen w-20 flex-col items-center border-r py-3 backdrop-blur-lg md:flex",
-          className,
+          className
         )}
       >
         <div className="mb-8 py-2">
@@ -146,7 +172,7 @@ export const Sidebar = memo(function Sidebar({
                 }}
                 className={cn(
                   "group relative rounded-lg px-4 py-3 transition-colors duration-300",
-                  isActive ? "text-accent-foreground" : "text-muted-foreground",
+                  isActive ? "text-accent-foreground" : "text-muted-foreground"
                 )}
               >
                 <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
@@ -154,7 +180,7 @@ export const Sidebar = memo(function Sidebar({
                   <Icon
                     className={cn(
                       "relative z-10 h-6 w-6 transition-colors duration-300",
-                      isActive && "text-accent-foreground",
+                      isActive && "text-accent-foreground"
                     )}
                     weight={isActive ? "fill" : "regular"}
                   />
@@ -191,7 +217,7 @@ export const Sidebar = memo(function Sidebar({
                 >
                   <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
                   <Plus
-                    className="relative z-10 h-6 w-6 transition-colors duration-300 group-hover:text-accent-foreground"
+                    className="group-hover:text-accent-foreground relative z-10 h-6 w-6 transition-colors duration-300"
                     weight="regular"
                   />
                 </button>
@@ -226,7 +252,7 @@ export const Sidebar = memo(function Sidebar({
                 }}
                 className={cn(
                   "group relative rounded-lg px-4 py-3 transition-colors duration-300",
-                  isActive ? "text-accent-foreground" : "text-muted-foreground",
+                  isActive ? "text-accent-foreground" : "text-muted-foreground"
                 )}
               >
                 <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
@@ -234,7 +260,7 @@ export const Sidebar = memo(function Sidebar({
                   <Icon
                     className={cn(
                       "relative z-10 h-6 w-6 transition-colors duration-300",
-                      isActive && "text-accent-foreground",
+                      isActive && "text-accent-foreground"
                     )}
                     weight={isActive ? "fill" : "regular"}
                   />
@@ -255,7 +281,9 @@ export const Sidebar = memo(function Sidebar({
           })}
         </div>
 
-        <div className="mt-auto">{/* You can add theme switcher or other controls here */}</div>
+        <div className="mt-auto">
+          {/* You can add theme switcher or other controls here */}
+        </div>
       </nav>
     </TooltipProvider>
   )

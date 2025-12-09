@@ -169,8 +169,9 @@ function BlockViewerToolbar() {
       <Tabs
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
+        variant="default"
       >
-        <TabsList size="sm" variant="default" className="h-auto grid-cols-2">
+        <TabsList size="sm" className="h-auto">
           <TabsTrigger
             value="preview"
             className="min-w-[70px] justify-center text-center"

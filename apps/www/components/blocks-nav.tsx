@@ -38,6 +38,7 @@ export function BlocksNav() {
         onValueChange={handleValueChange}
         variant="default"
         size="lg"
+        indicatorClassName="bg-muted"
       >
         <ScrollArea className="w-full">
           <TabsList className="gap-1 bg-transparent p-0">
