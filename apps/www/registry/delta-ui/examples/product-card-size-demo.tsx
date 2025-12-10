@@ -17,7 +17,6 @@ export function ProductCardSizeDemo() {
         <ProductCardImage
           src="https://assets.curated.supply/Analogue_Pocket.webp"
           alt="Analogue Pocket"
-          unoptimized
         />
 
         <ProductCardContent>

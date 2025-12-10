@@ -15,12 +15,12 @@ interface CambioImageProps {
   loading?: "lazy" | "eager"
   index?: number
   motion?:
-  | MotionPreset
-  | {
-    trigger?: MotionPreset
-    popup?: MotionPreset
-    backdrop?: MotionPreset
-  }
+    | MotionPreset
+    | {
+        trigger?: MotionPreset
+        popup?: MotionPreset
+        backdrop?: MotionPreset
+      }
   dismissible?: boolean
   className?: string
   draggable?: boolean
@@ -72,18 +72,42 @@ export function CambioImage({
   useEffect(() => {
     if (!dismissOnScroll || !open) return
 
+    let hasDismissed = false
+    let touchStartY = 0
+
     const handleScroll = () => {
+      if (hasDismissed) return
+      hasDismissed = true
       setOpen(false)
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (hasDismissed) return
+      const touchCurrentY = e.touches[0].clientY
+      const deltaY = touchStartY - touchCurrentY
+
+      hasDismissed = true
+      setOpen(false)
+
+      requestAnimationFrame(() => {
+        window.scrollBy({ top: deltaY, behavior: "instant" })
+      })
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
     window.addEventListener("wheel", handleScroll, { passive: true })
-    window.addEventListener("touchmove", handleScroll, { passive: true })
+    window.addEventListener("touchstart", handleTouchStart, { passive: true })
+    window.addEventListener("touchmove", handleTouchMove, { passive: true })
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("wheel", handleScroll)
-      window.removeEventListener("touchmove", handleScroll)
+      window.removeEventListener("touchstart", handleTouchStart)
+      window.removeEventListener("touchmove", handleTouchMove)
     }
   }, [dismissOnScroll, open])
 

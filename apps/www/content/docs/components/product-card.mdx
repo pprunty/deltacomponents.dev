@@ -84,14 +84,12 @@ The root container component.
 
 ### ProductCardImage
 
-Image container with Next.js Image optimization.
+Image container with standard img element.
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | src | `string` | - | Image source URL (required) |
 | alt | `string` | - | Image alt text for accessibility (required) |
-| priority | `boolean` | `false` | Priority loading for LCP optimization |
-| unoptimized | `boolean` | `false` | Skip Next.js image optimization (allows external URLs without config) |
 | imageClassName | `string` | - | Additional CSS classes for the image element |
 | className | `string` | - | Additional CSS classes for the container |
 
@@ -152,7 +150,7 @@ Metric display (price, rating, etc).
 - **Two Variants**: Default (content below) and Inner (content overlay)
 - **Three Sizes**: Small, default, and large with responsive scaling
 - **Interactive Badge**: Built-in wishlist/favorite badge with state
-- **Image Optimization**: Next.js Image component with automatic optimization
+- **Framework Agnostic**: Uses standard img element for maximum compatibility
 - **Accessibility**: Proper ARIA labels and semantic HTML
 - **Hover Effects**: Smooth image lift animation on hover
 - **TypeScript**: Full type safety with exported prop types

@@ -155,7 +155,7 @@ export default function CodeBlockThemeDemo() {
   const [useThemeBackground, setUseThemeBackground] = useState(true)
 
   return (
-    <div className="space-y-4">
+    <div className="w-full max-w-full space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <Button
           variant={showLineNumbers ? "default" : "outline"}
@@ -197,7 +197,8 @@ export default function CodeBlockThemeDemo() {
           dark: cppTheme,
           light: cppLightTheme,
         }}
-        className={customStyling ? "rounded-none border-0 text-lg" : undefined}
+        className={customStyling ? "rounded-none border-0" : undefined}
+        textClassName={customStyling ? "text-lg" : undefined}
       />
     </div>
   )

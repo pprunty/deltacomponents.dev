@@ -11,7 +11,7 @@ export default function NotFound() {
       <div className="relative z-30 flex flex-col items-center gap-8 text-center">
         <div className="bg-background/80 space-y-6 rounded-lg p-4 backdrop-blur-sm">
           <Image
-            src="/images/Pokeeball.webp"
+            src="/images/stock/Pokeeball.webp"
             alt="Poké Ball"
             width={120}
             height={120}

@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/delta-ui/de
 
 export function TabsBackgroundDemo() {
   return (
-    <Tabs defaultValue="account" variant="default" size="lg">
+    <Tabs defaultValue="account" variant="default" size="default">
       <TabsList>
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>

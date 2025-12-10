@@ -3,7 +3,7 @@
 A collection of modern, accessible, and customizable React components built on top of shadcn/ui with v0 integration.
 Delta Components is designed to make the difference in your user experience. Free and open source.
 
-[![Dashboard](./apps/www/public/images/delta.png)](https://deltacomponents.dev)
+[![Dashboard](./apps/www/public/images/stock/delta.png)](https://deltacomponents.dev)
 
 <!-- <video width="640" height="360" controls>
   <source src="./trailer.mp4" type="video/mp4">

@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/delta-ui/de
 
 export function TabsEntranceVariantDemo() {
   return (
-    <Tabs defaultValue="account" variant="underline" size="large">
+    <Tabs defaultValue="account" variant="underline">
       <TabsList>
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
@@ -15,7 +15,8 @@ export function TabsEntranceVariantDemo() {
           value="account"
           className="absolute inset-x-0 top-0"
           animate
-          animateY={8}
+          animateY={4}
+          animationDuration={300}
         >
           <p className="text-sm text-muted-foreground">Manage your account settings.</p>
         </TabsContent>
@@ -23,7 +24,8 @@ export function TabsEntranceVariantDemo() {
           value="password"
           className="absolute inset-x-0 top-0"
           animate
-          animateY={8}
+          animateY={4}
+          animationDuration={300}
         >
           <p className="text-sm text-muted-foreground">Change your password here.</p>
         </TabsContent>
@@ -31,7 +33,8 @@ export function TabsEntranceVariantDemo() {
           value="settings"
           className="absolute inset-x-0 top-0"
           animate
-          animateY={8}
+          animateY={4}
+          animationDuration={300}
         >
           <p className="text-sm text-muted-foreground">Configure your preferences.</p>
         </TabsContent>

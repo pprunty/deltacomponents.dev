@@ -6,23 +6,23 @@ import {
 export default function CardDeckBalatroDemo() {
   const images = [
     {
-      src: "/images/balatro/ace.webp",
+      src: "/images/stock/balatro/ace.webp",
       alt: "Balatro Ace Card",
     },
     {
-      src: "/images/balatro/king.png",
+      src: "/images/stock/balatro/king.png",
       alt: "Balatro King Card",
     },
     {
-      src: "/images/balatro/queen.png",
+      src: "/images/stock/balatro/queen.png",
       alt: "Balatro Queen Card",
     },
     {
-      src: "/images/balatro/joker.png",
+      src: "/images/stock/balatro/joker.png",
       alt: "Balatro Joker Card",
     },
     {
-      src: "/images/balatro/4.png",
+      src: "/images/stock/balatro/4.png",
       alt: "Balatro Four Card",
     },
   ]

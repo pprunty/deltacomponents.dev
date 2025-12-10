@@ -26,11 +26,11 @@ export function ThemeCard({ theme }: ThemeCardProps) {
           className="aspect-video w-full object-cover"
         />
         <div className="flex-grow space-y-2">
-          <h3 className="font-semibold">{theme.name}</h3>
-          <p className="text-muted-foreground text-sm">{theme.description}</p>
+          <h3 className="font-semibold text-lg md:text-xl">{theme.name}</h3>
+          <p className="text-muted-foreground text-base md:text-[17px]">{theme.description}</p>
         </div>
         <div className="mt-auto flex gap-2">
-          <Button size="sm" className="flex-1" onClick={handleTryTheme}>
+          <Button size="default" className="flex-1" onClick={handleTryTheme}>
             Try it out
           </Button>
           <ThemeCodeDialog themeName={theme.name} themeValue={theme.value} />

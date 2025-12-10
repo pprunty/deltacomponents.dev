@@ -41,7 +41,7 @@ export default function CodeBlockJsonDemo() {
   const [showScrollbar, setShowScrollbar] = React.useState(true)
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full max-w-full flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <span className="text-muted-foreground text-sm">
           Scrollbar: {showScrollbar ? "Visible" : "Hidden"}

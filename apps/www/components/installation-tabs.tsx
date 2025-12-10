@@ -5,6 +5,7 @@ import { TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
 import { Step, Steps } from "@/components/steps"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import {
   Tabs as DeltaTabs,
   TabsContent as DeltaTabsContent,
@@ -32,6 +33,11 @@ export function InstallationTabs({
   const [tab, setTab] = React.useState("cli")
   const [config, setConfig] = useConfig()
   const packageManager = config.packageManager || "pnpm"
+
+  const cliCommand = `${packageManager} dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`
+  const installCommand = dependencies && dependencies.length > 0
+    ? `${packageManager} install ${dependencies.join(" ")}`
+    : ""
 
   return (
     <div className="group relative mt-4 mb-12 flex flex-col gap-2">
@@ -93,6 +99,10 @@ export function InstallationTabs({
                 ))}
               </div>
             </Tabs>
+            <CopyButton
+              value={cliCommand}
+              className="absolute top-2 right-2 z-10 opacity-70"
+            />
           </figure>
         </DeltaTabsContent>
 
@@ -145,6 +155,10 @@ export function InstallationTabs({
                       ))}
                     </div>
                   </Tabs>
+                  <CopyButton
+                    value={installCommand}
+                    className="absolute top-2 right-2 z-10 opacity-70"
+                  />
                 </figure>
               </>
             )}

@@ -22,7 +22,6 @@ export function ProductCardDemo() {
         <ProductCardImage
           src="https://what-i-love-now.vercel.app/_next/image?url=%2Fimages%2Ftwemco-clock.png&w=3840&q=75"
           alt="Twemco Clock"
-          unoptimized
         >
           <ProductCardBadge
             icon="✦"

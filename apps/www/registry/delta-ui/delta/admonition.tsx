@@ -84,7 +84,7 @@ export function Admonition({
     <div
       data-slot="admonition"
       className={cn(
-        "rounded-lg border p-4 text-base",
+        "rounded-md border p-4 text-base",
         config.bgColor,
         config.borderColor,
         className

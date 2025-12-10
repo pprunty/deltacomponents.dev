@@ -6,7 +6,7 @@ export default function QRCodeLogoDemo() {
       <QRCode
         value="https://news.ycombinator.com"
         size={200}
-        logoImage="/images/hacker-news-icon.svg"
+        logoImage="/images/stock/hacker-news-icon.svg"
         logoSize={0.25}
         logoMargin={4}
         level="H"

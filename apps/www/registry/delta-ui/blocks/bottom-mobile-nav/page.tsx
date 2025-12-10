@@ -94,7 +94,7 @@ export default function BottomMobileNavPage() {
 
           <div className="w-full overflow-hidden rounded-lg">
             <Image
-              src="/images/monet.JPG"
+              src="/images/stock/monet.JPG"
               alt="Monet painting"
               width={800}
               height={600}
@@ -112,7 +112,7 @@ export default function BottomMobileNavPage() {
 
           <div className="w-full overflow-hidden rounded-lg">
             <Image
-              src="/images/tube.JPG"
+              src="/images/stock/tube.JPG"
               alt="Tube station"
               width={800}
               height={600}
@@ -130,7 +130,7 @@ export default function BottomMobileNavPage() {
 
           <div className="w-full overflow-hidden rounded-lg">
             <Image
-              src="/images/Location-Graphic_final-design_2-1.webp"
+              src="/images/stock/Location-Graphic_final-design_2-1.webp"
               alt="Location graphic design"
               width={800}
               height={600}

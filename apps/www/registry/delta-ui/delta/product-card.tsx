@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
@@ -93,10 +92,6 @@ interface ProductCardImageProps extends React.HTMLAttributes<HTMLDivElement> {
   src: string
   /** Image alt text for accessibility */
   alt: string
-  /** Priority loading for the image (for LCP optimization) */
-  priority?: boolean
-  /** Skip Next.js image optimization (allows external URLs without config) */
-  unoptimized?: boolean
   /** Custom class for the image element itself */
   imageClassName?: string
 }
@@ -110,8 +105,6 @@ const ProductCardImage = React.forwardRef<
       className,
       src,
       alt,
-      priority = false,
-      unoptimized = false,
       imageClassName,
       children,
       ...props
@@ -134,19 +127,11 @@ const ProductCardImage = React.forwardRef<
         )}
         {...props}
       >
-        <Image
+        <img
           src={src || "/placeholder.svg"}
           alt={alt}
-          fill
-          priority={priority}
-          unoptimized={unoptimized}
-          sizes={
-            normalizedSize === "sm"
-              ? "224px"
-              : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          }
           className={cn(
-            "object-contain",
+            "absolute inset-0 h-full w-full object-contain",
             "transition-transform duration-200 ease-in-out",
             "group-hover:-translate-y-1 group-active:-translate-y-1",
             normalizedSize === "sm" && "p-4",

@@ -70,6 +70,66 @@ export default function Example() {
 }
 ```
 
+### MDX Integration (Contentlayer/Fumadocs)
+
+To automatically render all code blocks in your MDX files with the CodeBlock component, configure your `mdx-components.tsx`:
+
+```tsx title="mdx-components.tsx"
+import { CodeBlock } from "@/components/ui/code-block"
+import type { MDXComponents } from "mdx/types"
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...components,
+    pre: ({ children, ...props }) => {
+      // Extract code from the pre > code structure
+      const code = typeof children === "object" && "props" in children
+        ? children.props.children
+        : ""
+
+      // Extract language from className (e.g., "language-typescript")
+      const className = typeof children === "object" && "props" in children
+        ? children.props.className || ""
+        : ""
+      const language = className.replace(/language-/, "")
+
+      return (
+        <CodeBlock
+          code={code}
+          language={language || "typescript"}
+          showLineNumbers={true}
+        />
+      )
+    },
+  }
+}
+```
+
+Now all code blocks in your MDX files will automatically use your CodeBlock component:
+
+```mdx title="example.mdx"
+# My Documentation
+
+\`\`\`typescript
+const greeting = "Hello, World!"
+console.log(greeting)
+\`\`\`
+```
+
+For package manager commands, use the language identifier to trigger automatic conversion:
+
+```mdx title="installation.mdx"
+\`\`\`npm
+npx shadcn@latest add button
+\`\`\`
+```
+
+The CodeBlock component will automatically:
+- Parse the markdown code fence syntax (\`\`\`language)
+- Extract the language identifier
+- Apply syntax highlighting
+- Convert package manager commands to tabbed interfaces
+
 ## Features
 
 - **Dual Mode**: Package manager commands or syntax-highlighted code
