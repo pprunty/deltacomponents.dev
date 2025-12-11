@@ -160,6 +160,24 @@ export function MobileNav({
                     </Link>
                   )
                 })}
+              <Link
+                href="/llms.txt"
+                onClick={() => {
+                  const targetHref = normalizePath("/llms.txt")
+                  if (targetHref === pathname) {
+                    setOpen(false)
+                    return
+                  }
+                  setPendingHref("/llms.txt")
+                }}
+                className={cn(
+                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
+                  normalizePath("/llms.txt") === pathname ? "text-foreground font-semibold" : "text-muted-foreground"
+                )}
+              >
+                llms.txt
+                <StatusBadge label="new" />
+              </Link>
             </div>
           </div>
 
@@ -274,6 +292,7 @@ export function MobileNav({
                                 )}
                               >
                                 {blockItem.name}
+                                {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
                               </Link>
                             )
                           })}
