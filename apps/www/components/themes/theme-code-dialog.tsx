@@ -51,29 +51,29 @@ export function ThemeCodeDialog({ themeName, themeValue }: ThemeCodeDialogProps)
           &#123; &#125; Code
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[calc(100vh-4rem)] w-[calc(100vw-2rem)] max-w-4xl overflow-y-auto">
+      <DialogContent className="max-h-[calc(100vh-2rem)] w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{themeName} Theme</DialogTitle>
+          <DialogTitle>{themeName}</DialogTitle>
           <DialogDescription>
-            Install and configure the {themeName} theme in your project.
+            Choose one of the installation methods below.
           </DialogDescription>
         </DialogHeader>
         <div className="min-w-0 space-y-6">
           <div>
-            <h4 className="mb-2 text-sm font-medium">Install using CLI</h4>
+            <h4 className="mb-2 font-medium">CLI</h4>
             <CodeBlock
               npm={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
-              yarn={`yarn dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
+              yarn={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               pnpm={`pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               bun={`bunx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               defaultPackageManager="npm"
             />
           </div>
           <div>
-            <h4 className="mb-2 text-sm font-medium">
-              Copy and paste this CSS into your project to use the {themeName}{" "}
-              theme.
-            </h4>
+            <h4 className="mb-2 font-medium">Manual</h4>
+            <p className="text-muted-foreground mb-2 text-sm">
+              Copy and paste into your <code className="bg-muted rounded px-1 py-0.5">globals.css</code> or <code className="bg-muted rounded px-1 py-0.5">App.css</code> file, replacing the <code className="bg-muted rounded px-1 py-0.5">:root</code> and <code className="bg-muted rounded px-1 py-0.5">.dark</code> blocks.
+            </p>
             <CodeBlock
               code={isLoading ? '/* Loading theme CSS... */' : themeCSS}
               language="css"

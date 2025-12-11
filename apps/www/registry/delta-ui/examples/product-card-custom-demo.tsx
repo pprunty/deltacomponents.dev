@@ -25,7 +25,6 @@ export function ProductCardCustomDemo() {
           <ProductCardImage
             src="https://pictures.abebooks.com/isbn/9781838858636-uk.jpg"
             alt="The Creative Act: A Way of Being"
-            unoptimized
           >
             <div className="absolute top-3 right-3 z-10">
               <span

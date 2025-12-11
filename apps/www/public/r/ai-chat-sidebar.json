@@ -20,7 +20,7 @@
     },
     {
       "path": "blocks/ai-chat-sidebar/page.tsx",
-      "content": "import { AppSidebar } from \"./components/app-sidebar\"\n\nexport default function Home() {\n  return (\n    <>\n      <AppSidebar />\n      <main className=\"flex min-h-svh flex-1 flex-col\">\n        <div className=\"flex flex-1 items-center justify-center p-8\">\n          <div className=\"text-muted-foreground text-center\">\n            LLM chat component to be added later\n          </div>\n        </div>\n      </main>\n    </>\n  )\n}\n",
+      "content": "import { AppSidebar } from \"@/components/app-sidebar\"\n\nexport default function Home() {\n  return (\n    <>\n      <AppSidebar />\n      <main className=\"flex min-h-svh flex-1 flex-col\">\n        <div className=\"flex flex-1 items-center justify-center p-8\">\n          <div className=\"text-muted-foreground text-center\">\n            LLM chat component to be added later\n          </div>\n        </div>\n      </main>\n    </>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/page.tsx"
     }

@@ -5,22 +5,37 @@ import { Tweet } from "react-tweet"
 
 import { cn } from "@/lib/utils"
 
+type XCardSize = "sm" | "small" | "default" | "lg" | "large"
+
 interface XCardProps {
   id: string
   caption?: ReactNode
   className?: string
-  size?: "small" | "medium" | "large"
+  size?: XCardSize
 }
 
-export function XCard({ id, caption, className, size = "medium" }: XCardProps) {
+function normalizeSize(size: XCardSize): "small" | "default" | "large" {
+  if (size === "sm") return "small"
+  if (size === "lg") return "large"
+  return size as "small" | "default" | "large"
+}
+
+export function XCard({
+  id,
+  caption,
+  className,
+  size = "default",
+}: XCardProps) {
+  const normalizedSize = normalizeSize(size)
+
   const sizeClasses = {
     small: "max-w-sm scale-90",
-    medium: "max-w-xl",
+    default: "max-w-xl",
     large: "max-w-2xl scale-110",
   }
 
   return (
-    <div className={cn("x-card my-6", sizeClasses[size], className)}>
+    <div className={cn("x-card my-6", sizeClasses[normalizedSize], className)}>
       <div className="flex justify-center">
         <Tweet id={id} />
       </div>

@@ -7,9 +7,19 @@ import { Highlight } from "prism-react-renderer"
 import type { PrismTheme } from "prism-react-renderer"
 
 import { cn } from "@/lib/utils"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { getIconForFile } from "@/registry/delta-ui/delta/code-block-icons"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/delta-ui/ui/collapsible"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 
@@ -156,12 +166,18 @@ interface CodeBlockProps {
   className?: string
   textClassName?: string
   scrollbar?: boolean
+  expandable?: boolean
+  defaultExpanded?: boolean
+  collapsedHeight?: string
 }
 
 const monoFontFamily =
   'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
 
-function parseMarkdownCodeBlock(input: string): { code: string; language: string | null } {
+function parseMarkdownCodeBlock(input: string): {
+  code: string
+  language: string | null
+} {
   const markdownRegex = /^```(\w+)?\n?([\s\S]*?)```$/
   const match = input.trim().match(markdownRegex)
 
@@ -264,9 +280,15 @@ export function CodeBlock({
   className,
   textClassName = "text-[14px]",
   scrollbar = true,
+  expandable = false,
+  defaultExpanded = false,
+  collapsedHeight = "16rem",
 }: CodeBlockProps) {
-  const [packageManager, setPackageManager] = React.useState<PackageManager>(defaultPackageManager)
+  const [packageManager, setPackageManager] = React.useState<PackageManager>(
+    defaultPackageManager
+  )
   const [isDark, setIsDark] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
   useEffect(() => {
     const checkDarkMode = () => {
@@ -277,7 +299,10 @@ export function CodeBlock({
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
           checkDarkMode()
         }
       })
@@ -300,7 +325,9 @@ export function CodeBlock({
     }
   }, [npm, yarn, pnpm, bun])
 
-  const availableCommands = Object.entries(commands).filter(([, command]) => command)
+  const availableCommands = Object.entries(commands).filter(
+    ([, command]) => command
+  )
 
   const selectedTheme = adaptiveTheme
     ? isDark
@@ -308,7 +335,9 @@ export function CodeBlock({
       : adaptiveTheme.light
     : theme || (isDark ? defaultTheme : lightTheme)
 
-  const packageManagerFromMarkdown = code ? detectPackageManagerFromMarkdown(code) : null
+  const packageManagerFromMarkdown = code
+    ? detectPackageManagerFromMarkdown(code)
+    : null
 
   const parsedMarkdown = code ? parseMarkdownCodeBlock(code) : null
   const actualCode = css || (parsedMarkdown?.code ?? code)
@@ -318,12 +347,29 @@ export function CodeBlock({
       ? resolveLanguage(parsedMarkdown.language)
       : defaultLanguage || language
 
+  const codeBlockBgColor = useThemeBackground
+    ? selectedTheme.plain?.backgroundColor
+    : "var(--color-surface)"
+
+  console.log("[v0] codeBlockBgColor:", codeBlockBgColor)
+  console.log("[v0] useThemeBackground:", useThemeBackground)
+  console.log(
+    "[v0] selectedTheme.plain?.backgroundColor:",
+    selectedTheme.plain?.backgroundColor
+  )
+
   if (packageManagerFromMarkdown) {
     const { command, manager } = packageManagerFromMarkdown
     const allCommands = convertNpxToPackageManagers(command)
 
     return (
-      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
+      <div
+        className={cn(
+          "bg-card text-card-foreground overflow-hidden rounded-lg border",
+          className
+        )}
+        data-slot="tabs"
+      >
         <Tabs
           value={packageManager}
           className="gap-0"
@@ -331,77 +377,103 @@ export function CodeBlock({
           defaultValue={manager}
         >
           <div
-            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
+            className={cn(
+              "flex items-center justify-between border-b px-3 py-2",
+              !useThemeBackground && "bg-surface"
+            )}
             style={
               useThemeBackground
                 ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                  color: selectedTheme.plain?.color,
-                }
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                    color: selectedTheme.plain?.color,
+                  }
                 : undefined
             }
           >
             <div className="flex items-center gap-2.5">
               <TerminalIcon
-                className="size-4 text-muted-foreground"
-                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+                className="text-muted-foreground size-4"
+                style={
+                  useThemeBackground
+                    ? { color: selectedTheme.plain?.color, opacity: 0.7 }
+                    : undefined
+                }
               />
               <TabsList className="h-auto rounded-none bg-transparent p-0">
-                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
-                  <TabsTrigger
-                    key={key}
-                    value={key}
-                    className={cn(
-                      "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
-                      textClassName,
-                    )}
-                    style={{
-                      fontFamily: monoFontFamily,
-                      ...(useThemeBackground
-                        ? {
-                          color: selectedTheme.plain?.color,
-                          opacity: 0.7,
-                        }
-                        : {}),
-                    }}
-                  >
-                    {key}
-                  </TabsTrigger>
-                ))}
+                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map(
+                  (key) => (
+                    <TabsTrigger
+                      key={key}
+                      value={key}
+                      className={cn(
+                        "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+                        textClassName
+                      )}
+                      style={{
+                        fontFamily: monoFontFamily,
+                        ...(useThemeBackground
+                          ? {
+                              color: selectedTheme.plain?.color,
+                              opacity: 0.7,
+                            }
+                          : {}),
+                      }}
+                    >
+                      {key}
+                    </TabsTrigger>
+                  )
+                )}
               </TabsList>
             </div>
             <CopyButton
               value={allCommands[packageManager] || allCommands[manager]}
               className="size-7"
               variant="secondary"
-              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+              iconColor={
+                useThemeBackground ? selectedTheme.plain?.color : undefined
+              }
             />
           </div>
           <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
             {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
+                  className={cn(
+                    "relative py-4",
+                    !useThemeBackground && "bg-surface"
+                  )}
                   style={
                     useThemeBackground
                       ? {
-                        backgroundColor: selectedTheme.plain?.backgroundColor,
-                      }
+                          backgroundColor: selectedTheme.plain?.backgroundColor,
+                        }
                       : undefined
                   }
                 >
-                  <Highlight theme={selectedTheme} code={allCommands[key]} language="bash">
-                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                  <Highlight
+                    theme={selectedTheme}
+                    code={allCommands[key]}
+                    language="bash"
+                  >
+                    {({
+                      className: highlightClassName,
+                      style,
+                      tokens,
+                      getLineProps,
+                      getTokenProps,
+                    }) => (
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
-                          textClassName,
+                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          textClassName
                         )}
                         style={{
                           ...style,
                           fontFamily: monoFontFamily,
-                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          backgroundColor: useThemeBackground
+                            ? selectedTheme.plain?.backgroundColor
+                            : "transparent",
                           WebkitFontSmoothing: "antialiased",
                           MozOsxFontSmoothing: "grayscale",
                         }}
@@ -427,27 +499,40 @@ export function CodeBlock({
 
   if (availableCommands.length > 0) {
     return (
-      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
+      <div
+        className={cn(
+          "bg-card text-card-foreground overflow-hidden rounded-lg border",
+          className
+        )}
+        data-slot="tabs"
+      >
         <Tabs
           value={packageManager}
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
           <div
-            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
+            className={cn(
+              "flex items-center justify-between border-b px-3 py-2",
+              !useThemeBackground && "bg-surface"
+            )}
             style={
               useThemeBackground
                 ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                  color: selectedTheme.plain?.color,
-                }
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                    color: selectedTheme.plain?.color,
+                  }
                 : undefined
             }
           >
             <div className="flex items-center gap-2.5">
               <TerminalIcon
-                className="size-4 text-muted-foreground"
-                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+                className="text-muted-foreground size-4"
+                style={
+                  useThemeBackground
+                    ? { color: selectedTheme.plain?.color, opacity: 0.7 }
+                    : undefined
+                }
               />
               <TabsList className="h-auto rounded-none bg-transparent p-0">
                 {availableCommands.map(([key]) => (
@@ -456,15 +541,15 @@ export function CodeBlock({
                     value={key}
                     className={cn(
                       "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
-                      textClassName,
+                      textClassName
                     )}
                     style={{
                       fontFamily: monoFontFamily,
                       ...(useThemeBackground
                         ? {
-                          color: selectedTheme.plain?.color,
-                          opacity: 0.7,
-                        }
+                            color: selectedTheme.plain?.color,
+                            opacity: 0.7,
+                          }
                         : {}),
                     }}
                   >
@@ -477,34 +562,51 @@ export function CodeBlock({
               value={commands[packageManager] || ""}
               className="size-7"
               variant="secondary"
-              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+              iconColor={
+                useThemeBackground ? selectedTheme.plain?.color : undefined
+              }
             />
           </div>
           <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
             {availableCommands.map(([key, command]) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
+                  className={cn(
+                    "relative py-4",
+                    !useThemeBackground && "bg-surface"
+                  )}
                   style={
                     useThemeBackground
                       ? {
-                        backgroundColor: selectedTheme.plain?.backgroundColor,
-                      }
+                          backgroundColor: selectedTheme.plain?.backgroundColor,
+                        }
                       : undefined
                   }
                 >
-                  <Highlight theme={selectedTheme} code={command || ""} language="bash">
-                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                  <Highlight
+                    theme={selectedTheme}
+                    code={command || ""}
+                    language="bash"
+                  >
+                    {({
+                      className: highlightClassName,
+                      style,
+                      tokens,
+                      getLineProps,
+                      getTokenProps,
+                    }) => (
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
-                          textClassName,
+                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          textClassName
                         )}
                         style={{
                           ...style,
                           fontFamily: monoFontFamily,
-                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          backgroundColor: useThemeBackground
+                            ? selectedTheme.plain?.backgroundColor
+                            : "transparent",
                           WebkitFontSmoothing: "antialiased",
                           MozOsxFontSmoothing: "grayscale",
                         }}
@@ -529,112 +631,286 @@ export function CodeBlock({
   }
 
   if (actualCode) {
-    return (
+    const codeBlockContent = (
       <div
         className={cn(
           "border-border pointer-events-auto w-full max-w-full overflow-hidden rounded-lg border",
-          className,
+          className
         )}
+        style={{ "--code-block-bg": codeBlockBgColor } as React.CSSProperties}
       >
         {filename && (
           <figcaption
             className={cn(
               "flex items-center justify-between border-b px-4 py-2.5 [&_svg]:size-4",
-              !useThemeBackground && "bg-surface",
+              !useThemeBackground && "bg-surface"
             )}
             style={{
               fontFamily: monoFontFamily,
               ...(useThemeBackground
                 ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                  color: selectedTheme.plain?.color,
-                }
+                    backgroundColor: selectedTheme.plain?.backgroundColor,
+                    color: selectedTheme.plain?.color,
+                  }
                 : {}),
             }}
           >
-            <div className={cn("flex items-center gap-2 text-muted-foreground", textClassName)}>
+            <div
+              className={cn(
+                "text-foreground/75 flex items-center gap-2",
+                textClassName
+              )}
+            >
               {getIconForFile(filename)}
               <span className="font-medium tracking-tight">{filename}</span>
             </div>
-            <CopyButton value={actualCode} iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined} />
+            <div className="flex items-center gap-2">
+              {expandable && (
+                <>
+                  <CollapsibleTrigger asChild>
+                    <button
+                      className={cn(
+                        "text-muted-foreground hover:text-foreground font-medium tracking-tight transition-colors",
+                        textClassName
+                      )}
+                      style={{ fontFamily: monoFontFamily }}
+                    >
+                      {isExpanded ? "Collapse" : "Expand"}
+                    </button>
+                  </CollapsibleTrigger>
+                  <span className="text-muted-foreground/50">|</span>
+                </>
+              )}
+              <CopyButton
+                value={actualCode}
+                iconColor={
+                  useThemeBackground ? selectedTheme.plain?.color : undefined
+                }
+              />
+            </div>
           </figcaption>
         )}
 
         <div className="relative">
           {!filename && (
             <div className="pointer-events-none sticky top-0 right-0 z-10 flex h-0 justify-end">
-              <div className="pointer-events-auto p-2">
+              <div className="pointer-events-auto flex items-center gap-2 p-2">
+                {expandable && (
+                  <>
+                    <CollapsibleTrigger asChild>
+                      <button
+                        className={cn(
+                          "text-muted-foreground hover:text-foreground font-semibold tracking-tight transition-colors",
+                          textClassName
+                        )}
+                        style={{ fontFamily: monoFontFamily }}
+                      >
+                        {isExpanded ? "Collapse" : "Expand"}
+                      </button>
+                    </CollapsibleTrigger>
+                    <span className="text-muted-foreground/50">|</span>
+                  </>
+                )}
                 <CopyButton
                   value={actualCode}
-                  iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+                  iconColor={
+                    useThemeBackground ? selectedTheme.plain?.color : undefined
+                  }
                 />
               </div>
             </div>
           )}
 
-          <div
-            className={cn(
-              "relative max-h-[450px] w-full",
-              !useThemeBackground && "bg-surface",
-              scrollbar ? "overflow-y-auto" : "overflow-y-auto no-scrollbar",
-            )}
-            style={
-              useThemeBackground
-                ? {
-                  backgroundColor: selectedTheme.plain?.backgroundColor,
-                }
-                : undefined
-            }
-          >
-            <Highlight theme={selectedTheme} code={actualCode.trim()} language={actualLanguage}>
-              {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
-                <pre
-                  className={cn(
-                    highlightClassName,
-                    "min-w-0 py-3.5 outline-none",
-                    "font-medium leading-6 antialiased",
-                    scrollbar ? "overflow-x-auto" : "overflow-x-auto no-scrollbar",
-                    textClassName,
-                  )}
-                  style={{
-                    ...style,
-                    fontFamily: monoFontFamily,
-                    backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
-                    WebkitFontSmoothing: "antialiased",
-                    MozOsxFontSmoothing: "grayscale",
-                  }}
-                >
-                  {tokens.map((line, i) => (
-                    <div key={i} {...getLineProps({ line })} className="flex min-h-[24px] items-center">
-                      {showLineNumbers && (
+          {expandable ? (
+            <CollapsibleContent
+              forceMount
+              className={cn(
+                "relative w-full overflow-auto transition-all",
+                !scrollbar && "no-scrollbar"
+              )}
+              style={{
+                backgroundColor: "var(--code-block-bg)",
+                maxHeight: isExpanded ? "none" : collapsedHeight,
+              }}
+            >
+              <Highlight
+                theme={selectedTheme}
+                code={actualCode.trim()}
+                language={actualLanguage}
+              >
+                {({
+                  className: highlightClassName,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
+                  <pre
+                    className={cn(
+                      highlightClassName,
+                      "min-w-0 py-3.5 outline-none",
+                      "leading-6 font-medium antialiased",
+                      textClassName
+                    )}
+                    style={{
+                      ...style,
+                      fontFamily: monoFontFamily,
+                      backgroundColor: "transparent",
+                      WebkitFontSmoothing: "antialiased",
+                      MozOsxFontSmoothing: "grayscale",
+                    }}
+                  >
+                    {tokens.map((line, i) => (
+                      <div
+                        key={i}
+                        {...getLineProps({ line })}
+                        className="flex min-h-[24px]"
+                      >
+                        {showLineNumbers && (
+                          <span
+                            className={cn(
+                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              textClassName
+                            )}
+                            style={{
+                              fontFamily: monoFontFamily,
+                              color: selectedTheme.plain?.color
+                                ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                                : "rgba(128, 128, 128, 0.35)",
+                              backgroundColor: "var(--code-block-bg)",
+                              width: "4rem",
+                              paddingLeft: "1.5rem",
+                              paddingRight: "1.5rem",
+                            }}
+                          >
+                            {i + 1}
+                          </span>
+                        )}
                         <span
                           className={cn(
-                            "mr-8 inline-block w-6 flex-shrink-0 pl-6 text-right font-medium tabular-nums select-none",
-                            textClassName,
+                            "flex-1 pr-6 whitespace-pre",
+                            !showLineNumbers && "pl-6"
                           )}
-                          style={{
-                            fontFamily: monoFontFamily,
-                            color: selectedTheme.plain?.color,
-                            opacity: 0.35,
-                          }}
                         >
-                          {i + 1}
+                          {line.map((token, key) => (
+                            <span key={key} {...getTokenProps({ token })} />
+                          ))}
                         </span>
-                      )}
-                      <span className={cn("flex-1 whitespace-pre pr-6", !showLineNumbers && "pl-6")}>
-                        {line.map((token, key) => (
-                          <span key={key} {...getTokenProps({ token })} />
-                        ))}
-                      </span>
-                    </div>
-                  ))}
-                </pre>
+                      </div>
+                    ))}
+                  </pre>
+                )}
+              </Highlight>
+            </CollapsibleContent>
+          ) : (
+            <div
+              className={cn(
+                "relative max-h-[450px] w-full overflow-auto",
+                !scrollbar && "no-scrollbar"
               )}
-            </Highlight>
-          </div>
+              style={{ backgroundColor: "var(--code-block-bg)" }}
+            >
+              <Highlight
+                theme={selectedTheme}
+                code={actualCode.trim()}
+                language={actualLanguage}
+              >
+                {({
+                  className: highlightClassName,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
+                  <pre
+                    className={cn(
+                      highlightClassName,
+                      "min-w-0 py-3.5 outline-none",
+                      "leading-6 font-medium antialiased",
+                      textClassName
+                    )}
+                    style={{
+                      ...style,
+                      fontFamily: monoFontFamily,
+                      backgroundColor: "transparent",
+                      WebkitFontSmoothing: "antialiased",
+                      MozOsxFontSmoothing: "grayscale",
+                    }}
+                  >
+                    {tokens.map((line, i) => (
+                      <div
+                        key={i}
+                        {...getLineProps({ line })}
+                        className="flex min-h-[24px]"
+                      >
+                        {showLineNumbers && (
+                          <span
+                            className={cn(
+                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              textClassName
+                            )}
+                            style={{
+                              fontFamily: monoFontFamily,
+                              color: selectedTheme.plain?.color
+                                ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                                : "rgba(128, 128, 128, 0.35)",
+                              backgroundColor: "var(--code-block-bg)",
+                              width: "4rem",
+                              paddingLeft: "1.5rem",
+                              paddingRight: "1.5rem",
+                            }}
+                          >
+                            {i + 1}
+                          </span>
+                        )}
+                        <span
+                          className={cn(
+                            "flex-1 pr-6 whitespace-pre",
+                            !showLineNumbers && "pl-6"
+                          )}
+                        >
+                          {line.map((token, key) => (
+                            <span key={key} {...getTokenProps({ token })} />
+                          ))}
+                        </span>
+                      </div>
+                    ))}
+                  </pre>
+                )}
+              </Highlight>
+            </div>
+          )}
+
+          {expandable && !isExpanded && (
+            <CollapsibleTrigger
+              className="absolute inset-x-0 bottom-0 z-20 flex h-16 items-end justify-center rounded-b-lg pb-2 text-sm"
+              style={{
+                background: `linear-gradient(to bottom, transparent, ${useThemeBackground && selectedTheme.plain?.backgroundColor ? selectedTheme.plain.backgroundColor : "var(--surface)"})`,
+                color: selectedTheme.plain?.color,
+              }}
+            >
+              <span className="text-muted-foreground hover:text-foreground text-base font-normal transition-colors">
+                Expand
+              </span>
+            </CollapsibleTrigger>
+          )}
         </div>
       </div>
     )
+
+    if (expandable) {
+      return (
+        <Collapsible
+          open={isExpanded}
+          onOpenChange={setIsExpanded}
+          className="group/collapsible relative"
+        >
+          {codeBlockContent}
+        </Collapsible>
+      )
+    }
+
+    return codeBlockContent
   }
 
   return null

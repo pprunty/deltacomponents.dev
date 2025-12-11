@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 import { Button } from "@/registry/delta-ui/ui/button"
 
@@ -18,7 +19,7 @@ const jsonData = `{
     }
   },
   "session": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
     "expiresAt": "2024-12-31T23:59:59Z",
     "refreshToken": "rt_9xKmP3vN8qL2",
     "scopes": ["api:read", "api:write", "admin:users"]
@@ -41,7 +42,7 @@ export default function CodeBlockJsonDemo() {
   const [showScrollbar, setShowScrollbar] = React.useState(true)
 
   return (
-    <div className="w-full max-w-full flex flex-col gap-4">
+    <div className="flex w-full max-w-full flex-col gap-4">
       <div className="flex items-center justify-between">
         <span className="text-muted-foreground text-sm">
           Scrollbar: {showScrollbar ? "Visible" : "Hidden"}

@@ -96,9 +96,7 @@ export function Admonition({
         </div>
         <div className="min-w-0 flex-1">
           {title && (
-            <div
-              className={cn(config.textColor, "mb-1 text-base font-medium")}
-            >
+            <div className={cn(config.textColor, "mb-1 text-base font-medium")}>
               {title}
             </div>
           )}

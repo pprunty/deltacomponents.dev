@@ -11,9 +11,9 @@ import {
 } from "@/components/page-header"
 import { Button } from "@/registry/delta-ui/ui/button"
 
-const title = "Building Blocks for the Web"
+const title = "Production-Ready UI Blocks"
 const description =
-  "Clean, modern building blocks. Copy and paste into your apps. Works with all React frameworks. Open Source. Free forever."
+  "Pre-built sections for landing pages, AI interfaces, and layouts. Each block is production-ready and fully customizable. Copy the code, drop it in your project, and ship faster."
 
 export const metadata: Metadata = {
   title,

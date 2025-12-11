@@ -21,7 +21,7 @@ export default function Example() {
   return (
     <XCard
       id="1825208781827080599"
-      size="medium"
+      size="default"
       caption="Optional caption describing the tweet content"
     />
   )
@@ -39,24 +39,24 @@ export default function Example() {
 ```tsx
 "use client"
 
-// Small size
+// Small size (using short form)
 <XCard
   id="1825208781827080599"
-  size="small"
+  size="sm"
   caption="Small tweet embed"
 />
 
-// Medium size (default)
+// Default size
 <XCard
   id="1825208781827080599"
-  size="medium"
-  caption="Medium tweet embed"
+  size="default"
+  caption="Default tweet embed"
 />
 
-// Large size
+// Large size (using short form)
 <XCard
   id="1825208781827080599"
-  size="large"
+  size="lg"
   caption="Large tweet embed"
 />
 ```
@@ -79,7 +79,7 @@ export default function Example() {
 
 <XCard
   id="1825208781827080599"
-  size="small"
+  size="sm"
   className="mx-auto border-2 border-primary rounded-lg p-4"
 />
 ```
@@ -88,18 +88,18 @@ export default function Example() {
 
 ### XCard Props
 
-| Prop        | Type                             | Default    | Description                                                                                                      |
-| ----------- | -------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| `id`        | `string`                         | -          | **Required.** The tweet ID from the X/Twitter URL. Extract from tweet URLs like `https://x.com/user/status/[ID]` |
-| `size`      | `"small" \| "medium" \| "large"` | `"medium"` | Controls the display size of the tweet embed. Small (90% scale), medium (default), large (110% scale)            |
-| `caption`   | `ReactNode`                      | -          | Optional caption content displayed below the tweet. Accepts any React element or string                          |
-| `className` | `string`                         | -          | Additional CSS classes applied to the container wrapper for custom styling                                       |
+| Prop        | Type                                                      | Default     | Description                                                                                                      |
+| ----------- | --------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| `id`        | `string`                                                  | -           | **Required.** The tweet ID from the X/Twitter URL. Extract from tweet URLs like `https://x.com/user/status/[ID]` |
+| `size`      | `"sm" \| "small" \| "default" \| "lg" \| "large"` | `"default"` | Controls the display size of the tweet embed. Supports both short (`sm`, `lg`) and long form aliases            |
+| `caption`   | `ReactNode`                                               | -           | Optional caption content displayed below the tweet. Accepts any React element or string                          |
+| `className` | `string`                                                  | -           | Additional CSS classes applied to the container wrapper for custom styling                                       |
 
 ### Size Variants
 
-- **Small (`"small"`)**: 90% scale with `max-w-sm` container width
-- **Medium (`"medium"`)**: Default size with `max-w-xl` container width
-- **Large (`"large"`)**: 110% scale with `max-w-2xl` container width
+- **Small (`"small"` or `"sm"`)**: 90% scale with `max-w-sm` container width
+- **Default (`"default"`)**: Standard size with `max-w-xl` container width
+- **Large (`"large"` or `"lg"`)**: 110% scale with `max-w-2xl` container width
 
 ## Features
 

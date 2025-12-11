@@ -755,6 +755,19 @@
       ]
     },
     {
+      "name": "code-block-expand-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/code-block.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/code-block-expand-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "cambio-image-demo",
       "type": "registry:example",
       "registryDependencies": [

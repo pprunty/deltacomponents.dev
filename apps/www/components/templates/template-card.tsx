@@ -6,6 +6,7 @@ import type { TemplateData } from "@/lib/template-data"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/registry/delta-ui/ui/badge"
 import { Button } from "@/registry/delta-ui/ui/button"
+import { Card } from "@/registry/delta-ui/ui/card"
 
 interface TemplateCardProps {
   template: TemplateData
@@ -13,8 +14,8 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template }: TemplateCardProps) {
   return (
-    <div className="group relative h-full rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
-      <div className="flex h-full flex-col space-y-4">
+    <Card className="group relative h-full p-6 transition-shadow hover:shadow-md">
+      <div className="flex h-full flex-col gap-4">
         <div className="relative overflow-hidden rounded-md">
           <div className="bg-muted flex aspect-video w-full items-center justify-center rounded-md">
             <span className="text-muted-foreground text-sm">Preview Image</span>
@@ -28,8 +29,8 @@ export function TemplateCard({ template }: TemplateCardProps) {
         </div>
 
         <div className="flex-grow space-y-2">
-          <h3 className="font-semibold">{template.name}</h3>
-          <p className="text-muted-foreground text-sm">
+          <h3 className="font-medium text-lg md:text-xl font-heading">{template.name}</h3>
+          <p className="text-muted-foreground text-base md:text-[17px]">
             {template.description}
           </p>
         </div>
@@ -50,19 +51,19 @@ export function TemplateCard({ template }: TemplateCardProps) {
 
           <div className="flex gap-2">
             {template.demoUrl && (
-              <Button size="sm" variant="outline" className="flex-1" asChild>
+              <Button size="default" variant="outline" className="flex-1" asChild>
                 <a
                   href={template.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <ExternalLink className="mr-2 h-3 w-3" />
+                  <ExternalLink className="mr-2 h-4 w-4" />
                   Preview
                 </a>
               </Button>
             )}
             <Button
-              size="sm"
+              size="default"
               className={cn("flex-1", !template.demoUrl && "w-full")}
               asChild
             >
@@ -72,7 +73,7 @@ export function TemplateCard({ template }: TemplateCardProps) {
                 rel="noopener noreferrer"
               >
                 <svg
-                  className="mr-2 h-3 w-3"
+                  className="mr-2 h-4 w-4"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -84,6 +85,6 @@ export function TemplateCard({ template }: TemplateCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }

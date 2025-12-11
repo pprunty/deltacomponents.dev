@@ -14,6 +14,7 @@ type ProductCardSize = "default" | "sm" | "small" | "lg" | "large"
 interface ProductCardContextValue {
   variant: ProductCardVariant
   size: ProductCardSize
+  animated: boolean
 }
 
 const ProductCardContext = React.createContext<ProductCardContextValue | null>(
@@ -45,6 +46,8 @@ interface ProductCardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: ProductCardVariant
   /** Card size - "sm" | "small", "default", or "lg" | "large" */
   size?: ProductCardSize
+  /** Enable hover/active animation on image - defaults to true */
+  animated?: boolean
   /** Callback when the card is clicked */
   onCardClick?: () => void
 }
@@ -55,23 +58,18 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
       className,
       variant = "default",
       size = "default",
+      animated = true,
       onCardClick,
       children,
       ...props
     },
     ref
   ) => {
-    const normalizedSize = normalizeSize(size)
-
     return (
-      <ProductCardContext.Provider value={{ variant, size }}>
+      <ProductCardContext.Provider value={{ variant, size, animated }}>
         <div
           ref={ref}
-          className={cn(
-            "group cursor-pointer overflow-hidden rounded-lg",
-            normalizedSize === "sm" && "w-56",
-            className
-          )}
+          className={cn("cursor-pointer overflow-hidden rounded-lg", className)}
           onClick={onCardClick}
           {...props}
         >
@@ -99,52 +97,39 @@ interface ProductCardImageProps extends React.HTMLAttributes<HTMLDivElement> {
 const ProductCardImage = React.forwardRef<
   HTMLDivElement,
   ProductCardImageProps
->(
-  (
-    {
-      className,
-      src,
-      alt,
-      imageClassName,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const { size } = useProductCardContext()
-    const normalizedSize = normalizeSize(size)
+>(({ className, src, alt, imageClassName, children, ...props }, ref) => {
+  const { size, animated } = useProductCardContext()
+  const normalizedSize = normalizeSize(size)
 
-    return (
-      <div
-        ref={ref}
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "relative aspect-square w-full overflow-hidden rounded-lg transition-colors duration-150",
+        "bg-muted",
+        "[&:hover]:bg-muted/80 [&:active]:bg-muted/80",
+        animated &&
+          "[&:active>img]:-translate-y-1 [&:hover>img]:-translate-y-1",
+        className
+      )}
+      {...props}
+    >
+      <img
+        src={src || "/placeholder.svg"}
+        alt={alt}
         className={cn(
-          "relative transition-colors duration-150",
-          "bg-muted hover:bg-muted/80 active:bg-muted/80",
-          normalizedSize === "sm" && "h-56 w-56",
-          normalizedSize === "default" && "aspect-square w-full",
-          normalizedSize === "lg" && "aspect-square w-full",
-          className
+          "absolute inset-0 h-full w-full object-contain",
+          animated && "transition-transform duration-200 ease-in-out",
+          normalizedSize === "sm" && "p-4",
+          normalizedSize === "default" && "p-8",
+          normalizedSize === "lg" && "p-12",
+          imageClassName
         )}
-        {...props}
-      >
-        <img
-          src={src || "/placeholder.svg"}
-          alt={alt}
-          className={cn(
-            "absolute inset-0 h-full w-full object-contain",
-            "transition-transform duration-200 ease-in-out",
-            "group-hover:-translate-y-1 group-active:-translate-y-1",
-            normalizedSize === "sm" && "p-4",
-            normalizedSize === "default" && "p-8",
-            normalizedSize === "lg" && "p-12",
-            imageClassName
-          )}
-        />
-        {children}
-      </div>
-    )
-  }
-)
+      />
+      {children}
+    </div>
+  )
+})
 ProductCardImage.displayName = "ProductCardImage"
 
 /* ------------------------------------------------------------------

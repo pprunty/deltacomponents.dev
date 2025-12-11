@@ -10,7 +10,8 @@ export function CambioImageDismissOnScrollDemo() {
         alt="Impressionist painting of hikers in a colorful mountain canyon"
         width={600}
         height={600}
-        motion="smooth"
+        motion="snappy"
+        dismissible={false}
         dismissOnScroll={true}
       />
     </div>

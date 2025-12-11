@@ -1,6 +1,11 @@
 "use client"
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/registry/delta-ui/delta/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/delta/tabs"
 
 export function TabsEntranceVariantDemo() {
   return (
@@ -18,7 +23,9 @@ export function TabsEntranceVariantDemo() {
           animateY={4}
           animationDuration={300}
         >
-          <p className="text-sm text-muted-foreground">Manage your account settings.</p>
+          <p className="text-muted-foreground text-sm">
+            Manage your account settings.
+          </p>
         </TabsContent>
         <TabsContent
           value="password"
@@ -27,7 +34,9 @@ export function TabsEntranceVariantDemo() {
           animateY={4}
           animationDuration={300}
         >
-          <p className="text-sm text-muted-foreground">Change your password here.</p>
+          <p className="text-muted-foreground text-sm">
+            Change your password here.
+          </p>
         </TabsContent>
         <TabsContent
           value="settings"
@@ -36,7 +45,9 @@ export function TabsEntranceVariantDemo() {
           animateY={4}
           animationDuration={300}
         >
-          <p className="text-sm text-muted-foreground">Configure your preferences.</p>
+          <p className="text-muted-foreground text-sm">
+            Configure your preferences.
+          </p>
         </TabsContent>
       </div>
     </Tabs>

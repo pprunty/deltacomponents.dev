@@ -26,7 +26,8 @@
     "release": "changeset version",
     "test:dev": "turbo run test --force",
     "test": "start-server-and-test dev http://localhost:4000 test:dev",
-    "validate:registries": "pnpm validate:registries"
+    "validate:registries": "pnpm validate:registries",
+            "gacp": "git add . && git commit -m \"quick update\" --no-verify && git push --no-verify"
   },
   "packageManager": "pnpm@10.0.0",
   "dependencies": {

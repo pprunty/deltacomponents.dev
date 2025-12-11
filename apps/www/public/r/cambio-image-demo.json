@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/cambio-image-demo.tsx",
-      "content": "import { CambioImage } from \"@/registry/delta-ui/delta/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <div className=\"m-8 max-w-md\">\n        <CambioImage\n          src=\"/images/4d26c515-f5f1-43af-a9e5-e2be495ceddb.png\"\n          alt=\"Beautiful landscape photography\"\n          width={1170}\n          height={600}\n          motion=\"snappy\"\n          dismissOnImageClick={true}\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "import { CambioImage } from \"@/registry/delta-ui/delta/cambio-image\"\n\nexport default function CambioImageDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <div className=\"m-8 max-w-md\">\n        <CambioImage\n          src=\"/images/stock/4d26c515-f5f1-43af-a9e5-e2be495ceddb.png\"\n          alt=\"Beautiful landscape photography\"\n          width={1170}\n          height={600}\n          motion=\"snappy\"\n          dismissOnImageClick={true}\n        />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

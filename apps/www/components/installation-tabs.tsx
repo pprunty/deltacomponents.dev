@@ -34,7 +34,17 @@ export function InstallationTabs({
   const [config, setConfig] = useConfig()
   const packageManager = config.packageManager || "pnpm"
 
-  const cliCommand = `${packageManager} dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`
+  const getCliCommand = (pm: string) => {
+    const commandMap: Record<string, string> = {
+      npm: `npx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
+      yarn: `npx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
+      pnpm: `pnpm dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
+      bun: `bunx --bun shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
+    }
+    return commandMap[pm] || commandMap.pnpm
+  }
+
+  const cliCommand = getCliCommand(packageManager)
   const installCommand = dependencies && dependencies.length > 0
     ? `${packageManager} install ${dependencies.join(" ")}`
     : ""
@@ -93,7 +103,7 @@ export function InstallationTabs({
                 {["pnpm", "npm", "yarn", "bun"].map((pm) => (
                   <TabsContent key={pm} value={pm}>
                     <pre className="no-scrollbar min-w-0 overflow-x-auto px-4 py-3 outline-none">
-                      <code>{`${pm} dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`}</code>
+                      <code>{getCliCommand(pm)}</code>
                     </pre>
                   </TabsContent>
                 ))}

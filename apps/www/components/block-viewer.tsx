@@ -165,13 +165,14 @@ function BlockViewerToolbar() {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   return (
-    <div className="hidden w-full items-center gap-2 overflow-x-hidden pl-2 md:pr-6 lg:flex">
+    <div className="hidden w-full items-center gap-2 overflow-x-hidden md:pr-4 lg:flex">
       <Tabs
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
         variant="default"
+        size="sm"
       >
-        <TabsList size="sm" className="h-auto">
+        <TabsList className="h-auto">
           <TabsTrigger
             value="preview"
             className="min-w-[70px] justify-center text-center"

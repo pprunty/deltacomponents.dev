@@ -64,7 +64,7 @@ function Tabs({
   size = "default",
   indicatorThickness,
   indicatorClassName,
-  concentric = true,
+  concentric = false,
 }: TabsProps) {
   const [internalValue, setInternalValue] = React.useState(defaultValue ?? "")
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
@@ -121,13 +121,13 @@ function TabsList({ children, className }: TabsListProps) {
   const normalizedSize = size === "small" ? "sm" : size === "large" ? "lg" : size
 
   const listHeightClasses = {
-    sm: variant === "default" ? "h-8" : "h-8",
+    sm: variant === "default" ? "h-9" : "h-9",
     default: variant === "default" ? "h-10" : "h-10",
     lg: variant === "default" ? "h-12" : "h-12",
   }
 
   const hoverHeightClasses = {
-    sm: "h-6",
+    sm: "h-7",
     default: "h-7",
     lg: "h-9",
   }
@@ -145,7 +145,7 @@ function TabsList({ children, className }: TabsListProps) {
   }
 
   const defaultIndicatorHeightClasses = {
-    sm: "h-6",
+    sm: "h-7",
     default: "h-8",
     lg: "h-10",
   }
@@ -233,6 +233,7 @@ function TabsList({ children, className }: TabsListProps) {
             defaultIndicatorHeightClasses[normalizedSize],
             !concentric && "rounded-md",
             isInitialized && "transition-all duration-300 ease-out",
+            variant === "default" && "shadow-sm",
           )}
           style={{
             ...activeStyle,
@@ -279,13 +280,13 @@ function TabsTrigger({ value, children, className, disabled = false, icon }: Tab
   const normalizedSize = size === "small" ? "sm" : size === "large" ? "lg" : size
 
   const defaultSizeClasses = {
-    sm: "h-6 px-2 py-1 text-xs",
+    sm: "h-7 px-2 py-1 text-sm",
     default: "h-8 px-2.5 py-1.5 text-sm",
     lg: "h-10 px-3 py-2 text-base",
   }
 
   const underlineSizeClasses = {
-    sm: "h-8 px-2 pb-2 pt-1.5 text-xs",
+    sm: "h-9 px-2 pb-2 pt-1.5 text-sm",
     default: "h-10 px-3 pb-3 pt-2 text-sm",
     lg: "h-12 px-4 pb-4 pt-2.5 text-base",
   }
@@ -377,8 +378,10 @@ interface TabsContentProps {
   animateY?: number
   /** Set opacity animation - overrides animate when explicitly set (default: false) */
   animateOpacity?: boolean
-  /** Animation duration in ms (default: 200) */
+  /** Animation duration in ms (default: 250) */
   animationDuration?: number
+  /** Animation easing function (default: "ease-out" for animateY, "ease-in-out" for animate) */
+  animationEasing?: "ease" | "ease-in" | "ease-out" | "ease-in-out" | "linear" | string
 }
 
 function TabsContent({
@@ -389,7 +392,8 @@ function TabsContent({
   animate = false,
   animateY,
   animateOpacity,
-  animationDuration = 200,
+  animationDuration = 250,
+  animationEasing,
 }: TabsContentProps) {
   const { activeTab } = useTabs()
   const isActive = activeTab === value
@@ -398,6 +402,8 @@ function TabsContent({
 
   const shouldAnimateOpacity = animateOpacity ?? animate
   const hasAnimation = animateY !== undefined || shouldAnimateOpacity
+
+  const resolvedEasing = animationEasing ?? (animateY !== undefined ? "cubic-bezier(0.16, 1, 0.3, 1)" : "ease-in-out")
 
   React.useEffect(() => {
     if (isActive) {
@@ -438,14 +444,13 @@ function TabsContent({
       data-slot="animated-tabs-content"
       className={cn(
         "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        hasAnimation && "transition-all",
-        animate && !animateY && "ease-in-out",
-        (animateY !== undefined || animateOpacity) && "ease-out",
         !isActive && forceMount && "hidden",
         className,
       )}
       style={{
-        transitionDuration: hasAnimation ? `${animationDuration}ms` : undefined,
+        transition: hasAnimation
+          ? `opacity ${animationDuration}ms ${resolvedEasing}, transform ${animationDuration}ms ${resolvedEasing}`
+          : undefined,
         opacity: shouldAnimateOpacity ? (showContent ? 1 : 0) : undefined,
         transform: animateY !== undefined ? `translateY(${showContent ? 0 : animateY}px)` : undefined,
       }}

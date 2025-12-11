@@ -36,17 +36,15 @@ export function BlocksNav() {
       <Tabs
         value={currentValue}
         onValueChange={handleValueChange}
-        variant="default"
-        size="lg"
-        indicatorClassName="bg-muted"
+        variant="ghost"
+    size="lg"
       >
         <ScrollArea className="w-full">
-          <TabsList className="gap-1 bg-transparent p-0">
+          <TabsList>
             {visibleCategories.map((category) => (
               <TabsTrigger
                 key={category.slug}
                 value={category.slug}
-                className="data-[state=active]:[&>div]:bg-muted"
               >
                 {category.name}
               </TabsTrigger>

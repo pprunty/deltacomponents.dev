@@ -1,7 +1,11 @@
 "use client"
 
+import Link from "next/link"
+
+import { Announcement } from "@/components/announcement"
 import { useThemeConfig } from "@/components/active-theme"
 import {
+  PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
@@ -19,23 +23,33 @@ export function ThemesPageClient() {
   return (
     <>
       <PageHeader>
-        <PageHeaderHeading>Themes</PageHeaderHeading>
+        <Announcement />
+        <PageHeaderHeading>
+          Beautiful Themes for Modern UIs
+        </PageHeaderHeading>
         <PageHeaderDescription>
-          Beautiful themes and color schemes for Delta and{" "}
-          <a href="https://ui.shadcn.com" className="underline">
-            shadcn
-          </a>{" "}
-          components, created using{" "}
+          Carefully crafted color schemes for Delta and shadcn/ui components.
+          Preview, customize, and apply with a single click. Built with{" "}
           <a href="https://tweakcn.com" className="underline">
             tweakcn
           </a>
-          . Customize your app&apos;s appearance.
+          . Open Source. Free forever.
         </PageHeaderDescription>
+        <PageActions>
+          <Button asChild size="sm">
+            <a href="#themes">Browse Themes</a>
+          </Button>
+          <Button asChild size="sm" variant="ghost">
+            <a href="https://tweakcn.com/" target="_blank" rel="noopener noreferrer">
+              Create a Theme
+            </a>
+          </Button>
+        </PageActions>
       </PageHeader>
-      <div className="container-wrapper flex-1 md:py-12">
+      <div id="themes" className="container-wrapper flex-1 md:py-12">
         <div className="container">
-          <div className="mb-6">
-            <Button onClick={handleResetToDefault} variant="outline">
+          <div className="mb-6 flex items-center justify-end">
+            <Button onClick={handleResetToDefault} variant="outline" size="sm">
               Reset to Default Theme
             </Button>
           </div>

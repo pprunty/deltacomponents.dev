@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "blocks/perspective-carousel/page.tsx",
-      "content": "\"use client\"\n\nimport { PerspectiveCarousel } from \"@/components/perspective-carousel\"\n\nexport default function PerspectiveCarouselPage() {\n  return (\n    <div className=\"bg-background min-h-screen w-full py-6\">\n      <div className=\"mx-auto max-w-7xl\">\n        <PerspectiveCarousel />\n      </div>\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { PerspectiveCarousel } from \"@/components/perspective-carousel\"\n\nexport default function PerspectiveCarouselPage() {\n  return (\n    <div className=\"bg-background min-h-screen w-full flex items-center justify-center\">\n      <div className=\"mx-auto max-w-7xl p-6 w-full\">\n        <div className=\"space-y-8\">\n          <div className=\"space-y-4 text-center\">\n            <h1 className=\"text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl\">\n              Perspective Carousel\n            </h1>\n            <p className=\"text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg\">\n              An interactive 3D carousel with perspective transforms\n            </p>\n          </div>\n\n          <PerspectiveCarousel />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:page",
       "target": "app/perspective-carousel/page.tsx"
     },

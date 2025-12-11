@@ -228,7 +228,7 @@ export function MobileNav({
                               {componentMeta?.badge ? (
                                 <StatusBadge label={componentMeta.badge} />
                               ) : (
-                                siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
+                                group.name === "Components" && siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
                               )}
                               {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
                                 <StatusBadge label="hidden" />
@@ -274,7 +274,6 @@ export function MobileNav({
                                 )}
                               >
                                 {blockItem.name}
-                                {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
                               </Link>
                             )
                           })}

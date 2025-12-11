@@ -12,11 +12,23 @@ export function copyToClipboard(value: string) {
 
 interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
-  variant?: "ghost" | "outline" | "secondary" | "default" | "destructive" | "link"
+  variant?:
+    | "ghost"
+    | "outline"
+    | "secondary"
+    | "default"
+    | "destructive"
+    | "link"
   iconColor?: string
 }
 
-export function CopyButton({ value, className, variant = "secondary", iconColor, ...props }: CopyButtonProps) {
+export function CopyButton({
+  value,
+  className,
+  variant = "secondary",
+  iconColor,
+  ...props
+}: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
@@ -33,7 +45,10 @@ export function CopyButton({ value, className, variant = "secondary", iconColor,
       data-slot="copy-button"
       size="icon"
       variant={variant}
-      className={cn("size-7 bg-transparent hover:bg-muted active:bg-muted border-none shadow-none", className)}
+      className={cn(
+        "hover:bg-muted active:bg-muted size-7 border-none bg-transparent shadow-none",
+        className
+      )}
       onClick={() => {
         copyToClipboard(value)
         setHasCopied(true)
@@ -45,18 +60,28 @@ export function CopyButton({ value, className, variant = "secondary", iconColor,
         <div
           className={cn(
             "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
-            hasCopied ? "blur-0 scale-100 opacity-100" : "scale-[0.25] opacity-0 blur-xs",
+            hasCopied
+              ? "blur-0 scale-100 opacity-100"
+              : "scale-[0.25] opacity-0 blur-xs"
           )}
         >
-          <CheckIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+          <CheckIcon
+            className="h-3.5 w-3.5"
+            style={iconColor ? { color: iconColor } : {}}
+          />
         </div>
         <div
           className={cn(
             "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
-            hasCopied ? "scale-[0.25] opacity-0 blur-xs" : "blur-0 scale-100 opacity-100",
+            hasCopied
+              ? "scale-[0.25] opacity-0 blur-xs"
+              : "blur-0 scale-100 opacity-100"
           )}
         >
-          <CopyIcon className="h-3.5 w-3.5" style={iconColor ? { color: iconColor } : {}} />
+          <CopyIcon
+            className="h-3.5 w-3.5"
+            style={iconColor ? { color: iconColor } : {}}
+          />
         </div>
       </div>
     </Button>

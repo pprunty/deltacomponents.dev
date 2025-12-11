@@ -3,6 +3,7 @@
 import type { ThemeData } from "@/lib/theme-data"
 import { useThemeConfig } from "@/components/active-theme"
 import { Button } from "@/registry/delta-ui/ui/button"
+import { Card } from "@/registry/delta-ui/ui/card"
 
 import { ThemeCodeDialog } from "./theme-code-dialog"
 
@@ -18,15 +19,15 @@ export function ThemeCard({ theme }: ThemeCardProps) {
   }
 
   return (
-    <div className="group relative h-full rounded-lg border p-6 shadow-none transition-shadow hover:shadow-md">
-      <div className="flex h-full flex-col space-y-4">
+    <Card className="group relative h-full p-6 transition-shadow hover:shadow-md">
+      <div className="flex h-full flex-col gap-4">
         <img
           src={theme.previewImage}
           alt={`${theme.name} theme preview`}
-          className="aspect-video w-full object-cover"
+          className="aspect-video w-full object-cover rounded-md"
         />
         <div className="flex-grow space-y-2">
-          <h3 className="font-semibold text-lg md:text-xl">{theme.name}</h3>
+          <h3 className="font-medium text-lg md:text-xl font-heading">{theme.name}</h3>
           <p className="text-muted-foreground text-base md:text-[17px]">{theme.description}</p>
         </div>
         <div className="mt-auto flex gap-2">
@@ -36,6 +37,6 @@ export function ThemeCard({ theme }: ThemeCardProps) {
           <ThemeCodeDialog themeName={theme.name} themeValue={theme.value} />
         </div>
       </div>
-    </div>
+    </Card>
   )
 }

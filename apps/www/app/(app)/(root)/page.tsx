@@ -1,7 +1,9 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
+import { Announcement } from "@/components/announcement"
 import { CardsDemo } from "@/components/cards"
+import { ComponentGrid } from "@/components/component-grid"
 import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {
@@ -16,7 +18,7 @@ import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Delta Components UI"
 const description =
-  "A curated collection of components build on top of shadcn/ui and crafted to make a difference in your product."
+  "High-performance components crafted to make the difference in your UX. Built on top of shadcn/ui—from AI chat to interactive media—copy, paste, and own the code."
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -57,11 +59,12 @@ export default function IndexPage() {
           }}
         />
         <PageHeader className="relative z-10">
-          <div className="flex flex-col items-center gap-6">
+          <Announcement />
+          <div className="flex flex-col items-center gap-6 pt-6">
             <Icons.logo className="size-12" />
             <PageHeaderHeading className="max-w-4xl">
               <span className="flex items-baseline gap-2 sm:gap-3">
-                <span className="font-waldenburg-ht leading-[0.95] font-bold tracking-[-0.03em]">
+                <span className="font-waldenburg-ht leading-[0.95] font-bold tracking-tighter">
                   Delta Components
                 </span>
                 <span className="font-waldenburg font-normal tracking-[-0.02em] opacity-90">
@@ -79,6 +82,9 @@ export default function IndexPage() {
               <Link href="/docs/components">View Components</Link>
             </Button>
           </PageActions>
+          <div className="md:hidden mt-8 w-full">
+            <ComponentGrid />
+          </div>
         </PageHeader>
       </div>
       <PageNav className="hidden md:flex">

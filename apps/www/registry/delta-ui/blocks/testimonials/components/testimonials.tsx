@@ -14,7 +14,7 @@ const testimonials: Testimonial[] = [
   {
     id: "1",
     quote:
-      "It was night and day from one batch to another, adoption went from single digits to over 80%. It just spread like wildfire, all the best builders were using Cursor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
     name: "Diana Hu",
     title: "General Partner, Y Combinator",
     avatar:
@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
   {
     id: "2",
     quote:
-      "The most useful AI tool that I currently pay for, hands down, is Cursor. It's fast, autocompletes when and where you need it to, handles brackets properly, sensible keyboard shortcuts, bring-your-own-model... everything is well put together.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
     name: "shadcn",
     title: "Creator of shadcn/ui",
     avatar:
@@ -34,7 +34,7 @@ const testimonials: Testimonial[] = [
   {
     id: "3",
     quote:
-      "The best LLM applications have an autonomy slider: you control how much independence to give the AI. In Cursor, you can do Tab completion, Cmd+K for targeted edits, or you can let it rip with the full autonomy agentic version.",
+      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est.",
     name: "Andrej Karpathy",
     title: "CEO, Eureka Labs",
     avatar:
@@ -44,7 +44,7 @@ const testimonials: Testimonial[] = [
   {
     id: "4",
     quote:
-      "Cursor quickly grew from hundreds to thousands of extremely enthusiastic Stripe employees. We spend more on R&D and software creation than any other undertaking, and there's significant economic outcomes when making that process more efficient and productive.",
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.",
     name: "Patrick Collison",
     title: "Co‑Founder & CEO, Stripe",
     avatar:
@@ -54,7 +54,7 @@ const testimonials: Testimonial[] = [
   {
     id: "5",
     quote:
-      "It's official.\n\nI hate vibe coding.\nI love Cursor tab coding.\n\nIt's wild.",
+      "Lorem ipsum.\n\nDolor sit amet.\nConsectetur adipiscing.\n\nElit sed do.",
     name: "ThePrimeagen",
     title: "@ThePrimeagen",
     avatar:
@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
   {
     id: "6",
     quote:
-      "It's definitely becoming more fun to be a programmer. It's less about digging through pages and more about what you want to happen. We are at the 1% of what's possible, and it's in interactive experiences like Cursor where models like GPT-5 shine brightest.",
+      "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus maiores alias consequatur.",
     name: "Greg Brockman",
     title: "President, OpenAI",
     avatar:

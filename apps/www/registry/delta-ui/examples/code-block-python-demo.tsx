@@ -1,5 +1,6 @@
-import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 import type { PrismTheme } from "prism-react-renderer"
+
+import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 
 const draculaLight: PrismTheme = {
   plain: {
@@ -128,23 +129,33 @@ const draculaDark: PrismTheme = {
     },
   ],
 }
-
 const pythonCode = `def fibonacci(n: int) -> list[int]:
-    """Generate Fibonacci sequence up to n numbers."""
+    """Generate Fibonacci sequence up to n numbers. This is a long comment to test horizontal scrolling behavior in the code block component."""
     if n <= 0:
         return []
     elif n == 1:
         return [0]
-
+    
     sequence = [0, 1]
     while len(sequence) < n:
-        sequence.append(sequence[-1] + sequence[-2])
-
+        sequence.append(sequence[-1] + sequence[-2])  # Add the sum of the last two numbers to the sequence list for Fibonacci calculation
+    
     return sequence
+
+def fibonacci_recursive(n: int, memo: dict[int, int] | None = None) -> int:
+    """Calculate the nth Fibonacci number using memoization for better performance in recursive calls."""
+    if memo is None:
+        memo = {}
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    memo[n] = fibonacci_recursive(n - 1, memo) + fibonacci_recursive(n - 2, memo)
+    return memo[n]
 
 if __name__ == "__main__":
     result = fibonacci(10)
-    print(f"Fibonacci sequence: {result}")`
+    print(f"Fibonacci sequence: {result}")  # Output: Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34] for the first 10 numbers`
 
 export default function CodeBlockPythonDemo() {
   return (
