@@ -48,7 +48,7 @@ export function ThemesPageClient() {
       </PageHeader>
       <div id="themes" className="container-wrapper flex-1 md:py-12">
         <div className="container">
-          <div className="mb-6 flex items-center justify-end">
+          <div className="mb-6 flex items-center justify-start">
             <Button onClick={handleResetToDefault} variant="outline" size="sm">
               Reset to Default Theme
             </Button>

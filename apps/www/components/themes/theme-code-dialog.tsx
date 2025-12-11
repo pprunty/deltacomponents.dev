@@ -52,10 +52,10 @@ export function ThemeCodeDialog({ themeName, themeValue }: ThemeCodeDialogProps)
         </Button>
       </DialogTrigger>
       <DialogContent className="max-h-[calc(100vh-2rem)] w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{themeName}</DialogTitle>
+        <DialogHeader className="text-left">
+          <DialogTitle className="text-lg font-heading sm:text-lg sm:font-semibold">{themeName}</DialogTitle>
           <DialogDescription>
-            Choose one of the installation methods below.
+            Install the theme in your project using one of the following methods.
           </DialogDescription>
         </DialogHeader>
         <div className="min-w-0 space-y-6">

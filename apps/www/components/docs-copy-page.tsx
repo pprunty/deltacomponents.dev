@@ -234,74 +234,77 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
 
   return (
     <Popover>
-      <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
-        <PopoverAnchor />
-        <Button
-          variant="secondary"
-          size="sm"
-          className="group h-8 shadow-none transition-colors duration-300 ease-out active:scale-[0.97] will-change-transform md:h-7 md:text-[0.8rem]"
-          onClick={() => copyToClipboard(page)}
-        >
-          <div className="relative">
-            <div
-              className={cn(
-                "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform, opacity, filter]",
-                isCopied
-                  ? "scale-100 opacity-100 blur-0"
-                  : "blur-xs scale-[0.25] opacity-0"
-              )}
-            >
-              <IconCheck />
+      <PopoverAnchor asChild>
+        <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="h-8 shadow-none transition-transform duration-150 ease-out active:scale-[0.97] will-change-transform md:h-7 md:text-[0.8rem]"
+            onClick={() => copyToClipboard(page)}
+          >
+            <div className="relative mr-2">
+              <div
+                className={cn(
+                  "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
+                  isCopied
+                    ? "scale-100 opacity-100 blur-0"
+                    : "blur-xs scale-[0.25] opacity-0"
+                )}
+              >
+                <IconCheck />
+              </div>
+              <div
+                className={cn(
+                  "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
+                  isCopied
+                    ? "blur-xs scale-[0.25] opacity-0"
+                    : "scale-100 opacity-100 blur-0"
+                )}
+              >
+                <IconCopy />
+              </div>
             </div>
-            <div
-              className={cn(
-                "transition-[transform, opacity, filter] duration-300 ease-in-out will-change-[transform, opacity, filter]",
-                isCopied
-                  ? "blur-xs scale-[0.25] opacity-0"
-                  : "scale-100 opacity-100 blur-0"
-              )}
-            >
-              <IconCopy />
-            </div>
-          </div>
-          Copy Page
-        </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild className="hidden sm:flex">
+            Copy Page
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className="hidden sm:flex">
+              {trigger}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="shadow-none">
+              {Object.entries(menuItems).map(([key, value]) => (
+                <DropdownMenuItem key={key} asChild>
+                  {value(url)}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Separator
+            orientation="vertical"
+            className="!bg-foreground/10 absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
+          />
+          <PopoverTrigger asChild className="flex sm:hidden">
             {trigger}
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="shadow-none">
+          </PopoverTrigger>
+          <PopoverContent
+            className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-sm backdrop-blur-sm"
+            align="start"
+            side="top"
+            sideOffset={8}
+          >
             {Object.entries(menuItems).map(([key, value]) => (
-              <DropdownMenuItem key={key} asChild>
+              <Button
+                variant="ghost"
+                size="lg"
+                asChild
+                key={key}
+                className="*:[svg]:text-muted-foreground w-full justify-start text-base font-normal"
+              >
                 {value(url)}
-              </DropdownMenuItem>
+              </Button>
             ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Separator
-          orientation="vertical"
-          className="!bg-foreground/10 absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
-        />
-        <PopoverTrigger asChild className="flex sm:hidden">
-          {trigger}
-        </PopoverTrigger>
-        <PopoverContent
-          className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-sm backdrop-blur-sm"
-          align="start"
-        >
-          {Object.entries(menuItems).map(([key, value]) => (
-            <Button
-              variant="ghost"
-              size="lg"
-              asChild
-              key={key}
-              className="*:[svg]:text-muted-foreground w-full justify-start text-base font-normal"
-            >
-              {value(url)}
-            </Button>
-          ))}
-        </PopoverContent>
-      </div>
+          </PopoverContent>
+        </div>
+      </PopoverAnchor>
     </Popover>
   )
 }

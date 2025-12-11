@@ -693,8 +693,8 @@ export function CodeBlock({
 
         <div className="relative">
           {!filename && (
-            <div className="pointer-events-none sticky top-0 right-0 z-10 flex h-0 justify-end">
-              <div className="pointer-events-auto flex items-center gap-2 p-2">
+            <div className="pointer-events-none sticky top-0 z-10 flex h-0 justify-end">
+              <div className="pointer-events-auto flex items-center gap-2">
                 {expandable && (
                   <>
                     <CollapsibleTrigger asChild>
