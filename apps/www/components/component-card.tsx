@@ -55,8 +55,8 @@ export function ComponentCard({ component }: ComponentCardProps) {
             }}
           />
         )}
-        <div className="absolute top-2 right-2 rounded-md bg-black/40 px-2 py-1">
-          <span className="text-[13px] font-medium text-white">
+        <div className="absolute top-2 right-2 flex items-center rounded-md bg-black/40 px-2 py-1.5">
+          <span className="text-[13px] font-medium leading-none text-white">
             {component.name}
           </span>
         </div>
