@@ -59,7 +59,10 @@
           "path": "registry/delta-ui/delta/code-block-icons.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "hide": true
+      }
     },
     {
       "name": "code-block",
@@ -96,7 +99,10 @@
           "path": "registry/delta-ui/delta/copy-button.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "hide": true
+      }
     },
     {
       "name": "cambio-image",

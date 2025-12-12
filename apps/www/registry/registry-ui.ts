@@ -25,6 +25,9 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      hide: true,
+    },
   },
   {
     name: "code-block",
@@ -49,6 +52,9 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      hide: true,
+    },
   },
   {
     name: "cambio-image",

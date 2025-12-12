@@ -60,7 +60,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: undefined,
+    meta: {"hide":true},
   },
   "code-block": {
     name: "code-block",
@@ -96,7 +96,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: undefined,
+    meta: {"hide":true},
   },
   "cambio-image": {
     name: "cambio-image",

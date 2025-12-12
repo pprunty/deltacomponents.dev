@@ -75,7 +75,7 @@ export async function generateStaticParams() {
         "registry:example",
         "registry:internal",
         "registry:ui",
-      ].includes(block.type)
+      ].includes(block.type) && !block.meta?.hide
     )
     .map((block) => ({
       name: block.name,
