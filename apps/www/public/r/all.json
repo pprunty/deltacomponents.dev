@@ -19,10 +19,10 @@
   "registryDependencies": [
     "avatar",
     "button",
-    "code-block-icons",
-    "copy-button",
+    "https://deltacomponents.dev/r/code-block-icons.json",
+    "https://deltacomponents.dev/r/copy-button.json",
+    "https://deltacomponents.dev/r/tabs.json",
     "select",
-    "tabs",
     "textarea",
     "tooltip"
   ],
