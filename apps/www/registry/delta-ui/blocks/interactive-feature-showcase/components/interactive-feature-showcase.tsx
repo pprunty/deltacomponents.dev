@@ -62,7 +62,7 @@ function VideoFeatureCard({
             </a>
           )}
         </div>
-        <div className="aspect-square flex-1 overflow-hidden rounded-lg">
+        <div className="aspect-square flex-1 overflow-hidden">
           <iframe
             width="100%"
             height="100%"
@@ -81,7 +81,7 @@ function VideoFeatureCard({
   const content = (
     <>
       <div className="mb-6">
-        <div className="aspect-square overflow-hidden rounded-lg">
+        <div className="aspect-square overflow-hidden">
           <iframe
             width="100%"
             height="100%"
