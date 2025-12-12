@@ -6,7 +6,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "tabs"
+    "tabs",
+    "https://deltacomponents.dev/r/tabs.json"
   ],
   "files": [
     {

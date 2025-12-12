@@ -3,7 +3,6 @@
   "name": "testimonials",
   "type": "registry:block",
   "description": "Customer testimonials grid",
-  "registryDependencies": [],
   "files": [
     {
       "path": "blocks/testimonials/page.tsx",

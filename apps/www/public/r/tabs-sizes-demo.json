@@ -3,7 +3,8 @@
   "name": "tabs-sizes-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "tabs"
+    "tabs",
+    "https://deltacomponents.dev/r/tabs.json"
   ],
   "files": [
     {

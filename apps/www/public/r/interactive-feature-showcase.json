@@ -3,7 +3,6 @@
   "name": "interactive-feature-showcase",
   "type": "registry:block",
   "description": "InteractiveFeatureShowcase block",
-  "registryDependencies": [],
   "files": [
     {
       "path": "blocks/interactive-feature-showcase/page.tsx",

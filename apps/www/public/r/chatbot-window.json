@@ -11,7 +11,8 @@
     "avatar",
     "select",
     "textarea",
-    "resizable"
+    "resizable",
+    "https://deltacomponents.dev/r/ai-elements.json"
   ],
   "files": [
     {

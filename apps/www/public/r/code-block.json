@@ -8,9 +8,9 @@
     "prismjs"
   ],
   "registryDependencies": [
-    "https://deltacomponents.dev/r/copy-button.json",
-    "https://deltacomponents.dev/r/tabs.json",
-    "https://deltacomponents.dev/r/code-block-icons.json"
+    "tabs",
+    "https://deltacomponents.dev/r/code-block-icons.json",
+    "https://deltacomponents.dev/r/copy-button.json"
   ],
   "files": [
     {

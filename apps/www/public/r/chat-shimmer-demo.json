@@ -3,7 +3,7 @@
   "name": "chat-shimmer-demo",
   "type": "registry:example",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/chat.json"
+    "https://deltacomponents.dev/r/ai-elements.json"
   ],
   "files": [
     {

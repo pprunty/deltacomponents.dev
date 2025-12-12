@@ -73,9 +73,9 @@
         "prismjs"
       ],
       "registryDependencies": [
-        "https://deltacomponents.dev/r/copy-button.json",
-        "https://deltacomponents.dev/r/tabs.json",
-        "https://deltacomponents.dev/r/code-block-icons.json"
+        "tabs",
+        "https://deltacomponents.dev/r/code-block-icons.json",
+        "https://deltacomponents.dev/r/copy-button.json"
       ],
       "files": [
         {
@@ -194,7 +194,8 @@
         "button",
         "avatar",
         "textarea",
-        "select"
+        "select",
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -291,7 +292,6 @@
       "name": "testimonials",
       "type": "registry:block",
       "description": "Customer testimonials grid",
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/delta-ui/blocks/testimonials/page.tsx",
@@ -317,7 +317,6 @@
       "name": "interactive-feature-showcase",
       "type": "registry:block",
       "description": "InteractiveFeatureShowcase block",
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/delta-ui/blocks/interactive-feature-showcase/page.tsx",
@@ -351,7 +350,8 @@
         "avatar",
         "select",
         "textarea",
-        "resizable"
+        "resizable",
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -379,7 +379,6 @@
       "name": "perspective-carousel",
       "type": "registry:block",
       "description": "PerspectiveCarousel block",
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/delta-ui/blocks/perspective-carousel/page.tsx",
@@ -408,7 +407,6 @@
       "dependencies": [
         "phosphor-react"
       ],
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/delta-ui/blocks/bottom-mobile-nav/page.tsx",
@@ -553,7 +551,8 @@
       "name": "marquee-stacked-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "marquee"
+        "marquee",
+        "https://deltacomponents.dev/r/marquee.json"
       ],
       "files": [
         {
@@ -566,7 +565,8 @@
       "name": "marquee-cards-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "marquee"
+        "marquee",
+        "https://deltacomponents.dev/r/marquee.json"
       ],
       "files": [
         {
@@ -579,7 +579,8 @@
       "name": "marquee-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "marquee"
+        "marquee",
+        "https://deltacomponents.dev/r/marquee.json"
       ],
       "files": [
         {
@@ -618,7 +619,7 @@
       "name": "chat-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/chat.json"
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -631,7 +632,7 @@
       "name": "chat-previous-messages-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/chat.json"
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -644,7 +645,7 @@
       "name": "chat-simple-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/chat.json"
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -683,8 +684,7 @@
       "name": "code-block-theme-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json",
-        "https://deltacomponents.dev/r/button.json"
+        "https://deltacomponents.dev/r/code-block.json"
       ],
       "files": [
         {
@@ -931,7 +931,8 @@
       "name": "tabs-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -944,7 +945,8 @@
       "name": "tabs-background-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -957,7 +959,8 @@
       "name": "tabs-no-background-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -970,7 +973,8 @@
       "name": "tabs-sizes-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -986,7 +990,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -999,7 +1004,8 @@
       "name": "tabs-entrance-animation-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "https://deltacomponents.dev/r/tabs.json"
       ],
       "files": [
         {
@@ -1038,7 +1044,7 @@
       "name": "chat-shimmer-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/chat.json"
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {
@@ -1051,7 +1057,7 @@
       "name": "chat-reasoning-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/chat.json"
+        "https://deltacomponents.dev/r/ai-elements.json"
       ],
       "files": [
         {

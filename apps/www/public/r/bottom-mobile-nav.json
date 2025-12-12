@@ -6,7 +6,6 @@
   "dependencies": [
     "phosphor-react"
   ],
-  "registryDependencies": [],
   "files": [
     {
       "path": "blocks/bottom-mobile-nav/page.tsx",

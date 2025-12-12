@@ -3,7 +3,6 @@
   "name": "perspective-carousel",
   "type": "registry:block",
   "description": "PerspectiveCarousel block",
-  "registryDependencies": [],
   "files": [
     {
       "path": "blocks/perspective-carousel/page.tsx",

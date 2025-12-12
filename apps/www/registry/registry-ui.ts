@@ -33,11 +33,7 @@ export const ui: Registry["items"] = [
     name: "code-block",
     type: "registry:ui",
     dependencies: ["lucide-react", "prism-react-renderer", "prismjs"],
-    registryDependencies: [
-      "https://deltacomponents.dev/r/copy-button.json",
-      "https://deltacomponents.dev/r/tabs.json",
-      "https://deltacomponents.dev/r/code-block-icons.json",
-    ],
+    registryDependencies: ["tabs"],
     files: [
       {
         path: "delta/code-block.tsx",

@@ -68,23 +68,68 @@ export const Index: Record<string, any> = {`
   await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
 }
 
+async function extractDeltaImports(filePath: string): Promise<Set<string>> {
+  const deltaImports = new Set<string>()
+
+  try {
+    const content = await fs.readFile(filePath, 'utf-8')
+
+    // Match imports from @/registry/delta-ui/delta/*
+    const deltaImportRegex = /@\/registry\/delta-ui\/delta\/([a-z-]+)/g
+    let match
+
+    while ((match = deltaImportRegex.exec(content)) !== null) {
+      deltaImports.add(match[1])
+    }
+  } catch (error) {
+    // File doesn't exist or can't be read, return empty set
+  }
+
+  return deltaImports
+}
+
 async function buildRegistryJsonFile() {
-  // 1. Add registry/delta-ui prefix for the build to work
+  // 1. Add registry/delta-ui prefix and convert Delta dependencies to full URLs
   const fixedRegistry = {
     ...registry,
-    items: registry.items.map((item) => {
-      const files = item.files?.map((file) => {
+    items: await Promise.all(
+      registry.items.map(async (item) => {
+        const files = item.files?.map((file) => {
+          return {
+            ...file,
+            path: `registry/delta-ui/${file.path}`,
+          }
+        })
+
+        // Detect Delta registry dependencies from imports
+        const deltaImports = new Set<string>()
+        if (item.files) {
+          for (const file of item.files) {
+            const filePath = path.join(process.cwd(), `registry/delta-ui/${file.path}`)
+            const imports = await extractDeltaImports(filePath)
+            imports.forEach(imp => deltaImports.add(imp))
+          }
+        }
+
+        // Convert Delta imports to full URLs and merge with existing registryDependencies
+        const existingDeps = item.registryDependencies || []
+        const deltaUrls = Array.from(deltaImports).map(
+          name => `https://deltacomponents.dev/r/${name}.json`
+        )
+
+        // Combine: keep existing non-URL deps (shadcn components) and add Delta URLs
+        const registryDependencies = [
+          ...existingDeps.filter(dep => !dep.startsWith('https://deltacomponents.dev')),
+          ...deltaUrls
+        ]
+
         return {
-          ...file,
-          path: `registry/delta-ui/${file.path}`,
+          ...item,
+          files,
+          registryDependencies: registryDependencies.length > 0 ? registryDependencies : undefined,
         }
       })
-
-      return {
-        ...item,
-        files,
-      }
-    }),
+    ),
   }
 
   // 2. Write the content of the registry to `registry.json`
