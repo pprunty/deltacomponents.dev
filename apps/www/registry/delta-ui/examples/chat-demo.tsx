@@ -281,9 +281,10 @@ const Example = () => {
   }
 
   return (
-    <ChatContainer>
-      <Conversation>
-        <ConversationContent>
+    <div className="h-[600px] w-full max-w-lg">
+      <ChatContainer>
+        <Conversation>
+          <ConversationContent>
           {messages.map(({ versions, ...message }) => {
             const assistantMessages = messages.filter(
               (m) => m.from === "assistant"
@@ -509,7 +510,8 @@ const Example = () => {
           </PromptInput>
         </div>
       </div>
-    </ChatContainer>
+      </ChatContainer>
+    </div>
   )
 }
 

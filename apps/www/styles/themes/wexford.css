@@ -1,43 +1,39 @@
 /* Wexford (Gruvbox) Theme */
 html[data-theme="wexford"] {
-  --background: #ede3c0;
-  --foreground: #303030;
-  --card: #f0ead1;
-  --card-foreground: #303030;
-  --popover: #f0ead1;
-  --popover-foreground: #303030;
-  --primary: #9e0000;
-  --primary-foreground: #f9f6ec;
-  --secondary: #d8cfb6;
-  --secondary-foreground: #303030;
-  --muted: #e0d6be;
-  --muted-foreground: #625950;
-  --accent: #ebd8ad;
-  --accent-foreground: #7a431f;
-  --destructive: #c32822;
-  --destructive-foreground: #f9f6ec;
-  --border: #c9bea6;
-  --input: #c9bea6;
-  --ring: #9e0000;
-  --chart-1: #9e0000;
-  --chart-2: #b8ba26;
-  --chart-3: #fbba23;
-  --chart-4: #369671;
-  --chart-5: #d85f0e;
-  --sidebar: #e6dbbc;
-  --sidebar-foreground: #303030;
-  --sidebar-primary: #9e0000;
-  --sidebar-primary-foreground: #f9f6ec;
-  --sidebar-accent: #ebd8ad;
-  --sidebar-accent-foreground: #7a431f;
-  --sidebar-border: #c9bea6;
-  --sidebar-ring: #d85f0e;
-  --surface: #f2e8cc;
-  --surface-foreground: #3c3836;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --background: oklch(0.915 0.047 93.9);
+  --foreground: oklch(0.309 0.000 0.0);
+  --card: oklch(0.935 0.034 95.9);
+  --card-foreground: oklch(0.309 0.000 0.0);
+  --popover: oklch(0.935 0.034 95.9);
+  --popover-foreground: oklch(0.309 0.000 0.0);
+  --primary: oklch(0.439 0.180 29.2);
+  --primary-foreground: oklch(0.973 0.014 93.0);
+  --secondary: oklch(0.855 0.035 90.5);
+  --secondary-foreground: oklch(0.309 0.000 0.0);
+  --muted: oklch(0.878 0.034 88.1);
+  --muted-foreground: oklch(0.470 0.018 67.4);
+  --accent: oklch(0.887 0.060 87.0);
+  --accent-foreground: oklch(0.443 0.091 51.4);
+  --destructive: oklch(0.533 0.192 28.2);
+  --destructive-foreground: oklch(0.973 0.014 93.0);
+  --border: oklch(0.804 0.035 86.3);
+  --input: oklch(0.804 0.035 86.3);
+  --ring: oklch(0.439 0.180 29.2);
+  --chart-1: oklch(0.439 0.180 29.2);
+  --chart-2: oklch(0.763 0.157 110.4);
+  --chart-3: oklch(0.827 0.163 81.8);
+  --chart-4: oklch(0.607 0.107 164.2);
+  --chart-5: oklch(0.628 0.171 46.3);
+  --sidebar: oklch(0.892 0.043 90.8);
+  --sidebar-foreground: oklch(0.309 0.000 0.0);
+  --sidebar-primary: oklch(0.439 0.180 29.2);
+  --sidebar-primary-foreground: oklch(0.973 0.014 93.0);
+  --sidebar-accent: oklch(0.887 0.060 87.0);
+  --sidebar-accent-foreground: oklch(0.443 0.091 51.4);
+  --sidebar-border: oklch(0.804 0.035 86.3);
+  --sidebar-ring: oklch(0.628 0.171 46.3);
+  --surface: oklch(0.932 0.038 90.7);
+  --surface-foreground: oklch(0.344 0.007 48.5);
   --radius: 0.25rem;
   --shadow-x: 0;
   --shadow-y: 1px;
@@ -45,57 +41,53 @@ html[data-theme="wexford"] {
   --shadow-spread: 0px;
   --shadow-opacity: 0.1;
   --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --shadow-2xs: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.050);
+  --shadow-xs: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.050);
+  --shadow-sm: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 1px 2px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 1px 2px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-md: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 2px 4px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-lg: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 4px 6px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 8px 10px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
 html[data-theme="wexford"].dark {
-  --background: #32302f;
-  --foreground: #e0d6be;
-  --card: #3b3735;
-  --card-foreground: #e0d6be;
-  --popover: #3b3735;
-  --popover-foreground: #e0d6be;
-  --primary: #fe811b;
-  --primary-foreground: #282625;
-  --secondary: #504b49;
-  --secondary-foreground: #d8cfb6;
-  --muted: #504b49;
-  --muted-foreground: #9d927b;
-  --accent: #53402d;
-  --accent-foreground: #feab67;
-  --destructive: #fb4632;
-  --destructive-foreground: #282625;
-  --border: #615a56;
-  --input: #615a56;
-  --ring: #fe811b;
-  --chart-1: #fe811b;
-  --chart-2: #dddd36;
-  --chart-3: #fed471;
-  --chart-4: #55b458;
-  --chart-5: #fb4632;
-  --sidebar: #2a2827;
-  --sidebar-foreground: #e0d6be;
-  --sidebar-primary: #fe811b;
-  --sidebar-primary-foreground: #282625;
-  --sidebar-accent: #53402d;
-  --sidebar-accent-foreground: #feab67;
-  --sidebar-border: #615a56;
-  --sidebar-ring: #fe811b;
-  --surface: #2a2827;
-  --surface-foreground: #d5c4a1;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --background: oklch(0.311 0.003 48.6);
+  --foreground: oklch(0.878 0.034 88.1);
+  --card: oklch(0.340 0.007 48.5);
+  --card-foreground: oklch(0.878 0.034 88.1);
+  --popover: oklch(0.340 0.007 48.5);
+  --popover-foreground: oklch(0.878 0.034 88.1);
+  --primary: oklch(0.733 0.181 51.9);
+  --primary-foreground: oklch(0.270 0.003 48.6);
+  --secondary: oklch(0.417 0.007 43.2);
+  --secondary-foreground: oklch(0.855 0.035 90.5);
+  --muted: oklch(0.417 0.007 43.2);
+  --muted-foreground: oklch(0.663 0.035 85.5);
+  --accent: oklch(0.387 0.040 66.2);
+  --accent-foreground: oklch(0.809 0.129 58.8);
+  --destructive: oklch(0.657 0.220 30.2);
+  --destructive-foreground: oklch(0.270 0.003 48.6);
+  --border: oklch(0.473 0.011 51.9);
+  --input: oklch(0.473 0.011 51.9);
+  --ring: oklch(0.733 0.181 51.9);
+  --chart-1: oklch(0.733 0.181 51.9);
+  --chart-2: oklch(0.870 0.175 109.5);
+  --chart-3: oklch(0.886 0.127 86.7);
+  --chart-4: oklch(0.691 0.158 144.2);
+  --chart-5: oklch(0.657 0.220 30.2);
+  --sidebar: oklch(0.279 0.003 48.6);
+  --sidebar-foreground: oklch(0.878 0.034 88.1);
+  --sidebar-primary: oklch(0.733 0.181 51.9);
+  --sidebar-primary-foreground: oklch(0.270 0.003 48.6);
+  --sidebar-accent: oklch(0.387 0.040 66.2);
+  --sidebar-accent-foreground: oklch(0.809 0.129 58.8);
+  --sidebar-border: oklch(0.473 0.011 51.9);
+  --sidebar-ring: oklch(0.733 0.181 51.9);
+  --surface: oklch(0.279 0.003 48.6);
+  --surface-foreground: oklch(0.825 0.051 85.1);
   --radius: 0.25rem;
   --shadow-x: 0;
   --shadow-y: 1px;
@@ -103,14 +95,14 @@ html[data-theme="wexford"].dark {
   --shadow-spread: 0px;
   --shadow-opacity: 0.1;
   --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --shadow-2xs: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.050);
+  --shadow-xs: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.050);
+  --shadow-sm: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 1px 2px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 1px 2px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-md: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 2px 4px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-lg: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 4px 6px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 8px 10px -1px oklch(0.000 0.000 0.0 / 0.100);
+  --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
 }
 
 html[data-theme="wexford"] body,
@@ -119,27 +111,27 @@ html[data-theme="wexford"] .font-sans {
 }
 
 html[data-theme="wexford"] h1 {
-  color: #E8B547;
+  color: oklch(0.800 0.137 83.3);
   font-weight: bold;
 }
 
 
 html[data-theme="wexford"] h2 {
-  color: #BC3826;
+  color: oklch(0.535 0.172 31.0);
   font-weight: bold;
 }
 
 html[data-theme="wexford"] h3 {
-  color: #969732;
+  color: oklch(0.656 0.122 109.9);
   font-weight: bold;
 }
 
 html[data-theme="wexford"] h4 {
-  color: #729C6E;
+  color: oklch(0.650 0.081 142.4);
   font-weight: bold;
 }
 
 html[data-theme="wexford"] h5 {
-  color: #558488;
+  color: oklch(0.581 0.051 202.7);
   font-weight: bold;
 }

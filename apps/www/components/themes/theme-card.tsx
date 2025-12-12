@@ -1,5 +1,7 @@
 "use client"
 
+import { useTheme } from "next-themes"
+
 import type { ThemeData } from "@/lib/theme-data"
 import { useThemeConfig } from "@/components/active-theme"
 import { Button } from "@/registry/delta-ui/ui/button"
@@ -20,16 +22,20 @@ interface ThemeCardProps {
 
 export function ThemeCard({ theme }: ThemeCardProps) {
   const { setActiveTheme } = useThemeConfig()
+  const { resolvedTheme } = useTheme()
 
   const handleTryTheme = () => {
     setActiveTheme(theme.value)
   }
 
+  const isDark = resolvedTheme === "dark"
+  const themeImageSrc = `/images/themes/${theme.value}-${isDark ? "dark" : "light"}.webp`
+
   return (
     <Card className="group relative h-full">
       <CardContent>
         <img
-          src={theme.previewImage}
+          src={themeImageSrc}
           alt={`${theme.name} theme preview`}
           className="aspect-video w-full object-cover"
         />
