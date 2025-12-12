@@ -214,15 +214,17 @@ function rewriteImports(content: string, pathMappings: Map<string, string>): str
   })
 
   // Rewrite imports from @/registry/delta-ui/ui/... to @/components/ui/...
+  // These are shadcn components that will be installed to components/ui/
   content = content.replace(
     /@\/registry\/delta-ui\/ui\//g,
     '@/components/ui/'
   )
 
-  // Rewrite imports from @/registry/delta-ui/delta/... to relative imports
+  // Rewrite imports from @/registry/delta-ui/delta/... to @/components/ui/...
+  // These are Delta registry components that will also be installed to components/ui/
   content = content.replace(
     /@\/registry\/delta-ui\/delta\//g,
-    './'
+    '@/components/ui/'
   )
 
   // Rewrite imports from @/registry/delta-ui/examples/... to @/components/examples/...

@@ -44,17 +44,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: {"badge":"coming soon","hide":true},
   },
+  "code-block-icons": {
+    name: "code-block-icons",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/code-block-icons.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/code-block-icons.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "code-block": {
     name: "code-block",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["copy-button","tabs"],
+    registryDependencies: ["copy-button","tabs","code-block-icons"],
     files: [{
       path: "registry/delta-ui/delta/code-block.tsx",
-      type: "registry:ui",
-      target: ""
-    },{
-      path: "registry/delta-ui/delta/code-block-icons.tsx",
       type: "registry:ui",
       target: ""
     }],

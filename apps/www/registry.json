@@ -52,6 +52,16 @@
       }
     },
     {
+      "name": "code-block-icons",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/code-block-icons.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "code-block",
       "type": "registry:ui",
       "dependencies": [
@@ -61,15 +71,12 @@
       ],
       "registryDependencies": [
         "copy-button",
-        "tabs"
+        "tabs",
+        "code-block-icons"
       ],
       "files": [
         {
           "path": "registry/delta-ui/delta/code-block.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/delta-ui/delta/code-block-icons.tsx",
           "type": "registry:ui"
         }
       ]

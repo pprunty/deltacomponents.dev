@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/admonition-demo.tsx",
-      "content": "import { Admonition } from \"./admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <Admonition type=\"note\" title=\"Note\">\n      This is a note admonition. Use it to provide additional information that\n      users should be aware of.\n    </Admonition>\n  )\n}\n",
+      "content": "import { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionDemo() {\n  return (\n    <Admonition type=\"note\" title=\"Note\">\n      This is a note admonition. Use it to provide additional information that\n      users should be aware of.\n    </Admonition>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

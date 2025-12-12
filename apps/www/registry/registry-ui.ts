@@ -17,17 +17,23 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "code-block-icons",
+    type: "registry:ui",
+    files: [
+      {
+        path: "delta/code-block-icons.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "code-block",
     type: "registry:ui",
     dependencies: ["lucide-react", "prism-react-renderer", "prismjs"],
-    registryDependencies: ["copy-button", "tabs"],
+    registryDependencies: ["copy-button", "tabs", "code-block-icons"],
     files: [
       {
         path: "delta/code-block.tsx",
-        type: "registry:ui",
-      },
-      {
-        path: "delta/code-block-icons.tsx",
         type: "registry:ui",
       },
     ],

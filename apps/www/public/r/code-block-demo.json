@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/code-block-demo.tsx",
-      "content": "import { CodeBlock } from \"./code-block\"\n\nexport default function CodeBlockDemo() {\n  return (\n    <CodeBlock\n      code={`# Hello World in Python\ndef main():\n    print(\"Hello, World!\")\n\nif __name__ == \"__main__\":\n    main()`}\n      language=\"python\"\n      showLineNumbers={false}\n      className=\"border-border\"\n    />\n  )\n}\n",
+      "content": "import { CodeBlock } from \"@/components/ui/code-block\"\n\nexport default function CodeBlockDemo() {\n  return (\n    <CodeBlock\n      code={`# Hello World in Python\ndef main():\n    print(\"Hello, World!\")\n\nif __name__ == \"__main__\":\n    main()`}\n      language=\"python\"\n      showLineNumbers={false}\n      className=\"border-border\"\n    />\n  )\n}\n",
       "type": "registry:example"
     }
   ]
