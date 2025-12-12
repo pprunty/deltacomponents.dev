@@ -351,13 +351,6 @@ export function CodeBlock({
     ? selectedTheme.plain?.backgroundColor
     : "var(--color-surface)"
 
-  console.log("[v0] codeBlockBgColor:", codeBlockBgColor)
-  console.log("[v0] useThemeBackground:", useThemeBackground)
-  console.log(
-    "[v0] selectedTheme.plain?.backgroundColor:",
-    selectedTheme.plain?.backgroundColor
-  )
-
   if (packageManagerFromMarkdown) {
     const { command, manager } = packageManagerFromMarkdown
     const allCommands = convertNpxToPackageManagers(command)
