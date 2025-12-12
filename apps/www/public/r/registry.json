@@ -67,6 +67,10 @@
         {
           "path": "registry/delta-ui/delta/code-block.tsx",
           "type": "registry:ui"
+        },
+        {
+          "path": "registry/delta-ui/delta/code-block-icons.tsx",
+          "type": "registry:ui"
         }
       ]
     },

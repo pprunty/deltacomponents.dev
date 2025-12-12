@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/code-block-package-manager-demo.tsx",
-      "content": "import { CodeBlock } from \"@/registry/delta-ui/delta/code-block\"\n\nexport default function CodeBlockPackageManagerDemo() {\n  return (\n    <CodeBlock\n      npm=\"npx shadcn@latest add button\"\n      yarn=\"npx shadcn@latest add button\"\n      pnpm=\"pnpm dlx shadcn@latest add button\"\n      bun=\"bunx --bun shadcn@latest add button\"\n      defaultPackageManager=\"npm\"\n    />\n  )\n}\n",
+      "content": "import { CodeBlock } from \"./code-block\"\n\nexport default function CodeBlockPackageManagerDemo() {\n  return (\n    <CodeBlock\n      npm=\"npx shadcn@latest add button\"\n      yarn=\"npx shadcn@latest add button\"\n      pnpm=\"pnpm dlx shadcn@latest add button\"\n      bun=\"bunx --bun shadcn@latest add button\"\n      defaultPackageManager=\"npm\"\n    />\n  )\n}\n",
       "type": "registry:example"
     }
   ]

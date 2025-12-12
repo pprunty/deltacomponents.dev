@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/x-card-demo.tsx",
-      "content": "\"use client\"\n\nimport { XCard } from \"@/registry/delta-ui/delta/x-card\"\n\nexport default function XCardDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <XCard id=\"1939308785727602764\" size=\"small\" />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { XCard } from \"./x-card\"\n\nexport default function XCardDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <XCard id=\"1939308785727602764\" size=\"small\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

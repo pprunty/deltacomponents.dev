@@ -53,6 +53,10 @@ export const Index: Record<string, any> = {
       path: "registry/delta-ui/delta/code-block.tsx",
       type: "registry:ui",
       target: ""
+    },{
+      path: "registry/delta-ui/delta/code-block-icons.tsx",
+      type: "registry:ui",
+      target: ""
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/delta/code-block.tsx")

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { cn } from "@/lib/utils"
 
 type TabVariant = "default" | "underline" | "ghost"
@@ -79,7 +80,7 @@ function Tabs({
       }
       onValueChange?.(id)
     },
-    [value, onValueChange],
+    [value, onValueChange]
   )
 
   return (
@@ -99,7 +100,10 @@ function Tabs({
         tabRefs,
       }}
     >
-      <div data-slot="animated-tabs" className={cn("flex flex-col gap-2", className)}>
+      <div
+        data-slot="animated-tabs"
+        className={cn("flex flex-col gap-2", className)}
+      >
         {children}
       </div>
     </TabsContext.Provider>
@@ -112,13 +116,28 @@ interface TabsListProps {
 }
 
 function TabsList({ children, className }: TabsListProps) {
-  const { variant, size, hoveredIndex, activeIndex, tabRefs, concentric, indicatorThickness, indicatorClassName } =
-    useTabs()
-  const [hoverStyle, setHoverStyle] = React.useState({ left: "0px", width: "0px" })
-  const [activeStyle, setActiveStyle] = React.useState({ left: "0px", width: "0px" })
+  const {
+    variant,
+    size,
+    hoveredIndex,
+    activeIndex,
+    tabRefs,
+    concentric,
+    indicatorThickness,
+    indicatorClassName,
+  } = useTabs()
+  const [hoverStyle, setHoverStyle] = React.useState({
+    left: "0px",
+    width: "0px",
+  })
+  const [activeStyle, setActiveStyle] = React.useState({
+    left: "0px",
+    width: "0px",
+  })
   const [isInitialized, setIsInitialized] = React.useState(false)
 
-  const normalizedSize = size === "small" ? "sm" : size === "large" ? "lg" : size
+  const normalizedSize =
+    size === "small" ? "sm" : size === "large" ? "lg" : size
 
   const listHeightClasses = {
     sm: variant === "default" ? "h-9" : "h-9",
@@ -200,20 +219,28 @@ function TabsList({ children, className }: TabsListProps) {
       data-slot="animated-tabs-list"
       role="tablist"
       className={cn(
-        "relative inline-flex items-center text-muted-foreground",
+        "text-muted-foreground relative inline-flex items-center",
         listHeightClasses[normalizedSize],
-        variant === "default" && ["w-fit justify-center bg-muted p-1", !concentric && "rounded-lg"],
-        variant === "ghost" && "w-fit justify-center gap-1 p-0 bg-transparent",
-        variant === "underline" && "w-full justify-start border-b border-border gap-0",
-        className,
+        variant === "default" && [
+          "bg-muted w-fit justify-center p-1",
+          !concentric && "rounded-lg",
+        ],
+        variant === "ghost" && "w-fit justify-center gap-1 bg-transparent p-0",
+        variant === "underline" &&
+          "border-border w-full justify-start gap-0 border-b",
+        className
       )}
-      style={variant === "default" && concentric ? { borderRadius: concentricRadii[normalizedSize].outer } : undefined}
+      style={
+        variant === "default" && concentric
+          ? { borderRadius: concentricRadii[normalizedSize].outer }
+          : undefined
+      }
     >
       {variant === "underline" && (
         <div
           className={cn(
-            "absolute z-0 rounded-sm bg-muted transition-all duration-300 ease-out",
-            hoverHeightClasses[normalizedSize],
+            "bg-muted absolute z-0 rounded-sm transition-all duration-300 ease-out",
+            hoverHeightClasses[normalizedSize]
           )}
           style={{
             ...hoverStyle,
@@ -229,15 +256,18 @@ function TabsList({ children, className }: TabsListProps) {
         <div
           className={cn(
             "absolute z-0",
-            indicatorClassName || (variant === "ghost" ? "bg-muted" : "bg-background"),
+            indicatorClassName ||
+              (variant === "ghost" ? "bg-muted" : "bg-background"),
             defaultIndicatorHeightClasses[normalizedSize],
             !concentric && "rounded-md",
             isInitialized && "transition-all duration-300 ease-out",
-            variant === "default" && "shadow-sm",
+            variant === "default" && "shadow-sm"
           )}
           style={{
             ...activeStyle,
-            borderRadius: concentric ? concentricRadii[normalizedSize].inner : undefined,
+            borderRadius: concentric
+              ? concentricRadii[normalizedSize].inner
+              : undefined,
           }}
           aria-hidden="true"
         />
@@ -246,9 +276,9 @@ function TabsList({ children, className }: TabsListProps) {
       {variant === "underline" && (
         <div
           className={cn(
-            "absolute z-10 bottom-0 bg-foreground",
+            "bg-foreground absolute bottom-0 z-10",
             !indicatorThickness && underlineThicknessClasses[normalizedSize],
-            isInitialized && "transition-all duration-300 ease-out",
+            isInitialized && "transition-all duration-300 ease-out"
           )}
           style={{
             ...activeStyle,
@@ -271,13 +301,28 @@ interface TabsTriggerProps {
   icon?: React.ReactNode
 }
 
-function TabsTrigger({ value, children, className, disabled = false, icon }: TabsTriggerProps) {
-  const { activeTab, setActiveTab, variant, size, concentric, setHoveredIndex, setActiveIndex, tabRefs } =
-    useTabs()
+function TabsTrigger({
+  value,
+  children,
+  className,
+  disabled = false,
+  icon,
+}: TabsTriggerProps) {
+  const {
+    activeTab,
+    setActiveTab,
+    variant,
+    size,
+    concentric,
+    setHoveredIndex,
+    setActiveIndex,
+    tabRefs,
+  } = useTabs()
   const isActive = activeTab === value
   const indexRef = React.useRef<number>(-1)
 
-  const normalizedSize = size === "small" ? "sm" : size === "large" ? "lg" : size
+  const normalizedSize =
+    size === "small" ? "sm" : size === "large" ? "lg" : size
 
   const defaultSizeClasses = {
     sm: "h-7 px-2 py-1 text-sm",
@@ -309,7 +354,7 @@ function TabsTrigger({ value, children, className, disabled = false, icon }: Tab
         }
       }
     },
-    [tabRefs],
+    [tabRefs]
   )
 
   React.useEffect(() => {
@@ -334,24 +379,30 @@ function TabsTrigger({ value, children, className, disabled = false, icon }: Tab
           setActiveIndex(indexRef.current)
         }
       }}
-      onMouseEnter={() => variant === "underline" && setHoveredIndex(indexRef.current)}
+      onMouseEnter={() =>
+        variant === "underline" && setHoveredIndex(indexRef.current)
+      }
       onMouseLeave={() => variant === "underline" && setHoveredIndex(null)}
       className={cn(
-        "relative z-10 inline-flex items-center justify-center gap-1.5 whitespace-nowrap font-medium ring-offset-background",
+        "ring-offset-background relative z-10 inline-flex items-center justify-center gap-1.5 font-medium whitespace-nowrap",
         "transition-colors duration-200",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         "disabled:pointer-events-none disabled:opacity-50",
         (variant === "default" || variant === "ghost") && [
           !concentric && "rounded-md",
           defaultSizeClasses[normalizedSize],
-          isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground/80",
+          isActive
+            ? "text-foreground"
+            : "text-muted-foreground hover:text-foreground/80",
         ],
         variant === "underline" && [
           "rounded-md",
           underlineSizeClasses[normalizedSize],
-          isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+          isActive
+            ? "text-foreground"
+            : "text-muted-foreground hover:text-foreground",
         ],
-        className,
+        className
       )}
       style={
         (variant === "default" || variant === "ghost") && concentric
@@ -360,7 +411,11 @@ function TabsTrigger({ value, children, className, disabled = false, icon }: Tab
       }
     >
       <span className="relative z-10 flex items-center gap-1.5">
-        {icon && <span className="shrink-0 [&_svg]:pointer-events-none [&_svg]:size-4">{icon}</span>}
+        {icon && (
+          <span className="shrink-0 [&_svg]:pointer-events-none [&_svg]:size-4">
+            {icon}
+          </span>
+        )}
         {children}
       </span>
     </button>
@@ -381,7 +436,13 @@ interface TabsContentProps {
   /** Animation duration in ms (default: 250) */
   animationDuration?: number
   /** Animation easing function (default: "ease-out" for animateY, "ease-in-out" for animate) */
-  animationEasing?: "ease" | "ease-in" | "ease-out" | "ease-in-out" | "linear" | string
+  animationEasing?:
+    | "ease"
+    | "ease-in"
+    | "ease-out"
+    | "ease-in-out"
+    | "linear"
+    | string
 }
 
 function TabsContent({
@@ -403,7 +464,9 @@ function TabsContent({
   const shouldAnimateOpacity = animateOpacity ?? animate
   const hasAnimation = animateY !== undefined || shouldAnimateOpacity
 
-  const resolvedEasing = animationEasing ?? (animateY !== undefined ? "cubic-bezier(0.16, 1, 0.3, 1)" : "ease-in-out")
+  const resolvedEasing =
+    animationEasing ??
+    (animateY !== undefined ? "cubic-bezier(0.16, 1, 0.3, 1)" : "ease-in-out")
 
   React.useEffect(() => {
     if (isActive) {
@@ -422,7 +485,10 @@ function TabsContent({
       setHasEntered(false)
       if (!forceMount) {
         if (hasAnimation) {
-          const timer = setTimeout(() => setShouldRender(false), animationDuration)
+          const timer = setTimeout(
+            () => setShouldRender(false),
+            animationDuration
+          )
           return () => clearTimeout(timer)
         } else {
           setShouldRender(false)
@@ -443,16 +509,19 @@ function TabsContent({
       data-state={isActive ? "active" : "inactive"}
       data-slot="animated-tabs-content"
       className={cn(
-        "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         !isActive && forceMount && "hidden",
-        className,
+        className
       )}
       style={{
         transition: hasAnimation
           ? `opacity ${animationDuration}ms ${resolvedEasing}, transform ${animationDuration}ms ${resolvedEasing}`
           : undefined,
         opacity: shouldAnimateOpacity ? (showContent ? 1 : 0) : undefined,
-        transform: animateY !== undefined ? `translateY(${showContent ? 0 : animateY}px)` : undefined,
+        transform:
+          animateY !== undefined
+            ? `translateY(${showContent ? 0 : animateY}px)`
+            : undefined,
       }}
       tabIndex={0}
     >
@@ -487,7 +556,12 @@ function TabsFromArray({
   const initialValue = defaultValue ?? tabs[0]?.id
 
   return (
-    <Tabs defaultValue={initialValue} value={value} onValueChange={onValueChange} className={className}>
+    <Tabs
+      defaultValue={initialValue}
+      value={value}
+      onValueChange={onValueChange}
+      className={className}
+    >
       <TabsList className={listClassName}>
         {tabs.map((tab) => (
           <TabsTrigger

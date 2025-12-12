@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/code-block-npx-markdown-demo.tsx",
-      "content": "import { CodeBlock } from \"@/registry/delta-ui/delta/code-block\"\n\nconst npxMarkdownCode = `\\`\\`\\`npx\nshadcn@latest add button\n\\`\\`\\``\n\nexport default function CodeBlockNpxMarkdownDemo() {\n  return <CodeBlock code={npxMarkdownCode} />\n}\n",
+      "content": "import { CodeBlock } from \"./code-block\"\n\nconst npxMarkdownCode = `\\`\\`\\`npx\nshadcn@latest add button\n\\`\\`\\``\n\nexport default function CodeBlockNpxMarkdownDemo() {\n  return <CodeBlock code={npxMarkdownCode} />\n}\n",
       "type": "registry:example"
     }
   ]

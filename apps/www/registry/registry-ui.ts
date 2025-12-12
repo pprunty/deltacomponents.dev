@@ -26,6 +26,10 @@ export const ui: Registry["items"] = [
         path: "delta/code-block.tsx",
         type: "registry:ui",
       },
+      {
+        path: "delta/code-block-icons.tsx",
+        type: "registry:ui",
+      },
     ],
   },
   {

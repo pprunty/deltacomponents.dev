@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/code-block-markdown-string-demo.tsx",
-      "content": "import { CodeBlock } from \"@/registry/delta-ui/delta/code-block\"\n\nconst markdownCode = `\\`\\`\\`py\ndef greet(name: str) -> str:\n    \"\"\"Return a greeting message.\"\"\"\n    return f\"Hello, {name}!\"\n\nif __name__ == \"__main__\":\n    message = greet(\"World\")\n    print(message)\n\\`\\`\\``\n\nexport default function CodeBlockMarkdownStringDemo() {\n  return <CodeBlock code={markdownCode} filename=\"greet.py\" />\n}\n",
+      "content": "import { CodeBlock } from \"./code-block\"\n\nconst markdownCode = `\\`\\`\\`py\ndef greet(name: str) -> str:\n    \"\"\"Return a greeting message.\"\"\"\n    return f\"Hello, {name}!\"\n\nif __name__ == \"__main__\":\n    message = greet(\"World\")\n    print(message)\n\\`\\`\\``\n\nexport default function CodeBlockMarkdownStringDemo() {\n  return <CodeBlock code={markdownCode} filename=\"greet.py\" />\n}\n",
       "type": "registry:example"
     }
   ]

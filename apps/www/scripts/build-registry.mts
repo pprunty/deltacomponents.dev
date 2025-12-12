@@ -219,6 +219,12 @@ function rewriteImports(content: string, pathMappings: Map<string, string>): str
     '@/components/ui/'
   )
 
+  // Rewrite imports from @/registry/delta-ui/delta/... to relative imports
+  content = content.replace(
+    /@\/registry\/delta-ui\/delta\//g,
+    './'
+  )
+
   // Rewrite imports from @/registry/delta-ui/examples/... to @/components/examples/...
   content = content.replace(
     /@\/registry\/delta-ui\/examples\//g,

@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "examples/qrcode-demo.tsx",
-      "content": "\"use client\"\n\nimport QRCode from \"@/registry/delta-ui/delta/qrcode\"\n\nexport default function QrcodeDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <QRCode value=\"https://patrickprunty.com\" size={200} />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport QRCode from \"./qrcode\"\n\nexport default function QrcodeDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <QRCode value=\"https://patrickprunty.com\" size={200} />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

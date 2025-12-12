@@ -285,231 +285,236 @@ const Example = () => {
       <ChatContainer>
         <Conversation>
           <ConversationContent>
-          {messages.map(({ versions, ...message }) => {
-            const assistantMessages = messages.filter(
-              (m) => m.from === "assistant"
-            )
-            const isLastAssistantMessage =
-              message.from === "assistant" &&
-              assistantMessages.length > 0 &&
-              assistantMessages[assistantMessages.length - 1].key ===
-                message.key
+            {messages.map(({ versions, ...message }) => {
+              const assistantMessages = messages.filter(
+                (m) => m.from === "assistant"
+              )
+              const isLastAssistantMessage =
+                message.from === "assistant" &&
+                assistantMessages.length > 0 &&
+                assistantMessages[assistantMessages.length - 1].key ===
+                  message.key
 
-            return (
-              <Branch defaultBranch={0} key={message.key}>
-                <BranchMessages>
-                  {versions.map((version) => (
-                    <Message
-                      from={message.from}
-                      key={`${message.key}-${version.id}`}
-                      className={cn(
-                        message.from === "user"
-                          ? "items-end justify-end"
-                          : undefined,
-                        "group/message"
-                      )}
-                      onTouchStart={() => handleMessageTouch(message.key)}
-                    >
-                      <div>
-                        {message.sources?.length && (
-                          <Sources>
-                            <SourcesTrigger count={message.sources.length} />
-                            <SourcesContent>
-                              {message.sources.map((source) => (
-                                <Source
-                                  href={source.href}
-                                  key={source.href}
-                                  title={source.title}
-                                />
-                              ))}
-                            </SourcesContent>
-                          </Sources>
+              return (
+                <Branch defaultBranch={0} key={message.key}>
+                  <BranchMessages>
+                    {versions.map((version) => (
+                      <Message
+                        from={message.from}
+                        key={`${message.key}-${version.id}`}
+                        className={cn(
+                          message.from === "user"
+                            ? "items-end justify-end"
+                            : undefined,
+                          "group/message"
                         )}
-                        {message.reasoning && (
-                          <Reasoning duration={message.reasoning.duration}>
-                            <ReasoningTrigger />
-                            <ReasoningContent>
-                              {message.reasoning.content}
-                            </ReasoningContent>
-                          </Reasoning>
-                        )}
-                        <MessageContent
-                          className={cn(
-                            message.from === "assistant" ? "max-w-full" : "",
-                            message.from === "user" && "ml-auto w-fit"
+                        onTouchStart={() => handleMessageTouch(message.key)}
+                      >
+                        <div>
+                          {message.sources?.length && (
+                            <Sources>
+                              <SourcesTrigger count={message.sources.length} />
+                              <SourcesContent>
+                                {message.sources.map((source) => (
+                                  <Source
+                                    href={source.href}
+                                    key={source.href}
+                                    title={source.title}
+                                  />
+                                ))}
+                              </SourcesContent>
+                            </Sources>
                           )}
-                        >
-                          {message.files?.length && (
-                            <div className="mb-3 space-y-2">
-                              {message.files.map((file, index) => (
-                                <div key={index} className="max-w-sm">
-                                  {file.type.startsWith("image/") ? (
-                                    <div className="relative">
-                                      <img
-                                        src={file.url}
-                                        alt={file.name}
-                                        className="h-auto max-w-full rounded-lg"
-                                        style={{ maxHeight: "300px" }}
-                                      />
-                                      <div className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-1 text-xs text-white">
-                                        {file.name}
-                                      </div>
-                                    </div>
-                                  ) : (
-                                    <div className="bg-muted flex items-center gap-2 rounded-lg p-3">
-                                      <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded">
-                                        📄
-                                      </div>
-                                      <div className="min-w-0 flex-1">
-                                        <div className="truncate text-sm font-medium">
+                          {message.reasoning && (
+                            <Reasoning duration={message.reasoning.duration}>
+                              <ReasoningTrigger />
+                              <ReasoningContent>
+                                {message.reasoning.content}
+                              </ReasoningContent>
+                            </Reasoning>
+                          )}
+                          <MessageContent
+                            className={cn(
+                              message.from === "assistant" ? "max-w-full" : "",
+                              message.from === "user" && "ml-auto w-fit"
+                            )}
+                          >
+                            {message.files?.length && (
+                              <div className="mb-3 space-y-2">
+                                {message.files.map((file, index) => (
+                                  <div key={index} className="max-w-sm">
+                                    {file.type.startsWith("image/") ? (
+                                      <div className="relative">
+                                        <img
+                                          src={file.url}
+                                          alt={file.name}
+                                          className="h-auto max-w-full rounded-lg"
+                                          style={{ maxHeight: "300px" }}
+                                        />
+                                        <div className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-1 text-xs text-white">
                                           {file.name}
                                         </div>
-                                        <div className="text-muted-foreground text-xs">
-                                          {file.type}
+                                      </div>
+                                    ) : (
+                                      <div className="bg-muted flex items-center gap-2 rounded-lg p-3">
+                                        <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded">
+                                          📄
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                          <div className="truncate text-sm font-medium">
+                                            {file.name}
+                                          </div>
+                                          <div className="text-muted-foreground text-xs">
+                                            {file.type}
+                                          </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                          {version.content && (
-                            <div className="text-base leading-[1.65rem]">
-                              <Response>{version.content}</Response>
-                            </div>
-                          )}
-                        </MessageContent>
-                        {message.from === "assistant" && (
-                          <div className="flex items-center">
-                            {status === "streaming" &&
-                              streamingMessageId === version.id && (
-                                <Loader
-                                  size={16}
-                                  className="text-muted-foreground ml-1"
-                                />
-                              )}
-                            {status !== "streaming" &&
-                              streamingMessageId !== version.id && (
-                                <Actions
-                                  position="left"
-                                  className={cn(
-                                    isLastAssistantMessage ||
-                                      touchedMessages.has(message.key)
-                                      ? "opacity-100"
-                                      : "opacity-0 group-hover/message:opacity-100"
-                                  )}
-                                >
-                                  <CopyAction
-                                    value={version.content}
-                                    tooltip="Copy message"
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            {version.content && (
+                              <div className="text-base leading-[1.65rem]">
+                                <Response>{version.content}</Response>
+                              </div>
+                            )}
+                          </MessageContent>
+                          {message.from === "assistant" && (
+                            <div className="flex items-center">
+                              {status === "streaming" &&
+                                streamingMessageId === version.id && (
+                                  <Loader
+                                    size={16}
+                                    className="text-muted-foreground ml-1"
                                   />
-                                  <Action
-                                    tooltip="Regenerate response"
-                                    onClick={() =>
-                                      toast.info("Regenerating response...")
-                                    }
+                                )}
+                              {status !== "streaming" &&
+                                streamingMessageId !== version.id && (
+                                  <Actions
+                                    position="left"
+                                    className={cn(
+                                      isLastAssistantMessage ||
+                                        touchedMessages.has(message.key)
+                                        ? "opacity-100"
+                                        : "opacity-0 group-hover/message:opacity-100"
+                                    )}
                                   >
-                                    <RotateCcwIcon className="h-4 w-4" />
-                                  </Action>
-                                  <Action
-                                    tooltip="Good response"
-                                    onClick={() =>
-                                      toast.success("Feedback recorded")
-                                    }
-                                  >
-                                    <ThumbsUpIcon className="h-4 w-4" />
-                                  </Action>
-                                  <Action
-                                    tooltip="Poor response"
-                                    onClick={() =>
-                                      toast.success("Feedback recorded")
-                                    }
-                                  >
-                                    <ThumbsDownIcon className="h-4 w-4" />
-                                  </Action>
-                                </Actions>
-                              )}
-                          </div>
-                        )}
-                      </div>
-                    </Message>
-                  ))}
-                </BranchMessages>
-                {versions.length > 1 && (
-                  <BranchSelector from={message.from}>
-                    <BranchPrevious />
-                    <BranchPage />
-                    <BranchNext />
-                  </BranchSelector>
-                )}
-              </Branch>
-            )
-          })}
-        </ConversationContent>
-        <ConversationScrollButton />
-      </Conversation>
-      <div className="grid shrink-0 gap-4">
-        <div className="w-full px-4 pb-4">
-          <PromptInput globalDrop multiple onSubmit={handleSubmit}>
-            <PromptInputBody>
-              <PromptInputAttachments>
-                {(attachment: any) => (
-                  <PromptInputAttachment data={attachment} />
-                )}
-              </PromptInputAttachments>
-              <PromptInputTextarea
-                onChange={(event: any) => setText(event.target.value)}
-                ref={textareaRef}
-                value={text}
-                className="text-base leading-[1.65rem]"
-              />
-            </PromptInputBody>
-            <PromptInputFooter>
-              <PromptInputTools>
-                <PromptInputActionMenu>
-                  <PromptInputActionMenuTrigger />
-                  <PromptInputActionMenuContent>
-                    <PromptInputActionAddAttachments />
-                  </PromptInputActionMenuContent>
-                </PromptInputActionMenu>
-                <PromptInputSpeechButton
-                  onTranscriptionChange={setText}
-                  textareaRef={textareaRef}
-                />
-                <PromptInputButton
-                  onClick={() => setUseWebSearch(!useWebSearch)}
-                  variant={useWebSearch ? "default" : "ghost"}
-                >
-                  <GlobeIcon size={16} />
-                  <span>Search</span>
-                </PromptInputButton>
-              </PromptInputTools>
-              <PromptInputTools>
-                <PromptInputModelSelect onValueChange={setModel} value={model}>
-                  <PromptInputModelSelectTrigger>
-                    <PromptInputModelSelectValue />
-                  </PromptInputModelSelectTrigger>
-                  <PromptInputModelSelectContent>
-                    {models.map((model: any) => (
-                      <PromptInputModelSelectItem
-                        key={model.id || model.name}
-                        value={model.id || model.name}
-                      >
-                        {model.name || model.id}
-                      </PromptInputModelSelectItem>
+                                    <CopyAction
+                                      value={version.content}
+                                      tooltip="Copy message"
+                                    />
+                                    <Action
+                                      tooltip="Regenerate response"
+                                      onClick={() =>
+                                        toast.info("Regenerating response...")
+                                      }
+                                    >
+                                      <RotateCcwIcon className="h-4 w-4" />
+                                    </Action>
+                                    <Action
+                                      tooltip="Good response"
+                                      onClick={() =>
+                                        toast.success("Feedback recorded")
+                                      }
+                                    >
+                                      <ThumbsUpIcon className="h-4 w-4" />
+                                    </Action>
+                                    <Action
+                                      tooltip="Poor response"
+                                      onClick={() =>
+                                        toast.success("Feedback recorded")
+                                      }
+                                    >
+                                      <ThumbsDownIcon className="h-4 w-4" />
+                                    </Action>
+                                  </Actions>
+                                )}
+                            </div>
+                          )}
+                        </div>
+                      </Message>
                     ))}
-                  </PromptInputModelSelectContent>
-                </PromptInputModelSelect>
-                <PromptInputSubmit
-                  disabled={(!text.trim() && !status) || status === "streaming"}
-                  status={status}
+                  </BranchMessages>
+                  {versions.length > 1 && (
+                    <BranchSelector from={message.from}>
+                      <BranchPrevious />
+                      <BranchPage />
+                      <BranchNext />
+                    </BranchSelector>
+                  )}
+                </Branch>
+              )
+            })}
+          </ConversationContent>
+          <ConversationScrollButton />
+        </Conversation>
+        <div className="grid shrink-0 gap-4">
+          <div className="w-full px-4 pb-4">
+            <PromptInput globalDrop multiple onSubmit={handleSubmit}>
+              <PromptInputBody>
+                <PromptInputAttachments>
+                  {(attachment: any) => (
+                    <PromptInputAttachment data={attachment} />
+                  )}
+                </PromptInputAttachments>
+                <PromptInputTextarea
+                  onChange={(event: any) => setText(event.target.value)}
+                  ref={textareaRef}
+                  value={text}
+                  className="text-base leading-[1.65rem]"
                 />
-              </PromptInputTools>
-            </PromptInputFooter>
-          </PromptInput>
+              </PromptInputBody>
+              <PromptInputFooter>
+                <PromptInputTools>
+                  <PromptInputActionMenu>
+                    <PromptInputActionMenuTrigger />
+                    <PromptInputActionMenuContent>
+                      <PromptInputActionAddAttachments />
+                    </PromptInputActionMenuContent>
+                  </PromptInputActionMenu>
+                  <PromptInputSpeechButton
+                    onTranscriptionChange={setText}
+                    textareaRef={textareaRef}
+                  />
+                  <PromptInputButton
+                    onClick={() => setUseWebSearch(!useWebSearch)}
+                    variant={useWebSearch ? "default" : "ghost"}
+                  >
+                    <GlobeIcon size={16} />
+                    <span>Search</span>
+                  </PromptInputButton>
+                </PromptInputTools>
+                <PromptInputTools>
+                  <PromptInputModelSelect
+                    onValueChange={setModel}
+                    value={model}
+                  >
+                    <PromptInputModelSelectTrigger>
+                      <PromptInputModelSelectValue />
+                    </PromptInputModelSelectTrigger>
+                    <PromptInputModelSelectContent>
+                      {models.map((model: any) => (
+                        <PromptInputModelSelectItem
+                          key={model.id || model.name}
+                          value={model.id || model.name}
+                        >
+                          {model.name || model.id}
+                        </PromptInputModelSelectItem>
+                      ))}
+                    </PromptInputModelSelectContent>
+                  </PromptInputModelSelect>
+                  <PromptInputSubmit
+                    disabled={
+                      (!text.trim() && !status) || status === "streaming"
+                    }
+                    status={status}
+                  />
+                </PromptInputTools>
+              </PromptInputFooter>
+            </PromptInput>
+          </div>
         </div>
-      </div>
       </ChatContainer>
     </div>
   )
