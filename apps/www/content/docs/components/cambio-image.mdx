@@ -1,6 +1,6 @@
 ---
 title: Cambio Image
-description: An interactive image component with zoom functionality using the Cambio library.
+description: A molecular image component featuring physics-based zoom transitions, blur-up loading, and gesture-driven dismissal
 ---
 
 <ComponentPreview name="cambio-image-demo" />
@@ -12,7 +12,7 @@ This component is based on [Cambio Image by Raphael Salaja](https://cambio.rapha
 <Installation name="cambio-image" dependencies={["cambio"]} />
 
 <Admonition type="warning" title="Required CSS">
-Add the following CSS to your `globals.css` for proper z-index management in grid layouts:
+To ensure the zoomed image sits above all other UI elements (like sticky navbars), add this style to your `globals.css`. This handles the z-index elevation when the component enters the `open` state.
 
 ```css
 .root {
@@ -27,6 +27,9 @@ Add the following CSS to your `globals.css` for proper z-index management in gri
 </Admonition>
 
 ## Usage
+
+The component mirrors the standard HTML `<img>` API but requires explicit dimensions to calculate the zoom physics correctly.
+
 
 ```tsx
 import { CambioImage } from "@/components/ui/cambio-image"
@@ -49,84 +52,112 @@ export default function Example() {
 
 ### Grid Gallery
 
-When using images in a grid, pass the `index` prop to ensure correct layering during the close animation.
+When rendering images in a grid/masonry layout, the browser's stacking context can cause overlapping issues during the closing animation.
+
+Pass the `index` prop (usually from your map function) to ensure the active image always animates above its neighbors.
+
+```tsx
+<div className="grid grid-cols-3 gap-4">
+  {images.map((img, i) => (
+    <CambioImage
+      key={img.src}
+      src={img.src}
+      index={i} // Critical for correct layering
+      {...img}
+    />
+  ))}
+</div>
+```
 
 <ComponentPreview name="cambio-image-grid-demo" />
 
 ### Dismiss on Scroll
 
-Automatically dismiss the zoomed image when the user scrolls. This is useful for maintaining a smooth browsing experience.
+For a more fluid mobile experience, you can enable dismissOnScroll. This mimics native mobile gallery behavior where scrolling away closes the image.
+
+```tsx
+<CambioImage
+  src="..."
+  dismissOnScroll={true}
+  dismissOnImageClick={true} // Optional: click image to close
+/>
+```
 
 <ComponentPreview name="cambio-image-dismiss-on-scroll-demo" />
 
-<Admonition type="note" title="Scroll Behavior in Constrained Containers">
-The `dismissOnScroll` behavior may not function as expected when the component is rendered within constrained scroll containers such as demo previews or tab panels. For the best experience testing this functionality, view the [full-screen demo](/view/cambio-image-dismiss-on-scroll-demo) where scroll events propagate correctly.
+<Admonition type="note" title="Scroll Context">
+The `dismissOnScroll` behavior may not function as expected when the component is rendered within constrained scroll containers such as demo previews or tab panels used above. For the best experience testing this functionality, view the [full-screen demo](/view/cambio-image-dismiss-on-scroll-demo) where scroll events propagate correctly.
 </Admonition>
 
-## Features
+### Motion Presets
 
-- **Click to zoom**: Images can be clicked to open in a full-screen overlay
-- **Intersection Observer**: Lazy loading with optional blur-to-focus animation
-- **Animation control**: Toggle initial animation with `enableInitialAnimation` prop
-- **Motion presets**: Customizable animation styles (smooth, snappy, bouncy, reduced)
-- **Dismissible**: Click outside or use escape key to close
-- **Responsive**: Automatically scales on different screen sizes
-- **Grid-friendly**: Proper z-index management for grid layouts
+You can customize the animation physics using the motion prop. See the Motion Presets table in the [API Reference](#api-reference) for all available options.
+
+```tsx
+<div className="flex gap-4">
+  {/* Standard snappy feel */}
+  <CambioImage src="/img-1.jpg" motion="snappy" width={400} height={300} />
+  
+  {/* Bouncy, playful feel */}
+  <CambioImage src="/img-2.jpg" motion="bouncy" width={400} height={300} />
+</div>
+```
+
+<ComponentPreview name="cambio-image-motion-preset-demo" />
+
+
+## Notes
+
+### Disabling Initial Blur
+
+The component uses an `IntersectionObserver` to trigger a blur-to-focus animation when the image enters the viewport. For images "above the fold" (LCP candidates), you should disable this to prevent layout shifts or visual delays.
+
+```tsx
+<CambioImage 
+  src="/hero.jpg" 
+  enableInitialAnimation={false} 
+  loading="eager"
+/>
+```
+
+### Advanced Motion Config
+
+For granular control, you can pass an object to the `motion` prop to configure specific phases of the animation independently:
+
+```tsx
+<CambioImage
+  motion={{
+    trigger: "smooth",   // The image expanding
+    backdrop: "reduced", // The background fade
+    popup: "bouncy"      // The final resting state
+  }}
+/>
+```
 
 ## API Reference
 
 ### Props
 
-| Prop                   | Type                         | Default  | Description                                               |
-| ---------------------- | ---------------------------- | -------- | --------------------------------------------------------- |
-| src                    | string                       | -        | **Required.** Image source URL                            |
-| alt                    | string                       | -        | **Required.** Image alt text for accessibility            |
-| width                  | number                       | -        | **Required.** Image width in pixels                       |
-| height                 | number                       | -        | **Required.** Image height in pixels                      |
-| loading                | "lazy" \| "eager"            | "lazy"   | Image loading strategy                                    |
-| index                  | number                       | 0        | Z-index offset for stacking multiple images               |
-| motion                 | MotionPreset \| MotionConfig | "smooth" | Animation preset or custom configuration                  |
-| dismissible            | boolean                      | true     | Whether the zoom overlay can be dismissed                 |
-| dismissOnScroll        | boolean                      | false    | Automatically dismiss the overlay when scrolling          |
-| className              | string                       | -        | Additional CSS classes for styling                        |
-| draggable              | boolean                      | false    | Whether the image can be dragged                          |
-| enableInitialAnimation | boolean                      | true     | Enable blur-to-focus animation when image enters viewport |
-| dismissOnImageClick    | boolean                      | false    | Allow dismissing the zoomed image by clicking on it       |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | `-` | Required. The source URL. |
+| `alt` | `string` | `-` | Required. Accessibility text. |
+| `width` | `number` | `-` | Required. Intrinsic width. |
+| `height` | `number` | `-` | Required. Intrinsic height. |
+| `motion` | `Preset \| Config` | `"snappy"` | Motion preset or custom config. |
+| `loading` | `"lazy" \| "eager"` | `"lazy"` | Image loading strategy. |
+| `index` | `number` | `0` | Z-index offset for list rendering. |
+| `dismissOnScroll` | `boolean` | `false` | Close the modal on window scroll. |
+| `dismissOnImageClick` | `boolean` | `false` | Close by clicking the zoomed image itself. |
+| `enableInitialAnimation` | `boolean` | `true` | Blur-to-focus effect on viewport entry. |
+| `draggable` | `boolean` | `false` | Allows the image to be dragged (ghost image). |
 
 ### Motion Presets
 
-| Preset    | Description                      |
-| --------- | -------------------------------- |
-| "smooth"  | Default smooth animation         |
-| "snappy"  | Quick, snappy transitions        |
-| "bouncy"  | Bouncy spring animation          |
-| "reduced" | Reduced motion for accessibility |
+| Preset | Description |
+|--------|-------------|
+| `snappy` | Fast, linear transition. (Default) |
+| `smooth` | Eased, slower transition. |
+| `bouncy` | Spring-physics based animation. |
+| `reduced` | Minimal motion for accessibility. |
 
-### Motion Configuration
-
-For advanced users, you can provide a custom motion configuration:
-
-```tsx
-<CambioImage
-  motion={{
-    trigger: "smooth",
-    popup: "bouncy",
-    backdrop: "reduced",
-  }}
-  // ... other props
-/>
-```
-
-### Disabling Initial Animation
-
-To disable the blur-to-focus animation and show images immediately:
-
-```tsx
-<CambioImage
-  src="your-image-url"
-  alt="Description"
-  width={800}
-  height={600}
-  enableInitialAnimation={false}
-/>
-```

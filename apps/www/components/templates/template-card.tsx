@@ -34,8 +34,8 @@ export function TemplateCard({ template }: TemplateCardProps) {
         </Badge>
       </CardContent>
       <CardHeader>
-        <CardTitle className="text-lg md:text-xl font-heading">{template.name}</CardTitle>
-        <CardDescription className="text-base md:text-[17px]">
+        <CardTitle className="text-lg font-heading">{template.name}</CardTitle>
+        <CardDescription className="text-base">
           {template.description}
         </CardDescription>
       </CardHeader>

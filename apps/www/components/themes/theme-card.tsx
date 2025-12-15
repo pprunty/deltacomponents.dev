@@ -41,8 +41,8 @@ export function ThemeCard({ theme }: ThemeCardProps) {
         />
       </CardContent>
       <CardHeader>
-        <CardTitle className="text-lg md:text-xl font-heading">{theme.name}</CardTitle>
-        <CardDescription className="text-base md:text-[17px]">
+        <CardTitle className="text-lg font-heading">{theme.name}</CardTitle>
+        <CardDescription className="text-base">
           {theme.description}
         </CardDescription>
       </CardHeader>

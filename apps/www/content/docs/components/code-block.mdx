@@ -12,34 +12,37 @@ description: A versatile code block component supporting package manager command
   dependencies={["lucide-react", "prism-react-renderer", "prismjs"]}
 />
 
-<Admonition type="warning" title="Required CSS">
-Define `--surface` and `.no-scrollbar` in your `globals.css`:
+<Admonition type="warning" title="Required Global CSS">
+This component relies on two essential global CSS definitions for theming and scrollbar management:
 
 ```css
 :root {
-  --surface: #fafafa; /* Light mode */
+  --surface: #fafafa; /* Light mode fallback for bg-surface */
 }
 
 .dark {
-  --surface: #171717; /* Dark mode */
+  --surface: #171717; /* Dark mode background for bg-surface */
 }
 
+/* Hides scrollbars when scrollbar={false} (default) */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 ```
 
-The `--surface` variable enables `bg-surface` styling. The `.no-scrollbar` class hides scrollbars when `scrollbar={false}` (default).
+The `--surface` variable enables light/dark mode adaptive styling when `useThemeBackground` is set to false.
 </Admonition>
 
 ## Usage
 
 ### Standard Code String
+
+Pass the code content and the desired language for syntax highlighting.
 
 ```tsx
 import { CodeBlock } from "@/components/ui/code-block"
@@ -56,23 +59,36 @@ export default function Example() {
 }
 ```
 
-### Markdown-Wrapped Code String
+### Package Manager Commands
+
+The component automatically switches to a tabbed interface if any package manager props (`npm`, `yarn`, `pnpm`, `bun`) are provided.
 
 ```tsx
 import { CodeBlock } from "@/components/ui/code-block"
 
-const markdownCode = `\`\`\`python
-print("Hello, World!")
-\`\`\``
-
-export default function Example() {
-  return <CodeBlock code={markdownCode} filename="hello.py" />
+export default function InstallExample() {
+  return (
+    <CodeBlock
+      npm="npm install delta-components-ui"
+      yarn="yarn add delta-components-ui"
+      pnpm="pnpm add delta-components-ui"
+    />
+  )
 }
 ```
 
-### MDX Integration (Contentlayer/Fumadocs)
 
-To automatically render all code blocks in your MDX files with the CodeBlock component, configure your `mdx-components.tsx`:
+## Examples
+
+### Markdown Integration
+
+If your code string contains a markdown code fence (e.g., ```typescript\n...\n```), the component can parse the language and content automatically.
+
+<ComponentPreview name="code-block-markdown-string-demo" />
+
+### MDX Transformer (Contentlayer/Fumadocs)
+
+For documentation sites (like those using Contentlayer or Fumadocs), you can transform all native markdown `<pre>` blocks into the enhanced `CodeBlock` component.
 
 ```tsx title="mdx-components.tsx"
 import { CodeBlock } from "@/components/ui/code-block"
@@ -82,12 +98,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     pre: ({ children, ...props }) => {
-      // Extract code from the pre > code structure
+      // Basic logic to extract code and language from markdown structure
       const code = typeof children === "object" && "props" in children
         ? children.props.children
         : ""
-
-      // Extract language from className (e.g., "language-typescript")
+      
       const className = typeof children === "object" && "props" in children
         ? children.props.className || ""
         : ""
@@ -105,49 +120,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-Now all code blocks in your MDX files will automatically use your CodeBlock component:
+### Theme Background Toggle
 
-```mdx title="example.mdx"
-# My Documentation
-
-\`\`\`typescript
-const greeting = "Hello, World!"
-console.log(greeting)
-\`\`\`
-```
-
-For package manager commands, use the language identifier to trigger automatic conversion:
-
-```mdx title="installation.mdx"
-\`\`\`npm
-npx shadcn@latest add button
-\`\`\`
-```
-
-The CodeBlock component will automatically:
-- Parse the markdown code fence syntax (\`\`\`language)
-- Extract the language identifier
-- Apply syntax highlighting
-- Convert package manager commands to tabbed interfaces
-
-## Features
-
-- **Dual Mode**: Package manager commands or syntax-highlighted code
-- **Syntax Highlighting**: Powered by Prism with custom themes
-- **Package Manager Tabs**: Support for npm, yarn, pnpm, and bun
-- **Copy to Clipboard**: One-click copy functionality with visual feedback
-- **Line Numbers**: Optional line numbering for code blocks
-- **Custom Themes**: Light/dark adaptive themes with hover effects
-- **Background Options**: Choose between surface background or JSON theme background
-- **Terminal Styling**: Command-line interface appearance
-- **Responsive**: Horizontal scrolling for long content
-- **Flexible**: Shows only provided package managers or code content
-
-## Examples
-
-### Custom Themes with Background
-
-Apply adaptive themes with `useThemeBackground` to use theme-defined backgrounds instead of `bg-surface`:
+Use `useThemeBackground={true}` to apply the specific background color defined within your Prism theme, overriding the default adaptive `--surface` variable.
 
 <ComponentPreview name="code-block-python-demo" height="700px" />
 
@@ -169,11 +144,6 @@ Handle long code snippets with expand/collapse functionality:
 
 Cycle through Prism themes with background toggle to compare `bg-surface` vs. `useThemeBackground` behavior.
 
-### Markdown Code Strings
-
-Parse and render markdown-formatted code blocks:
-
-<ComponentPreview name="code-block-markdown-string-demo" />
 
 ### NPX Commands
 

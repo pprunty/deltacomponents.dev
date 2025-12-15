@@ -1,6 +1,6 @@
 ---
 title: Card Deck
-description: A swipeable card deck component with autoplay and infinite scroll options.
+description: A swipeable, physics-based card stack component featuring autoplay, touch gestures, and customizable motion.
 status: beta
 ---
 
@@ -18,25 +18,34 @@ status: beta
 
 ## Usage
 
+The `CardDeck` requires an array of image objects. For the best visual result, ensure the wrapping container has a defined height or aspect ratio suitable for cards.
+
 ```tsx
 import { CardDeck } from "@/components/ui/card-deck"
 
-const images = [
-  { src: "/image1.jpg", alt: "Image 1" },
-  { src: "/image2.jpg", alt: "Image 2" },
-  { src: "/image3.jpg", alt: "Image 3" },
+const cardData = [
+  { src: "/ace-spades.jpg", alt: "Ace of Spades" },
+  { src: "/queen-hearts.jpg", alt: "Queen of Hearts" },
+  { src: "/king-diamonds.jpg", alt: "King of Diamonds" },
 ]
 
-export default function Example() {
-  return <CardDeck images={images} infinite={true} autoplay={true} />
+export default function GameBoard() {
+  return (
+    <div className="h-[400px] w-full max-w-sm">
+      <CardDeck 
+        images={cardData} 
+        autoplay={true} 
+      />
+    </div>
+  )
 }
 ```
 
 ## Examples
 
-### Yu-Gi-Oh Card Stack
+### Custom Card Styles
 
-Here's an example using actual card images without rounded corners:
+The component is agnostic to the image content. You can use it for trading cards, tarot decks, or game assets. This example demonstrates using raw asset images without default rounded corners.
 
 <ComponentPreview
   name="card-deck-yugioh-demo"
@@ -45,22 +54,29 @@ Here's an example using actual card images without rounded corners:
 
 ### Balatro Card Deck
 
-Here's an example using Balatro-style card images:
+An example implementing Balatro-style assets, demonstrating how the stack behaves with high-fidelity, texture-heavy images.
 
 <ComponentPreview
   name="card-deck-balatro-demo"
   dependencies={["framer-motion", "swiper", "lucide-react"]}
 />
 
+## Notes
+
+<Admonition type="warning" title="Image Aspect Ratios"> For a consistent "deck" feel, all images in the images array should share the same aspect ratio. Mixing portrait and landscape images in a single deck may result in inconsistent layout shifts during swiping. </Admonition>
+
+### Container Sizing
+
+The `CardDeck` takes up the full width and height of its parent container. You must wrap it in a container with defined dimensions (e.g., `h-96 w-64` or `aspect-[2/3]`) to prevent it from collapsing.
+
 ## API Reference
 
-| Prop                   | Type                             | Default | Description                                     |
-| ---------------------- | -------------------------------- | ------- | ----------------------------------------------- |
-| images                 | `{ src: string; alt: string }[]` | -       | Array of image objects                          |
-| infinite               | boolean                          | true    | Enable infinite loop cycling                    |
-| autoplay               | boolean                          | false   | Enable automatic card cycling                   |
-| showPagination         | boolean                          | false   | Show pagination dots                            |
-| showNavigation         | boolean                          | false   | Show navigation arrows                          |
-| spaceBetween           | number                           | 40      | Space between cards in pixels                   |
-| enableInitialAnimation | boolean                          | true    | Enable entrance animation when component mounts |
-| className              | string                           | -       | Additional CSS classes                          |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `images` | `{ src: string; alt: string }[]` | `-` | Required. Array of image objects to render. |
+| `autoplay` | `boolean` | `false` | Automatically cycles through cards at a set interval. |
+| `showPagination` | `boolean` | `false` | Displays pagination dots below the deck. |
+| `showNavigation` | `boolean` | `false` | Displays left/right navigation arrows. |
+| `spaceBetween` | `number` | `40` | The horizontal offset (in pixels) between cards in the stack. |
+| `enableInitialAnimation` | `boolean` | `true` | Triggers a “deal” animation when the component first mounts. |
+| `className` | `string` | `-` | Additional CSS classes for the wrapper. |
