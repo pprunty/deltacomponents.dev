@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "x-card",
-  "type": "registry:ui",
   "dependencies": [
     "react-tweet"
   ],
@@ -11,5 +10,6 @@
       "content": "\"use client\"\n\nimport { type ReactNode } from \"react\"\nimport { Tweet } from \"react-tweet\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype XCardSize = \"sm\" | \"small\" | \"default\" | \"lg\" | \"large\"\n\ninterface XCardProps {\n  id: string\n  caption?: ReactNode\n  className?: string\n  size?: XCardSize\n}\n\nfunction normalizeSize(size: XCardSize): \"small\" | \"default\" | \"large\" {\n  if (size === \"sm\") return \"small\"\n  if (size === \"lg\") return \"large\"\n  return size as \"small\" | \"default\" | \"large\"\n}\n\nexport function XCard({\n  id,\n  caption,\n  className,\n  size = \"default\",\n}: XCardProps) {\n  const normalizedSize = normalizeSize(size)\n\n  const sizeClasses = {\n    small: \"max-w-sm scale-90\",\n    default: \"max-w-xl\",\n    large: \"max-w-2xl scale-110\",\n  }\n\n  return (\n    <div className={cn(\"x-card my-6\", sizeClasses[normalizedSize], className)}>\n      <div className=\"flex justify-center\">\n        <Tweet id={id} />\n      </div>\n      {caption && (\n        <div className=\"text-muted-foreground mt-4 text-center text-sm\">\n          {caption}\n        </div>\n      )}\n      <style jsx>{`\n        .x-card .react-tweet-theme {\n          --tweet-container-margin: 0;\n          --tweet-font-family: inherit;\n          --tweet-font-color: hsl(var(--foreground));\n          --tweet-bg-color: hsl(var(--card));\n          --tweet-bg-color-hover: hsl(var(--card));\n          --tweet-color-blue-secondary: hsl(var(--muted-foreground));\n          --tweet-color-blue-secondary-hover: hsl(var(--accent));\n          --tweet-font-color-secondary: hsl(var(--muted-foreground));\n          --tweet-quoted-bg-color-hover: hsl(var(--muted) / 0.3);\n          --tweet-border: 1px solid hsl(var(--border));\n          --tweet-skeleton-gradient: linear-gradient(\n            270deg,\n            hsl(var(--muted)),\n            hsl(var(--muted) / 0.8),\n            hsl(var(--muted) / 0.8),\n            hsl(var(--muted))\n          );\n          --tweet-color-red-primary: hsl(var(--destructive));\n          --tweet-color-red-primary-hover: hsl(var(--destructive) / 0.1);\n          --tweet-color-green-primary: hsl(var(--chart-2));\n          --tweet-color-green-primary-hover: hsl(var(--chart-2) / 0.1);\n          --tweet-twitter-icon-color: hsl(var(--foreground));\n          --tweet-verified-old-color: hsl(var(--muted-foreground));\n          --tweet-verified-blue-color: hsl(var(--primary));\n        }\n\n        .x-card .react-tweet-theme p {\n          font-size: inherit;\n          line-height: 1.3rem;\n        }\n\n        .x-card .react-tweet-theme p a {\n          @apply border-border hover:border-foreground border-b transition-[border-color];\n        }\n\n        .x-card .react-tweet-theme p a:hover {\n          text-decoration: none;\n        }\n      `}</style>\n    </div>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

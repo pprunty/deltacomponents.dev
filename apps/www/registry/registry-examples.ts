@@ -326,6 +326,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "cambio-image-motion-preset-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/cambio-image.json",
+      "toggle",
+    ],
+    files: [
+      {
+        path: "examples/cambio-image-motion-preset-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "qrcode-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],

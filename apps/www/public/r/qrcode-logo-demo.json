@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "qrcode-logo-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "https://deltacomponents.dev/r/qrcode.json"
   ],
@@ -11,5 +10,6 @@
       "content": "import QRCode from \"@/components/ui/qrcode\"\n\nexport default function QRCodeLogoDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <QRCode\n        value=\"https://news.ycombinator.com\"\n        size={200}\n        logoImage=\"/images/stock/hacker-news-icon.svg\"\n        logoSize={0.25}\n        logoMargin={4}\n        level=\"H\"\n        dotStyle=\"rounded\"\n        cornerSquareStyle=\"rounded\"\n        cornerDotStyle=\"rounded\"\n        fgColor=\"#ff6600\"\n        enableNavigation={true}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "perspective-carousel",
-  "type": "registry:block",
   "description": "PerspectiveCarousel block",
   "files": [
     {
@@ -24,5 +23,6 @@
   },
   "categories": [
     "featured"
-  ]
+  ],
+  "type": "registry:block"
 }

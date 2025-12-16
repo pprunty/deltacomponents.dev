@@ -824,6 +824,20 @@
       ]
     },
     {
+      "name": "cambio-image-motion-preset-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle",
+        "https://deltacomponents.dev/r/cambio-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/cambio-image-motion-preset-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "qrcode-demo",
       "type": "registry:example",
       "registryDependencies": [

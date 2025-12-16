@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "qrcode-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "https://deltacomponents.dev/r/qrcode.json"
   ],
@@ -11,5 +10,6 @@
       "content": "\"use client\"\n\nimport QRCode from \"@/components/ui/qrcode\"\n\nexport default function QrcodeDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <QRCode value=\"https://patrickprunty.com\" size={200} />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

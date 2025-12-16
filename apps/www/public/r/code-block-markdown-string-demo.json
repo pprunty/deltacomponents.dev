@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block-markdown-string-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "https://deltacomponents.dev/r/code-block.json"
   ],
@@ -11,5 +10,6 @@
       "content": "import { CodeBlock } from \"@/components/ui/code-block\"\n\nconst markdownCode = `\\`\\`\\`py\ndef greet(name: str) -> str:\n    \"\"\"Return a greeting message.\"\"\"\n    return f\"Hello, {name}!\"\n\nif __name__ == \"__main__\":\n    message = greet(\"World\")\n    print(message)\n\\`\\`\\``\n\nexport default function CodeBlockMarkdownStringDemo() {\n  return <CodeBlock code={markdownCode} filename=\"greet.py\" />\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

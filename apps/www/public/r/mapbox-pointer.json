@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mapbox-pointer",
-  "type": "registry:ui",
   "files": [
     {
       "path": "delta/mapbox-pointer.tsx",
@@ -12,5 +11,6 @@
   "meta": {
     "badge": "coming soon",
     "hide": true
-  }
+  },
+  "type": "registry:ui"
 }

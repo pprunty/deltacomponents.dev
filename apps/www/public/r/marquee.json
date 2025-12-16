@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marquee",
-  "type": "registry:ui",
   "files": [
     {
       "path": "delta/marquee.tsx",
@@ -12,5 +11,6 @@
   "meta": {
     "badge": "coming soon",
     "hide": true
-  }
+  },
+  "type": "registry:ui"
 }

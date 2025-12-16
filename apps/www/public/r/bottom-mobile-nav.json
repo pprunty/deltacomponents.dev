@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bottom-mobile-nav",
-  "type": "registry:block",
   "description": "BottomMobileNav block",
   "dependencies": [
     "phosphor-react"
@@ -33,5 +32,6 @@
   },
   "categories": [
     "layout"
-  ]
+  ],
+  "type": "registry:block"
 }

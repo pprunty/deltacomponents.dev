@@ -972,6 +972,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "cambio-image-motion-preset-demo": {
+    name: "cambio-image-motion-preset-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json","toggle"],
+    files: [{
+      path: "registry/delta-ui/examples/cambio-image-motion-preset-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/cambio-image-motion-preset-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "qrcode-demo": {
     name: "qrcode-demo",
     description: "",

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cambio-image-motion-preset-demo",
+  "registryDependencies": [
+    "toggle",
+    "https://deltacomponents.dev/r/cambio-image.json"
+  ],
+  "files": [
+    {
+      "path": "examples/cambio-image-motion-preset-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { CambioImage } from \"@/components/ui/cambio-image\"\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle\"\n\ntype MotionPreset = \"snappy\" | \"smooth\" | \"bouncy\" | \"reduced\"\n\nexport default function CambioImageMotionPresetDemo() {\n  const [motionPreset, setMotionPreset] = useState<MotionPreset>(\"snappy\")\n\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <ToggleGroup\n        type=\"single\"\n        value={motionPreset}\n        onValueChange={(value) => {\n          if (value) setMotionPreset(value as MotionPreset)\n        }}\n        variant=\"outline\"\n      >\n        <ToggleGroupItem value=\"snappy\">Snappy</ToggleGroupItem>\n        <ToggleGroupItem value=\"smooth\">Smooth</ToggleGroupItem>\n        <ToggleGroupItem value=\"bouncy\">Bouncy</ToggleGroupItem>\n        <ToggleGroupItem value=\"reduced\">Reduced</ToggleGroupItem>\n      </ToggleGroup>\n\n      <div className=\"w-[300px]\">\n        <CambioImage\n          src=\"/images/fxwzxr1ueaacbrr.jpg\"\n          alt=\"Colorful impressionist landscape painting with trees and figures\"\n          width={1200}\n          height={1200}\n          motion={motionPreset}\n          dismissOnImageClick\n          dismissOnScroll\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

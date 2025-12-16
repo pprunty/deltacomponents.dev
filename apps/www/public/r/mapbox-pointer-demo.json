@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mapbox-pointer-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "https://deltacomponents.dev/r/mapbox-pointer.json"
   ],
@@ -11,5 +10,6 @@
       "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/components/ui/mapbox-pointer\"\n\nexport default function MapboxPointerDemo() {\n  return (\n    <div className=\"w-full\">\n      <MapboxPointer\n        latitude={53.342825}\n        longitude={-6.257311}\n        zoom={13}\n        clickForDirections={false}\n        label=\"Dublin, Ireland\"\n        interactive={false}\n        labelHref=\"https://en.wikipedia.org/wiki/Dublin\"\n        className=\"h-64 sm:h-96\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

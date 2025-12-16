@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cambio-image-dismiss-on-scroll-demo",
-  "type": "registry:example",
   "registryDependencies": [
     "https://deltacomponents.dev/r/cambio-image.json"
   ],
@@ -11,5 +10,6 @@
       "content": "\"use client\"\n\nimport { CambioImage } from \"@/components/ui/cambio-image\"\n\nexport function CambioImageDismissOnScrollDemo() {\n  return (\n    <div className=\"w-[300px]\">\n      <CambioImage\n        src=\"/images/stock/f3708938cd8eb2db8054906ea8008af4.png\"\n        alt=\"Impressionist painting of hikers in a colorful mountain canyon\"\n        width={600}\n        height={600}\n        motion=\"snappy\"\n        dismissible={false}\n        dismissOnScroll={true}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

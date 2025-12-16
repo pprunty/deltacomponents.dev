@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block-icons",
-  "type": "registry:ui",
   "files": [
     {
       "path": "delta/code-block-icons.tsx",
@@ -11,5 +10,6 @@
   ],
   "meta": {
     "hide": true
-  }
+  },
+  "type": "registry:ui"
 }

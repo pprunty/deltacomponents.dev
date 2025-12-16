@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "testimonials",
-  "type": "registry:block",
   "description": "Customer testimonials grid",
   "files": [
     {
@@ -24,5 +23,6 @@
   },
   "categories": [
     "landing-page"
-  ]
+  ],
+  "type": "registry:block"
 }

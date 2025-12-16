@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chatbot-window",
-  "type": "registry:block",
   "description": "Resizable AI chatbot interface with collapsible sidebar",
   "dependencies": [
     "lucide-react"
@@ -36,5 +35,6 @@
   "categories": [
     "ai-elements",
     "featured"
-  ]
+  ],
+  "type": "registry:block"
 }

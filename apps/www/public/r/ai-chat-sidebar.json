@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-chat-sidebar",
-  "type": "registry:block",
   "description": "A collapsible sidebar component for AI chat applications",
   "dependencies": [
     "lucide-react"
@@ -32,5 +31,6 @@
   },
   "categories": [
     "ai-elements"
-  ]
+  ],
+  "type": "registry:block"
 }

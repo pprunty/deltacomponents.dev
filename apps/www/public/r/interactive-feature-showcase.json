@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "interactive-feature-showcase",
-  "type": "registry:block",
   "description": "InteractiveFeatureShowcase block",
   "files": [
     {
@@ -24,5 +23,6 @@
   },
   "categories": [
     "landing-page"
-  ]
+  ],
+  "type": "registry:block"
 }
