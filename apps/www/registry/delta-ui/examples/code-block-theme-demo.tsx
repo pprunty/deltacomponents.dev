@@ -149,11 +149,7 @@ func main() {
 }`
 
 export default function CodeBlockThemeDemo() {
-  const [options, setOptions] = useState<string[]>([
-    "line-numbers",
-    "header",
-    "theme-background",
-  ])
+  const [options, setOptions] = useState<string[]>(["line-numbers"])
 
   const showLineNumbers = options.includes("line-numbers")
   const showHeader = options.includes("header")
@@ -169,9 +165,7 @@ export default function CodeBlockThemeDemo() {
       >
         <ToggleGroupItem value="line-numbers">Line Numbers</ToggleGroupItem>
         <ToggleGroupItem value="header">Header</ToggleGroupItem>
-        <ToggleGroupItem value="theme-background">
-          Theme Background
-        </ToggleGroupItem>
+        <ToggleGroupItem value="theme-background">Background</ToggleGroupItem>
       </ToggleGroup>
 
       <div className="w-full max-w-full">
