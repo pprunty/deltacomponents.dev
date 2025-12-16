@@ -466,7 +466,7 @@ export function CodeBlock({
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          "w-full overflow-x-auto px-4 leading-relaxed font-normal",
                           textClassName
                         )}
                         style={{
@@ -599,7 +599,7 @@ export function CodeBlock({
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          "w-full overflow-x-auto px-4 leading-relaxed font-normal",
                           textClassName
                         )}
                         style={{
@@ -754,14 +754,13 @@ export function CodeBlock({
                     className={cn(
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
-                      "leading-6 font-medium antialiased",
+                      "leading-6 font-normal",
                       textClassName
                     )}
                     style={{
                       ...style,
                       fontFamily: monoFontFamily,
                       backgroundColor: "transparent",
-                      WebkitFontSmoothing: "antialiased",
                       MozOsxFontSmoothing: "grayscale",
                     }}
                   >
@@ -831,14 +830,13 @@ export function CodeBlock({
                     className={cn(
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
-                      "leading-6 font-medium antialiased",
+                      "leading-6 font-normal",
                       textClassName
                     )}
                     style={{
                       ...style,
                       fontFamily: monoFontFamily,
                       backgroundColor: "transparent",
-                      WebkitFontSmoothing: "antialiased",
                       MozOsxFontSmoothing: "grayscale",
                     }}
                   >
