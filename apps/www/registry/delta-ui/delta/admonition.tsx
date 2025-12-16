@@ -99,7 +99,7 @@ const sizeVariants = {
     container: "p-4",
     title: "text-base",
     content: "text-base",
-    icon: "h-4.5 w-4.5",
+    icon: "h-5 w-5",
   },
   lg: {
     container: "p-5",
@@ -164,10 +164,10 @@ export function Admonition({
         <div
           className={cn(
             config.iconColor,
-            "flex h-[1lh] items-start flex-shrink-0 translate-y-[0.15em]",
+            "flex",
           )}
         >
-          <Icon className={sizeConfig.icon} />
+          <Icon className={cn(sizeConfig.icon, "h-[1lh]", "leading-[1.5]", sizeConfig.title)} />
         </div>
 
         {/* Content */}
