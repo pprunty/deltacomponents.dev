@@ -157,11 +157,10 @@ export default function CodeBlockThemeDemo() {
 
   const showLineNumbers = options.includes("line-numbers")
   const showHeader = options.includes("header")
-  const customStyling = options.includes("custom-styling")
   const useThemeBackground = options.includes("theme-background")
 
   return (
-    <div className="w-full max-w-full space-y-4">
+    <div className="flex flex-col items-center gap-8">
       <ToggleGroup
         type="multiple"
         value={options}
@@ -173,24 +172,21 @@ export default function CodeBlockThemeDemo() {
         <ToggleGroupItem value="theme-background">
           Theme Background
         </ToggleGroupItem>
-        <ToggleGroupItem value="custom-styling">
-          Custom Styling
-        </ToggleGroupItem>
       </ToggleGroup>
 
-      <CodeBlock
-        code={goCode}
-        language="go"
-        filename={showHeader ? "hello.go" : undefined}
-        showLineNumbers={showLineNumbers}
-        useThemeBackground={useThemeBackground}
-        adaptiveTheme={{
-          dark: cppTheme,
-          light: cppLightTheme,
-        }}
-        className={customStyling ? "rounded-none border-0" : undefined}
-        textClassName={customStyling ? "text-lg" : undefined}
-      />
+      <div className="w-full max-w-full">
+        <CodeBlock
+          code={goCode}
+          language="go"
+          filename={showHeader ? "hello.go" : undefined}
+          showLineNumbers={showLineNumbers}
+          useThemeBackground={useThemeBackground}
+          adaptiveTheme={{
+            dark: cppTheme,
+            light: cppLightTheme,
+          }}
+        />
+      </div>
     </div>
   )
 }
