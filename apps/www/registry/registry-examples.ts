@@ -206,7 +206,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     registryDependencies: [
       "https://deltacomponents.dev/r/code-block.json",
-      "https://deltacomponents.dev/r/button.json",
+      "toggle-group",
     ],
     files: [
       {

@@ -684,6 +684,7 @@
       "name": "code-block-theme-demo",
       "type": "registry:example",
       "registryDependencies": [
+        "toggle-group",
         "https://deltacomponents.dev/r/code-block.json"
       ],
       "files": [

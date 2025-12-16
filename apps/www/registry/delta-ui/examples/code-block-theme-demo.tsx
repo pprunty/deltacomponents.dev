@@ -4,7 +4,7 @@ import { useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
-import { Button } from "@/registry/delta-ui/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle-group"
 
 // Custom C++ theme - Dark variant
 const cppTheme: PrismTheme = {
@@ -149,43 +149,34 @@ func main() {
 }`
 
 export default function CodeBlockThemeDemo() {
-  const [showLineNumbers, setShowLineNumbers] = useState(true)
-  const [showHeader, setShowHeader] = useState(true)
-  const [customStyling, setCustomStyling] = useState(false)
-  const [useThemeBackground, setUseThemeBackground] = useState(true)
+  const [options, setOptions] = useState<string[]>([
+    "line-numbers",
+    "header",
+    "theme-background",
+  ])
+
+  const showLineNumbers = options.includes("line-numbers")
+  const showHeader = options.includes("header")
+  const customStyling = options.includes("custom-styling")
+  const useThemeBackground = options.includes("theme-background")
 
   return (
     <div className="w-full max-w-full space-y-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <Button
-          variant={showLineNumbers ? "default" : "outline"}
-          size="sm"
-          onClick={() => setShowLineNumbers(!showLineNumbers)}
-        >
-          {showLineNumbers ? "Hide" : "Show"} Line Numbers
-        </Button>
-        <Button
-          variant={showHeader ? "default" : "outline"}
-          size="sm"
-          onClick={() => setShowHeader(!showHeader)}
-        >
-          {showHeader ? "Hide" : "Show"} Header
-        </Button>
-        <Button
-          variant={useThemeBackground ? "default" : "outline"}
-          size="sm"
-          onClick={() => setUseThemeBackground(!useThemeBackground)}
-        >
+      <ToggleGroup
+        type="multiple"
+        value={options}
+        onValueChange={setOptions}
+        variant="outline"
+      >
+        <ToggleGroupItem value="line-numbers">Line Numbers</ToggleGroupItem>
+        <ToggleGroupItem value="header">Header</ToggleGroupItem>
+        <ToggleGroupItem value="theme-background">
           Theme Background
-        </Button>
-        <Button
-          variant={customStyling ? "default" : "outline"}
-          size="sm"
-          onClick={() => setCustomStyling(!customStyling)}
-        >
+        </ToggleGroupItem>
+        <ToggleGroupItem value="custom-styling">
           Custom Styling
-        </Button>
-      </div>
+        </ToggleGroupItem>
+      </ToggleGroup>
 
       <CodeBlock
         code={goCode}

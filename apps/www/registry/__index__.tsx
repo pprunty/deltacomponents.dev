@@ -778,7 +778,7 @@ export const Index: Record<string, any> = {
     name: "code-block-theme-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json","https://deltacomponents.dev/r/button.json"],
+    registryDependencies: ["https://deltacomponents.dev/r/code-block.json","toggle-group"],
     files: [{
       path: "registry/delta-ui/examples/code-block-theme-demo.tsx",
       type: "registry:example",

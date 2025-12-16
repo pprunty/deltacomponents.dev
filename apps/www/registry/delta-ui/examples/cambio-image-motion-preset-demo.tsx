@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 import { CambioImage } from "@/registry/delta-ui/delta/cambio-image"
-import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle"
+import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle-group"
 
 type MotionPreset = "snappy" | "smooth" | "bouncy" | "reduced"
 
