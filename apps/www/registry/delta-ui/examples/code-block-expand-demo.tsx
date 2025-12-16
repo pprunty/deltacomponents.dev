@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
 
 const longCode = `import * as React from "react"
@@ -144,12 +146,13 @@ export function DataTable({
 
 export default function CodeBlockExpandDemo() {
   return (
-    <div className="flex w-full max-w-full flex-col gap-4 self-start overflow-y-auto">
+    <div className="flex h-full w-full max-w-full flex-col gap-4 self-start">
       <CodeBlock
         code={longCode}
         language="typescript"
         filename="data-table.tsx"
         expandable
+        className="border-none"
         collapsedHeight="12rem"
       />
     </div>

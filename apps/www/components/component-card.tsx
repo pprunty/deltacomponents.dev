@@ -27,7 +27,7 @@ export function ComponentCard({ component }: ComponentCardProps) {
 
   return (
     <Link href={component.url} className="group">
-      <Card className="hover:hover:bg-accent/50 border-border relative h-48 overflow-hidden border p-0 shadow-none transition-colors md:h-40">
+      <Card className="hover:bg-accent/20 active:bg-accent/30 border-border relative h-48 overflow-hidden border p-0 shadow-none md:h-40">
         {useVideo ? (
           <video
             src={videoSrc}
