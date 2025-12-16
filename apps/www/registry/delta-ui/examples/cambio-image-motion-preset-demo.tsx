@@ -28,13 +28,12 @@ export default function CambioImageMotionPresetDemo() {
 
       <div className="w-[300px]">
         <CambioImage
-          src="/images/fxwzxr1ueaacbrr.jpg"
+          src="/images/stock/monet.JPG"
           alt="Colorful impressionist landscape painting with trees and figures"
           width={1200}
           height={1200}
           motion={motionPreset}
           dismissOnImageClick
-          dismissOnScroll
         />
       </div>
     </div>
