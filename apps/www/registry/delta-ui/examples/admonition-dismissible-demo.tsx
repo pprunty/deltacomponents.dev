@@ -4,14 +4,13 @@ import { Admonition } from "@/registry/delta-ui/delta/admonition"
 
 export default function AdmonitionDismissibleDemo() {
   return (
-    <Admonition
-      type="info"
-      title="Quick Tip"
-      dismissible
-      dismissKey="quick-tip"
-    >
-      You can dismiss this message. Try refreshing the page - it will stay
-      dismissed!
-    </Admonition>
+    <Admonition 
+  type="info" 
+  title="New Feature" 
+  dismissible 
+  dismissKey="new-dashboard-feature-v1"
+>
+  We have updated the dashboard layout!
+</Admonition>
   )
 }

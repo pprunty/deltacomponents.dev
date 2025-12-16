@@ -1,6 +1,6 @@
 ---
 title: Code Block
-description: A versatile code block component supporting package manager commands, syntax highlighting with themes, and markdown-wrapped code strings.
+description: A syntax-highlighting component capable of parsing Markdown fences, handling package manager tabs, and supporting adaptive themes.
 ---
 
 <ComponentPreview name="code-block-demo" />
@@ -9,40 +9,47 @@ description: A versatile code block component supporting package manager command
 
 <Installation
   name="code-block"
-  dependencies={["lucide-react", "prism-react-renderer", "prismjs"]}
+  dependencies={["lucide-react", "prism-react-renderer"]}
 />
 
-<Admonition type="warning" title="Required Global CSS">
-This component relies on two essential global CSS definitions for theming and scrollbar management:
+## Configuration
 
-```css
-:root {
-  --surface: #fafafa; /* Light mode fallback for bg-surface */
+### Global CSS & Utilities
+
+This component relies on specific CSS variables for its "surface" background logic (when not using the syntax theme's background) and utility classes for scrollbar management.
+
+Add the following to your global CSS:
+
+```css title="globals.css"
+@layer base {
+  :root {
+    --surface: #fafafa; /* Light mode fallback */
+  }
+
+  .dark {
+    --surface: #171717; /* Dark mode fallback */
+  }
 }
 
-.dark {
-  --surface: #171717; /* Dark mode background for bg-surface */
-}
+@layer utilities {
+  /* Hides scrollbars for a cleaner aesthetic when interactions aren't required */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-/* Hides scrollbars when scrollbar={false} (default) */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 ```
 
-The `--surface` variable enables light/dark mode adaptive styling when `useThemeBackground` is set to false.
-</Admonition>
-
 ## Usage
 
-### Standard Code String
+### Basic Code Rendering
 
-Pass the code content and the desired language for syntax highlighting.
+Pass a raw string to the `code` prop. You can optionally add a `filename` to render a file header with an automatically resolved icon.
+
 
 ```tsx
 import { CodeBlock } from "@/components/ui/code-block"
@@ -50,31 +57,27 @@ import { CodeBlock } from "@/components/ui/code-block"
 export default function Example() {
   return (
     <CodeBlock
-      code={`print("Hello, World!")`}
-      language="python"
-      filename="hello.py"
-      showLineNumbers={true}
+      code={`console.log("Hello World")`}
+      language="typescript"
+      filename="app.ts"
+      showLineNumbers
     />
   )
 }
 ```
 
-### Package Manager Commands
+### Markdown String Parsing
 
-The component automatically switches to a tabbed interface if any package manager props (`npm`, `yarn`, `pnpm`, `bun`) are provided.
+The component includes a regex parser (`parseMarkdownCodeBlock`) that extracts the language and code from standard Markdown fence syntax. This is particularly useful when rendering content from an LLM or a CMS that returns raw markdown strings.
 
 ```tsx
-import { CodeBlock } from "@/components/ui/code-block"
-
-export default function InstallExample() {
-  return (
-    <CodeBlock
-      npm="npm install delta-components-ui"
-      yarn="yarn add delta-components-ui"
-      pnpm="pnpm add delta-components-ui"
-    />
-  )
-}
+// The language "python" is automatically extracted from the string
+<CodeBlock 
+  code={`\`\`\`python
+def hello():
+    print("world")
+\`\`\``} 
+/>
 ```
 
 
@@ -155,33 +158,27 @@ Handle package manager commands in markdown:
 
 <ComponentPreview name="code-block-package-demo" />
 
-Alternatively, use individual props for package managers:
-
-<ComponentPreview name="code-block-package-manager-demo" />
-
 ## API Reference
 
 ### Props
 
-| Prop                        | Type           | Default      | Description                                                    |
-| --------------------------- | -------------- | ------------ | -------------------------------------------------------------- |
-| **Package Manager Props**   |                |              |                                                                |
-| npm                         | string         | -            | npm command                                                    |
-| yarn                        | string         | -            | yarn command                                                   |
-| pnpm                        | string         | -            | pnpm command                                                   |
-| bun                         | string         | -            | bun command                                                    |
-| defaultPackageManager       | PackageManager | "npm"        | Default tab selection                                          |
-| **Code Highlighting Props** |                |              |                                                                |
-| code                        | string         | -            | Code content (supports markdown-wrapped code blocks)           |
-| language                    | string         | "typescript" | Language for syntax highlighting                               |
-| filename                    | string         | -            | Optional filename display                                      |
-| showLineNumbers             | boolean        | true         | Toggle line numbers                                            |
-| theme                       | PrismTheme     | -            | Prism theme object                                             |
-| adaptiveTheme               | object         | -            | `{ light: PrismTheme, dark: PrismTheme }` for theme switching  |
-| useThemeBackground          | boolean        | false        | Apply theme's `backgroundColor` instead of `bg-surface`        |
-| scrollbar                   | boolean        | false        | Show scrollbars (applies `.no-scrollbar` class when false)     |
-| **General Props**           |                |              |                                                                |
-| className                   | string         | -            | Additional CSS classes                                         |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `code` | `string` | — | The code content. Can be a raw string or a markdown fenced string. |
+| `language` | `string` | `"typescript"` | The language for syntax highlighting. Ignored if markdown fence detects a language. |
+| `filename` | `string` | — | If provided, renders a header with a file icon. |
+| `showLineNumbers` | `boolean` | `true` | Toggles the line number gutter. |
+| `expandable` | `boolean` | `false` | Enables the collapse/expand functionality. |
+| `defaultExpanded` | `boolean` | `false` | The initial state of the expandable block. |
+| `collapsedHeight` | `string` | `"12rem"` | CSS height value for the collapsed state. |
+| `theme` | `PrismTheme` | `undefined` | A static Prism theme object. |
+| `adaptiveTheme` | `{ light, dark }` | — | Object containing themes for light and dark modes. |
+| `useThemeBackground` | `boolean` | `false` | If true, applies the theme's background color. If false, uses `var(--surface)`. |
+| `npm` | `string` | — | Command for npm tab. |
+| `yarn` | `string` | — | Command for yarn tab. |
+| `pnpm` | `string` | — | Command for pnpm tab. |
+| `bun` | `string` | — | Command for bun tab. |
+| `defaultPackageManager` | `"npm" \| "yarn" \| "pnpm" \| "bun"` | `"npm"` | The default active tab. |
 
 ### Background Behavior
 

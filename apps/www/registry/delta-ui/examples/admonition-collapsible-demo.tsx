@@ -4,24 +4,22 @@ import { Admonition } from "@/registry/delta-ui/delta/admonition"
 
 export default function AdmonitionCollapsibleDemo() {
   return (
-    <Admonition type="note" title="API Documentation" collapsible>
-      <div className="space-y-2">
-        <p>This API endpoint accepts the following parameters:</p>
-        <ul className="ml-4 list-disc space-y-1">
-          <li>
-            <strong>userId</strong>: string (required) - The unique identifier
-            for the user
-          </li>
-          <li>
-            <strong>includeMetadata</strong>: boolean (optional) - Whether to
-            include additional metadata
-          </li>
-          <li>
-            <strong>format</strong>: string (optional) - Response format: json,
-            xml, or csv
-          </li>
-        </ul>
-      </div>
+    <Admonition 
+      type="danger" 
+      title="Error Stack Trace" 
+      collapsible 
+      defaultCollapsed={true}
+    >
+
+        Error: Hydration failed because the initial UI does not match the expected DOM structure.
+        This usually occurs when there are mismatches between server-rendered HTML and
+        client-side React rendering. Check for differences in component state, props, or
+        conditional rendering logic. Possible causes include asynchronous data fetching,
+        usage of `useEffect` for initial rendering, or differences in environment variables
+        between server and client. To resolve this issue, ensure that components render
+        identically on both server and client, and avoid side effects during initial render.
+        Consider adding proper loading states or fallbacks to prevent UI mismatches.
+
     </Admonition>
   )
 }

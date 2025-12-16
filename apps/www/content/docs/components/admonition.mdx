@@ -1,6 +1,6 @@
 ---
 title: Admonition
-description: Highlight side content and alerts with semantic colors and icons.
+description: Semantic callout blocks for highlighting side content, alerts, and status messages.
 status: beta
 ---
 
@@ -12,13 +12,15 @@ status: beta
 
 ## Usage
 
+The Admonition component wraps content with semantic coloring and iconography. It is designed to fit seamlessly into prose or application UIs.
+
 ```tsx
 import { Admonition } from "@/components/ui/admonition"
 
 export default function Example() {
   return (
-    <Admonition type="warning" title="Important Notice">
-      This is a warning message that users should pay attention to.
+    <Admonition type="warning" title="Production Database">
+      You are currently editing the production database. Changes here are irreversible.
     </Admonition>
   )
 }
@@ -26,26 +28,41 @@ export default function Example() {
 
 ## Examples
 
-### Custom Icon
 
-Override the default semantic icon by passing a Lucide React component (or any SVG component) to the `icon` prop.
+### Variants
 
-<ComponentPreview name="admonition-custom-icon-demo" />
-
-### Admonition Types
-
-Use different types of admonitions to guide users through important information and improve documentation clarity:
+The component comes with 7 semantic types, each with its own color scheme and icon.
 
 <ComponentPreview
   name="admonition-demo-interactive"
   dependencies={["lucide-react"]}
 />
 
-### Dismissible
+### Dismissible State
 
-Allow users to dismiss admonitions with persistent state using `dismissible` and `dismissKey` props:
+You can allow users to permanently dismiss an admonition using the `dismissible` prop.
+
+**Crucially**, you must provide a unique `dismissKey`. The component uses this key to persist the dismissed state in `localStorage`. If the user refreshes the page, the admonition will remain hidden.
 
 <ComponentPreview name="admonition-dismissible-demo" />
+
+### Collapsible
+
+For long-form technical content or stack traces, use the `collapsible` prop. You can control the initial state with `defaultCollapsed`.
+
+<ComponentPreview name="admonition-collapsible-demo" />
+
+## Sizing
+
+The component supports three distinct sizes. `default` is optimized for standard prose, while sm is excellent for dense dashboards or sidebar alerts.
+
+<ComponentPreview name="admonition-small-demo" />
+
+### Custom Icon
+
+You can override the semantic icon by passing a generic SVG component (like Lucide React icons) to the `icon` prop.
+
+<ComponentPreview name="admonition-custom-icon-demo" />
 
 ### With Actions
 
@@ -53,35 +70,29 @@ Add action buttons to your admonitions for user interactions:
 
 <ComponentPreview name="admonition-actions-demo" />
 
-### Collapsible
 
-Create collapsible admonitions for detailed content that can be expanded or collapsed:
+## Notes
 
-<ComponentPreview name="admonition-collapsible-demo" />
+### Text Alignment & CSS
+
+The component uses `[text-box-trim:trim-start]` on the title and content. This is a modern CSS technique that removes the leading whitespace from the font's bounding box, ensuring the text cap-height aligns perfectly with the icon regardless of the font family used in your project.
+
+### Hydration & Persistence
+
+When using `dismissible`, the component checks `localStorage` inside a `useEffect` hook. This ensures the component is compatible with Server Side Rendering (SSR) and won't cause hydration mismatch errors, though it may result in a strictly visual layout shift if the component mounts and then immediately hides itself.
 
 ## API Reference
 
-| Prop              | Type                                                                         | Default        | Description                                             |
-| ----------------- | ---------------------------------------------------------------------------- | -------------- | ------------------------------------------------------- |
-| `type`            | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`       | The type of admonition determining color and icon       |
-| `title`           | `string`                                                                       | -              | Optional title text displayed above the content         |
-| `children`        | `ReactNode`                                                                    | -              | The content to display inside the admonition            |
-| `icon`            | `React.ComponentType<{ className?: string }>`                                  | -              | Custom icon component to override the default type icon |
-| `className`       | `string`                                                                       | -              | Additional CSS classes                                  |
-| `dismissible`     | `boolean`                                                                      | `false`        | Enable dismiss button with persistent state            |
-| `dismissKey`      | `string`                                                                       | -              | Unique key for localStorage when using dismissible      |
-| `collapsible`     | `boolean`                                                                      | `false`        | Enable collapse/expand functionality                    |
-| `defaultCollapsed`| `boolean`                                                                      | `false`        | Set initial collapsed state                             |
-| `actions`         | `AdmonitionAction[]`                                                           | -              | Array of action buttons to display                      |
-| `size`            | `"sm" \| "small" \| "default" \| "lg" \| "large"`                              | `"default"`    | Size variant for padding and text                       |
-| `layout`          | `"inline" \| "full-width"`                                                     | `"full-width"` | Layout variant for width                                |
-
-### AdmonitionAction Type
-
-```ts
-interface AdmonitionAction {
-  label: string
-  onClick: () => void
-  variant?: "primary" | "secondary"
-}
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"` | The semantic variant determining color and default icon. |
+| `title` | `string` | — | Optional header text. |
+| `children` | `ReactNode` | — | The content body. |
+| `icon` | `ComponentType` | — | Override the default icon. |
+| `dismissible` | `boolean` | `false` | Renders a close button. |
+| `dismissKey` | `string` | — | Required if `dismissible` is true. Unique key for `localStorage`. |
+| `collapsible` | `boolean` | `false` | Renders a chevron to toggle content visibility. |
+| `defaultCollapsed` | `boolean` | `false` | Sets the initial state if `collapsible` is true. |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Controls padding and font sizing. |
+| `className` | `string` | — | Additional CSS classes for the container. |
+ 
