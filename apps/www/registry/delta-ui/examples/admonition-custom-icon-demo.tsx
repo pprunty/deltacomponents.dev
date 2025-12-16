@@ -1,3 +1,5 @@
+"use client"
+
 import { Rocket } from "lucide-react"
 
 import { Admonition } from "@/registry/delta-ui/delta/admonition"

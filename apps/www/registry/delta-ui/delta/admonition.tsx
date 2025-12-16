@@ -1,70 +1,111 @@
-import type React from "react"
-import { AlertCircle, AlertTriangle, CheckCircle, Info, Lightbulb, XCircle } from "lucide-react"
+"use client"
 
+import type React from "react"
+import { useState, useEffect } from "react"
+import {
+  Info,
+  Lightbulb,
+  CircleAlert,
+  TriangleAlert,
+  CircleX,
+  CircleCheck,
+  ShieldAlert,
+  X,
+  ChevronDown,
+} from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const admonitionConfig = {
   note: {
     bgColor: "bg-blue-50 dark:bg-blue-950/30",
     borderColor: "border-blue-200 dark:border-blue-800",
-    textColor: "text-blue-700 dark:text-blue-300",
+    textColor: "text-blue-900 dark:text-blue-200",
     iconColor: "text-blue-600 dark:text-blue-400",
     icon: Info,
     selectionColor:
       "selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-800 dark:selection:text-blue-100",
+    primaryButton: "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700",
   },
   tip: {
-    bgColor: "bg-green-50 dark:bg-green-950/30",
-    borderColor: "border-green-200 dark:border-green-800",
-    textColor: "text-green-700 dark:text-green-300",
-    iconColor: "text-green-600 dark:text-green-400",
+    bgColor: "bg-emerald-50 dark:bg-emerald-950/30",
+    borderColor: "border-emerald-200 dark:border-emerald-800",
+    textColor: "text-emerald-900 dark:text-emerald-200",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
     icon: Lightbulb,
     selectionColor:
-      "selection:bg-green-200 selection:text-green-900 dark:selection:bg-green-800 dark:selection:text-green-100",
+      "selection:bg-emerald-200 selection:text-emerald-900 dark:selection:bg-emerald-800 dark:selection:text-emerald-100",
+    primaryButton: "bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-700",
   },
   info: {
-    bgColor: "bg-gray-50 dark:bg-gray-950/30",
-    borderColor: "border-gray-200 dark:border-gray-800",
-    textColor: "text-gray-700 dark:text-gray-300",
-    iconColor: "text-gray-600 dark:text-gray-400",
-    icon: Info,
+    bgColor: "bg-slate-50 dark:bg-slate-950/30",
+    borderColor: "border-slate-200 dark:border-slate-800",
+    textColor: "text-slate-700 dark:text-slate-300",
+    iconColor: "text-slate-500 dark:text-slate-400",
+    icon: CircleAlert,
     selectionColor:
-      "selection:bg-gray-200 selection:text-gray-900 dark:selection:bg-gray-800 dark:selection:text-gray-100",
+      "selection:bg-slate-200 selection:text-slate-900 dark:selection:bg-slate-800 dark:selection:text-slate-100",
+    primaryButton: "bg-slate-600 text-white hover:bg-slate-700 dark:bg-slate-500 dark:hover:bg-slate-600",
   },
   warning: {
-    bgColor: "bg-amber-50 dark:bg-amber-950/30",
-    borderColor: "border-amber-200 dark:border-amber-700",
-    textColor: "text-amber-700 dark:text-amber-300",
-    iconColor: "text-amber-600 dark:text-amber-400",
-    icon: AlertTriangle,
+    bgColor: "bg-yellow-50 dark:bg-yellow-950/30",
+    borderColor: "border-yellow-300 dark:border-yellow-700",
+    textColor: "text-yellow-900 dark:text-yellow-200",
+    iconColor: "text-yellow-600 dark:text-yellow-400",
+    icon: TriangleAlert,
     selectionColor:
-      "selection:bg-amber-200 selection:text-amber-900 dark:selection:bg-amber-800 dark:selection:text-amber-100",
+      "selection:bg-yellow-200 selection:text-yellow-900 dark:selection:bg-yellow-800 dark:selection:text-yellow-100",
+    primaryButton: "bg-yellow-600 text-white hover:bg-yellow-700 dark:bg-yellow-600 dark:hover:bg-yellow-700",
   },
   danger: {
     bgColor: "bg-red-50 dark:bg-red-950/30",
     borderColor: "border-red-200 dark:border-red-800",
-    textColor: "text-red-700 dark:text-red-300",
+    textColor: "text-red-900 dark:text-red-200",
     iconColor: "text-red-600 dark:text-red-400",
-    icon: XCircle,
-    selectionColor: "selection:bg-red-200 selection:text-red-900 dark:selection:bg-red-800 dark:selection:text-red-100",
+    icon: CircleX,
+    selectionColor:
+      "selection:bg-red-200 selection:text-red-900 dark:selection:bg-red-800 dark:selection:text-red-100",
+    primaryButton: "bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700",
   },
   success: {
-    bgColor: "bg-emerald-50 dark:bg-emerald-950/30",
-    borderColor: "border-emerald-200 dark:border-emerald-800",
-    textColor: "text-emerald-700 dark:text-emerald-300",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    icon: CheckCircle,
+    bgColor: "bg-green-50 dark:bg-green-950/30",
+    borderColor: "border-green-200 dark:border-green-800",
+    textColor: "text-green-900 dark:text-green-200",
+    iconColor: "text-green-600 dark:text-green-400",
+    icon: CircleCheck,
     selectionColor:
-      "selection:bg-emerald-200 selection:text-emerald-900 dark:selection:bg-emerald-800 dark:selection:text-emerald-100",
+      "selection:bg-green-200 selection:text-green-900 dark:selection:bg-green-800 dark:selection:text-green-100",
+    primaryButton: "bg-green-600 text-white hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700",
   },
   caution: {
     bgColor: "bg-orange-50 dark:bg-orange-950/30",
     borderColor: "border-orange-200 dark:border-orange-700",
-    textColor: "text-orange-700 dark:text-orange-300",
+    textColor: "text-orange-900 dark:text-orange-200",
     iconColor: "text-orange-600 dark:text-orange-400",
-    icon: AlertCircle,
+    icon: ShieldAlert,
     selectionColor:
       "selection:bg-orange-200 selection:text-orange-900 dark:selection:bg-orange-800 dark:selection:text-orange-100",
+    primaryButton: "bg-orange-600 text-white hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700",
+  },
+}
+
+const sizeVariants = {
+  sm: {
+    container: "p-3",
+    title: "text-sm",
+    content: "text-sm",
+    icon: "h-4 w-4",
+  },
+  default: {
+    container: "p-4",
+    title: "text-base",
+    content: "text-base",
+    icon: "h-4.5 w-4.5",
+  },
+  lg: {
+    container: "p-5",
+    title: "text-lg",
+    content: "text-lg",
+    icon: "h-5 w-5",
   },
 }
 
@@ -73,32 +114,121 @@ interface AdmonitionProps {
   title?: string
   children: React.ReactNode
   icon?: React.ComponentType<{ className?: string }>
-  className?: string
+  dismissible?: boolean
+  dismissKey?: string
+  collapsible?: boolean
+  defaultCollapsed?: boolean
+  size?: keyof typeof sizeVariants
 }
 
-export function Admonition({ type = "note", title, children, icon: CustomIcon, className = "" }: AdmonitionProps) {
+export function Admonition({
+  type = "note",
+  title,
+  children,
+  icon: CustomIcon,
+  dismissible = false,
+  dismissKey,
+  collapsible = false,
+  defaultCollapsed = false,
+  size = "default",
+}: AdmonitionProps) {
   const config = admonitionConfig[type]
-  const IconComponent = CustomIcon || config.icon
+  const sizeConfig = sizeVariants[size]
+  const Icon = CustomIcon || config.icon
+
+  const [isDismissed, setIsDismissed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
+
+  useEffect(() => {
+    if (dismissible && dismissKey) {
+      if (localStorage.getItem(`admonition-dismissed-${dismissKey}`) === "true") {
+        setIsDismissed(true)
+      }
+    }
+  }, [dismissible, dismissKey])
+
+  if (isDismissed) return null
 
   return (
     <div
-      data-slot="admonition"
       className={cn(
-        "rounded-md border p-4 text-base",
+        "rounded-xl border",
+        sizeConfig.container,
         config.bgColor,
         config.borderColor,
         config.selectionColor,
-        className,
       )}
     >
-      <div className="flex gap-3">
-        <div className={`${config.iconColor} mt-0.5 flex-shrink-0`}>
-          <IconComponent className="h-5 w-5" style={{ lineHeight: "1lh" }} />
+      <div className="flex items-start gap-3">
+        {/* Icon */}
+        <div
+          className={cn(
+            config.iconColor,
+            "flex h-[1lh] items-start flex-shrink-0 translate-y-[0.15em]",
+          )}
+        >
+          <Icon className={sizeConfig.icon} />
         </div>
-        <div className="min-w-0 flex-1">
-          {title && <div className={cn(config.textColor, "mb-1 text-base font-medium")}>{title}</div>}
-          <div className={cn(config.textColor, "leading-relaxed")}>{children}</div>
+
+        {/* Content */}
+        <div className="min-w-0 flex-1 leading-[1.5]">
+          {title && (
+            <div
+              className={cn(
+                config.textColor,
+                sizeConfig.title,
+                "font-medium [text-box-trim:trim-start]",
+              )}
+            >
+              {title}
+            </div>
+          )}
+
+          {!isCollapsed && (
+            <div
+              className={cn(
+                config.textColor,
+                sizeConfig.content,
+                title && "mt-1",
+                "[text-box-trim:trim-start] [&_*]:!text-inherit",
+              )}
+            >
+              {children}
+            </div>
+          )}
         </div>
+
+        {(collapsible || dismissible) && (
+          <div className="flex items-start gap-1">
+            {collapsible && (
+              <button
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                className={cn(
+                  config.iconColor,
+                  "rounded p-1 transition-transform hover:bg-black/5 dark:hover:bg-white/5",
+                  isCollapsed && "rotate-180",
+                )}
+              >
+                <ChevronDown className="h-5 w-5" />
+              </button>
+            )}
+            {dismissible && (
+              <button
+                onClick={() => {
+                  setIsDismissed(true)
+                  dismissKey &&
+                    localStorage.setItem(`admonition-dismissed-${dismissKey}`, "true")
+                }}
+                className={cn(
+                  config.iconColor,
+                  "rounded p-1 hover:bg-black/5 dark:hover:bg-white/5",
+                )}
+              >
+                <X className="h-5 w-5" />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

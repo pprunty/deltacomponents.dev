@@ -5,13 +5,22 @@ import { useEffect, useState } from "react"
 import { TerminalIcon } from "lucide-react"
 import { Highlight } from "prism-react-renderer"
 import type { PrismTheme } from "prism-react-renderer"
-import { Button } from "@/registry/delta-ui/ui/button"
 
 import { cn } from "@/lib/utils"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { getIconForFile } from "@/registry/delta-ui/delta/code-block-icons"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/delta-ui/ui/tabs"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/registry/delta-ui/ui/collapsible"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
+import { Button } from "@/registry/delta-ui/ui/button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/delta-ui/ui/collapsible"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/delta-ui/ui/tabs"
 
 type PackageManager = "npm" | "yarn" | "pnpm" | "bun"
 
@@ -166,7 +175,10 @@ interface CodeBlockProps {
 const monoFontFamily =
   'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
 
-function parseMarkdownCodeBlock(input: string): { code: string; language: string | null } {
+function parseMarkdownCodeBlock(input: string): {
+  code: string
+  language: string | null
+} {
   const markdownRegex = /^```(\w+)?\n?([\s\S]*?)```$/
   const match = input.trim().match(markdownRegex)
 
@@ -273,7 +285,9 @@ export function CodeBlock({
   defaultExpanded = false,
   collapsedHeight = "12rem",
 }: CodeBlockProps) {
-  const [packageManager, setPackageManager] = React.useState<PackageManager>(defaultPackageManager)
+  const [packageManager, setPackageManager] = React.useState<PackageManager>(
+    defaultPackageManager
+  )
   const [isDark, setIsDark] = useState(false)
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
@@ -286,7 +300,10 @@ export function CodeBlock({
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
           checkDarkMode()
         }
       })
@@ -309,7 +326,9 @@ export function CodeBlock({
     }
   }, [npm, yarn, pnpm, bun])
 
-  const availableCommands = Object.entries(commands).filter(([, command]) => command)
+  const availableCommands = Object.entries(commands).filter(
+    ([, command]) => command
+  )
 
   const selectedTheme = adaptiveTheme
     ? isDark
@@ -317,7 +336,9 @@ export function CodeBlock({
       : adaptiveTheme.light
     : theme || (isDark ? defaultTheme : lightTheme)
 
-  const packageManagerFromMarkdown = code ? detectPackageManagerFromMarkdown(code) : null
+  const packageManagerFromMarkdown = code
+    ? detectPackageManagerFromMarkdown(code)
+    : null
 
   const parsedMarkdown = code ? parseMarkdownCodeBlock(code) : null
   const actualCode = css || (parsedMarkdown?.code ?? code)
@@ -327,18 +348,29 @@ export function CodeBlock({
       ? resolveLanguage(parsedMarkdown.language)
       : defaultLanguage || language
 
-  const codeBlockBgColor = useThemeBackground ? selectedTheme.plain?.backgroundColor : "var(--color-surface)"
+  const codeBlockBgColor = useThemeBackground
+    ? selectedTheme.plain?.backgroundColor
+    : "var(--color-surface)"
 
   console.log("[v0] codeBlockBgColor:", codeBlockBgColor)
   console.log("[v0] useThemeBackground:", useThemeBackground)
-  console.log("[v0] selectedTheme.plain?.backgroundColor:", selectedTheme.plain?.backgroundColor)
+  console.log(
+    "[v0] selectedTheme.plain?.backgroundColor:",
+    selectedTheme.plain?.backgroundColor
+  )
 
   if (packageManagerFromMarkdown) {
     const { command, manager } = packageManagerFromMarkdown
     const allCommands = convertNpxToPackageManagers(command)
 
     return (
-      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
+      <div
+        className={cn(
+          "bg-card text-card-foreground overflow-hidden rounded-lg border",
+          className
+        )}
+        data-slot="tabs"
+      >
         <Tabs
           value={packageManager}
           className="gap-0"
@@ -346,7 +378,10 @@ export function CodeBlock({
           defaultValue={manager}
         >
           <div
-            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
+            className={cn(
+              "flex items-center justify-between border-b px-3 py-2",
+              !useThemeBackground && "bg-surface"
+            )}
             style={
               useThemeBackground
                 ? {
@@ -358,45 +393,56 @@ export function CodeBlock({
           >
             <div className="flex items-center gap-2.5">
               <TerminalIcon
-                className="size-4 text-muted-foreground"
-                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+                className="text-muted-foreground size-4"
+                style={
+                  useThemeBackground
+                    ? { color: selectedTheme.plain?.color, opacity: 0.7 }
+                    : undefined
+                }
               />
               <TabsList className="h-auto rounded-none bg-transparent p-0">
-                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
-                  <TabsTrigger
-                    key={key}
-                    value={key}
-                    className={cn(
-                      "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
-                      textClassName,
-                    )}
-                    style={{
-                      fontFamily: monoFontFamily,
-                      ...(useThemeBackground
-                        ? {
-                            color: selectedTheme.plain?.color,
-                            opacity: 0.7,
-                          }
-                        : {}),
-                    }}
-                  >
-                    {key}
-                  </TabsTrigger>
-                ))}
+                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map(
+                  (key) => (
+                    <TabsTrigger
+                      key={key}
+                      value={key}
+                      className={cn(
+                        "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
+                        textClassName
+                      )}
+                      style={{
+                        fontFamily: monoFontFamily,
+                        ...(useThemeBackground
+                          ? {
+                              color: selectedTheme.plain?.color,
+                              opacity: 0.7,
+                            }
+                          : {}),
+                      }}
+                    >
+                      {key}
+                    </TabsTrigger>
+                  )
+                )}
               </TabsList>
             </div>
             <CopyButton
               value={allCommands[packageManager] || allCommands[manager]}
               className="size-7"
               variant="secondary"
-              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+              iconColor={
+                useThemeBackground ? selectedTheme.plain?.color : undefined
+              }
             />
           </div>
           <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
             {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((key) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
+                  className={cn(
+                    "relative py-4",
+                    !useThemeBackground && "bg-surface"
+                  )}
                   style={
                     useThemeBackground
                       ? {
@@ -405,18 +451,30 @@ export function CodeBlock({
                       : undefined
                   }
                 >
-                  <Highlight theme={selectedTheme} code={allCommands[key]} language="bash">
-                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                  <Highlight
+                    theme={selectedTheme}
+                    code={allCommands[key]}
+                    language="bash"
+                  >
+                    {({
+                      className: highlightClassName,
+                      style,
+                      tokens,
+                      getLineProps,
+                      getTokenProps,
+                    }) => (
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
-                          textClassName,
+                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          textClassName
                         )}
                         style={{
                           ...style,
                           fontFamily: monoFontFamily,
-                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          backgroundColor: useThemeBackground
+                            ? selectedTheme.plain?.backgroundColor
+                            : "transparent",
                           WebkitFontSmoothing: "antialiased",
                           MozOsxFontSmoothing: "grayscale",
                         }}
@@ -442,14 +500,23 @@ export function CodeBlock({
 
   if (availableCommands.length > 0) {
     return (
-      <div className={cn("bg-card text-card-foreground overflow-hidden rounded-lg border", className)} data-slot="tabs">
+      <div
+        className={cn(
+          "bg-card text-card-foreground overflow-hidden rounded-lg border",
+          className
+        )}
+        data-slot="tabs"
+      >
         <Tabs
           value={packageManager}
           className="gap-0"
           onValueChange={(value) => setPackageManager(value as PackageManager)}
         >
           <div
-            className={cn("flex items-center justify-between border-b px-3 py-2", !useThemeBackground && "bg-surface")}
+            className={cn(
+              "flex items-center justify-between border-b px-3 py-2",
+              !useThemeBackground && "bg-surface"
+            )}
             style={
               useThemeBackground
                 ? {
@@ -461,8 +528,12 @@ export function CodeBlock({
           >
             <div className="flex items-center gap-2.5">
               <TerminalIcon
-                className="size-4 text-muted-foreground"
-                style={useThemeBackground ? { color: selectedTheme.plain?.color, opacity: 0.7 } : undefined}
+                className="text-muted-foreground size-4"
+                style={
+                  useThemeBackground
+                    ? { color: selectedTheme.plain?.color, opacity: 0.7 }
+                    : undefined
+                }
               />
               <TabsList className="h-auto rounded-none bg-transparent p-0">
                 {availableCommands.map(([key]) => (
@@ -471,7 +542,7 @@ export function CodeBlock({
                     value={key}
                     className={cn(
                       "text-muted-foreground data-[state=active]:text-foreground h-7 rounded-md px-2.5 font-medium transition-colors data-[state=active]:bg-transparent data-[state=active]:shadow-none",
-                      textClassName,
+                      textClassName
                     )}
                     style={{
                       fontFamily: monoFontFamily,
@@ -492,14 +563,19 @@ export function CodeBlock({
               value={commands[packageManager] || ""}
               className="size-7"
               variant="secondary"
-              iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+              iconColor={
+                useThemeBackground ? selectedTheme.plain?.color : undefined
+              }
             />
           </div>
           <div className={cn("overflow-x-auto", !scrollbar && "no-scrollbar")}>
             {availableCommands.map(([key, command]) => (
               <TabsContent key={key} value={key} className="mt-0">
                 <div
-                  className={cn("relative py-4", !useThemeBackground && "bg-surface")}
+                  className={cn(
+                    "relative py-4",
+                    !useThemeBackground && "bg-surface"
+                  )}
                   style={
                     useThemeBackground
                       ? {
@@ -508,18 +584,30 @@ export function CodeBlock({
                       : undefined
                   }
                 >
-                  <Highlight theme={selectedTheme} code={command || ""} language="bash">
-                    {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+                  <Highlight
+                    theme={selectedTheme}
+                    code={command || ""}
+                    language="bash"
+                  >
+                    {({
+                      className: highlightClassName,
+                      style,
+                      tokens,
+                      getLineProps,
+                      getTokenProps,
+                    }) => (
                       <pre
                         className={cn(
                           highlightClassName,
-                          "w-full overflow-x-auto px-4 font-medium leading-relaxed antialiased",
-                          textClassName,
+                          "w-full overflow-x-auto px-4 leading-relaxed font-medium antialiased",
+                          textClassName
                         )}
                         style={{
                           ...style,
                           fontFamily: monoFontFamily,
-                          backgroundColor: useThemeBackground ? selectedTheme.plain?.backgroundColor : "transparent",
+                          backgroundColor: useThemeBackground
+                            ? selectedTheme.plain?.backgroundColor
+                            : "transparent",
                           WebkitFontSmoothing: "antialiased",
                           MozOsxFontSmoothing: "grayscale",
                         }}
@@ -548,7 +636,7 @@ export function CodeBlock({
       <div
         className={cn(
           "border-border pointer-events-auto w-full max-w-full overflow-hidden rounded-lg border",
-          className,
+          className
         )}
         style={{ "--code-block-bg": codeBlockBgColor } as React.CSSProperties}
       >
@@ -556,7 +644,7 @@ export function CodeBlock({
           <figcaption
             className={cn(
               "flex items-center justify-between border-b px-4 py-2.5 [&_svg]:size-4",
-              !useThemeBackground && "bg-surface",
+              !useThemeBackground && "bg-surface"
             )}
             style={{
               fontFamily: monoFontFamily,
@@ -568,7 +656,12 @@ export function CodeBlock({
                 : {}),
             }}
           >
-            <div className={cn("flex items-center gap-2 text-foreground/75", textClassName)}>
+            <div
+              className={cn(
+                "text-foreground/75 flex items-center gap-2",
+                textClassName
+              )}
+            >
               {getIconForFile(filename)}
               <span className="font-medium tracking-tight">{filename}</span>
             </div>
@@ -580,8 +673,8 @@ export function CodeBlock({
                       variant="ghost"
                       size="sm"
                       className={cn(
-                        "h-auto p-0 text-muted-foreground hover:bg-transparent hover:text-foreground font-medium tracking-tight",
-                        textClassName,
+                        "text-muted-foreground hover:text-foreground h-auto p-0 font-medium tracking-tight hover:bg-transparent",
+                        textClassName
                       )}
                       style={{ fontFamily: monoFontFamily }}
                     >
@@ -591,7 +684,12 @@ export function CodeBlock({
                   <span className="text-muted-foreground/50">|</span>
                 </>
               )}
-              <CopyButton value={actualCode} iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined} />
+              <CopyButton
+                value={actualCode}
+                iconColor={
+                  useThemeBackground ? selectedTheme.plain?.color : undefined
+                }
+              />
             </div>
           </figcaption>
         )}
@@ -607,8 +705,8 @@ export function CodeBlock({
                         variant="ghost"
                         size="sm"
                         className={cn(
-                          "h-auto p-0 text-muted-foreground hover:bg-transparent hover:text-foreground font-semibold tracking-tight",
-                          textClassName,
+                          "text-muted-foreground hover:text-foreground h-auto p-0 font-semibold tracking-tight hover:bg-transparent",
+                          textClassName
                         )}
                         style={{ fontFamily: monoFontFamily }}
                       >
@@ -620,7 +718,9 @@ export function CodeBlock({
                 )}
                 <CopyButton
                   value={actualCode}
-                  iconColor={useThemeBackground ? selectedTheme.plain?.color : undefined}
+                  iconColor={
+                    useThemeBackground ? selectedTheme.plain?.color : undefined
+                  }
                 />
               </div>
             </div>
@@ -629,20 +729,33 @@ export function CodeBlock({
           {expandable ? (
             <CollapsibleContent
               forceMount
-              className={cn("relative w-full overflow-auto transition-all", !scrollbar && "no-scrollbar")}
+              className={cn(
+                "relative w-full overflow-auto transition-all",
+                !scrollbar && "no-scrollbar"
+              )}
               style={{
                 backgroundColor: "var(--code-block-bg)",
                 maxHeight: isExpanded ? "none" : collapsedHeight,
               }}
             >
-              <Highlight theme={selectedTheme} code={actualCode.trim()} language={actualLanguage}>
-                {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+              <Highlight
+                theme={selectedTheme}
+                code={actualCode.trim()}
+                language={actualLanguage}
+              >
+                {({
+                  className: highlightClassName,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
                   <pre
                     className={cn(
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
-                      "font-medium leading-6 antialiased",
-                      textClassName,
+                      "leading-6 font-medium antialiased",
+                      textClassName
                     )}
                     style={{
                       ...style,
@@ -653,12 +766,16 @@ export function CodeBlock({
                     }}
                   >
                     {tokens.map((line, i) => (
-                      <div key={i} {...getLineProps({ line })} className="flex min-h-[24px]">
+                      <div
+                        key={i}
+                        {...getLineProps({ line })}
+                        className="flex min-h-[24px]"
+                      >
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-none select-none text-right font-medium tabular-nums",
-                              textClassName,
+                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              textClassName
                             )}
                             style={{
                               fontFamily: monoFontFamily,
@@ -674,7 +791,12 @@ export function CodeBlock({
                             {i + 1}
                           </span>
                         )}
-                        <span className={cn("flex-1 whitespace-pre pr-6", !showLineNumbers && "pl-6")}>
+                        <span
+                          className={cn(
+                            "flex-1 pr-6 whitespace-pre",
+                            !showLineNumbers && "pl-6"
+                          )}
+                        >
                           {line.map((token, key) => (
                             <span key={key} {...getTokenProps({ token })} />
                           ))}
@@ -687,17 +809,30 @@ export function CodeBlock({
             </CollapsibleContent>
           ) : (
             <div
-              className={cn("relative max-h-[450px] w-full overflow-auto", !scrollbar && "no-scrollbar")}
+              className={cn(
+                "relative max-h-[450px] w-full overflow-auto",
+                !scrollbar && "no-scrollbar"
+              )}
               style={{ backgroundColor: "var(--code-block-bg)" }}
             >
-              <Highlight theme={selectedTheme} code={actualCode.trim()} language={actualLanguage}>
-                {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
+              <Highlight
+                theme={selectedTheme}
+                code={actualCode.trim()}
+                language={actualLanguage}
+              >
+                {({
+                  className: highlightClassName,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
                   <pre
                     className={cn(
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
-                      "font-medium leading-6 antialiased",
-                      textClassName,
+                      "leading-6 font-medium antialiased",
+                      textClassName
                     )}
                     style={{
                       ...style,
@@ -708,12 +843,16 @@ export function CodeBlock({
                     }}
                   >
                     {tokens.map((line, i) => (
-                      <div key={i} {...getLineProps({ line })} className="flex min-h-[24px]">
+                      <div
+                        key={i}
+                        {...getLineProps({ line })}
+                        className="flex min-h-[24px]"
+                      >
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-none select-none text-right font-medium tabular-nums",
-                              textClassName,
+                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              textClassName
                             )}
                             style={{
                               fontFamily: monoFontFamily,
@@ -729,7 +868,12 @@ export function CodeBlock({
                             {i + 1}
                           </span>
                         )}
-                        <span className={cn("flex-1 whitespace-pre pr-6", !showLineNumbers && "pl-6")}>
+                        <span
+                          className={cn(
+                            "flex-1 pr-6 whitespace-pre",
+                            !showLineNumbers && "pl-6"
+                          )}
+                        >
                           {line.map((token, key) => (
                             <span key={key} {...getTokenProps({ token })} />
                           ))}
@@ -761,7 +905,11 @@ export function CodeBlock({
 
     if (expandable) {
       return (
-        <Collapsible open={isExpanded} onOpenChange={setIsExpanded} className="group/collapsible relative">
+        <Collapsible
+          open={isExpanded}
+          onOpenChange={setIsExpanded}
+          className="group/collapsible relative"
+        >
           {codeBlockContent}
         </Collapsible>
       )

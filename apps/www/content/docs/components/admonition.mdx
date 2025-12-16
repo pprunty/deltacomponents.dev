@@ -32,7 +32,7 @@ Override the default semantic icon by passing a Lucide React component (or any S
 
 <ComponentPreview name="admonition-custom-icon-demo" />
 
-### Adomition Types
+### Admonition Types
 
 Use different types of admonitions to guide users through important information and improve documentation clarity:
 
@@ -41,12 +41,47 @@ Use different types of admonitions to guide users through important information 
   dependencies={["lucide-react"]}
 />
 
+### Dismissible
+
+Allow users to dismiss admonitions with persistent state using `dismissible` and `dismissKey` props:
+
+<ComponentPreview name="admonition-dismissible-demo" />
+
+### With Actions
+
+Add action buttons to your admonitions for user interactions:
+
+<ComponentPreview name="admonition-actions-demo" />
+
+### Collapsible
+
+Create collapsible admonitions for detailed content that can be expanded or collapsed:
+
+<ComponentPreview name="admonition-collapsible-demo" />
+
 ## API Reference
 
-| Prop      | Type                                                                         | Default | Description                                             |
-| --------- | ---------------------------------------------------------------------------- | ------- | ------------------------------------------------------- |
-| `type`      | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`  | The type of admonition determining color and icon       |
-| `title`     | `string`                                                                       | -       | Optional title text displayed above the content         |
-| `children`  | `ReactNode`                                                                    | -       | The content to display inside the admonition            |
-| `icon`      | `React.ComponentType `                                                         | -       | Custom icon component to override the default type icon |
-| `className` | `string`                                                                       | -       | Additional CSS classes                                  |
+| Prop              | Type                                                                         | Default        | Description                                             |
+| ----------------- | ---------------------------------------------------------------------------- | -------------- | ------------------------------------------------------- |
+| `type`            | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`       | The type of admonition determining color and icon       |
+| `title`           | `string`                                                                       | -              | Optional title text displayed above the content         |
+| `children`        | `ReactNode`                                                                    | -              | The content to display inside the admonition            |
+| `icon`            | `React.ComponentType<{ className?: string }>`                                  | -              | Custom icon component to override the default type icon |
+| `className`       | `string`                                                                       | -              | Additional CSS classes                                  |
+| `dismissible`     | `boolean`                                                                      | `false`        | Enable dismiss button with persistent state            |
+| `dismissKey`      | `string`                                                                       | -              | Unique key for localStorage when using dismissible      |
+| `collapsible`     | `boolean`                                                                      | `false`        | Enable collapse/expand functionality                    |
+| `defaultCollapsed`| `boolean`                                                                      | `false`        | Set initial collapsed state                             |
+| `actions`         | `AdmonitionAction[]`                                                           | -              | Array of action buttons to display                      |
+| `size`            | `"sm" \| "small" \| "default" \| "lg" \| "large"`                              | `"default"`    | Size variant for padding and text                       |
+| `layout`          | `"inline" \| "full-width"`                                                     | `"full-width"` | Layout variant for width                                |
+
+### AdmonitionAction Type
+
+```ts
+interface AdmonitionAction {
+  label: string
+  onClick: () => void
+  variant?: "primary" | "secondary"
+}
+```

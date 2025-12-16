@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "admonition-collapsible-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
+  "files": [
+    {
+      "path": "examples/admonition-collapsible-demo.tsx",
+      "content": "\"use client\";\n\nimport { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionCollapsibleDemo() {\n  return (\n    <Admonition type=\"note\" title=\"API Documentation\" collapsible>\n      <div className=\"space-y-2\">\n        <p>This API endpoint accepts the following parameters:</p>\n        <ul className=\"ml-4 list-disc space-y-1\">\n          <li>\n            <strong>userId</strong>: string (required) - The unique identifier for the user\n          </li>\n          <li>\n            <strong>includeMetadata</strong>: boolean (optional) - Whether to include additional metadata\n          </li>\n          <li>\n            <strong>format</strong>: string (optional) - Response format: json, xml, or csv\n          </li>\n        </ul>\n      </div>\n    </Admonition>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

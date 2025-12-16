@@ -2,44 +2,31 @@
   {
     "name": "ai-chat-sidebar",
     "description": "A collapsible sidebar component for AI chat applications",
-    "categories": [
-      "ai-elements"
-    ]
+    "categories": ["ai-elements"]
   },
   {
     "name": "testimonials",
     "description": "Customer testimonials grid",
-    "categories": [
-      "landing-page"
-    ]
+    "categories": ["landing-page"]
   },
   {
     "name": "interactive-feature-showcase",
     "description": "InteractiveFeatureShowcase block",
-    "categories": [
-      "landing-page"
-    ]
+    "categories": ["landing-page"]
   },
   {
     "name": "chatbot-window",
     "description": "Resizable AI chatbot interface with collapsible sidebar",
-    "categories": [
-      "ai-elements",
-      "featured"
-    ]
+    "categories": ["ai-elements", "featured"]
   },
   {
     "name": "perspective-carousel",
     "description": "PerspectiveCarousel block",
-    "categories": [
-      "featured"
-    ]
+    "categories": ["featured"]
   },
   {
     "name": "bottom-mobile-nav",
     "description": "BottomMobileNav block",
-    "categories": [
-      "layout"
-    ]
+    "categories": ["layout"]
   }
 ]

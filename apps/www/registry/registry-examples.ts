@@ -439,6 +439,39 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "admonition-dismissible-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    files: [
+      {
+        path: "examples/admonition-dismissible-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "admonition-actions-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    files: [
+      {
+        path: "examples/admonition-actions-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "admonition-collapsible-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    files: [
+      {
+        path: "examples/admonition-collapsible-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "tabs-demo",
     type: "registry:example",
     registryDependencies: ["tabs"],

@@ -4,7 +4,10 @@ import { useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
-import { ToggleGroup, ToggleGroupItem } from "@/registry/delta-ui/ui/toggle-group"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/delta-ui/ui/toggle-group"
 
 // Custom C++ theme - Dark variant
 const cppTheme: PrismTheme = {

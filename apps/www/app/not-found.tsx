@@ -17,7 +17,7 @@ export default function NotFound() {
             height={120}
             className="mx-auto"
             priority
-            quality={100}
+            quality={75}
           />
           <h1 className="font-heading z-30 text-3xl md:text-6xl">
             page not found or moved

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "admonition-dismissible-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
+  "files": [
+    {
+      "path": "examples/admonition-dismissible-demo.tsx",
+      "content": "\"use client\"\n\nimport { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionDismissibleDemo() {\n  return (\n    <Admonition type=\"info\" title=\"Quick Tip\" dismissible dismissKey=\"quick-tip\">\n      You can dismiss this message. Try refreshing the page - it will stay dismissed!\n    </Admonition>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
