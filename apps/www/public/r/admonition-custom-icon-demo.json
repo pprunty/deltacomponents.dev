@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "admonition-custom-icon-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/admonition.json"
+  ],
+  "files": [
+    {
+      "path": "examples/admonition-custom-icon-demo.tsx",
+      "content": "import { Rocket } from \"lucide-react\"\n\nimport { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionCustomIconDemo() {\n  return (\n    <div className=\"mx-auto max-w-3xl space-y-6\">\n      <Admonition type=\"info\" title=\"Rocket Launch\" icon={Rocket}>\n        This is a note admonition with a custom Rocket icon. Try selecting the\n        text to see the matching highlight color!\n      </Admonition>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -1,12 +1,5 @@
-import React from "react"
-import {
-  AlertCircle,
-  AlertTriangle,
-  CheckCircle,
-  Info,
-  Lightbulb,
-  XCircle,
-} from "lucide-react"
+import type React from "react"
+import { AlertCircle, AlertTriangle, CheckCircle, Info, Lightbulb, XCircle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -17,6 +10,8 @@ const admonitionConfig = {
     textColor: "text-blue-700 dark:text-blue-300",
     iconColor: "text-blue-600 dark:text-blue-400",
     icon: Info,
+    selectionColor:
+      "selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-800 dark:selection:text-blue-100",
   },
   tip: {
     bgColor: "bg-green-50 dark:bg-green-950/30",
@@ -24,13 +19,17 @@ const admonitionConfig = {
     textColor: "text-green-700 dark:text-green-300",
     iconColor: "text-green-600 dark:text-green-400",
     icon: Lightbulb,
+    selectionColor:
+      "selection:bg-green-200 selection:text-green-900 dark:selection:bg-green-800 dark:selection:text-green-100",
   },
   info: {
-    bgColor: "bg-cyan-50 dark:bg-cyan-950/30",
-    borderColor: "border-cyan-200 dark:border-cyan-800",
-    textColor: "text-cyan-700 dark:text-cyan-300",
-    iconColor: "text-cyan-600 dark:text-cyan-400",
+    bgColor: "bg-gray-50 dark:bg-gray-950/30",
+    borderColor: "border-gray-200 dark:border-gray-800",
+    textColor: "text-gray-700 dark:text-gray-300",
+    iconColor: "text-gray-600 dark:text-gray-400",
     icon: Info,
+    selectionColor:
+      "selection:bg-gray-200 selection:text-gray-900 dark:selection:bg-gray-800 dark:selection:text-gray-100",
   },
   warning: {
     bgColor: "bg-amber-50 dark:bg-amber-950/30",
@@ -38,6 +37,8 @@ const admonitionConfig = {
     textColor: "text-amber-700 dark:text-amber-300",
     iconColor: "text-amber-600 dark:text-amber-400",
     icon: AlertTriangle,
+    selectionColor:
+      "selection:bg-amber-200 selection:text-amber-900 dark:selection:bg-amber-800 dark:selection:text-amber-100",
   },
   danger: {
     bgColor: "bg-red-50 dark:bg-red-950/30",
@@ -45,6 +46,7 @@ const admonitionConfig = {
     textColor: "text-red-700 dark:text-red-300",
     iconColor: "text-red-600 dark:text-red-400",
     icon: XCircle,
+    selectionColor: "selection:bg-red-200 selection:text-red-900 dark:selection:bg-red-800 dark:selection:text-red-100",
   },
   success: {
     bgColor: "bg-emerald-50 dark:bg-emerald-950/30",
@@ -52,6 +54,8 @@ const admonitionConfig = {
     textColor: "text-emerald-700 dark:text-emerald-300",
     iconColor: "text-emerald-600 dark:text-emerald-400",
     icon: CheckCircle,
+    selectionColor:
+      "selection:bg-emerald-200 selection:text-emerald-900 dark:selection:bg-emerald-800 dark:selection:text-emerald-100",
   },
   caution: {
     bgColor: "bg-orange-50 dark:bg-orange-950/30",
@@ -59,6 +63,8 @@ const admonitionConfig = {
     textColor: "text-orange-700 dark:text-orange-300",
     iconColor: "text-orange-600 dark:text-orange-400",
     icon: AlertCircle,
+    selectionColor:
+      "selection:bg-orange-200 selection:text-orange-900 dark:selection:bg-orange-800 dark:selection:text-orange-100",
   },
 }
 
@@ -70,13 +76,7 @@ interface AdmonitionProps {
   className?: string
 }
 
-export function Admonition({
-  type = "note",
-  title,
-  children,
-  icon: CustomIcon,
-  className = "",
-}: AdmonitionProps) {
+export function Admonition({ type = "note", title, children, icon: CustomIcon, className = "" }: AdmonitionProps) {
   const config = admonitionConfig[type]
   const IconComponent = CustomIcon || config.icon
 
@@ -87,7 +87,8 @@ export function Admonition({
         "rounded-md border p-4 text-base",
         config.bgColor,
         config.borderColor,
-        className
+        config.selectionColor,
+        className,
       )}
     >
       <div className="flex gap-3">
@@ -95,14 +96,8 @@ export function Admonition({
           <IconComponent className="h-5 w-5" style={{ lineHeight: "1lh" }} />
         </div>
         <div className="min-w-0 flex-1">
-          {title && (
-            <div className={cn(config.textColor, "mb-1 text-base font-medium")}>
-              {title}
-            </div>
-          )}
-          <div className={cn(config.textColor, "leading-relaxed")}>
-            {children}
-          </div>
+          {title && <div className={cn(config.textColor, "mb-1 text-base font-medium")}>{title}</div>}
+          <div className={cn(config.textColor, "leading-relaxed")}>{children}</div>
         </div>
       </div>
     </div>
