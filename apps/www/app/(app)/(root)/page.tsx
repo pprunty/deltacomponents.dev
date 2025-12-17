@@ -24,7 +24,9 @@ export const dynamic = "force-static"
 export const revalidate = false
 
 export const metadata: Metadata = {
-  title,
+  title: {
+    absolute: title,
+  },
   description,
   openGraph: {
     images: [

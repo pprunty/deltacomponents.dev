@@ -41,40 +41,30 @@ export async function generateMetadata(props: {
     notFound()
   }
 
-  // Enhance component page titles for SEO
-  const isComponentPage = page.url.startsWith("/docs/components/")
-  const seoTitle = isComponentPage
-    ? `${doc.title} | Delta Components UI`
-    : `${doc.title} | Delta Components UI`
-
   return {
-    title: seoTitle,
+    title: doc.title,
     description: doc.description,
     alternates: {
       canonical: absoluteUrl(page.url),
     },
     openGraph: {
-      title: seoTitle,
+      title: `${doc.title} | Delta Components UI`,
       description: doc.description,
       type: "article",
       url: absoluteUrl(page.url),
       images: [
         {
-          url: `/og?title=${encodeURIComponent(
-            doc.title
-          )}&description=${encodeURIComponent(doc.description)}`,
+          url: `/og?title=${encodeURIComponent(doc.title)}&description=${encodeURIComponent(doc.description)}`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: seoTitle,
+      title: `${doc.title} | Delta Components UI`,
       description: doc.description,
       images: [
         {
-          url: `/og?title=${encodeURIComponent(
-            doc.title
-          )}&description=${encodeURIComponent(doc.description)}`,
+          url: `/og?title=${encodeURIComponent(doc.title)}&description=${encodeURIComponent(doc.description)}`,
         },
       ],
       creator: "@pprunty_",

@@ -7,7 +7,7 @@ const description =
   "Beautiful color schemes for shadcn/ui. Custom themes with light/dark modes—preview, customize, and install with one click. Free and open source."
 
 export const metadata: Metadata = {
-  title: `${title} | Delta Components UI`,
+  title,
   description,
   alternates: {
     canonical: "https://deltacomponents.dev/themes",

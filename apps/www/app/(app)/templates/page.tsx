@@ -16,7 +16,7 @@ const description =
   "Complete starter templates for your next project. Built with Delta Components and ready to deploy—copy, paste, and ship faster."
 
 export const metadata: Metadata = {
-  title: `${title} | Delta Components UI`,
+  title,
   description,
   alternates: {
     canonical: "https://deltacomponents.dev/templates",

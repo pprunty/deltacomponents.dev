@@ -9,7 +9,7 @@ const description =
   "Production-ready blocks and page sections built with shadcn/ui. Copy-paste full-page layouts, chat interfaces, sidebars, and navigation components—own the code."
 
 export const metadata: Metadata = {
-  title: `${title} | Delta Components UI`,
+  title,
   description,
   alternates: {
     canonical: "https://deltacomponents.dev/blocks",

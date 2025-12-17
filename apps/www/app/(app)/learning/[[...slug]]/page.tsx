@@ -250,16 +250,14 @@ export async function generateMetadata({
     notFound()
   }
 
-  const seoTitle = `${doc.title} | Delta Components UI`
-
   return {
-    title: seoTitle,
+    title: doc.title,
     description: doc.description,
     alternates: {
       canonical: absoluteUrl(page.url),
     },
     openGraph: {
-      title: seoTitle,
+      title: `${doc.title} | Delta Components UI`,
       description: doc.description,
       type: "article",
       url: absoluteUrl(page.url),
@@ -271,7 +269,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: seoTitle,
+      title: `${doc.title} | Delta Components UI`,
       description: doc.description,
       images: [
         {
