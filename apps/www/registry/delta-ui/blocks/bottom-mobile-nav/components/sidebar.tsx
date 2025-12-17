@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Plus } from "phosphor-react"
 
+import { Icons } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import {
   Tooltip,
@@ -109,37 +110,6 @@ export const Sidebar = memo(function Sidebar({
     [lastClickedItem, activeRoute]
   )
 
-  const Logo = () => (
-    <svg
-      className="size-6"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 2L2 7L12 12L22 7L12 2Z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2 17L12 22L22 17"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2 12L12 17L22 12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-
   return (
     <TooltipProvider>
       <nav
@@ -150,7 +120,7 @@ export const Sidebar = memo(function Sidebar({
       >
         <div className="mb-8 py-2">
           <Link href="/" className="block" onClick={() => handleItemClick("/")}>
-            <Logo />
+            <Icons.logo className="size-6" />
           </Link>
         </div>
 

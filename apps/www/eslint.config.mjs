@@ -16,6 +16,9 @@ const eslintConfig = [
       "@next/next/no-duplicate-head": "off",
     },
   }),
+  {
+    ignores: ["**/*.mdx", "**/*.md"],
+  },
 ]
 
 export default eslintConfig

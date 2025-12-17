@@ -41,11 +41,20 @@ export async function generateMetadata(props: {
     notFound()
   }
 
+  // Enhance component page titles for SEO
+  const isComponentPage = page.url.startsWith("/docs/components/")
+  const seoTitle = isComponentPage
+    ? `${doc.title} - shadcn Component | Delta Components`
+    : doc.title
+
   return {
-    title: doc.title,
+    title: seoTitle,
     description: doc.description,
+    alternates: {
+      canonical: absoluteUrl(page.url),
+    },
     openGraph: {
-      title: doc.title,
+      title: seoTitle,
       description: doc.description,
       type: "article",
       url: absoluteUrl(page.url),
@@ -59,7 +68,7 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: "summary_large_image",
-      title: doc.title,
+      title: seoTitle,
       description: doc.description,
       images: [
         {

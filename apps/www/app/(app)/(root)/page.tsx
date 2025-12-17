@@ -18,7 +18,7 @@ import { Button } from "@/registry/delta-ui/ui/button"
 
 const title = "Delta Components UI"
 const description =
-  "High-performance components crafted to make the difference in your UX. Built on top of shadcn/ui—from AI chat to interactive media—copy, paste, and own the code."
+  "High-performance components registry crafted to make the difference in your UX. Built on top of shadcn/ui—from AI chat to interactive media—copy, paste, and own the code."
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -64,7 +64,7 @@ export default function IndexPage() {
             <Icons.logo className="size-12" />
             <PageHeaderHeading className="max-w-4xl">
               <span className="flex items-baseline gap-2 sm:gap-3">
-                <span className="font-waldenburg-ht leading-[0.95] font-bold tracking-tighter">
+                <span className="font-waldenburg-ht leading-[0.95] font-bold md:tracking-tighter">
                   Delta Components
                 </span>
                 <span className="font-waldenburg font-normal tracking-[-0.02em] opacity-90">
@@ -82,7 +82,7 @@ export default function IndexPage() {
               <Link href="/docs/components">View Components</Link>
             </Button>
           </PageActions>
-          <div className="mt-8 w-full md:hidden">
+          <div className="md:hidden mt-8 w-full">
             <ComponentGrid />
           </div>
         </PageHeader>

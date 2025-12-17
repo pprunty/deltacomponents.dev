@@ -5,8 +5,18 @@ import { BlockDisplay } from "@/components/block-display"
 import blocksData from "@/registry/__blocks__.json"
 
 export const metadata: Metadata = {
-  title: "Blocks",
-  description: "Pre-built page sections and layouts using Delta Components.",
+  title: "Blocks - Pre-built shadcn Components | Delta Components",
+  description:
+    "Production-ready shadcn blocks and page sections. Copy-paste full-page layouts, chat interfaces, sidebars, and navigation components built with shadcn/ui and Tailwind CSS.",
+  alternates: {
+    canonical: "https://deltacomponents.dev/blocks",
+  },
+  openGraph: {
+    title: "shadcn Blocks - Delta Components",
+    description:
+      "Production-ready blocks and page sections built with shadcn/ui",
+    url: "https://deltacomponents.dev/blocks",
+  },
 }
 
 export default async function BlocksPage() {

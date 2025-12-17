@@ -1,6 +1,7 @@
 {
-    "name": "DeltaComponents",
-    "short_name": "DeltaComponents",
+    "name": "Delta Components - shadcn Registry",
+    "short_name": "DeltaComponentsUI",
+    "description": "Custom shadcn registry with production-ready React components",
     "icons": [
       {
         "src": "/icons/192x192.png",

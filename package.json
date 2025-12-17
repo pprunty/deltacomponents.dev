@@ -1,13 +1,30 @@
 {
-  "name": "Delta Components",
+  "name": "delta-components",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "type": "module",
+  "description": "Custom shadcn registry with production-ready React components for modern web applications",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "shadcn-registry",
+    "react",
+    "components",
+    "tailwind",
+    "typescript",
+    "ui",
+    "nextjs"
+  ],
   "author": {
     "name": "Patrick Prunty",
     "url": "https://x.com/pprunty_"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pprunty/deltacomponents.dev"
+  },
+  "homepage": "https://deltacomponents.dev",
   "workspaces": [
     "apps/*",
     "packages/*",

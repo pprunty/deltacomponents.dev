@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
   authors: siteConfig.authors,
   creator: siteConfig.creator,
+  applicationName: "Delta Components UI",
+  category: "technology",
+  classification: "UI Component Library",
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -91,9 +97,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        publisher: {
+          "@id": `${siteConfig.url}/#organization`,
+        },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/icons/512x512.png`,
+        },
+        sameAs: [siteConfig.links.twitter, siteConfig.links.github],
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Delta Components UI",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        description: siteConfig.description,
+        url: siteConfig.url,
+        softwareVersion: "1.0",
+        keywords: siteConfig.keywords.join(", "),
+      },
+    ],
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -101,12 +156,12 @@ export default function RootLayout({
                 const themeColors = ${JSON.stringify(THEME_META_COLORS)};
                 const activeTheme = localStorage['active-theme'] || 'default';
                 const isDark = localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                
+
                 if (themeColors[activeTheme]) {
                   const themeColor = isDark ? themeColors[activeTheme].dark : themeColors[activeTheme].light;
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
                 }
-                
+
                 if (localStorage.layout) {
                   document.documentElement.classList.add('layout-' + localStorage.layout)
                 }

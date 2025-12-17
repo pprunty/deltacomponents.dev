@@ -11,8 +11,10 @@ export const exampleImages = [
     title: "Neon Palm",
     author: "Tim Mossholder",
   },
-    {
-    url: "https://images.unsplash.com/photo-1765201808749-40a5001f1c73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8"
-    
-}
-}
+  {
+    url: "https://images.unsplash.com/photo-1765201808749-40a5001f1c73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90by1wYWdlfHx8fGVufDB8fHx8fA",
+    link: "https://unsplash.com/photos/photo-1765201808749",
+    title: "Featured Photo",
+    author: "Unsplash",
+  },
+]
