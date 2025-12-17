@@ -632,10 +632,27 @@ export function CodeBlock({
   }
 
   if (actualCode) {
+    // Helper to check if className contains specific Tailwind class prefixes
+    const hasClassPrefix = (prefix: string) => {
+      return className?.split(' ').some(c => c.startsWith(prefix)) ?? false
+    }
+
+    // Extract text size classes from className to override textClassName
+    const hasTextSizeClass = hasClassPrefix('text-')
+    const effectiveTextClassName = hasTextSizeClass
+      ? className?.split(' ').filter(c => c.startsWith('text-')).join(' ') || textClassName
+      : textClassName
+
+    // Apply default border/rounded classes only if not overridden in className
+    const hasBorderClass = hasClassPrefix('border')
+    const hasRoundedClass = hasClassPrefix('rounded')
+
     const codeBlockContent = (
       <div
         className={cn(
-          "border-border pointer-events-auto w-full max-w-full overflow-hidden rounded-lg border",
+          "pointer-events-auto w-full max-w-full overflow-hidden",
+          !hasBorderClass && "border-border border",
+          !hasRoundedClass && "rounded-lg",
           className
         )}
         style={{ "--code-block-bg": codeBlockBgColor } as React.CSSProperties}
@@ -659,7 +676,7 @@ export function CodeBlock({
             <div
               className={cn(
                 "text-foreground/75 flex items-center gap-2",
-                textClassName
+                effectiveTextClassName
               )}
             >
               {getIconForFile(filename)}
@@ -674,7 +691,7 @@ export function CodeBlock({
                       size="sm"
                       className={cn(
                         "text-muted-foreground hover:text-foreground h-auto p-0 font-medium tracking-tight hover:bg-transparent",
-                        textClassName
+                        effectiveTextClassName
                       )}
                       style={{ fontFamily: monoFontFamily }}
                     >
@@ -706,7 +723,7 @@ export function CodeBlock({
                         size="sm"
                         className={cn(
                           "text-muted-foreground hover:text-foreground h-auto p-0 font-semibold tracking-tight hover:bg-transparent",
-                          textClassName
+                          effectiveTextClassName
                         )}
                         style={{ fontFamily: monoFontFamily }}
                       >
@@ -755,7 +772,7 @@ export function CodeBlock({
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
                       "leading-6 font-normal",
-                      textClassName
+                      effectiveTextClassName
                     )}
                     style={{
                       ...style,
@@ -774,7 +791,7 @@ export function CodeBlock({
                           <span
                             className={cn(
                               "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
-                              textClassName
+                              effectiveTextClassName
                             )}
                             style={{
                               fontFamily: monoFontFamily,
@@ -831,7 +848,7 @@ export function CodeBlock({
                       highlightClassName,
                       "min-w-0 py-3.5 outline-none",
                       "leading-6 font-normal",
-                      textClassName
+                      effectiveTextClassName
                     )}
                     style={{
                       ...style,
@@ -850,7 +867,7 @@ export function CodeBlock({
                           <span
                             className={cn(
                               "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
-                              textClassName
+                              effectiveTextClassName
                             )}
                             style={{
                               fontFamily: monoFontFamily,

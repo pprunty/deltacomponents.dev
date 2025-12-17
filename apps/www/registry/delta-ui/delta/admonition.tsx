@@ -222,10 +222,10 @@ export function Admonition({
         config.bgColor,
         config.borderColor,
         config.selectionColor,
-        expandable && isCollapsed && "cursor-pointer",
+        expandable && "cursor-pointer",
         className
       )}
-      onClick={expandable && isCollapsed ? handleToggleExpand : undefined}
+      onClick={expandable ? handleToggleExpand : undefined}
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
@@ -330,7 +330,10 @@ export function Admonition({
               {actions.map((action, index) => (
                 <button
                   key={index}
-                  onClick={action.onClick}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    action.onClick()
+                  }}
                   className={cn(
                     "focus-visible:ring-ring inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
                     sizeConfig.button,

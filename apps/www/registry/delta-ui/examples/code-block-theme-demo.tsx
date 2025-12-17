@@ -157,6 +157,9 @@ export default function CodeBlockThemeDemo() {
   const showLineNumbers = options.includes("line-numbers")
   const showHeader = options.includes("header")
   const useThemeBackground = options.includes("theme-background")
+  const useCustomStyling = options.includes("custom-styling")
+
+  const customClassName = useCustomStyling ? "text-lg border-none rounded-[1rem]" : ""
 
   return (
     <div className="flex flex-col items-center gap-8">
@@ -169,6 +172,9 @@ export default function CodeBlockThemeDemo() {
         <ToggleGroupItem value="line-numbers">Line Numbers</ToggleGroupItem>
         <ToggleGroupItem value="header">Header</ToggleGroupItem>
         <ToggleGroupItem value="theme-background">Background</ToggleGroupItem>
+        <ToggleGroupItem value="custom-styling">
+          Custom Styling
+        </ToggleGroupItem>
       </ToggleGroup>
 
       <div className="w-full max-w-full">
@@ -178,6 +184,7 @@ export default function CodeBlockThemeDemo() {
           filename={showHeader ? "hello.go" : undefined}
           showLineNumbers={showLineNumbers}
           useThemeBackground={useThemeBackground}
+          className={customClassName}
           adaptiveTheme={{
             dark: cppTheme,
             light: cppLightTheme,
