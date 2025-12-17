@@ -4,18 +4,35 @@ import { BlockDisplay } from "@/components/block-display"
 // Import all available blocks
 import blocksData from "@/registry/__blocks__.json"
 
+const title = "Blocks"
+const description =
+  "Production-ready blocks and page sections built with shadcn/ui. Copy-paste full-page layouts, chat interfaces, sidebars, and navigation components—own the code."
+
 export const metadata: Metadata = {
-  title: "Blocks - Pre-built shadcn Components | Delta Components",
-  description:
-    "Production-ready shadcn blocks and page sections. Copy-paste full-page layouts, chat interfaces, sidebars, and navigation components built with shadcn/ui and Tailwind CSS.",
+  title: `${title} | Delta Components UI`,
+  description,
   alternates: {
     canonical: "https://deltacomponents.dev/blocks",
   },
   openGraph: {
-    title: "shadcn Blocks - Delta Components",
-    description:
-      "Production-ready blocks and page sections built with shadcn/ui",
+    title: `${title} | Delta Components UI`,
+    description,
     url: "https://deltacomponents.dev/blocks",
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} | Delta Components UI`,
+    description,
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
+      },
+    ],
   },
 }
 

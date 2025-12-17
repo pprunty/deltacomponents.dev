@@ -188,7 +188,7 @@ export default function CodeBlockThemeDemo() {
             checked={useThemeBackground}
             onCheckedChange={() => toggleOption("theme-background")}
           />
-          <span className="text-sm font-medium">Background</span>
+          <span className="text-sm font-medium">Theme Background</span>
         </label>
         <label className="flex items-center gap-2.5 cursor-pointer">
           <Switch

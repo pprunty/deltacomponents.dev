@@ -3,3 +3,4 @@
 - when user asks to create a new component, block, or theme for the delta custom shadcn registry, regere to @CLAUDE.md for instructions on how-to as well as the custom scripts available in @package.json @apps/www/scripts/
 - when i ask to rebuild registry use script from @package.json and @apps/www/scripts/build-registry.mts
 - don't git add or build unless i say so
+- don;t build unless i tell you so

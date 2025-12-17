@@ -44,8 +44,8 @@ export async function generateMetadata(props: {
   // Enhance component page titles for SEO
   const isComponentPage = page.url.startsWith("/docs/components/")
   const seoTitle = isComponentPage
-    ? `${doc.title} - shadcn Component | Delta Components`
-    : doc.title
+    ? `${doc.title} | Delta Components UI`
+    : `${doc.title} | Delta Components UI`
 
   return {
     title: seoTitle,

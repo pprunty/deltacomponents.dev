@@ -11,29 +11,33 @@ import {
 import { TemplateGrid } from "@/components/templates/template-grid"
 import { Button } from "@/registry/delta-ui/ui/button"
 
-const title = "Production-Ready Templates"
+const title = "Templates"
 const description =
-  "Complete starter templates for your next project. Built with Delta Components and ready to deploy. Copy, paste, and ship faster."
+  "Complete starter templates for your next project. Built with Delta Components and ready to deploy—copy, paste, and ship faster."
 
 export const metadata: Metadata = {
-  title,
+  title: `${title} | Delta Components UI`,
   description,
+  alternates: {
+    canonical: "https://deltacomponents.dev/templates",
+  },
   openGraph: {
+    title: `${title} | Delta Components UI`,
+    description,
+    url: "https://deltacomponents.dev/templates",
     images: [
       {
-        url: `/og?title=${encodeURIComponent(
-          title
-        )}&description=${encodeURIComponent(description)}`,
+        url: `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    title: `${title} | Delta Components UI`,
+    description,
     images: [
       {
-        url: `/og?title=${encodeURIComponent(
-          title
-        )}&description=${encodeURIComponent(description)}`,
+        url: `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`,
       },
     ],
   },
@@ -44,7 +48,7 @@ export default function TemplatesPage() {
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderHeading>Production-Ready Templates</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
