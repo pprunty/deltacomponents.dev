@@ -4,10 +4,7 @@ import { useState } from "react"
 import { PrismTheme } from "prism-react-renderer"
 
 import { CodeBlock } from "@/registry/delta-ui/delta/code-block"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/delta-ui/ui/toggle-group"
+import { Switch } from "@/registry/delta-ui/ui/switch"
 
 // Custom C++ theme - Dark variant
 const cppTheme: PrismTheme = {
@@ -161,21 +158,46 @@ export default function CodeBlockThemeDemo() {
 
   const customClassName = useCustomStyling ? "text-lg border-none rounded-[1rem]" : ""
 
+  const toggleOption = (option: string) => {
+    setOptions((prev) =>
+      prev.includes(option)
+        ? prev.filter((o) => o !== option)
+        : [...prev, option]
+    )
+  }
+
   return (
     <div className="flex flex-col items-center gap-8">
-      <ToggleGroup
-        type="multiple"
-        value={options}
-        onValueChange={setOptions}
-        variant="outline"
-      >
-        <ToggleGroupItem value="line-numbers">Line Numbers</ToggleGroupItem>
-        <ToggleGroupItem value="header">Header</ToggleGroupItem>
-        <ToggleGroupItem value="theme-background">Background</ToggleGroupItem>
-        <ToggleGroupItem value="custom-styling">
-          Custom Styling
-        </ToggleGroupItem>
-      </ToggleGroup>
+      <div className="flex flex-wrap items-center justify-center gap-6">
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <Switch
+            checked={showLineNumbers}
+            onCheckedChange={() => toggleOption("line-numbers")}
+          />
+          <span className="text-sm font-medium">Line Numbers</span>
+        </label>
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <Switch
+            checked={showHeader}
+            onCheckedChange={() => toggleOption("header")}
+          />
+          <span className="text-sm font-medium">Header</span>
+        </label>
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <Switch
+            checked={useThemeBackground}
+            onCheckedChange={() => toggleOption("theme-background")}
+          />
+          <span className="text-sm font-medium">Background</span>
+        </label>
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <Switch
+            checked={useCustomStyling}
+            onCheckedChange={() => toggleOption("custom-styling")}
+          />
+          <span className="text-sm font-medium">Custom Styling</span>
+        </label>
+      </div>
 
       <div className="w-full max-w-full">
         <CodeBlock
