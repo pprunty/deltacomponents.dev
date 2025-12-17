@@ -142,10 +142,6 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    meta: {
-      badge: "coming soon",
-      hide: true,
-    },
   },
   {
     name: "x-card",
@@ -167,10 +163,6 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    meta: {
-      badge: "coming soon",
-      hide: true,
-    },
   },
   {
     name: "product-card",

@@ -30,7 +30,6 @@ To ensure the zoomed image sits above all other UI elements (like sticky navbars
 
 The component mirrors the standard HTML `<img>` API but requires explicit dimensions to calculate the zoom physics correctly.
 
-
 ```tsx
 import { CambioImage } from "@/components/ui/cambio-image"
 
@@ -86,7 +85,11 @@ For a more fluid mobile experience, you can enable dismissOnScroll. This mimics 
 <ComponentPreview name="cambio-image-dismiss-on-scroll-demo" />
 
 <Admonition type="note" title="Scroll Context">
-The `dismissOnScroll` behavior may not function as expected when the component is rendered within constrained scroll containers such as demo previews or tab panels used above. For the best experience testing this functionality, view the [full-screen demo](/view/cambio-image-dismiss-on-scroll-demo) where scroll events propagate correctly.
+  The `dismissOnScroll` behavior may not function as expected when the component
+  is rendered within constrained scroll containers such as demo previews or tab
+  panels used above. For the best experience testing this functionality, view
+  the [full-screen demo](/view/cambio-image-dismiss-on-scroll-demo) where scroll
+  events propagate correctly.
 </Admonition>
 
 ### Motion Presets
@@ -97,14 +100,13 @@ You can customize the animation physics using the motion prop. See the Motion Pr
 <div className="flex gap-4">
   {/* Standard snappy feel */}
   <CambioImage src="/img-1.jpg" motion="snappy" width={400} height={300} />
-  
+
   {/* Bouncy, playful feel */}
   <CambioImage src="/img-2.jpg" motion="bouncy" width={400} height={300} />
 </div>
 ```
 
 <ComponentPreview name="cambio-image-motion-preset-demo" />
-
 
 ## Notes
 
@@ -113,11 +115,7 @@ You can customize the animation physics using the motion prop. See the Motion Pr
 The component uses an `IntersectionObserver` to trigger a blur-to-focus animation when the image enters the viewport. For images "above the fold" (LCP candidates), you should disable this to prevent layout shifts or visual delays.
 
 ```tsx
-<CambioImage 
-  src="/hero.jpg" 
-  enableInitialAnimation={false} 
-  loading="eager"
-/>
+<CambioImage src="/hero.jpg" enableInitialAnimation={false} loading="eager" />
 ```
 
 ### Advanced Motion Config
@@ -127,9 +125,9 @@ For granular control, you can pass an object to the `motion` prop to configure s
 ```tsx
 <CambioImage
   motion={{
-    trigger: "smooth",   // The image expanding
+    trigger: "smooth", // The image expanding
     backdrop: "reduced", // The background fade
-    popup: "bouncy"      // The final resting state
+    popup: "bouncy", // The final resting state
   }}
 />
 ```
@@ -138,26 +136,25 @@ For granular control, you can pass an object to the `motion` prop to configure s
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `src` | `string` | `-` | Required. The source URL. |
-| `alt` | `string` | `-` | Required. Accessibility text. |
-| `width` | `number` | `-` | Required. Intrinsic width. |
-| `height` | `number` | `-` | Required. Intrinsic height. |
-| `motion` | `Preset \| Config` | `"snappy"` | Motion preset or custom config. |
-| `loading` | `"lazy" \| "eager"` | `"lazy"` | Image loading strategy. |
-| `index` | `number` | `0` | Z-index offset for list rendering. |
-| `dismissOnScroll` | `boolean` | `false` | Close the modal on window scroll. |
-| `dismissOnImageClick` | `boolean` | `false` | Close by clicking the zoomed image itself. |
-| `enableInitialAnimation` | `boolean` | `true` | Blur-to-focus effect on viewport entry. |
-| `draggable` | `boolean` | `false` | Allows the image to be dragged (ghost image). |
+| Prop                     | Type                | Default    | Description                                   |
+| ------------------------ | ------------------- | ---------- | --------------------------------------------- |
+| `src`                    | `string`            | `-`        | Required. The source URL.                     |
+| `alt`                    | `string`            | `-`        | Required. Accessibility text.                 |
+| `width`                  | `number`            | `-`        | Required. Intrinsic width.                    |
+| `height`                 | `number`            | `-`        | Required. Intrinsic height.                   |
+| `motion`                 | `Preset \| Config`  | `"snappy"` | Motion preset or custom config.               |
+| `loading`                | `"lazy" \| "eager"` | `"lazy"`   | Image loading strategy.                       |
+| `index`                  | `number`            | `0`        | Z-index offset for list rendering.            |
+| `dismissOnScroll`        | `boolean`           | `false`    | Close the modal on window scroll.             |
+| `dismissOnImageClick`    | `boolean`           | `false`    | Close by clicking the zoomed image itself.    |
+| `enableInitialAnimation` | `boolean`           | `true`     | Blur-to-focus effect on viewport entry.       |
+| `draggable`              | `boolean`           | `false`    | Allows the image to be dragged (ghost image). |
 
 ### Motion Presets
 
-| Preset | Description |
-|--------|-------------|
-| `snappy` | Fast, linear transition. (Default) |
-| `smooth` | Eased, slower transition. |
-| `bouncy` | Spring-physics based animation. |
-| `reduced` | Minimal motion for accessibility. |
-
+| Preset    | Description                        |
+| --------- | ---------------------------------- |
+| `snappy`  | Fast, linear transition. (Default) |
+| `smooth`  | Eased, slower transition.          |
+| `bouncy`  | Spring-physics based animation.    |
+| `reduced` | Minimal motion for accessibility.  |

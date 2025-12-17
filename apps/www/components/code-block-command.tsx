@@ -84,7 +84,7 @@ export function CodeBlockCommand({
           })}
         </div>
       </Tabs>
-      <CopyButton 
+      <CopyButton
         value={currentCommand}
         className="absolute top-2 right-2 z-10 opacity-70"
       />

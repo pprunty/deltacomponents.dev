@@ -82,7 +82,7 @@ export default function IndexPage() {
               <Link href="/docs/components">View Components</Link>
             </Button>
           </PageActions>
-          <div className="md:hidden mt-8 w-full">
+          <div className="mt-8 w-full md:hidden">
             <ComponentGrid />
           </div>
         </PageHeader>

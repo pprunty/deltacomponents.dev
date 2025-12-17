@@ -16,12 +16,12 @@ The Product Card uses a compound component pattern to allow maximum flexibility 
 ```tsx
 import {
   ProductCard,
-  ProductCardImage,
   ProductCardContent,
-  ProductCardTitle,
-  ProductCardSubtitle,
-  ProductCardMetric,
   ProductCardHeader,
+  ProductCardImage,
+  ProductCardMetric,
+  ProductCardSubtitle,
+  ProductCardTitle,
 } from "@/components/ui/product-card"
 
 export default function Example() {
@@ -67,6 +67,7 @@ The component accepts a `size` prop (`sm`, `default`, `lg`) which automatically 
 To achieve the clean, product-focused look seen in the demos (especially for the inner variants), you need images with transparent backgrounds.
 
 **On macOS**:
+
 1. Right-click your image file in Finder.
 2. Select Quick Actions > Remove Background.
 3. **Important**: This creates a transparent PNG but preserves the original canvas dimensions. You will likely need to crop the image afterwards to remove excess whitespace so the product fills the card correctly.
@@ -95,9 +96,9 @@ import Image from "next/image"
 The image container enforces a strict `aspect-square` (1:1) ratio by default. To change this for portrait or landscape cards, override the class on the ProductCardImage sub-component:
 
 ```
-<ProductCardImage 
-  src="..." 
-  alt="..." 
+<ProductCardImage
+  src="..."
+  alt="..."
   className="aspect-[3/4]" // Override for portrait mode
 />
 ```
@@ -108,72 +109,71 @@ The image container enforces a strict `aspect-square` (1:1) ratio by default. To
 
 The root container component.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| variant | `"default" \| "inner"` | `"default"` | Card layout variant - "default" shows content below image, "inner" overlays content on image |
-| size | `"sm" \| "small" \| "default" \| "lg" \| "large"` | `"default"` | Card size affecting padding and text sizes |
-| onCardClick | `() => void` | - | Callback when the card is clicked |
-| className | `string` | - | Additional CSS classes |
+| Prop        | Type                                              | Default     | Description                                                                                  |
+| ----------- | ------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| variant     | `"default" \| "inner"`                            | `"default"` | Card layout variant - "default" shows content below image, "inner" overlays content on image |
+| size        | `"sm" \| "small" \| "default" \| "lg" \| "large"` | `"default"` | Card size affecting padding and text sizes                                                   |
+| onCardClick | `() => void`                                      | -           | Callback when the card is clicked                                                            |
+| className   | `string`                                          | -           | Additional CSS classes                                                                       |
 
 ### ProductCardImage
 
 Image container with standard img element.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| src | `string` | - | Image source URL (required) |
-| alt | `string` | - | Image alt text for accessibility (required) |
-| imageClassName | `string` | - | Additional CSS classes for the image element |
-| className | `string` | - | Additional CSS classes for the container |
+| Prop           | Type     | Default | Description                                  |
+| -------------- | -------- | ------- | -------------------------------------------- |
+| src            | `string` | -       | Image source URL (required)                  |
+| alt            | `string` | -       | Image alt text for accessibility (required)  |
+| imageClassName | `string` | -       | Additional CSS classes for the image element |
+| className      | `string` | -       | Additional CSS classes for the container     |
 
 ### ProductCardBadge
 
 Interactive badge overlay for the image.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| isActive | `boolean` | `false` | Whether the badge is in active/selected state |
-| icon | `React.ReactNode` | - | Icon to display before label |
-| onClick | `(e: React.MouseEvent) => void` | - | Click handler (stops propagation automatically) |
-| className | `string` | - | Additional CSS classes |
+| Prop      | Type                            | Default | Description                                     |
+| --------- | ------------------------------- | ------- | ----------------------------------------------- |
+| isActive  | `boolean`                       | `false` | Whether the badge is in active/selected state   |
+| icon      | `React.ReactNode`               | -       | Icon to display before label                    |
+| onClick   | `(e: React.MouseEvent) => void` | -       | Click handler (stops propagation automatically) |
+| className | `string`                        | -       | Additional CSS classes                          |
 
 ### ProductCardContent
 
 Container for the card's text content.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | `string` | - | Additional CSS classes |
+| Prop      | Type     | Default | Description            |
+| --------- | -------- | ------- | ---------------------- |
+| className | `string` | -       | Additional CSS classes |
 
 ### ProductCardHeader
 
 Wrapper for title and subtitle.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | `string` | - | Additional CSS classes |
+| Prop      | Type     | Default | Description            |
+| --------- | -------- | ------- | ---------------------- |
+| className | `string` | -       | Additional CSS classes |
 
 ### ProductCardTitle
 
 Product title heading.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | `string` | - | Additional CSS classes |
+| Prop      | Type     | Default | Description            |
+| --------- | -------- | ------- | ---------------------- |
+| className | `string` | -       | Additional CSS classes |
 
 ### ProductCardSubtitle
 
 Product subtitle or category.
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | `string` | - | Additional CSS classes |
+| Prop      | Type     | Default | Description            |
+| --------- | -------- | ------- | ---------------------- |
+| className | `string` | -       | Additional CSS classes |
 
 ### ProductCardMetric
 
 Metric display (price, rating, etc).
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | `string` | - | Additional CSS classes |
-
+| Prop      | Type     | Default | Description            |
+| --------- | -------- | ------- | ---------------------- |
+| className | `string` | -       | Additional CSS classes |

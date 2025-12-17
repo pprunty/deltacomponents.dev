@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start --port 4001",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint:fix": "next lint",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",

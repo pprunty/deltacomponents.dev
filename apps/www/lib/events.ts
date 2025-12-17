@@ -30,15 +30,17 @@ export function trackEvent(input: Event): void {
     if (typeof window === "undefined") {
       return
     }
-    
+
     const event = eventSchema.parse(input)
     if (event) {
       // Dynamically import Vercel Analytics to avoid SSR issues
-      import("@vercel/analytics").then(({ track }) => {
-        track(event.name, event.properties)
-      }).catch(() => {
-        // Silently fail if analytics is not available
-      })
+      import("@vercel/analytics")
+        .then(({ track }) => {
+          track(event.name, event.properties)
+        })
+        .catch(() => {
+          // Silently fail if analytics is not available
+        })
     }
   } catch (error) {
     // Silently fail if tracking doesn't work

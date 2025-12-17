@@ -1,6 +1,9 @@
 "use client"
 
-import { MapboxPointer } from "@/registry/delta-ui/delta/mapbox-pointer"
+import {
+  MapboxPointer,
+  MapboxPointerLabel,
+} from "@/registry/delta-ui/delta/mapbox-pointer"
 
 export default function MapboxPointerStyleDemo() {
   // Dublin, Ireland coordinates
@@ -15,10 +18,13 @@ export default function MapboxPointerStyleDemo() {
         zoom={12.8}
         style="navigation-night-v1"
         interactive={true}
-        label="Dublin, Ireland"
-        labelHref="https://en.wikipedia.org/wiki/Dublin"
         className="h-96"
-      />
+      >
+        <MapboxPointerLabel
+          label="Dublin, Ireland"
+          href="https://en.wikipedia.org/wiki/Dublin"
+        />
+      </MapboxPointer>
     </div>
   )
 }

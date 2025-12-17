@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "examples/mapbox-pointer-demo.tsx",
-      "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/components/ui/mapbox-pointer\"\n\nexport default function MapboxPointerDemo() {\n  return (\n    <div className=\"w-full\">\n      <MapboxPointer\n        latitude={53.342825}\n        longitude={-6.257311}\n        zoom={13}\n        clickForDirections={false}\n        label=\"Dublin, Ireland\"\n        interactive={false}\n        labelHref=\"https://en.wikipedia.org/wiki/Dublin\"\n        className=\"h-64 sm:h-96\"\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport {\n  MapboxPointer,\n  MapboxPointerLabel,\n} from \"@/components/ui/mapbox-pointer\"\n\nexport default function MapboxPointerDemo() {\n  return (\n    <div className=\"mx-auto w-full max-w-lg\">\n      <MapboxPointer\n        latitude={37.7749}\n        longitude={-122.4194}\n        zoom={10}\n        clickForDirections={false}\n        interactive={false}\n        className=\"h-96 sm:h-[32rem]\"\n      >\n        <MapboxPointerLabel\n          label=\"San Francisco, CA\"\n          href=\"https://en.wikipedia.org/wiki/San_Francisco\"\n        />\n      </MapboxPointer>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

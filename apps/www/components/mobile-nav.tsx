@@ -4,9 +4,9 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
 import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
@@ -60,13 +60,13 @@ export function MobileNav({
         <Button
           variant="ghost"
           className={cn(
-            "group relative h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent transition-all duration-150 ease-out active:scale-95 active:opacity-70",
+            "group relative h-8 touch-manipulation items-center justify-start gap-2.5 !p-0 transition-all duration-150 ease-out hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:scale-95 active:bg-transparent active:opacity-70 dark:hover:bg-transparent",
             className
           )}
         >
           {/* Extended invisible touch zone */}
           <div className="absolute -inset-3 md:-inset-2" />
-          
+
           <div className="relative flex h-8 w-4 items-center justify-center">
             <div className="relative size-4">
               <span
@@ -113,19 +113,31 @@ export function MobileNav({
                   setPendingHref("/")
                 }}
                 className={cn(
-                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
-                  normalizePath("/") === pathname ? "text-foreground font-semibold" : "text-muted-foreground"
+                  "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                  normalizePath("/") === pathname
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground"
                 )}
               >
                 Home
               </Link>
               {items
-                .filter((item) => !item.hide || (item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")))
+                .filter(
+                  (item) =>
+                    !item.hide ||
+                    (item.hide &&
+                      !(
+                        process.env.VERCEL_ENV === "production" ||
+                        process.env.NODE_ENV === "production"
+                      ))
+                )
                 .map((item, index) => {
                   const normalizedItemHref = normalizePath(item.href)
                   const isActive = normalizedItemHref === pathname
 
-                  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+                  const handleClick = (
+                    event: React.MouseEvent<HTMLAnchorElement>
+                  ) => {
                     if (item.disabled) {
                       event.preventDefault()
                       return
@@ -147,16 +159,20 @@ export function MobileNav({
                       onClick={handleClick}
                       aria-disabled={item.disabled ? "true" : "false"}
                       className={cn(
-                        "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
-                        isActive ? "text-foreground font-semibold" : "text-muted-foreground",
+                        "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                        isActive
+                          ? "text-foreground font-semibold"
+                          : "text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.label}
                       {item.badge && <StatusBadge label={item.badge} />}
-                      {item.hide && !(process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production") && (
-                        <StatusBadge label="hidden" />
-                      )}
+                      {item.hide &&
+                        !(
+                          process.env.VERCEL_ENV === "production" ||
+                          process.env.NODE_ENV === "production"
+                        ) && <StatusBadge label="hidden" />}
                     </Link>
                   )
                 })}
@@ -171,8 +187,10 @@ export function MobileNav({
                   setPendingHref("/llms.txt")
                 }}
                 className={cn(
-                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
-                  normalizePath("/llms.txt") === pathname ? "text-foreground font-semibold" : "text-muted-foreground"
+                  "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                  normalizePath("/llms.txt") === pathname
+                    ? "text-foreground font-semibold"
+                    : "text-muted-foreground"
                 )}
               >
                 llms.txt
@@ -192,33 +210,43 @@ export function MobileNav({
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
                         // Check for component-specific metadata
-                        const componentName = item.url?.split('/').pop()
-                        const componentMeta = componentName ? Index[componentName]?.meta : null
+                        const componentName = item.url?.split("/").pop()
+                        const componentMeta = componentName
+                          ? Index[componentName]?.meta
+                          : null
 
                         // Skip hidden components in production
                         if (shouldHideComponent(item.url)) {
                           return null
                         }
 
-                        if (item.type === "page" && (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")) {
+                        if (
+                          item.type === "page" &&
+                          (!(item as { hide?: boolean }).hide ||
+                            process.env.VERCEL_ENV !== "production")
+                        ) {
                           const isActive = normalizePath(item.url) === pathname
 
                           // Check if component should be disabled in production (runtime evaluation)
-                          const isComponentDisabled = componentMeta?.badge === "coming soon" && (process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production")
+                          const isComponentDisabled =
+                            componentMeta?.badge === "coming soon" &&
+                            (process.env.VERCEL_ENV === "production" ||
+                              process.env.NODE_ENV === "production")
 
                           if (isComponentDisabled) {
                             return (
                               <div
                                 key={`${item.url}-${index}`}
-                                className="flex items-center gap-2 text-2xl font-medium text-muted-foreground cursor-not-allowed opacity-60"
+                                className="text-muted-foreground flex cursor-not-allowed items-center gap-2 text-2xl font-medium opacity-60"
                               >
                                 {item.name}
                                 {componentMeta?.badge && (
                                   <StatusBadge label={componentMeta.badge} />
                                 )}
-                                {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
-                                  <StatusBadge label="hidden" />
-                                )}
+                                {(item as { hide?: boolean }).hide &&
+                                  process.env.VERCEL_ENV !== "production" && (
+                                    <StatusBadge label="hidden" />
+                                  )}
                               </div>
                             )
                           }
@@ -238,19 +266,25 @@ export function MobileNav({
                               href={item.url}
                               onClick={handleClick}
                               className={cn(
-                                "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
-                                isActive ? "text-foreground font-semibold" : "text-muted-foreground"
+                                "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                                isActive
+                                  ? "text-foreground font-semibold"
+                                  : "text-muted-foreground"
                               )}
                             >
                               {item.name}
                               {componentMeta?.badge ? (
                                 <StatusBadge label={componentMeta.badge} />
                               ) : (
-                                group.name === "Components" && siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
+                                group.name === "Components" &&
+                                siteConfig.showComponentBetaBadges && (
+                                  <StatusBadge label="beta" />
+                                )
                               )}
-                              {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
-                                <StatusBadge label="hidden" />
-                              )}
+                              {(item as { hide?: boolean }).hide &&
+                                process.env.VERCEL_ENV !== "production" && (
+                                  <StatusBadge label="hidden" />
+                                )}
                             </Link>
                           )
                         }
@@ -270,7 +304,8 @@ export function MobileNav({
                         </div>
                         <div className="flex flex-col gap-3">
                           {BLOCKS_NAV_ITEMS.map((blockItem) => {
-                            const isActive = normalizePath(blockItem.href) === pathname
+                            const isActive =
+                              normalizePath(blockItem.href) === pathname
 
                             const handleClick = () => {
                               const targetHref = normalizePath(blockItem.href)
@@ -287,12 +322,16 @@ export function MobileNav({
                                 href={blockItem.href}
                                 onClick={handleClick}
                                 className={cn(
-                                  "flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out hover:text-foreground focus-visible:text-foreground active:text-foreground active:scale-[0.99]",
-                                  isActive ? "text-foreground font-semibold" : "text-muted-foreground"
+                                  "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                                  isActive
+                                    ? "text-foreground font-semibold"
+                                    : "text-muted-foreground"
                                 )}
                               >
                                 {blockItem.name}
-                                {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
+                                {siteConfig.showComponentBetaBadges && (
+                                  <StatusBadge label="beta" />
+                                )}
                               </Link>
                             )
                           })}
@@ -311,4 +350,3 @@ export function MobileNav({
     </Popover>
   )
 }
-

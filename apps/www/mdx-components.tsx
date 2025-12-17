@@ -11,13 +11,13 @@ import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsNavGrid } from "@/components/components-nav-grid"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { EnhancedVideo, EnhancedVideoLarge } from "@/components/enhanced-video"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { Installation } from "@/components/installation"
 import { LearningNavGrid } from "@/components/learning-nav-grid"
 import { Step, Steps } from "@/components/steps"
 import { Admonition } from "@/registry/delta-ui/delta/admonition"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import {
   Accordion,
   AccordionContent,
@@ -58,7 +58,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-8 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl sm:text-xl",
+          "font-heading mt-8 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 sm:text-xl lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
           className
         )}
         {...props}
@@ -68,7 +68,7 @@ export const mdxComponents = {
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight *:[code]:text-xl sm:text-lg",
+        "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight sm:text-lg *:[code]:text-xl",
         className
       )}
       {...props}
@@ -103,34 +103,55 @@ export const mdxComponents = {
   ),
   a: ({ className, ...props }: React.ComponentProps<"a">) => (
     <a
-      className={cn("font-medium underline text-foreground underline-offset-4", className)}
+      className={cn(
+        "text-foreground font-medium underline underline-offset-4",
+        className
+      )}
       {...props}
     />
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
       className={cn(
-        "leading-relaxed [&:not(:first-child)]:mt-6 text-foreground text-[17px]",
+        "text-foreground text-[17px] leading-relaxed [&:not(:first-child)]:mt-6",
         className
       )}
       {...props}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium text-foreground text-[17px]", className)} {...props} />
+    <strong
+      className={cn("text-foreground text-[17px] font-medium", className)}
+      {...props}
+    />
   ),
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("my-6 ml-6 list-disc text-foreground text-[17px]", className)} {...props} />
+    <ul
+      className={cn(
+        "text-foreground my-6 ml-6 list-disc text-[17px]",
+        className
+      )}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol className={cn("my-6 ml-6 list-decimal text-foreground text-[17px]", className)} {...props} />
+    <ol
+      className={cn(
+        "text-foreground my-6 ml-6 list-decimal text-[17px]",
+        className
+      )}
+      {...props}
+    />
   ),
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2 text-[17px]", className)} {...props} />
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic text-foreground text-[17px]", className)}
+      className={cn(
+        "text-foreground mt-6 border-l-2 pl-6 text-[17px] italic",
+        className
+      )}
       {...props}
     />
   ),
@@ -144,7 +165,10 @@ export const mdxComponents = {
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <div className="border-border my-6 w-full overflow-y-auto rounded-sm border">
-      <table className={cn("relative w-full text-sm text-foreground", className)} {...props} />
+      <table
+        className={cn("text-foreground relative w-full text-sm", className)}
+        {...props}
+      />
     </div>
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
@@ -259,7 +283,13 @@ export const mdxComponents = {
     // Default codeblock.
     return (
       <>
-        {__raw__ && <CopyButton value={__raw__} src={__src__} className="absolute top-2 right-2 z-10" />}
+        {__raw__ && (
+          <CopyButton
+            value={__raw__}
+            src={__src__}
+            className="absolute top-2 right-2 z-10"
+          />
+        )}
         <code {...props} />
       </>
     )
@@ -366,7 +396,10 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Video: (props: React.ComponentProps<"video"> & { comingSoon?: boolean; title?: string }) => (
-    <EnhancedVideoLarge {...props} />
-  ),
+  Video: (
+    props: React.ComponentProps<"video"> & {
+      comingSoon?: boolean
+      title?: string
+    }
+  ) => <EnhancedVideoLarge {...props} />,
 }

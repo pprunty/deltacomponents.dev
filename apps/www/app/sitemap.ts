@@ -9,10 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Get nav items
   const navUrls = siteConfig.navItems.map((item) => item.href)
-  
+
   // Get all docs pages
   const docsUrls = source.getPages().map((page) => page.url)
-  
+
   // Get markdown versions of docs pages (.md extension)
   const markdownUrls = docsUrls.map((url) => `${url}.md`)
 

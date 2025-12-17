@@ -45,9 +45,10 @@ export function InstallationTabs({
   }
 
   const cliCommand = getCliCommand(packageManager)
-  const installCommand = dependencies && dependencies.length > 0
-    ? `${packageManager} install ${dependencies.join(" ")}`
-    : ""
+  const installCommand =
+    dependencies && dependencies.length > 0
+      ? `${packageManager} install ${dependencies.join(" ")}`
+      : ""
 
   return (
     <div className="group relative mt-4 mb-12 flex flex-col gap-2">

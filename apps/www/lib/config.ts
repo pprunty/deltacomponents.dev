@@ -49,14 +49,18 @@ export const siteConfig = {
       href: "/learning",
       label: "Learn",
       badge: "coming soon",
-      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
+      disabled:
+        process.env.VERCEL_ENV === "production" ||
+        process.env.NODE_ENV === "production",
       hide: false,
     },
     {
       href: "/templates",
       label: "Templates",
       badge: "coming soon",
-      disabled: process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production",
+      disabled:
+        process.env.VERCEL_ENV === "production" ||
+        process.env.NODE_ENV === "production",
       hide: false,
     },
   ],

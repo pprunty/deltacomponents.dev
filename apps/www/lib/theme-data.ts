@@ -13,7 +13,6 @@ export const dublinTheme: ThemeData = {
   previewImage: "/images/themes/claymorphism.png",
 }
 
-
 export const kerryTheme: ThemeData = {
   name: "Kerry",
   value: "kerry",
@@ -40,18 +39,27 @@ export const kilkennyTheme: ThemeData = {
 export const wexfordTheme: ThemeData = {
   name: "Wexford (Gruvbox)",
   value: "wexford",
-  description: "A warm, retro-inspired theme based on the popular Gruvbox color scheme.",
+  description:
+    "A warm, retro-inspired theme based on the popular Gruvbox color scheme.",
   previewImage: "/images/themes/wexford.png",
 }
 
 export const limerickTheme: ThemeData = {
   name: "Limerick (Honey Gold)",
   value: "limerick",
-  description: "A warm, inviting palette with soft cream backgrounds and rich honey gold accents.",
+  description:
+    "A warm, inviting palette with soft cream backgrounds and rich honey gold accents.",
   previewImage: "/images/themes/limerick.png",
 }
 
-export const THEME_DATA = [dublinTheme, kerryTheme, galwayTheme, kilkennyTheme, wexfordTheme, limerickTheme]
+export const THEME_DATA = [
+  dublinTheme,
+  kerryTheme,
+  galwayTheme,
+  kilkennyTheme,
+  wexfordTheme,
+  limerickTheme,
+]
 
 export function getThemeData(value: string): ThemeData | undefined {
   return THEME_DATA.find((theme) => theme.value === value)

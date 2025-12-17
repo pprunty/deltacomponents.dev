@@ -10,10 +10,10 @@ import { findNeighbour } from "fumadocs-core/page-tree"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { Contribute } from "@/components/contribute"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsSidebarCta } from "@/components/docs-sidebar-cta"
 import { DocsTableOfContents } from "@/components/docs-toc"
-import { Contribute } from "@/components/contribute"
 import { Badge } from "@/registry/delta-ui/ui/badge"
 import { Button } from "@/registry/delta-ui/ui/button"
 
@@ -88,14 +88,16 @@ export default async function Page(props: {
   let neighbours = await findNeighbour(source.pageTree, page.url)
 
   // Filter out hidden components in production
-  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+  const isProduction =
+    process.env.VERCEL_ENV === "production" ||
+    process.env.NODE_ENV === "production"
 
   if (isProduction) {
     const { Index } = await import("@/registry/__index__")
 
     // Helper to check if a page is hidden
     const isPageHidden = (pageUrl: string) => {
-      const componentName = pageUrl.split('/').pop()
+      const componentName = pageUrl.split("/").pop()
       const componentMeta = componentName ? Index[componentName]?.meta : null
       return componentMeta?.hide === true
     }
@@ -156,10 +158,7 @@ export default async function Page(props: {
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsCopyPage
-                    page={rawContent}
-                    url={absoluteUrl(page.url)}
-                  />
+                  <DocsCopyPage page={rawContent} url={absoluteUrl(page.url)} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"

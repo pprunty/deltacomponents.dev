@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import { NextResponse, type NextRequest } from "next/server"
 
-import { processMdxForLLMs, getActiveStyle } from "@/lib/llm"
+import { getActiveStyle, processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
 
 export const revalidate = false

@@ -1,12 +1,8 @@
 "use client"
 
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/delta-ui/delta/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
 import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
 import { registryCategories } from "@/registry/registry-categories"
 
@@ -37,15 +33,12 @@ export function BlocksNav() {
         value={currentValue}
         onValueChange={handleValueChange}
         variant="ghost"
-    size="lg"
+        size="lg"
       >
         <ScrollArea className="w-full">
           <TabsList>
             {visibleCategories.map((category) => (
-              <TabsTrigger
-                key={category.slug}
-                value={category.slug}
-              >
+              <TabsTrigger key={category.slug} value={category.slug}>
                 {category.name}
               </TabsTrigger>
             ))}

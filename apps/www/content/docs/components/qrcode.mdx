@@ -18,11 +18,7 @@ import QRCode from "@/components/ui/qrcode"
 
 export default function Example() {
   return (
-    <QRCode 
-      value="https://deltacomponents.dev" 
-      size={200} 
-      dotStyle="rounded"
-    />
+    <QRCode value="https://deltacomponents.dev" size={200} dotStyle="rounded" />
   )
 }
 ```
@@ -44,15 +40,14 @@ Center a logo within the QR code. The component automatically clears the dots be
 
 <ComponentPreview name="qrcode-logo-demo" dependencies={["qr-code-styling"]} />
 
-
 ### Clickable Navigation
 
 Enable the `enableNavigation` prop to transform the QR code into a functional link, allowing desktop users to click the code to visit the destination.
 
-
 ```tsx
 <QRCode value="https://example.com" enableNavigation={true} size={200} />
 ```
+
 ## Notes
 
 ### Theme Awareness
@@ -75,20 +70,19 @@ The component renders as an SVG by default. This ensures the QR code remains cri
 easier to style via CSS if needed, though most styling should be handled via props for cross-browser
 consistency.
 
-
 ## API Reference
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | — | Required. The data or URL to encode. |
-| `size` | `number` | `200` | The width and height in pixels. |
-| `bgColor` | `string` | `"--color-background"` | Supports CSS variables or hex/hsl colors. |
-| `fgColor` | `string` | `"--color-foreground"` | Supports CSS variables or hex/hsl colors. |
-| `level` | `"L" \| "M" \| "Q" \| "H"` | `"M"` | Error correction level (higher allows more data recovery). |
-| `dotStyle` | `enum` | `"square"` | Options: `rounded`, `dots`, `classy`, `classy-rounded`, `square`, `extra-rounded`. |
-| `logoImage` | `string` | — | URL or Data URI of the center logo. |
-| `logoSize` | `number` | `0.2` | Scale of logo relative to QR size (0 to 1). |
-| `enableNavigation` | `boolean` | `false` | If true, clicking the component opens the value in a new tab. |
-| `marginSize` | `number` | `0` | Quiet zone margin around the code. |
+| Prop               | Type                       | Default                | Description                                                                        |
+| ------------------ | -------------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
+| `value`            | `string`                   | —                      | Required. The data or URL to encode.                                               |
+| `size`             | `number`                   | `200`                  | The width and height in pixels.                                                    |
+| `bgColor`          | `string`                   | `"--color-background"` | Supports CSS variables or hex/hsl colors.                                          |
+| `fgColor`          | `string`                   | `"--color-foreground"` | Supports CSS variables or hex/hsl colors.                                          |
+| `level`            | `"L" \| "M" \| "Q" \| "H"` | `"M"`                  | Error correction level (higher allows more data recovery).                         |
+| `dotStyle`         | `enum`                     | `"square"`             | Options: `rounded`, `dots`, `classy`, `classy-rounded`, `square`, `extra-rounded`. |
+| `logoImage`        | `string`                   | —                      | URL or Data URI of the center logo.                                                |
+| `logoSize`         | `number`                   | `0.2`                  | Scale of logo relative to QR size (0 to 1).                                        |
+| `enableNavigation` | `boolean`                  | `false`                | If true, clicking the component opens the value in a new tab.                      |
+| `marginSize`       | `number`                   | `0`                    | Quiet zone margin around the code.                                                 |

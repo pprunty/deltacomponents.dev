@@ -20,14 +20,14 @@ import { Admonition } from "@/components/ui/admonition"
 export default function Example() {
   return (
     <Admonition type="warning" title="Production Database">
-      You are currently editing the production database. Changes here are irreversible.
+      You are currently editing the production database. Changes here are
+      irreversible.
     </Admonition>
   )
 }
 ```
 
 ## Examples
-
 
 ### Variants
 
@@ -46,9 +46,9 @@ You can allow users to permanently dismiss an admonition using the `dismissible`
 
 <ComponentPreview name="admonition-dismissible-demo" />
 
-### Collapsible
+### Expandable
 
-For long-form technical content or stack traces, use the `collapsible` prop. You can control the initial state with `defaultCollapsed`.
+For long-form technical content or stack traces, use the `expandable` prop. You can control the initial state with `defaultCollapsed`. The entire admonition is clickable when collapsed for better UX.
 
 <ComponentPreview name="admonition-collapsible-demo" />
 
@@ -70,7 +70,6 @@ Add action buttons to your admonitions for user interactions:
 
 <ComponentPreview name="admonition-actions-demo" />
 
-
 ## Notes
 
 ### Text Alignment & CSS
@@ -83,16 +82,16 @@ When using `dismissible`, the component checks `localStorage` inside a `useEffec
 
 ## API Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `type` | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"` | The semantic variant determining color and default icon. |
-| `title` | `string` | — | Optional header text. |
-| `children` | `ReactNode` | — | The content body. |
-| `icon` | `ComponentType` | — | Override the default icon. |
-| `dismissible` | `boolean` | `false` | Renders a close button. |
-| `dismissKey` | `string` | — | Required if `dismissible` is true. Unique key for `localStorage`. |
-| `collapsible` | `boolean` | `false` | Renders a chevron to toggle content visibility. |
-| `defaultCollapsed` | `boolean` | `false` | Sets the initial state if `collapsible` is true. |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Controls padding and font sizing. |
-| `className` | `string` | — | Additional CSS classes for the container. |
- 
+| Prop               | Type                                                                           | Default     | Description                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------- |
+| `type`             | `"note" \| "tip" \| "info" \| "warning" \| "danger" \| "success" \| "caution"` | `"note"`    | The semantic variant determining color and default icon.                                    |
+| `title`            | `string`                                                                       | —           | Optional header text.                                                                       |
+| `children`         | `ReactNode`                                                                    | —           | The content body.                                                                           |
+| `icon`             | `ComponentType`                                                                | —           | Override the default icon.                                                                  |
+| `dismissible`      | `boolean`                                                                      | `false`     | Renders a close button.                                                                     |
+| `dismissKey`       | `string`                                                                       | —           | Required if `dismissible` is true. Unique key for `localStorage`.                           |
+| `expandable`       | `boolean`                                                                      | `false`     | Makes the admonition expandable/collapsible. Entire admonition is clickable when collapsed. |
+| `defaultCollapsed` | `boolean`                                                                      | `false`     | Sets the initial state if `expandable` is true.                                             |
+| `actions`          | `AdmonitionAction[]`                                                           | —           | Array of action buttons to display at the bottom.                                           |
+| `size`             | `"sm" \| "small" \| "default" \| "lg" \| "large"`                              | `"default"` | Controls padding and font sizing.                                                           |
+| `className`        | `string`                                                                       | —           | Additional CSS classes for the container.                                                   |

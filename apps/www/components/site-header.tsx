@@ -8,11 +8,11 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
+import { SiteConfig } from "@/components/site-config"
 import { StatusBadge } from "@/components/status-badge"
 import blocks from "@/registry/__blocks__.json"
 import { Button } from "@/registry/delta-ui/ui/button"
 import { Separator } from "@/registry/delta-ui/ui/separator"
-import { SiteConfig } from "@/components/site-config"
 
 export function SiteHeader() {
   const pageTree = source.pageTree
@@ -40,10 +40,7 @@ export function SiteHeader() {
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              <CommandMenu
-                tree={pageTree}
-                navItems={siteConfig.navItems}
-              />
+              <CommandMenu tree={pageTree} navItems={siteConfig.navItems} />
             </div>
             <Separator
               orientation="vertical"

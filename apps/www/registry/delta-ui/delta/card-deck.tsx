@@ -18,7 +18,6 @@ interface CardDeckContainerProps {
   className?: string
   showPagination?: boolean
   showNavigation?: boolean
-  infinite?: boolean
   autoplay?: boolean
   spaceBetween?: number
   enableInitialAnimation?: boolean
@@ -35,7 +34,6 @@ export function CardDeckContainer({
   className,
   showPagination = false,
   showNavigation = false,
-  infinite = true,
   autoplay = false,
   spaceBetween = 40,
   enableInitialAnimation = true,
@@ -80,11 +78,11 @@ export function CardDeckContainer({
         }
         effect="cards"
         grabCursor={true}
-        loop={infinite}
+        loop={false}
         allowTouchMove={true}
         touchRatio={1}
         resistance={true}
-        resistanceRatio={infinite ? 0 : 0.85}
+        resistanceRatio={0.85}
         pagination={
           showPagination
             ? {
@@ -142,7 +140,6 @@ export function CardDeckItem({ children, className }: CardDeckItemProps) {
 // Legacy API for backward compatibility
 interface CardDeckProps {
   images: { src: string; alt: string }[]
-  infinite?: boolean
   autoplay?: boolean
   showPagination?: boolean
   showNavigation?: boolean
@@ -153,7 +150,6 @@ interface CardDeckProps {
 
 export function CardDeck({
   images,
-  infinite = true,
   autoplay = false,
   showPagination = false,
   showNavigation = false,
@@ -163,7 +159,6 @@ export function CardDeck({
 }: CardDeckProps) {
   return (
     <CardDeckContainer
-      infinite={infinite}
       autoplay={autoplay}
       showPagination={showPagination}
       showNavigation={showNavigation}

@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 
-import { Announcement } from "@/components/announcement"
 import { useThemeConfig } from "@/components/active-theme"
+import { Announcement } from "@/components/announcement"
 import {
   PageActions,
   PageHeader,
@@ -24,9 +24,7 @@ export function ThemesPageClient() {
     <>
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>
-          Beautiful Themes for Modern UIs
-        </PageHeaderHeading>
+        <PageHeaderHeading>Beautiful Themes for Modern UIs</PageHeaderHeading>
         <PageHeaderDescription>
           Carefully crafted color schemes for Delta and shadcn/ui components.
           Preview, customize, and apply with a single click. Built with{" "}
@@ -40,7 +38,11 @@ export function ThemesPageClient() {
             <a href="#themes">Browse Themes</a>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <a href="https://tweakcn.com/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://tweakcn.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Create a Theme
             </a>
           </Button>

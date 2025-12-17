@@ -55,7 +55,10 @@ export default function TemplatesPage() {
           </Button>
         </PageActions>
       </PageHeader>
-      <div id="templates" className="container-wrapper section-soft flex-1 md:py-12">
+      <div
+        id="templates"
+        className="container-wrapper section-soft flex-1 md:py-12"
+      >
         <div className="container">
           <TemplateGrid />
         </div>

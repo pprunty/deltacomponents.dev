@@ -18,11 +18,11 @@ import {
   Terminal,
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
-import { registryItemFileSchema, registryItemSchema } from "@/lib/schema"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
 import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
+import { registryItemFileSchema, registryItemSchema } from "@/lib/schema"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
@@ -65,10 +65,10 @@ type BlockViewerContext = {
   resizablePanelRef: React.RefObject<ImperativePanelHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
-  | (z.infer<typeof registryItemFileSchema> & {
-    highlightedContent: string
-  })[]
-  | null
+    | (z.infer<typeof registryItemFileSchema> & {
+        highlightedContent: string
+      })[]
+    | null
   iframeKey?: number
   setIframeKey?: React.Dispatch<React.SetStateAction<number>>
   defaultViewSize: "100" | "60" | "30"
@@ -105,7 +105,6 @@ function BlockViewerProvider({
   const [currentViewSize, setCurrentViewSize] = React.useState<
     "100" | "60" | "30"
   >(defaultViewSize)
-
 
   // Initialize ResizablePanel with the correct default size after mount
   React.useEffect(() => {

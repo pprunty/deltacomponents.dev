@@ -6,8 +6,8 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
+import { CopyButton } from "@/registry/delta-ui/delta/copy-button"
 
 export async function ComponentSource({
   name,

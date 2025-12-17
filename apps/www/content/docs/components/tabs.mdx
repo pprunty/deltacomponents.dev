@@ -49,7 +49,7 @@ Remove the background from the default variant tabs for a cleaner, more minimal 
 
 Tabs come in three sizes: `sm`, `default`, and `lg`. Choose the size that best fits your layout.
 
-<ComponentPreview name="tabs-sizes-demo" height="600px"/>
+<ComponentPreview name="tabs-sizes-demo" height="600px" />
 
 ### With Icons
 
@@ -71,15 +71,15 @@ Control how tab content appears with customizable entrance animations. Set `anim
 
 The root tabs component that provides context for all child components.
 
-| Prop          | Type                       | Default     | Description                                                        |
-| ------------- | -------------------------- | ----------- | ------------------------------------------------------------------ |
-| defaultValue  | string                     | -           | The value of the tab that should be active when initially rendered |
-| value         | string                     | -           | The controlled value of the tab to activate                        |
-| onValueChange | function                   | -           | Event handler called when the value changes                        |
-| variant       | "default" \| "underline"   | "default"   | Visual style variant of the tabs                                   |
-| size          | "sm" \| "default" \| "lg"  | "default"   | Size of the tabs                                                   |
-| animate       | boolean                    | false       | Enable animations for all tab content (can be overridden per TabsContent) |
-| className     | string                     | -           | Additional CSS classes                                             |
+| Prop          | Type                      | Default   | Description                                                               |
+| ------------- | ------------------------- | --------- | ------------------------------------------------------------------------- |
+| defaultValue  | string                    | -         | The value of the tab that should be active when initially rendered        |
+| value         | string                    | -         | The controlled value of the tab to activate                               |
+| onValueChange | function                  | -         | Event handler called when the value changes                               |
+| variant       | "default" \| "underline"  | "default" | Visual style variant of the tabs                                          |
+| size          | "sm" \| "default" \| "lg" | "default" | Size of the tabs                                                          |
+| animate       | boolean                   | false     | Enable animations for all tab content (can be overridden per TabsContent) |
+| className     | string                    | -         | Additional CSS classes                                                    |
 
 ### TabsList
 
@@ -107,18 +107,19 @@ The trigger automatically displays the animated indicator when active. For the u
 
 Content panel associated with a tab trigger.
 
-| Prop             | Type    | Default | Description                                                                      |
-| ---------------- | ------- | ------- | -------------------------------------------------------------------------------- |
-| value            | string  | -       | A unique value that associates the content with a trigger                        |
-| animate          | boolean | inherited | Enable smooth animations (inherits from Tabs, can be overridden per content)  |
-| animationDuration| number  | 0.25    | Animation duration in seconds (only applies when `animate={true}`)               |
-| animateY         | number  | -       | Y-axis animation distance in pixels (only applies when `animate={true}`)         |
-| forceMount       | boolean | false   | Forces the content to always be mounted in the DOM                               |
-| className        | string  | -       | Additional CSS classes                                                           |
+| Prop              | Type    | Default   | Description                                                                  |
+| ----------------- | ------- | --------- | ---------------------------------------------------------------------------- |
+| value             | string  | -         | A unique value that associates the content with a trigger                    |
+| animate           | boolean | inherited | Enable smooth animations (inherits from Tabs, can be overridden per content) |
+| animationDuration | number  | 0.25      | Animation duration in seconds (only applies when `animate={true}`)           |
+| animateY          | number  | -         | Y-axis animation distance in pixels (only applies when `animate={true}`)     |
+| forceMount        | boolean | false     | Forces the content to always be mounted in the DOM                           |
+| className         | string  | -         | Additional CSS classes                                                       |
 
 **Performance Note:** By default, animations are disabled for instant tab switching with zero overhead. This is recommended for most use cases, especially when dealing with heavy content.
 
 You can enable animations in two ways:
+
 - **For all tabs:** Set `animate={true}` on the `Tabs` component
 - **Per tab:** Set `animate={true}` on individual `TabsContent` components (overrides the Tabs setting)
 
@@ -126,17 +127,17 @@ You can enable animations in two ways:
 
 Utility component for rendering tabs from an array of tab items, useful when working with dynamic data.
 
-| Prop             | Type               | Default | Description                                     |
-| ---------------- | ------------------ | ------- | ----------------------------------------------- |
-| tabs             | TabItem[]          | -       | Array of tab items to render                    |
-| defaultValue     | string             | tabs[0] | Initial active tab value                        |
-| value            | string             | -       | Controlled active tab value                     |
-| onValueChange    | function           | -       | Event handler called when the value changes     |
-| className        | string             | -       | Additional CSS classes for Tabs                 |
-| listClassName    | string             | -       | Additional CSS classes for TabsList             |
-| triggerClassName | string             | -       | Additional CSS classes for each TabsTrigger     |
-| contentClassName | string             | -       | Additional CSS classes for each TabsContent     |
-| children         | (tab) => ReactNode | -       | Render function for tab content                 |
+| Prop             | Type               | Default | Description                                 |
+| ---------------- | ------------------ | ------- | ------------------------------------------- |
+| tabs             | TabItem[]          | -       | Array of tab items to render                |
+| defaultValue     | string             | tabs[0] | Initial active tab value                    |
+| value            | string             | -       | Controlled active tab value                 |
+| onValueChange    | function           | -       | Event handler called when the value changes |
+| className        | string             | -       | Additional CSS classes for Tabs             |
+| listClassName    | string             | -       | Additional CSS classes for TabsList         |
+| triggerClassName | string             | -       | Additional CSS classes for each TabsTrigger |
+| contentClassName | string             | -       | Additional CSS classes for each TabsContent |
+| children         | (tab) => ReactNode | -       | Render function for tab content             |
 
 **TabItem Type:**
 

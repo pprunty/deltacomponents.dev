@@ -3,6 +3,7 @@ import CardDeckDemoInteractive from "@/registry/delta-ui/examples/card-deck-demo
 import ChatDemo from "@/registry/delta-ui/examples/chat-demo"
 import CodeBlockInteractiveDemo from "@/registry/delta-ui/examples/code-block-interactive-demo"
 import MapboxPointerDemo from "@/registry/delta-ui/examples/mapbox-pointer-demo"
+import { MarqueeDemo } from "@/registry/delta-ui/examples/marquee-demo"
 import { ProductCardDemo } from "@/registry/delta-ui/examples/product-card-demo"
 import QrcodeDemoInteractive from "@/registry/delta-ui/examples/qrcode-demo-interactive"
 import { TabsBackgroundDemo } from "@/registry/delta-ui/examples/tabs-background-demo"
@@ -45,6 +46,10 @@ export function CardsDemo() {
 
       <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
         <XCardBasicDemo />
+      </div>
+
+      <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
+        <MarqueeDemo />
       </div>
     </div>
   )

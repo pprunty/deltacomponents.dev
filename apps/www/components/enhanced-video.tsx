@@ -46,7 +46,9 @@ export function EnhancedVideo({
         {comingSoon ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <h3 className="text-foreground text-lg font-medium mb-2">{title} Video</h3>
+              <h3 className="text-foreground mb-2 text-lg font-medium">
+                {title} Video
+              </h3>
               <p className="text-muted-foreground text-sm">Coming Soon</p>
             </div>
           </div>
@@ -133,7 +135,9 @@ export function EnhancedVideoLarge({
         {comingSoon ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <h3 className="text-foreground text-xl font-medium mb-2">{title} Video</h3>
+              <h3 className="text-foreground mb-2 text-xl font-medium">
+                {title} Video
+              </h3>
               <p className="text-muted-foreground text-sm">Coming Soon</p>
             </div>
           </div>

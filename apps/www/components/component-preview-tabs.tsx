@@ -58,7 +58,9 @@ export function ComponentPreviewTabs({
           value="preview"
           className={cn(
             "relative rounded-lg border",
-            previewOverflow === "visible" ? "overflow-visible" : "overflow-hidden"
+            previewOverflow === "visible"
+              ? "overflow-visible"
+              : "overflow-hidden"
           )}
         >
           <div

@@ -34,7 +34,8 @@ export function ActiveThemeProvider({
       try {
         const stored = localStorage.getItem(THEME_STORAGE_KEY)
         // Also check if data-theme is already set on HTML element
-        const currentDataTheme = document.documentElement.getAttribute("data-theme")
+        const currentDataTheme =
+          document.documentElement.getAttribute("data-theme")
         return stored || currentDataTheme || initialTheme || DEFAULT_THEME
       } catch {
         return initialTheme || DEFAULT_THEME
@@ -67,23 +68,29 @@ export function ActiveThemeProvider({
           document.head.appendChild(metaThemeColor)
         }
         metaThemeColor.setAttribute("content", themeColor)
-        
+
         // Debug logging in development
         if (process.env.NODE_ENV === "development") {
-          console.log(`[ActiveTheme] Updated meta theme-color: ${themeColor} (theme: ${activeTheme}, mode: ${resolvedTheme})`)
+          console.log(
+            `[ActiveTheme] Updated meta theme-color: ${themeColor} (theme: ${activeTheme}, mode: ${resolvedTheme})`
+          )
         }
       } else {
         // Fallback to default theme if current theme not found
         if (!themeColors && activeTheme !== DEFAULT_THEME) {
           if (process.env.NODE_ENV === "development") {
-            console.warn(`[ActiveTheme] No colors found for theme: ${activeTheme}, falling back to ${DEFAULT_THEME}`)
+            console.warn(
+              `[ActiveTheme] No colors found for theme: ${activeTheme}, falling back to ${DEFAULT_THEME}`
+            )
           }
           setActiveTheme(DEFAULT_THEME)
           return
         }
-        
+
         if (process.env.NODE_ENV === "development") {
-          console.warn(`[ActiveTheme] No colors found for theme: ${activeTheme} or resolvedTheme not ready: ${resolvedTheme}`)
+          console.warn(
+            `[ActiveTheme] No colors found for theme: ${activeTheme} or resolvedTheme not ready: ${resolvedTheme}`
+          )
         }
       }
     }

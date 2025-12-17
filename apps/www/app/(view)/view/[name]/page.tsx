@@ -2,10 +2,10 @@ import * as React from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { z } from "zod"
-import { registryItemSchema } from "@/lib/schema"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
+import { registryItemSchema } from "@/lib/schema"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { BlockDisplay } from "@/components/block-display"
 
@@ -68,20 +68,20 @@ export async function generateStaticParams() {
   const index = z.record(z.string(), registryItemSchema).parse(Index)
 
   return Object.values(index)
-    .filter((block) =>
-      [
-        "registry:block",
-        "registry:component",
-        "registry:example",
-        "registry:internal",
-        "registry:ui",
-      ].includes(block.type) && !block.meta?.hide
+    .filter(
+      (block) =>
+        [
+          "registry:block",
+          "registry:component",
+          "registry:example",
+          "registry:internal",
+          "registry:ui",
+        ].includes(block.type) && !block.meta?.hide
     )
     .map((block) => ({
       name: block.name,
     }))
 }
-
 
 export default async function BlockPage({
   params,

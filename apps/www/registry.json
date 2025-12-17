@@ -74,8 +74,8 @@
       ],
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/copy-button.json",
-        "https://deltacomponents.dev/r/code-block-icons.json"
+        "https://deltacomponents.dev/r/code-block-icons.json",
+        "https://deltacomponents.dev/r/copy-button.json"
       ],
       "files": [
         {
@@ -212,11 +212,7 @@
           "path": "registry/delta-ui/delta/mapbox-pointer.tsx",
           "type": "registry:ui"
         }
-      ],
-      "meta": {
-        "badge": "coming soon",
-        "hide": true
-      }
+      ]
     },
     {
       "name": "x-card",
@@ -239,11 +235,7 @@
           "path": "registry/delta-ui/delta/marquee.tsx",
           "type": "registry:ui"
         }
-      ],
-      "meta": {
-        "badge": "coming soon",
-        "hide": true
-      }
+      ]
     },
     {
       "name": "product-card",

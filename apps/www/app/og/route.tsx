@@ -46,13 +46,32 @@ export async function GET(request: Request) {
     (
       <div
         tw="flex h-full w-full"
-        style={{ fontFamily: "Geist Sans", backgroundColor: "#f6f7eb", color: "#3e43f0" }}
+        style={{
+          fontFamily: "Geist Sans",
+          backgroundColor: "#f6f7eb",
+          color: "#3e43f0",
+        }}
       >
-        <div tw="flex border absolute border-dashed inset-y-0 left-16 w-[1px]" style={{ borderColor: "#3e43f0" }} />
-        <div tw="flex border absolute border-dashed inset-y-0 right-16 w-[1px]" style={{ borderColor: "#3e43f0" }} />
-        <div tw="flex border absolute inset-x-0 h-[1px] top-16" style={{ borderColor: "#3e43f0" }} />
-        <div tw="flex border absolute inset-x-0 h-[1px] bottom-16" style={{ borderColor: "#3e43f0" }} />
-        <div tw="flex absolute flex-row bottom-24 right-24" style={{ color: "#3e43f0" }}>
+        <div
+          tw="flex border absolute border-dashed inset-y-0 left-16 w-[1px]"
+          style={{ borderColor: "#3e43f0" }}
+        />
+        <div
+          tw="flex border absolute border-dashed inset-y-0 right-16 w-[1px]"
+          style={{ borderColor: "#3e43f0" }}
+        />
+        <div
+          tw="flex border absolute inset-x-0 h-[1px] top-16"
+          style={{ borderColor: "#3e43f0" }}
+        />
+        <div
+          tw="flex border absolute inset-x-0 h-[1px] bottom-16"
+          style={{ borderColor: "#3e43f0" }}
+        />
+        <div
+          tw="flex absolute flex-row bottom-24 right-24"
+          style={{ color: "#3e43f0" }}
+        >
           <svg
             viewBox="0 0 282 308"
             fill="none"

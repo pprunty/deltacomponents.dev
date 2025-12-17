@@ -12,20 +12,20 @@ export function ComponentGrid() {
   }
 
   // Check if in production
-  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+  const isProduction =
+    process.env.VERCEL_ENV === "production" ||
+    process.env.NODE_ENV === "production"
 
-  const list = components.children.filter(
-    (component) => {
-      if (component.type !== "page") return false
+  const list = components.children.filter((component) => {
+    if (component.type !== "page") return false
 
-      // Check if component should be hidden
-      const componentName = component.url.split('/').pop()
-      const componentMeta = componentName ? Index[componentName]?.meta : null
-      const shouldHide = componentMeta?.hide && isProduction
+    // Check if component should be hidden
+    const componentName = component.url.split("/").pop()
+    const componentMeta = componentName ? Index[componentName]?.meta : null
+    const shouldHide = componentMeta?.hide && isProduction
 
-      return !shouldHide
-    }
-  )
+    return !shouldHide
+  })
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

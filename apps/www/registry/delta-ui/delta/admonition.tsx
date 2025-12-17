@@ -1,18 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
+  ChevronDown,
+  CircleAlert,
+  CircleCheck,
+  CircleX,
   Info,
   Lightbulb,
-  CircleAlert,
-  TriangleAlert,
-  CircleX,
-  CircleCheck,
   ShieldAlert,
+  TriangleAlert,
   X,
-  ChevronDown,
 } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 // --- Types ---
@@ -125,6 +126,13 @@ const sizeVariants = {
     icon: "h-4 w-4",
     button: "text-xs px-2.5 py-1.5",
   },
+  small: {
+    container: "p-3",
+    title: "text-sm",
+    content: "text-sm mt-1",
+    icon: "h-4 w-4",
+    button: "text-xs px-2.5 py-1.5",
+  },
   default: {
     container: "p-4",
     title: "text-base",
@@ -133,6 +141,13 @@ const sizeVariants = {
     button: "text-sm px-3 py-2",
   },
   lg: {
+    container: "p-5",
+    title: "text-lg",
+    content: "text-lg mt-3",
+    icon: "h-6 w-6",
+    button: "text-base px-4 py-2.5",
+  },
+  large: {
     container: "p-5",
     title: "text-lg",
     content: "text-lg mt-3",
@@ -148,7 +163,7 @@ interface AdmonitionProps {
   icon?: React.ComponentType<{ className?: string }>
   dismissible?: boolean
   dismissKey?: string
-  collapsible?: boolean
+  expandable?: boolean
   defaultCollapsed?: boolean
   actions?: AdmonitionAction[]
   size?: keyof typeof sizeVariants
@@ -162,7 +177,7 @@ export function Admonition({
   icon: CustomIcon,
   dismissible = false,
   dismissKey,
-  collapsible = false,
+  expandable = false,
   defaultCollapsed = false,
   actions,
   size = "default",
@@ -174,14 +189,16 @@ export function Admonition({
 
   // State
   const [isDismissed, setIsDismissed] = useState(false)
-  // If collapsible, default to collapsed state, otherwise always expanded.
+  // If expandable, default to collapsed state, otherwise always expanded.
   const [isCollapsed, setIsCollapsed] = useState(
-    collapsible ? defaultCollapsed : false
+    expandable ? defaultCollapsed : false
   )
 
   useEffect(() => {
     if (dismissible && dismissKey) {
-      if (localStorage.getItem(`admonition-dismissed-${dismissKey}`) === "true") {
+      if (
+        localStorage.getItem(`admonition-dismissed-${dismissKey}`) === "true"
+      ) {
         setIsDismissed(true)
       }
     }
@@ -189,7 +206,13 @@ export function Admonition({
 
   if (isDismissed) return null
 
-  const hasControls = collapsible || dismissible
+  const hasControls = expandable || dismissible
+
+  const handleToggleExpand = () => {
+    if (expandable) {
+      setIsCollapsed(!isCollapsed)
+    }
+  }
 
   return (
     <div
@@ -199,8 +222,10 @@ export function Admonition({
         config.bgColor,
         config.borderColor,
         config.selectionColor,
+        expandable && isCollapsed && "cursor-pointer",
         className
       )}
+      onClick={expandable && isCollapsed ? handleToggleExpand : undefined}
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
@@ -234,14 +259,17 @@ export function Admonition({
             {hasControls && (
               <div
                 className={cn(
-                  "flex items-center gap-1 shrink-0",
+                  "flex shrink-0 items-center gap-1",
                   // Adjust control alignment based on presence of title
                   title ? "-mt-0.5" : ""
                 )}
               >
-                {collapsible && (
+                {expandable && (
                   <button
-                    onClick={() => setIsCollapsed(!isCollapsed)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleToggleExpand()
+                    }}
                     aria-label={isCollapsed ? "Expand" : "Collapse"}
                     className={cn(
                       config.iconColor,
@@ -254,7 +282,8 @@ export function Admonition({
                 )}
                 {dismissible && (
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation()
                       setIsDismissed(true)
                       dismissKey &&
                         localStorage.setItem(
@@ -283,7 +312,7 @@ export function Admonition({
                 sizeConfig.content,
                 "[text-box-trim:trim-start] [&_*]:!text-inherit",
                 // CSS Line Clamp for collapsing behavior
-                collapsible && isCollapsed ? "line-clamp-2" : ""
+                expandable && isCollapsed ? "line-clamp-2" : ""
               )}
             >
               {children}
@@ -293,14 +322,17 @@ export function Admonition({
           {/* Actions Footer */}
           {actions && actions.length > 0 && !isCollapsed && (
             <div
-              className={cn("flex flex-wrap items-center gap-2", sizeConfig.content)}
+              className={cn(
+                "flex flex-wrap items-center gap-2",
+                sizeConfig.content
+              )}
             >
               {actions.map((action, index) => (
                 <button
                   key={index}
                   onClick={action.onClick}
                   className={cn(
-                    "inline-flex items-center justify-center font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                    "focus-visible:ring-ring inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
                     sizeConfig.button,
                     action.variant === "secondary"
                       ? config.secondaryButton

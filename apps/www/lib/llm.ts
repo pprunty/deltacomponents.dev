@@ -1,15 +1,18 @@
 import fs from "fs"
 import path from "path"
-
 import { registry } from "@/registry"
 
 type Style = {
   name: string
 }
 
-export function processMdxForLLMs(content: string, style: Style["name"] = "default") {
+export function processMdxForLLMs(
+  content: string,
+  style: Style["name"] = "default"
+) {
   // Replace ComponentPreview tags with actual component source code
-  const componentPreviewRegex = /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g
+  const componentPreviewRegex =
+    /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g
 
   return content.replace(componentPreviewRegex, (match, name) => {
     // Find the component in the registry, with safe access
@@ -17,33 +20,34 @@ export function processMdxForLLMs(content: string, style: Style["name"] = "defau
       // Silently skip during build time when registry isn't loaded
       return match
     }
-    
-    const component = registry.items.find(item => item.name === name)
-    
+
+    const component = registry.items.find((item) => item.name === name)
+
     if (!component?.files) return match
 
     // Get the main component file
-    const mainFile = component.files.find(file => 
-      file.type === "registry:component" || 
-      file.type === "registry:example" ||
-      file.path.includes(name)
+    const mainFile = component.files.find(
+      (file) =>
+        file.type === "registry:component" ||
+        file.type === "registry:example" ||
+        file.path.includes(name)
     )
-    
+
     if (!mainFile?.path) return match
 
     try {
       // Construct the full path to the component file
       const fullPath = path.join(process.cwd(), "registry", mainFile.path)
-      
+
       // Check if file exists
       if (!fs.existsSync(fullPath)) {
         // Try alternative paths
         const altPaths = [
           path.join(process.cwd(), mainFile.path),
           path.join(process.cwd(), "apps/www", mainFile.path),
-          path.join(process.cwd(), "apps/www/registry", mainFile.path)
+          path.join(process.cwd(), "apps/www/registry", mainFile.path),
         ]
-        
+
         let source = ""
         for (const altPath of altPaths) {
           if (fs.existsSync(altPath)) {
@@ -51,12 +55,12 @@ export function processMdxForLLMs(content: string, style: Style["name"] = "defau
             break
           }
         }
-        
+
         if (!source) return match
-        
+
         // Clean up the source code for better LLM consumption
         source = cleanupComponentSource(source)
-        
+
         return `\`\`\`tsx\n${source}\n\`\`\``
       }
 
@@ -75,12 +79,12 @@ function cleanupComponentSource(source: string): string {
   // Replace registry paths with component paths for better readability
   source = source.replaceAll(`@/registry/delta-ui/`, "@/components/")
   source = source.replaceAll(`@/registry/new-york-v4/`, "@/components/")
-  
+
   // Convert default exports to named exports for consistency
   if (source.includes("export default")) {
     source = source.replaceAll("export default", "export")
   }
-  
+
   return source
 }
 

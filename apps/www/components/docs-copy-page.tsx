@@ -2,9 +2,9 @@
 
 import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   DropdownMenu,
@@ -23,11 +23,12 @@ import { Separator } from "@/registry/delta-ui/ui/separator"
 function getPromptUrl(baseURL: string, url: string) {
   const fullUrl = url || `${siteConfig.url}/docs`
   // Get the current origin to use the correct port
-  const currentOrigin = typeof window !== 'undefined' ? window.location.origin : ''
+  const currentOrigin =
+    typeof window !== "undefined" ? window.location.origin : ""
   // Extract the path from the provided URL and append .md
-  const urlPath = url.replace(/^https?:\/\/[^\/]+/, '') || '/docs'
+  const urlPath = url.replace(/^https?:\/\/[^\/]+/, "") || "/docs"
   const markdownUrl = `${currentOrigin}${urlPath}.md`
-  
+
   return `${baseURL}?q=${encodeURIComponent(
     `I'm looking at this Delta Components UI documentation and custom shadcn/ui registry: ${fullUrl}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it. You can review markdown document for this page at ${markdownUrl}
@@ -38,11 +39,12 @@ Help me understand how to use it. Be ready to explain concepts, give examples, o
 const menuItems = {
   markdown: (url: string) => {
     // Get the current origin to use the correct port
-    const currentOrigin = typeof window !== 'undefined' ? window.location.origin : ''
+    const currentOrigin =
+      typeof window !== "undefined" ? window.location.origin : ""
     // Extract the path from the provided URL and append .md
-    const urlPath = url.replace(/^https?:\/\/[^\/]+/, '') || '/docs'
+    const urlPath = url.replace(/^https?:\/\/[^\/]+/, "") || "/docs"
     const markdownUrl = `${currentOrigin}${urlPath}.md`
-    
+
     return (
       <a href={markdownUrl} target="_blank" rel="noopener noreferrer">
         <svg strokeLinejoin="round" viewBox="0 0 22 16">
@@ -105,21 +107,24 @@ const menuItems = {
     </a>
   ),
   gemini: (url: string) => (
-  <a
-    href={getPromptUrl("https://gemini.google.com", url)}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+    <a
+      href={getPromptUrl("https://gemini.google.com", url)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <path d="M49.04,24.001l-1.082-0.043h-0.001C36.134,23.492,26.508,13.866,26.042,2.043L25.999,0.96C25.978,0.424,25.537,0,25,0 
+        <path
+          d="M49.04,24.001l-1.082-0.043h-0.001C36.134,23.492,26.508,13.866,26.042,2.043L25.999,0.96C25.978,0.424,25.537,0,25,0 
         s-0.978,0.424-0.999,0.96l-0.043,1.083C23.492,13.866,13.866,23.492,2.042,23.958L0.96,24.001C0.424,24.022,0,24.463,0,25 
         c0,0.537,0.424,0.978,0.961,0.999l1.082,0.042c11.823,0.467,21.449,10.093,21.915,21.916l0.043,1.083
         C24.022,49.576,24.463,50,25,50s0.978-0.424,0.999-0.96l0.043-1.083c0.466-11.823,10.092-21.449,21.915-21.916l1.082-0.042
-        C49.576,25.978,50,25.537,50,25C50,24.463,49.576,24.022,49.04,24.001z" fill="currentColor"/>
+        C49.576,25.978,50,25.537,50,25C50,24.463,49.576,24.022,49.04,24.001z"
+          fill="currentColor"
+        />
       </svg>
       Open in Gemini
-  </a>
-),
+    </a>
+  ),
 }
 
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
@@ -142,7 +147,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           <Button
             variant="secondary"
             size="sm"
-            className="h-8 shadow-none transition-transform duration-150 ease-out active:scale-[0.97] will-change-transform md:h-7 md:text-[0.8rem]"
+            className="h-8 shadow-none transition-transform duration-150 ease-out will-change-transform active:scale-[0.97] md:h-7 md:text-[0.8rem]"
             onClick={() => copyToClipboard(page)}
           >
             <div className="relative mr-2">
@@ -150,8 +155,8 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
                 className={cn(
                   "absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out will-change-[transform,opacity,filter]",
                   isCopied
-                    ? "scale-100 opacity-100 blur-0"
-                    : "blur-xs scale-[0.25] opacity-0"
+                    ? "blur-0 scale-100 opacity-100"
+                    : "scale-[0.25] opacity-0 blur-xs"
                 )}
               >
                 <IconCheck />
@@ -160,8 +165,8 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
                 className={cn(
                   "transition-[transform,opacity,filter] duration-300 ease-in-out will-change-[transform,opacity,filter]",
                   isCopied
-                    ? "blur-xs scale-[0.25] opacity-0"
-                    : "scale-100 opacity-100 blur-0"
+                    ? "scale-[0.25] opacity-0 blur-xs"
+                    : "blur-0 scale-100 opacity-100"
                 )}
               >
                 <IconCopy />

@@ -1,9 +1,9 @@
 import * as React from "react"
-import { registryItemSchema } from "@/lib/schema"
 import { z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
+import { registryItemSchema } from "@/lib/schema"
 import { cn } from "@/lib/utils"
 import { ChartToolbar } from "@/components/chart-toolbar"
 

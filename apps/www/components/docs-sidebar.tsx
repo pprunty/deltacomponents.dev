@@ -4,9 +4,9 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import type { source } from "@/lib/source"
 import { siteConfig } from "@/lib/config"
 import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
+import type { source } from "@/lib/source"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
 import {
@@ -70,7 +70,7 @@ export function DocsSidebar({
                           ? pathname === href
                           : pathname.startsWith(href)
                       }
-                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 peer/menu-button ring-sidebar-ring active:bg-sidebar-accent active:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative flex h-[30px] w-fit items-center gap-2 overflow-visible rounded-md border border-transparent p-2 text-left text-[0.8rem] font-medium outline-hidden transition-[width,height,padding] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50"
                     >
                       <Link href={href} className="flex items-center gap-2">
                         {name}
@@ -84,7 +84,10 @@ export function DocsSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
         {tree.children.map((item) => {
-          if (EXCLUDED_SECTIONS.includes(item.$id ?? "") || EXCLUDED_SECTIONS.includes(String(item.name ?? ""))) {
+          if (
+            EXCLUDED_SECTIONS.includes(item.$id ?? "") ||
+            EXCLUDED_SECTIONS.includes(String(item.name ?? ""))
+          ) {
             return null
           }
 
@@ -98,8 +101,12 @@ export function DocsSidebar({
                   <SidebarMenu>
                     {item.children.map((item) => {
                       // Extract component name and get metadata
-                      const componentName = (item as { url?: string }).url?.split('/').pop()
-                      const componentMeta = componentName ? Index[componentName]?.meta : null
+                      const componentName = (item as { url?: string }).url
+                        ?.split("/")
+                        .pop()
+                      const componentMeta = componentName
+                        ? Index[componentName]?.meta
+                        : null
 
                       // Skip hidden components in production
                       if (shouldHideComponent((item as { url?: string }).url)) {
@@ -109,26 +116,31 @@ export function DocsSidebar({
                       if (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) &&
-                        (!(item as { hide?: boolean }).hide || process.env.VERCEL_ENV !== "production")
+                        (!(item as { hide?: boolean }).hide ||
+                          process.env.VERCEL_ENV !== "production")
                       ) {
                         // Check if component should be disabled in production (runtime evaluation)
-                        const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
-                        const isComponentDisabled = componentMeta?.badge === "coming soon" && isProduction
+                        const isProduction =
+                          process.env.VERCEL_ENV === "production" ||
+                          process.env.NODE_ENV === "production"
+                        const isComponentDisabled =
+                          componentMeta?.badge === "coming soon" && isProduction
 
                         if (isComponentDisabled) {
                           return (
                             <SidebarMenuItem key={item.url}>
                               <SidebarMenuButton
                                 disabled
-                                className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md text-muted-foreground cursor-not-allowed opacity-60 peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50"
+                                className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 text-muted-foreground peer/menu-button ring-sidebar-ring relative flex h-[30px] w-fit cursor-not-allowed items-center gap-2 overflow-visible rounded-md border border-transparent p-2 text-left text-[0.8rem] font-medium opacity-60 outline-hidden transition-[width,height,padding] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50"
                               >
                                 {item.name}
                                 {componentMeta?.badge && (
                                   <StatusBadge label={componentMeta.badge} />
                                 )}
-                                {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
-                                  <StatusBadge label="hidden" />
-                                )}
+                                {(item as { hide?: boolean }).hide &&
+                                  process.env.VERCEL_ENV !== "production" && (
+                                    <StatusBadge label="hidden" />
+                                  )}
                               </SidebarMenuButton>
                             </SidebarMenuItem>
                           )
@@ -139,7 +151,7 @@ export function DocsSidebar({
                             <SidebarMenuButton
                               asChild
                               isActive={item.url === pathname}
-                              className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                              className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 peer/menu-button ring-sidebar-ring active:bg-sidebar-accent active:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative flex h-[30px] w-fit items-center gap-2 overflow-visible rounded-md border border-transparent p-2 text-left text-[0.8rem] font-medium outline-hidden transition-[width,height,padding] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50"
                             >
                               <Link
                                 href={item.url}
@@ -149,11 +161,14 @@ export function DocsSidebar({
                                 {componentMeta?.badge ? (
                                   <StatusBadge label={componentMeta.badge} />
                                 ) : (
-                                  siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />
+                                  siteConfig.showComponentBetaBadges && (
+                                    <StatusBadge label="beta" />
+                                  )
                                 )}
-                                {(item as { hide?: boolean }).hide && process.env.VERCEL_ENV !== "production" && (
-                                  <StatusBadge label="hidden" />
-                                )}
+                                {(item as { hide?: boolean }).hide &&
+                                  process.env.VERCEL_ENV !== "production" && (
+                                    <StatusBadge label="hidden" />
+                                  )}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
@@ -179,14 +194,16 @@ export function DocsSidebar({
                     <SidebarMenuButton
                       asChild
                       isActive={item.href === pathname}
-                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 peer/menu-button ring-sidebar-ring active:bg-sidebar-accent active:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative flex h-[30px] w-fit items-center gap-2 overflow-visible rounded-md border border-transparent p-2 text-left text-[0.8rem] font-medium outline-hidden transition-[width,height,padding] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50"
                     >
                       <Link
                         href={item.href}
                         className="flex items-center gap-2"
                       >
                         {item.name}
-                        {siteConfig.showComponentBetaBadges && <StatusBadge label="beta" />}
+                        {siteConfig.showComponentBetaBadges && (
+                          <StatusBadge label="beta" />
+                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

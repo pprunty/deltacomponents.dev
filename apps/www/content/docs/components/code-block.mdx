@@ -50,7 +50,6 @@ Add the following to your global CSS:
 
 Pass a raw string to the `code` prop. You can optionally add a `filename` to render a file header with an automatically resolved icon.
 
-
 ```tsx
 import { CodeBlock } from "@/components/ui/code-block"
 
@@ -72,20 +71,19 @@ The component includes a regex parser (`parseMarkdownCodeBlock`) that extracts t
 
 ```tsx
 // The language "python" is automatically extracted from the string
-<CodeBlock 
+<CodeBlock
   code={`\`\`\`python
 def hello():
     print("world")
-\`\`\``} 
+\`\`\``}
 />
 ```
-
 
 ## Examples
 
 ### Markdown Integration
 
-If your code string contains a markdown code fence (e.g., ```typescript\n...\n```), the component can parse the language and content automatically.
+If your code string contains a markdown code fence (e.g., `typescript\n...\n`), the component can parse the language and content automatically.
 
 <ComponentPreview name="code-block-markdown-string-demo" />
 
@@ -94,21 +92,24 @@ If your code string contains a markdown code fence (e.g., ```typescript\n...\n``
 For documentation sites (like those using Contentlayer or Fumadocs), you can transform all native markdown `<pre>` blocks into the enhanced `CodeBlock` component.
 
 ```tsx title="mdx-components.tsx"
-import { CodeBlock } from "@/components/ui/code-block"
 import type { MDXComponents } from "mdx/types"
+
+import { CodeBlock } from "@/components/ui/code-block"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     pre: ({ children, ...props }) => {
       // Basic logic to extract code and language from markdown structure
-      const code = typeof children === "object" && "props" in children
-        ? children.props.children
-        : ""
-      
-      const className = typeof children === "object" && "props" in children
-        ? children.props.className || ""
-        : ""
+      const code =
+        typeof children === "object" && "props" in children
+          ? children.props.children
+          : ""
+
+      const className =
+        typeof children === "object" && "props" in children
+          ? children.props.className || ""
+          : ""
       const language = className.replace(/language-/, "")
 
       return (
@@ -147,7 +148,6 @@ Handle long code snippets with expand/collapse functionality:
 
 Cycle through Prism themes with background toggle to compare `bg-surface` vs. `useThemeBackground` behavior.
 
-
 ### NPX Commands
 
 Handle package manager commands in markdown:
@@ -162,23 +162,23 @@ Handle package manager commands in markdown:
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `code` | `string` | — | The code content. Can be a raw string or a markdown fenced string. |
-| `language` | `string` | `"typescript"` | The language for syntax highlighting. Ignored if markdown fence detects a language. |
-| `filename` | `string` | — | If provided, renders a header with a file icon. |
-| `showLineNumbers` | `boolean` | `true` | Toggles the line number gutter. |
-| `expandable` | `boolean` | `false` | Enables the collapse/expand functionality. |
-| `defaultExpanded` | `boolean` | `false` | The initial state of the expandable block. |
-| `collapsedHeight` | `string` | `"12rem"` | CSS height value for the collapsed state. |
-| `theme` | `PrismTheme` | `undefined` | A static Prism theme object. |
-| `adaptiveTheme` | `{ light, dark }` | — | Object containing themes for light and dark modes. |
-| `useThemeBackground` | `boolean` | `false` | If true, applies the theme's background color. If false, uses `var(--surface)`. |
-| `npm` | `string` | — | Command for npm tab. |
-| `yarn` | `string` | — | Command for yarn tab. |
-| `pnpm` | `string` | — | Command for pnpm tab. |
-| `bun` | `string` | — | Command for bun tab. |
-| `defaultPackageManager` | `"npm" \| "yarn" \| "pnpm" \| "bun"` | `"npm"` | The default active tab. |
+| Prop                    | Type                                 | Default        | Description                                                                         |
+| ----------------------- | ------------------------------------ | -------------- | ----------------------------------------------------------------------------------- |
+| `code`                  | `string`                             | —              | The code content. Can be a raw string or a markdown fenced string.                  |
+| `language`              | `string`                             | `"typescript"` | The language for syntax highlighting. Ignored if markdown fence detects a language. |
+| `filename`              | `string`                             | —              | If provided, renders a header with a file icon.                                     |
+| `showLineNumbers`       | `boolean`                            | `true`         | Toggles the line number gutter.                                                     |
+| `expandable`            | `boolean`                            | `false`        | Enables the collapse/expand functionality.                                          |
+| `defaultExpanded`       | `boolean`                            | `false`        | The initial state of the expandable block.                                          |
+| `collapsedHeight`       | `string`                             | `"12rem"`      | CSS height value for the collapsed state.                                           |
+| `theme`                 | `PrismTheme`                         | `undefined`    | A static Prism theme object.                                                        |
+| `adaptiveTheme`         | `{ light, dark }`                    | —              | Object containing themes for light and dark modes.                                  |
+| `useThemeBackground`    | `boolean`                            | `false`        | If true, applies the theme's background color. If false, uses `var(--surface)`.     |
+| `npm`                   | `string`                             | —              | Command for npm tab.                                                                |
+| `yarn`                  | `string`                             | —              | Command for yarn tab.                                                               |
+| `pnpm`                  | `string`                             | —              | Command for pnpm tab.                                                               |
+| `bun`                   | `string`                             | —              | Command for bun tab.                                                                |
+| `defaultPackageManager` | `"npm" \| "yarn" \| "pnpm" \| "bun"` | `"npm"`        | The default active tab.                                                             |
 
 ### Background Behavior
 

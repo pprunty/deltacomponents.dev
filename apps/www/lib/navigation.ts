@@ -32,10 +32,12 @@ export const BLOCKS_NAV_ITEMS = [
 export function shouldHideComponent(url?: string): boolean {
   if (!url) return false
 
-  const isProduction = process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production"
+  const isProduction =
+    process.env.VERCEL_ENV === "production" ||
+    process.env.NODE_ENV === "production"
 
   // Extract component name from URL
-  const componentName = url.split('/').pop()
+  const componentName = url.split("/").pop()
   const componentMeta = componentName ? Index[componentName]?.meta : null
 
   return componentMeta?.hide === true && isProduction

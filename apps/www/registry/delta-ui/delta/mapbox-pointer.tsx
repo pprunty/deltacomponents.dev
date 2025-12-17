@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type MapboxStyle =
   | "streets-v12"
@@ -11,6 +11,37 @@ type MapboxStyle =
   | "satellite-streets-v12"
   | "navigation-day-v1"
   | "navigation-night-v1"
+
+interface MapboxPointerLabelProps {
+  label: string
+  href?: string
+  className?: string
+}
+
+export function MapboxPointerLabel({
+  label,
+  href,
+  className = "",
+}: MapboxPointerLabelProps) {
+  const baseClasses =
+    "bg-background border-border text-foreground absolute right-4 bottom-4 z-10 flex items-center gap-1 rounded border px-3 py-1 text-xs font-normal"
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${baseClasses} cursor-pointer ${className}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {label}
+      </a>
+    )
+  }
+
+  return <div className={`${baseClasses} ${className}`}>{label}</div>
+}
 
 interface MapboxPointerProps {
   latitude: number
@@ -25,6 +56,7 @@ interface MapboxPointerProps {
   label?: string
   labelHref?: string
   clickForDirections?: boolean
+  children?: React.ReactNode
 }
 
 declare global {
@@ -46,9 +78,11 @@ export function MapboxPointer({
   label,
   labelHref,
   clickForDirections = false,
+  children,
 }: MapboxPointerProps) {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<any>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Get token from props or environment
   const token = mapboxToken || process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ""
@@ -109,6 +143,7 @@ export function MapboxPointer({
         })
 
         map.current.on("load", () => {
+          setIsLoading(false)
           setTimeout(() => {
             const logoElements = document.querySelectorAll(
               ".mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right"
@@ -187,28 +222,22 @@ export function MapboxPointer({
   return (
     <>
       <div
-        className={`bg-card relative overflow-hidden rounded-lg border ${
+        className={`bg-muted relative overflow-hidden rounded-xl border-none ${
           clickForDirections || googleMapsUrl ? "cursor-pointer" : ""
         } ${className}`}
         onClick={handleClick}
       >
-        <div ref={mapContainer} className="h-full w-full" />
-        {label &&
-          (labelHref ? (
-            <a
-              href={labelHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-background border-border text-foreground absolute right-4 bottom-4 z-10 flex cursor-pointer items-center gap-1 rounded border px-3 py-1 text-xs font-normal"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {label}
-            </a>
-          ) : (
-            <div className="bg-background border-border text-foreground absolute right-4 bottom-4 z-10 flex items-center gap-1 rounded border px-3 py-1 text-xs font-normal">
-              {label}
+        {isLoading && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center">
+            <div className="text-muted-foreground flex items-center gap-2">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+              <span className="text-sm">Loading map...</span>
             </div>
-          ))}
+          </div>
+        )}
+        <div ref={mapContainer} className="absolute inset-0 h-full w-full" />
+        {children ||
+          (label && <MapboxPointerLabel label={label} href={labelHref} />)}
       </div>
       <style jsx>{`
         @keyframes marker {

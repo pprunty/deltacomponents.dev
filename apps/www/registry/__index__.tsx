@@ -240,7 +240,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"badge":"coming soon","hide":true},
+    meta: undefined,
   },
   "x-card": {
     name: "x-card",
@@ -276,7 +276,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"badge":"coming soon","hide":true},
+    meta: undefined,
   },
   "product-card": {
     name: "product-card",

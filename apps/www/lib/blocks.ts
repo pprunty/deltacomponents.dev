@@ -1,7 +1,8 @@
 "use server"
 
-import { registryItemSchema } from "@/lib/schema"
 import { z } from "zod"
+
+import { registryItemSchema } from "@/lib/schema"
 
 export async function getAllBlockIds(
   types: z.infer<typeof registryItemSchema>["type"][] = [

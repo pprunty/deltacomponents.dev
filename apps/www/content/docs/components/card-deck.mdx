@@ -32,10 +32,7 @@ const cardData = [
 export default function GameBoard() {
   return (
     <div className="h-[400px] w-full max-w-sm">
-      <CardDeck 
-        images={cardData} 
-        autoplay={true} 
-      />
+      <CardDeck images={cardData} autoplay={true} />
     </div>
   )
 }
@@ -63,7 +60,12 @@ An example implementing Balatro-style assets, demonstrating how the stack behave
 
 ## Notes
 
-<Admonition type="warning" title="Image Aspect Ratios"> For a consistent "deck" feel, all images in the images array should share the same aspect ratio. Mixing portrait and landscape images in a single deck may result in inconsistent layout shifts during swiping. </Admonition>
+<Admonition type="warning" title="Image Aspect Ratios">
+  {" "}
+  For a consistent "deck" feel, all images in the images array should share the
+  same aspect ratio. Mixing portrait and landscape images in a single deck may
+  result in inconsistent layout shifts during swiping.{" "}
+</Admonition>
 
 ### Container Sizing
 
@@ -71,12 +73,12 @@ The `CardDeck` takes up the full width and height of its parent container. You m
 
 ## API Reference
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `images` | `{ src: string; alt: string }[]` | `-` | Required. Array of image objects to render. |
-| `autoplay` | `boolean` | `false` | Automatically cycles through cards at a set interval. |
-| `showPagination` | `boolean` | `false` | Displays pagination dots below the deck. |
-| `showNavigation` | `boolean` | `false` | Displays left/right navigation arrows. |
-| `spaceBetween` | `number` | `40` | The horizontal offset (in pixels) between cards in the stack. |
-| `enableInitialAnimation` | `boolean` | `true` | Triggers a “deal” animation when the component first mounts. |
-| `className` | `string` | `-` | Additional CSS classes for the wrapper. |
+| Prop                     | Type                             | Default | Description                                                   |
+| ------------------------ | -------------------------------- | ------- | ------------------------------------------------------------- |
+| `images`                 | `{ src: string; alt: string }[]` | `-`     | Required. Array of image objects to render.                   |
+| `autoplay`               | `boolean`                        | `false` | Automatically cycles through cards at a set interval.         |
+| `showPagination`         | `boolean`                        | `false` | Displays pagination dots below the deck.                      |
+| `showNavigation`         | `boolean`                        | `false` | Displays left/right navigation arrows.                        |
+| `spaceBetween`           | `number`                         | `40`    | The horizontal offset (in pixels) between cards in the stack. |
+| `enableInitialAnimation` | `boolean`                        | `true`  | Triggers a “deal” animation when the component first mounts.  |
+| `className`              | `string`                         | `-`     | Additional CSS classes for the wrapper.                       |
