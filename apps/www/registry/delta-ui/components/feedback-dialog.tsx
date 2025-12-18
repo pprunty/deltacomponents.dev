@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { z } from "zod"
 
+import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
+import { Index } from "@/registry/__index__"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Dialog,
@@ -12,11 +14,9 @@ import {
 } from "@/registry/delta-ui/ui/dialog"
 import {
   NativeSelect,
-  NativeSelectOption,
   NativeSelectOptGroup,
+  NativeSelectOption,
 } from "@/registry/delta-ui/ui/native-select"
-import { Index } from "@/registry/__index__"
-import { BLOCKS_NAV_ITEMS } from "@/lib/navigation"
 
 // Validation schema
 const feedbackSchema = z.object({
@@ -130,10 +130,10 @@ export function FeedbackDialog({
           <DialogTitle>Feedback</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col items-start gap-4 self-stretch">
-          <div className="flex flex-col gap-2 w-full">
+          <div className="flex w-full flex-col gap-2">
             <label
               htmlFor="component-select"
-              className="text-sm font-medium text-foreground"
+              className="text-foreground text-sm font-medium"
             >
               Component
             </label>
@@ -146,35 +146,37 @@ export function FeedbackDialog({
                   setErrors((prev) => ({ ...prev, component: undefined }))
                 }}
               >
-              <NativeSelectOption value="">Select a component</NativeSelectOption>
+                <NativeSelectOption value="">
+                  Select a component
+                </NativeSelectOption>
 
-              <NativeSelectOptGroup label="General">
-                {generalCategories.map((category) => (
-                  <NativeSelectOption key={category} value={category}>
-                    {category}
-                  </NativeSelectOption>
-                ))}
-              </NativeSelectOptGroup>
-
-              {uiComponents.length > 0 && (
-                <NativeSelectOptGroup label="UI Components">
-                  {uiComponents.map((name) => (
-                    <NativeSelectOption key={name} value={name}>
-                      {toTitleCase(name)}
+                <NativeSelectOptGroup label="General">
+                  {generalCategories.map((category) => (
+                    <NativeSelectOption key={category} value={category}>
+                      {category}
                     </NativeSelectOption>
                   ))}
                 </NativeSelectOptGroup>
-              )}
 
-              {blocks.length > 0 && (
-                <NativeSelectOptGroup label="Blocks">
-                  {blocks.map((name) => (
-                    <NativeSelectOption key={name} value={name}>
-                      {name}
-                    </NativeSelectOption>
-                  ))}
-                </NativeSelectOptGroup>
-              )}
+                {uiComponents.length > 0 && (
+                  <NativeSelectOptGroup label="UI Components">
+                    {uiComponents.map((name) => (
+                      <NativeSelectOption key={name} value={name}>
+                        {toTitleCase(name)}
+                      </NativeSelectOption>
+                    ))}
+                  </NativeSelectOptGroup>
+                )}
+
+                {blocks.length > 0 && (
+                  <NativeSelectOptGroup label="Blocks">
+                    {blocks.map((name) => (
+                      <NativeSelectOption key={name} value={name}>
+                        {name}
+                      </NativeSelectOption>
+                    ))}
+                  </NativeSelectOptGroup>
+                )}
               </NativeSelect>
             </div>
             {errors.component && (
@@ -184,8 +186,11 @@ export function FeedbackDialog({
             )}
           </div>
 
-          <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="feedback-textarea" className="text-sm font-medium text-foreground">
+          <div className="flex w-full flex-col gap-2">
+            <label
+              htmlFor="feedback-textarea"
+              className="text-foreground text-sm font-medium"
+            >
               How was your experience?
             </label>
             <textarea
@@ -196,7 +201,7 @@ export function FeedbackDialog({
                 setFeedback(e.target.value)
                 setErrors((prev) => ({ ...prev, feedback: undefined }))
               }}
-              className="w-full self-stretch h-[108px] py-3 px-2 rounded-md resize-none bg-muted text-foreground border border-border placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent text-sm"
+              className="bg-muted text-foreground border-border placeholder:text-muted-foreground focus:ring-ring h-[108px] w-full resize-none self-stretch rounded-md border px-2 py-3 text-sm focus:border-transparent focus:ring-2"
             />
             {errors.feedback && (
               <p className="text-sm text-red-600 dark:text-red-400">
@@ -210,15 +215,15 @@ export function FeedbackDialog({
             )}
           </div>
 
-          <div className="flex justify-between items-center self-stretch">
-            <div className="flex p-1 items-center gap-1 rounded-md border border-border bg-background">
+          <div className="flex items-center justify-between self-stretch">
+            <div className="border-border bg-background flex items-center gap-1 rounded-md border p-1">
               <button
                 type="button"
                 onClick={() => {
                   setSelectedMood("sad")
                   setErrors((prev) => ({ ...prev, mood: undefined }))
                 }}
-                className={`flex w-7 h-7 p-1 justify-center items-center rounded-[3px] transition-colors ${
+                className={`flex h-7 w-7 items-center justify-center rounded-[3px] p-1 transition-colors ${
                   selectedMood === "sad"
                     ? "bg-accent"
                     : "bg-background hover:bg-accent"
@@ -247,7 +252,7 @@ export function FeedbackDialog({
                   setSelectedMood("neutral")
                   setErrors((prev) => ({ ...prev, mood: undefined }))
                 }}
-                className={`flex w-7 h-7 p-1 justify-center items-center rounded-[3px] transition-colors ${
+                className={`flex h-7 w-7 items-center justify-center rounded-[3px] p-1 transition-colors ${
                   selectedMood === "neutral"
                     ? "bg-accent"
                     : "bg-background hover:bg-accent"
@@ -276,7 +281,7 @@ export function FeedbackDialog({
                   setSelectedMood("happy")
                   setErrors((prev) => ({ ...prev, mood: undefined }))
                 }}
-                className={`flex w-7 h-7 p-1 justify-center items-center rounded-[3px] transition-colors ${
+                className={`flex h-7 w-7 items-center justify-center rounded-[3px] p-1 transition-colors ${
                   selectedMood === "happy"
                     ? "bg-accent"
                     : "bg-background hover:bg-accent"

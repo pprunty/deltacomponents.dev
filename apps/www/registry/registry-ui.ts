@@ -163,6 +163,9 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    meta: {
+      hide: true,
+    },
   },
   {
     name: "product-card",

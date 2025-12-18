@@ -2,17 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "feedback-dialog-demo",
-    type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/feedback-dialog.json"],
-    files: [
-      {
-        path: "examples/feedback-dialog-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "product-card-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],

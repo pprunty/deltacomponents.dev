@@ -235,7 +235,10 @@
           "path": "registry/delta-ui/delta/marquee.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "meta": {
+        "hide": true
+      }
     },
     {
       "name": "product-card",

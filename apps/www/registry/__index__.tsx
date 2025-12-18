@@ -276,7 +276,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: undefined,
+    meta: {"hide":true},
   },
   "product-card": {
     name: "product-card",

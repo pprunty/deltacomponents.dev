@@ -627,18 +627,21 @@ export function CodeBlock({
   if (actualCode) {
     // Helper to check if className contains specific Tailwind class prefixes
     const hasClassPrefix = (prefix: string) => {
-      return className?.split(' ').some(c => c.startsWith(prefix)) ?? false
+      return className?.split(" ").some((c) => c.startsWith(prefix)) ?? false
     }
 
     // Extract text size classes from className to override textClassName
-    const hasTextSizeClass = hasClassPrefix('text-')
+    const hasTextSizeClass = hasClassPrefix("text-")
     const effectiveTextClassName = hasTextSizeClass
-      ? className?.split(' ').filter(c => c.startsWith('text-')).join(' ') || textClassName
+      ? className
+          ?.split(" ")
+          .filter((c) => c.startsWith("text-"))
+          .join(" ") || textClassName
       : textClassName
 
     // Apply default border/rounded classes only if not overridden in className
-    const hasBorderClass = hasClassPrefix('border')
-    const hasRoundedClass = hasClassPrefix('rounded')
+    const hasBorderClass = hasClassPrefix("border")
+    const hasRoundedClass = hasClassPrefix("rounded")
 
     const codeBlockContent = (
       <div
