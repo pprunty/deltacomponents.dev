@@ -1,6 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useRef, useCallback } from "react"
 
 import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
 import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
@@ -9,6 +10,8 @@ import { registryCategories } from "@/registry/registry-categories"
 export function BlocksNav() {
   const router = useRouter()
   const pathname = usePathname()
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null)
 
   // Determine current value based on pathname
   const currentValue =
@@ -27,25 +30,138 @@ export function BlocksNav() {
     (category) => !category.hidden
   )
 
+  // Find active tab index
+  const activeIndex = visibleCategories.findIndex(
+    (category) => category.slug === currentValue
+  )
+
+  // Function to scroll active tab to center
+  const scrollTabToCenter = useCallback(
+    (index: number) => {
+      const tabElement = tabRefs.current[index]
+      const scrollContainer = scrollContainerRef.current
+
+      if (tabElement && scrollContainer) {
+        const containerWidth = scrollContainer.offsetWidth
+        const tabWidth = tabElement.offsetWidth
+        const tabLeft = tabElement.offsetLeft
+
+        // Calculate position to center the tab
+        const scrollTarget = tabLeft - containerWidth / 2 + tabWidth / 2
+
+        // Smooth scroll to the target position
+        scrollContainer.scrollTo({
+          left: scrollTarget,
+          behavior: "smooth",
+        })
+      }
+    },
+    []
+  )
+
+  // Center the active tab when it changes
+  useEffect(() => {
+    if (activeIndex >= 0) {
+      const timer = setTimeout(() => {
+        scrollTabToCenter(activeIndex)
+      }, 100)
+
+      return () => clearTimeout(timer)
+    }
+  }, [activeIndex, scrollTabToCenter])
+
   return (
-    <div className="w-full">
-      <Tabs
-        value={currentValue}
-        onValueChange={handleValueChange}
-        variant="ghost"
-        size="lg"
-      >
-        <ScrollArea className="w-full">
-          <TabsList>
-            {visibleCategories.map((category) => (
-              <TabsTrigger key={category.slug} value={category.slug}>
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <ScrollBar orientation="horizontal" className="invisible" />
-        </ScrollArea>
-      </Tabs>
-    </div>
+    <>
+      {/* Mobile: Full-bleed with left padding to show overflow */}
+      <div className="md:hidden relative w-full">
+        <div
+          className="relative overflow-hidden pl-6"
+          style={{
+            width: "100vw",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <Tabs
+            value={currentValue}
+            onValueChange={handleValueChange}
+            variant="ghost"
+            size="lg"
+          >
+            <ScrollArea className="w-full">
+              <div
+                ref={(node) => {
+                  if (node) {
+                    // Get the actual scrollable viewport
+                    const viewport = node.querySelector(
+                      "[data-radix-scroll-area-viewport]"
+                    )
+                    if (viewport) {
+                      scrollContainerRef.current = viewport as HTMLDivElement
+                    }
+                  }
+                }}
+              >
+                <TabsList>
+                  {visibleCategories.map((category, index) => (
+                    <TabsTrigger
+                      key={category.slug}
+                      value={category.slug}
+                      ref={(el) => {
+                        tabRefs.current[index] = el
+                      }}
+                    >
+                      {category.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
+              <ScrollBar orientation="horizontal" className="invisible" />
+            </ScrollArea>
+          </Tabs>
+        </div>
+      </div>
+
+      {/* Desktop: Normal container */}
+      <div className="hidden md:block w-full">
+        <Tabs
+          value={currentValue}
+          onValueChange={handleValueChange}
+          variant="ghost"
+          size="lg"
+        >
+          <ScrollArea className="w-full">
+            <div
+              ref={(node) => {
+                if (node) {
+                  // Get the actual scrollable viewport
+                  const viewport = node.querySelector(
+                    "[data-radix-scroll-area-viewport]"
+                  )
+                  if (viewport) {
+                    scrollContainerRef.current = viewport as HTMLDivElement
+                  }
+                }
+              }}
+            >
+              <TabsList>
+                {visibleCategories.map((category, index) => (
+                  <TabsTrigger
+                    key={category.slug}
+                    value={category.slug}
+                    ref={(el) => {
+                      tabRefs.current[index] = el
+                    }}
+                  >
+                    {category.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+            <ScrollBar orientation="horizontal" className="invisible" />
+          </ScrollArea>
+        </Tabs>
+      </div>
+    </>
   )
 }

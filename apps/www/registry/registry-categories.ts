@@ -5,8 +5,8 @@ export const registryCategories = [
     hidden: false,
   },
   {
-    name: "Landing Page",
-    slug: "landing-page",
+    name: "Layout",
+    slug: "layout",
     hidden: false,
   },
   {
@@ -15,8 +15,8 @@ export const registryCategories = [
     hidden: false,
   },
   {
-    name: "Layout",
-    slug: "layout",
+    name: "Landing Page",
+    slug: "landing-page",
     hidden: false,
   },
 ]
