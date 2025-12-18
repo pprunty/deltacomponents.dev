@@ -42,7 +42,7 @@ export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn(
-        "font-heading mt-2 scroll-m-28 text-4xl font-bold tracking-tight sm:text-3xl",
+        "text-foreground font-satoshi mt-2 scroll-m-28 text-4xl font-bold tracking-tight sm:text-3xl",
         className
       )}
       {...props}
@@ -58,7 +58,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-8 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 sm:text-xl lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
+          "text-foreground font-satoshi mt-8 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 sm:text-xl lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
           className
         )}
         {...props}
@@ -68,7 +68,7 @@ export const mdxComponents = {
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight sm:text-lg *:[code]:text-xl",
+        "text-foreground font-satoshi mt-8 scroll-m-28 text-xl font-medium tracking-tight sm:text-lg *:[code]:text-xl",
         className
       )}
       {...props}
@@ -77,7 +77,7 @@ export const mdxComponents = {
   h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
     <h4
       className={cn(
-        "font-heading mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
+        "text-foreground font-satoshi mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
         className
       )}
       {...props}
@@ -86,7 +86,7 @@ export const mdxComponents = {
   h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
     <h5
       className={cn(
-        "mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
+        "text-foreground font-satoshi mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
         className
       )}
       {...props}
@@ -95,7 +95,7 @@ export const mdxComponents = {
   h6: ({ className, ...props }: React.ComponentProps<"h6">) => (
     <h6
       className={cn(
-        "mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
+        "text-foreground font-satoshi mt-8 scroll-m-28 text-lg font-medium tracking-tight sm:text-base",
         className
       )}
       {...props}
@@ -346,7 +346,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-medium *:[figure]:first:mt-0 [&>.steps]:mt-6",
+        "relative [&_h3.font-satoshi]:text-base [&_h3.font-satoshi]:font-medium *:[figure]:first:mt-0 [&>.steps]:mt-6",
         className
       )}
       {...props}

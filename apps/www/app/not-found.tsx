@@ -19,7 +19,7 @@ export default function NotFound() {
             priority
             quality={75}
           />
-          <h1 className="font-heading z-30 text-3xl md:text-6xl">
+          <h1 className="font-satoshi z-30 text-3xl md:text-6xl">
             page not found or moved
           </h1>
         </div>

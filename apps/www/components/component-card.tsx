@@ -11,6 +11,7 @@ interface ComponentCardProps {
     $id: string
     name: string
     url: string
+    description?: string
   }
 }
 
@@ -38,11 +39,20 @@ export function ComponentCard({ component }: ComponentCardProps) {
             preload="metadata"
             className="absolute inset-0 h-full w-full object-cover"
             onError={handleVideoError}
+            aria-label={
+              component.description
+                ? `${component.name}: ${component.description}`
+                : component.name
+            }
           />
         ) : (
           <Image
             src="/placeholder.svg"
-            alt={String(component.name) || "Component"}
+            alt={
+              component.description
+                ? `${component.name}: ${component.description}`
+                : String(component.name) || "Component"
+            }
             fill
             className="object-cover"
             unoptimized

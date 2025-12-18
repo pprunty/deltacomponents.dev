@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mapbox-grid-block",
+  "description": "Three-column grid showcasing global locations with Mapbox maps",
+  "registryDependencies": [
+    "mapbox-pointer",
+    "https://deltacomponents.dev/r/mapbox-pointer.json"
+  ],
+  "files": [
+    {
+      "path": "blocks/mapbox-grid-block/page.tsx",
+      "content": "\"use client\"\n\nimport { MapboxPointer } from \"@/components/ui/mapbox-pointer\"\n\nexport default function MapboxGridBlockPage() {\n  return (\n    <div className=\"bg-background flex min-h-screen w-full items-center justify-center\">\n      <div className=\"mx-auto w-full max-w-7xl p-6\">\n        <div className=\"space-y-8\">\n          <div className=\"space-y-4 text-center\">\n            <h1 className=\"text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl\">\n              Where we're cooking\n            </h1>\n            <p className=\"text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg\">\n              Building the future from three world-class innovation hubs\n            </p>\n          </div>\n\n          <div className=\"grid grid-cols-1 gap-6 md:grid-cols-3\">\n            {/* New York City */}\n            <div className=\"space-y-3\">\n              <MapboxPointer\n                latitude={40.7128}\n                longitude={-74.006}\n                zoom={11}\n                markerColor=\"#679BFF\"\n                className=\"aspect-square w-full\"\n                label=\"New York City\"\n                interactive={false}\n              />\n            </div>\n\n            {/* SF Bay Area */}\n            <div className=\"space-y-3\">\n              <MapboxPointer\n                latitude={37.7749}\n                longitude={-122.4194}\n                zoom={11}\n                markerColor=\"#679BFF\"\n                className=\"aspect-square w-full\"\n                label=\"San Francisco\"\n                interactive={false}\n              />\n            </div>\n\n            {/* London */}\n            <div className=\"space-y-3\">\n              <MapboxPointer\n                latitude={51.5074}\n                longitude={-0.1278}\n                zoom={11}\n                markerColor=\"#679BFF\"\n                className=\"aspect-square w-full\"\n                label=\"London\"\n                interactive={false}\n              />\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/mapbox-grid-block/page.tsx"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "800px",
+    "container": "w-full bg-background min-h-svh flex items-center justify-center",
+    "mobile": "component"
+  },
+  "categories": [
+    "landing-page"
+  ],
+  "type": "registry:block"
+}

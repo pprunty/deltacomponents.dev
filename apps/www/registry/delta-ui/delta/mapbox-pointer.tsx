@@ -65,6 +65,9 @@ declare global {
   }
 }
 
+// Global promise to track Mapbox script loading
+let mapboxLoadPromise: Promise<void> | null = null
+
 export function MapboxPointer({
   latitude,
   longitude,
@@ -102,29 +105,58 @@ export function MapboxPointer({
       map.current = null
     }
 
-    const loadMapbox = () => {
-      // Load CSS if not already loaded
-      if (!document.querySelector('link[href*="mapbox-gl.css"]')) {
-        const link = document.createElement("link")
-        link.href = "https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css"
-        link.rel = "stylesheet"
-        document.head.appendChild(link)
+    const loadMapbox = (): Promise<void> => {
+      // If already loading or loaded, return the existing promise
+      if (mapboxLoadPromise) {
+        return mapboxLoadPromise
       }
 
-      // Load JS if not already loaded
-      if (!document.querySelector('script[src*="mapbox-gl.js"]')) {
-        const script = document.createElement("script")
-        script.src = "https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"
-        script.async = true
-        script.onload = initializeMap
-        script.onerror = () => {
-          console.error("[v0] Failed to load Mapbox GL JS")
+      mapboxLoadPromise = new Promise<void>((resolve, reject) => {
+        // Load CSS if not already loaded
+        if (!document.querySelector('link[href*="mapbox-gl.css"]')) {
+          const link = document.createElement("link")
+          link.href = "https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css"
+          link.rel = "stylesheet"
+          document.head.appendChild(link)
         }
-        document.head.appendChild(script)
-      } else {
-        // Script already loaded, just initialize
-        initializeMap()
-      }
+
+        // Check if already loaded
+        if (window.mapboxgl) {
+          resolve()
+          return
+        }
+
+        // Load JS if not already loaded
+        if (!document.querySelector('script[src*="mapbox-gl.js"]')) {
+          const script = document.createElement("script")
+          script.src = "https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"
+          script.async = true
+          script.onload = () => resolve()
+          script.onerror = () => {
+            console.error("Failed to load Mapbox GL JS")
+            reject(new Error("Failed to load Mapbox GL JS"))
+          }
+          document.head.appendChild(script)
+        } else {
+          // Script tag exists, wait for window.mapboxgl to be available
+          const checkLoaded = setInterval(() => {
+            if (window.mapboxgl) {
+              clearInterval(checkLoaded)
+              resolve()
+            }
+          }, 50)
+
+          // Timeout after 10 seconds
+          setTimeout(() => {
+            clearInterval(checkLoaded)
+            if (!window.mapboxgl) {
+              reject(new Error("Mapbox GL JS load timeout"))
+            }
+          }, 10000)
+        }
+      })
+
+      return mapboxLoadPromise
     }
 
     const initializeMap = () => {
@@ -183,15 +215,19 @@ export function MapboxPointer({
             .addTo(map.current)
         })
       } catch (error) {
-        console.error("[v0] Error initializing map:", error)
+        console.error("Error initializing map:", error)
       }
     }
 
-    if (window.mapboxgl) {
-      initializeMap()
-    } else {
-      loadMapbox()
-    }
+    // Ensure Mapbox is loaded before initializing
+    loadMapbox()
+      .then(() => {
+        initializeMap()
+      })
+      .catch((error) => {
+        console.error("Failed to load Mapbox:", error)
+        setIsLoading(false)
+      })
 
     return () => {
       if (map.current) {

@@ -30,7 +30,13 @@ export function ComponentGrid() {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       {list.map((component) => (
-        <ComponentCard key={component.$id} component={component} />
+        <ComponentCard
+          key={component.$id}
+          component={{
+            ...component,
+            description: component.type === "page" ? component.data?.description : undefined,
+          }}
+        />
       ))}
     </div>
   )

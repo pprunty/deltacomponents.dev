@@ -52,6 +52,14 @@ export const limerickTheme: ThemeData = {
   previewImage: "/images/themes/limerick.png",
 }
 
+export const sligoTheme: ThemeData = {
+  name: "Sligo (Expresso)",
+  value: "sligo",
+  description:
+    "Inspired by honey expresso, a warm and punchy theme with rich caramel tones and energizing orange accents.",
+  previewImage: "/images/themes/sligo.png",
+}
+
 export const THEME_DATA = [
   dublinTheme,
   kerryTheme,
@@ -59,6 +67,7 @@ export const THEME_DATA = [
   kilkennyTheme,
   wexfordTheme,
   limerickTheme,
+  sligoTheme,
 ]
 
 export function getThemeData(value: string): ThemeData | undefined {

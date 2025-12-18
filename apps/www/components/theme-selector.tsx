@@ -50,6 +50,10 @@ const SPECIAL_THEMES = [
     name: "Limerick (Honey Gold)",
     value: "limerick",
   },
+  {
+    name: "Sligo (Expresso)",
+    value: "sligo",
+  },
 ]
 
 function ModeToggle() {

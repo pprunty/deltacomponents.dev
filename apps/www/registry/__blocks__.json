@@ -28,5 +28,10 @@
     "name": "bottom-mobile-nav",
     "description": "BottomMobileNav block",
     "categories": ["layout"]
+  },
+  {
+    "name": "mapbox-grid-block",
+    "description": "Three-column grid showcasing global locations with Mapbox maps",
+    "categories": ["landing-page"]
   }
 ]

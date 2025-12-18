@@ -318,8 +318,35 @@ function BlockViewerView() {
 
 function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   const { item } = useBlockViewer()
-  const [videoError, setVideoError] = React.useState(false)
   const [imageError, setImageError] = React.useState(false)
+  const [isDark, setIsDark] = React.useState(false)
+
+  // Detect theme on mount and changes
+  React.useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains("dark"))
+    }
+
+    checkDarkMode()
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          checkDarkMode()
+        }
+      })
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   // Format component name from kebab-case to Title Case
   const formatComponentName = (name: string) => {
@@ -334,6 +361,41 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   }
 
   const renderPreview = () => {
+    // Show theme-aware preview images
+    const imageSrc = imageError
+      ? "/placeholder.svg"
+      : `/og/${item.name}-${isDark ? "dark" : "light"}.png`
+
+    return (
+      <div
+        className="relative cursor-pointer overflow-hidden rounded-xl border"
+        onClick={handlePreviewClick}
+      >
+        <Image
+          src={imageSrc}
+          alt={`${item.name} preview`}
+          width={1200}
+          height={628}
+          className="h-full w-full object-cover"
+          onError={() => setImageError(true)}
+        />
+        <div className="absolute top-2 right-2">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="size-8 bg-black/20 text-white backdrop-blur-sm hover:bg-black/30"
+            onClick={(e) => {
+              e.stopPropagation()
+              handlePreviewClick()
+            }}
+          >
+            <Expand className="size-4" />
+          </Button>
+        </div>
+      </div>
+    )
+
+    /* VIDEO DEMO LOGIC - Commented out for future use
     // Always try to render video first, then images, then placeholder
     if (!videoError) {
       return (
@@ -366,35 +428,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
         </div>
       )
     }
-
-    // If video failed, show placeholder image directly to avoid 404s
-    return (
-      <div
-        className="relative cursor-pointer overflow-hidden rounded-xl border"
-        onClick={handlePreviewClick}
-      >
-        <Image
-          src="/placeholder.svg"
-          alt={`${item.name} preview`}
-          width={1440}
-          height={900}
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute top-2 right-2">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="size-8 bg-black/20 text-white backdrop-blur-sm hover:bg-black/30"
-            onClick={(e) => {
-              e.stopPropagation()
-              handlePreviewClick()
-            }}
-          >
-            <Expand className="size-4" />
-          </Button>
-        </div>
-      </div>
-    )
+    */
   }
 
   return (

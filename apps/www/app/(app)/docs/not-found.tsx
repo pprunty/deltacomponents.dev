@@ -19,7 +19,7 @@ export default function DocsNotFound() {
             priority
             quality={100}
           />
-          <h1 className="font-heading z-30 text-3xl md:text-6xl">
+          <h1 className="font-satoshi z-30 text-3xl md:text-6xl">
             docs page not found or moved
           </h1>
         </div>

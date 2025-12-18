@@ -108,7 +108,7 @@ const menuItems = {
   ),
   gemini: (url: string) => (
     <a
-      href={getPromptUrl("https://gemini.google.com", url)}
+href={getPromptUrl("https://gemini.google.com/app", url)}
       target="_blank"
       rel="noopener noreferrer"
     >

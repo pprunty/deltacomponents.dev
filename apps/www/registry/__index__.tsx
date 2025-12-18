@@ -432,6 +432,24 @@ export const Index: Record<string, any> = {
     categories: ["layout"],
     meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
+  "mapbox-grid-block": {
+    name: "mapbox-grid-block",
+    description: "Three-column grid showcasing global locations with Mapbox maps",
+    type: "registry:block",
+    registryDependencies: ["mapbox-pointer"],
+    files: [{
+      path: "registry/delta-ui/blocks/mapbox-grid-block/page.tsx",
+      type: "registry:page",
+      target: "app/mapbox-grid-block/page.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/mapbox-grid-block/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["landing-page"],
+    meta: {"iframeHeight":"800px","container":"w-full bg-background min-h-svh flex items-center justify-center","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

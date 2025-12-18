@@ -156,7 +156,9 @@ export default function CodeBlockThemeDemo() {
   const useThemeBackground = options.includes("theme-background")
   const useCustomStyling = options.includes("custom-styling")
 
-  const customClassName = useCustomStyling ? "text-lg border-none rounded-[1rem]" : ""
+  const customClassName = useCustomStyling
+    ? "text-lg border-none rounded-[1rem]"
+    : ""
 
   const toggleOption = (option: string) => {
     setOptions((prev) =>
@@ -169,28 +171,28 @@ export default function CodeBlockThemeDemo() {
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex flex-wrap items-center justify-center gap-6">
-        <label className="flex items-center gap-2.5 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2.5">
           <Switch
             checked={showLineNumbers}
             onCheckedChange={() => toggleOption("line-numbers")}
           />
           <span className="text-sm font-medium">Line Numbers</span>
         </label>
-        <label className="flex items-center gap-2.5 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2.5">
           <Switch
             checked={showHeader}
             onCheckedChange={() => toggleOption("header")}
           />
           <span className="text-sm font-medium">Header</span>
         </label>
-        <label className="flex items-center gap-2.5 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2.5">
           <Switch
             checked={useThemeBackground}
             onCheckedChange={() => toggleOption("theme-background")}
           />
           <span className="text-sm font-medium">Theme Background</span>
         </label>
-        <label className="flex items-center gap-2.5 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2.5">
           <Switch
             checked={useCustomStyling}
             onCheckedChange={() => toggleOption("custom-styling")}

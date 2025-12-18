@@ -160,4 +160,25 @@ export const blocks: Registry["items"] = [
     },
     categories: ["layout"],
   },
+  {
+    name: "mapbox-grid-block",
+    description:
+      "Three-column grid showcasing global locations with Mapbox maps",
+    type: "registry:block",
+    registryDependencies: ["mapbox-pointer"],
+    files: [
+      {
+        path: "blocks/mapbox-grid-block/page.tsx",
+        type: "registry:page",
+        target: "app/mapbox-grid-block/page.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container:
+        "w-full bg-background min-h-svh flex items-center justify-center",
+      mobile: "component",
+    },
+    categories: ["landing-page"],
+  },
 ]

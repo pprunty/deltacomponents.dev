@@ -41,7 +41,7 @@ export function ThemeCard({ theme }: ThemeCardProps) {
         />
       </CardContent>
       <CardHeader>
-        <CardTitle className="font-heading text-lg">{theme.name}</CardTitle>
+        <CardTitle className="font-satoshi tracking-tighter text-lg">{theme.name}</CardTitle>
         <CardDescription className="text-base">
           {theme.description}
         </CardDescription>

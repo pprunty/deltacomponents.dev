@@ -1,6 +1,6 @@
 ---
 title: QR Code
-description: A highly customizable QR code component with support for theme-aware coloring, custom dot styling, and logo embedding.
+description: A highly customizable QR code component with support for theme-aware coloring, custom dot styling, and logo embedding
 ---
 
 <ComponentPreview name="qrcode-demo" dependencies={["qr-code-styling"]} />
@@ -11,14 +11,18 @@ description: A highly customizable QR code component with support for theme-awar
 
 ## Usage
 
-The QR code is built using `qr-code-styling` and is pre-configured to automatically sync with your shadcn/ui theme variables.
+The QR code component uses `qr-code-styling` and automatically syncs with your shadcn/ui theme variables. It supports CSS variables for colors, making it theme-aware out of the box.
 
 ```tsx
 import QRCode from "@/components/ui/qrcode"
 
 export default function Example() {
   return (
-    <QRCode value="https://deltacomponents.dev" size={200} dotStyle="rounded" />
+    <QRCode
+      value="https://deltacomponents.dev"
+      size={200}
+      dotStyle="rounded"
+    />
   )
 }
 ```
@@ -27,7 +31,7 @@ export default function Example() {
 
 ### Styles Variations
 
-You can customize the dots, corner squares, and corner dots independently to match your brand identity.
+Customize the dots, corner squares, and corner dots independently to match your brand identity.
 
 <ComponentPreview
   name="qrcode-purple-dots-demo"
@@ -36,53 +40,75 @@ You can customize the dots, corner squares, and corner dots independently to mat
 
 ### With Logo
 
-Center a logo within the QR code. The component automatically clears the dots behind the logo to ensure scannability.
+Embed a logo in the center. The component automatically clears dots behind the logo to maintain scannability.
 
 <ComponentPreview name="qrcode-logo-demo" dependencies={["qr-code-styling"]} />
 
 ### Clickable Navigation
 
-Enable the `enableNavigation` prop to transform the QR code into a functional link, allowing desktop users to click the code to visit the destination.
+Enable navigation to make the QR code clickable, opening the URL in a new tab. Includes keyboard accessibility support.
 
 ```tsx
-<QRCode value="https://example.com" enableNavigation={true} size={200} />
+<QRCode
+  value="https://example.com"
+  enableNavigation={true}
+  size={200}
+/>
 ```
 
 ## Notes
 
 ### Theme Awareness
 
-Unlike static QR generators, this component listens for changes to the `dark` class on the `<html>` element.  
-It uses a helper to resolve CSS variables like `--color-background`, ensuring the QR code remains readable
-immediately after a theme toggle without requiring a page refresh.
+This component uses a `resolveColor` helper that accepts CSS variables (e.g., `--color-background`) or direct color values (e.g., `#ffffff`). When CSS variables are provided, the component resolves them by reading computed styles from `document.documentElement`.
 
-### Scannability & Error Correction
+A `MutationObserver` watches for changes to the `class` and `data-theme` attributes on the document element, automatically updating the QR code when your theme switches. This ensures the QR code remains readable immediately after a theme toggle without requiring a page refresh.
 
-When adding a center logo or using complex dot styles, scannability can decrease.
+### Error Correction Levels
 
-- Use `level="H"` (High) or `level="Q"` (Quartile) for error correction when a logo is present.
-- Ensure a high contrast ratio between `bgColor` and `fgColor`.
-- Avoid using `logoSize` greater than `0.3`, as it may obscure too much data for the reader to recover.
+The `level` prop controls how much data can be recovered if the QR code is damaged or obscured. Use higher levels when adding logos or when the code might be printed on textured surfaces:
 
-### SVG vs Canvas
+- `"L"` (Low): ~7% recovery - Use for simple QR codes without logos
+- `"M"` (Medium): ~15% recovery - Default for general use
+- `"Q"` (Quartile): ~25% recovery - Recommended when adding small logos
+- `"H"` (High): ~30% recovery - Use for large logos or when maximum durability is needed
 
-The component renders as an SVG by default. This ensures the QR code remains crisp at any scale and is
-easier to style via CSS if needed, though most styling should be handled via props for cross-browser
-consistency.
+When using `logoSize` above `0.2`, always use `level="Q"` or `level="H"` to maintain scannability.
+
+### Logo Best Practices
+
+When embedding logos:
+
+- Keep `logoSize` between `0.15` and `0.25` for optimal balance between branding and scannability
+- Use `logoMargin` to add padding around the logo (typically 4-8 pixels)
+- Increase error correction level to `"Q"` or `"H"` when logo is present
+- Test scannability with multiple QR code readers before deployment
+
+### Empty State
+
+When no `value` is provided, the component renders an animated placeholder with a dashed border. This is useful for loading states or form previews.
+
+### Keyboard Accessibility
+
+When `enableNavigation` is enabled, the QR code becomes a focusable button supporting both `Enter` and `Space` keys for activation. It also includes proper ARIA roles for screen reader support.
 
 ## API Reference
 
 ### Props
 
-| Prop               | Type                       | Default                | Description                                                                        |
-| ------------------ | -------------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| `value`            | `string`                   | —                      | Required. The data or URL to encode.                                               |
-| `size`             | `number`                   | `200`                  | The width and height in pixels.                                                    |
-| `bgColor`          | `string`                   | `"--color-background"` | Supports CSS variables or hex/hsl colors.                                          |
-| `fgColor`          | `string`                   | `"--color-foreground"` | Supports CSS variables or hex/hsl colors.                                          |
-| `level`            | `"L" \| "M" \| "Q" \| "H"` | `"M"`                  | Error correction level (higher allows more data recovery).                         |
-| `dotStyle`         | `enum`                     | `"square"`             | Options: `rounded`, `dots`, `classy`, `classy-rounded`, `square`, `extra-rounded`. |
-| `logoImage`        | `string`                   | —                      | URL or Data URI of the center logo.                                                |
-| `logoSize`         | `number`                   | `0.2`                  | Scale of logo relative to QR size (0 to 1).                                        |
-| `enableNavigation` | `boolean`                  | `false`                | If true, clicking the component opens the value in a new tab.                      |
-| `marginSize`       | `number`                   | `0`                    | Quiet zone margin around the code.                                                 |
+| Prop                 | Type                                                                             | Default                | Description                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------ |
+| `value`              | `string`                                                                         | —                      | Required. The data or URL to encode in the QR code.                                              |
+| `size`               | `number`                                                                         | `200`                  | Width and height of the QR code in pixels.                                                       |
+| `bgColor`            | `string`                                                                         | `"--color-background"` | Background color. Supports CSS variables (e.g., `--color-background`) or color values.           |
+| `fgColor`            | `string`                                                                         | `"--color-foreground"` | Foreground color for dots and corners. Supports CSS variables or color values.                   |
+| `level`              | `"L" \| "M" \| "Q" \| "H"`                                                       | `"M"`                  | Error correction level. Higher levels allow more data recovery but create denser QR codes.       |
+| `marginSize`         | `number`                                                                         | `0`                    | Quiet zone margin around the QR code in pixels.                                                  |
+| `className`          | `string`                                                                         | —                      | Additional CSS classes for the wrapper element.                                                  |
+| `enableNavigation`   | `boolean`                                                                        | `false`                | When true, makes the QR code clickable and opens the URL in a new tab. Includes keyboard support.|
+| `dotStyle`           | `"rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded"` | `"square"`             | Style of the QR code data dots.                                                                  |
+| `cornerSquareStyle`  | `"dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded"` | `"square"`             | Style of the three position detection corner squares.                                            |
+| `cornerDotStyle`     | `"dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded"` | `"square"`             | Style of the dots inside the corner squares.                                                     |
+| `logoImage`          | `string`                                                                         | —                      | URL or data URI of the logo to embed in the center of the QR code.                              |
+| `logoSize`           | `number`                                                                         | `0.2`                  | Size of the logo as a percentage of the QR code size (0 to 1). Keep between 0.15-0.25 for best results.|
+| `logoMargin`         | `number`                                                                         | `0`                    | Margin around the logo in pixels. Creates padding between the logo and QR code dots.             |

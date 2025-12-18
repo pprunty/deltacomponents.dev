@@ -55,7 +55,7 @@ export function ThemeCodeDialog({
           &#123; &#125; Code
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[calc(100vh-2rem)] w-full overflow-y-auto sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+      <DialogContent className="w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
         <DialogHeader className="text-left">
           <DialogTitle className="font-heading text-lg sm:text-lg sm:font-semibold">
             {themeName}
@@ -74,6 +74,7 @@ export function ThemeCodeDialog({
               pnpm={`pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               bun={`bunx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
               defaultPackageManager="npm"
+              className="max-h-32"
             />
           </div>
           <div>
@@ -90,7 +91,7 @@ export function ThemeCodeDialog({
             <CodeBlock
               code={isLoading ? "/* Loading theme CSS... */" : themeCSS}
               language="css"
-              className="min-w-0"
+              className="min-w-0 max-h-96"
               filename="globals.css"
               showLineNumbers={false}
             />
