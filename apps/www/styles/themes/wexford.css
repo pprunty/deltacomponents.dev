@@ -34,7 +34,7 @@ html[data-theme="wexford"] {
   --sidebar-ring: oklch(0.628 0.171 46.3);
   --surface: oklch(0.932 0.038 90.7);
   --surface-foreground: oklch(0.344 0.007 48.5);
-  --radius: 0.25rem;
+  --radius: 0.625rem;
   --shadow-x: 0;
   --shadow-y: 1px;
   --shadow-blur: 3px;
@@ -51,6 +51,8 @@ html[data-theme="wexford"] {
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.439 0.180 29.2);
+  --selection-foreground: oklch(0.973 0.014 93.0);
 }
 
 html[data-theme="wexford"].dark {
@@ -88,7 +90,7 @@ html[data-theme="wexford"].dark {
   --sidebar-ring: oklch(0.733 0.181 51.9);
   --surface: oklch(0.279 0.003 48.6);
   --surface-foreground: oklch(0.825 0.051 85.1);
-  --radius: 0.25rem;
+  --radius: 0.625rem;
   --shadow-x: 0;
   --shadow-y: 1px;
   --shadow-blur: 3px;
@@ -103,6 +105,8 @@ html[data-theme="wexford"].dark {
   --shadow-lg: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 4px 6px -1px oklch(0.000 0.000 0.0 / 0.100);
   --shadow-xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 8px 10px -1px oklch(0.000 0.000 0.0 / 0.100);
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
+  --selection: oklch(0.733 0.181 51.9);
+  --selection-foreground: oklch(0.270 0.003 48.6);
 }
 
 html[data-theme="wexford"] body,

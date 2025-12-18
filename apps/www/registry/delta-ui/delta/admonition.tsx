@@ -310,6 +310,8 @@ export function Admonition({
               className={cn(
                 config.textColor,
                 sizeConfig.content,
+                // Only apply margin-top if there's a title
+                !title && "!mt-0",
                 "[text-box-trim:trim-start] [&_*]:!text-inherit",
                 // CSS Line Clamp for collapsing behavior
                 expandable && isCollapsed ? "line-clamp-2" : ""

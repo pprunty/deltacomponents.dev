@@ -7,7 +7,7 @@ import { GitHubLink } from "@/components/github-link"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
-import { ModeSwitcher } from "@/components/mode-switcher"
+import { ThemeSwitcher } from "@/components/theme-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { StatusBadge } from "@/components/status-badge"
 import blocks from "@/registry/__blocks__.json"
@@ -50,7 +50,7 @@ export function SiteHeader() {
             <Separator orientation="vertical" className="3xl:flex hidden" />
             <SiteConfig className="3xl:flex hidden" />
             <Separator orientation="vertical" />
-            <ModeSwitcher />
+            <ThemeSwitcher />
           </div>
         </div>
       </div>

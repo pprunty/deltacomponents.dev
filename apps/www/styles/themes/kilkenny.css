@@ -54,6 +54,8 @@ html[data-theme="kilkenny"] {
   --surface-foreground: #2b2b2b;
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: #2b2b2b;
+  --selection-foreground: #f5f4f2;
 }
 
 html[data-theme="kilkenny"].dark {
@@ -109,6 +111,8 @@ html[data-theme="kilkenny"].dark {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --surface: #252422;
   --surface-foreground: #e8e6e3;
+  --selection: #e8e6e3;
+  --selection-foreground: #1a1918;
 }
 
 html[data-theme="kilkenny"] body,

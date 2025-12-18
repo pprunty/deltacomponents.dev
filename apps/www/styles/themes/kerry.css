@@ -48,6 +48,8 @@ html[data-theme="kerry"] {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.2731 0.0716 132.2683);
+  --selection-foreground: oklch(0.9900 0.0050 132.0000);
 }
 
 html[data-theme="kerry"] body,
@@ -105,5 +107,7 @@ html[data-theme="kerry"].dark {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.6500 0.1800 132.0000);
+  --selection-foreground: oklch(0.1100 0.0400 132.0000);
 }
 

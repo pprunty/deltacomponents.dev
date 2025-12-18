@@ -52,6 +52,8 @@ html[data-theme="limerick"] {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: #f29e0d;
+  --selection-foreground: #1f1a14;
 }
 
 html[data-theme="limerick"].dark {
@@ -103,4 +105,6 @@ html[data-theme="limerick"].dark {
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.35);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: #f4a825;
+  --selection-foreground: #201a13;
 }

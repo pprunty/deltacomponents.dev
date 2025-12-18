@@ -4,14 +4,17 @@ import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
+import { useSound } from "@/hooks/use-sound"
 import { Button } from "@/registry/delta-ui/ui/button"
 
-export function ModeSwitcher() {
+export function ThemeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme()
+  const playClick = useSound("/audio/click.wav")
 
   const toggleTheme = React.useCallback(() => {
+    playClick(0.5)
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }, [resolvedTheme, setTheme])
+  }, [resolvedTheme, setTheme, playClick])
 
   return (
     <Button

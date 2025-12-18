@@ -31,7 +31,7 @@ export function ThemesPageClient() {
           <a href="https://tweakcn.com" className="underline">
             tweakcn
           </a>
-          . Open Source. Free forever.
+          .
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">

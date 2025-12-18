@@ -54,6 +54,8 @@ html[data-theme="galway"] {
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.6171 0.1375 39.0427);
+  --selection-foreground: oklch(0.9818 0.0054 95.0986);
 }
 
 html[data-theme="galway"].dark {
@@ -109,4 +111,6 @@ html[data-theme="galway"].dark {
   --shadow-lg: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 4px 6px -1px oklch(0.000 0.000 0.0 / 0.100);
   --shadow-xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.100), 0 8px 10px -1px oklch(0.000 0.000 0.0 / 0.100);
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
+  --selection: oklch(0.6724 0.1308 38.7559);
+  --selection-foreground: oklch(0.2679 0.0036 106.6427);
 }

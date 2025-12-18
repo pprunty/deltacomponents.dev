@@ -46,6 +46,8 @@ html[data-theme="dublin"] {
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.250);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.5066 0.2501 271.8903);
+  --selection-foreground: oklch(0.9721 0.0158 110.5501);
 }
 
 html[data-theme="dublin"] body,
@@ -103,6 +105,8 @@ html[data-theme="dublin"].dark {
   --shadow-2xl: 0 1px 3px 0px oklch(0.000 0.000 0.0 / 0.350);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --selection: oklch(0.972 0.016 110.6);
+  --selection-foreground: oklch(0.256 0.151 268.3);
 }
 
 html[data-theme="dublin"] body,

@@ -322,14 +322,14 @@ export function Marquee({
       {showFade && isHorizontal && (
         <>
           <div
-            className="from-background pointer-events-none absolute top-0 left-0 z-10 h-full bg-gradient-to-r to-transparent select-none"
+            className="from-background to-transparent pointer-events-none absolute top-0 left-0 z-10 h-full bg-gradient-to-r select-none"
             style={{
               width: `${fadeIntensity}%`,
               transform: "translateZ(0)",
             }}
           />
           <div
-            className="from-background pointer-events-none absolute top-0 right-0 z-10 h-full bg-gradient-to-l to-transparent select-none"
+            className="from-background to-transparent pointer-events-none absolute top-0 right-0 z-10 h-full bg-gradient-to-l select-none"
             style={{
               width: `${fadeIntensity}%`,
               transform: "translateZ(0)",
@@ -340,14 +340,14 @@ export function Marquee({
       {showFade && !isHorizontal && (
         <>
           <div
-            className="from-background pointer-events-none absolute top-0 left-0 z-10 w-full bg-gradient-to-b to-transparent select-none"
+            className="from-background to-transparent pointer-events-none absolute top-0 left-0 z-10 w-full bg-gradient-to-b select-none"
             style={{
               height: `${fadeIntensity}%`,
               transform: "translateZ(0)",
             }}
           />
           <div
-            className="from-background pointer-events-none absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t to-transparent select-none"
+            className="from-background to-transparent pointer-events-none absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t select-none"
             style={{
               height: `${fadeIntensity}%`,
               transform: "translateZ(0)",
