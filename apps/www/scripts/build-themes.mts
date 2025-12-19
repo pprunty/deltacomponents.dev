@@ -20,26 +20,50 @@ const THEMES: ThemeConfig[] = THEME_DATA.map((theme) => ({
 }))
 
 /**
- * Transforms theme CSS from data-theme selectors to :root and .dark selectors
- * Example: html[data-theme="dublin"] -> :root
- *          html[data-theme="dublin"].dark -> .dark
+ * Parses CSS variables from theme file content
+ * Extracts variables from both light and dark mode selectors
  */
-function transformThemeCss(cssContent: string, themeName: string): string {
-  // Replace html[data-theme="themename"].dark with .dark
-  const darkSelector = `html[data-theme="${themeName}"].dark`
-  const darkReplaced = cssContent.replace(
-    new RegExp(`${darkSelector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'g'),
-    '.dark'
-  )
+function parseCssVars(cssContent: string, themeName: string): {
+  light: Record<string, string>
+  dark: Record<string, string>
+} {
+  const lightVars: Record<string, string> = {}
+  const darkVars: Record<string, string> = {}
 
-  // Replace html[data-theme="themename"] with :root (but not the .dark version)
-  const lightSelector = `html[data-theme="${themeName}"]`
-  const finalCss = darkReplaced.replace(
-    new RegExp(`${lightSelector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?!\\.dark)`, 'g'),
-    ':root'
+  // Match light mode variables: html[data-theme="name"] { --var: value; }
+  const lightRegex = new RegExp(
+    `html\\[data-theme="${themeName}"\\]\\s*\\{([^}]+)\\}`,
+    'gs'
   )
+  const lightMatch = lightRegex.exec(cssContent)
 
-  return finalCss
+  if (lightMatch) {
+    const varsBlock = lightMatch[1]
+    // Match CSS variables: --var-name: value;
+    const varRegex = /--([a-z0-9-]+):\s*([^;]+);/g
+    let match
+    while ((match = varRegex.exec(varsBlock)) !== null) {
+      lightVars[match[1]] = match[2].trim()
+    }
+  }
+
+  // Match dark mode variables: html[data-theme="name"].dark { --var: value; }
+  const darkRegex = new RegExp(
+    `html\\[data-theme="${themeName}"\\]\\.dark\\s*\\{([^}]+)\\}`,
+    'gs'
+  )
+  const darkMatch = darkRegex.exec(cssContent)
+
+  if (darkMatch) {
+    const varsBlock = darkMatch[1]
+    const varRegex = /--([a-z0-9-]+):\s*([^;]+);/g
+    let match
+    while ((match = varRegex.exec(varsBlock)) !== null) {
+      darkVars[match[1]] = match[2].trim()
+    }
+  }
+
+  return { light: lightVars, dark: darkVars }
 }
 
 async function buildThemeRegistry() {
@@ -55,11 +79,12 @@ async function buildThemeRegistry() {
       const cssPath = path.join(process.cwd(), theme.cssPath)
       const cssContent = await fs.readFile(cssPath, "utf-8")
 
-      // Transform CSS selectors from data-theme to :root/.dark
-      const transformedCss = transformThemeCss(cssContent, theme.slug)
+      // Parse CSS variables from the theme file
+      const cssVars = parseCssVars(cssContent, theme.slug)
 
-      // Create theme registry JSON
+      // Create theme registry JSON with cssVars
       const themeRegistry = {
+        "$schema": "https://ui.shadcn.com/schema/registry-item.json",
         name: theme.slug,
         type: "registry:theme",
         description: theme.description,
@@ -67,14 +92,7 @@ async function buildThemeRegistry() {
         meta: {
           displayName: theme.name
         },
-        files: [
-          {
-            path: `themes/${theme.slug}.css`,
-            content: transformedCss,
-            type: "registry:theme",
-            target: "app/globals.css"
-          }
-        ],
+        cssVars: cssVars,
         tailwind: {
           config: {
             theme: {
@@ -130,18 +148,20 @@ async function buildThemeRegistry() {
       // Write theme registry file
       const outputPath = path.join(themesDir, `${theme.slug}.json`)
       await fs.writeFile(outputPath, JSON.stringify(themeRegistry, null, 2), "utf-8")
-      
+
       generated.push(theme.slug)
-      console.log(`✓ Generated ${theme.slug}.json`)
-      
+      console.log(`✓ Generated ${theme.slug}.json with cssVars`)
+
     } catch (error) {
       console.error(`✗ Failed to generate ${theme.slug}.json:`, error)
     }
   }
-  
+
   if (generated.length) {
     console.log(`\n✓ Theme registry generated in public/r/themes/`)
-    console.log(`\nUsers can now install themes with:`)
+    console.log(`\n📦 Themes now use cssVars for intelligent merging`)
+    console.log(`✨ User CSS files will NOT be overwritten - only theme variables will be updated`)
+    console.log(`\nUsers can install themes with:`)
     for (const slug of generated) {
       console.log(`  pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${slug}.json`)
     }

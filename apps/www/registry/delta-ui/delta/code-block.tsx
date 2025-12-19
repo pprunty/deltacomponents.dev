@@ -766,7 +766,7 @@ export function CodeBlock({
                   <pre
                     className={cn(
                       highlightClassName,
-                      "min-w-0 py-3.5 outline-none",
+                      "relative min-w-0 py-3.5 outline-none",
                       "leading-6 font-normal",
                       effectiveTextClassName
                     )}
@@ -775,18 +775,21 @@ export function CodeBlock({
                       fontFamily: monoFontFamily,
                       backgroundColor: "transparent",
                       MozOsxFontSmoothing: "grayscale",
-                    }}
+                      "--line-number-color": selectedTheme.plain?.color
+                        ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                        : "rgba(128, 128, 128, 0.35)",
+                    } as React.CSSProperties}
                   >
                     {tokens.map((line, i) => (
                       <div
                         key={i}
                         {...getLineProps({ line })}
-                        className="flex min-h-[24px]"
+                        className="relative flex min-h-[24px]"
                       >
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              "sticky left-0 z-10 flex-shrink-0 w-16 pr-6 pl-6 text-right font-medium tabular-nums select-none",
                               effectiveTextClassName
                             )}
                             style={{
@@ -795,9 +798,6 @@ export function CodeBlock({
                                 ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
                                 : "rgba(128, 128, 128, 0.35)",
                               backgroundColor: "var(--code-block-bg)",
-                              width: "4rem",
-                              paddingLeft: "1.5rem",
-                              paddingRight: "1.5rem",
                             }}
                           >
                             {i + 1}
@@ -805,7 +805,7 @@ export function CodeBlock({
                         )}
                         <span
                           className={cn(
-                            "flex-1 pr-6 whitespace-pre",
+                            "flex-1 whitespace-pre pr-6",
                             !showLineNumbers && "pl-6"
                           )}
                         >
@@ -842,7 +842,7 @@ export function CodeBlock({
                   <pre
                     className={cn(
                       highlightClassName,
-                      "min-w-0 py-3.5 outline-none",
+                      "relative min-w-0 py-3.5 outline-none",
                       "leading-6 font-normal",
                       effectiveTextClassName
                     )}
@@ -851,18 +851,21 @@ export function CodeBlock({
                       fontFamily: monoFontFamily,
                       backgroundColor: "transparent",
                       MozOsxFontSmoothing: "grayscale",
-                    }}
+                      "--line-number-color": selectedTheme.plain?.color
+                        ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                        : "rgba(128, 128, 128, 0.35)",
+                    } as React.CSSProperties}
                   >
                     {tokens.map((line, i) => (
                       <div
                         key={i}
                         {...getLineProps({ line })}
-                        className="flex min-h-[24px]"
+                        className="relative flex min-h-[24px]"
                       >
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-none text-right font-medium tabular-nums select-none",
+                              "sticky left-0 z-10 flex-shrink-0 w-16 pr-6 pl-6 text-right font-medium tabular-nums select-none",
                               effectiveTextClassName
                             )}
                             style={{
@@ -871,9 +874,6 @@ export function CodeBlock({
                                 ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
                                 : "rgba(128, 128, 128, 0.35)",
                               backgroundColor: "var(--code-block-bg)",
-                              width: "4rem",
-                              paddingLeft: "1.5rem",
-                              paddingRight: "1.5rem",
                             }}
                           >
                             {i + 1}
@@ -881,7 +881,7 @@ export function CodeBlock({
                         )}
                         <span
                           className={cn(
-                            "flex-1 pr-6 whitespace-pre",
+                            "flex-1 whitespace-pre pr-6",
                             !showLineNumbers && "pl-6"
                           )}
                         >
