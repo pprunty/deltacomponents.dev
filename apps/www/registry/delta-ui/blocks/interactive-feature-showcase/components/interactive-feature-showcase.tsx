@@ -2,6 +2,12 @@
 
 import { ArrowUpRight } from "lucide-react"
 
+import {
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/delta-ui/ui/card"
+
 export interface VideoFeature {
   id: string
   title: string
@@ -43,26 +49,28 @@ function VideoFeatureCard({
   if (variant === "inner-card") {
     return (
       <div className="border-border bg-card flex flex-col overflow-hidden rounded-sm border p-6">
-        <div className="mb-6">
-          <h3 className="mb-4 text-lg leading-tight font-medium md:text-xl">
-            {feature.title}
-          </h3>
-          <p className="text-muted-foreground mb-6 overflow-hidden leading-relaxed md:h-20">
-            {feature.description}
-          </p>
+        <div className="mb-8 space-y-6">
+          <CardHeader className="p-0">
+            <CardTitle className="text-xl md:text-2xl">
+              {feature.title}
+            </CardTitle>
+            <CardDescription className="text-base leading-relaxed">
+              {feature.description}
+            </CardDescription>
+          </CardHeader>
           {feature.link && (
             <a
               href={feature.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground inline-flex items-center transition-opacity hover:opacity-70"
+              className="text-foreground group hover:text-foreground/80 inline-flex items-center gap-1.5 text-base font-medium transition-colors"
             >
               Learn more
-              <ArrowUpRight className="ml-1 h-4 w-4" />
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           )}
         </div>
-        <div className="aspect-square flex-1 overflow-hidden">
+        <div className="aspect-square flex-1 overflow-hidden rounded-sm">
           <iframe
             width="100%"
             height="100%"
@@ -80,8 +88,8 @@ function VideoFeatureCard({
   // Default variant
   const content = (
     <>
-      <div className="mb-6">
-        <div className="aspect-square overflow-hidden">
+      <div className="mb-8">
+        <div className="aspect-square overflow-hidden rounded-sm">
           <iframe
             width="100%"
             height="100%"
@@ -93,14 +101,12 @@ function VideoFeatureCard({
           />
         </div>
       </div>
-      <div className="max-w-md">
-        <h3 className="mb-4 text-lg leading-tight font-medium md:text-xl">
-          {feature.title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed">
+      <CardHeader className="max-w-md space-y-3 p-0">
+        <CardTitle className="text-xl md:text-2xl">{feature.title}</CardTitle>
+        <CardDescription className="text-base leading-relaxed">
           {feature.description}
-        </p>
-      </div>
+        </CardDescription>
+      </CardHeader>
     </>
   )
 
@@ -110,7 +116,7 @@ function VideoFeatureCard({
         href={feature.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block transition-opacity hover:opacity-70"
+        className="group block transition-all duration-200 hover:opacity-90"
       >
         {content}
       </a>

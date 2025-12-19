@@ -79,7 +79,7 @@ export function FeedbackDialog({
     "Other",
   ]
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Validate form
     const result = feedbackSchema.safeParse({
       component: selectedComponent,
@@ -104,15 +104,35 @@ export function FeedbackDialog({
 
     // Clear errors and submit
     setErrors({})
-    console.log({
-      feedback,
-      mood: selectedMood,
-      component: selectedComponent,
-    })
-    onOpenChange(false)
-    setFeedback("")
-    setSelectedMood(null)
-    setSelectedComponent(defaultComponent || "")
+
+    try {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          component: selectedComponent,
+          feedback: feedback,
+          mood: selectedMood,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to submit feedback")
+      }
+
+      // Success - close dialog and reset form
+      onOpenChange(false)
+      setFeedback("")
+      setSelectedMood(null)
+      setSelectedComponent(defaultComponent || "")
+    } catch (error) {
+      console.error("Error submitting feedback:", error)
+      setErrors({
+        feedback: "Failed to submit feedback. Please try again.",
+      })
+    }
   }
 
   const handleCancel = () => {

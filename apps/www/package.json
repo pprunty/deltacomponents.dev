@@ -60,6 +60,7 @@
     "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tanstack/react-table": "^8.9.1",
+    "@upstash/redis": "^1.35.8",
     "@vercel/analytics": "^1.4.1",
     "@xyflow/react": "^12.8.6",
     "ai": "^5.0.59",

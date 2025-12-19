@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useTheme } from "next-themes"
 
 type MapboxStyle =
   | "streets-v12"
@@ -53,6 +54,7 @@ interface MapboxPointerProps {
   className?: string
   interactive?: boolean
   style?: MapboxStyle
+  themeAware?: boolean
   label?: string
   labelHref?: string
   clickForDirections?: boolean
@@ -78,6 +80,7 @@ export function MapboxPointer({
   className = "",
   interactive = true,
   style = "streets-v12",
+  themeAware = false,
   label,
   labelHref,
   clickForDirections = false,
@@ -86,9 +89,17 @@ export function MapboxPointer({
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<any>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const { theme, resolvedTheme } = useTheme()
 
   // Get token from props or environment
   const token = mapboxToken || process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ""
+
+  // Determine the actual map style based on theme awareness
+  const actualStyle: MapboxStyle = themeAware
+    ? resolvedTheme === "dark"
+      ? "dark-v11"
+      : "streets-v12"
+    : style
 
   useEffect(() => {
     // Check if token is available
@@ -167,7 +178,7 @@ export function MapboxPointer({
 
         map.current = new window.mapboxgl.Map({
           container: mapContainer.current,
-          style: `mapbox://styles/mapbox/${style}`,
+          style: `mapbox://styles/mapbox/${actualStyle}`,
           center: [longitude, latitude],
           zoom: zoom,
           interactive: interactive,
@@ -235,7 +246,7 @@ export function MapboxPointer({
         map.current = null
       }
     }
-  }, [latitude, longitude, zoom, token, markerColor, interactive, style])
+  }, [latitude, longitude, zoom, token, markerColor, interactive, actualStyle])
 
   const handleClick = () => {
     if (clickForDirections) {

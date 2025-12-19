@@ -702,6 +702,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "mapbox-pointer-theme-demo": {
+    name: "mapbox-pointer-theme-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [{
+      path: "registry/delta-ui/examples/mapbox-pointer-theme-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/mapbox-pointer-theme-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "chat-demo": {
     name: "chat-demo",
     description: "",
@@ -1326,6 +1344,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/tabs-entrance-animation-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "tabs-in-scroll-area-demo": {
+    name: "tabs-in-scroll-area-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["tabs","scroll-area"],
+    files: [{
+      path: "registry/delta-ui/examples/tabs-in-scroll-area-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/tabs-in-scroll-area-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

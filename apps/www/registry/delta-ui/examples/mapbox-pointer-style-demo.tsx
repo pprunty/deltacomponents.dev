@@ -7,7 +7,7 @@ import {
 
 export default function MapboxPointerStyleDemo() {
   // Dublin, Ireland coordinates
-  const latitude = 53.3498
+  const latitude = 53.3598
   const longitude = -6.2603
 
   return (
@@ -15,7 +15,7 @@ export default function MapboxPointerStyleDemo() {
       <MapboxPointer
         latitude={latitude}
         longitude={longitude}
-        zoom={12.8}
+        zoom={10.7}
         style="navigation-night-v1"
         interactive={true}
         className="h-96"

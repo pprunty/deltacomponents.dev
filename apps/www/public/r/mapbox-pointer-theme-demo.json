@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mapbox-pointer-theme-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/mapbox-pointer.json"
+  ],
+  "files": [
+    {
+      "path": "examples/mapbox-pointer-theme-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  MapboxPointer,\n  MapboxPointerLabel,\n} from \"@/components/ui/mapbox-pointer\"\n\nexport default function MapboxPointerThemeDemo() {\n  return (\n    <div className=\"mx-auto w-full max-w-lg space-y-4\">\n      <MapboxPointer\n        latitude={40.7128}\n        longitude={-74.006}\n        zoom={12}\n        themeAware={true}\n        interactive={true}\n        className=\"h-96 sm:h-[32rem]\"\n      >\n        <MapboxPointerLabel\n          label=\"New York City\"\n          href=\"https://en.wikipedia.org/wiki/New_York_City\"\n        />\n      </MapboxPointer>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

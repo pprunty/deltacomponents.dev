@@ -147,6 +147,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "mapbox-pointer-theme-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    files: [
+      {
+        path: "examples/mapbox-pointer-theme-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "chat-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
@@ -534,6 +545,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/tabs-entrance-animation-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tabs-in-scroll-area-demo",
+    type: "registry:example",
+    registryDependencies: ["tabs", "scroll-area"],
+    files: [
+      {
+        path: "examples/tabs-in-scroll-area-demo.tsx",
         type: "registry:example",
       },
     ],

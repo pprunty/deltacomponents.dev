@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "examples/admonition-actions-demo.tsx",
-      "content": "\"use client\"\n\nimport { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionActionsDemo() {\n  return (\n    <Admonition\n      type=\"warning\"\n      title=\"Update Required\"\n      actions={[\n        {\n          label: \"Update Now\",\n          variant: \"primary\",\n          onClick: () => alert(\"Starting update...\"),\n        },\n        {\n          label: \"Learn More\",\n          variant: \"secondary\",\n          onClick: () => alert(\"Opening documentation...\"),\n        },\n      ]}\n    >\n      A critical security update is available. We recommend updating as soon as\n      possible.\n    </Admonition>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { toast } from \"sonner\"\n\nimport { Admonition } from \"@/components/ui/admonition\"\n\nexport default function AdmonitionActionsDemo() {\n  return (\n    <Admonition\n      type=\"warning\"\n      title=\"Update Required\"\n      actions={[\n        {\n          label: \"Update Now\",\n          variant: \"primary\",\n          onClick: () =>\n            toast.success(\"Update started\", {\n              description: \"Your application is being updated...\",\n            }),\n        },\n        {\n          label: \"Learn More\",\n          variant: \"secondary\",\n          onClick: () =>\n            toast.info(\"Documentation\", {\n              description: \"Opening security update documentation...\",\n            }),\n        },\n      ]}\n    >\n      A critical security update is available. We recommend updating as soon as\n      possible.\n    </Admonition>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

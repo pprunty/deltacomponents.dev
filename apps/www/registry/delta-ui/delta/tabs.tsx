@@ -140,13 +140,13 @@ function TabsList({ children, className }: TabsListProps) {
     size === "small" ? "sm" : size === "large" ? "lg" : size
 
   const listHeightClasses = {
-    sm: variant === "default" ? "h-9" : "h-9",
+    sm: variant === "default" ? "h-8" : "h-8",
     default: variant === "default" ? "h-10" : "h-10",
     lg: variant === "default" ? "h-12" : "h-12",
   }
 
   const hoverHeightClasses = {
-    sm: "h-7",
+    sm: "h-6",
     default: "h-7",
     lg: "h-9",
   }
@@ -164,7 +164,7 @@ function TabsList({ children, className }: TabsListProps) {
   }
 
   const defaultIndicatorHeightClasses = {
-    sm: "h-7",
+    sm: "h-6",
     default: "h-8",
     lg: "h-10",
   }
@@ -301,126 +301,131 @@ interface TabsTriggerProps {
   icon?: React.ReactNode
 }
 
-function TabsTrigger({
-  value,
-  children,
-  className,
-  disabled = false,
-  icon,
-}: TabsTriggerProps) {
-  const {
-    activeTab,
-    setActiveTab,
-    variant,
-    size,
-    concentric,
-    setHoveredIndex,
-    setActiveIndex,
-    tabRefs,
-  } = useTabs()
-  const isActive = activeTab === value
-  const indexRef = React.useRef<number>(-1)
+const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
+  ({ value, children, className, disabled = false, icon }, forwardedRef) => {
+    const {
+      activeTab,
+      setActiveTab,
+      variant,
+      size,
+      concentric,
+      setHoveredIndex,
+      setActiveIndex,
+      tabRefs,
+    } = useTabs()
+    const isActive = activeTab === value
+    const indexRef = React.useRef<number>(-1)
 
-  const normalizedSize =
-    size === "small" ? "sm" : size === "large" ? "lg" : size
+    const normalizedSize =
+      size === "small" ? "sm" : size === "large" ? "lg" : size
 
-  const defaultSizeClasses = {
-    sm: "h-7 px-2 py-1 text-sm",
-    default: "h-8 px-2.5 py-1.5 text-sm",
-    lg: "h-10 px-3 py-2 text-base",
-  }
-
-  const underlineSizeClasses = {
-    sm: "h-9 px-2 pb-2 pt-1.5 text-sm",
-    default: "h-10 px-3 pb-3 pt-2 text-sm",
-    lg: "h-12 px-4 pb-4 pt-2.5 text-base",
-  }
-
-  const concentricInnerRadii = {
-    sm: "4px",
-    default: "6px",
-    lg: "8px",
-  }
-
-  const setTabRef = React.useCallback(
-    (el: HTMLButtonElement | null) => {
-      if (el) {
-        const currentIndex = tabRefs.current.indexOf(el)
-        if (currentIndex === -1) {
-          indexRef.current = tabRefs.current.length
-          tabRefs.current.push(el)
-        } else {
-          indexRef.current = currentIndex
-        }
-      }
-    },
-    [tabRefs]
-  )
-
-  React.useEffect(() => {
-    if (isActive && indexRef.current >= 0) {
-      setActiveIndex(indexRef.current)
+    const defaultSizeClasses = {
+      sm: "h-7 px-2.5 py-1 text-sm",
+      default: "h-8 px-2.5 py-1.5 text-sm",
+      lg: "h-10 px-3 py-2 text-base",
     }
-  }, [isActive, setActiveIndex])
 
-  return (
-    <button
-      ref={setTabRef}
-      type="button"
-      role="tab"
-      aria-selected={isActive}
-      aria-disabled={disabled}
-      disabled={disabled}
-      data-state={isActive ? "active" : "inactive"}
-      data-slot="animated-tabs-trigger"
-      onClick={() => {
-        if (!disabled) {
-          setActiveTab(value)
-          setActiveIndex(indexRef.current)
+    const underlineSizeClasses = {
+      sm: "h-9 px-2.5 pb-2.5 pt-2 text-sm",
+      default: "h-10 px-3 pb-3 pt-2 text-sm",
+      lg: "h-12 px-4 pb-4 pt-2.5 text-base",
+    }
+
+    const concentricInnerRadii = {
+      sm: "4px",
+      default: "6px",
+      lg: "8px",
+    }
+
+    const setTabRef = React.useCallback(
+      (el: HTMLButtonElement | null) => {
+        if (el) {
+          const currentIndex = tabRefs.current.indexOf(el)
+          if (currentIndex === -1) {
+            indexRef.current = tabRefs.current.length
+            tabRefs.current.push(el)
+          } else {
+            indexRef.current = currentIndex
+          }
         }
-      }}
-      onMouseEnter={() =>
-        variant === "underline" && setHoveredIndex(indexRef.current)
+
+        if (typeof forwardedRef === "function") {
+          forwardedRef(el)
+        } else if (forwardedRef) {
+          forwardedRef.current = el
+        }
+      },
+      [tabRefs, forwardedRef]
+    )
+
+    React.useEffect(() => {
+      if (isActive && indexRef.current >= 0) {
+        setActiveIndex(indexRef.current)
       }
-      onMouseLeave={() => variant === "underline" && setHoveredIndex(null)}
-      className={cn(
-        "ring-offset-background relative z-10 inline-flex items-center justify-center gap-1.5 font-medium whitespace-nowrap",
-        "transition-colors duration-200",
-        "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
-        "disabled:pointer-events-none disabled:opacity-50",
-        (variant === "default" || variant === "ghost") && [
-          !concentric && "rounded-md",
-          defaultSizeClasses[normalizedSize],
-          isActive
-            ? "text-foreground"
-            : "text-muted-foreground hover:text-foreground/80",
-        ],
-        variant === "underline" && [
-          "rounded-md",
-          underlineSizeClasses[normalizedSize],
-          isActive
-            ? "text-foreground"
-            : "text-muted-foreground hover:text-foreground",
-        ],
-        className
-      )}
-      style={
-        (variant === "default" || variant === "ghost") && concentric
-          ? { borderRadius: concentricInnerRadii[normalizedSize] }
-          : undefined
-      }
-    >
-      <span className="relative z-10 flex items-center gap-1.5">
-        {icon && (
-          <span className="shrink-0 [&_svg]:pointer-events-none [&_svg]:size-4">
-            {icon}
-          </span>
+    }, [isActive, setActiveIndex])
+
+    return (
+      <button
+        ref={setTabRef}
+        type="button"
+        role="tab"
+        aria-selected={isActive}
+        aria-disabled={disabled}
+        disabled={disabled}
+        data-state={isActive ? "active" : "inactive"}
+        data-slot="animated-tabs-trigger"
+        data-value={value}
+        onClick={() => {
+          if (!disabled) {
+            setActiveTab(value)
+            setActiveIndex(indexRef.current)
+          }
+        }}
+        onMouseEnter={() =>
+          variant === "underline" && setHoveredIndex(indexRef.current)
+        }
+        onMouseLeave={() => variant === "underline" && setHoveredIndex(null)}
+        className={cn(
+          "ring-offset-background relative z-10 inline-flex items-center justify-center gap-1.5 font-medium whitespace-nowrap",
+          "transition-colors duration-200",
+          "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+          "disabled:pointer-events-none disabled:opacity-50",
+          (variant === "default" || variant === "ghost") && [
+            !concentric && "rounded-md",
+            defaultSizeClasses[normalizedSize],
+            isActive
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground/80",
+          ],
+          variant === "underline" && [
+            "rounded-md",
+            underlineSizeClasses[normalizedSize],
+            isActive
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground",
+          ],
+          className
         )}
-        {children}
-      </span>
-    </button>
-  )
-}
+        style={
+          (variant === "default" || variant === "ghost") && concentric
+            ? { borderRadius: concentricInnerRadii[normalizedSize] }
+            : undefined
+        }
+      >
+        <span className="relative z-10 flex items-center gap-1.5">
+          {icon && (
+            <span className="shrink-0 [&_svg]:pointer-events-none [&_svg]:size-4">
+              {icon}
+            </span>
+          )}
+          {children}
+        </span>
+      </button>
+    )
+  }
+)
+
+TabsTrigger.displayName = "TabsTrigger"
 
 interface TabsContentProps {
   value: string

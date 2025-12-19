@@ -19,19 +19,45 @@ const THEMES: ThemeConfig[] = THEME_DATA.map((theme) => ({
   cssPath: path.join("styles", "themes", `${theme.value}.css`)
 }))
 
+/**
+ * Transforms theme CSS from data-theme selectors to :root and .dark selectors
+ * Example: html[data-theme="dublin"] -> :root
+ *          html[data-theme="dublin"].dark -> .dark
+ */
+function transformThemeCss(cssContent: string, themeName: string): string {
+  // Replace html[data-theme="themename"].dark with .dark
+  const darkSelector = `html[data-theme="${themeName}"].dark`
+  const darkReplaced = cssContent.replace(
+    new RegExp(`${darkSelector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'g'),
+    '.dark'
+  )
+
+  // Replace html[data-theme="themename"] with :root (but not the .dark version)
+  const lightSelector = `html[data-theme="${themeName}"]`
+  const finalCss = darkReplaced.replace(
+    new RegExp(`${lightSelector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?!\\.dark)`, 'g'),
+    ':root'
+  )
+
+  return finalCss
+}
+
 async function buildThemeRegistry() {
   const themesDir = path.join(process.cwd(), "public/r/themes")
   const generated: string[] = []
-  
+
   // Ensure themes directory exists
   await fs.mkdir(themesDir, { recursive: true })
-  
+
   for (const theme of THEMES) {
     try {
       // Read CSS file
       const cssPath = path.join(process.cwd(), theme.cssPath)
       const cssContent = await fs.readFile(cssPath, "utf-8")
-      
+
+      // Transform CSS selectors from data-theme to :root/.dark
+      const transformedCss = transformThemeCss(cssContent, theme.slug)
+
       // Create theme registry JSON
       const themeRegistry = {
         name: theme.slug,
@@ -44,8 +70,9 @@ async function buildThemeRegistry() {
         files: [
           {
             path: `themes/${theme.slug}.css`,
-            content: cssContent,
-            type: "registry:theme"
+            content: transformedCss,
+            type: "registry:theme",
+            target: "app/globals.css"
           }
         ],
         tailwind: {

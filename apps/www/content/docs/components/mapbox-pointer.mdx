@@ -43,10 +43,21 @@ export default function Example() {
 - **Click Navigation**: Optional click-to-directions functionality
 - **Customizable Labels**: Add labels with optional links
 - **Interactive Control**: Enable/disable user interactions (pan, zoom, rotate)
+- **Theme Awareness**: Automatically adapts map style to match light/dark theme
 - **No Attribution**: Mapbox branding automatically hidden
 - **Flexible Styling**: Customize appearance through className prop
 
 ## Examples
+
+### Theme-Aware Map
+
+Enable automatic theme adaptation with the `themeAware` prop. The map will automatically switch between light and dark styles based on your current theme. **Try toggling your theme** to see the map style change!
+
+<ComponentPreview name="mapbox-pointer-theme-demo" height="600px"/>
+
+When `themeAware` is enabled:
+- **Light mode** → Uses `streets-v12` style (default street map)
+- **Dark mode** → Uses `dark-v11` style
 
 ### Dark Style Demo
 
@@ -69,6 +80,21 @@ You can easily customize the style by changing the `style` prop. Try different v
   longitude={-74.006}
   mapboxToken={token}
   className="h-64 w-full"
+/>
+```
+
+### With Theme Awareness
+
+```tsx
+<MapboxPointer
+  latitude={40.7128}
+  longitude={-74.006}
+  mapboxToken={token}
+  themeAware={true}
+  interactive={true}
+  label="New York City"
+  labelHref="https://en.wikipedia.org/wiki/New_York_City"
+  className="h-96"
 />
 ```
 
@@ -223,6 +249,7 @@ The component has no default shadow, allowing full customization:
 | className          | string      | ""            | Additional CSS classes for styling                           |
 | interactive        | boolean     | true          | Whether the map allows user interactions (pan, zoom, rotate) |
 | style              | MapboxStyle | "streets-v12" | Mapbox map style theme                                       |
+| themeAware         | boolean     | false         | Automatically adapt map style to match current theme (light/dark) |
 | mapboxToken        | string      | -             | Mapbox access token (falls back to NEXT_PUBLIC_MAPBOX_TOKEN) |
 | label              | string      | -             | Text label to display on the map                             |
 | labelHref          | string      | -             | URL to link the label to                                     |

@@ -88,7 +88,7 @@ export function BlocksNav() {
             variant="ghost"
             size="lg"
           >
-            <ScrollArea className="w-full">
+            <ScrollArea className="w-full [&>div]:[-ms-overflow-style:none] [&>div]:[scrollbar-width:none] [&>div::-webkit-scrollbar]:hidden">
               <div
                 ref={(node) => {
                   if (node) {
@@ -116,7 +116,7 @@ export function BlocksNav() {
                   ))}
                 </TabsList>
               </div>
-              <ScrollBar orientation="horizontal" className="invisible" />
+              <ScrollBar orientation="horizontal" className="hidden" />
             </ScrollArea>
           </Tabs>
         </div>
@@ -130,7 +130,7 @@ export function BlocksNav() {
           variant="ghost"
           size="lg"
         >
-          <ScrollArea className="w-full">
+          <ScrollArea className="w-full [&>div]:[-ms-overflow-style:none] [&>div]:[scrollbar-width:none] [&>div::-webkit-scrollbar]:hidden">
             <div
               ref={(node) => {
                 if (node) {
@@ -158,7 +158,7 @@ export function BlocksNav() {
                 ))}
               </TabsList>
             </div>
-            <ScrollBar orientation="horizontal" className="invisible" />
+            <ScrollBar orientation="horizontal" className="hidden" />
           </ScrollArea>
         </Tabs>
       </div>
