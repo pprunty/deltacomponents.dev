@@ -26,9 +26,8 @@ export function BlocksNav() {
     router.push(href)
   }
 
-  const visibleCategories = registryCategories.filter(
-    (category) => !category.hidden
-  )
+  // Show all categories in blocks nav (including Featured)
+  const visibleCategories = registryCategories
 
   // Find active tab index
   const activeIndex = visibleCategories.findIndex(

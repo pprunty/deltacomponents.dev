@@ -71,6 +71,54 @@ When you have many tabs that don't fit in the available space, wrap the `TabsLis
 
 <ComponentPreview name="tabs-in-scroll-area-demo" />
 
+### Performance Optimization
+
+For tabs containing heavy content (large code blocks, images, complex components), use these optimization strategies to prevent animation stagger and improve performance:
+
+#### Pre-render with forceMount
+
+Set `forceMount={true}` to keep all tab content mounted in the DOM. This eliminates mounting/unmounting delays and ensures content is accessible to search engines and LLMs.
+
+```tsx
+<Tabs defaultValue="tab1">
+  <TabsList>
+    <TabsTrigger value="tab1">Documentation</TabsTrigger>
+    <TabsTrigger value="tab2">Examples</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tab1" forceMount={true}>
+    {/* Heavy content - always in DOM for crawlers */}
+    <ComplexCodeBlock />
+  </TabsContent>
+  
+  <TabsContent value="tab2" forceMount={true}>
+    {/* Heavy content - always in DOM for crawlers */}
+    <LargeImageGallery />
+  </TabsContent>
+</Tabs>
+```
+
+#### CSS Content-Visibility Optimization
+
+Combine `forceMount` with `optimized={true}` to enable CSS `content-visibility` optimization. This allows the browser to skip rendering off-screen content while keeping it in the DOM.
+
+```tsx
+<TabsContent 
+  value="tab1" 
+  forceMount={true} 
+  optimized={true}
+  intrinsicSize="auto 300px"
+>
+  {/* Optimized heavy content */}
+  <HeavyComponent />
+</TabsContent>
+```
+
+**When to use:**
+- **forceMount only**: Documentation sites with 2-5 tabs, SEO requirements
+- **forceMount + optimized**: Modern browsers, heavy content, progressive enhancement
+- **Default behavior**: Applications with many tabs (5+), memory-conscious scenarios
+
 ## API Reference
 
 ### Tabs
@@ -125,6 +173,8 @@ Content panel associated with a tab trigger.
 | animateOpacity    | boolean                                                          | -         | Set opacity animation - overrides animate when explicitly set                       |
 | animationDuration | number                                                           | 250       | Animation duration in milliseconds                                                  |
 | animationEasing   | "ease" \| "ease-in" \| "ease-out" \| "ease-in-out" \| "linear" \| string | varies | CSS timing function (default: "ease-out" for animateY, "ease-in-out" for animate) |
+| optimized         | boolean                                                          | false     | Enable content-visibility CSS optimization for better performance                    |
+| intrinsicSize     | string                                                           | "auto 500px" | Set contain-intrinsic-size for content-visibility optimization                    |
 | className         | string                                                           | -         | Additional CSS classes                                                              |
 
 ### TabsFromArray

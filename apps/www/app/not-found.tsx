@@ -2,10 +2,21 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 import { Button } from "@/registry/delta-ui/ui/button"
 
 export default function NotFound() {
+  const router = useRouter()
+
+  const handleGoBack = () => {
+    if (window.history.length > 1) {
+      router.back()
+    } else {
+      router.push("/")
+    }
+  }
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center p-6">
       <div className="relative z-30 flex flex-col items-center gap-8 text-center">
@@ -23,9 +34,14 @@ export default function NotFound() {
             page not found or moved
           </h1>
         </div>
-        <Button asChild size="lg" className="mt-4">
-          <Link href="/">Return Home</Link>
-        </Button>
+        <div className="mt-4 flex gap-4">
+          <Button size="lg" variant="outline" onClick={handleGoBack}>
+            Go Back
+          </Button>
+          <Button asChild size="lg">
+            <Link href="/">Return Home</Link>
+          </Button>
+        </div>
       </div>
     </main>
   )

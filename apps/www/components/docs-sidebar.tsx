@@ -5,10 +5,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
-import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
+import { shouldHideComponent } from "@/lib/navigation"
 import type { source } from "@/lib/source"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
+import { registryCategories } from "@/registry/registry-categories"
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +34,12 @@ const TOP_LEVEL_SECTIONS = [
 const BLOCKS_SECTIONS = [
   {
     name: "Blocks",
-    items: BLOCKS_NAV_ITEMS,
+    items: registryCategories
+      .filter((category) => !category.hidden)
+      .map((category) => ({
+        name: category.name,
+        href: category.slug === "featured" ? "/blocks" : `/blocks/${category.slug}`,
+      })),
   },
 ]
 

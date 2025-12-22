@@ -41,6 +41,7 @@ html[data-theme="sligo"] {
   --code-number: oklch(0.556 0.030 44.5);
   --selection: oklch(0.182 0.050 46.9);
   --selection-foreground: oklch(0.990 0.009 100.0);
+  --radius: 0.5rem;
 }
 
 html[data-theme="sligo"].dark {

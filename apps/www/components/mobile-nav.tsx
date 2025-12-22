@@ -5,11 +5,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
-import { BLOCKS_NAV_ITEMS, shouldHideComponent } from "@/lib/navigation"
+import { shouldHideComponent } from "@/lib/navigation"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
+import { registryCategories } from "@/registry/registry-categories"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Popover,
@@ -303,38 +304,43 @@ export function MobileNav({
                           Blocks
                         </div>
                         <div className="flex flex-col gap-3">
-                          {BLOCKS_NAV_ITEMS.map((blockItem) => {
-                            const isActive =
-                              normalizePath(blockItem.href) === pathname
+                          {registryCategories
+                            .filter((category) => !category.hidden)
+                            .map((category) => {
+                              const href =
+                                category.slug === "featured"
+                                  ? "/blocks"
+                                  : `/blocks/${category.slug}`
+                              const isActive = normalizePath(href) === pathname
 
-                            const handleClick = () => {
-                              const targetHref = normalizePath(blockItem.href)
-                              if (targetHref === pathname) {
-                                setOpen(false)
-                                return
+                              const handleClick = () => {
+                                const targetHref = normalizePath(href)
+                                if (targetHref === pathname) {
+                                  setOpen(false)
+                                  return
+                                }
+                                setPendingHref(href)
                               }
-                              setPendingHref(blockItem.href)
-                            }
 
-                            return (
-                              <Link
-                                key={blockItem.href}
-                                href={blockItem.href}
-                                onClick={handleClick}
-                                className={cn(
-                                  "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
-                                  isActive
-                                    ? "text-foreground font-semibold"
-                                    : "text-muted-foreground"
-                                )}
-                              >
-                                {blockItem.name}
-                                {siteConfig.showComponentBetaBadges && (
-                                  <StatusBadge label="beta" />
-                                )}
-                              </Link>
-                            )
-                          })}
+                              return (
+                                <Link
+                                  key={category.slug}
+                                  href={href}
+                                  onClick={handleClick}
+                                  className={cn(
+                                    "hover:text-foreground focus-visible:text-foreground active:text-foreground flex items-center gap-2 text-2xl font-medium transition-all duration-100 ease-out active:scale-[0.99]",
+                                    isActive
+                                      ? "text-foreground font-semibold"
+                                      : "text-muted-foreground"
+                                  )}
+                                >
+                                  {category.name}
+                                  {siteConfig.showComponentBetaBadges && (
+                                    <StatusBadge label="beta" />
+                                  )}
+                                </Link>
+                              )
+                            })}
                         </div>
                       </div>
                     </React.Fragment>

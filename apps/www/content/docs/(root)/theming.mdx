@@ -17,8 +17,21 @@ To apply a specific theme to your project:
 
 1.  Browse the style tiles on the **[Themes](/themes)** page.
 2.  Click the **`{ } Code`** button on your desired theme card.
-3.  Copy the CSS variables provided.
-4.  Paste them into your `globals.css` file, replacing the existing values in your `:root` and `.dark` blocks.
+3.  Install the theme using one of the following methods:
+
+### CLI (Recommended)
+
+Use the shadcn CLI to automatically install the theme into your project:
+
+```bash
+npx shadcn@latest add https://deltacomponents.dev/r/themes/[theme-name].json
+```
+
+Replace `[theme-name]` with the theme identifier (e.g., `galway`, `dublin`, `limerick`).
+
+### Manual Installation
+
+Copy the CSS variables provided and paste them into your `globals.css` file, replacing the existing values in your `:root` and `.dark` blocks.
 
 ## Styling Components
 
