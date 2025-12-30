@@ -73,19 +73,25 @@ export function TabsInScrollAreaDemo() {
         </TabsList>
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
-      {Array.from({ length: 12 }, (_, i) => {
-        const tabValue = `tab${i + 1}`
-        return (
-          <TabsContent key={tabValue} value={tabValue}>
-            <div className="rounded-lg border p-6">
-              <p className="text-muted-foreground text-sm">
-                Content for Tab {i + 1}. Click different tabs to see the active
-                tab scroll into view automatically.
-              </p>
-            </div>
-          </TabsContent>
-        )
-      })}
+      <div className="relative min-h-[60px]">
+        {Array.from({ length: 12 }, (_, i) => {
+          const tabValue = `tab${i + 1}`
+          return (
+            <TabsContent
+              key={tabValue}
+              value={tabValue}
+              className="absolute inset-x-0 top-0"
+            >
+              <div className="rounded-lg border p-6">
+                <p className="text-muted-foreground text-sm">
+                  Content for Tab {i + 1}. Click different tabs to see the
+                  active tab scroll into view automatically.
+                </p>
+              </div>
+            </TabsContent>
+          )
+        })}
+      </div>
     </Tabs>
   )
 }

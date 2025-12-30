@@ -254,7 +254,7 @@ export default async function Page(props: {
         ) : null}
         <div className="flex flex-1 flex-col gap-12 px-6">
           <Contribute slug={page.url} />
-          <DocsSidebarCta />
+          <DocsSidebarCta className="hidden 2xl:flex" />
         </div>
       </div>
     </div>

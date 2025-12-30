@@ -113,7 +113,7 @@ export default async function Page({
           <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
             <div className="h-(--top-spacing) shrink-0" />
             <div className="flex flex-1 flex-col gap-12 px-6">
-              <DocsSidebarCta />
+              <DocsSidebarCta className="hidden 2xl:flex" />
             </div>
           </div>
         </div>
