@@ -32,6 +32,7 @@ export default async function Page({
       )
 
       // Get raw content for copy functionality
+      // @ts-expect-error - revisit fumadocs types.
       const rawContent = await indexPage.data.getText("raw")
 
       return (
@@ -131,6 +132,7 @@ export default async function Page({
   const neighbours = await findNeighbour(learningSource.pageTree, page.url)
 
   // Get raw content for copy functionality
+  // @ts-expect-error - revisit fumadocs types.
   const rawContent = await page.data.getText("raw")
 
   return (

@@ -1,13 +1,10 @@
 "use client"
 
-import React, { memo } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Heart, House, MagnifyingGlass, Plus, User } from "phosphor-react"
+import type React from "react"
+import { Heart, House, MagnifyingGlass, User } from "phosphor-react"
 
-import { BottomMobileNav } from "@/registry/delta-ui/blocks/bottom-mobile-nav/components/bottom-mobile-nav"
-import { Sidebar } from "@/registry/delta-ui/blocks/bottom-mobile-nav/components/sidebar"
+import { BottomMobileNav } from "./components/bottom-mobile-nav"
+import { Sidebar } from "./components/sidebar"
 
 // Layout Component Props Interface
 interface LayoutProps {
@@ -21,12 +18,7 @@ interface LayoutProps {
 }
 
 // Layout Component (moved from layout.tsx)
-function Layout({
-  children,
-  sidebarClassName,
-  bottomNavClassName,
-  centerButton,
-}: LayoutProps) {
+function Layout({ children, sidebarClassName, bottomNavClassName, centerButton }: LayoutProps) {
   const routes = [
     {
       href: "#",
@@ -56,7 +48,7 @@ function Layout({
       <Sidebar routes={routes} className={sidebarClassName} />
 
       {/* Main Content */}
-      <main className="md:ml-20">{children}</main>
+      <main className="pb-20 md:ml-20 md:pb-8">{children}</main>
 
       {/* Mobile Bottom Navigation */}
       <BottomMobileNav
@@ -78,74 +70,31 @@ export default function BottomMobileNavPage() {
         label: "Add",
       }}
     >
-      <div className="bg-background min-h-screen w-full">
-        {/* Content container */}
-        <div className="mx-auto max-w-2xl space-y-8 px-6 py-8 text-left">
-          <h1 className="font-heading mb-6 text-4xl font-bold">
-            BottomMobileNav
-          </h1>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-
-          <div className="w-full overflow-hidden rounded-lg">
-            <Image
-              src="/images/stock/monet.JPG"
-              alt="Monet painting"
-              width={800}
-              height={600}
-              className="h-auto w-full object-cover"
-            />
-          </div>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. Sed ut perspiciatis unde omnis iste natus error
-            sit voluptatem accusantium doloremque laudantium.
-          </p>
-
-          <div className="w-full overflow-hidden rounded-lg">
-            <Image
-              src="/images/stock/tube.JPG"
-              alt="Tube station"
-              width={800}
-              height={600}
-              className="h-auto w-full object-cover"
-            />
-          </div>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-            quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-            consequuntur magni dolores eos qui ratione voluptatem sequi
-            nesciunt.
-          </p>
-
-          <div className="w-full overflow-hidden rounded-lg">
-            <Image
-              src="/images/stock/Location-Graphic_final-design_2-1.webp"
-              alt="Location graphic design"
-              width={800}
-              height={600}
-              className="h-auto w-full object-cover"
-            />
-          </div>
-
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit, sed quia non numquam eius modi tempora
-            incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-            enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam.
-          </p>
-        </div>
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4 p-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+        <p>
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+        </p>
+        <p>
+          Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+        </p>
+        <p>
+          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+        </p>
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+        </p>
+        <p>
+          Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+        </p>
       </div>
     </Layout>
   )

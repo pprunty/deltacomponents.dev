@@ -959,6 +959,7 @@ export const PromptInputButton = ({
     (child) =>
       typeof child === "object" &&
       "props" in child &&
+      // @ts-expect-error - React element props access
       child.props?.children === "Search"
   )
 

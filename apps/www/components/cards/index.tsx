@@ -1,4 +1,5 @@
 import AdmonitionDemoInteractive from "@/registry/delta-ui/examples/admonition-demo-interactive"
+import CambioImageIconsExpandDemo from "@/registry/delta-ui/examples/cambio-image-icons-expand-demo"
 import CardDeckDemoInteractive from "@/registry/delta-ui/examples/card-deck-demo-interactive"
 import ChatDemo from "@/registry/delta-ui/examples/chat-demo"
 import CodeBlockInteractiveDemo from "@/registry/delta-ui/examples/code-block-interactive-demo"
@@ -44,11 +45,17 @@ export function CardsDemo() {
         <ChatDemo />
       </div>
 
-      <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
-        <XCardBasicDemo />
+      <div className="flex flex-col gap-4 sm:col-span-2">
+        <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
+          <XCardBasicDemo />
+        </div>
+
+        <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
+          <CambioImageIconsExpandDemo />
+        </div>
       </div>
 
-      <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
+      <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4 sm:col-span-2">
         <MarqueeDemo />
       </div>
     </div>

@@ -18,11 +18,7 @@ import QRCode from "@/components/ui/qrcode"
 
 export default function Example() {
   return (
-    <QRCode
-      value="https://deltacomponents.dev"
-      size={200}
-      dotStyle="rounded"
-    />
+    <QRCode value="https://deltacomponents.dev" size={200} dotStyle="rounded" />
   )
 }
 ```
@@ -49,11 +45,7 @@ Embed a logo in the center. The component automatically clears dots behind the l
 Enable navigation to make the QR code clickable, opening the URL in a new tab. Includes keyboard accessibility support.
 
 ```tsx
-<QRCode
-  value="https://example.com"
-  enableNavigation={true}
-  size={200}
-/>
+<QRCode value="https://example.com" enableNavigation={true} size={200} />
 ```
 
 ## Notes
@@ -96,19 +88,19 @@ When `enableNavigation` is enabled, the QR code becomes a focusable button suppo
 
 ### Props
 
-| Prop                 | Type                                                                             | Default                | Description                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------ |
-| `value`              | `string`                                                                         | —                      | Required. The data or URL to encode in the QR code.                                              |
-| `size`               | `number`                                                                         | `200`                  | Width and height of the QR code in pixels.                                                       |
-| `bgColor`            | `string`                                                                         | `"--color-background"` | Background color. Supports CSS variables (e.g., `--color-background`) or color values.           |
-| `fgColor`            | `string`                                                                         | `"--color-foreground"` | Foreground color for dots and corners. Supports CSS variables or color values.                   |
-| `level`              | `"L" \| "M" \| "Q" \| "H"`                                                       | `"M"`                  | Error correction level. Higher levels allow more data recovery but create denser QR codes.       |
-| `marginSize`         | `number`                                                                         | `0`                    | Quiet zone margin around the QR code in pixels.                                                  |
-| `className`          | `string`                                                                         | —                      | Additional CSS classes for the wrapper element.                                                  |
-| `enableNavigation`   | `boolean`                                                                        | `false`                | When true, makes the QR code clickable and opens the URL in a new tab. Includes keyboard support.|
-| `dotStyle`           | `"rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded"` | `"square"`             | Style of the QR code data dots.                                                                  |
-| `cornerSquareStyle`  | `"dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded"` | `"square"`             | Style of the three position detection corner squares.                                            |
-| `cornerDotStyle`     | `"dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded"` | `"square"`             | Style of the dots inside the corner squares.                                                     |
-| `logoImage`          | `string`                                                                         | —                      | URL or data URI of the logo to embed in the center of the QR code.                              |
-| `logoSize`           | `number`                                                                         | `0.2`                  | Size of the logo as a percentage of the QR code size (0 to 1). Keep between 0.15-0.25 for best results.|
-| `logoMargin`         | `number`                                                                         | `0`                    | Margin around the logo in pixels. Creates padding between the logo and QR code dots.             |
+| Prop                | Type                                                                                          | Default                | Description                                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| `value`             | `string`                                                                                      | —                      | Required. The data or URL to encode in the QR code.                                                     |
+| `size`              | `number`                                                                                      | `200`                  | Width and height of the QR code in pixels.                                                              |
+| `bgColor`           | `string`                                                                                      | `"--color-background"` | Background color. Supports CSS variables (e.g., `--color-background`) or color values.                  |
+| `fgColor`           | `string`                                                                                      | `"--color-foreground"` | Foreground color for dots and corners. Supports CSS variables or color values.                          |
+| `level`             | `"L" \| "M" \| "Q" \| "H"`                                                                    | `"M"`                  | Error correction level. Higher levels allow more data recovery but create denser QR codes.              |
+| `marginSize`        | `number`                                                                                      | `0`                    | Quiet zone margin around the QR code in pixels.                                                         |
+| `className`         | `string`                                                                                      | —                      | Additional CSS classes for the wrapper element.                                                         |
+| `enableNavigation`  | `boolean`                                                                                     | `false`                | When true, makes the QR code clickable and opens the URL in a new tab. Includes keyboard support.       |
+| `dotStyle`          | `"rounded" \| "dots" \| "classy" \| "classy-rounded" \| "square" \| "extra-rounded"`          | `"square"`             | Style of the QR code data dots.                                                                         |
+| `cornerSquareStyle` | `"dot" \| "square" \| "extra-rounded" \| "rounded" \| "dots" \| "classy" \| "classy-rounded"` | `"square"`             | Style of the three position detection corner squares.                                                   |
+| `cornerDotStyle`    | `"dot" \| "square" \| "rounded" \| "dots" \| "classy" \| "classy-rounded" \| "extra-rounded"` | `"square"`             | Style of the dots inside the corner squares.                                                            |
+| `logoImage`         | `string`                                                                                      | —                      | URL or data URI of the logo to embed in the center of the QR code.                                      |
+| `logoSize`          | `number`                                                                                      | `0.2`                  | Size of the logo as a percentage of the QR code size (0 to 1). Keep between 0.15-0.25 for best results. |
+| `logoMargin`        | `number`                                                                                      | `0`                    | Margin around the logo in pixels. Creates padding between the logo and QR code dots.                    |

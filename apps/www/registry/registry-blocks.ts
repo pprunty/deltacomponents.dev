@@ -5,7 +5,12 @@ export const blocks: Registry["items"] = [
     name: "ai-chat-sidebar",
     description: "A collapsible sidebar component for AI chat applications",
     type: "registry:block",
-    registryDependencies: ["sidebar", "breadcrumb", "separator"],
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+    ],
     dependencies: ["lucide-react"],
     files: [
       {
@@ -107,30 +112,6 @@ export const blocks: Registry["items"] = [
     categories: ["ai-elements", "featured"],
   },
   {
-    name: "perspective-carousel",
-    description: "PerspectiveCarousel block",
-    type: "registry:block",
-    registryDependencies: [],
-    files: [
-      {
-        path: "blocks/perspective-carousel/page.tsx",
-        type: "registry:page",
-        target: "app/perspective-carousel/page.tsx",
-      },
-      {
-        path: "blocks/perspective-carousel/components/perspective-carousel.tsx",
-        type: "registry:component",
-        target: "components/perspective-carousel.tsx",
-      },
-    ],
-    meta: {
-      iframeHeight: "800px",
-      container: " ",
-      mobile: "component",
-    },
-    categories: ["featured"],
-  },
-  {
     name: "bottom-mobile-nav",
     description: "BottomMobileNav block",
     type: "registry:block",
@@ -180,5 +161,76 @@ export const blocks: Registry["items"] = [
       mobile: "component",
     },
     categories: ["landing-page"],
+  },
+  {
+    name: "admin-inset-layout",
+    description: "Admin dashboard layout with inset sidebar",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "button",
+      "dialog",
+      "command",
+      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+    ],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/admin-inset-layout/page.tsx",
+        type: "registry:page",
+        target: "app/admin-inset-layout/page.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: "components/app-sidebar.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/app-header.tsx",
+        type: "registry:component",
+        target: "components/app-header.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/nav-main.tsx",
+        type: "registry:component",
+        target: "components/nav-main.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/nav-projects.tsx",
+        type: "registry:component",
+        target: "components/nav-projects.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/nav-resources.tsx",
+        type: "registry:component",
+        target: "components/nav-resources.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/nav-secondary.tsx",
+        type: "registry:component",
+        target: "components/nav-secondary.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/nav-user.tsx",
+        type: "registry:component",
+        target: "components/nav-user.tsx",
+      },
+      {
+        path: "blocks/admin-inset-layout/components/search-command.tsx",
+        type: "registry:component",
+        target: "components/search-command.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container: "",
+      mobile: "component",
+    },
+    categories: ["layout"],
   },
 ]

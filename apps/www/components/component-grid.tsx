@@ -20,7 +20,7 @@ export function ComponentGrid() {
     if (component.type !== "page") return false
 
     // Check if component should be hidden
-    const componentName = component.url.split("/").pop()
+    const componentName = (component as { url: string }).url.split("/").pop()
     const componentMeta = componentName ? Index[componentName]?.meta : null
     const shouldHide = componentMeta?.hide && isProduction
 
@@ -33,8 +33,14 @@ export function ComponentGrid() {
         <ComponentCard
           key={component.$id}
           component={{
-            ...component,
-            description: component.type === "page" ? component.data?.description : undefined,
+            $id: component.$id!,
+            name: component.name as string,
+            url: (component as { url: string }).url,
+            description:
+              component.type === "page"
+                ? // @ts-expect-error - fumadocs type inference
+                  component.data?.description
+                : undefined,
           }}
         />
       ))}

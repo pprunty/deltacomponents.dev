@@ -63,10 +63,15 @@ const getCachedFileTree = React.cache(
 const getCachedHighlightedFiles = React.cache(
   async (files: z.infer<typeof registryItemFileSchema>[]) => {
     return await Promise.all(
-      files.map(async (file) => ({
-        ...file,
-        highlightedContent: await highlightCode(file.content ?? ""),
-      }))
+      files.map(async (file) => {
+        const typedFile = file as z.infer<typeof registryItemFileSchema>
+        return {
+          // @ts-expect-error - zod inferred type spreading issue
+          ...typedFile,
+          // @ts-expect-error - zod inferred type content access
+          highlightedContent: await highlightCode(typedFile.content ?? ""),
+        }
+      })
     )
   }
 )

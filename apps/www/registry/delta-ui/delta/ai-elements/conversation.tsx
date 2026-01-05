@@ -34,7 +34,7 @@ export const Conversation = ({
     role="log"
     {...props}
   >
-    {props.children}
+    {props.children as React.ReactNode}
     {showGradient && (
       <div className="from-background via-background/70 pointer-events-none absolute right-3 bottom-0 left-0 z-10 h-12 bg-gradient-to-t to-transparent" />
     )}

@@ -16,6 +16,7 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/registry/delta-ui/ui/sidebar"
+import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 
 function Logo({ className }: { className?: string }) {
   return (
@@ -103,7 +104,11 @@ const recentChats = [
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <SidebarProvider>
-      <Sidebar collapsible="icon" className="bg-muted" {...props}>
+      <Sidebar
+        collapsible="icon"
+        className="bg-muted [&_[data-slot='sidebar-container']]:pr-0 [&_[data-slot='sidebar-container']]:pl-2"
+        {...props}
+      >
         <SidebarHeader>
           <div className="flex items-center justify-between px-2 py-4 group-data-[collapsible=icon]:justify-center">
             <Logo className="size-6 group-data-[collapsible=icon]:hidden" />
@@ -128,25 +133,27 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarHeader>
 
-        <SidebarContent className="no-scrollbar overflow-x-hidden pb-12 group-data-[collapsible=icon]:hidden">
-          <div className="from-muted/70 via-muted/50 sticky -top-1 z-10 h-6 shrink-0 bg-gradient-to-b to-transparent blur-xs" />
-          <SidebarGroup>
-            <SidebarGroupLabel>Recent Chats</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {recentChats.map((chat) => (
-                  <SidebarMenuItem key={chat.id}>
-                    <SidebarMenuButton asChild>
-                      <a href={`#${chat.id}`} className="w-full">
-                        <span className="truncate text-sm">{chat.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <div className="from-muted/70 via-muted/50 relative sticky -bottom-13 z-10 h-10 shrink-0 bg-gradient-to-t to-transparent blur-xs" />
+        <SidebarContent className="overflow-x-hidden pb-12 group-data-[collapsible=icon]:hidden">
+          <ScrollFadeEffect className="overflow-y-auto overscroll-none [scrollbar-color:rgb(163_163_163_/_0.5)_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.5)] hover:[&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.7)] [&::-webkit-scrollbar-track]:bg-transparent">
+            <SidebarGroup>
+              <SidebarGroupLabel className="font-medium">
+                Recent Chats
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {recentChats.map((chat) => (
+                    <SidebarMenuItem key={chat.id}>
+                      <SidebarMenuButton asChild>
+                        <a href={`#${chat.id}`} className="w-full">
+                          <span className="truncate text-sm">{chat.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </ScrollFadeEffect>
         </SidebarContent>
 
         <SidebarFooter className="group-data-[collapsible=icon]:absolute group-data-[collapsible=icon]:right-0 group-data-[collapsible=icon]:bottom-2 group-data-[collapsible=icon]:left-0">

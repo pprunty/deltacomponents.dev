@@ -18,7 +18,7 @@ const eventSchema = z.object({
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
-    .record(z.union([z.string(), z.number(), z.boolean(), z.null()]))
+    .record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.null()]))
     .optional(),
 })
 
@@ -36,7 +36,13 @@ export function trackEvent(input: Event): void {
       // Dynamically import Vercel Analytics to avoid SSR issues
       import("@vercel/analytics")
         .then(({ track }) => {
-          track(event.name, event.properties)
+          track(
+            event.name,
+            event.properties as Record<
+              string,
+              string | number | boolean | null
+            >
+          )
         })
         .catch(() => {
           // Silently fail if analytics is not available

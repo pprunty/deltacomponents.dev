@@ -20,11 +20,6 @@
     "categories": ["ai-elements", "featured"]
   },
   {
-    "name": "perspective-carousel",
-    "description": "PerspectiveCarousel block",
-    "categories": ["featured"]
-  },
-  {
     "name": "bottom-mobile-nav",
     "description": "BottomMobileNav block",
     "categories": ["layout"]
@@ -33,5 +28,10 @@
     "name": "mapbox-grid-block",
     "description": "Three-column grid showcasing global locations with Mapbox maps",
     "categories": ["landing-page"]
+  },
+  {
+    "name": "admin-inset-layout",
+    "description": "Admin dashboard layout with inset sidebar",
+    "categories": ["layout"]
   }
 ]

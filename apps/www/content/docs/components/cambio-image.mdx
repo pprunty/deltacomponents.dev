@@ -9,7 +9,7 @@ This component is based on [Cambio Image by Raphael Salaja](https://cambio.rapha
 
 ## Installation
 
-<Installation name="cambio-image" dependencies={["cambio"]} />
+<Installation name="cambio-image" dependencies={["cambio", "lucide-react"]} />
 
 <Admonition type="warning" title="Required CSS">
 To ensure the zoomed image sits above all other UI elements (like sticky navbars), add this style to your `globals.css`. This handles the z-index elevation when the component enters the `open` state.
@@ -108,6 +108,21 @@ You can customize the animation physics using the motion prop. See the Motion Pr
 
 <ComponentPreview name="cambio-image-motion-preset-demo" />
 
+### Icon-Only Expand Mode
+
+For a cleaner UI with explicit expand/collapse controls, use `showExpandIcon` and `iconsOnlyMode`. This displays floating expand/close buttons instead of relying on click-to-zoom behavior.
+
+```tsx
+<CambioImage
+  src="..."
+  showExpandIcon={true}
+  iconsOnlyMode={true}
+  dismissible={true}
+/>
+```
+
+<ComponentPreview name="cambio-image-icons-expand-demo" />
+
 ## Notes
 
 ### Disabling Initial Blur
@@ -136,19 +151,23 @@ For granular control, you can pass an object to the `motion` prop to configure s
 
 ### Props
 
-| Prop                     | Type                | Default    | Description                                   |
-| ------------------------ | ------------------- | ---------- | --------------------------------------------- |
-| `src`                    | `string`            | `-`        | Required. The source URL.                     |
-| `alt`                    | `string`            | `-`        | Required. Accessibility text.                 |
-| `width`                  | `number`            | `-`        | Required. Intrinsic width.                    |
-| `height`                 | `number`            | `-`        | Required. Intrinsic height.                   |
-| `motion`                 | `Preset \| Config`  | `"snappy"` | Motion preset or custom config.               |
-| `loading`                | `"lazy" \| "eager"` | `"lazy"`   | Image loading strategy.                       |
-| `index`                  | `number`            | `0`        | Z-index offset for list rendering.            |
-| `dismissOnScroll`        | `boolean`           | `false`    | Close the modal on window scroll.             |
-| `dismissOnImageClick`    | `boolean`           | `false`    | Close by clicking the zoomed image itself.    |
-| `enableInitialAnimation` | `boolean`           | `true`     | Blur-to-focus effect on viewport entry.       |
-| `draggable`              | `boolean`           | `false`    | Allows the image to be dragged (ghost image). |
+| Prop                     | Type                | Default    | Description                                                      |
+| ------------------------ | ------------------- | ---------- | ---------------------------------------------------------------- |
+| `src`                    | `string`            | `-`        | Required. The source URL.                                        |
+| `alt`                    | `string`            | `-`        | Required. Accessibility text.                                    |
+| `width`                  | `number`            | `-`        | Required. Intrinsic width.                                       |
+| `height`                 | `number`            | `-`        | Required. Intrinsic height.                                      |
+| `motion`                 | `Preset \| Config`  | `"snappy"` | Motion preset or custom config.                                  |
+| `loading`                | `"lazy" \| "eager"` | `"lazy"`   | Image loading strategy.                                          |
+| `index`                  | `number`            | `0`        | Z-index offset for list rendering.                               |
+| `dismissible`            | `boolean`           | `true`     | Allow dismissing the zoomed image (disabled when iconsOnlyMode). |
+| `dismissOnScroll`        | `boolean`           | `false`    | Close the modal on window scroll.                                |
+| `dismissOnImageClick`    | `boolean`           | `false`    | Close by clicking the zoomed image itself.                       |
+| `showExpandIcon`         | `boolean`           | `false`    | Display floating expand/close icons.                             |
+| `iconsOnlyMode`          | `boolean`           | `false`    | Use only icons for expand/close, disable click-to-zoom behavior. |
+| `enableInitialAnimation` | `boolean`           | `true`     | Blur-to-focus effect on viewport entry.                          |
+| `draggable`              | `boolean`           | `false`    | Allows the image to be dragged (ghost image).                    |
+| `className`              | `string`            | `-`        | Additional CSS classes for styling.                              |
 
 ### Motion Presets
 

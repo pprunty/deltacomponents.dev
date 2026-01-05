@@ -29,9 +29,9 @@ const albums = [
 
 export function MarqueeDemo() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex h-64 w-full items-center justify-center sm:h-80">
       <Marquee
-        className="flex min-h-screen items-center justify-center"
+        className="flex h-full items-center justify-center"
         direction="left"
         slowdownOnHover
         showFade

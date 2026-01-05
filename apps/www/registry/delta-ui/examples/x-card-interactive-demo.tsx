@@ -27,7 +27,7 @@ export default function XInteractiveDemo() {
 
   return (
     <div className="flex h-full w-full items-center justify-center py-8">
-      <XCard key={key} id={tweetIds[currentIndex]} size="medium" />
+      <XCard key={key} id={tweetIds[currentIndex]} size="default" />
     </div>
   )
 }

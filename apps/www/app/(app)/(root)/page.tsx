@@ -70,13 +70,9 @@ export default function IndexPage() {
                 The Difference in your Design System
               </span>
               {/* Desktop heading */}
-              <span className="hidden sm:flex flex-wrap items-baseline justify-center gap-2 sm:gap-3">
-                <span className="leading-[0.95]">
-                  Delta Components
-                </span>
-                <span className="font-normal opacity-90">
-                  UI
-                </span>
+              <span className="hidden flex-wrap items-baseline justify-center gap-2 sm:flex sm:gap-3">
+                <span className="leading-[0.95]">Delta Components</span>
+                <span className="font-normal opacity-90">UI</span>
               </span>
             </PageHeaderHeading>
           </div>
@@ -89,7 +85,7 @@ export default function IndexPage() {
               <Link href="/docs/components">View Components</Link>
             </Button>
           </PageActions>
-          <div className="md:hidden mt-8 w-full">
+          <div className="mt-8 w-full md:hidden">
             <ComponentGrid />
           </div>
         </PageHeader>

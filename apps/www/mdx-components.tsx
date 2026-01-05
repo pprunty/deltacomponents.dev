@@ -286,7 +286,6 @@ export const mdxComponents = {
         {__raw__ && (
           <CopyButton
             value={__raw__}
-            src={__src__}
             className="absolute top-2 right-2 z-10"
           />
         )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 
+// @ts-expect-error - component not yet migrated
 import { ScrollingWaveform } from "@/registry/delta-ui/delta/waveform"
 import { Card, CardContent } from "@/registry/delta-ui/ui/card"
 

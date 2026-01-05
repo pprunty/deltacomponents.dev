@@ -91,7 +91,7 @@ export function ThemeCodeDialog({
             <CodeBlock
               code={isLoading ? "/* Loading theme CSS... */" : themeCSS}
               language="css"
-              className="min-w-0 max-h-96"
+              className="max-h-96 min-w-0"
               filename="globals.css"
               showLineNumbers={false}
             />

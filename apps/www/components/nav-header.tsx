@@ -8,7 +8,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/registry/delta-ui/ui/navigation-menu"
+} from "@/registry/delta-ui/delta/navigation-menu"
 
 export function NavHeader() {
   const pathname = usePathname()

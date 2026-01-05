@@ -6,7 +6,9 @@ import { AnimatePresence, motion } from "motion/react"
 import {
   BarVisualizer,
   type AgentState,
+  // @ts-expect-error - component not yet migrated
 } from "@/registry/delta-ui/delta/bar-visualizer"
+// @ts-expect-error - component not yet migrated
 import { ShimmeringText } from "@/registry/delta-ui/delta/shimmering-text"
 import { Card, CardContent } from "@/registry/delta-ui/ui/card"
 

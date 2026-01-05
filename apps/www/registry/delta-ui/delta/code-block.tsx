@@ -770,15 +770,17 @@ export function CodeBlock({
                       "leading-6 font-normal",
                       effectiveTextClassName
                     )}
-                    style={{
-                      ...style,
-                      fontFamily: monoFontFamily,
-                      backgroundColor: "transparent",
-                      MozOsxFontSmoothing: "grayscale",
-                      "--line-number-color": selectedTheme.plain?.color
-                        ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
-                        : "rgba(128, 128, 128, 0.35)",
-                    } as React.CSSProperties}
+                    style={
+                      {
+                        ...style,
+                        fontFamily: monoFontFamily,
+                        backgroundColor: "transparent",
+                        MozOsxFontSmoothing: "grayscale",
+                        "--line-number-color": selectedTheme.plain?.color
+                          ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                          : "rgba(128, 128, 128, 0.35)",
+                      } as React.CSSProperties
+                    }
                   >
                     {tokens.map((line, i) => (
                       <div
@@ -789,7 +791,7 @@ export function CodeBlock({
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-shrink-0 w-16 pr-6 pl-6 text-right font-medium tabular-nums select-none",
+                              "sticky left-0 z-10 w-16 flex-shrink-0 pr-6 pl-6 text-right font-medium tabular-nums select-none",
                               effectiveTextClassName
                             )}
                             style={{
@@ -805,7 +807,7 @@ export function CodeBlock({
                         )}
                         <span
                           className={cn(
-                            "flex-1 whitespace-pre pr-6",
+                            "flex-1 pr-6 whitespace-pre",
                             !showLineNumbers && "pl-6"
                           )}
                         >
@@ -846,15 +848,17 @@ export function CodeBlock({
                       "leading-6 font-normal",
                       effectiveTextClassName
                     )}
-                    style={{
-                      ...style,
-                      fontFamily: monoFontFamily,
-                      backgroundColor: "transparent",
-                      MozOsxFontSmoothing: "grayscale",
-                      "--line-number-color": selectedTheme.plain?.color
-                        ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
-                        : "rgba(128, 128, 128, 0.35)",
-                    } as React.CSSProperties}
+                    style={
+                      {
+                        ...style,
+                        fontFamily: monoFontFamily,
+                        backgroundColor: "transparent",
+                        MozOsxFontSmoothing: "grayscale",
+                        "--line-number-color": selectedTheme.plain?.color
+                          ? `color-mix(in srgb, ${selectedTheme.plain.color} 35%, transparent)`
+                          : "rgba(128, 128, 128, 0.35)",
+                      } as React.CSSProperties
+                    }
                   >
                     {tokens.map((line, i) => (
                       <div
@@ -865,7 +869,7 @@ export function CodeBlock({
                         {showLineNumbers && (
                           <span
                             className={cn(
-                              "sticky left-0 z-10 flex-shrink-0 w-16 pr-6 pl-6 text-right font-medium tabular-nums select-none",
+                              "sticky left-0 z-10 w-16 flex-shrink-0 pr-6 pl-6 text-right font-medium tabular-nums select-none",
                               effectiveTextClassName
                             )}
                             style={{
@@ -881,7 +885,7 @@ export function CodeBlock({
                         )}
                         <span
                           className={cn(
-                            "flex-1 whitespace-pre pr-6",
+                            "flex-1 pr-6 whitespace-pre",
                             !showLineNumbers && "pl-6"
                           )}
                         >

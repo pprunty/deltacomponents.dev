@@ -49,11 +49,17 @@ export function MainNav({
         }
 
         return (
-          <Button key={item.href} variant="ghost" asChild size="sm">
-            <Link
-              href={item.href}
-              className={cn(pathname === item.href && "text-primary")}
-            >
+          <Button
+            key={item.href}
+            variant="ghost"
+            asChild
+            size="sm"
+            className={cn(
+              pathname === item.href &&
+                "bg-accent text-accent-foreground hover:bg-accent"
+            )}
+          >
+            <Link href={item.href}>
               {item.label}
               {item.badge && <StatusBadge label={item.badge} />}
               {item.hide && !isProduction && <StatusBadge label="hidden" />}

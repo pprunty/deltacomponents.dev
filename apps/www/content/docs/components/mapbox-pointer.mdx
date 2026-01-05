@@ -53,9 +53,10 @@ export default function Example() {
 
 Enable automatic theme adaptation with the `themeAware` prop. The map will automatically switch between light and dark styles based on your current theme. **Try toggling your theme** to see the map style change!
 
-<ComponentPreview name="mapbox-pointer-theme-demo" height="600px"/>
+<ComponentPreview name="mapbox-pointer-theme-demo" height="600px" />
 
 When `themeAware` is enabled:
+
 - **Light mode** → Uses `streets-v12` style (default street map)
 - **Dark mode** → Uses `dark-v11` style
 
@@ -237,23 +238,23 @@ The component has no default shadow, allowing full customization:
 
 ### Props
 
-| Prop               | Type        | Default       | Description                                                  |
-| ------------------ | ----------- | ------------- | ------------------------------------------------------------ |
-| **Required Props** |             |               |                                                              |
-| latitude           | number      | -             | Latitude coordinate for the map center                       |
-| longitude          | number      | -             | Longitude coordinate for the map center                      |
-| **Optional Props** |             |               |                                                              |
-| zoom               | number      | 13            | Initial zoom level of the map                                |
-| googleMapsUrl      | string      | -             | Custom Google Maps URL for navigation                        |
-| markerColor        | string      | "#679BFF"     | Color of the map marker                                      |
-| className          | string      | ""            | Additional CSS classes for styling                           |
-| interactive        | boolean     | true          | Whether the map allows user interactions (pan, zoom, rotate) |
-| style              | MapboxStyle | "streets-v12" | Mapbox map style theme                                       |
+| Prop               | Type        | Default       | Description                                                       |
+| ------------------ | ----------- | ------------- | ----------------------------------------------------------------- |
+| **Required Props** |             |               |                                                                   |
+| latitude           | number      | -             | Latitude coordinate for the map center                            |
+| longitude          | number      | -             | Longitude coordinate for the map center                           |
+| **Optional Props** |             |               |                                                                   |
+| zoom               | number      | 13            | Initial zoom level of the map                                     |
+| googleMapsUrl      | string      | -             | Custom Google Maps URL for navigation                             |
+| markerColor        | string      | "#679BFF"     | Color of the map marker                                           |
+| className          | string      | ""            | Additional CSS classes for styling                                |
+| interactive        | boolean     | true          | Whether the map allows user interactions (pan, zoom, rotate)      |
+| style              | MapboxStyle | "streets-v12" | Mapbox map style theme                                            |
 | themeAware         | boolean     | false         | Automatically adapt map style to match current theme (light/dark) |
-| mapboxToken        | string      | -             | Mapbox access token (falls back to NEXT_PUBLIC_MAPBOX_TOKEN) |
-| label              | string      | -             | Text label to display on the map                             |
-| labelHref          | string      | -             | URL to link the label to                                     |
-| clickForDirections | boolean     | false         | Enable click-to-directions functionality                     |
+| mapboxToken        | string      | -             | Mapbox access token (falls back to NEXT_PUBLIC_MAPBOX_TOKEN)      |
+| label              | string      | -             | Text label to display on the map                                  |
+| labelHref          | string      | -             | URL to link the label to                                          |
+| clickForDirections | boolean     | false         | Enable click-to-directions functionality                          |
 
 ### Styling
 

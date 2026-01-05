@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Cambio } from "cambio"
+import { Maximize2, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -27,6 +28,8 @@ interface CambioImageProps {
   enableInitialAnimation?: boolean
   dismissOnImageClick?: boolean
   dismissOnScroll?: boolean
+  showExpandIcon?: boolean
+  iconsOnlyMode?: boolean
 }
 
 export function CambioImage({
@@ -43,9 +46,12 @@ export function CambioImage({
   enableInitialAnimation = true,
   dismissOnImageClick = false,
   dismissOnScroll = false,
+  showExpandIcon = false,
+  iconsOnlyMode = false,
 }: CambioImageProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [open, setOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -133,7 +139,7 @@ export function CambioImage({
       {/* @ts-ignore */}
       <Cambio.Root
         motion={motion}
-        dismissible={dismissible}
+        dismissible={iconsOnlyMode ? false : dismissible}
         open={open}
         onOpenChange={setOpen}
       >
@@ -141,9 +147,11 @@ export function CambioImage({
         <Cambio.Trigger
           className={cn(
             "relative w-full overflow-hidden",
-            !open && "cursor-zoom-in"
+            !open && !showExpandIcon && "cursor-zoom-in"
           )}
           style={{ pointerEvents: open ? "none" : "auto" }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <img
             src={src || "/placeholder.svg"}
@@ -155,6 +163,21 @@ export function CambioImage({
             className={cn("h-auto w-full", className)}
             style={{ pointerEvents: "none" }}
           />
+
+          {showExpandIcon && (
+            <div
+              className={cn(
+                "absolute top-2 left-2 flex h-10 w-10 items-center justify-center rounded-full",
+                "border border-white/30 bg-white/25 p-2 backdrop-blur-lg transition-colors duration-150 ease-out hover:bg-white/35",
+                "dark:border-black/50 dark:bg-black/75 dark:hover:bg-black/85",
+                "cursor-pointer transition-all duration-200 ease-out md:scale-0 md:opacity-0",
+                isHovered && "md:scale-100 md:opacity-100"
+              )}
+              onClick={() => setOpen(true)}
+            >
+              <Maximize2 className="size-4 stroke-white" strokeWidth={2} />
+            </div>
+          )}
         </Cambio.Trigger>
 
         {/* @ts-ignore */}
@@ -165,21 +188,45 @@ export function CambioImage({
             className="fixed inset-0 z-[100] bg-black/40"
           />
           {/* @ts-ignore */}
-          <Cambio.Popup className="z-[101] w-full overflow-hidden md:w-[70%]">
-            <img
-              src={src || "/placeholder.svg"}
-              alt={alt}
-              width={width}
-              height={height}
-              loading="eager"
-              draggable={draggable}
-              className={cn(
-                "h-auto w-full object-contain",
-                dismissOnImageClick && "cursor-zoom-out"
+          <Cambio.Popup className="relative z-[101] flex w-full items-center justify-center overflow-hidden md:w-auto">
+            <div className="relative flex max-h-[90vh] max-w-[90vw] items-center justify-center">
+              {showExpandIcon && (
+                <button
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "absolute top-2 right-2 z-10 flex h-10 w-10 items-center justify-center rounded-full",
+                    "border border-white/30 bg-white/25 p-2 backdrop-blur-lg transition-colors duration-150 ease-out hover:bg-white/35",
+                    "dark:border-black/50 dark:bg-black/75 dark:hover:bg-black/85",
+                    "cursor-pointer focus:outline-hidden"
+                  )}
+                  aria-label="Close expanded view"
+                >
+                  <X className="size-4 stroke-white" strokeWidth={2} />
+                </button>
               )}
-              style={{ pointerEvents: dismissOnImageClick ? "auto" : "none" }}
-              onClick={dismissOnImageClick ? () => setOpen(false) : undefined}
-            />
+
+              <img
+                src={src || "/placeholder.svg"}
+                alt={alt}
+                width={width}
+                height={height}
+                loading="eager"
+                draggable={draggable}
+                className={cn(
+                  "h-auto max-h-[90vh] w-full max-w-[90vw] object-contain",
+                  !iconsOnlyMode && dismissOnImageClick && "cursor-zoom-out"
+                )}
+                style={{
+                  pointerEvents:
+                    !iconsOnlyMode && dismissOnImageClick ? "auto" : "none",
+                }}
+                onClick={
+                  !iconsOnlyMode && dismissOnImageClick
+                    ? () => setOpen(false)
+                    : undefined
+                }
+              />
+            </div>
           </Cambio.Popup>
         </Cambio.Portal>
       </Cambio.Root>

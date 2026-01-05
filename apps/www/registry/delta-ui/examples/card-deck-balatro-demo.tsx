@@ -29,7 +29,7 @@ export default function CardDeckBalatroDemo() {
 
   return (
     <div className="my-6 flex h-full w-full items-center justify-center p-12">
-      <CardDeckContainer infinite={false}>
+      <CardDeckContainer>
         {images.map((image, index) => (
           <CardDeckItem key={index} className="rounded-none">
             <img

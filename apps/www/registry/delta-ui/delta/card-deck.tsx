@@ -104,6 +104,7 @@ export function CardDeckContainer({
         {children &&
           React.Children.map(children, (child, index) => {
             if (React.isValidElement(child)) {
+              // @ts-expect-error - React element props access
               const slideClass = child.props.className || "rounded-3xl"
 
               return (
@@ -111,6 +112,7 @@ export function CardDeckContainer({
                   key={index}
                   className={cn(slideClass, "overflow-hidden")}
                 >
+                  {/* @ts-expect-error - React element props access */}
                   {child.props.children}
                 </SwiperSlide>
               )

@@ -178,7 +178,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "bg-background text-foreground group/body overscroll-none font-satoshi antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          "bg-background text-foreground group/body font-satoshi overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >

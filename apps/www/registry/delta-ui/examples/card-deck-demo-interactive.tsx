@@ -29,7 +29,7 @@ export default function CardDeckDemoInteractive() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <CardDeckContainer infinite={true} autoplay>
+      <CardDeckContainer autoplay>
         {images.map((image, index) => (
           <CardDeckItem key={index} className="rounded-3xl">
             <img

@@ -1,7 +1,7 @@
 "use client"
 
+import { useCallback, useEffect, useRef } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { useEffect, useRef, useCallback } from "react"
 
 import { Tabs, TabsList, TabsTrigger } from "@/registry/delta-ui/delta/tabs"
 import { ScrollArea, ScrollBar } from "@/registry/delta-ui/ui/scroll-area"
@@ -35,28 +35,25 @@ export function BlocksNav() {
   )
 
   // Function to scroll active tab to center
-  const scrollTabToCenter = useCallback(
-    (index: number) => {
-      const tabElement = tabRefs.current[index]
-      const scrollContainer = scrollContainerRef.current
+  const scrollTabToCenter = useCallback((index: number) => {
+    const tabElement = tabRefs.current[index]
+    const scrollContainer = scrollContainerRef.current
 
-      if (tabElement && scrollContainer) {
-        const containerWidth = scrollContainer.offsetWidth
-        const tabWidth = tabElement.offsetWidth
-        const tabLeft = tabElement.offsetLeft
+    if (tabElement && scrollContainer) {
+      const containerWidth = scrollContainer.offsetWidth
+      const tabWidth = tabElement.offsetWidth
+      const tabLeft = tabElement.offsetLeft
 
-        // Calculate position to center the tab
-        const scrollTarget = tabLeft - containerWidth / 2 + tabWidth / 2
+      // Calculate position to center the tab
+      const scrollTarget = tabLeft - containerWidth / 2 + tabWidth / 2
 
-        // Smooth scroll to the target position
-        scrollContainer.scrollTo({
-          left: scrollTarget,
-          behavior: "smooth",
-        })
-      }
-    },
-    []
-  )
+      // Smooth scroll to the target position
+      scrollContainer.scrollTo({
+        left: scrollTarget,
+        behavior: "smooth",
+      })
+    }
+  }, [])
 
   // Center the active tab when it changes
   useEffect(() => {
@@ -72,7 +69,7 @@ export function BlocksNav() {
   return (
     <>
       {/* Mobile: Full-bleed with left padding to show overflow */}
-      <div className="md:hidden relative w-full">
+      <div className="relative w-full md:hidden">
         <div
           className="relative overflow-hidden pl-6"
           style={{
@@ -122,7 +119,7 @@ export function BlocksNav() {
       </div>
 
       {/* Desktop: Normal container */}
-      <div className="hidden md:block w-full">
+      <div className="hidden w-full md:block">
         <Tabs
           value={currentValue}
           onValueChange={handleValueChange}

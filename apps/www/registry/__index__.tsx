@@ -384,28 +384,6 @@ export const Index: Record<string, any> = {
     categories: ["ai-elements","featured"],
     meta: {"iframeHeight":"800px","container":"w-full h-screen","mobile":"component"},
   },
-  "perspective-carousel": {
-    name: "perspective-carousel",
-    description: "PerspectiveCarousel block",
-    type: "registry:block",
-    registryDependencies: [],
-    files: [{
-      path: "registry/delta-ui/blocks/perspective-carousel/page.tsx",
-      type: "registry:page",
-      target: "app/perspective-carousel/page.tsx"
-    },{
-      path: "registry/delta-ui/blocks/perspective-carousel/components/perspective-carousel.tsx",
-      type: "registry:component",
-      target: "components/perspective-carousel.tsx"
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/delta-ui/blocks/perspective-carousel/page.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: ["featured"],
-    meta: {"iframeHeight":"800px","container":" ","mobile":"component"},
-  },
   "bottom-mobile-nav": {
     name: "bottom-mobile-nav",
     description: "BottomMobileNav block",
@@ -449,6 +427,52 @@ export const Index: Record<string, any> = {
     }),
     categories: ["landing-page"],
     meta: {"iframeHeight":"800px","container":"w-full bg-background min-h-svh flex items-center justify-center","mobile":"component"},
+  },
+  "admin-inset-layout": {
+    name: "admin-inset-layout",
+    description: "Admin dashboard layout with inset sidebar",
+    type: "registry:block",
+    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command"],
+    files: [{
+      path: "registry/delta-ui/blocks/admin-inset-layout/page.tsx",
+      type: "registry:page",
+      target: "app/admin-inset-layout/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/app-sidebar.tsx",
+      type: "registry:component",
+      target: "components/app-sidebar.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/app-header.tsx",
+      type: "registry:component",
+      target: "components/app-header.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-main.tsx",
+      type: "registry:component",
+      target: "components/nav-main.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-projects.tsx",
+      type: "registry:component",
+      target: "components/nav-projects.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-secondary.tsx",
+      type: "registry:component",
+      target: "components/nav-secondary.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-user.tsx",
+      type: "registry:component",
+      target: "components/nav-user.tsx"
+    },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/search-command.tsx",
+      type: "registry:component",
+      target: "components/search-command.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/admin-inset-layout/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["layout"],
+    meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
   "use-mobile": {
     name: "use-mobile",
@@ -1020,6 +1044,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/cambio-image-motion-preset-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "cambio-image-icons-expand-demo": {
+    name: "cambio-image-icons-expand-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    files: [{
+      path: "registry/delta-ui/examples/cambio-image-icons-expand-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/cambio-image-icons-expand-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

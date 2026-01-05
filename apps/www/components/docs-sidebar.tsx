@@ -9,7 +9,6 @@ import { shouldHideComponent } from "@/lib/navigation"
 import type { source } from "@/lib/source"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
-import { registryCategories } from "@/registry/registry-categories"
 import {
   Sidebar,
   SidebarContent,
@@ -20,6 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/delta-ui/ui/sidebar"
+import { registryCategories } from "@/registry/registry-categories"
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
@@ -38,7 +38,8 @@ const BLOCKS_SECTIONS = [
       .filter((category) => !category.hidden)
       .map((category) => ({
         name: category.name,
-        href: category.slug === "featured" ? "/blocks" : `/blocks/${category.slug}`,
+        href:
+          category.slug === "featured" ? "/blocks" : `/blocks/${category.slug}`,
       })),
   },
 ]

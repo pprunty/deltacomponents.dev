@@ -13,10 +13,10 @@ export function DocsSidebarCta({ className }: React.ComponentProps<"div">) {
     >
       <div className="bg-surface/80 absolute inset-0" />
 
-      <div className="relative z-10 text-[17px] leading-tight font-semibold text-balance font-satoshi tracking-tighter group-hover:underline">
+      <div className="font-satoshi relative z-10 text-[17px] leading-tight font-semibold tracking-tighter text-balance group-hover:underline">
         Build Better User Experiences
       </div>
-      <div className="text-muted-foreground text-[14px] relative z-10">
+      <div className="text-muted-foreground relative z-10 text-[14px]">
         Discover open source components that make the difference in your
         applications. Copy, paste, and customize to create exceptional user
         interfaces.

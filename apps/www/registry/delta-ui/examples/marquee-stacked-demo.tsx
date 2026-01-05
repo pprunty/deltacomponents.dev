@@ -37,8 +37,6 @@ export default function MarqueeStackedDemo() {
       <Marquee
         direction="left"
         speed={25}
-        gap={80}
-        itemClassName="h-10"
         className="py-4"
       >
         {brands.map((brand) => (
@@ -56,8 +54,6 @@ export default function MarqueeStackedDemo() {
       <Marquee
         direction="right"
         speed={30}
-        gap={80}
-        itemClassName="h-10"
         className="py-4"
       >
         {brands.map((brand) => (

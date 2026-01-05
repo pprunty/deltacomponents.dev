@@ -53,7 +53,7 @@ const testimonials = [
 export default function MarqueeCardsDemo() {
   return (
     <div className="w-full py-12">
-      <Marquee speed={35} gap={32} itemClassName="w-80" className="py-4">
+      <Marquee speed={35} className="py-4">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.name}

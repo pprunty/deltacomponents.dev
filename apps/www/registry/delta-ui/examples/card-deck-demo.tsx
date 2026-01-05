@@ -21,7 +21,7 @@ export default function CardDeckDemo() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <CardDeckContainer infinite={false}>
+      <CardDeckContainer>
         {images.map((image, index) => (
           <CardDeckItem key={index} className="rounded-3xl">
             <img

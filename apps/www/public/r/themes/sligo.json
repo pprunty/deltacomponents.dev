@@ -9,7 +9,7 @@
   },
   "cssVars": {
     "light": {
-      "radius": "0.3rem",
+      "radius": "0.5rem",
       "background": "oklch(0.987 0.026 102.2)",
       "foreground": "oklch(0.182 0.050 46.9)",
       "card": "oklch(0.987 0.026 102.2)",

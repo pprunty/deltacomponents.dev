@@ -11,7 +11,7 @@ import {
 } from "lucide-react"
 
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github"
-import { FeedbackDialog } from "@/registry/delta-ui/components/feedback-dialog"
+import { FeedbackDialog } from "@/components/feedback-dialog"
 
 interface ContributeProps {
   slug: string
@@ -80,7 +80,7 @@ export function Contribute({ slug }: ContributeProps) {
               <button
                 key={index}
                 onClick={link.onClick}
-                className="text-muted-foreground hover:text-foreground flex items-center text-[0.8rem] no-underline transition-colors text-left"
+                className="text-muted-foreground hover:text-foreground flex items-center text-left text-[0.8rem] no-underline transition-colors"
               >
                 <link.icon className="mr-2 size-3.5" />
                 {link.text}

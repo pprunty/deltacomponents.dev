@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
 import { BlocksNav } from "@/components/blocks-nav"
+import { Icons } from "@/components/icons"
 import {
   PageActions,
   PageHeader,
@@ -10,7 +11,6 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { Button } from "@/registry/delta-ui/ui/button"
-import { Icons } from "@/components/icons"
 
 const title = "Production-Ready UI Blocks"
 const description =
@@ -56,7 +56,7 @@ export default function BlocksLayout({
             <a href="#blocks">Browse Blocks</a>
           </Button>
           <Button asChild variant="ghost" size="sm">
-            <a 
+            <a
               href="https://github.com/pprunty/deltacomponents.dev/issues/new?assignees=&labels=block-request%2Cenhancement&projects=&template=block_request.md&title=%5Bblock%5D%3A+"
               target="_blank"
               rel="noopener noreferrer"

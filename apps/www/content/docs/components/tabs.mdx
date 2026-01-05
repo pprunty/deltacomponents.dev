@@ -85,12 +85,12 @@ Set `forceMount={true}` to keep all tab content mounted in the DOM. This elimina
     <TabsTrigger value="tab1">Documentation</TabsTrigger>
     <TabsTrigger value="tab2">Examples</TabsTrigger>
   </TabsList>
-  
+
   <TabsContent value="tab1" forceMount={true}>
     {/* Heavy content - always in DOM for crawlers */}
     <ComplexCodeBlock />
   </TabsContent>
-  
+
   <TabsContent value="tab2" forceMount={true}>
     {/* Heavy content - always in DOM for crawlers */}
     <LargeImageGallery />
@@ -103,9 +103,9 @@ Set `forceMount={true}` to keep all tab content mounted in the DOM. This elimina
 Combine `forceMount` with `optimized={true}` to enable CSS `content-visibility` optimization. This allows the browser to skip rendering off-screen content while keeping it in the DOM.
 
 ```tsx
-<TabsContent 
-  value="tab1" 
-  forceMount={true} 
+<TabsContent
+  value="tab1"
+  forceMount={true}
   optimized={true}
   intrinsicSize="auto 300px"
 >
@@ -115,6 +115,7 @@ Combine `forceMount` with `optimized={true}` to enable CSS `content-visibility` 
 ```
 
 **When to use:**
+
 - **forceMount only**: Documentation sites with 2-5 tabs, SEO requirements
 - **forceMount + optimized**: Modern browsers, heavy content, progressive enhancement
 - **Default behavior**: Applications with many tabs (5+), memory-conscious scenarios
@@ -125,17 +126,17 @@ Combine `forceMount` with `optimized={true}` to enable CSS `content-visibility` 
 
 The root tabs component that provides context for all child components.
 
-| Prop               | Type                                  | Default   | Description                                                    |
-| ------------------ | ------------------------------------- | --------- | -------------------------------------------------------------- |
-| defaultValue       | string                                | -         | The value of the tab that should be active when initially rendered |
-| value              | string                                | -         | The controlled value of the tab to activate                    |
-| onValueChange      | function                              | -         | Event handler called when the value changes                    |
-| variant            | "default" \| "underline" \| "ghost"   | "default" | Visual style variant of the tabs                               |
-| size               | "sm" \| "small" \| "default" \| "lg" \| "large" | "default" | Size of the tabs (both short and long forms accepted) |
-| indicatorThickness | string                                | -         | Override indicator thickness (e.g., "2px", "4px")              |
-| indicatorClassName | string                                | -         | Override active indicator className (e.g., "bg-primary")       |
-| concentric         | boolean                               | false     | Use concentric border radius (outer = inner + padding)         |
-| className          | string                                | -         | Additional CSS classes                                         |
+| Prop               | Type                                            | Default   | Description                                                        |
+| ------------------ | ----------------------------------------------- | --------- | ------------------------------------------------------------------ |
+| defaultValue       | string                                          | -         | The value of the tab that should be active when initially rendered |
+| value              | string                                          | -         | The controlled value of the tab to activate                        |
+| onValueChange      | function                                        | -         | Event handler called when the value changes                        |
+| variant            | "default" \| "underline" \| "ghost"             | "default" | Visual style variant of the tabs                                   |
+| size               | "sm" \| "small" \| "default" \| "lg" \| "large" | "default" | Size of the tabs (both short and long forms accepted)              |
+| indicatorThickness | string                                          | -         | Override indicator thickness (e.g., "2px", "4px")                  |
+| indicatorClassName | string                                          | -         | Override active indicator className (e.g., "bg-primary")           |
+| concentric         | boolean                                         | false     | Use concentric border radius (outer = inner + padding)             |
+| className          | string                                          | -         | Additional CSS classes                                             |
 
 ### TabsList
 
@@ -151,12 +152,12 @@ The `TabsList` component automatically inherits `variant`, `size`, `indicatorThi
 
 Individual tab trigger button that activates a tab panel when clicked.
 
-| Prop      | Type        | Default | Description                                                    |
-| --------- | ----------- | ------- | -------------------------------------------------------------- |
-| value     | string      | -       | A unique value that associates the trigger with a content      |
-| icon      | ReactNode   | -       | Icon to display alongside the label                            |
-| disabled  | boolean     | false   | When true, prevents the user from interacting with the tab     |
-| className | string      | -       | Additional CSS classes                                         |
+| Prop      | Type      | Default | Description                                                |
+| --------- | --------- | ------- | ---------------------------------------------------------- |
+| value     | string    | -       | A unique value that associates the trigger with a content  |
+| icon      | ReactNode | -       | Icon to display alongside the label                        |
+| disabled  | boolean   | false   | When true, prevents the user from interacting with the tab |
+| className | string    | -       | Additional CSS classes                                     |
 
 The trigger automatically displays the animated indicator when active using CSS transitions with `requestAnimationFrame` for smooth positioning.
 
@@ -164,34 +165,34 @@ The trigger automatically displays the animated indicator when active using CSS 
 
 Content panel associated with a tab trigger.
 
-| Prop              | Type                                                             | Default   | Description                                                                         |
-| ----------------- | ---------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------- |
-| value             | string                                                           | -         | A unique value that associates the content with a trigger                           |
-| forceMount        | boolean                                                          | false     | Forces the content to always be mounted in the DOM (hidden when inactive)           |
-| animate           | boolean                                                          | false     | Enable default opacity animation with ease-in-out                                   |
-| animateY          | number                                                           | -         | Set Y translation offset in pixels for entrance animation                           |
-| animateOpacity    | boolean                                                          | -         | Set opacity animation - overrides animate when explicitly set                       |
-| animationDuration | number                                                           | 250       | Animation duration in milliseconds                                                  |
-| animationEasing   | "ease" \| "ease-in" \| "ease-out" \| "ease-in-out" \| "linear" \| string | varies | CSS timing function (default: "ease-out" for animateY, "ease-in-out" for animate) |
-| optimized         | boolean                                                          | false     | Enable content-visibility CSS optimization for better performance                    |
-| intrinsicSize     | string                                                           | "auto 500px" | Set contain-intrinsic-size for content-visibility optimization                    |
-| className         | string                                                           | -         | Additional CSS classes                                                              |
+| Prop              | Type                                                                     | Default      | Description                                                                       |
+| ----------------- | ------------------------------------------------------------------------ | ------------ | --------------------------------------------------------------------------------- |
+| value             | string                                                                   | -            | A unique value that associates the content with a trigger                         |
+| forceMount        | boolean                                                                  | false        | Forces the content to always be mounted in the DOM (hidden when inactive)         |
+| animate           | boolean                                                                  | false        | Enable default opacity animation with ease-in-out                                 |
+| animateY          | number                                                                   | -            | Set Y translation offset in pixels for entrance animation                         |
+| animateOpacity    | boolean                                                                  | -            | Set opacity animation - overrides animate when explicitly set                     |
+| animationDuration | number                                                                   | 250          | Animation duration in milliseconds                                                |
+| animationEasing   | "ease" \| "ease-in" \| "ease-out" \| "ease-in-out" \| "linear" \| string | varies       | CSS timing function (default: "ease-out" for animateY, "ease-in-out" for animate) |
+| optimized         | boolean                                                                  | false        | Enable content-visibility CSS optimization for better performance                 |
+| intrinsicSize     | string                                                                   | "auto 500px" | Set contain-intrinsic-size for content-visibility optimization                    |
+| className         | string                                                                   | -            | Additional CSS classes                                                            |
 
 ### TabsFromArray
 
 Utility component for rendering tabs from an array of tab items, useful when working with dynamic data.
 
-| Prop             | Type               | Default  | Description                                 |
-| ---------------- | ------------------ | -------- | ------------------------------------------- |
-| tabs             | TabItem[]          | -        | Array of tab items to render                |
-| defaultValue     | string             | tabs[0]  | Initial active tab value                    |
-| value            | string             | -        | Controlled active tab value                 |
-| onValueChange    | function           | -        | Event handler called when the value changes |
-| className        | string             | -        | Additional CSS classes for Tabs             |
-| listClassName    | string             | -        | Additional CSS classes for TabsList         |
-| triggerClassName | string             | -        | Additional CSS classes for each TabsTrigger |
-| contentClassName | string             | -        | Additional CSS classes for each TabsContent |
-| children         | (tab) => ReactNode | -        | Render function for tab content             |
+| Prop             | Type               | Default | Description                                 |
+| ---------------- | ------------------ | ------- | ------------------------------------------- |
+| tabs             | TabItem[]          | -       | Array of tab items to render                |
+| defaultValue     | string             | tabs[0] | Initial active tab value                    |
+| value            | string             | -       | Controlled active tab value                 |
+| onValueChange    | function           | -       | Event handler called when the value changes |
+| className        | string             | -       | Additional CSS classes for Tabs             |
+| listClassName    | string             | -       | Additional CSS classes for TabsList         |
+| triggerClassName | string             | -       | Additional CSS classes for each TabsTrigger |
+| contentClassName | string             | -       | Additional CSS classes for each TabsContent |
+| children         | (tab) => ReactNode | -       | Render function for tab content             |
 
 **TabItem Type:**
 

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cambio-image-icons-expand-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/cambio-image.json"
+  ],
+  "files": [
+    {
+      "path": "examples/cambio-image-icons-expand-demo.tsx",
+      "content": "import { CambioImage } from \"@/components/ui/cambio-image\"\n\nexport default function CambioImageIconsExpandDemo() {\n  return (\n    <div className=\"flex h-full w-full items-center justify-center\">\n      <div className=\"m-8 max-w-xs\">\n        <CambioImage\n          src=\"https://static.vecteezy.com/system/resources/previews/008/079/776/non_2x/nft-non-fungible-tokens-crypto-art-nft-blockchain-pixel-art-character-on-background-free-vector.jpg\"\n          alt=\"Demo image with expand icons\"\n          width={600}\n          height={600}\n          motion=\"snappy\"\n          dismissible={true}\n          enableInitialAnimation={true}\n          showExpandIcon={true}\n          iconsOnlyMode={true}\n          className=\"rounded-md\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

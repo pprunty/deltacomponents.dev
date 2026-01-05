@@ -137,6 +137,7 @@ export default async function Page(props: {
   }
 
   // Get raw content for copy functionality
+  // @ts-expect-error - revisit fumadocs types.
   const rawContent = await page.data.getText("raw")
 
   // @ts-expect-error - revisit fumadocs types.
@@ -153,7 +154,7 @@ export default async function Page(props: {
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between">
-                <h1 className="text-5xl text-foreground font-semibold tracking-tighter sm:text-4xl xl:text-5xl font-satoshi">
+                <h1 className="text-foreground font-satoshi text-5xl font-semibold tracking-tighter sm:text-4xl xl:text-5xl">
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">

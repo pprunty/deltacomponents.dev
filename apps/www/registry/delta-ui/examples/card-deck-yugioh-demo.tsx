@@ -41,7 +41,7 @@ export default function CardDeckYugiohDemo() {
 
   return (
     <div className="my-6 flex h-full w-full items-center justify-center p-12">
-      <CardDeckContainer infinite={false} enableInitialAnimation={false}>
+      <CardDeckContainer enableInitialAnimation={false}>
         {images.map((image, index) => (
           <CardDeckItem key={index} className="rounded-none">
             <img

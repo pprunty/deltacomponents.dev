@@ -19,6 +19,7 @@ export async function GET(
   }
 
   const processedContent = processMdxForLLMs(
+    // @ts-expect-error - revisit fumadocs types.
     await page.data.getText("raw"),
     activeStyle.name
   )

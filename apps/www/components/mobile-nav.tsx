@@ -10,13 +10,13 @@ import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { StatusBadge } from "@/components/status-badge"
 import { Index } from "@/registry/__index__"
-import { registryCategories } from "@/registry/registry-categories"
 import { Button } from "@/registry/delta-ui/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/delta-ui/ui/popover"
+import { registryCategories } from "@/registry/registry-categories"
 
 const normalizePath = (path: string | null) => {
   if (!path) return "/"
@@ -210,6 +210,9 @@ export function MobileNav({
                     </div>
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
+                        // Only process page type items
+                        if (item.type !== "page") return null
+
                         // Check for component-specific metadata
                         const componentName = item.url?.split("/").pop()
                         const componentMeta = componentName
@@ -222,9 +225,8 @@ export function MobileNav({
                         }
 
                         if (
-                          item.type === "page" &&
-                          (!(item as { hide?: boolean }).hide ||
-                            process.env.VERCEL_ENV !== "production")
+                          !(item as { hide?: boolean }).hide ||
+                          process.env.VERCEL_ENV !== "production"
                         ) {
                           const isActive = normalizePath(item.url) === pathname
 

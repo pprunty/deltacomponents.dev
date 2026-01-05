@@ -4,6 +4,7 @@ import { Fragment } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useBreadcrumb } from "fumadocs-core/breadcrumb"
+// @ts-expect-error - fumadocs type import
 import type { PageTree } from "fumadocs-core/server"
 
 import {
