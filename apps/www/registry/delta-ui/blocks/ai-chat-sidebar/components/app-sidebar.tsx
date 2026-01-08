@@ -1,6 +1,7 @@
 import type React from "react"
 import { Plus, Settings } from "lucide-react"
 
+import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +17,6 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from "@/registry/delta-ui/ui/sidebar"
-import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 
 function Logo({ className }: { className?: string }) {
   return (

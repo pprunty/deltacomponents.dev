@@ -2,6 +2,55 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "input-otp-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [
+      {
+        path: "examples/input-otp-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-otp-pill-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [
+      {
+        path: "examples/input-otp-pill-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-otp-separator-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [
+      {
+        path: "examples/input-otp-separator-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "input-otp-form-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/input-otp.json",
+      "form",
+      "card",
+    ],
+
+    files: [
+      {
+        path: "examples/input-otp-form-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "product-card-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],

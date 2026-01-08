@@ -35,6 +35,19 @@
       "cssVars": {}
     },
     {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "navigation-menu",
       "type": "registry:ui",
       "dependencies": [
@@ -260,7 +273,8 @@
       "registryDependencies": [
         "sidebar",
         "breadcrumb",
-        "separator"
+        "separator",
+        "https://deltacomponents.dev/r/scroll-fade-effect.json"
       ],
       "files": [
         {
@@ -443,7 +457,8 @@
         "avatar",
         "button",
         "dialog",
-        "command"
+        "command",
+        "https://deltacomponents.dev/r/scroll-fade-effect.json"
       ],
       "files": [
         {
@@ -472,6 +487,11 @@
           "target": "components/nav-projects.tsx"
         },
         {
+          "path": "registry/delta-ui/blocks/admin-inset-layout/components/nav-resources.tsx",
+          "type": "registry:component",
+          "target": "components/nav-resources.tsx"
+        },
+        {
           "path": "registry/delta-ui/blocks/admin-inset-layout/components/nav-secondary.tsx",
           "type": "registry:component",
           "target": "components/nav-secondary.tsx"
@@ -497,12 +517,172 @@
       ]
     },
     {
+      "name": "saas-header-layout",
+      "type": "registry:block",
+      "description": "SaaS header layout with navigation menu",
+      "registryDependencies": [
+        "button",
+        "navigation-menu",
+        "https://deltacomponents.dev/r/navigation-menu.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/saas-header-layout/page.tsx",
+          "type": "registry:page",
+          "target": "app/saas-header-layout/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-header-layout/components/site-header.tsx",
+          "type": "registry:component",
+          "target": "components/site-header.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-header-layout/components/site-layout.tsx",
+          "type": "registry:component",
+          "target": "components/site-layout.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "600px",
+        "container": "",
+        "mobile": "component"
+      },
+      "categories": [
+        "featured",
+        "layout"
+      ]
+    },
+    {
+      "name": "saas-dashboard",
+      "type": "registry:block",
+      "description": "SaaS dashboard with inset sidebar and navigation",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sidebar",
+        "breadcrumb",
+        "separator",
+        "collapsible",
+        "dropdown-menu",
+        "avatar",
+        "button",
+        "dialog",
+        "command",
+        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/page.tsx",
+          "type": "registry:page",
+          "target": "app/saas-dashboard/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/app-sidebar.tsx",
+          "type": "registry:component",
+          "target": "components/app-sidebar.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/nav-main.tsx",
+          "type": "registry:component",
+          "target": "components/nav-main.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/nav-projects.tsx",
+          "type": "registry:component",
+          "target": "components/nav-projects.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/nav-resources.tsx",
+          "type": "registry:component",
+          "target": "components/nav-resources.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/nav-secondary.tsx",
+          "type": "registry:component",
+          "target": "components/nav-secondary.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/nav-user.tsx",
+          "type": "registry:component",
+          "target": "components/nav-user.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/saas-dashboard/components/search-command.tsx",
+          "type": "registry:component",
+          "target": "components/search-command.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "",
+        "mobile": "component"
+      },
+      "categories": [
+        "dashboard"
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [
         {
           "path": "registry/delta-ui/hooks/use-mobile.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/input-otp.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/input-otp-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-pill-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/input-otp.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/input-otp-pill-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-separator-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/input-otp.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/input-otp-separator-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-otp-form-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "form",
+        "card",
+        "https://deltacomponents.dev/r/input-otp.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/input-otp-form-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

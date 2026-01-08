@@ -233,4 +233,99 @@ export const blocks: Registry["items"] = [
     },
     categories: ["layout"],
   },
+  {
+    name: "saas-header-layout",
+    description: "SaaS header layout with navigation menu",
+    type: "registry:block",
+    registryDependencies: ["button", "navigation-menu"],
+    files: [
+      {
+        path: "blocks/saas-header-layout/page.tsx",
+        type: "registry:page",
+        target: "app/saas-header-layout/page.tsx",
+      },
+      {
+        path: "blocks/saas-header-layout/components/site-header.tsx",
+        type: "registry:component",
+        target: "components/site-header.tsx",
+      },
+      {
+        path: "blocks/saas-header-layout/components/site-layout.tsx",
+        type: "registry:component",
+        target: "components/site-layout.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "600px",
+      container: "",
+      mobile: "component",
+    },
+    categories: ["featured", "layout"],
+  },
+  {
+    name: "saas-dashboard",
+    description: "SaaS dashboard with inset sidebar and navigation",
+    type: "registry:block",
+    registryDependencies: [
+      "sidebar",
+      "breadcrumb",
+      "separator",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "button",
+      "dialog",
+      "command",
+      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+    ],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "blocks/saas-dashboard/page.tsx",
+        type: "registry:page",
+        target: "app/saas-dashboard/page.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/app-sidebar.tsx",
+        type: "registry:component",
+        target: "components/app-sidebar.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/nav-main.tsx",
+        type: "registry:component",
+        target: "components/nav-main.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/nav-projects.tsx",
+        type: "registry:component",
+        target: "components/nav-projects.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/nav-resources.tsx",
+        type: "registry:component",
+        target: "components/nav-resources.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/nav-secondary.tsx",
+        type: "registry:component",
+        target: "components/nav-secondary.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/nav-user.tsx",
+        type: "registry:component",
+        target: "components/nav-user.tsx",
+      },
+      {
+        path: "blocks/saas-dashboard/components/search-command.tsx",
+        type: "registry:component",
+        target: "components/search-command.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container: "",
+      mobile: "component",
+    },
+    categories: ["dashboard"],
+  },
 ]

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-form-demo",
+  "registryDependencies": [
+    "form",
+    "card",
+    "https://deltacomponents.dev/r/input-otp.json"
+  ],
+  "files": [
+    {
+      "path": "examples/input-otp-form-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { useForm } from \"react-hook-form\"\nimport { toast } from \"sonner\"\nimport { z } from \"zod\"\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from \"@/components/ui/input-otp\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport {\n  Form,\n  FormControl,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/components/ui/form\"\n\nconst FormSchema = z.object({\n  pin: z\n    .string()\n    .min(6, {\n      message: \"Your one-time password must be 6 characters.\",\n    })\n    .regex(/^\\d+$/, {\n      message: \"Your one-time password must contain numbers only.\",\n    }),\n})\n\nexport default function InputOTPForm() {\n  const form = useForm<z.infer<typeof FormSchema>>({\n    resolver: zodResolver(FormSchema),\n    defaultValues: {\n      pin: \"\",\n    },\n  })\n\n  function onSubmit(data: z.infer<typeof FormSchema>) {\n    toast(\"You submitted the following values:\", {\n      description: (\n        <pre className=\"bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4\">\n          <code>{JSON.stringify(data, null, 2)}</code>\n        </pre>\n      ),\n      position: \"bottom-right\",\n      classNames: {\n        content: \"flex flex-col gap-2\",\n      },\n      style: {\n        \"--border-radius\": \"calc(var(--radius)  + 4px)\",\n      } as React.CSSProperties,\n    })\n    form.reset()\n  }\n\n  return (\n    <Card className=\"w-full sm:max-w-md\">\n      <CardHeader>\n        <CardTitle>Two-Factor Authentication</CardTitle>\n        <CardDescription>\n          Please enter the 6-digit code sent to your device.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <Form {...form}>\n          <form\n            id=\"otp-form\"\n            onSubmit={form.handleSubmit(onSubmit)}\n            className=\"space-y-6\"\n          >\n            <FormField\n              control={form.control}\n              name=\"pin\"\n              render={({ field }) => (\n                <FormItem>\n                  <FormLabel>One-Time Password</FormLabel>\n                  <FormControl>\n                    <InputOTP maxLength={6} {...field}>\n                      <InputOTPGroup>\n                        <InputOTPSlot index={0} />\n                        <InputOTPSlot index={1} />\n                        <InputOTPSlot index={2} />\n                        <InputOTPSlot index={3} />\n                        <InputOTPSlot index={4} />\n                        <InputOTPSlot index={5} />\n                      </InputOTPGroup>\n                    </InputOTP>\n                  </FormControl>\n                  <FormMessage />\n                </FormItem>\n              )}\n            />\n          </form>\n        </Form>\n      </CardContent>\n      <CardFooter>\n        <Button type=\"submit\" form=\"otp-form\">\n          Submit\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

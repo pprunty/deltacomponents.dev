@@ -1,0 +1,89 @@
+---
+title: Input OTP
+description: Accessible one-time password component with copy paste functionality.
+---
+
+<ComponentPreview name="input-otp-demo" />
+
+## Installation
+
+<Installation name="input-otp" />
+
+## Usage
+
+The Input OTP component is built on top of `input-otp`. It is fully accessible and handles copy-paste functionality automatically.
+
+```tsx
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+
+export function InputOTPPattern() {
+  return (
+    <InputOTP maxLength={6}>
+      <InputOTPGroup>
+        <InputOTPSlot index={0} />
+        <InputOTPSlot index={1} />
+        <InputOTPSlot index={2} />
+        <InputOTPSlot index={3} />
+        <InputOTPSlot index={4} />
+        <InputOTPSlot index={5} />
+      </InputOTPGroup>
+    </InputOTP>
+  )
+}
+```
+
+## Examples
+
+### Pattern
+
+You can use the `InputOTPSeparator` component to create visual groups, which is common for 2FA codes (e.g. 3-3 grouping).
+
+<ComponentPreview name="input-otp-separator-demo" />
+
+### Pill Variant
+
+The component comes with a secondary `pill` variant that renders slots as individual rounded rectangles, offering a distinct visual style from the connected default look.
+
+<ComponentPreview name="input-otp-pill-demo" />
+
+### Form Integration
+
+The component integrates seamlessly with `react-hook-form` and `zod`. This example demonstrates how to validate that the input contains exactly 6 digits and only numbers.
+
+<ComponentPreview name="input-otp-form-demo" />
+
+## API Reference
+
+### InputOTP
+
+| Prop                 | Type                                    | Default | Description                           |
+| -------------------- | --------------------------------------- | ------- | ------------------------------------- |
+| `maxLength`          | `number`                                | —       | The length of the OTP. Required.      |
+| `containerClassName` | `string`                                | —       | Class name for the container wrapper. |
+| `children`           | `ReactNode`                             | —       | Content including groups and slots.   |
+| `...props`           | `React.ComponentProps<typeof OTPInput>` | —       | All other props exported by `input-otp`. |
+
+### InputOTPGroup
+
+| Prop        | Type        | Default | Description                               |
+| ----------- | ----------- | ------- | ----------------------------------------- |
+| `className` | `string`    | —       | Additional CSS classes.                   |
+| `children`  | `ReactNode` | —       | Should contain `InputOTPSlot` components. |
+
+### InputOTPSlot
+
+| Prop      | Type                    | Default     | Description                                        |
+| --------- | ----------------------- | ----------- | -------------------------------------------------- |
+| `index`   | `number`                | —           | The 0-based index of the slot in the OTP sequence. |
+| `variant` | `"default" \| "pill"` | `"default"` | The visual style of the slot.                      |
+| `className` | `string`              | —           | Additional CSS classes.                            |
+
+### InputOTPSeparator
+
+| Prop       | Type        | Default | Description               |
+| ---------- | ----------- | ------- | ------------------------- |
+| `children` | `ReactNode` | —       | Defaults to a `Dot` icon. |

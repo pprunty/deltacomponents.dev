@@ -8,12 +8,11 @@ export default function ScrollFadeEffectDemo() {
         <h3 className="mb-4 text-sm font-medium">Vertical Scroll</h3>
         <div className="rounded-lg border">
           <ScrollFadeEffect className="h-72">
-            <div className="p-4 space-y-4">
+            <div className="space-y-4 p-4">
               {Array.from({ length: 20 }).map((_, i) => (
                 <p key={i} className="text-sm">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua.
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
               ))}
             </div>

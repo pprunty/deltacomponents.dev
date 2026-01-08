@@ -34,11 +34,7 @@ export default function MarqueeStackedDemo() {
   return (
     <div className="w-full space-y-8 py-12">
       {/* Top row - moving right to left */}
-      <Marquee
-        direction="left"
-        speed={25}
-        className="py-4"
-      >
+      <Marquee direction="left" speed={25} className="py-4">
         {brands.map((brand) => (
           <img
             key={brand.name}
@@ -51,11 +47,7 @@ export default function MarqueeStackedDemo() {
       </Marquee>
 
       {/* Bottom row - moving left to right */}
-      <Marquee
-        direction="right"
-        speed={30}
-        className="py-4"
-      >
+      <Marquee direction="right" speed={30} className="py-4">
         {brands.map((brand) => (
           <img
             key={brand.name}

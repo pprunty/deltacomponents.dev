@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-separator-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/input-otp.json"
+  ],
+  "files": [
+    {
+      "path": "examples/input-otp-separator-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/components/ui/input-otp\"\nimport { Label } from \"@/components/ui/label\"\n\nexport default function InputOTPSeparatorDemo() {\n  return (\n    <div className=\"space-y-2\">\n      <Label htmlFor=\"otp-separator\">2FA Code</Label>\n      <InputOTP id=\"otp-separator\" maxLength={6}>\n        <InputOTPGroup>\n          <InputOTPSlot index={0} />\n          <InputOTPSlot index={1} />\n          <InputOTPSlot index={2} />\n        </InputOTPGroup>\n        <InputOTPSeparator />\n        <InputOTPGroup>\n          <InputOTPSlot index={3} />\n          <InputOTPSlot index={4} />\n          <InputOTPSlot index={5} />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

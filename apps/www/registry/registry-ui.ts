@@ -2,6 +2,17 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "input-otp",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "delta/input-otp.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "navigation-menu",
     type: "registry:ui",
     dependencies: ["lucide-react"],

@@ -26,6 +26,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "input-otp": {
+    name: "input-otp",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/input-otp.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/input-otp.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "navigation-menu": {
     name: "navigation-menu",
     description: "",
@@ -300,7 +318,7 @@ export const Index: Record<string, any> = {
     name: "ai-chat-sidebar",
     description: "A collapsible sidebar component for AI chat applications",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator"],
+    registryDependencies: ["sidebar","breadcrumb","separator","https://deltacomponents.dev/r/scroll-fade-effect.json"],
     files: [{
       path: "registry/delta-ui/blocks/ai-chat-sidebar/components/app-sidebar.tsx",
       type: "registry:component",
@@ -432,7 +450,7 @@ export const Index: Record<string, any> = {
     name: "admin-inset-layout",
     description: "Admin dashboard layout with inset sidebar",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command"],
+    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","https://deltacomponents.dev/r/scroll-fade-effect.json"],
     files: [{
       path: "registry/delta-ui/blocks/admin-inset-layout/page.tsx",
       type: "registry:page",
@@ -454,6 +472,10 @@ export const Index: Record<string, any> = {
       type: "registry:component",
       target: "components/nav-projects.tsx"
     },{
+      path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-resources.tsx",
+      type: "registry:component",
+      target: "components/nav-resources.tsx"
+    },{
       path: "registry/delta-ui/blocks/admin-inset-layout/components/nav-secondary.tsx",
       type: "registry:component",
       target: "components/nav-secondary.tsx"
@@ -474,6 +496,78 @@ export const Index: Record<string, any> = {
     categories: ["layout"],
     meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
+  "saas-header-layout": {
+    name: "saas-header-layout",
+    description: "SaaS header layout with navigation menu",
+    type: "registry:block",
+    registryDependencies: ["button","navigation-menu"],
+    files: [{
+      path: "registry/delta-ui/blocks/saas-header-layout/page.tsx",
+      type: "registry:page",
+      target: "app/saas-header-layout/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-header-layout/components/site-header.tsx",
+      type: "registry:component",
+      target: "components/site-header.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-header-layout/components/site-layout.tsx",
+      type: "registry:component",
+      target: "components/site-layout.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/saas-header-layout/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["featured","layout"],
+    meta: {"iframeHeight":"600px","container":"","mobile":"component"},
+  },
+  "saas-dashboard": {
+    name: "saas-dashboard",
+    description: "SaaS dashboard with inset sidebar and navigation",
+    type: "registry:block",
+    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","https://deltacomponents.dev/r/scroll-fade-effect.json"],
+    files: [{
+      path: "registry/delta-ui/blocks/saas-dashboard/page.tsx",
+      type: "registry:page",
+      target: "app/saas-dashboard/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/app-sidebar.tsx",
+      type: "registry:component",
+      target: "components/app-sidebar.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/nav-main.tsx",
+      type: "registry:component",
+      target: "components/nav-main.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/nav-projects.tsx",
+      type: "registry:component",
+      target: "components/nav-projects.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/nav-resources.tsx",
+      type: "registry:component",
+      target: "components/nav-resources.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/nav-secondary.tsx",
+      type: "registry:component",
+      target: "components/nav-secondary.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/nav-user.tsx",
+      type: "registry:component",
+      target: "components/nav-user.tsx"
+    },{
+      path: "registry/delta-ui/blocks/saas-dashboard/components/search-command.tsx",
+      type: "registry:component",
+      target: "components/search-command.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/saas-dashboard/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["dashboard"],
+    meta: {"iframeHeight":"800px","container":"","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",
@@ -486,6 +580,78 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/hooks/use-mobile.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-otp-demo": {
+    name: "input-otp-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [{
+      path: "registry/delta-ui/examples/input-otp-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/input-otp-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-otp-pill-demo": {
+    name: "input-otp-pill-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [{
+      path: "registry/delta-ui/examples/input-otp-pill-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/input-otp-pill-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-otp-separator-demo": {
+    name: "input-otp-separator-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    files: [{
+      path: "registry/delta-ui/examples/input-otp-separator-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/input-otp-separator-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "input-otp-form-demo": {
+    name: "input-otp-form-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json","form","card"],
+    files: [{
+      path: "registry/delta-ui/examples/input-otp-form-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/input-otp-form-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

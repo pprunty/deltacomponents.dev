@@ -33,5 +33,15 @@
     "name": "admin-inset-layout",
     "description": "Admin dashboard layout with inset sidebar",
     "categories": ["layout"]
+  },
+  {
+    "name": "saas-header-layout",
+    "description": "SaaS header layout with navigation menu",
+    "categories": ["featured", "layout"]
+  },
+  {
+    "name": "saas-dashboard",
+    "description": "SaaS dashboard with inset sidebar and navigation",
+    "categories": ["dashboard"]
   }
 ]

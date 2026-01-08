@@ -19,12 +19,12 @@ import { NavResources } from "@/registry/delta-ui/blocks/admin-inset-layout/comp
 import { NavSecondary } from "@/registry/delta-ui/blocks/admin-inset-layout/components/nav-secondary"
 import { NavUser } from "@/registry/delta-ui/blocks/admin-inset-layout/components/nav-user"
 import { SearchCommand } from "@/registry/delta-ui/blocks/admin-inset-layout/components/search-command"
+import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
 } from "@/registry/delta-ui/ui/sidebar"
-import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 
 const data = {
   user: {

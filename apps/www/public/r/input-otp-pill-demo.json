@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-pill-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/input-otp.json"
+  ],
+  "files": [
+    {
+      "path": "examples/input-otp-pill-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSlot,\n} from \"@/components/ui/input-otp\"\nimport { Label } from \"@/components/ui/label\"\n\nexport default function InputOTPPill() {\n  return (\n    <div className=\"space-y-2\">\n      <Label htmlFor=\"input-otp-pill\">One-Time Password</Label>\n      <InputOTP id=\"input-otp-pill\" maxLength={6}>\n        <InputOTPGroup>\n          <InputOTPSlot index={0} variant=\"pill\" />\n          <InputOTPSlot index={1} variant=\"pill\" />\n          <InputOTPSlot index={2} variant=\"pill\" />\n          <InputOTPSlot index={3} variant=\"pill\" />\n          <InputOTPSlot index={4} variant=\"pill\" />\n          <InputOTPSlot index={5} variant=\"pill\" />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
