@@ -20,7 +20,11 @@ function InputOTP({
         "flex items-center gap-1 has-disabled:opacity-50",
         containerClassName
       )}
-      className={cn("disabled:cursor-not-allowed", className)}
+      className={cn(
+        "disabled:cursor-not-allowed",
+        "selection:bg-transparent selection:text-transparent file:bg-transparent file:text-transparent caret-transparent text-base",
+        className
+      )}
       {...props}
     />
   )
@@ -53,7 +57,7 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "text-foreground relative flex h-9 w-9 items-center justify-center text-sm font-semibold transition-all sm:h-11 sm:w-11 sm:text-base",
+        "text-foreground relative flex h-10 w-10 items-center justify-center text-sm font-semibold transition-all",
         // Default variant: matches shadcn input styling
         variant === "default" && [
           "dark:bg-input/30 border-input rounded-md border bg-transparent shadow-xs",
