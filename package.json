@@ -34,7 +34,7 @@
     "!packages/tests/temp/**"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build && start-server-and-test \"bun --filter=www start\" http://localhost:4001 \"bun --filter=www registry:capture\"",
     "build:registry": "bun --filter=www build:registry && bun lint:fix && bun format:write -- --loglevel silent",
     "registry:build": "bun --filter=www registry:build && bun format:write -- --loglevel silent",
     "dev": "turbo run dev",
