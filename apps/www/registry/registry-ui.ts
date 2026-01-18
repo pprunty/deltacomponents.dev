@@ -111,6 +111,16 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-fade-effect",
+    type: "registry:ui",
+    files: [
+      {
+        path: "delta/scroll-fade-effect.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "tabs",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tabs"],
