@@ -170,6 +170,19 @@
       ]
     },
     {
+      "name": "scroll-fade-effect",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/scroll-fade-effect.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "hide": true
+      }
+    },
+    {
       "name": "tabs",
       "type": "registry:ui",
       "dependencies": [
