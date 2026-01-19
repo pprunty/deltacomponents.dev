@@ -214,6 +214,11 @@ async function cleanupGeneratedPaths() {
             cleanPath = 'components/' + cleanPath
           }
 
+          // For Delta components, map to components/ui/
+          if (cleanPath.startsWith('delta/')) {
+            cleanPath = cleanPath.replace('delta/', 'components/ui/')
+          }
+
           file.path = cleanPath
 
           // Clean up imports in the content field using the path mappings
