@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-fade-effect-slider-demo",
+  "registryDependencies": [
+    "separator",
+    "slider",
+    "label",
+    "https://deltacomponents.dev/r/scroll-fade-effect.json"
+  ],
+  "files": [
+    {
+      "path": "examples/scroll-fade-effect-slider-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { ScrollFadeEffect } from \"@/components/ui/scroll-fade-effect\"\nimport { Label } from \"@/components/ui/label\"\nimport { Separator } from \"@/components/ui/separator\"\nimport { Slider } from \"@/components/ui/slider\"\n\nconst tags = Array.from({ length: 50 }).map(\n  (_, i, a) => `v1.2.0-beta.${a.length - i}`\n)\n\nexport function ScrollFadeEffectSliderDemo() {\n  const [intensity, setIntensity] = React.useState(64)\n\n  return (\n    <div className=\"flex flex-col gap-6\">\n      <div className=\"flex flex-col gap-3\">\n        <div className=\"flex items-center justify-between\">\n          <Label htmlFor=\"intensity\">Intensity</Label>\n          <span className=\"text-muted-foreground text-sm\">{intensity}px</span>\n        </div>\n        <Slider\n          id=\"intensity\"\n          min={0}\n          max={150}\n          step={1}\n          value={[intensity]}\n          onValueChange={([value]) => setIntensity(value)}\n        />\n      </div>\n      <div className=\"rounded-lg border\">\n        <ScrollFadeEffect intensity={intensity} className=\"h-72 w-48\">\n          <div className=\"p-4\">\n            <h4 className=\"mb-4 text-sm leading-none font-medium\">Tags</h4>\n            {tags.map((tag) => (\n              <React.Fragment key={tag}>\n                <div className=\"text-sm\">{tag}</div>\n                <Separator className=\"my-2\" />\n              </React.Fragment>\n            ))}\n          </div>\n        </ScrollFadeEffect>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

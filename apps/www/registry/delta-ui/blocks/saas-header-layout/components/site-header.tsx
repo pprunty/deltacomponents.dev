@@ -103,7 +103,7 @@ const navigation = [
 
 export function SiteHeader() {
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 fixed top-0 right-0 left-0 z-[var(--layer-header)] border-b border-border backdrop-blur-md transition-colors">
+    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 border-border fixed top-0 right-0 left-0 z-[var(--layer-header)] border-b backdrop-blur-md transition-colors">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         {/* Logo */}
         <Link

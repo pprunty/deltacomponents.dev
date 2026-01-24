@@ -8,6 +8,7 @@ import { MarqueeDemo } from "@/registry/delta-ui/examples/marquee-demo"
 import InputOTPPill from "@/registry/delta-ui/examples/input-otp-pill-demo"
 import { ProductCardDemo } from "@/registry/delta-ui/examples/product-card-demo"
 import QrcodeDemoInteractive from "@/registry/delta-ui/examples/qrcode-demo-interactive"
+import { ScrollFadeEffectDemo } from "@/registry/delta-ui/examples/scroll-fade-effect-demo"
 import { TabsBackgroundDemo } from "@/registry/delta-ui/examples/tabs-background-demo"
 import XCardBasicDemo from "@/registry/delta-ui/examples/x-card-basic-demo"
 
@@ -60,6 +61,10 @@ export function CardsDemo() {
 
       <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
         <MarqueeDemo />
+      </div>
+
+      <div className="flex min-h-[200px] items-center justify-center rounded-lg border p-4">
+        <ScrollFadeEffectDemo />
       </div>
     </div>
   )

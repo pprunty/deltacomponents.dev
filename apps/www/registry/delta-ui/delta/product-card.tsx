@@ -105,11 +105,11 @@ const ProductCardImage = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative aspect-square w-full overflow-hidden rounded-lg transition-colors duration-150",
+        "relative aspect-square w-full overflow-hidden rounded-lg transition-colors duration-300",
         "bg-muted",
         "[&:hover]:bg-muted/80 [&:active]:bg-muted/80",
         animated &&
-          "[&:active>img]:-translate-y-1 [&:hover>img]:-translate-y-1",
+          "[&:active>img]:-translate-y-2 [&:hover>img]:-translate-y-2",
         className
       )}
       {...props}
@@ -119,7 +119,7 @@ const ProductCardImage = React.forwardRef<
         alt={alt}
         className={cn(
           "absolute inset-0 h-full w-full object-contain",
-          animated && "transition-transform duration-200 ease-in-out",
+          animated && "transition-transform duration-300 ease-in-out",
           normalizedSize === "sm" && "p-4",
           normalizedSize === "default" && "p-8",
           normalizedSize === "lg" && "p-12",

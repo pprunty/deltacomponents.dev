@@ -22,7 +22,7 @@ function InputOTP({
       )}
       className={cn(
         "disabled:cursor-not-allowed",
-        "selection:bg-transparent selection:text-transparent file:bg-transparent file:text-transparent caret-transparent text-base",
+        "text-base caret-transparent selection:bg-transparent selection:text-transparent file:bg-transparent file:text-transparent",
         className
       )}
       {...props}

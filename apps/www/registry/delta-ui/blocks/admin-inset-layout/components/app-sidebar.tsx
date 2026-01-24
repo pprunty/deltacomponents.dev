@@ -253,7 +253,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SearchCommand />
       </div>
       <SidebarContent className="gap-1">
-        <ScrollFadeEffect className="overflow-y-auto overscroll-none [scrollbar-color:rgb(163_163_163_/_0.5)_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.5)] hover:[&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.7)] [&::-webkit-scrollbar-track]:bg-transparent">
+        <ScrollFadeEffect
+          intensity={48}
+          className="overscroll-none [scrollbar-color:rgb(163_163_163_/_0.5)_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.5)] hover:[&::-webkit-scrollbar-thumb]:bg-[rgb(163_163_163_/_0.7)] [&::-webkit-scrollbar-track]:bg-transparent"
+        >
           <NavMain items={data.navMain} />
           <NavResources items={data.resources} />
           <NavProjects projects={data.projects} />

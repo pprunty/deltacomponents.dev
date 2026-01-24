@@ -95,6 +95,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "product-card-grid-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [
+      {
+        path: "examples/product-card-grid-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "navigation-menu-demo",
     type: "registry:example",
     registryDependencies: [
@@ -660,6 +671,36 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/chat-reasoning-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "scroll-fade-effect-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "separator",
+    ],
+    files: [
+      {
+        path: "examples/scroll-fade-effect-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "scroll-fade-effect-slider-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "separator",
+      "slider",
+      "label",
+    ],
+    files: [
+      {
+        path: "examples/scroll-fade-effect-slider-demo.tsx",
         type: "registry:example",
       },
     ],

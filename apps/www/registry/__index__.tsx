@@ -204,7 +204,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"hide":true},
+    meta: undefined,
   },
   "tabs": {
     name: "tabs",
@@ -742,6 +742,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/product-card-size-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "product-card-grid-demo": {
+    name: "product-card-grid-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    files: [{
+      path: "registry/delta-ui/examples/product-card-grid-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/product-card-grid-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -1660,6 +1678,42 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/chat-reasoning-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "scroll-fade-effect-demo": {
+    name: "scroll-fade-effect-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/scroll-fade-effect.json","separator"],
+    files: [{
+      path: "registry/delta-ui/examples/scroll-fade-effect-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/scroll-fade-effect-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "scroll-fade-effect-slider-demo": {
+    name: "scroll-fade-effect-slider-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/scroll-fade-effect.json","separator","slider","label"],
+    files: [{
+      path: "registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

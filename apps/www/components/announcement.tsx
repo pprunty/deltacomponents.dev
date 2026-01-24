@@ -12,7 +12,7 @@ export function Announcement() {
     >
       <Link href="/docs/changelog" className="flex items-center gap-1">
         <span className="flex size-2 rounded-full bg-[#ff9800]" title="New" />
-        January 2026 Beta Release Announced <ArrowRightIcon />
+        May 2026 Beta Release Announced <ArrowRightIcon />
       </Link>
     </Badge>
   )

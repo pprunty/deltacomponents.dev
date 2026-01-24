@@ -25,7 +25,7 @@ export default function MapboxGridBlockPage() {
                 zoom={11}
                 markerColor="#679BFF"
                 className="aspect-square w-full"
-                label="New York City"
+                label="New York City, USA"
                 interactive={false}
               />
             </div>
@@ -38,7 +38,7 @@ export default function MapboxGridBlockPage() {
                 zoom={11}
                 markerColor="#679BFF"
                 className="aspect-square w-full"
-                label="San Francisco"
+                label="San Francisco, USA"
                 interactive={false}
               />
             </div>
@@ -51,7 +51,7 @@ export default function MapboxGridBlockPage() {
                 zoom={11}
                 markerColor="#679BFF"
                 className="aspect-square w-full"
-                label="London"
+                label="London, United Kingdom"
                 interactive={false}
               />
             </div>

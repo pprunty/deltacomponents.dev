@@ -172,7 +172,32 @@
       transform: none !important;
       transition: none !important;
     }
-    
+
+  }
+
+  /* Scroll fade effect keyframes */
+  @keyframes show-top-mask {
+    to {
+      --top-mask-height: var(--mask-height);
+    }
+  }
+
+  @keyframes hide-bottom-mask {
+    to {
+      --bottom-mask-height: 0px;
+    }
+  }
+
+  @keyframes show-left-mask {
+    to {
+      --left-mask-width: var(--mask-width);
+    }
+  }
+
+  @keyframes hide-right-mask {
+    to {
+      --right-mask-width: 0px;
+    }
   }
 }
 
@@ -344,30 +369,6 @@
     0 var(--scroll-buffer),
     calc(100% - var(--scroll-buffer)) 100%;
   animation-fill-mode: both;
-}
-
-@keyframes show-top-mask {
-  to {
-    --top-mask-height: var(--mask-height);
-  }
-}
-
-@keyframes hide-bottom-mask {
-  to {
-    --bottom-mask-height: 0px;
-  }
-}
-
-@keyframes show-left-mask {
-  to {
-    --left-mask-width: var(--mask-width);
-  }
-}
-
-@keyframes hide-right-mask {
-  to {
-    --right-mask-width: 0px;
-  }
 }
 
 @keyframes fade-in {

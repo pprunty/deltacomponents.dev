@@ -1,0 +1,100 @@
+---
+title: Scroll Fade Effect
+description: A scroll container with fade effects at the edges that appear and disappear based on scroll position. The fade indicates more content is available to scroll.
+---
+
+<ComponentPreview name="scroll-fade-effect-demo" />
+
+## Installation
+
+<Installation name="scroll-fade-effect" />
+
+## Usage
+
+```tsx
+import { ScrollFadeEffect } from "@/components/ui/scroll-fade-effect"
+
+export default function Example() {
+  return (
+    <ScrollFadeEffect className="h-72 w-48">
+      <div className="p-4">
+        {/* Your scrollable content */}
+      </div>
+    </ScrollFadeEffect>
+  )
+}
+```
+
+## Examples
+
+### Adjustable Intensity
+
+Use a slider to dynamically control the fade intensity. The `intensity` prop accepts pixel values.
+
+<ComponentPreview name="scroll-fade-effect-slider-demo" />
+
+### Horizontal Scroll
+
+Use `orientation="horizontal"` for horizontally scrollable content with fade effects on the left and right edges.
+
+```tsx
+<ScrollFadeEffect orientation="horizontal" className="h-24 w-full">
+  <div className="flex gap-4 p-4">
+    {Array.from({ length: 15 }, (_, i) => (
+      <div
+        key={i}
+        className="flex h-16 w-24 shrink-0 items-center justify-center rounded-lg bg-muted"
+      >
+        Item {i + 1}
+      </div>
+    ))}
+  </div>
+</ScrollFadeEffect>
+```
+
+### Custom Intensity
+
+Control the fade size using the `intensity` prop. Values are in pixels.
+
+```tsx
+{/* Light fade */}
+<ScrollFadeEffect intensity={32} className="h-48 w-48">
+  {/* content */}
+</ScrollFadeEffect>
+
+{/* Default fade */}
+<ScrollFadeEffect intensity={64} className="h-48 w-48">
+  {/* content */}
+</ScrollFadeEffect>
+
+{/* Heavy fade */}
+<ScrollFadeEffect intensity={128} className="h-48 w-48">
+  {/* content */}
+</ScrollFadeEffect>
+```
+
+## API Reference
+
+### ScrollFadeEffect
+
+| Prop        | Type                         | Default      | Description                                              |
+| ----------- | ---------------------------- | ------------ | -------------------------------------------------------- |
+| orientation | `"vertical" \| "horizontal"` | `"vertical"` | The scroll direction of the container                    |
+| intensity   | `number`                     | `64`         | The fade size in pixels                                  |
+| className   | `string`                     | -            | Additional CSS classes                                   |
+| style       | `React.CSSProperties`        | -            | Additional inline styles                                 |
+| children    | `React.ReactNode`            | -            | The scrollable content                                   |
+
+## Features
+
+- **Scroll-driven Animations**: Fade effects respond to scroll position - top fade appears when scrolled down, bottom fade hides when reaching the end
+- **CSS Mask Gradient**: Uses CSS mask-image for smooth, hardware-accelerated fading
+- **Bidirectional Support**: Works with both vertical and horizontal scrolling
+- **Configurable Intensity**: Fine-tune the fade size in pixels
+- **Minimal Bundle Size**: Pure CSS solution with scroll-driven animations
+
+## Accessibility
+
+- Maintains native scroll behavior for assistive technologies
+- Content remains fully accessible to screen readers
+- Supports keyboard navigation with standard scroll shortcuts

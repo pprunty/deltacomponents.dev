@@ -177,10 +177,7 @@
           "path": "registry/delta-ui/delta/scroll-fade-effect.tsx",
           "type": "registry:ui"
         }
-      ],
-      "meta": {
-        "hide": true
-      }
+      ]
     },
     {
       "name": "tabs",
@@ -747,6 +744,19 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/product-card-size-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "product-card-grid-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/product-card.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/product-card-grid-demo.tsx",
           "type": "registry:example"
         }
       ]
@@ -1426,6 +1436,36 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/chat-reasoning-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-fade-effect-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "separator",
+        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/scroll-fade-effect-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scroll-fade-effect-slider-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "separator",
+        "slider",
+        "label",
+        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx",
           "type": "registry:example"
         }
       ]

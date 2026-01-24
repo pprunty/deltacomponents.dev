@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "product-card-grid-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/product-card.json"
+  ],
+  "files": [
+    {
+      "path": "examples/product-card-grid-demo.tsx",
+      "content": "import {\n  ProductCard,\n  ProductCardContent,\n  ProductCardHeader,\n  ProductCardImage,\n  ProductCardTitle,\n} from \"@/components/ui/product-card\"\n\nconst essays = [\n  {\n    title: \"Buy Wisely\",\n    image: \"/images/essays/buy-wisely.jpg\",\n    author: \"Paul Graham\",\n    url: \"#\",\n  },\n  {\n    title: \"On Becoming Competitive\",\n    image: \"/images/essays/on-becoming-competitive.jpg\",\n    author: \"Naval Ravikant\",\n    url: \"#\",\n  },\n  {\n    title: \"Salary Negotiations\",\n    image: \"/images/essays/salary-negotiations.jpg\",\n    author: \"Patrick McKenzie\",\n    url: \"#\",\n  },\n  {\n    title: \"Solution Space & Taste\",\n    image: \"/images/essays/solution-space-taste.jpg\",\n    author: \"Jessica Livingston\",\n    url: \"#\",\n  },\n  {\n    title: \"The Bear Manifesto\",\n    image: \"/images/essays/the-bear-manifesto.jpg\",\n    author: \"Nassim Taleb\",\n    url: \"#\",\n  },\n  {\n    title: \"Write Like You Talk\",\n    image: \"/images/essays/write-like-you-talk.jpg\",\n    author: \"Paul Graham\",\n    url: \"#\",\n  },\n]\n\nexport default function ProductCardGridDemo() {\n  return (\n    <div className=\"grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3\">\n      {essays.map((essay) => (\n        <a key={essay.title} href={essay.url} className=\"block\">\n          <ProductCard className=\"w-full\">\n            <ProductCardImage src={essay.image} alt={essay.title} />\n            <ProductCardContent>\n              <ProductCardHeader>\n                <ProductCardTitle>{essay.title}</ProductCardTitle>\n                <div className=\"text-sm text-muted-foreground\">\n                  by {essay.author}\n                </div>\n              </ProductCardHeader>\n            </ProductCardContent>\n          </ProductCard>\n        </a>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
