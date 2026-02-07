@@ -177,24 +177,36 @@
 
   /* Scroll fade effect keyframes */
   @keyframes show-top-mask {
+    from {
+      --top-mask-height: 0px;
+    }
     to {
       --top-mask-height: var(--mask-height);
     }
   }
 
   @keyframes hide-bottom-mask {
+    from {
+      --bottom-mask-height: var(--mask-height);
+    }
     to {
       --bottom-mask-height: 0px;
     }
   }
 
   @keyframes show-left-mask {
+    from {
+      --left-mask-width: 0px;
+    }
     to {
       --left-mask-width: var(--mask-width);
     }
   }
 
   @keyframes hide-right-mask {
+    from {
+      --right-mask-width: var(--mask-width);
+    }
     to {
       --right-mask-width: 0px;
     }
@@ -316,6 +328,8 @@
   --mask-offset-top: 0px;
   --mask-offset-bottom: 0px;
   --scroll-buffer: 2rem;
+  --top-mask-height: var(--mask-height);
+  --bottom-mask-height: var(--mask-height);
 
   mask-image:
     linear-gradient(to top, transparent, black 90%),
@@ -333,12 +347,14 @@
     0 0;
   mask-composite: exclude;
 
-  animation-name: show-top-mask, hide-bottom-mask;
-  animation-timeline: scroll(self), scroll(self);
-  animation-range:
-    0 var(--scroll-buffer),
-    calc(100% - var(--scroll-buffer)) 100%;
-  animation-fill-mode: both;
+  @supports (animation-timeline: scroll()) {
+    animation-name: show-top-mask, hide-bottom-mask;
+    animation-timeline: scroll(self), scroll(self);
+    animation-range:
+      0 var(--scroll-buffer),
+      calc(100% - var(--scroll-buffer)) 100%;
+    animation-fill-mode: both;
+  }
 }
 
 @utility scroll-fade-effect-x {
@@ -346,6 +362,8 @@
   --mask-offset-left: 0px;
   --mask-offset-right: 0px;
   --scroll-buffer: 2rem;
+  --left-mask-width: var(--mask-width);
+  --right-mask-width: var(--mask-width);
 
   mask-image:
     linear-gradient(to left, transparent, black 90%),
@@ -363,12 +381,14 @@
     0 0;
   mask-composite: exclude;
 
-  animation-name: show-left-mask, hide-right-mask;
-  animation-timeline: scroll(self inline), scroll(self inline);
-  animation-range:
-    0 var(--scroll-buffer),
-    calc(100% - var(--scroll-buffer)) 100%;
-  animation-fill-mode: both;
+  @supports (animation-timeline: scroll()) {
+    animation-name: show-left-mask, hide-right-mask;
+    animation-timeline: scroll(self inline), scroll(self inline);
+    animation-range:
+      0 var(--scroll-buffer),
+      calc(100% - var(--scroll-buffer)) 100%;
+    animation-fill-mode: both;
+  }
 }
 
 @keyframes fade-in {
