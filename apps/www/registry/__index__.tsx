@@ -586,6 +586,28 @@ export const Index: Record<string, any> = {
     categories: ["dashboard"],
     meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
+  "auth-form": {
+    name: "auth-form",
+    description: "Authentication form with SSO, email, passkey, and SAML options",
+    type: "registry:block",
+    registryDependencies: ["button","input","sonner"],
+    files: [{
+      path: "registry/delta-ui/blocks/auth-form/page.tsx",
+      type: "registry:page",
+      target: "app/auth-form/page.tsx"
+    },{
+      path: "registry/delta-ui/blocks/auth-form/components/auth-form.tsx",
+      type: "registry:component",
+      target: "components/auth-form.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/blocks/auth-form/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication"],
+    meta: {"iframeHeight":"800px","container":"w-full bg-background min-h-svh flex items-center justify-center","mobile":"component"},
+  },
   "use-mobile": {
     name: "use-mobile",
     description: "",

@@ -157,7 +157,7 @@ export default async function Page(props: {
                 <h1 className="text-foreground font-satoshi text-5xl font-semibold tracking-tighter sm:text-4xl xl:text-5xl">
                   {doc.title}
                 </h1>
-                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 pb-[env(safe-area-inset-bottom,4px)] pt-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+                <div className="docs-nav fixed right-0 bottom-0 left-0 isolate z-50 flex items-center gap-2 border-t border-border/50 px-6 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] supports-[backdrop-filter]:bg-background/80 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:pb-0 sm:backdrop-blur-none">
                   <DocsCopyPage page={rawContent} url={absoluteUrl(page.url)} />
                   {neighbours.previous && (
                     <Button

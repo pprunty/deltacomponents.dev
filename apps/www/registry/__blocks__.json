@@ -2,46 +2,73 @@
   {
     "name": "ai-chat-sidebar",
     "description": "A collapsible sidebar component for AI chat applications",
-    "categories": ["ai-elements"]
+    "categories": [
+      "ai-elements"
+    ]
   },
   {
     "name": "testimonials",
     "description": "Customer testimonials grid",
-    "categories": ["landing-page"]
+    "categories": [
+      "landing-page"
+    ]
   },
   {
     "name": "interactive-feature-showcase",
     "description": "InteractiveFeatureShowcase block",
-    "categories": ["landing-page"]
+    "categories": [
+      "landing-page"
+    ]
   },
   {
     "name": "chatbot-window",
     "description": "Resizable AI chatbot interface with collapsible sidebar",
-    "categories": ["ai-elements", "featured"]
+    "categories": [
+      "ai-elements",
+      "featured"
+    ]
   },
   {
     "name": "bottom-mobile-nav",
     "description": "BottomMobileNav block",
-    "categories": ["layout"]
+    "categories": [
+      "layout"
+    ]
   },
   {
     "name": "mapbox-grid-block",
     "description": "Three-column grid showcasing global locations with Mapbox maps",
-    "categories": ["landing-page"]
+    "categories": [
+      "landing-page"
+    ]
   },
   {
     "name": "admin-inset-layout",
     "description": "Admin dashboard layout with inset sidebar",
-    "categories": ["layout"]
+    "categories": [
+      "layout"
+    ]
   },
   {
     "name": "saas-header-layout",
     "description": "SaaS header layout with navigation menu",
-    "categories": ["featured", "layout"]
+    "categories": [
+      "featured",
+      "layout"
+    ]
   },
   {
     "name": "saas-dashboard",
     "description": "SaaS dashboard with inset sidebar and navigation",
-    "categories": ["dashboard"]
+    "categories": [
+      "dashboard"
+    ]
+  },
+  {
+    "name": "auth-form",
+    "description": "Authentication form with SSO, email, passkey, and SAML options",
+    "categories": [
+      "authentication"
+    ]
   }
 ]

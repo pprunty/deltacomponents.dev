@@ -328,4 +328,31 @@ export const blocks: Registry["items"] = [
     },
     categories: ["dashboard"],
   },
+  {
+    name: "auth-form",
+    description:
+      "Authentication form with SSO, email, passkey, and SAML options",
+    type: "registry:block",
+    registryDependencies: ["button", "input", "sonner"],
+    dependencies: ["lucide-react", "zod"],
+    files: [
+      {
+        path: "blocks/auth-form/page.tsx",
+        type: "registry:page",
+        target: "app/auth-form/page.tsx",
+      },
+      {
+        path: "blocks/auth-form/components/auth-form.tsx",
+        type: "registry:component",
+        target: "components/auth-form.tsx",
+      },
+    ],
+    meta: {
+      iframeHeight: "800px",
+      container:
+        "w-full bg-background min-h-svh flex items-center justify-center",
+      mobile: "component",
+    },
+    categories: ["authentication"],
+  },
 ]

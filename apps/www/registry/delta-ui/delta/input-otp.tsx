@@ -57,7 +57,7 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "text-foreground relative flex h-10 w-10 items-center justify-center text-sm font-semibold transition-all",
+        "text-foreground relative flex h-10 w-10 items-center justify-center text-sm font-semibold",
         // Default variant: matches shadcn input styling
         variant === "default" && [
           "dark:bg-input/30 border-input rounded-md border bg-transparent shadow-xs",

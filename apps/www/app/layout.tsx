@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 import { siteConfig, THEME_META_COLORS } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
@@ -11,6 +11,12 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/delta-ui/ui/sonner"
 
 import "@/styles/globals.css"
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+}
 
 export const metadata: Metadata = {
   title: {

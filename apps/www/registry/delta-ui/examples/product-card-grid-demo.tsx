@@ -49,9 +49,19 @@ export default function ProductCardGridDemo() {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {essays.map((essay) => (
-        <a key={essay.title} href={essay.url} className="block">
-          <ProductCard className="w-full">
-            <ProductCardImage src={essay.image} alt={essay.title} />
+        <a
+          key={essay.title}
+          href={essay.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <ProductCard className="w-full rounded-sm">
+            <ProductCardImage
+              src={essay.image}
+              alt={essay.title}
+              className="rounded-sm"
+            />
             <ProductCardContent>
               <ProductCardHeader>
                 <ProductCardTitle>{essay.title}</ProductCardTitle>

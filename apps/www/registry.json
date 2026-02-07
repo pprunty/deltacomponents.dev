@@ -633,6 +633,40 @@
       ]
     },
     {
+      "name": "auth-form",
+      "type": "registry:block",
+      "description": "Authentication form with SSO, email, passkey, and SAML options",
+      "dependencies": [
+        "lucide-react",
+        "zod"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/blocks/auth-form/page.tsx",
+          "type": "registry:page",
+          "target": "app/auth-form/page.tsx"
+        },
+        {
+          "path": "registry/delta-ui/blocks/auth-form/components/auth-form.tsx",
+          "type": "registry:component",
+          "target": "components/auth-form.tsx"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full bg-background min-h-svh flex items-center justify-center",
+        "mobile": "component"
+      },
+      "categories": [
+        "authentication"
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "files": [

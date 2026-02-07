@@ -19,4 +19,9 @@ export const registryCategories = [
     slug: "landing-page",
     hidden: false,
   },
+  {
+    name: "Authentication",
+    slug: "authentication",
+    hidden: false,
+  },
 ]
