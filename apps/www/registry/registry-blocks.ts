@@ -231,7 +231,7 @@ export const blocks: Registry["items"] = [
       container: "",
       mobile: "component",
     },
-    categories: ["layout"],
+    categories: ["layout", "dashboard"],
   },
   {
     name: "saas-header-layout",
@@ -259,6 +259,7 @@ export const blocks: Registry["items"] = [
       iframeHeight: "600px",
       container: "",
       mobile: "component",
+      hide: true,
     },
     categories: ["featured", "layout"],
   },

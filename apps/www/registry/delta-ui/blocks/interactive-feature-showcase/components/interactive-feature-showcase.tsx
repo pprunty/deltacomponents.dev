@@ -12,7 +12,12 @@ export interface VideoFeature {
   id: string
   title: string
   description: string
-  iframeSrc: string
+  /** URL to an iframe-hosted video (e.g. Vidzflow, YouTube embed). */
+  iframeSrc?: string
+  /** URL to a local or remote .mp4 / .webm file. Takes precedence over iframeSrc. */
+  videoSrc?: string
+  /** Optional poster image for the <video> element. */
+  poster?: string
   videoTitle: string
   link?: string
 }
@@ -37,6 +42,38 @@ export function InteractiveFeatureShowcase({
       ))}
     </div>
   )
+}
+
+function MediaPlayer({ feature }: { feature: VideoFeature }) {
+  if (feature.videoSrc) {
+    return (
+      <video
+        src={feature.videoSrc}
+        poster={feature.poster}
+        title={feature.videoTitle}
+        className="h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    )
+  }
+  if (feature.iframeSrc) {
+    return (
+      <iframe
+        width="100%"
+        height="100%"
+        src={feature.iframeSrc}
+        title={feature.videoTitle}
+        className="h-full w-full border-0"
+        scrolling="no"
+        allow="fullscreen"
+      />
+    )
+  }
+  return null
 }
 
 function VideoFeatureCard({
@@ -71,15 +108,7 @@ function VideoFeatureCard({
           )}
         </div>
         <div className="aspect-square flex-1 overflow-hidden rounded-sm">
-          <iframe
-            width="100%"
-            height="100%"
-            src={feature.iframeSrc}
-            title={feature.videoTitle}
-            className="h-full w-full border-0"
-            scrolling="no"
-            allow="fullscreen"
-          />
+          <MediaPlayer feature={feature} />
         </div>
       </div>
     )
@@ -90,15 +119,7 @@ function VideoFeatureCard({
     <>
       <div className="mb-8">
         <div className="aspect-square overflow-hidden rounded-sm">
-          <iframe
-            width="100%"
-            height="100%"
-            src={feature.iframeSrc}
-            title={feature.videoTitle}
-            className="h-full w-full border-0"
-            scrolling="no"
-            allow="fullscreen"
-          />
+          <MediaPlayer feature={feature} />
         </div>
       </div>
       <CardHeader className="max-w-md space-y-3 p-0">

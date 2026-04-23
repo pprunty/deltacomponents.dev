@@ -27,8 +27,9 @@ const NEW_YORK_V4_STYLE = {
 }
 
 export const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
+  $schema: "https://ui.shadcn.com/schema/registry.json",
+  name: "delta-components",
+  homepage: "https://deltacomponents.dev",
   items: z.array(registryItemSchema).parse(
     [
       {

@@ -77,6 +77,7 @@ export type RegistryItemType = z.infer<typeof registryItemTypeSchema>
 
 // Registry schema
 export const registrySchema = z.object({
+  $schema: z.string().optional(),
   name: z.string(),
   homepage: z.string(),
   items: z.array(registryItemSchema),

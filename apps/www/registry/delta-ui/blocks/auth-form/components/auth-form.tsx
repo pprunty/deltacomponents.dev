@@ -339,9 +339,7 @@ export function AuthForm({ mode = "login", className }: AuthFormProps) {
                 required
               />
               {validationErrors.email && (
-                <p className="text-xs text-red-600">
-                  {validationErrors.email}
-                </p>
+                <p className="text-xs text-red-600">{validationErrors.email}</p>
               )}
             </div>
 
@@ -378,7 +376,9 @@ export function AuthForm({ mode = "login", className }: AuthFormProps) {
       {/* Alternate Link */}
       <div className="mt-6 text-center text-sm">
         <span className="text-muted-foreground">
-          {isLogin ? "Don\u2019t have an account?" : "Already have an account?"}{" "}
+          {isLogin
+            ? "Don\u2019t have an account?"
+            : "Already have an account?"}{" "}
         </span>
         <Link
           href="#"

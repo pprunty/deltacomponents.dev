@@ -229,14 +229,13 @@ export function Admonition({
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
-        <div className={cn(config.iconColor, "flex shrink-0")}>
-          <Icon
-            className={cn(
-              sizeConfig.icon,
-              // These classes align the icon with the cap-height of the font
-              "h-[1lh] leading-[1.5]"
-            )}
-          />
+        <div
+          className={cn(
+            config.iconColor,
+            "flex h-[1lh] shrink-0 items-center leading-[1.5]"
+          )}
+        >
+          <Icon className="size-[1.25em]" />
         </div>
 
         {/* Content Container */}
@@ -248,7 +247,7 @@ export function Admonition({
                 className={cn(
                   config.textColor,
                   sizeConfig.title,
-                  "font-medium [text-box-trim:trim-start]"
+                  "font-normal [text-box-trim:trim-start]"
                 )}
               >
                 {title}

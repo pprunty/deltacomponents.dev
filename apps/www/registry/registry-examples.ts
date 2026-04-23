@@ -422,6 +422,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "cambio-image-close-button-demo",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    files: [
+      {
+        path: "examples/cambio-image-close-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "qrcode-demo",
     type: "registry:example",
     registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
@@ -701,6 +712,19 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/scroll-fade-effect-slider-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "vanishing-scrollbar-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "https://deltacomponents.dev/r/vanishing-scrollbar.json",
+    ],
+    files: [
+      {
+        path: "examples/vanishing-scrollbar-demo.tsx",
         type: "registry:example",
       },
     ],

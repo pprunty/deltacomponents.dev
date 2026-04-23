@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 
+import { getAllBlockIds } from "@/lib/blocks"
 import { BlockDisplay } from "@/components/block-display"
-// Import all available blocks
-import blocksData from "@/registry/__blocks__.json"
 
 const title = "Blocks"
 const description =
@@ -37,8 +36,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BlocksPage() {
-  // Get all block names from the registry
-  const allBlocks = blocksData.map((block) => block.name)
+  const allBlocks = await getAllBlockIds(["registry:block"])
 
   return (
     <div>

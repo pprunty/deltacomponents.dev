@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cambio-image-close-button-demo",
+  "registryDependencies": [
+    "https://deltacomponents.dev/r/cambio-image.json"
+  ],
+  "files": [
+    {
+      "path": "examples/cambio-image-close-button-demo.tsx",
+      "content": "import { CambioImage } from \"@/components/ui/cambio-image\"\n\nexport default function CambioImageCloseButtonDemo() {\n  return (\n    <div className=\"mx-auto w-full max-w-md\">\n      <CambioImage\n        src=\"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=900&fit=crop\"\n        alt=\"Mountain landscape\"\n        width={1200}\n        height={900}\n        controls\n        className=\"rounded-md\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

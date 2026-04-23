@@ -5,47 +5,43 @@ import {
   VideoFeature,
 } from "@/registry/delta-ui/blocks/interactive-feature-showcase/components/interactive-feature-showcase"
 
-// Video features with actual Vidzflow iframe sources
+// Delta Components demos — shown at /blocks/landing-page
 const sampleVideoFeatures: VideoFeature[] = [
   {
-    id: "citations",
-    title: "AI you can validate, with pinpoint citations.",
+    id: "chat",
+    title: "LLM Chat, ready to ship.",
     description:
-      "Click on citations to verify answers quickly in the underlying primary documents. AI that helps lawyers catch every nuance.",
-    iframeSrc:
-      "https://app.vidzflow.com/v/DwSjOnvoPL?dq=1080&ap=true&muted=true&loop=true&ctp=true&bv=false&piv=true&playsinline=true&bc=%234E5FFD&controls=play",
-    videoTitle: "View Citations and Verify",
-    link: "https://example.com",
+      "A complete chat interface with streaming responses, file uploads, and model selection. Composable primitives let you build the exact chat UX you need.",
+    videoSrc: "/videos/chat-demo.mp4",
+    videoTitle: "LLM Chat demo",
+    link: "/docs/components/chat",
   },
   {
-    id: "redlines",
-    title: "Redlines, refined.",
+    id: "cambio-image",
+    title: "Images that feel alive.",
     description:
-      "Live contract editing with our world-leading Legal AI. Leverage your precedent to review with finesse.",
-    iframeSrc:
-      "https://app.vidzflow.com/v/1zDeWiA0LC?dq=1080&ap=true&muted=true&loop=true&ctp=true&bv=false&piv=true&playsinline=true&bc=%234E5FFD&controls=play",
-    videoTitle: "Edit MSA with Precedent",
-    link: "https://example.com",
+      "Physics-based zoom transitions, blur-up loading, and gesture-driven dismissal. Drop in CambioImage anywhere you'd use a native <img>.",
+    videoSrc: "/videos/cambio-image-demo.mp4",
+    videoTitle: "Cambio Image demo",
+    link: "/docs/components/cambio-image",
   },
   {
-    id: "search",
-    title: "Robins never forget.",
+    id: "card-deck",
+    title: "A swipeable stack, physics included.",
     description:
-      "Leverage every legal document you've ever negotiated. Precedents are easily uncovered and can be quickly leveraged.",
-    iframeSrc:
-      "https://app.vidzflow.com/v/pV5yFJ1EuM?dq=1080&ap=true&muted=true&loop=true&ctp=true&bv=false&piv=true&playsinline=true&bc=%234E5FFD&controls=play",
-    videoTitle: "Search Contract Repository",
-    link: "https://example.com",
+      "Touch gestures, autoplay, and customizable motion. Perfect for mobile-first product tours, testimonials, or card-based browsing.",
+    videoSrc: "/videos/card-deck-demo.mp4",
+    videoTitle: "Card Deck demo",
+    link: "/docs/components/card-deck",
   },
   {
-    id: "integration",
-    title: "Integration without objections.",
+    id: "product-card",
+    title: "Commerce UI, out of the box.",
     description:
-      "Connect Robin with your most important systems. Import documents at scale in a click with the out-the-box integrations.",
-    iframeSrc:
-      "https://app.vidzflow.com/v/SjbvqOEPED?dq=1080&ap=true&muted=true&loop=true&ctp=true&bv=false&piv=true&playsinline=true&bc=%234E5FFD&controls=play",
-    videoTitle: "Bulk Import Contracts",
-    link: "https://example.com",
+      "A compound Product Card with multiple layout variants, flexible sizing, and interactive hover states. Drop into any storefront or listing.",
+    videoSrc: "/videos/product-card-demo.mp4",
+    videoTitle: "Product Card demo",
+    link: "/docs/components/product-card",
   },
 ]
 
@@ -56,11 +52,11 @@ export default function InteractiveFeatureShowcasePage() {
         <div className="space-y-8">
           <div className="space-y-4 text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Interactive Features
+              Built for modern interfaces
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-base sm:text-lg">
-              Discover powerful tools and integrations that enhance your
-              workflow with cutting-edge AI capabilities.
+              Delta Components ships molecular, production-ready primitives on
+              top of shadcn/ui — from AI chat to interactive media.
             </p>
           </div>
 

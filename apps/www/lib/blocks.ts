@@ -26,11 +26,16 @@ export async function getAllBlocks(
   const { Index } = await import("@/registry/__index__")
   const index = z.record(z.string(), registryItemSchema).parse(Index)
 
+  const isProd =
+    process.env.VERCEL_ENV === "production" ||
+    process.env.NODE_ENV === "production"
+
   return Object.values(index).filter(
     (block) =>
       types.includes(block.type) &&
       (categories.length === 0 ||
         block.categories?.some((category) => categories.includes(category))) &&
-      !block.name.startsWith("chart-")
+      !block.name.startsWith("chart-") &&
+      !(isProd && (block.meta as { hide?: boolean } | undefined)?.hide)
   )
 }

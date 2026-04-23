@@ -1,6 +1,7 @@
 {
-  "name": "shadcn/ui",
-  "homepage": "https://ui.shadcn.com",
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "delta-components",
+  "homepage": "https://deltacomponents.dev",
   "items": [
     {
       "name": "index",
@@ -274,6 +275,16 @@
       ]
     },
     {
+      "name": "vanishing-scrollbar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/delta-ui/delta/vanishing-scrollbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "ai-chat-sidebar",
       "type": "registry:block",
       "description": "A collapsible sidebar component for AI chat applications",
@@ -523,7 +534,8 @@
         "mobile": "component"
       },
       "categories": [
-        "layout"
+        "layout",
+        "dashboard"
       ]
     },
     {
@@ -555,7 +567,8 @@
       "meta": {
         "iframeHeight": "600px",
         "container": "",
-        "mobile": "component"
+        "mobile": "component",
+        "hide": true
       },
       "categories": [
         "featured",
@@ -1165,6 +1178,19 @@
       ]
     },
     {
+      "name": "cambio-image-close-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/cambio-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/cambio-image-close-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "qrcode-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -1500,6 +1526,19 @@
       "files": [
         {
           "path": "registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "vanishing-scrollbar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "https://deltacomponents.dev/r/vanishing-scrollbar.json"
+      ],
+      "files": [
+        {
+          "path": "registry/delta-ui/examples/vanishing-scrollbar-demo.tsx",
           "type": "registry:example"
         }
       ]

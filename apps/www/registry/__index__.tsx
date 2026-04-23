@@ -332,6 +332,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "vanishing-scrollbar": {
+    name: "vanishing-scrollbar",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/delta-ui/delta/vanishing-scrollbar.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/delta/vanishing-scrollbar.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "ai-chat-sidebar": {
     name: "ai-chat-sidebar",
     description: "A collapsible sidebar component for AI chat applications",
@@ -511,7 +529,7 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
-    categories: ["layout"],
+    categories: ["layout","dashboard"],
     meta: {"iframeHeight":"800px","container":"","mobile":"component"},
   },
   "saas-header-layout": {
@@ -538,7 +556,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: ["featured","layout"],
-    meta: {"iframeHeight":"600px","container":"","mobile":"component"},
+    meta: {"iframeHeight":"600px","container":"","mobile":"component","hide":true},
   },
   "saas-dashboard": {
     name: "saas-dashboard",
@@ -1292,6 +1310,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "cambio-image-close-button-demo": {
+    name: "cambio-image-close-button-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    files: [{
+      path: "registry/delta-ui/examples/cambio-image-close-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/cambio-image-close-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "qrcode-demo": {
     name: "qrcode-demo",
     description: "",
@@ -1736,6 +1772,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "vanishing-scrollbar-demo": {
+    name: "vanishing-scrollbar-demo",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["https://deltacomponents.dev/r/vanishing-scrollbar.json"],
+    files: [{
+      path: "registry/delta-ui/examples/vanishing-scrollbar-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/delta-ui/examples/vanishing-scrollbar-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

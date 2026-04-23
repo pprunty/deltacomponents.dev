@@ -108,6 +108,25 @@ You can customize the animation physics using the motion prop. See the Motion Pr
 
 <ComponentPreview name="cambio-image-motion-preset-demo" />
 
+### Close Button (controls)
+
+For a minimal focused-image UI, enable `controls` to render a close button when the image is focused. On desktop the button sits in the top-right of the image; on mobile it floats at the viewport's top-right (outside the image).
+
+```tsx
+<CambioImage
+  src="..."
+  controls
+/>
+```
+
+<ComponentPreview name="cambio-image-close-button-demo" />
+
+<Admonition type="note" title="Pinch-to-zoom on mobile">
+  When `controls` is enabled, `draggable` is coerced to `false` so mobile users
+  can pinch to zoom the focused image. Dismiss by tapping the close button,
+  clicking the backdrop, or pressing <kbd>Esc</kbd>.
+</Admonition>
+
 ### Icon-Only Expand Mode
 
 For a cleaner UI with explicit expand/collapse controls, use `showExpandIcon` and `iconsOnlyMode`. This displays floating expand/close buttons instead of relying on click-to-zoom behavior.
@@ -165,6 +184,7 @@ For granular control, you can pass an object to the `motion` prop to configure s
 | `dismissOnImageClick`    | `boolean`           | `false`    | Close by clicking the zoomed image itself.                       |
 | `showExpandIcon`         | `boolean`           | `false`    | Display floating expand/close icons.                             |
 | `iconsOnlyMode`          | `boolean`           | `false`    | Use only icons for expand/close, disable click-to-zoom behavior. |
+| `controls`               | `boolean`           | `false`    | Render a close button when focused (top-right on desktop; top-right of viewport on mobile). Forces `draggable={false}` so mobile users can pinch-to-zoom. |
 | `enableInitialAnimation` | `boolean`           | `true`     | Blur-to-focus effect on viewport entry.                          |
 | `draggable`              | `boolean`           | `false`    | Allows the image to be dragged (ghost image).                    |
 | `className`              | `string`            | `-`        | Additional CSS classes for styling.                              |

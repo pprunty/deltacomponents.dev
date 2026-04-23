@@ -30,7 +30,8 @@
   "meta": {
     "iframeHeight": "600px",
     "container": "",
-    "mobile": "component"
+    "mobile": "component",
+    "hide": true
   },
   "categories": [
     "featured",

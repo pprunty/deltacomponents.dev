@@ -5,8 +5,13 @@ export const registryCategories = [
     hidden: true,
   },
   {
-    name: "Dashboard",
+    name: "Layout",
     slug: "layout",
+    hidden: false,
+  },
+  {
+    name: "Dashboard",
+    slug: "dashboard",
     hidden: false,
   },
   {

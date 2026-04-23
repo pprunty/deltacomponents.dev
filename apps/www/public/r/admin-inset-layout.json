@@ -79,7 +79,8 @@
     "mobile": "component"
   },
   "categories": [
-    "layout"
+    "layout",
+    "dashboard"
   ],
   "type": "registry:block"
 }

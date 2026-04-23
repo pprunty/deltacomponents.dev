@@ -4,7 +4,7 @@ description: Latest updates and announcements
 toc: false
 ---
 
-## May 2026 - Beta Release 🎉
+## May 2026 - Initial Release 🎉
 
 <img
   src="/images/stock/digital-garden.webp"
@@ -12,34 +12,40 @@ toc: false
   className="h-[200px] w-full object-cover py-3 md:h-62 md:py-6"
 />
 
-This release introduces 12 new components and 6 ready-to-use blocks, focused on high-impact, complex interfaces built on the shadcn/ui framework.
+The inaugural release of Delta Components: 15 documented components and 9 ready-to-use blocks, built on top of the shadcn/ui framework and focused on the high-impact, production-ready interfaces that shadcn/ui doesn't cover out of the box.
 
 ### New Components
 
-- **[Admonition](/docs/components/admonition)**: Semantic callouts for alerts and side content. **Provides seven distinct types (e.g., warning, success, caution) with automatic icon selection.**
-- **[Animated Tabs](/docs/components/tabs)**: Layered content sections with smooth transition animations. **Supports multiple variants, including underlined, ghost, and pill styles.**
-- **[Cambio Image](/docs/components/cambio-image)**: Interactive, zoomable image component. **Features physics-based motion and blur-up loading via Intersection Observer.**
-- **[Card Deck](/docs/components/card-deck)**: Swipeable card component. **Includes a 3D-effect stack and customizable swipe controls for mobile-friendly interfaces.**
-- **[Code Block](/docs/components/code-block)**: Versatile code display block. **Features syntax highlighting, package manager tabs, and an expandable viewport for long code snippets.**
-- **[LLM Chat](/docs/components/chat)**: Complete AI chat interface. **Supports streaming responses, state management, file uploads, and model selection for a full-featured application.**
-- **[Map Box Pointer](/docs/components/mapbox-pointer)**: Interactive maps. **Uses Mapbox GL JS to render custom React markers and manage map state.**
-- **[Marquee](/docs/components/marquee)**: Animated, infinite scrolling rail. **Perfect for showcasing logos, testimonials, or feature cards with smooth, continuous motion.**
-- **[Navigation Menu](/docs/components/navigation-menu)**: An accessible collection of links. **Offers desktop and mobile-friendly link groups for site navigation.**
-- **[Product Card](/docs/components/product-card)**: A flexible compound component. **Designed for e-commerce product listings or showcasing, easily combining images, badges, and metadata.**
-- **[QR Code](/docs/components/qrcode)**: Customizable QR code generator. **Includes styling options for colors and supports centered logo placement within the code.**
-- **[X Card (Twitter)](/docs/components/x-card)**: Themed, rich embeds for X/ (formerly Twitter) posts. **Renders static, high-performance cards that integrate seamlessly with your theme.**
+- **[Admonition](/docs/components/admonition)**: Semantic callout blocks for alerts and side content. **Seven types (note, warning, success, caution, danger, info, tip) with automatic icon selection and optional dismiss / collapsible variants.**
+- **[Animated Tabs](/docs/components/tabs)**: Layered content sections with smooth CSS transitions. **Three variants (underlined, ghost, pill), entrance animations, and no external animation dependencies.**
+- **[Cambio Image](/docs/components/cambio-image)**: Interactive, zoomable image component. **Physics-based motion, blur-up loading via IntersectionObserver, and gesture-driven dismissal.**
+- **[Card Deck](/docs/components/card-deck)**: Swipeable, physics-based card stack. **Autoplay, touch gestures, and fully customizable motion presets for mobile-first interfaces.**
+- **[Code Block](/docs/components/code-block)**: Versatile code display with syntax highlighting. **Parses Markdown fences, supports package-manager tabs, expandable viewport, and adaptive themes.**
+- **[Input OTP](/docs/components/input-otp)**: Accessible one-time password input. **Copy-paste aware, with pill and separator variants for auth flows.**
+- **[LLM Chat](/docs/components/chat)**: Complete AI chat interface. **Streaming responses, file uploads, model selection, and composable message/conversation/response primitives.**
+- **[MapBox Pointer](/docs/components/mapbox-pointer)**: Interactive maps with custom React markers. **Built on Mapbox GL JS with theme-aware styling and declarative marker management.**
+- **[Marquee](/docs/components/marquee)**: Animated, infinite-scrolling rail. **Perfect for logos, testimonials, or cards — with smooth continuous motion and direction control.**
+- **[Navigation Menu](/docs/components/navigation-menu)**: Accessible link collection for site navigation. **Desktop and mobile-friendly link groups with keyboard support.**
+- **[Product Card](/docs/components/product-card)**: Flexible compound component for commerce. **Multiple layout variants, distinct sizing, and interactive hover states.**
+- **[QR Code](/docs/components/qrcode)**: Customizable QR code generator. **Theme-aware coloring, custom dot styling, and centered logo placement.**
+- **[Scroll Fade Effect](/docs/components/scroll-fade-effect)**: Scroll container with edge fades. **Indicates available scroll content and supports vertical, horizontal, or bi-directional scroll.**
+- **[Vanishing Scrollbar](/docs/components/vanishing-scrollbar)**: Scroll container that hides its native scrollbar. **Fades in smoothly on hover; supports vertical, horizontal, and both scroll directions.**
+- **[X Card (Twitter)](/docs/components/x-card)**: Themed, rich embeds for X/Twitter posts. **Renders static, high-performance cards that integrate with your theme.**
 
 ### New Blocks
 
-- **[Testimonials](/blocks/landing-page#testimonials)**: Feature showcase with testimonial cards. **A dedicated section for displaying customer reviews and social proof.**
-- **[Video Card Grid](/blocks/landing-page#interactive-feature-showcase)**: Interactive feature grid with video cards. **Highlights product features using dynamic media and responsive layouts.**
-- **[LLM Chat Window](/blocks/ai-elements#chatbot-window)**: Complete AI chat interface window layout. **A full-screen, ready-to-use window template for AI applications.**
-- **[AI Chat Sidebar](/blocks/ai-elements#ai-chat-sidebar)**: Sidebar layout for AI chat applications. **Includes conversation history navigation and primary chat interface.**
-- **[Perspective Carousel](/blocks/featured#perspective-carousel)**: A stunning 3D perspective carousel. **Showcases key content with an immersive, three-dimensional depth effect.**
-- **[Bottom Mobile Nav Layout](/blocks/layout#bottom-mobile-nav)**: Mobile-first layout with bottom navigation bar. **Optimized for single-handed use on mobile devices.**
+- **[AI Chat Sidebar](/blocks/ai-elements)**: Sidebar layout for AI chat applications with conversation history.
+- **[Chatbot Window](/blocks/ai-elements)**: Resizable AI chatbot interface with a collapsible sidebar.
+- **[Interactive Feature Showcase](/blocks/landing-page)**: Feature grid with interactive media cards for landing pages.
+- **[Testimonials](/blocks/landing-page)**: Customer testimonials grid for social proof.
+- **[MapBox Grid Block](/blocks/landing-page)**: Three-column grid showcasing global locations with Mapbox maps.
+- **[Bottom Mobile Nav](/blocks/layout)**: Mobile-first layout with a bottom navigation bar, optimized for single-handed use.
+- **[Admin Inset Layout](/blocks/dashboard)**: Admin dashboard layout with an inset sidebar, breadcrumbs, and command menu.
+- **[SaaS Dashboard](/blocks/dashboard)**: SaaS dashboard with inset sidebar, navigation, and search command.
+- **[Auth Form](/blocks/authentication)**: Authentication form supporting SSO, email, passkey, and SAML.
 
 ---
 
-The experience building these components was a joy. I focused meticulously on customization, variant design, and performance. Each component is built with accessibility in mind and works seamlessly with your existing design system.
+The experience building these components was a joy. I focused meticulously on customization, variant design, and performance — each component is built with accessibility in mind and works seamlessly with your existing design system.
 
 Looking forward to the next release with more components and exciting features!
