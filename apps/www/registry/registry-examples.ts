@@ -716,17 +716,4 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "vanishing-scrollbar-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/vanishing-scrollbar.json",
-    ],
-    files: [
-      {
-        path: "examples/vanishing-scrollbar-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
 ]

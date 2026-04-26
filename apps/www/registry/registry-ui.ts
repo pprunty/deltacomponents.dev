@@ -198,14 +198,4 @@ export const ui: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "vanishing-scrollbar",
-    type: "registry:ui",
-    files: [
-      {
-        path: "delta/vanishing-scrollbar.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
 ]

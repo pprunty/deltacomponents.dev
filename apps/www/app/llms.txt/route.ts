@@ -41,7 +41,6 @@ Prerequisites: Node.js 18+ and a shadcn/ui-initialized project (\`npx shadcn@lat
 - **Animated Tabs** (https://deltacomponents.dev/docs/components/tabs.md): Tabs with smooth CSS transitions, three visual variants (underlined, ghost, pill), and entrance animations.
 - **Navigation Menu** (https://deltacomponents.dev/docs/components/navigation-menu.md): Accessible link groups for desktop and mobile site navigation.
 - **Scroll Fade Effect** (https://deltacomponents.dev/docs/components/scroll-fade-effect.md): Scroll container with edge fades indicating available content; supports vertical, horizontal, and both.
-- **Vanishing Scrollbar** (https://deltacomponents.dev/docs/components/vanishing-scrollbar.md): Scroll container that hides the native scrollbar and fades it in on hover.
 
 ### Maps & Commerce
 - **MapBox Pointer** (https://deltacomponents.dev/docs/components/mapbox-pointer.md): Interactive maps with custom React markers on top of Mapbox GL JS.
