@@ -3,7 +3,7 @@
   "name": "tabs-entrance-animation-demo",
   "registryDependencies": [
     "tabs",
-    "https://deltacomponents.dev/r/tabs.json"
+    "@delta/tabs"
   ],
   "files": [
     {

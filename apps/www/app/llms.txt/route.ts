@@ -19,7 +19,7 @@ Built for:
 Install any component via the shadcn CLI with the registry URL:
 
 \`\`\`bash
-npx shadcn@latest add https://deltacomponents.dev/r/<component-name>.json
+npx shadcn@latest add @delta/<component-name>
 \`\`\`
 
 Prerequisites: Node.js 18+ and a shadcn/ui-initialized project (\`npx shadcn@latest init\`).

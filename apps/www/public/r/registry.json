@@ -88,8 +88,8 @@
       ],
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/code-block-icons.json",
-        "https://deltacomponents.dev/r/copy-button.json"
+        "@delta/code-block-icons",
+        "@delta/copy-button"
       ],
       "files": [
         {
@@ -219,7 +219,7 @@
         "avatar",
         "textarea",
         "select",
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -285,7 +285,7 @@
         "sidebar",
         "breadcrumb",
         "separator",
-        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+        "@delta/scroll-fade-effect"
       ],
       "files": [
         {
@@ -371,7 +371,7 @@
         "select",
         "textarea",
         "resizable",
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -434,7 +434,7 @@
       "description": "Three-column grid showcasing global locations with Mapbox maps",
       "registryDependencies": [
         "mapbox-pointer",
-        "https://deltacomponents.dev/r/mapbox-pointer.json"
+        "@delta/mapbox-pointer"
       ],
       "files": [
         {
@@ -469,7 +469,7 @@
         "button",
         "dialog",
         "command",
-        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+        "@delta/scroll-fade-effect"
       ],
       "files": [
         {
@@ -535,7 +535,7 @@
       "registryDependencies": [
         "button",
         "navigation-menu",
-        "https://deltacomponents.dev/r/navigation-menu.json"
+        "@delta/navigation-menu"
       ],
       "files": [
         {
@@ -582,7 +582,7 @@
         "button",
         "dialog",
         "command",
-        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+        "@delta/scroll-fade-effect"
       ],
       "files": [
         {
@@ -683,7 +683,7 @@
       "name": "input-otp-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/input-otp.json"
+        "@delta/input-otp"
       ],
       "files": [
         {
@@ -696,7 +696,7 @@
       "name": "input-otp-pill-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/input-otp.json"
+        "@delta/input-otp"
       ],
       "files": [
         {
@@ -709,7 +709,7 @@
       "name": "input-otp-separator-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/input-otp.json"
+        "@delta/input-otp"
       ],
       "files": [
         {
@@ -724,7 +724,7 @@
       "registryDependencies": [
         "form",
         "card",
-        "https://deltacomponents.dev/r/input-otp.json"
+        "@delta/input-otp"
       ],
       "files": [
         {
@@ -737,7 +737,7 @@
       "name": "product-card-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/product-card.json"
+        "@delta/product-card"
       ],
       "files": [
         {
@@ -750,7 +750,7 @@
       "name": "product-card-inner-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/product-card.json"
+        "@delta/product-card"
       ],
       "files": [
         {
@@ -763,7 +763,7 @@
       "name": "product-card-custom-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/product-card.json"
+        "@delta/product-card"
       ],
       "files": [
         {
@@ -776,7 +776,7 @@
       "name": "product-card-size-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/product-card.json"
+        "@delta/product-card"
       ],
       "files": [
         {
@@ -789,7 +789,7 @@
       "name": "product-card-grid-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/product-card.json"
+        "@delta/product-card"
       ],
       "files": [
         {
@@ -802,7 +802,7 @@
       "name": "navigation-menu-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/navigation-menu.json"
+        "@delta/navigation-menu"
       ],
       "files": [
         {
@@ -815,7 +815,7 @@
       "name": "x-card-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/x-card.json"
+        "@delta/x-card"
       ],
       "files": [
         {
@@ -828,7 +828,7 @@
       "name": "x-card-basic-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/x-card.json"
+        "@delta/x-card"
       ],
       "files": [
         {
@@ -841,7 +841,7 @@
       "name": "x-card-interactive-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/x-card.json"
+        "@delta/x-card"
       ],
       "files": [
         {
@@ -855,7 +855,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "marquee",
-        "https://deltacomponents.dev/r/marquee.json"
+        "@delta/marquee"
       ],
       "files": [
         {
@@ -869,7 +869,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "marquee",
-        "https://deltacomponents.dev/r/marquee.json"
+        "@delta/marquee"
       ],
       "files": [
         {
@@ -883,7 +883,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "marquee",
-        "https://deltacomponents.dev/r/marquee.json"
+        "@delta/marquee"
       ],
       "files": [
         {
@@ -896,7 +896,7 @@
       "name": "mapbox-pointer-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/mapbox-pointer.json"
+        "@delta/mapbox-pointer"
       ],
       "files": [
         {
@@ -909,7 +909,7 @@
       "name": "mapbox-pointer-style-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/mapbox-pointer.json"
+        "@delta/mapbox-pointer"
       ],
       "files": [
         {
@@ -922,7 +922,7 @@
       "name": "mapbox-pointer-theme-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/mapbox-pointer.json"
+        "@delta/mapbox-pointer"
       ],
       "files": [
         {
@@ -935,7 +935,7 @@
       "name": "chat-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -948,7 +948,7 @@
       "name": "chat-previous-messages-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -961,7 +961,7 @@
       "name": "chat-simple-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -974,7 +974,7 @@
       "name": "code-block-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -987,7 +987,7 @@
       "name": "code-block-package-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1001,7 +1001,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "toggle-group",
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1014,7 +1014,7 @@
       "name": "code-block-interactive-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1027,7 +1027,7 @@
       "name": "code-block-markdown-string-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1040,7 +1040,7 @@
       "name": "code-block-npx-markdown-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1053,7 +1053,7 @@
       "name": "code-block-package-manager-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1066,7 +1066,7 @@
       "name": "code-block-python-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1079,7 +1079,7 @@
       "name": "code-block-json-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1092,7 +1092,7 @@
       "name": "code-block-expand-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/code-block.json"
+        "@delta/code-block"
       ],
       "files": [
         {
@@ -1105,7 +1105,7 @@
       "name": "cambio-image-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1118,7 +1118,7 @@
       "name": "cambio-image-grid-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1131,7 +1131,7 @@
       "name": "cambio-image-dismiss-on-scroll-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1145,7 +1145,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "toggle",
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1158,7 +1158,7 @@
       "name": "cambio-image-icons-expand-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1171,7 +1171,7 @@
       "name": "cambio-image-close-button-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/cambio-image.json"
+        "@delta/cambio-image"
       ],
       "files": [
         {
@@ -1184,7 +1184,7 @@
       "name": "qrcode-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/qrcode.json"
+        "@delta/qrcode"
       ],
       "files": [
         {
@@ -1197,7 +1197,7 @@
       "name": "qrcode-purple-dots-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/qrcode.json"
+        "@delta/qrcode"
       ],
       "files": [
         {
@@ -1210,7 +1210,7 @@
       "name": "qrcode-demo-interactive",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/qrcode.json"
+        "@delta/qrcode"
       ],
       "files": [
         {
@@ -1223,7 +1223,7 @@
       "name": "qrcode-logo-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/qrcode.json"
+        "@delta/qrcode"
       ],
       "files": [
         {
@@ -1236,7 +1236,7 @@
       "name": "card-deck-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/card-deck.json"
+        "@delta/card-deck"
       ],
       "files": [
         {
@@ -1249,7 +1249,7 @@
       "name": "card-deck-demo-interactive",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/card-deck.json"
+        "@delta/card-deck"
       ],
       "files": [
         {
@@ -1262,7 +1262,7 @@
       "name": "admonition-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1275,7 +1275,7 @@
       "name": "admonition-demo-interactive",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1288,7 +1288,7 @@
       "name": "admonition-custom-icon-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1301,7 +1301,7 @@
       "name": "admonition-dismissible-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1314,7 +1314,7 @@
       "name": "admonition-actions-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1327,7 +1327,7 @@
       "name": "admonition-collapsible-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/admonition.json"
+        "@delta/admonition"
       ],
       "files": [
         {
@@ -1341,7 +1341,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1355,7 +1355,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1369,7 +1369,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1383,7 +1383,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1400,7 +1400,7 @@
       ],
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1414,7 +1414,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "tabs",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1429,7 +1429,7 @@
       "registryDependencies": [
         "tabs",
         "scroll-area",
-        "https://deltacomponents.dev/r/tabs.json"
+        "@delta/tabs"
       ],
       "files": [
         {
@@ -1442,7 +1442,7 @@
       "name": "card-deck-yugioh-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/card-deck.json"
+        "@delta/card-deck"
       ],
       "files": [
         {
@@ -1455,7 +1455,7 @@
       "name": "card-deck-balatro-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/card-deck.json"
+        "@delta/card-deck"
       ],
       "files": [
         {
@@ -1468,7 +1468,7 @@
       "name": "chat-shimmer-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -1481,7 +1481,7 @@
       "name": "chat-reasoning-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "https://deltacomponents.dev/r/ai-elements.json"
+        "@delta/ai-elements"
       ],
       "files": [
         {
@@ -1495,7 +1495,7 @@
       "type": "registry:example",
       "registryDependencies": [
         "separator",
-        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+        "@delta/scroll-fade-effect"
       ],
       "files": [
         {
@@ -1511,7 +1511,7 @@
         "separator",
         "slider",
         "label",
-        "https://deltacomponents.dev/r/scroll-fade-effect.json"
+        "@delta/scroll-fade-effect"
       ],
       "files": [
         {

@@ -3,7 +3,7 @@
   "name": "tabs-background-demo",
   "registryDependencies": [
     "tabs",
-    "https://deltacomponents.dev/r/tabs.json"
+    "@delta/tabs"
   ],
   "files": [
     {

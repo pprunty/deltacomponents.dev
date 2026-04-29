@@ -15,7 +15,7 @@
     "button",
     "dialog",
     "command",
-    "https://deltacomponents.dev/r/scroll-fade-effect.json"
+    "@delta/scroll-fade-effect"
   ],
   "files": [
     {

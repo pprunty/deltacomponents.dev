@@ -3,7 +3,7 @@
   "name": "code-block-theme-demo",
   "registryDependencies": [
     "toggle-group",
-    "https://deltacomponents.dev/r/code-block.json"
+    "@delta/code-block"
   ],
   "files": [
     {

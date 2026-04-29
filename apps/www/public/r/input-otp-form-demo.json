@@ -4,7 +4,7 @@
   "registryDependencies": [
     "form",
     "card",
-    "https://deltacomponents.dev/r/input-otp.json"
+    "@delta/input-otp"
   ],
   "files": [
     {

@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mapbox-pointer-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/mapbox-pointer.json"
+    "@delta/mapbox-pointer"
   ],
   "files": [
     {

@@ -111,16 +111,18 @@ async function buildRegistryJsonFile() {
           }
         }
 
-        // Convert Delta imports to full URLs and merge with existing registryDependencies
+        // Convert Delta imports to short @delta/<name> form and merge with existing registryDependencies
         const existingDeps = item.registryDependencies || []
-        const deltaUrls = Array.from(deltaImports).map(
-          name => `https://deltacomponents.dev/r/${name}.json`
+        const deltaDeps = Array.from(deltaImports).map(
+          name => `@delta/${name}`
         )
 
-        // Combine: keep existing non-URL deps (shadcn components) and add Delta URLs
+        // Combine: keep existing non-Delta deps (shadcn components) and add Delta short refs
         const registryDependencies = [
-          ...existingDeps.filter(dep => !dep.startsWith('https://deltacomponents.dev')),
-          ...deltaUrls
+          ...existingDeps.filter(
+            dep => !dep.startsWith('@delta/') && !dep.startsWith('https://deltacomponents.dev')
+          ),
+          ...deltaDeps,
         ]
 
         return {

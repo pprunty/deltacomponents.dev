@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cambio-image-icons-expand-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/cambio-image.json"
+    "@delta/cambio-image"
   ],
   "files": [
     {

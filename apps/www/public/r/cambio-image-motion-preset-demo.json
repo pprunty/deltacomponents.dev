@@ -3,7 +3,7 @@
   "name": "cambio-image-motion-preset-demo",
   "registryDependencies": [
     "toggle",
-    "https://deltacomponents.dev/r/cambio-image.json"
+    "@delta/cambio-image"
   ],
   "files": [
     {

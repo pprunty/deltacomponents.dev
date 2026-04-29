@@ -3,7 +3,7 @@
   "name": "marquee-stacked-demo",
   "registryDependencies": [
     "marquee",
-    "https://deltacomponents.dev/r/marquee.json"
+    "@delta/marquee"
   ],
   "files": [
     {

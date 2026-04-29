@@ -9,7 +9,7 @@
     "sidebar",
     "breadcrumb",
     "separator",
-    "https://deltacomponents.dev/r/scroll-fade-effect.json"
+    "@delta/scroll-fade-effect"
   ],
   "files": [
     {

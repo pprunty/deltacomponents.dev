@@ -336,7 +336,7 @@ export const Index: Record<string, any> = {
     name: "ai-chat-sidebar",
     description: "A collapsible sidebar component for AI chat applications",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator","https://deltacomponents.dev/r/scroll-fade-effect.json"],
+    registryDependencies: ["sidebar","breadcrumb","separator","@delta/scroll-fade-effect"],
     files: [{
       path: "registry/delta-ui/blocks/ai-chat-sidebar/components/app-sidebar.tsx",
       type: "registry:component",
@@ -468,7 +468,7 @@ export const Index: Record<string, any> = {
     name: "admin-inset-layout",
     description: "Admin dashboard layout with inset sidebar",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","https://deltacomponents.dev/r/scroll-fade-effect.json"],
+    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","@delta/scroll-fade-effect"],
     files: [{
       path: "registry/delta-ui/blocks/admin-inset-layout/page.tsx",
       type: "registry:page",
@@ -544,7 +544,7 @@ export const Index: Record<string, any> = {
     name: "saas-dashboard",
     description: "SaaS dashboard with inset sidebar and navigation",
     type: "registry:block",
-    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","https://deltacomponents.dev/r/scroll-fade-effect.json"],
+    registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","dialog","command","@delta/scroll-fade-effect"],
     files: [{
       path: "registry/delta-ui/blocks/saas-dashboard/page.tsx",
       type: "registry:page",
@@ -630,7 +630,7 @@ export const Index: Record<string, any> = {
     name: "input-otp-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [{
       path: "registry/delta-ui/examples/input-otp-demo.tsx",
       type: "registry:example",
@@ -648,7 +648,7 @@ export const Index: Record<string, any> = {
     name: "input-otp-pill-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [{
       path: "registry/delta-ui/examples/input-otp-pill-demo.tsx",
       type: "registry:example",
@@ -666,7 +666,7 @@ export const Index: Record<string, any> = {
     name: "input-otp-separator-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [{
       path: "registry/delta-ui/examples/input-otp-separator-demo.tsx",
       type: "registry:example",
@@ -684,7 +684,7 @@ export const Index: Record<string, any> = {
     name: "input-otp-form-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json","form","card"],
+    registryDependencies: ["@delta/input-otp","form","card"],
     files: [{
       path: "registry/delta-ui/examples/input-otp-form-demo.tsx",
       type: "registry:example",
@@ -702,7 +702,7 @@ export const Index: Record<string, any> = {
     name: "product-card-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [{
       path: "registry/delta-ui/examples/product-card-demo.tsx",
       type: "registry:example",
@@ -720,7 +720,7 @@ export const Index: Record<string, any> = {
     name: "product-card-inner-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [{
       path: "registry/delta-ui/examples/product-card-inner-demo.tsx",
       type: "registry:example",
@@ -738,7 +738,7 @@ export const Index: Record<string, any> = {
     name: "product-card-custom-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [{
       path: "registry/delta-ui/examples/product-card-custom-demo.tsx",
       type: "registry:example",
@@ -756,7 +756,7 @@ export const Index: Record<string, any> = {
     name: "product-card-size-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [{
       path: "registry/delta-ui/examples/product-card-size-demo.tsx",
       type: "registry:example",
@@ -774,7 +774,7 @@ export const Index: Record<string, any> = {
     name: "product-card-grid-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [{
       path: "registry/delta-ui/examples/product-card-grid-demo.tsx",
       type: "registry:example",
@@ -792,7 +792,7 @@ export const Index: Record<string, any> = {
     name: "navigation-menu-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/navigation-menu.json"],
+    registryDependencies: ["@delta/navigation-menu"],
     files: [{
       path: "registry/delta-ui/examples/navigation-menu-demo.tsx",
       type: "registry:example",
@@ -810,7 +810,7 @@ export const Index: Record<string, any> = {
     name: "x-card-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [{
       path: "registry/delta-ui/examples/x-card-demo.tsx",
       type: "registry:example",
@@ -828,7 +828,7 @@ export const Index: Record<string, any> = {
     name: "x-card-basic-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [{
       path: "registry/delta-ui/examples/x-card-basic-demo.tsx",
       type: "registry:example",
@@ -846,7 +846,7 @@ export const Index: Record<string, any> = {
     name: "x-card-interactive-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [{
       path: "registry/delta-ui/examples/x-card-interactive-demo.tsx",
       type: "registry:example",
@@ -918,7 +918,7 @@ export const Index: Record<string, any> = {
     name: "mapbox-pointer-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [{
       path: "registry/delta-ui/examples/mapbox-pointer-demo.tsx",
       type: "registry:example",
@@ -936,7 +936,7 @@ export const Index: Record<string, any> = {
     name: "mapbox-pointer-style-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [{
       path: "registry/delta-ui/examples/mapbox-pointer-style-demo.tsx",
       type: "registry:example",
@@ -954,7 +954,7 @@ export const Index: Record<string, any> = {
     name: "mapbox-pointer-theme-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [{
       path: "registry/delta-ui/examples/mapbox-pointer-theme-demo.tsx",
       type: "registry:example",
@@ -972,7 +972,7 @@ export const Index: Record<string, any> = {
     name: "chat-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [{
       path: "registry/delta-ui/examples/chat-demo.tsx",
       type: "registry:example",
@@ -990,7 +990,7 @@ export const Index: Record<string, any> = {
     name: "chat-previous-messages-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [{
       path: "registry/delta-ui/examples/chat-previous-messages-demo.tsx",
       type: "registry:example",
@@ -1008,7 +1008,7 @@ export const Index: Record<string, any> = {
     name: "chat-simple-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [{
       path: "registry/delta-ui/examples/chat-simple-demo.tsx",
       type: "registry:example",
@@ -1026,7 +1026,7 @@ export const Index: Record<string, any> = {
     name: "code-block-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-demo.tsx",
       type: "registry:example",
@@ -1044,7 +1044,7 @@ export const Index: Record<string, any> = {
     name: "code-block-package-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-package-demo.tsx",
       type: "registry:example",
@@ -1062,7 +1062,7 @@ export const Index: Record<string, any> = {
     name: "code-block-theme-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json","toggle-group"],
+    registryDependencies: ["@delta/code-block","toggle-group"],
     files: [{
       path: "registry/delta-ui/examples/code-block-theme-demo.tsx",
       type: "registry:example",
@@ -1080,7 +1080,7 @@ export const Index: Record<string, any> = {
     name: "code-block-interactive-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-interactive-demo.tsx",
       type: "registry:example",
@@ -1098,7 +1098,7 @@ export const Index: Record<string, any> = {
     name: "code-block-markdown-string-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-markdown-string-demo.tsx",
       type: "registry:example",
@@ -1116,7 +1116,7 @@ export const Index: Record<string, any> = {
     name: "code-block-npx-markdown-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-npx-markdown-demo.tsx",
       type: "registry:example",
@@ -1134,7 +1134,7 @@ export const Index: Record<string, any> = {
     name: "code-block-package-manager-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-package-manager-demo.tsx",
       type: "registry:example",
@@ -1152,7 +1152,7 @@ export const Index: Record<string, any> = {
     name: "code-block-python-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-python-demo.tsx",
       type: "registry:example",
@@ -1170,7 +1170,7 @@ export const Index: Record<string, any> = {
     name: "code-block-json-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-json-demo.tsx",
       type: "registry:example",
@@ -1188,7 +1188,7 @@ export const Index: Record<string, any> = {
     name: "code-block-expand-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [{
       path: "registry/delta-ui/examples/code-block-expand-demo.tsx",
       type: "registry:example",
@@ -1206,7 +1206,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-demo.tsx",
       type: "registry:example",
@@ -1224,7 +1224,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-grid-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-grid-demo.tsx",
       type: "registry:example",
@@ -1242,7 +1242,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-dismiss-on-scroll-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-dismiss-on-scroll-demo.tsx",
       type: "registry:example",
@@ -1260,7 +1260,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-motion-preset-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json","toggle"],
+    registryDependencies: ["@delta/cambio-image","toggle"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-motion-preset-demo.tsx",
       type: "registry:example",
@@ -1278,7 +1278,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-icons-expand-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-icons-expand-demo.tsx",
       type: "registry:example",
@@ -1296,7 +1296,7 @@ export const Index: Record<string, any> = {
     name: "cambio-image-close-button-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [{
       path: "registry/delta-ui/examples/cambio-image-close-button-demo.tsx",
       type: "registry:example",
@@ -1314,7 +1314,7 @@ export const Index: Record<string, any> = {
     name: "qrcode-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [{
       path: "registry/delta-ui/examples/qrcode-demo.tsx",
       type: "registry:example",
@@ -1332,7 +1332,7 @@ export const Index: Record<string, any> = {
     name: "qrcode-purple-dots-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [{
       path: "registry/delta-ui/examples/qrcode-purple-dots-demo.tsx",
       type: "registry:example",
@@ -1350,7 +1350,7 @@ export const Index: Record<string, any> = {
     name: "qrcode-demo-interactive",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [{
       path: "registry/delta-ui/examples/qrcode-demo-interactive.tsx",
       type: "registry:example",
@@ -1368,7 +1368,7 @@ export const Index: Record<string, any> = {
     name: "qrcode-logo-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [{
       path: "registry/delta-ui/examples/qrcode-logo-demo.tsx",
       type: "registry:example",
@@ -1386,7 +1386,7 @@ export const Index: Record<string, any> = {
     name: "card-deck-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [{
       path: "registry/delta-ui/examples/card-deck-demo.tsx",
       type: "registry:example",
@@ -1404,7 +1404,7 @@ export const Index: Record<string, any> = {
     name: "card-deck-demo-interactive",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [{
       path: "registry/delta-ui/examples/card-deck-demo-interactive.tsx",
       type: "registry:example",
@@ -1422,7 +1422,7 @@ export const Index: Record<string, any> = {
     name: "admonition-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-demo.tsx",
       type: "registry:example",
@@ -1440,7 +1440,7 @@ export const Index: Record<string, any> = {
     name: "admonition-demo-interactive",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-demo-interactive.tsx",
       type: "registry:example",
@@ -1458,7 +1458,7 @@ export const Index: Record<string, any> = {
     name: "admonition-custom-icon-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-custom-icon-demo.tsx",
       type: "registry:example",
@@ -1476,7 +1476,7 @@ export const Index: Record<string, any> = {
     name: "admonition-dismissible-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-dismissible-demo.tsx",
       type: "registry:example",
@@ -1494,7 +1494,7 @@ export const Index: Record<string, any> = {
     name: "admonition-actions-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-actions-demo.tsx",
       type: "registry:example",
@@ -1512,7 +1512,7 @@ export const Index: Record<string, any> = {
     name: "admonition-collapsible-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [{
       path: "registry/delta-ui/examples/admonition-collapsible-demo.tsx",
       type: "registry:example",
@@ -1656,7 +1656,7 @@ export const Index: Record<string, any> = {
     name: "card-deck-yugioh-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [{
       path: "registry/delta-ui/examples/card-deck-yugioh-demo.tsx",
       type: "registry:example",
@@ -1674,7 +1674,7 @@ export const Index: Record<string, any> = {
     name: "card-deck-balatro-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [{
       path: "registry/delta-ui/examples/card-deck-balatro-demo.tsx",
       type: "registry:example",
@@ -1692,7 +1692,7 @@ export const Index: Record<string, any> = {
     name: "chat-shimmer-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [{
       path: "registry/delta-ui/examples/chat-shimmer-demo.tsx",
       type: "registry:example",
@@ -1710,7 +1710,7 @@ export const Index: Record<string, any> = {
     name: "chat-reasoning-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [{
       path: "registry/delta-ui/examples/chat-reasoning-demo.tsx",
       type: "registry:example",
@@ -1728,7 +1728,7 @@ export const Index: Record<string, any> = {
     name: "scroll-fade-effect-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/scroll-fade-effect.json","separator"],
+    registryDependencies: ["@delta/scroll-fade-effect","separator"],
     files: [{
       path: "registry/delta-ui/examples/scroll-fade-effect-demo.tsx",
       type: "registry:example",
@@ -1746,7 +1746,7 @@ export const Index: Record<string, any> = {
     name: "scroll-fade-effect-slider-demo",
     description: "",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/scroll-fade-effect.json","separator","slider","label"],
+    registryDependencies: ["@delta/scroll-fade-effect","separator","slider","label"],
     files: [{
       path: "registry/delta-ui/examples/scroll-fade-effect-slider-demo.tsx",
       type: "registry:example",

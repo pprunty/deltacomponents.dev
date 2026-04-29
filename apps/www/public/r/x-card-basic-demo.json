@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "x-card-basic-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/x-card.json"
+    "@delta/x-card"
   ],
   "files": [
     {

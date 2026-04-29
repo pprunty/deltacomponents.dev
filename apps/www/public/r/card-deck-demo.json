@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card-deck-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/card-deck.json"
+    "@delta/card-deck"
   ],
   "files": [
     {

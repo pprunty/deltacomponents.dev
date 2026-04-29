@@ -9,7 +9,7 @@ export const blocks: Registry["items"] = [
       "sidebar",
       "breadcrumb",
       "separator",
-      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "@delta/scroll-fade-effect",
     ],
     dependencies: ["lucide-react"],
     files: [
@@ -176,7 +176,7 @@ export const blocks: Registry["items"] = [
       "button",
       "dialog",
       "command",
-      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "@delta/scroll-fade-effect",
     ],
     dependencies: ["lucide-react"],
     files: [
@@ -277,7 +277,7 @@ export const blocks: Registry["items"] = [
       "button",
       "dialog",
       "command",
-      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "@delta/scroll-fade-effect",
     ],
     dependencies: ["lucide-react"],
     files: [

@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "navigation-menu-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/navigation-menu.json"
+    "@delta/navigation-menu"
   ],
   "files": [
     {

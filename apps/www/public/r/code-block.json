@@ -8,8 +8,8 @@
   ],
   "registryDependencies": [
     "tabs",
-    "https://deltacomponents.dev/r/code-block-icons.json",
-    "https://deltacomponents.dev/r/copy-button.json"
+    "@delta/code-block-icons",
+    "@delta/copy-button"
   ],
   "files": [
     {

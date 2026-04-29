@@ -69,10 +69,10 @@ export function ThemeCodeDialog({
           <div>
             <h4 className="mb-2 font-medium">CLI</h4>
             <CodeBlock
-              npm={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
-              yarn={`npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
-              pnpm={`pnpm dlx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
-              bun={`bunx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`}
+              npm={`npx shadcn@latest add @delta/themes/${themeValue}`}
+              yarn={`npx shadcn@latest add @delta/themes/${themeValue}`}
+              pnpm={`pnpm dlx shadcn@latest add @delta/themes/${themeValue}`}
+              bun={`bunx shadcn@latest add @delta/themes/${themeValue}`}
               defaultPackageManager="npm"
               className="max-h-32"
             />

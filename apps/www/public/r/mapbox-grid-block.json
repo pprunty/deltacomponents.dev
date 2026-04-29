@@ -4,7 +4,7 @@
   "description": "Three-column grid showcasing global locations with Mapbox maps",
   "registryDependencies": [
     "mapbox-pointer",
-    "https://deltacomponents.dev/r/mapbox-pointer.json"
+    "@delta/mapbox-pointer"
   ],
   "files": [
     {

@@ -4,7 +4,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-otp-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [
       {
         path: "examples/input-otp-demo.tsx",
@@ -15,7 +15,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-otp-pill-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [
       {
         path: "examples/input-otp-pill-demo.tsx",
@@ -26,7 +26,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-otp-separator-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/input-otp.json"],
+    registryDependencies: ["@delta/input-otp"],
     files: [
       {
         path: "examples/input-otp-separator-demo.tsx",
@@ -37,11 +37,7 @@ export const examples: Registry["items"] = [
   {
     name: "input-otp-form-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/input-otp.json",
-      "form",
-      "card",
-    ],
+    registryDependencies: ["@delta/input-otp", "form", "card"],
 
     files: [
       {
@@ -53,7 +49,7 @@ export const examples: Registry["items"] = [
   {
     name: "product-card-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [
       {
         path: "examples/product-card-demo.tsx",
@@ -64,7 +60,7 @@ export const examples: Registry["items"] = [
   {
     name: "product-card-inner-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [
       {
         path: "examples/product-card-inner-demo.tsx",
@@ -75,7 +71,7 @@ export const examples: Registry["items"] = [
   {
     name: "product-card-custom-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [
       {
         path: "examples/product-card-custom-demo.tsx",
@@ -86,7 +82,7 @@ export const examples: Registry["items"] = [
   {
     name: "product-card-size-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [
       {
         path: "examples/product-card-size-demo.tsx",
@@ -97,7 +93,7 @@ export const examples: Registry["items"] = [
   {
     name: "product-card-grid-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/product-card.json"],
+    registryDependencies: ["@delta/product-card"],
     files: [
       {
         path: "examples/product-card-grid-demo.tsx",
@@ -108,9 +104,7 @@ export const examples: Registry["items"] = [
   {
     name: "navigation-menu-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/navigation-menu.json",
-    ],
+    registryDependencies: ["@delta/navigation-menu"],
     files: [
       {
         path: "examples/navigation-menu-demo.tsx",
@@ -121,7 +115,7 @@ export const examples: Registry["items"] = [
   {
     name: "x-card-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [
       {
         path: "examples/x-card-demo.tsx",
@@ -132,7 +126,7 @@ export const examples: Registry["items"] = [
   {
     name: "x-card-basic-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [
       {
         path: "examples/x-card-basic-demo.tsx",
@@ -143,7 +137,7 @@ export const examples: Registry["items"] = [
   {
     name: "x-card-interactive-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/x-card.json"],
+    registryDependencies: ["@delta/x-card"],
     files: [
       {
         path: "examples/x-card-interactive-demo.tsx",
@@ -187,7 +181,7 @@ export const examples: Registry["items"] = [
   {
     name: "mapbox-pointer-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [
       {
         path: "examples/mapbox-pointer-demo.tsx",
@@ -198,7 +192,7 @@ export const examples: Registry["items"] = [
   {
     name: "mapbox-pointer-style-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [
       {
         path: "examples/mapbox-pointer-style-demo.tsx",
@@ -209,7 +203,7 @@ export const examples: Registry["items"] = [
   {
     name: "mapbox-pointer-theme-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/mapbox-pointer.json"],
+    registryDependencies: ["@delta/mapbox-pointer"],
     files: [
       {
         path: "examples/mapbox-pointer-theme-demo.tsx",
@@ -220,7 +214,7 @@ export const examples: Registry["items"] = [
   {
     name: "chat-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [
       {
         path: "examples/chat-demo.tsx",
@@ -231,7 +225,7 @@ export const examples: Registry["items"] = [
   {
     name: "chat-previous-messages-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [
       {
         path: "examples/chat-previous-messages-demo.tsx",
@@ -242,7 +236,7 @@ export const examples: Registry["items"] = [
   {
     name: "chat-simple-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [
       {
         path: "examples/chat-simple-demo.tsx",
@@ -253,7 +247,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-demo.tsx",
@@ -264,7 +258,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-package-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-package-demo.tsx",
@@ -275,10 +269,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-theme-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/code-block.json",
-      "toggle-group",
-    ],
+    registryDependencies: ["@delta/code-block", "toggle-group"],
     files: [
       {
         path: "examples/code-block-theme-demo.tsx",
@@ -289,7 +280,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-interactive-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-interactive-demo.tsx",
@@ -300,7 +291,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-markdown-string-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-markdown-string-demo.tsx",
@@ -311,7 +302,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-npx-markdown-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-npx-markdown-demo.tsx",
@@ -322,7 +313,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-package-manager-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-package-manager-demo.tsx",
@@ -333,7 +324,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-python-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-python-demo.tsx",
@@ -344,7 +335,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-json-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-json-demo.tsx",
@@ -355,7 +346,7 @@ export const examples: Registry["items"] = [
   {
     name: "code-block-expand-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/code-block.json"],
+    registryDependencies: ["@delta/code-block"],
     files: [
       {
         path: "examples/code-block-expand-demo.tsx",
@@ -366,7 +357,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [
       {
         path: "examples/cambio-image-demo.tsx",
@@ -377,7 +368,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-grid-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [
       {
         path: "examples/cambio-image-grid-demo.tsx",
@@ -388,7 +379,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-dismiss-on-scroll-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [
       {
         path: "examples/cambio-image-dismiss-on-scroll-demo.tsx",
@@ -399,10 +390,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-motion-preset-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/cambio-image.json",
-      "toggle",
-    ],
+    registryDependencies: ["@delta/cambio-image", "toggle"],
     files: [
       {
         path: "examples/cambio-image-motion-preset-demo.tsx",
@@ -413,7 +401,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-icons-expand-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [
       {
         path: "examples/cambio-image-icons-expand-demo.tsx",
@@ -424,7 +412,7 @@ export const examples: Registry["items"] = [
   {
     name: "cambio-image-close-button-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/cambio-image.json"],
+    registryDependencies: ["@delta/cambio-image"],
     files: [
       {
         path: "examples/cambio-image-close-button-demo.tsx",
@@ -435,7 +423,7 @@ export const examples: Registry["items"] = [
   {
     name: "qrcode-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [
       {
         path: "examples/qrcode-demo.tsx",
@@ -446,7 +434,7 @@ export const examples: Registry["items"] = [
   {
     name: "qrcode-purple-dots-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [
       {
         path: "examples/qrcode-purple-dots-demo.tsx",
@@ -457,7 +445,7 @@ export const examples: Registry["items"] = [
   {
     name: "qrcode-demo-interactive",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [
       {
         path: "examples/qrcode-demo-interactive.tsx",
@@ -468,7 +456,7 @@ export const examples: Registry["items"] = [
   {
     name: "qrcode-logo-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/qrcode.json"],
+    registryDependencies: ["@delta/qrcode"],
     files: [
       {
         path: "examples/qrcode-logo-demo.tsx",
@@ -479,7 +467,7 @@ export const examples: Registry["items"] = [
   {
     name: "card-deck-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [
       {
         path: "examples/card-deck-demo.tsx",
@@ -490,7 +478,7 @@ export const examples: Registry["items"] = [
   {
     name: "card-deck-demo-interactive",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [
       {
         path: "examples/card-deck-demo-interactive.tsx",
@@ -501,7 +489,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-demo.tsx",
@@ -512,7 +500,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-demo-interactive",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-demo-interactive.tsx",
@@ -523,7 +511,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-custom-icon-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-custom-icon-demo.tsx",
@@ -534,7 +522,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-dismissible-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-dismissible-demo.tsx",
@@ -545,7 +533,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-actions-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-actions-demo.tsx",
@@ -556,7 +544,7 @@ export const examples: Registry["items"] = [
   {
     name: "admonition-collapsible-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/admonition.json"],
+    registryDependencies: ["@delta/admonition"],
     files: [
       {
         path: "examples/admonition-collapsible-demo.tsx",
@@ -645,7 +633,7 @@ export const examples: Registry["items"] = [
   {
     name: "card-deck-yugioh-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [
       {
         path: "examples/card-deck-yugioh-demo.tsx",
@@ -656,7 +644,7 @@ export const examples: Registry["items"] = [
   {
     name: "card-deck-balatro-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/card-deck.json"],
+    registryDependencies: ["@delta/card-deck"],
     files: [
       {
         path: "examples/card-deck-balatro-demo.tsx",
@@ -667,7 +655,7 @@ export const examples: Registry["items"] = [
   {
     name: "chat-shimmer-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [
       {
         path: "examples/chat-shimmer-demo.tsx",
@@ -678,7 +666,7 @@ export const examples: Registry["items"] = [
   {
     name: "chat-reasoning-demo",
     type: "registry:example",
-    registryDependencies: ["https://deltacomponents.dev/r/chat.json"],
+    registryDependencies: ["@delta/chat"],
     files: [
       {
         path: "examples/chat-reasoning-demo.tsx",
@@ -689,10 +677,7 @@ export const examples: Registry["items"] = [
   {
     name: "scroll-fade-effect-demo",
     type: "registry:example",
-    registryDependencies: [
-      "https://deltacomponents.dev/r/scroll-fade-effect.json",
-      "separator",
-    ],
+    registryDependencies: ["@delta/scroll-fade-effect", "separator"],
     files: [
       {
         path: "examples/scroll-fade-effect-demo.tsx",
@@ -704,7 +689,7 @@ export const examples: Registry["items"] = [
     name: "scroll-fade-effect-slider-demo",
     type: "registry:example",
     registryDependencies: [
-      "https://deltacomponents.dev/r/scroll-fade-effect.json",
+      "@delta/scroll-fade-effect",
       "separator",
       "slider",
       "label",

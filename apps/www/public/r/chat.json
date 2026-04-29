@@ -11,7 +11,7 @@
     "avatar",
     "textarea",
     "select",
-    "https://deltacomponents.dev/r/ai-elements.json"
+    "@delta/ai-elements"
   ],
   "files": [
     {

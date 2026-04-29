@@ -4,7 +4,7 @@
   "registryDependencies": [
     "tabs",
     "scroll-area",
-    "https://deltacomponents.dev/r/tabs.json"
+    "@delta/tabs"
   ],
   "files": [
     {

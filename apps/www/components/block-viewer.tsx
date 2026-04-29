@@ -255,13 +255,13 @@ function BlockViewerToolbar() {
           size="sm"
           onClick={() => {
             copyToClipboard(
-              `npx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`
+              `npx shadcn@latest add @delta/${item.name}`
             )
           }}
         >
           {isCopied ? <Check /> : <Terminal />}
           <span>
-            npx shadcn@latest add https://deltacomponents.dev/r/{item.name}.json
+            npx shadcn@latest add @delta/{item.name}
           </span>
         </Button>
         <Separator orientation="vertical" className="mx-1 !h-4" />
@@ -440,10 +440,10 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
 
       {/* Install command with package manager tabs (mobile only) */}
       <CodeBlock
-        npm={`npx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
-        pnpm={`pnpm dlx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
-        yarn={`npx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
-        bun={`bunx shadcn@latest add "https://deltacomponents.dev/r/${item.name}.json"`}
+        npm={`npx shadcn@latest add @delta/${item.name}`}
+        pnpm={`pnpm dlx shadcn@latest add @delta/${item.name}`}
+        yarn={`npx shadcn@latest add @delta/${item.name}`}
+        bun={`bunx shadcn@latest add @delta/${item.name}`}
         defaultPackageManager="npm"
         className="text-sm"
       />

@@ -36,10 +36,10 @@ export function InstallationTabs({
 
   const getCliCommand = (pm: string) => {
     const commandMap: Record<string, string> = {
-      npm: `npx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
-      yarn: `npx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
-      pnpm: `pnpm dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
-      bun: `bunx --bun shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
+      npm: `npx shadcn@latest add @delta/${name}`,
+      yarn: `npx shadcn@latest add @delta/${name}`,
+      pnpm: `pnpm dlx shadcn@latest add @delta/${name}`,
+      bun: `bunx --bun shadcn@latest add @delta/${name}`,
     }
     return commandMap[pm] || commandMap.pnpm
   }

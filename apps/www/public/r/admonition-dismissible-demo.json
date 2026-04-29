@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "admonition-dismissible-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/admonition.json"
+    "@delta/admonition"
   ],
   "files": [
     {

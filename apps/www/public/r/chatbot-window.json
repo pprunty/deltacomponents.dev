@@ -11,7 +11,7 @@
     "select",
     "textarea",
     "resizable",
-    "https://deltacomponents.dev/r/ai-elements.json"
+    "@delta/ai-elements"
   ],
   "files": [
     {

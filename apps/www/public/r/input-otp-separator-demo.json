@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-otp-separator-demo",
   "registryDependencies": [
-    "https://deltacomponents.dev/r/input-otp.json"
+    "@delta/input-otp"
   ],
   "files": [
     {

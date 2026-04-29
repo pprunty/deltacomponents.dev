@@ -3,7 +3,7 @@
   "name": "scroll-fade-effect-demo",
   "registryDependencies": [
     "separator",
-    "https://deltacomponents.dev/r/scroll-fade-effect.json"
+    "@delta/scroll-fade-effect"
   ],
   "files": [
     {
