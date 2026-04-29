@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Heart, House, MagnifyingGlass, User } from "phosphor-react"
+import { Heart, Home, Search, User } from "lucide-react"
 
 import { BottomMobileNav } from "./components/bottom-mobile-nav"
 import { Sidebar } from "./components/sidebar"
@@ -23,12 +23,12 @@ function Layout({
     {
       href: "#",
       label: "Home",
-      icon: House,
+      icon: Home,
     },
     {
       href: "#search",
       label: "Search",
-      icon: MagnifyingGlass,
+      icon: Search,
     },
     {
       href: "#love",
@@ -53,7 +53,7 @@ function Layout({
       {/* Mobile Bottom Navigation */}
       <BottomMobileNav
         routes={routes}
-        labels={false}
+        labels={true}
         className={bottomNavClassName}
       />
     </div>

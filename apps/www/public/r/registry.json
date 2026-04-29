@@ -400,7 +400,7 @@
       "type": "registry:block",
       "description": "BottomMobileNav block",
       "dependencies": [
-        "phosphor-react"
+        "lucide-react"
       ],
       "files": [
         {

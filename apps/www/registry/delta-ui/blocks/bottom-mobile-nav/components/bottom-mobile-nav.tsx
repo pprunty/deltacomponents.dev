@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Plus } from "phosphor-react"
+import { Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -154,7 +154,6 @@ const BarItem = React.memo<BarItemProps>(
                   "h-7 w-7 transition-colors duration-150",
                   isActive ? "text-primary" : "text-muted-foreground"
                 )}
-                weight={isActive ? "fill" : "regular"}
               />
             )}
             {labels && (
@@ -226,10 +225,7 @@ const CenterButton = React.memo<CenterButtonProps>(
               className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg will-change-transform"
               style={getCenterPressStyle(phase)}
             >
-              <Plus
-                className="text-muted-foreground h-7 w-7 transition-colors duration-150"
-                weight="regular"
-              />
+              <Plus className="text-muted-foreground h-7 w-7 transition-colors duration-150" />
             </div>
             {labels && label && (
               <span className="text-accent-foreground mt-1.5 text-center text-[10px] leading-tight">

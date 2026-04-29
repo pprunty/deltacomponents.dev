@@ -3,7 +3,7 @@
 import React, { memo, useCallback, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Plus } from "phosphor-react"
+import { Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -159,9 +159,8 @@ export const Sidebar = memo(function Sidebar({
                   <Icon
                     className={cn(
                       "relative z-10 h-6 w-6 transition-colors duration-300",
-                      isActive && "text-accent-foreground"
+                      isActive ? "text-accent-foreground" : ""
                     )}
-                    weight={isActive ? "fill" : "regular"}
                   />
                 )}
               </Link>
@@ -195,10 +194,7 @@ export const Sidebar = memo(function Sidebar({
                   className="group bg-muted text-muted-foreground relative cursor-pointer rounded-lg px-4 py-3 transition-colors duration-300"
                 >
                   <div className="bg-accent absolute inset-0 scale-75 rounded-lg opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100" />
-                  <Plus
-                    className="group-hover:text-accent-foreground relative z-10 h-6 w-6 transition-colors duration-300"
-                    weight="regular"
-                  />
+                  <Plus className="group-hover:text-accent-foreground relative z-10 h-6 w-6 transition-colors duration-300" />
                 </button>
               )
 
@@ -239,9 +235,8 @@ export const Sidebar = memo(function Sidebar({
                   <Icon
                     className={cn(
                       "relative z-10 h-6 w-6 transition-colors duration-300",
-                      isActive && "text-accent-foreground"
+                      isActive ? "text-accent-foreground" : ""
                     )}
-                    weight={isActive ? "fill" : "regular"}
                   />
                 )}
               </Link>

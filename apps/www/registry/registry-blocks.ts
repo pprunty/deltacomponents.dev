@@ -116,7 +116,7 @@ export const blocks: Registry["items"] = [
     description: "BottomMobileNav block",
     type: "registry:block",
     registryDependencies: [],
-    dependencies: ["phosphor-react"],
+    dependencies: ["lucide-react"],
     files: [
       {
         path: "blocks/bottom-mobile-nav/page.tsx",
