@@ -743,7 +743,8 @@ export function CodeBlock({
             <CollapsibleContent
               forceMount
               className={cn(
-                "relative w-full overflow-auto transition-all",
+                "relative w-full transition-all",
+                isExpanded ? "overflow-auto" : "overflow-hidden",
                 !scrollbar && "no-scrollbar"
               )}
               style={{
