@@ -22,40 +22,111 @@ interface BarItemProps {
   onItemClick: (href: string) => void
 }
 
-function usePressAnimation(duration = 100) {
-  const [isPressed, setIsPressed] = React.useState(false)
+function usePressAnimation(releaseDuration = 300) {
+  const [phase, setPhase] = React.useState<"idle" | "down" | "up">("idle")
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
-  const triggerPress = React.useCallback(() => {
+  const clearPending = React.useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
-    }
-
-    setIsPressed(true)
-
-    // Immediately start returning to original size after duration
-    timeoutRef.current = setTimeout(() => {
-      setIsPressed(false)
-    }, duration)
-  }, [duration])
-
-  React.useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+      timeoutRef.current = null
     }
   }, [])
 
-  return { isPressed, triggerPress }
+  const pressDown = React.useCallback(() => {
+    clearPending()
+    setPhase("down")
+  }, [clearPending])
+
+  const pressUp = React.useCallback(() => {
+    clearPending()
+    setPhase("up")
+    timeoutRef.current = setTimeout(() => {
+      setPhase("idle")
+    }, releaseDuration)
+  }, [clearPending, releaseDuration])
+
+  const triggerPress = React.useCallback(() => {
+    clearPending()
+    setPhase("down")
+    timeoutRef.current = setTimeout(() => {
+      setPhase("up")
+      timeoutRef.current = setTimeout(() => {
+        setPhase("idle")
+      }, releaseDuration)
+    }, 80)
+  }, [clearPending, releaseDuration])
+
+  React.useEffect(() => {
+    return () => clearPending()
+  }, [clearPending])
+
+  return { phase, pressDown, pressUp, triggerPress }
+}
+
+const PRESS_DOWN_DURATION = "120ms"
+const PRESS_DOWN_EASING = "cubic-bezier(0.25, 0.1, 0.25, 1)"
+const PRESS_DOWN_SCALE = "scale(0.86)"
+
+const RELEASE_DURATION = "320ms"
+const RELEASE_EASING = "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+const RELEASE_SCALE = "scale(1)"
+
+function getPressStyle(phase: "idle" | "down" | "up") {
+  if (phase === "down") {
+    return {
+      transform: PRESS_DOWN_SCALE,
+      transitionProperty: "transform",
+      transitionDuration: PRESS_DOWN_DURATION,
+      transitionTimingFunction: PRESS_DOWN_EASING,
+    }
+  }
+  return {
+    transform: RELEASE_SCALE,
+    transitionProperty: "transform",
+    transitionDuration: phase === "up" ? RELEASE_DURATION : "0ms",
+    transitionTimingFunction: RELEASE_EASING,
+  }
+}
+
+const CENTER_PRESS_DOWN_SCALE = "scale(0.88)"
+
+function getCenterPressStyle(phase: "idle" | "down" | "up") {
+  if (phase === "down") {
+    return {
+      transform: CENTER_PRESS_DOWN_SCALE,
+      transitionProperty: "transform",
+      transitionDuration: PRESS_DOWN_DURATION,
+      transitionTimingFunction: PRESS_DOWN_EASING,
+    }
+  }
+  return {
+    transform: RELEASE_SCALE,
+    transitionProperty: "transform",
+    transitionDuration: phase === "up" ? RELEASE_DURATION : "0ms",
+    transitionTimingFunction: RELEASE_EASING,
+  }
 }
 
 const BarItem = React.memo<BarItemProps>(
   ({ href, label, Icon, isActive, labels, onItemClick }) => {
-    const { isPressed, triggerPress } = usePressAnimation(100)
+    const { phase, pressDown, pressUp, triggerPress } = usePressAnimation(300)
+    const touchedRef = React.useRef(false)
+
+    const handleTouchStart = () => {
+      touchedRef.current = true
+      pressDown()
+    }
+
+    const handleTouchEnd = () => {
+      pressUp()
+    }
 
     const handleClick = () => {
-      triggerPress()
+      if (!touchedRef.current) {
+        triggerPress()
+      }
+      touchedRef.current = false
       onItemClick(href)
     }
 
@@ -64,28 +135,27 @@ const BarItem = React.memo<BarItemProps>(
         <Link
           href={href}
           className={cn(
-            "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150",
+            "flex h-full w-full flex-col items-center justify-center px-1 transition-colors duration-150 select-none",
             labels ? "py-2" : "py-3"
           )}
+          style={{ WebkitTouchCallout: "none" }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
           onClick={handleClick}
         >
-          <div className="flex flex-col items-center">
+          <div
+            className="pointer-events-none flex flex-col items-center will-change-transform"
+            style={getPressStyle(phase)}
+          >
             {Icon && (
-              <div
-                className="transform transition-transform duration-100"
-                style={{
-                  transform: isPressed ? "scale(0.9)" : "scale(1)",
-                  transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
-                }}
-              >
-                <Icon
-                  className={cn(
-                    "h-7 w-7 transition-colors duration-150",
-                    isActive ? "text-primary" : "text-muted-foreground"
-                  )}
-                  weight={isActive ? "fill" : "regular"}
-                />
-              </div>
+              <Icon
+                className={cn(
+                  "h-7 w-7 transition-colors duration-150",
+                  isActive ? "text-primary" : "text-muted-foreground"
+                )}
+                weight={isActive ? "fill" : "regular"}
+              />
             )}
             {labels && (
               <span
@@ -119,27 +189,42 @@ interface CenterButtonProps {
 
 const CenterButton = React.memo<CenterButtonProps>(
   ({ onClick, label, labels }) => {
-    const { isPressed, triggerPress } = usePressAnimation(100)
+    const { phase, pressDown, pressUp, triggerPress } = usePressAnimation(300)
+    const touchedRef = React.useRef(false)
+
+    const handleTouchStart = () => {
+      touchedRef.current = true
+      pressDown()
+    }
+
+    const handleTouchEnd = () => {
+      pressUp()
+    }
 
     const handleClick = () => {
-      triggerPress()
+      if (!touchedRef.current) {
+        triggerPress()
+      }
+      touchedRef.current = false
       onClick()
     }
 
     return (
       <li className="flex-1">
         <button
+          type="button"
           onClick={handleClick}
-          className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+          className="flex h-full w-full flex-col items-center justify-center px-1 py-1 transition-colors duration-150 select-none"
+          style={{ WebkitTouchCallout: "none" }}
           aria-label={label || "Add"}
         >
-          <div className="flex flex-col items-center">
+          <div className="pointer-events-none flex flex-col items-center">
             <div
-              className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg transition-transform duration-100"
-              style={{
-                transform: isPressed ? "scale(0.92)" : "scale(1)",
-                transitionTimingFunction: "cubic-bezier(.08,.52,.52,1)",
-              }}
+              className="supports-[backdrop-filter]:bg-muted/90 rounded-lg px-6 py-2 backdrop-blur-lg will-change-transform"
+              style={getCenterPressStyle(phase)}
             >
               <Plus
                 className="text-muted-foreground h-7 w-7 transition-colors duration-150"
@@ -165,6 +250,12 @@ interface BottomMobileNavProps {
   labels?: boolean
   centerButton?: CenterButtonConfig
   className?: string
+  /**
+   * Renders a soft top-to-bottom gradient backdrop fading the content behind
+   * the nav into the background colour. When false, falls back to a solid
+   * blurred background.
+   */
+  gradient?: boolean
 }
 
 export function BottomMobileNav({
@@ -172,6 +263,7 @@ export function BottomMobileNav({
   labels = false,
   centerButton,
   className,
+  gradient = true,
 }: BottomMobileNavProps) {
   const pathname = usePathname()
   const [lastClickedItem, setLastClickedItem] = React.useState<string | null>(
@@ -179,7 +271,6 @@ export function BottomMobileNav({
   )
   const [activeRoute, setActiveRoute] = React.useState<string>("")
 
-  // Optimized route detection with minimal DOM queries
   React.useEffect(() => {
     if (routes.length === 0) return
 
@@ -189,7 +280,6 @@ export function BottomMobileNav({
 
       if (hasHashRoutes) {
         currentRoute = window.location.hash
-        // If no hash, default to first route for hash-based navigation
         if (!currentRoute && routes.length > 0) {
           currentRoute = routes[0].href
         }
@@ -202,7 +292,6 @@ export function BottomMobileNav({
 
     updateActiveRoute()
 
-    // Use single event listener for both hash and navigation changes
     const handleRouteChange = () => updateActiveRoute()
 
     window.addEventListener("hashchange", handleRouteChange, { passive: true })
@@ -214,7 +303,6 @@ export function BottomMobileNav({
     }
   }, [routes, pathname])
 
-  // Additional effect to handle initial hash on client-side hydration
   React.useEffect(() => {
     if (
       typeof window !== "undefined" &&
@@ -227,12 +315,9 @@ export function BottomMobileNav({
     }
   }, [])
 
-  // Optimized click handler with minimal state updates
   const handleItemClick = React.useCallback(
     (href: string) => {
-      // Scroll to top optimization for same active item
       if (lastClickedItem === href && activeRoute === href) {
-        // Use requestAnimationFrame for smooth scroll timing
         requestAnimationFrame(() => {
           window.scrollTo({
             top: 0,
@@ -249,7 +334,6 @@ export function BottomMobileNav({
     centerButton?.onClick()
   }, [centerButton])
 
-  // Optimized route splitting with useMemo
   const { firstHalf, secondHalf } = React.useMemo(() => {
     const halfLength = Math.ceil(routes.length / 2)
     return {
@@ -263,9 +347,18 @@ export function BottomMobileNav({
       className={cn(
         "fixed right-0 bottom-0 left-0 z-50 block py-1 md:hidden",
         "pt-1 pb-[env(safe-area-inset-bottom,4px)]",
-        "supports-[backdrop-filter]:bg-background/85 backdrop-blur-lg",
+        !gradient &&
+          "supports-[backdrop-filter]:bg-background/85 backdrop-blur-lg",
         className
       )}
+      style={
+        gradient
+          ? {
+              background:
+                "linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--background) 15%, transparent) 5%, color-mix(in srgb, var(--background) 40%, transparent) 10%, color-mix(in srgb, var(--background) 60%, transparent) 15%, color-mix(in srgb, var(--background) 80%, transparent) 25%, var(--background) 45%)",
+            }
+          : undefined
+      }
     >
       <ul className="relative flex items-center justify-around">
         {centerButton ? (

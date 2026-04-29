@@ -1,8 +1,8 @@
-# Migrate Install Commands to Short `@delta-components/…` Form
+# Migrate Install Commands to Short `@delta/…` Form
 
 Plan for what to change on `deltacomponents.dev` once the draft PR
 [shadcn-ui/ui#10476](https://github.com/shadcn-ui/ui/pull/10476) is merged and
-`@delta-components` is listed in the official shadcn registries index.
+`@delta` is listed in the official shadcn registries index.
 
 ## Context
 
@@ -12,12 +12,12 @@ Today every install command on the site uses the full URL form:
 npx shadcn@latest add https://deltacomponents.dev/r/cambio-image.json
 ```
 
-Once `@delta-components` ships in the official
+Once `@delta` ships in the official
 [`registries.json`](https://ui.shadcn.com/r/registries.json), the shadcn CLI
 resolves the namespace automatically and users can install with the short form:
 
 ```bash
-npx shadcn@latest add @delta-components/cambio-image
+npx shadcn@latest add @delta/cambio-image
 ```
 
 Shorter copy-paste, less visual noise, same behaviour. Below is every source
@@ -25,7 +25,7 @@ file that needs updating, grouped by concern.
 
 ## Do not migrate until the PR is merged
 
-The short form **will fail** for end users until `@delta-components` is
+The short form **will fail** for end users until `@delta` is
 present in `https://ui.shadcn.com/r/registries.json`. Keep the full URL in
 production until the merge lands. Once merged, deploy the switch in a single
 release to avoid a mixed state.
@@ -43,23 +43,23 @@ block, and theme page.
   - yarn: `npx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
   - pnpm: `pnpm dlx shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
   - bun: `bunx --bun shadcn@latest add https://deltacomponents.dev/r/${name}.json`,
-  + npm: `npx shadcn@latest add @delta-components/${name}`,
-  + yarn: `npx shadcn@latest add @delta-components/${name}`,
-  + pnpm: `pnpm dlx shadcn@latest add @delta-components/${name}`,
-  + bun: `bunx --bun shadcn@latest add @delta-components/${name}`,
+  + npm: `npx shadcn@latest add @delta/${name}`,
+  + yarn: `npx shadcn@latest add @delta/${name}`,
+  + pnpm: `pnpm dlx shadcn@latest add @delta/${name}`,
+  + bun: `bunx --bun shadcn@latest add @delta/${name}`,
   ```
 
 - **`apps/www/components/themes/theme-code-dialog.tsx`** (theme installs):
   ```diff
   - `npx shadcn@latest add https://deltacomponents.dev/r/themes/${themeValue}.json`
-  + `npx shadcn@latest add @delta-components/themes/${themeValue}`
+  + `npx shadcn@latest add @delta/themes/${themeValue}`
   ```
   (Apply to npm / yarn / pnpm / bun props — 4 lines.)
 
 - **`apps/www/components/block-viewer.tsx`** (block installs):
   - Lines 258, 264, 443–446. Switch every occurrence of
     `https://deltacomponents.dev/r/${item.name}.json` to
-    `@delta-components/${item.name}`.
+    `@delta/${item.name}`.
 
 ### 2. Docs MDX
 
@@ -69,7 +69,7 @@ text matches the tab output.
 - **`apps/www/content/docs/(root)/installation.mdx`**:
   ```diff
   - npx shadcn@latest add https://deltacomponents.dev/r/<component>.json
-  + npx shadcn@latest add @delta-components/<component>
+  + npx shadcn@latest add @delta/<component>
   ```
   Consider adding a one-line note: *"Need the full URL form? See the
   [registry JSON](https://deltacomponents.dev/r/registry.json)."*
@@ -77,7 +77,7 @@ text matches the tab output.
 - **`apps/www/content/docs/(root)/theming.mdx`**:
   ```diff
   - npx shadcn@latest add https://deltacomponents.dev/r/themes/[theme-name].json
-  + npx shadcn@latest add @delta-components/themes/[theme-name]
+  + npx shadcn@latest add @delta/themes/[theme-name]
   ```
 
 - **`apps/www/content/learning/index.mdx`** and
@@ -89,23 +89,23 @@ text matches the tab output.
 - **`apps/www/app/llms.txt/route.ts`**:
   ```diff
   - pnpm dlx shadcn@latest add https://deltacomponents.dev/r/<component-name>.json
-  + pnpm dlx shadcn@latest add @delta-components/<component-name>
+  + pnpm dlx shadcn@latest add @delta/<component-name>
   ```
 
 ### 4. Inter-registry dependencies (`registryDependencies`)
 
 Delta's own items reference each other with full URLs inside
 `registry-blocks.ts` and `registry-examples.ts`. The shadcn CLI already
-accepts the short `@delta-components/<name>` form in
+accepts the short `@delta/<name>` form in
 `registryDependencies`, so switching them has two wins: (1) shorter generated
 JSON, (2) the registry becomes more portable if the domain ever changes.
 
 - **`apps/www/registry/registry-blocks.ts`** — every
   `"https://deltacomponents.dev/r/<name>.json"` in a `registryDependencies`
-  array becomes `"@delta-components/<name>"`. Examples:
+  array becomes `"@delta/<name>"`. Examples:
   ```diff
   - "https://deltacomponents.dev/r/scroll-fade-effect.json",
-  + "@delta-components/scroll-fade-effect",
+  + "@delta/scroll-fade-effect",
   ```
 - **`apps/www/registry/registry-examples.ts`** — same pattern (most demos
   depend on a single Delta component).
@@ -117,7 +117,7 @@ JSON, (2) the registry becomes more portable if the domain ever changes.
   -   name => `https://deltacomponents.dev/r/${name}.json`
   - )
   + const deltaUrls = Array.from(deltaImports).map(
-  +   name => `@delta-components/${name}`
+  +   name => `@delta/${name}`
   + )
   ```
   Rename the variable to `deltaDeps` for accuracy.
@@ -136,7 +136,7 @@ bun run registry:build
 
 ## Post-merge rollout sequence
 
-1. Confirm `@delta-components` appears in
+1. Confirm `@delta` appears in
    `https://ui.shadcn.com/r/registries.json`.
 2. Cut a branch `chore/migrate-to-official-registry`.
 3. Apply edits in sections 1 → 4 above.
@@ -145,15 +145,15 @@ bun run registry:build
    ```bash
    pnpm create next-app@latest scratch --ts --tailwind
    cd scratch && npx shadcn@latest init
-   npx shadcn@latest add @delta-components/cambio-image
-   npx shadcn@latest add @delta-components/chatbot-window   # block with deps
-   npx shadcn@latest add @delta-components/themes/dublin    # theme
+   npx shadcn@latest add @delta/cambio-image
+   npx shadcn@latest add @delta/chatbot-window   # block with deps
+   npx shadcn@latest add @delta/themes/dublin    # theme
    ```
    Each command should succeed and install the code into `components/ui/`.
 6. Deploy. Update
    [changelog](https://deltacomponents.dev/docs/changelog) with a
    short entry: *"Install commands now support the shorter
-   `@delta-components/<name>` form."*
+   `@delta/<name>` form."*
 
 ## Fallback
 

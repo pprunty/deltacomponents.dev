@@ -11,10 +11,6 @@ interface LayoutProps {
   children: React.ReactNode
   sidebarClassName?: string
   bottomNavClassName?: string
-  centerButton?: {
-    onClick: () => void
-    label: string
-  }
 }
 
 // Layout Component (moved from layout.tsx)
@@ -22,7 +18,6 @@ function Layout({
   children,
   sidebarClassName,
   bottomNavClassName,
-  centerButton,
 }: LayoutProps) {
   const routes = [
     {
@@ -59,8 +54,7 @@ function Layout({
       <BottomMobileNav
         routes={routes}
         labels={false}
-        className={`bg-background/80 backdrop-blur-lg ${bottomNavClassName || ""}`}
-        centerButton={centerButton}
+        className={bottomNavClassName}
       />
     </div>
   )
@@ -68,13 +62,7 @@ function Layout({
 
 export default function BottomMobileNavPage() {
   return (
-    <Layout
-      bottomNavClassName="bg-background/80 backdrop-blur-lg"
-      centerButton={{
-        onClick: () => console.log("Center button clicked"),
-        label: "Add",
-      }}
-    >
+    <Layout>
       <div className="mx-auto flex w-full max-w-lg flex-col gap-4 p-4">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
