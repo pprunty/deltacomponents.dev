@@ -421,7 +421,11 @@ export function CodeBlock({
             </div>
             <CopyButton
               value={allCommands[packageManager] || allCommands[manager]}
-              className="size-7"
+              className={cn(
+                "size-7",
+                useThemeBackground &&
+                  "hover:bg-transparent active:bg-transparent"
+              )}
               variant="secondary"
               iconColor={
                 useThemeBackground ? selectedTheme.plain?.color : undefined
@@ -554,7 +558,11 @@ export function CodeBlock({
             </div>
             <CopyButton
               value={commands[packageManager] || ""}
-              className="size-7"
+              className={cn(
+                "size-7",
+                useThemeBackground &&
+                  "hover:bg-transparent active:bg-transparent"
+              )}
               variant="secondary"
               iconColor={
                 useThemeBackground ? selectedTheme.plain?.color : undefined
@@ -699,6 +707,10 @@ export function CodeBlock({
               )}
               <CopyButton
                 value={actualCode}
+                className={cn(
+                  useThemeBackground &&
+                    "hover:bg-transparent active:bg-transparent"
+                )}
                 iconColor={
                   useThemeBackground ? selectedTheme.plain?.color : undefined
                 }
@@ -731,6 +743,10 @@ export function CodeBlock({
                 )}
                 <CopyButton
                   value={actualCode}
+                  className={cn(
+                    useThemeBackground &&
+                      "hover:bg-transparent active:bg-transparent"
+                  )}
                   iconColor={
                     useThemeBackground ? selectedTheme.plain?.color : undefined
                   }
