@@ -1,6 +1,6 @@
 "use client"
 
-import { type ReactNode } from "react"
+import { Component, type ReactNode } from "react"
 import { Tweet } from "react-tweet"
 
 import { cn } from "@/lib/utils"
@@ -12,6 +12,48 @@ interface XCardProps {
   caption?: ReactNode
   className?: string
   size?: XCardSize
+}
+
+interface TweetBoundaryProps {
+  children: ReactNode
+}
+
+interface TweetBoundaryState {
+  hasError: boolean
+}
+
+/**
+ * Error boundary isolating render failures from the embedded tweet.
+ *
+ * `react-tweet` renders third-party data and can throw at render time when the
+ * upstream syndication payload changes shape. Without a boundary, that throw
+ * propagates to the nearest route-level boundary and blanks the whole page.
+ * This contains the failure to a single inline notice instead.
+ */
+class TweetBoundary extends Component<
+  TweetBoundaryProps,
+  TweetBoundaryState
+> {
+  constructor(props: TweetBoundaryProps) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError(): TweetBoundaryState {
+    return { hasError: true }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="border-border bg-muted/30 text-muted-foreground my-3 w-full rounded-lg border px-4 py-6 text-center text-sm">
+          This post couldn&apos;t be loaded.
+        </div>
+      )
+    }
+
+    return this.props.children
+  }
 }
 
 function normalizeSize(size: XCardSize): "small" | "default" | "large" {
@@ -37,7 +79,9 @@ export function XCard({
   return (
     <div className={cn("x-card my-6", sizeClasses[normalizedSize], className)}>
       <div className="flex justify-center">
-        <Tweet id={id} />
+        <TweetBoundary>
+          <Tweet id={id} />
+        </TweetBoundary>
       </div>
       {caption && (
         <div className="text-muted-foreground mt-4 text-center text-sm">
