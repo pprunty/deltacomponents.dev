@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     name: "Diana Hu",
     title: "General Partner, Y Combinator",
     avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/fcdcbb0e010754abe55eaa640457c425b295d166-84x84.png?auto=format",
+      "https://bookface-images.s3.amazonaws.com/avatars/36477564f07b2f9314a051cebc0237a9c117e07a.jpg?1617298669",
     link: "https://example.com",
   },
   {
@@ -27,8 +27,7 @@ const testimonials: Testimonial[] = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.",
     name: "shadcn",
     title: "Creator of shadcn/ui",
-    avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/5b975491b9ace97040eca409dfa9819cbb80ab76-84x84.png?auto=format",
+    avatar: "https://github.com/shadcn.png",
     link: "https://example.com",
   },
   {
@@ -37,8 +36,7 @@ const testimonials: Testimonial[] = [
       "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est.",
     name: "Andrej Karpathy",
     title: "CEO, Eureka Labs",
-    avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/4427316a06b0a5764ddf36b018ed04a7ead481f2-84x84.png?auto=format",
+    avatar: "https://github.com/karpathy.png",
     link: "https://example.com",
   },
   {
@@ -47,8 +45,7 @@ const testimonials: Testimonial[] = [
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi. Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.",
     name: "Patrick Collison",
     title: "Co‑Founder & CEO, Stripe",
-    avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/a8dcd16f0d888eed3f8e33299c2451eb2ae4a493-93x93.png?auto=format",
+    avatar: "https://github.com/pc.png",
     link: "https://example.com",
   },
   {
@@ -57,8 +54,7 @@ const testimonials: Testimonial[] = [
       "Lorem ipsum.\n\nDolor sit amet.\nConsectetur adipiscing.\n\nElit sed do.",
     name: "ThePrimeagen",
     title: "@ThePrimeagen",
-    avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/6e35a34559ef40d60cd05033ffcf062ac9f7caeb-84x84.png?auto=format",
+    avatar: "https://github.com/ThePrimeagen.png",
     link: "https://example.com",
   },
   {
@@ -67,8 +63,7 @@ const testimonials: Testimonial[] = [
       "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus maiores alias consequatur.",
     name: "Greg Brockman",
     title: "President, OpenAI",
-    avatar:
-      "https://cdn.sanity.io/images/2hv88549/production/924c80c6c0c69a8fc6f3f9f4fd8a1a5e75bf74c7-400x400.jpg?auto=format",
+    avatar: "https://github.com/gdb.png",
     link: "https://example.com",
   },
 ]
