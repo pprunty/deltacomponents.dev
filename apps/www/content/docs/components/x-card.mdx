@@ -39,6 +39,13 @@ export default function Example() {
 ```tsx
 "use client"
 
+// Extra small size (using short form)
+<XCard
+  id="1825208781827080599"
+  size="xs"
+  caption="Extra small tweet embed"
+/>
+
 // Small size (using short form)
 <XCard
   id="1825208781827080599"
@@ -58,6 +65,13 @@ export default function Example() {
   id="1825208781827080599"
   size="lg"
   caption="Large tweet embed"
+/>
+
+// Extra large size (using short form)
+<XCard
+  id="1825208781827080599"
+  size="xl"
+  caption="Extra large tweet embed"
 />
 ```
 
@@ -91,15 +105,17 @@ export default function Example() {
 | Prop        | Type                                              | Default     | Description                                                                                                      |
 | ----------- | ------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
 | `id`        | `string`                                          | -           | **Required.** The tweet ID from the X/Twitter URL. Extract from tweet URLs like `https://x.com/user/status/[ID]` |
-| `size`      | `"sm" \| "small" \| "default" \| "lg" \| "large"` | `"default"` | Controls the display size of the tweet embed. Supports both short (`sm`, `lg`) and long form aliases             |
+| `size`      | `"xs" \| "extra-small" \| "sm" \| "small" \| "default" \| "lg" \| "large" \| "xl" \| "extra-large"` | `"default"` | Controls the display size of the tweet embed. Supports both short (`xs`, `sm`, `lg`, `xl`) and long form aliases  |
 | `caption`   | `ReactNode`                                       | -           | Optional caption content displayed below the tweet. Accepts any React element or string                          |
 | `className` | `string`                                          | -           | Additional CSS classes applied to the container wrapper for custom styling                                       |
 
 ### Size Variants
 
+- **Extra small (`"extra-small"` or `"xs"`)**: 75% scale with `max-w-xs` container width
 - **Small (`"small"` or `"sm"`)**: 90% scale with `max-w-sm` container width
 - **Default (`"default"`)**: Standard size with `max-w-xl` container width
 - **Large (`"large"` or `"lg"`)**: 110% scale with `max-w-2xl` container width
+- **Extra large (`"extra-large"` or `"xl"`)**: 125% scale with `max-w-3xl` container width
 
 ## Features
 

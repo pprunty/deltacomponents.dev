@@ -5,7 +5,16 @@ import { Tweet } from "react-tweet"
 
 import { cn } from "@/lib/utils"
 
-type XCardSize = "sm" | "small" | "default" | "lg" | "large"
+type XCardSize =
+  | "xs"
+  | "extra-small"
+  | "sm"
+  | "small"
+  | "default"
+  | "lg"
+  | "large"
+  | "xl"
+  | "extra-large"
 
 interface XCardProps {
   id: string
@@ -56,9 +65,13 @@ class TweetBoundary extends Component<
   }
 }
 
-function normalizeSize(size: XCardSize): "small" | "default" | "large" {
+function normalizeSize(
+  size: XCardSize
+): "xs" | "small" | "default" | "large" | "xl" {
+  if (size === "xs" || size === "extra-small") return "xs"
   if (size === "sm") return "small"
   if (size === "lg") return "large"
+  if (size === "xl" || size === "extra-large") return "xl"
   return size as "small" | "default" | "large"
 }
 
@@ -71,9 +84,11 @@ export function XCard({
   const normalizedSize = normalizeSize(size)
 
   const sizeClasses = {
+    xs: "max-w-xs scale-75",
     small: "max-w-sm scale-90",
     default: "max-w-xl",
     large: "max-w-2xl scale-110",
+    xl: "max-w-3xl scale-125",
   }
 
   return (
