@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "x-card-side-by-side-demo",
+  "registryDependencies": [
+    "@delta/x-card"
+  ],
+  "files": [
+    {
+      "path": "examples/x-card-side-by-side-demo.tsx",
+      "content": "\"use client\"\n\nimport { XCard } from \"@/components/ui/x-card\"\n\nexport default function XCardSideBySideDemo() {\n  return (\n    <div className=\"flex h-full w-full flex-col items-center justify-center gap-4 sm:flex-row sm:items-start\">\n      <XCard id=\"1617979122625712128\" size=\"xs\" />\n      <XCard id=\"1939308785727602764\" size=\"xs\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
