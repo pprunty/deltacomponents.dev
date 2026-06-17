@@ -146,17 +146,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "x-card-side-by-side-demo",
-    type: "registry:example",
-    registryDependencies: ["@delta/x-card"],
-    files: [
-      {
-        path: "examples/x-card-side-by-side-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "marquee-stacked-demo",
     type: "registry:example",
     registryDependencies: ["marquee"],

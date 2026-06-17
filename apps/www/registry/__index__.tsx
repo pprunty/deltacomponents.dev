@@ -860,24 +860,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "x-card-side-by-side-demo": {
-    name: "x-card-side-by-side-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["@delta/x-card"],
-    files: [{
-      path: "registry/delta-ui/examples/x-card-side-by-side-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/delta-ui/examples/x-card-side-by-side-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
   "marquee-stacked-demo": {
     name: "marquee-stacked-demo",
     description: "",
