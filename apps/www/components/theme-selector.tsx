@@ -20,14 +20,14 @@ import {
 
 const DEFAULT_THEMES = [
   {
-    name: "Default",
+    name: "Basic",
     value: "default",
   },
 ]
 
 const SPECIAL_THEMES = [
   {
-    name: "Dublin",
+    name: "Dublin (default)",
     value: "dublin",
   },
   {

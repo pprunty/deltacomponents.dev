@@ -17,7 +17,7 @@ export function ThemesPageClient() {
   const { setActiveTheme } = useThemeConfig()
 
   const handleResetToDefault = () => {
-    setActiveTheme("default")
+    setActiveTheme("dublin")
   }
 
   return (

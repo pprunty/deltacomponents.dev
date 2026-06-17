@@ -161,8 +161,8 @@ export default function RootLayout({
             __html: `
               try {
                 const themeColors = ${JSON.stringify(THEME_META_COLORS)};
-                const activeTheme = localStorage['active-theme'] || 'default';
-                const isDark = localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                const activeTheme = localStorage['active-theme'] || 'dublin';
+                const isDark = localStorage.theme === 'dark';
 
                 if (themeColors[activeTheme]) {
                   const themeColor = isDark ? themeColors[activeTheme].dark : themeColors[activeTheme].light;
@@ -175,13 +175,13 @@ export default function RootLayout({
                 if (localStorage['active-theme']) {
                   document.documentElement.setAttribute('data-theme', localStorage['active-theme'])
                 } else {
-                  document.documentElement.setAttribute('data-theme', 'default')
+                  document.documentElement.setAttribute('data-theme', 'dublin')
                 }
               } catch (_) {}
             `,
           }}
         />
-        <meta name="theme-color" content={THEME_META_COLORS.default.light} />
+        <meta name="theme-color" content={THEME_META_COLORS.dublin.light} />
       </head>
       <body
         className={cn(

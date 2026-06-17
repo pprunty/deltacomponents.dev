@@ -6,11 +6,19 @@ export interface ThemeData {
 }
 
 export const dublinTheme: ThemeData = {
-  name: "Dublin",
+  name: "Dublin (default)",
   value: "dublin",
   description:
     "A modern design approach with soft, clay-like elements and subtle shadows.",
   previewImage: "/images/themes/claymorphism.png",
+}
+
+export const basicTheme: ThemeData = {
+  name: "Basic",
+  value: "default",
+  description:
+    "The clean, neutral shadcn/ui base styling with no custom color treatment.",
+  previewImage: "/images/themes/default-light.webp",
 }
 
 export const kerryTheme: ThemeData = {
@@ -62,6 +70,7 @@ export const sligoTheme: ThemeData = {
 
 export const THEME_DATA = [
   dublinTheme,
+  basicTheme,
   kerryTheme,
   galwayTheme,
   kilkennyTheme,
