@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import Script from "next/script"
 
 import { siteConfig, THEME_META_COLORS } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
@@ -195,6 +196,11 @@ export default function RootLayout({
               <TailwindIndicator />
               <Toaster position="top-center" />
               <Analytics />
+              <Script
+                defer
+                src="https://cloud.umami.is/script.js"
+                data-website-id="6f008e16-2cf9-479d-a309-1afad19a8bdf"
+              />
             </ActiveThemeProvider>
           </LayoutProvider>
         </ThemeProvider>

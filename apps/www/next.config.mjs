@@ -82,6 +82,12 @@ const nextConfig = {
         destination: "/docs/mcp",
         permanent: false,
       },
+      {
+        source: "/analytics",
+        destination:
+          "https://cloud.umami.is/analytics/us/websites/6f008e16-2cf9-479d-a309-1afad19a8bdf",
+        permanent: false,
+      },
     ]
   },
   rewrites() {
