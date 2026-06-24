@@ -1,6 +1,6 @@
 ---
 title: Cambio Image
-description: A molecular image component featuring physics-based zoom transitions, blur-up loading, and gesture-driven dismissal
+description: A molecular image component featuring physics-based zoom transitions, skeleton loading, mobile pinch-to-zoom, and gesture-driven dismissal
 ---
 
 <ComponentPreview name="cambio-image-demo" />
@@ -69,6 +69,23 @@ Pass the `index` prop (usually from your map function) to ensure the active imag
 ```
 
 <ComponentPreview name="cambio-image-grid-demo" />
+
+### Cropped Thumbnails (aspect)
+
+Source images rarely share the same dimensions, which leaves grids ragged. Pass the same `aspect` to each image to crop the thumbnails to a uniform ratio with `object-cover` — the zoomed popup still reveals the full, uncropped image.
+
+```tsx
+<div className="grid grid-cols-3 gap-4">
+  {images.map((img, i) => (
+    <CambioImage
+      key={img.src}
+      index={i}
+      aspect="4 / 5" // equal-height thumbnails; popup shows full image
+      {...img}
+    />
+  ))}
+</div>
+```
 
 ### Dismiss on Scroll
 
@@ -144,12 +161,24 @@ For a cleaner UI with explicit expand/collapse controls, use `showExpandIcon` an
 
 ## Notes
 
-### Disabling Initial Blur
+### Skeleton Loading
 
-The component uses an `IntersectionObserver` to trigger a blur-to-focus animation when the image enters the viewport. For images "above the fold" (LCP candidates), you should disable this to prevent layout shifts or visual delays.
+Every thumbnail renders a `Skeleton` placeholder sized to the image's box (via `width`/`height` or `aspect`) until the image loads, so layout stays stable with no shift. Images already decoded from cache clear the skeleton immediately on mount.
+
+### Pinch-to-Zoom
+
+On touch devices, the focused (zoomed) image supports two-finger pinch-to-zoom up to 5× with single-finger panning while zoomed. Swipe-to-dismiss is automatically suspended mid-pinch so an aggressive gesture can't accidentally close the popup, and the image snaps back to 1× when released near its original scale.
+
+### Initial Blur Animation
+
+By default (`enableInitialAnimation={false}`) the image renders immediately, backed by a skeleton placeholder until it loads. Set `enableInitialAnimation` to opt into a blur-to-focus animation driven by an `IntersectionObserver` when the image enters the viewport. Leave it off for images "above the fold" (LCP candidates) to avoid visual delays.
 
 ```tsx
-<CambioImage src="/hero.jpg" enableInitialAnimation={false} loading="eager" />
+{/* Opt into the blur-to-focus entrance */}
+<CambioImage src="/below-the-fold.jpg" enableInitialAnimation />
+
+{/* Above-the-fold hero: render immediately */}
+<CambioImage src="/hero.jpg" loading="eager" />
 ```
 
 ### Advanced Motion Config
@@ -176,16 +205,17 @@ For granular control, you can pass an object to the `motion` prop to configure s
 | `alt`                    | `string`            | `-`        | Required. Accessibility text.                                    |
 | `width`                  | `number`            | `-`        | Required. Intrinsic width.                                       |
 | `height`                 | `number`            | `-`        | Required. Intrinsic height.                                      |
-| `motion`                 | `Preset \| Config`  | `"snappy"` | Motion preset or custom config.                                  |
+| `motion`                 | `Preset \| Config`  | `"reduced"` | Motion preset or custom config.                                 |
 | `loading`                | `"lazy" \| "eager"` | `"lazy"`   | Image loading strategy.                                          |
 | `index`                  | `number`            | `0`        | Z-index offset for list rendering.                               |
+| `aspect`                 | `number \| string`  | `-`        | CSS `aspect-ratio` (e.g. `1`, `"4 / 5"`, `"16 / 9"`) for the thumbnail. Crops it to the ratio with `object-cover`; the zoomed popup still shows the full, uncropped image. Useful for equal-height grids. |
 | `dismissible`            | `boolean`           | `true`     | Allow dismissing the zoomed image (disabled when iconsOnlyMode). |
 | `dismissOnScroll`        | `boolean`           | `false`    | Close the modal on window scroll.                                |
 | `dismissOnImageClick`    | `boolean`           | `false`    | Close by clicking the zoomed image itself.                       |
 | `showExpandIcon`         | `boolean`           | `false`    | Display floating expand/close icons.                             |
 | `iconsOnlyMode`          | `boolean`           | `false`    | Use only icons for expand/close, disable click-to-zoom behavior. |
 | `controls`               | `boolean`           | `false`    | Render a close button when focused (top-right on desktop; top-right of viewport on mobile). Forces `draggable={false}` so mobile users can pinch-to-zoom. |
-| `enableInitialAnimation` | `boolean`           | `true`     | Blur-to-focus effect on viewport entry.                          |
+| `enableInitialAnimation` | `boolean`           | `false`    | Blur-to-focus effect on viewport entry.                          |
 | `draggable`              | `boolean`           | `false`    | Allows the image to be dragged (ghost image).                    |
 | `className`              | `string`            | `-`        | Additional CSS classes for styling.                              |
 
@@ -193,7 +223,7 @@ For granular control, you can pass an object to the `motion` prop to configure s
 
 | Preset    | Description                        |
 | --------- | ---------------------------------- |
-| `snappy`  | Fast, linear transition. (Default) |
-| `smooth`  | Eased, slower transition.          |
-| `bouncy`  | Spring-physics based animation.    |
-| `reduced` | Minimal motion for accessibility.  |
+| `snappy`  | Fast, linear transition.                      |
+| `smooth`  | Eased, slower transition.                     |
+| `bouncy`  | Spring-physics based animation.               |
+| `reduced` | Minimal motion for accessibility. (Default)   |

@@ -71,6 +71,7 @@ export const ui: Registry["items"] = [
     name: "cambio-image",
     type: "registry:ui",
     dependencies: ["lucide-react", "cambio"],
+    registryDependencies: ["skeleton"],
     files: [
       {
         path: "delta/cambio-image.tsx",
