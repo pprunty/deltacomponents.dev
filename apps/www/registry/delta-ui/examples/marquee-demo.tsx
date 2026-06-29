@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 
 import { Marquee } from "@/registry/delta-ui/delta/marquee"
+import { ScrollFadeEffect } from "@/registry/delta-ui/delta/scroll-fade-effect"
 
 const albums = [
   {
@@ -30,24 +31,30 @@ const albums = [
 export function MarqueeDemo() {
   return (
     <div className="flex h-64 w-full items-center justify-center sm:h-80">
-      <Marquee
-        className="flex h-full items-center justify-center"
-        direction="left"
-        slowdownOnHover
-        showFade
-        slowDownFactor={0.2}
+      <ScrollFadeEffect
+        orientation="horizontal"
+        force
+        intensity={96}
+        className="h-full w-full"
       >
-        {albums.map((album, index) => (
-          <motion.img
-            key={index}
-            src={album.src || "/placeholder.svg"}
-            alt={album.alt}
-            className="mx-2 aspect-square w-[100px] cursor-pointer rounded-md sm:mx-3 sm:w-[100px] md:w-[120px]"
-            whileHover={{ scale: 1.2 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          />
-        ))}
-      </Marquee>
+        <Marquee
+          className="flex h-full items-center justify-center"
+          direction="left"
+          slowdownOnHover
+          slowDownFactor={0.2}
+        >
+          {albums.map((album, index) => (
+            <motion.img
+              key={index}
+              src={album.src || "/placeholder.svg"}
+              alt={album.alt}
+              className="mx-2 aspect-square w-[100px] cursor-pointer rounded-md sm:mx-3 sm:w-[100px] md:w-[120px]"
+              whileHover={{ scale: 1.2 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            />
+          ))}
+        </Marquee>
+      </ScrollFadeEffect>
     </div>
   )
 }

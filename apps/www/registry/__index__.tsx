@@ -300,7 +300,7 @@ export const Index: Record<string, any> = {
     name: "marquee",
     description: "",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["@delta/scroll-fade-effect"],
     files: [{
       path: "registry/delta-ui/delta/marquee.tsx",
       type: "registry:ui",
@@ -312,7 +312,7 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
-    meta: {"hide":true},
+    meta: undefined,
   },
   "product-card": {
     name: "product-card",

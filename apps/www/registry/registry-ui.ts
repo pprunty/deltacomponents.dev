@@ -179,15 +179,13 @@ export const ui: Registry["items"] = [
   {
     name: "marquee",
     type: "registry:ui",
+    registryDependencies: ["@delta/scroll-fade-effect"],
     files: [
       {
         path: "delta/marquee.tsx",
         type: "registry:ui",
       },
     ],
-    meta: {
-      hide: true,
-    },
   },
   {
     name: "product-card",

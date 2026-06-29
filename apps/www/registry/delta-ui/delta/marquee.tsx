@@ -59,16 +59,6 @@ export interface MarqueeProps {
    */
   slowDownSpringConfig?: SpringOptions
   /**
-   * Whether to show fade effect on edges
-   * @default false
-   */
-  showFade?: boolean
-  /**
-   * Fade intensity (0-100)
-   * @default 12.5
-   */
-  fadeIntensity?: number
-  /**
    * Number of times to repeat the children
    * @default 3
    */
@@ -137,8 +127,6 @@ export function Marquee({
   slowdownOnHover = false,
   slowDownFactor = 0.3,
   slowDownSpringConfig = { damping: 50, stiffness: 400 },
-  showFade = false,
-  fadeIntensity = 12.5,
   repeat = 3,
   useScrollVelocity = false,
   scrollAwareDirection = false,
@@ -319,42 +307,6 @@ export function Marquee({
       className={cn("relative w-full overflow-hidden", className)}
       style={{ transform: "translateZ(0)" }}
     >
-      {showFade && isHorizontal && (
-        <>
-          <div
-            className="from-background pointer-events-none absolute top-0 left-0 z-10 h-full bg-gradient-to-r to-transparent select-none"
-            style={{
-              width: `${fadeIntensity}%`,
-              transform: "translateZ(0)",
-            }}
-          />
-          <div
-            className="from-background pointer-events-none absolute top-0 right-0 z-10 h-full bg-gradient-to-l to-transparent select-none"
-            style={{
-              width: `${fadeIntensity}%`,
-              transform: "translateZ(0)",
-            }}
-          />
-        </>
-      )}
-      {showFade && !isHorizontal && (
-        <>
-          <div
-            className="from-background pointer-events-none absolute top-0 left-0 z-10 w-full bg-gradient-to-b to-transparent select-none"
-            style={{
-              height: `${fadeIntensity}%`,
-              transform: "translateZ(0)",
-            }}
-          />
-          <div
-            className="from-background pointer-events-none absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t to-transparent select-none"
-            style={{
-              height: `${fadeIntensity}%`,
-              transform: "translateZ(0)",
-            }}
-          />
-        </>
-      )}
       <motion.div
         className={cn("flex", isHorizontal ? "flex-row" : "flex-col")}
         onHoverStart={() => {

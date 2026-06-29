@@ -117,13 +117,20 @@ async function buildRegistryJsonFile() {
           name => `@delta/${name}`
         )
 
-        // Combine: keep existing non-Delta deps (shadcn components) and add Delta short refs
-        const registryDependencies = [
-          ...existingDeps.filter(
-            dep => !dep.startsWith('@delta/') && !dep.startsWith('https://deltacomponents.dev')
-          ),
-          ...deltaDeps,
-        ]
+        // Combine: keep existing shadcn deps and any manually-declared
+        // @delta/<name> refs (for delta dependencies not picked up via import
+        // detection, e.g. a recommended companion component), then add the
+        // imported Delta refs. Dedupe so an imported dep already listed by hand
+        // isn't duplicated. The verbose deltacomponents.dev URL form is dropped
+        // in favour of the short @delta ref.
+        const registryDependencies = Array.from(
+          new Set([
+            ...existingDeps.filter(
+              dep => !dep.startsWith('https://deltacomponents.dev')
+            ),
+            ...deltaDeps,
+          ])
+        )
 
         return {
           ...item,

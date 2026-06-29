@@ -1,6 +1,6 @@
 ---
 title: Marquee
-description: An animated marquee component for showcasing any content with smooth scrolling and customizable styling. Perfect for logos, testimonials, cards, and more
+description: An animated marquee for any content — logos, testimonials, or cards — with smooth infinite scrolling, hover and scroll-velocity controls, and optional drag
 ---
 
 <ComponentPreview name="marquee-demo" />
@@ -12,108 +12,141 @@ description: An animated marquee component for showcasing any content with smoot
 ## Usage
 
 ```tsx
-import { Marquee } from "@/registry/delta-ui/delta/marquee"
+import { Marquee } from "@/components/ui/marquee"
 
 export default function Example() {
   return (
-    <Marquee speed={25} gap={60}>
-      <img src="/logo1.svg" alt="Logo 1" className="h-12 w-auto" />
-      <img src="/logo2.svg" alt="Logo 2" className="h-12 w-auto" />
-      <img src="/logo3.svg" alt="Logo 3" className="h-12 w-auto" />
-      {/* Add any content as children */}
+    <Marquee speed={12} pauseOnHover>
+      <img src="/logo-1.svg" alt="Logo 1" className="mx-8 h-8 w-auto" />
+      <img src="/logo-2.svg" alt="Logo 2" className="mx-8 h-8 w-auto" />
+      <img src="/logo-3.svg" alt="Logo 3" className="mx-8 h-8 w-auto" />
+      {/* Any React children work as marquee items */}
     </Marquee>
   )
 }
 ```
 
+Children scroll horizontally by default. Set spacing with margin utilities on
+the items themselves (e.g. `mx-8`) — the marquee does not add gaps for you.
+`speed` is a relative value (not a real-world unit): lower scrolls slower,
+higher scrolls faster. For reference, the `speedPreset` values map to
+`slow` = 5, `default` = 10, `fast` = 20.
+
 ## Examples
-
-### Basic Brand Marquee
-
-<ComponentPreview name="brandmarquee-demo" />
 
 ### Testimonial Cards
 
+Drop any card markup in as children. This demo reuses the same card used by the
+Testimonials block and pauses on hover so visitors can read.
+
 <ComponentPreview name="marquee-cards-demo" />
-
-### Right-to-Left Direction
-
-```tsx
-<Marquee direction="right" speed={30} gap={100}>
-  <div className="bg-card w-64 rounded-lg p-4">Card 1</div>
-  <div className="bg-card w-64 rounded-lg p-4">Card 2</div>
-  <div className="bg-card w-64 rounded-lg p-4">Card 3</div>
-</Marquee>
-```
-
-### Without Fade Effect and Hover Pause
-
-```tsx
-<Marquee showFade={false} pauseOnHover={false} speed={15}>
-  {/* Your content here */}
-</Marquee>
-```
-
-Disable the edge fade effect and continuous movement without pausing on hover for a clean, uninterrupted scrolling experience.
 
 ### Stacked Marquees
 
+Stack two rows scrolling in opposite directions for a dynamic logo wall. Give
+both rows the same `speed` so they stay visually in sync.
+
 <ComponentPreview name="marquee-stacked-demo" />
 
-Showcase multiple marquees with different directions for dynamic layouts.
+### Edge Fade with ScrollFade
+
+The Marquee has no built-in fade. To fade the leading and trailing edges into
+the background, wrap it in the [Scroll Fade Effect](/docs/components/scroll-fade-effect)
+component. Because the marquee animates with `transform` inside an
+`overflow: hidden` track (so nothing actually scroll-overflows), pass the
+`force` prop so the fade applies regardless of scroll detection. `intensity`
+sets the fade size in pixels.
+
+```tsx
+import { Marquee } from "@/components/ui/marquee"
+import { ScrollFadeEffect } from "@/components/ui/scroll-fade-effect"
+
+export default function Example() {
+  return (
+    <ScrollFadeEffect orientation="horizontal" force intensity={96}>
+      <Marquee speed={12}>{/* items */}</Marquee>
+    </ScrollFadeEffect>
+  )
+}
+```
+
+<Admonition type="note" title="Install ScrollFade separately">
+  The fade lives in its own component. Add it with{" "}
+  `npx shadcn@latest add https://deltacomponents.dev/r/scroll-fade-effect.json`.
+</Admonition>
+
+### Vertical Direction
+
+Set `direction` to `up` or `down` to scroll vertically. Constrain the height so
+the column has somewhere to loop.
+
+```tsx
+<Marquee direction="up" speed={12} className="h-80">
+  <div className="bg-card my-3 w-64 rounded-lg border p-4">Card 1</div>
+  <div className="bg-card my-3 w-64 rounded-lg border p-4">Card 2</div>
+  <div className="bg-card my-3 w-64 rounded-lg border p-4">Card 3</div>
+</Marquee>
+```
+
+### Draggable
+
+Enable `draggable` to let users fling the marquee with a pointer; it eases back
+into its automatic scroll on release.
+
+```tsx
+<Marquee draggable speed={12}>
+  {/* items */}
+</Marquee>
+```
 
 ## API Reference
 
 ### Marquee
 
-| Prop          | Type                | Default  | Description                                                 |
-| ------------- | ------------------- | -------- | ----------------------------------------------------------- |
-| children      | `React.ReactNode`   | -        | Content to display in the marquee                           |
-| speed         | `number`            | `30`     | Animation speed in seconds for one complete loop            |
-| direction     | `"left" \| "right"` | `"left"` | Direction of the carousel animation                         |
-| pauseOnHover  | `boolean`           | `true`   | Whether to pause animation on hover                         |
-| gap           | `number`            | `70`     | Gap between items in pixels                                 |
-| showFade      | `boolean`           | `true`   | Whether to show fade effect on edges                        |
-| fadeIntensity | `number`            | `12.5`   | Fade intensity (0-100)                                      |
-| duplicates    | `number`            | `2`      | Number of times to duplicate the children for seamless loop |
-| itemClassName | `string`            | -        | Custom class for each item container                        |
-| className     | `string`            | -        | Additional CSS classes for the container                    |
+| Prop                   | Type                                          | Default                          | Description                                                                            |
+| ---------------------- | --------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------- |
+| `children`             | `React.ReactNode`                             | —                                | Content to scroll. Any React nodes.                                                    |
+| `direction`            | `"left" \| "right" \| "up" \| "down"`         | `"right"`                        | Scroll direction. `left`/`right` are horizontal; `up`/`down` are vertical.             |
+| `speed`                | `number`                                      | from `speedPreset`               | Scroll speed — lower is slower, higher is faster. Overrides `speedPreset` when set.    |
+| `speedPreset`          | `"slow" \| "default" \| "fast"`               | `"default"`                      | Preset speed used when `speed` is unset (`slow` = 5, `default` = 10, `fast` = 20).     |
+| `pauseOnHover`         | `boolean`                                     | `false`                          | Pause the animation while hovered.                                                     |
+| `slowdownOnHover`      | `boolean`                                     | `false`                          | Slow (rather than pause) the animation while hovered.                                  |
+| `slowDownFactor`       | `number`                                      | `0.3`                            | Speed multiplier applied while slowing on hover.                                       |
+| `slowDownSpringConfig` | `SpringOptions`                               | `{ damping: 50, stiffness: 400 }`| Spring config for the hover slow-down.                                                 |
+| `repeat`               | `number`                                      | `3`                              | Number of times children are repeated to fill the loop seamlessly.                     |
+| `useScrollVelocity`    | `boolean`                                     | `false`                          | Modulate marquee speed with the page's scroll velocity.                                |
+| `scrollAwareDirection` | `boolean`                                     | `false`                          | Flip scroll direction based on scroll direction.                                       |
+| `scrollSpringConfig`   | `SpringOptions`                               | `{ damping: 50, stiffness: 400 }`| Spring config for scroll-velocity direction changes.                                   |
+| `scrollContainer`      | `RefObject<HTMLElement> \| HTMLElement \| null` | `window`                       | Scroll container to read velocity from.                                                |
+| `draggable`            | `boolean`                                     | `false`                          | Allow dragging the marquee with a pointer.                                             |
+| `dragSensitivity`      | `number`                                      | `0.2`                            | How strongly drag movement maps to marquee movement.                                   |
+| `dragVelocityDecay`    | `number`                                      | `0.96`                           | How quickly drag momentum decays after release.                                        |
+| `dragAwareDirection`   | `boolean`                                     | `false`                          | Flip direction based on drag direction.                                                |
+| `dragAngle`            | `number`                                      | `0`                              | Angle (degrees) projected onto when measuring drag movement.                           |
+| `grabCursor`           | `boolean`                                     | `true`                           | Show grab/grabbing cursors while draggable.                                            |
+| `easing`               | `(value: number) => number`                   | —                                | Custom easing applied to the loop position.                                            |
+| `className`            | `string`                                      | —                                | Classes for the marquee container.                                                     |
+
+<Admonition type="note" title="Spacing and edge fade">
+  The Marquee adds no gap between items and no edge fade. Space items with
+  margin utilities (`mx-8`), and add a fade by wrapping the marquee in the
+  [Scroll Fade Effect](/docs/components/scroll-fade-effect) component (see
+  above).
+</Admonition>
 
 ## Features
 
-- **Flexible Content**: Accept any React children - logos, cards, text, or custom components
-- **Smooth Animation**: Seamless infinite scrolling with configurable speed
-- **Direction Control**: Support for left-to-right or right-to-left scrolling
-- **Hover Interactions**: Pause animation on hover for better user experience
-- **Fade Effects**: Configurable edge fading for a polished look
-- **Responsive Design**: Automatic scaling and responsive behavior
-- **Performance Optimized**: Efficient rendering with proper duplication handling
-- **Accessible**: Keyboard navigation friendly and semantic HTML structure
-- **Customizable**: Extensive styling options and CSS customization
+- **Any content**: Logos, cards, text, or custom components as children.
+- **Seamless loop**: Children are repeated (`repeat`) for an unbroken scroll.
+- **Direction control**: Horizontal (`left`/`right`) or vertical (`up`/`down`).
+- **Hover behavior**: Pause (`pauseOnHover`) or slow down (`slowdownOnHover`).
+- **Scroll-reactive**: Optionally tie speed and direction to page scroll velocity.
+- **Draggable**: Optional pointer dragging with momentum.
+- **GPU-accelerated**: Animates `transform` for smooth, jank-free motion.
 
 ## Use Cases
 
-The Marquee component is versatile and can be used for:
-
-- **Brand Logos**: Showcase partner companies and trusted brands
-- **Testimonials**: Display customer reviews and feedback
-- **Product Highlights**: Feature key products or services
-- **Social Proof**: Show client testimonials or user-generated content
-- **Announcements**: Display rotating promotional messages
-- **Portfolio Items**: Showcase work samples or case studies
-
-## Styling
-
-The component uses CSS-in-JS for animations and supports custom styling through:
-
-- `className` prop for container styling
-- `itemClassName` prop for individual item styling
-- CSS custom properties for advanced customization
-- Tailwind CSS classes for responsive design
-
-## Accessibility
-
-- Reduced motion support (respects `prefers-reduced-motion`)
-- Keyboard navigation friendly
-- Semantic HTML structure
-- Proper focus management for interactive content
+- **Brand logos**: A trusted-by / partner logo wall.
+- **Testimonials**: Scrolling customer quotes.
+- **Product highlights**: Feature cards or screenshots.
+- **Announcements**: Rotating promotional messages.
